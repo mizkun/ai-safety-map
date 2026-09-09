@@ -93,7 +93,7 @@ export default function TreeMap({
     return () => observer.disconnect();
   }, []);
   const fitScale = Math.max(
-    0.04,
+    0.02,
     Math.min(
       1,
       (size.width - 40) / layout.width,
@@ -127,7 +127,7 @@ export default function TreeMap({
     return () => cancelAnimationFrame(frame);
   }, [readableScale, layout, view, size.width, size.height, scaleContext, canExpand]);
   function zoom(value: number) {
-    const next = Math.max(0.04, Math.min(1.6, value));
+    const next = Math.max(0.02, Math.min(1.6, value));
     const el = viewport.current;
     const centerX = el
       ? (el.scrollLeft + el.clientWidth / 2) / scale
@@ -383,7 +383,7 @@ export default function TreeMap({
             <IconButton
               aria-label={m.zoomOut}
               onClick={() => zoom(scale / 1.18)}
-              disabled={scale <= 0.04}
+              disabled={scale <= 0.02}
             >
               <Minus size={17} />
             </IconButton>
