@@ -12,7 +12,7 @@ export function expandedTreeLayout(
   expanded: boolean,
   colors: Record<string, string>,
 ): TreeLayout {
-  const layout: TreeLayout = { width: 1200, height: 0, tiles: [], wires: [], regions: [], joins: [] };
+  const layout: TreeLayout = { width: 1200, height: 0, tiles: [], wires: [], regions: [], joins: [], forks: [] };
   const color = (route: string) => colors[route] || '#7963aa';
   function node(id: string, x: number, y: number, width: number, route: string, descend = expanded): Bounds {
     const graph = descend && data.nodes[id].subgraph ? data.graphs[data.nodes[id].subgraph!] : undefined;
@@ -91,22 +91,38 @@ export function expandedTreeLayout(
       wire(r1.key, r2.key, 'acceleration', 'R1-R2');
       wire('R2', 'R3', 'acceleration', 'R2-R3');
       sideWire('R3', 'R2', 'R3-R2', x + 390, 'acceleration');
-      sideWire('R2', 'ASI', 'R2-ASI', x - 32, 'acceleration');
+      layout.wires.at(-1)!.toFraction = 0.28;
+      sideWire('R2', 'ASI', 'R2-ASI', x - 42, 'acceleration');
+      layout.wires.at(-1)!.fromFraction = 0.72;
       sideWire('R2', 'R4', 'R2-R4', x + 413, 'acceleration');
+      layout.wires.at(-1)!.fromFraction = 0.72;
+      layout.wires.at(-1)!.toFraction = 0.72;
       return safety;
     }
     node('R1', x, y, 332, 'acceleration', false);
     node('R2', x, y + 264, 332, 'acceleration', false);
-    node('R3', x + 388, y + 264, 332, 'acceleration', false);
-    node('ASI', x + 776, y + 264, 332, 'acceleration', false);
+    node('R3', x + 408, y + 264, 332, 'acceleration', false);
+    node('ASI', x + 816, y + 264, 332, 'acceleration', false);
     node('R4', x, y + 552, 332, 'acceleration', false);
-    node('C2', x + 388, y + 552, 332, 'control', false);
-    node('W1', x + 776, y + 552, 332, 'work', false);
+    node('C2', x + 408, y + 552, 332, 'control', false);
+    node('W1', x + 816, y + 552, 332, 'work', false);
     const alignment = node('C1', x, y + 824, 332, 'control', false);
     for (const id of data.graphs.acceleration.edges) {
       const e = data.edges[id]; wire(e.from, e.to, 'acceleration', id);
-      if (id === 'R2-ASI') layout.wires.at(-1)!.viaY = y + 202;
-      if (id === 'R3-R2') layout.wires.at(-1)!.viaY = y + 178;
+      if (id === 'R2-ASI') {
+        layout.wires.at(-1)!.viaY = y + 202;
+        layout.wires.at(-1)!.sourceSide = 'left';
+        layout.wires.at(-1)!.trackOffset = 20;
+      }
+      if (id === 'R3-R2') {
+        layout.wires.at(-1)!.viaY = y + 178;
+        layout.wires.at(-1)!.toFraction = 0.78;
+      }
+      if (['R2-R4', 'R2-C2', 'R2-W1'].includes(id)) {
+        const index = ['R2-R4', 'R2-C2', 'R2-W1'].indexOf(id);
+        layout.wires.at(-1)!.fromFraction = 0.2 + index * 0.3;
+        layout.wires.at(-1)!.busY = y + 512 - index * 32;
+      }
     }
     return alignment;
   }
@@ -133,6 +149,9 @@ export function expandedTreeLayout(
   function endings(x: number, y: number, includeOtherResults: boolean) {
     const harm = node('H', x, y, 356, 'interaction', false);
     const survival = node('T', x, y + CARD + 84, 356, 'interaction');
+    node('E0', x + 388, survival.y, 332, 'acceleration', false);
+    wire('H', 'E0', 'acceleration', 'H-E0');
+    layout.wires.at(-1)!.fromFraction = 0.78;
     wire('H', 'T', 'interaction', 'H-T');
     const terminal = node('X', x, survival.y + survival.height + 84, 356, 'interaction', false);
     layout.wires.push({ key: 'T-X', from: survival.key, to: 'X', edge: 'T-X', color: color('interaction') });
@@ -151,7 +170,7 @@ export function expandedTreeLayout(
   }
   if (['work', 'money', 'acceleration'].includes(view)) {
     const end = view === 'work' ? work(46, 56) : view === 'money' ? money(46, 56, false) : acceleration(46, 56, false);
-    layout.width = view === 'money' ? 1370 : 1200;
+    layout.width = view === 'money' ? 1370 : view === 'acceleration' ? 1250 : 1200;
     layout.height = Math.max(end.y + end.height, ...layout.tiles.map((t) => t.y + t.height)) + 70;
     return layout;
   }
@@ -163,19 +182,16 @@ export function expandedTreeLayout(
     { id: 'interaction', x: 1726, width: 356 },
     { id: 'accidents', x: 2174, width: 356 },
     { id: 'dependence', x: 2622, width: 356 },
-    { id: 'acceleration', x: 3070, width: 356 },
-    { id: 'work', x: 3550, width: 1108 },
-    { id: 'money', x: 4750, width: 1276 },
+    { id: 'acceleration', x: 3120, width: 356 },
+    { id: 'work', x: 3650, width: 1108 },
+    { id: 'money', x: 4850, width: 1276 },
   ];
-  layout.width = 6100;
+  layout.width = 6200;
   node('NOW', 46, 32, 332, 'control', false);
-  node('E0', 470, 32, 332, 'acceleration', false);
-  wire('NOW', 'E0', 'acceleration', undefined, true);
   const ends: { route: string; last: Bounds }[] = [];
   for (const route of routes) {
     const headerX = route.x;
     layout.tiles.push({ key: 'route-' + route.id, graph: route.id, x: headerX, y: 220, width: 332, height: 98, color: color(route.id), kind: 'route' });
-    wire('NOW', 'route-' + route.id, route.id, undefined, true);
     const ids = data.graphs[route.id].nodes.filter((id) => !['H', 'T', 'X'].includes(id));
     const last = route.id === 'control' ? control(route.x, 434)
       : route.id === 'work' ? work(route.x, 434)
@@ -185,20 +201,34 @@ export function expandedTreeLayout(
     const firstNodes = route.id === 'control' ? ['C1', 'C2', 'C3']
       : route.id === 'work' ? ['W1', 'W2', 'W3']
       : route.id === 'money' ? ['I1', 'P3', 'F3'] : [ids[0]];
-    for (const id of firstNodes) wire('route-' + route.id, id, route.id, undefined, true);
+    if (firstNodes.length > 1) {
+      layout.forks!.push({ key: 'route-conditions-' + route.id, from: 'route-' + route.id, targets: firstNodes,
+        busY: route.id === 'money' ? 506 : 374, color: color(route.id) });
+    } else wire('route-' + route.id, firstNodes[0], route.id, undefined, true);
     ends.push({ route: route.id, last });
   }
+  layout.forks!.push({ key: 'present-routes', from: 'NOW', targets: routes.map((r) => 'route-' + r.id), busY: 202, color: '#8b87a1' });
   const commonY = Math.max(...ends.slice(0, 4).map(({ last }) => last.y + last.height)) + 170;
   const { terminal } = endings(1500, commonY, true);
-  for (const { route, last } of ends.slice(0, 4)) {
+  for (const [i, { route, last }] of ends.slice(0, 4).entries()) {
     const edge = data.graphs[route].edges.find((id) => data.edges[id].to === 'H');
     wire(last.key, 'H', route, edge);
-    layout.wires.at(-1)!.busY = commonY - 65;
+    layout.wires.at(-1)!.busY = commonY - 64 - ([1, 2].includes(i) ? 32 : 0);
+    layout.wires.at(-1)!.toFraction = (i + 1) / 5;
   }
-  for (const [edge, viaY] of [['R2-C2', 354], ['R4-C1', 384], ['R2-W1', 414], ['W4-P1', 642]] as const) {
+  for (const [edge, viaY] of [['R2-C2', 354], ['R4-C1', 384], ['R2-W1', 404], ['W4-P1', 642]] as const) {
     const e = data.edges[edge]; wire(e.from, e.to, 'acceleration', edge);
     layout.wires.at(-1)!.viaY = viaY;
     if (edge === 'W4-P1') layout.wires.at(-1)!.targetSide = true;
+    if (edge === 'R2-C2' || edge === 'R4-C1') {
+      layout.wires.at(-1)!.sourceSide = 'left';
+      layout.wires.at(-1)!.trackOffset = edge === 'R2-C2' ? 20 : 106;
+      layout.wires.at(-1)!.toFraction = 0.28;
+    }
+    if (edge === 'R2-W1') {
+      layout.wires.at(-1)!.trackOffset = 98;
+      layout.wires.at(-1)!.toFraction = 0.24;
+    }
   }
   layout.height = Math.max(terminal.y + terminal.height, ...layout.tiles.map((t) => t.y + t.height)) + GAP * 2;
   return layout;

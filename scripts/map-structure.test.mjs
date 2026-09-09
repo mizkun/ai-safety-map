@@ -5,7 +5,7 @@ import {
   applyTranslation,
   translationFields,
 } from '../lib/translation-fields.mjs';
-import { treeLayout, wireGeometry, joinGeometry } from '../lib/tree-layout.ts';
+import { treeLayout, wireGeometry, joinGeometry, forkGeometry } from '../lib/tree-layout.ts';
 const content = readCanonicalContent();
 
 test('translations change prose while preserving the causal graph and references', () => {
@@ -88,6 +88,12 @@ test('every fixed tree has valid connections, bounded tiles, and no overlapping 
       assert.equal(join.output, content.edges[join.edge].to);
       assert.ok(!joinGeometry(join, layout).includes('NaN'));
     }
+    for (const fork of layout.forks || []) {
+      const g = forkGeometry(fork, layout);
+      assert.ok(!g.trunk.includes('NaN'));
+      for (const p of g.junctions) assert.ok(p.x >= 0 && p.x <= layout.width && p.y >= 0 && p.y <= layout.height);
+      assert.equal(new Set(fork.targets).size, fork.targets.length);
+    }
   }
 });
 
@@ -99,6 +105,7 @@ test('all-elements overview contains every canonical node exactly once and none 
   const connected = new Set();
   const canonical = (key) => layout.tiles.find((t) => t.key === key)?.node || layout.regions?.find((r) => r.key === key)?.node;
   for (const wire of layout.wires) for (const key of [wire.from, wire.to]) connected.add(canonical(key));
+  for (const fork of layout.forks) for (const key of [fork.from, ...fork.targets]) connected.add(canonical(key));
   for (const join of layout.joins) for (const key of [...join.inputs, join.output]) connected.add(canonical(key));
   for (const region of layout.regions) {
     connected.add(region.node);
@@ -107,12 +114,54 @@ test('all-elements overview contains every canonical node exactly once and none 
   for (const id of nodes) assert.ok(connected.has(id), 'Isolated node: ' + id);
 });
 
+test('independent routed edges do not share segments or pass through unrelated cards', () => {
+  const segments = (points) => (points || []).slice(1).map((p, i) => [points[i], p]);
+  function sharedLength([a, b], [c, d]) {
+    if (a.x === b.x && c.x === d.x && a.x === c.x)
+      return Math.max(0, Math.min(Math.max(a.y, b.y), Math.max(c.y, d.y)) - Math.max(Math.min(a.y, b.y), Math.min(c.y, d.y)));
+    if (a.y === b.y && c.y === d.y && a.y === c.y)
+      return Math.max(0, Math.min(Math.max(a.x, b.x), Math.max(c.x, d.x)) - Math.max(Math.min(a.x, b.x), Math.min(c.x, d.x)));
+    return 0;
+  }
+  for (const view of ['overview', ...Object.keys(content.graphs)]) for (const expanded of [false, true]) {
+    const layout = treeLayout(content, view, expanded);
+    const edges = layout.wires.filter((w) => w.edge).map((w) => ({ w, segments: segments(wireGeometry(w, layout).points) }));
+    for (const [i, a] of edges.entries()) {
+      for (const b of edges.slice(i + 1)) for (const sa of a.segments) for (const sb of b.segments)
+        assert.ok(sharedLength(sa, sb) < 1, view + ': overlapping routes ' + a.w.edge + '/' + b.w.edge);
+      for (const tile of layout.tiles) {
+        if ([a.w.from, a.w.to].includes(tile.key)) continue;
+        for (const [p, q] of a.segments) {
+          const intersects = p.x === q.x
+            ? p.x > tile.x + 1 && p.x < tile.x + tile.width - 1 && Math.max(p.y, q.y) > tile.y + 1 && Math.min(p.y, q.y) < tile.y + tile.height - 1
+            : p.y > tile.y + 1 && p.y < tile.y + tile.height - 1 && Math.max(p.x, q.x) > tile.x + 1 && Math.min(p.x, q.x) < tile.x + tile.width - 1;
+          assert.ok(!intersects, view + ': route ' + a.w.edge + ' crosses card ' + tile.key);
+        }
+      }
+    }
+  }
+});
+
+test('the present is the single left-hand origin and causal progression runs to the right', () => {
+  for (const expanded of [false, true]) {
+    const layout = treeLayout(content, 'overview', expanded);
+    const present = layout.tiles.find((t) => t.node === 'NOW');
+    assert.equal(layout.flow, 'horizontal');
+    assert.equal(layout.tiles.filter((t) => t.node === 'NOW').length, 1);
+    assert.ok(layout.tiles.filter((t) => t !== present).every((t) => t.x > present.x + present.width));
+    const terminal = layout.tiles.find((t) => t.node === 'X');
+    const harm = layout.tiles.find((t) => t.node === 'H');
+    assert.ok(terminal.x > harm.x);
+    assert.ok(layout.forks.some((f) => f.from === present.key));
+  }
+});
+
 test('alignment, execution, and control are joint inputs rather than a causal chain', () => {
   const layout = treeLayout(content, 'control', true);
   assert.equal(content.graphs.control.mode, 'network');
   assert.deepEqual(content.edges['C3-L'].requires, ['C1', 'C2', 'C3']);
-  const rows = ['C1', 'C2', 'C3'].map((id) => layout.tiles.find((t) => t.node === id).y);
-  assert.equal(new Set(rows).size, 1);
+  const columns = ['C1', 'C2', 'C3'].map((id) => layout.tiles.find((t) => t.node === id).x);
+  assert.equal(new Set(columns).size, 1);
   assert.ok(!layout.wires.some((w) => ['C1-C2', 'C2-C3'].includes(w.edge)));
   assert.equal(layout.regions.find((r) => r.node === 'C1').mode, 'any');
   assert.equal(layout.regions.find((r) => r.node === 'C2').mode, 'all');
@@ -133,7 +182,23 @@ test('research has enabling and mitigating links, and social outcomes do not imp
   assert.ok(!layout.wires.some((w) => w.from === 'F3' && w.to === 'P3'));
 });
 
-test('the overview keeps dependence and prevention distinct from extinction', () => {
+test('recovery branches after harm and never appears as a sibling of the present', () => {
+  assert.equal(content.edges['H-E0'].relation, 'alternative');
+  for (const [view, expanded] of [['overview', false], ['overview', true], ['control', true]]) {
+    const layout = treeLayout(content, view, expanded);
+    const recovery = layout.tiles.find((t) => t.node === 'E0');
+    const harm = layout.tiles.find((t) => t.node === 'H');
+    assert.ok(recovery.x > harm.x + harm.width);
+    assert.ok(layout.wires.some((w) => w.from === harm.key && w.to === recovery.key && w.edge === 'H-E0'));
+    const present = layout.tiles.find((t) => t.node === 'NOW');
+    if (present) {
+      assert.ok(!layout.wires.some((w) => w.from === present.key && w.to === recovery.key));
+      assert.ok(!layout.forks.some((f) => f.from === present.key && f.targets.includes(recovery.key)));
+    }
+  }
+});
+
+test('the overview keeps loss of agency distinct from extinction', () => {
   const layout = treeLayout(content, 'overview');
   assert.ok(
     layout.wires.some((w) => w.from === 'dependence' && w.to === 'agency'),

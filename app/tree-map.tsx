@@ -24,7 +24,6 @@ import {
   ArrowUp,
   ArrowLeft,
   ArrowRight,
-  ArrowUpRight,
   Plus,
   Minus,
   Maximize2,
@@ -37,7 +36,7 @@ import {
 } from 'lucide-react';
 import type { Content } from '@/lib/content-types';
 import type { Messages } from '@/lib/i18n';
-import { treeLayout, wireGeometry, joinGeometry } from '@/lib/tree-layout';
+import { treeLayout, wireGeometry, joinGeometry, forkGeometry, joinJunctions } from '@/lib/tree-layout';
 import { reviewStatus } from '@/lib/freshness.mjs';
 
 type Props = {
@@ -115,15 +114,18 @@ export default function TreeMap({
   useEffect(() => {
     const frame = requestAnimationFrame(() => {
       if (viewport.current) {
-        viewport.current.scrollTop = 0;
-        viewport.current.scrollLeft = canExpand ? 0 : Math.max(
+        const anchor = layout.tiles.find((t) => t.node === 'NOW') || layout.tiles[0];
+        viewport.current.scrollTop = layout.flow === 'horizontal' ? Math.max(0, (anchor.y + anchor.height / 2) * readableScale - size.height / 2) : 0;
+        viewport.current.scrollLeft = layout.flow === 'horizontal'
+          ? Math.max(0, Math.min(...layout.tiles.map((t) => t.x)) * readableScale - 24)
+          : canExpand ? 0 : Math.max(
           0,
           (layout.width * readableScale - size.width) / 2,
         );
       }
     });
     return () => cancelAnimationFrame(frame);
-  }, [readableScale, layout.width, view, size.width, scaleContext, canExpand]);
+  }, [readableScale, layout, view, size.width, size.height, scaleContext, canExpand]);
   function zoom(value: number) {
     const next = Math.max(0.04, Math.min(1.6, value));
     const el = viewport.current;
@@ -151,6 +153,7 @@ export default function TreeMap({
     });
   }
   const graph = data.graphs[view];
+  const parentTile = layout.tiles.find((t) => t.key === 'parent');
   return (
     <>
       <div
@@ -194,7 +197,7 @@ export default function TreeMap({
           }}
         >
           <div
-            className="tree-content"
+            className={'tree-content' + (layout.flow === 'horizontal' ? ' horizontal-flow' : '')}
             style={{
               width: layout.width,
               height: layout.height,
@@ -208,16 +211,28 @@ export default function TreeMap({
               height={layout.height}
               aria-hidden="true"
             >
+              {layout.forks?.map((fork) => {
+                const g = forkGeometry(fork, layout);
+                return <g key={fork.key} fill="none" strokeWidth={2.4} strokeLinecap="round" strokeLinejoin="round">
+                  <path d={g.trunk} stroke={fork.color} strokeOpacity={0.65} strokeDasharray="9 7" vectorEffect="non-scaling-stroke" />
+                  {g.branches.map((branch) => <path key={branch.key} d={branch.path} stroke={branch.color} strokeOpacity={0.65} strokeDasharray="9 7" vectorEffect="non-scaling-stroke" />)}
+                  {g.junctions.map((p) => <circle key={p.x + ':' + p.y} cx={p.x} cy={p.y} r={3.8} fill="#f1f3fa" stroke={fork.color} vectorEffect="non-scaling-stroke" />)}
+                </g>;
+              })}
               {layout.joins?.map((join) => (
-                <path key={join.edge} d={joinGeometry(join, layout)} fill="none" stroke={join.color}
+                <g key={join.edge}>
+                <path d={joinGeometry(join, layout)} fill="none" stroke={join.color}
                   strokeWidth={3.5} strokeOpacity={0.9} strokeLinejoin="round" strokeLinecap="round" vectorEffect="non-scaling-stroke" />
+                {joinJunctions(join, layout).map((p) => <circle key={p.x + ':' + p.y} cx={p.x} cy={p.y} r={4} fill={join.color} />)}
+                </g>
               ))}
-              {layout.wires.map((w) => {
+              {[...layout.wires].sort((a, b) => Number(!!b.reference) - Number(!!a.reference)).map((w) => {
                 const g = wireGeometry(w, layout);
                 const relation = w.edge ? data.edges[w.edge].relation : undefined;
                 return (
+                  <g key={w.key}>
+                  {!w.reference && <path d={g.path} fill="none" stroke="#f1f3fa" strokeWidth={9} strokeLinecap="round" strokeLinejoin="round" vectorEffect="non-scaling-stroke" />}
                   <path
-                    key={w.key}
                     d={g.path}
                     fill="none"
                     stroke={relation === 'mitigation' ? '#348773' : w.color}
@@ -228,12 +243,13 @@ export default function TreeMap({
                     strokeLinejoin="round"
                     vectorEffect="non-scaling-stroke"
                   />
+                  </g>
                 );
               })}
             </svg>
             {layout.regions?.map((region) => (
               <div key={region.key} className="condition-region" style={{ left: region.x, top: region.y, width: region.width, height: region.height, borderColor: region.color + '40' }}>
-                <ButtonBase className="region-relation" style={{ top: region.labelY - region.y }} onClick={() => region.edge ? onEdge(region.edge) : setShowGuide(true)}>
+                <ButtonBase className="region-relation" style={{ top: region.labelY - region.y, ...(region.labelX === undefined ? {} : { left: region.labelX - region.x }) }} onClick={() => region.edge ? onEdge(region.edge) : setShowGuide(true)}>
                   <b>{region.mode === 'all' ? 'AND' : 'OR'}</b>
                   <span>{region.mode === 'all' ? m.joint : m.alternative}</span>
                 </ButtonBase>
@@ -285,7 +301,9 @@ export default function TreeMap({
                 <Chip
                   className="condition-chip"
                   label={graph.mode === 'all' ? m.joint : m.alternative}
-                  style={{ left: layout.width / 2, top: 235 }}
+                  style={layout.flow === 'horizontal' && parentTile
+                    ? { left: parentTile.x + parentTile.width + 102, top: parentTile.y + parentTile.height / 2 - 17 }
+                    : { left: layout.width / 2, top: 235 }}
                 />
               </Tooltip>
             )}
@@ -336,7 +354,6 @@ export default function TreeMap({
                     )}
                   </span>
                   <span className="tile-title">{title}</span>
-                  <ArrowUpRight className="tile-arrow" size={16} />
                   </ButtonBase>
                   {!!node?.topics?.length && <div className="tile-topics">
                     {node.topics.map((id) => <ButtonBase key={id} className="tile-topic" onClick={() => onTerm(id)} aria-label={data.glossary[id].name + ' · ' + m.definition}>

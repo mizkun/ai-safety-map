@@ -1,5 +1,6 @@
 import type { Content } from './content-types';
 import { expandedTreeLayout } from './expanded-tree-layout.ts';
+import { horizontalTreeLayout, horizontalPoint, horizontalPath } from './horizontal-tree-layout.ts';
 export const routeColors: Record<string, string> = {
   control: '#7963aa',
   misuse: '#aa8251',
@@ -21,7 +22,7 @@ export type TreeTile = {
   color: string;
   label?:
     | 'present'
-    | 'prevention'
+    | 'recovery'
     | 'catastrophe'
     | 'survival'
     | 'extinction'
@@ -41,6 +42,10 @@ export type TreeWire = {
   viaX?: number;
   targetSide?: boolean;
   busY?: number;
+  fromFraction?: number;
+  toFraction?: number;
+  sourceSide?: 'left' | 'right';
+  trackOffset?: number;
 };
 export type TreeRegion = {
   key: string;
@@ -51,6 +56,7 @@ export type TreeRegion = {
   height: number;
   mode: 'all' | 'any';
   labelY: number;
+  labelX?: number;
   color: string;
   edge?: string;
 };
@@ -62,6 +68,14 @@ export type TreeJoin = {
   y: number;
   color: string;
 };
+export type TreeFork = {
+  key: string;
+  from: string;
+  targets: string[];
+  busY: number;
+  color: string;
+};
+export type TreePoint = { x: number; y: number };
 export type TreeLayout = {
   width: number;
   height: number;
@@ -69,12 +83,19 @@ export type TreeLayout = {
   wires: TreeWire[];
   regions?: TreeRegion[];
   joins?: TreeJoin[];
+  forks?: TreeFork[];
+  flow?: 'horizontal';
+  source?: TreeLayout;
 };
 export function treeLayout(data: Content, view: string, expanded = false): TreeLayout {
+  return horizontalTreeLayout(verticalTreeLayout(data, view, expanded));
+}
+function verticalTreeLayout(data: Content, view: string, expanded: boolean): TreeLayout {
   if ((view === 'overview' && expanded) || data.graphs[view]?.mode === 'network')
     return expandedTreeLayout(data, view, expanded, routeColors);
   const tiles: TreeTile[] = [],
-    wires: TreeWire[] = [];
+    wires: TreeWire[] = [],
+    forks: TreeFork[] = [];
   const tile = (
     key: string,
     node: string | undefined,
@@ -97,19 +118,8 @@ export function treeLayout(data: Content, view: string, expanded = false): TreeL
   ) => wires.push({ key: from + '-' + to, from, to, color, edge, dashed });
   if (view === 'overview') {
     tile('present', 'NOW', undefined, 646, 32, 248, 104, '#696596', 'present');
-    tile(
-      'prevention',
-      'E0',
-      undefined,
-      34,
-      272,
-      224,
-      104,
-      '#528f7f',
-      'prevention',
-    );
-    wire('present', 'prevention', '#528f7f', undefined, true);
-    ['control', 'misuse', 'interaction', 'accidents', 'dependence', 'work', 'money'].forEach(
+    const routeIds = ['control', 'misuse', 'interaction', 'accidents', 'dependence', 'work', 'money'];
+    routeIds.forEach(
       (id, i) => {
         tile(
           id,
@@ -123,7 +133,6 @@ export function treeLayout(data: Content, view: string, expanded = false): TreeL
           undefined,
           'route',
         );
-        wire('present', id, routeColors[id]);
         if (['work', 'money'].includes(id)) return;
         if (id === 'dependence') wire(id, 'agency', routeColors[id], 'D3-E1');
         else {
@@ -133,6 +142,7 @@ export function treeLayout(data: Content, view: string, expanded = false): TreeL
         }
       },
     );
+    forks.push({ key: 'present-routes', from: 'present', targets: routeIds, busY: 204, color: '#8b87a1' });
     tile(
       'catastrophe',
       'H',
@@ -145,6 +155,9 @@ export function treeLayout(data: Content, view: string, expanded = false): TreeL
       'catastrophe',
     );
     tile('survival', 'T', undefined, 634, 682, 264, 104, '#a67685', 'survival');
+    tile('recovery', 'E0', undefined, 966, 682, 264, 104, '#528f7f', 'recovery');
+    wire('catastrophe', 'recovery', '#528f7f', 'H-E0');
+    wires.at(-1)!.fromFraction = 0.78;
     tile(
       'extinction',
       'X',
@@ -182,10 +195,15 @@ export function treeLayout(data: Content, view: string, expanded = false): TreeL
     wire('catastrophe', 'survival', '#a67685', 'H-T', true);
     wire('survival', 'extinction', '#a67685', 'T-X');
     wire('research', 'control', routeColors.acceleration, 'R2-C2', true);
-    return { width: 2020, height: 1000, tiles, wires };
+    // Separate entry points keep independent risk routes distinguishable at H.
+    wires.filter((w) => w.to === 'catastrophe').forEach((w, i) => {
+      w.toFraction = (i + 1) / 5;
+      w.busY = 506 - 64 - ([1, 2].includes(i) ? 32 : 0);
+    });
+    return { width: 2020, height: 1000, tiles, wires, forks };
   }
   const graph = data.graphs[view];
-  if (!graph) return treeLayout(data, 'overview');
+  if (!graph) return verticalTreeLayout(data, 'overview', false);
   const color = routeColors[view] || '#7963aa';
   if (graph.mode === 'sequence') {
     graph.nodes.forEach((id, i) => {
@@ -223,49 +241,83 @@ export function treeLayout(data: Content, view: string, expanded = false): TreeL
     tile('parent', graph.parent, undefined, 210, 44, 280, 150, color);
   graph.nodes.forEach((id, i) => {
     tile(id, id, undefined, 40 + i * 326, 312, 294, 164, color);
-    if (graph.parent) wire('parent', id, color, undefined, true);
   });
+  if (graph.parent) forks.push({ key: 'parent-conditions', from: 'parent', targets: graph.nodes, busY: 274, color });
   return {
     width: Math.max(700, graph.nodes.length * 326 + 60),
     height: 560,
     tiles,
     wires,
+    forks,
   };
 }
+// Rounding stays inside the routed segments, preserving the clearances around cards.
+export function roundedPath(points: TreePoint[], radius = 14) {
+  const clean = points.filter((p, i) => i === 0 || p.x !== points[i - 1].x || p.y !== points[i - 1].y);
+  if (!clean.length) return '';
+  let path = `M ${clean[0].x} ${clean[0].y}`;
+  for (let i = 1; i < clean.length - 1; i++) {
+    const a = clean[i - 1], b = clean[i], c = clean[i + 1];
+    const before = Math.hypot(b.x - a.x, b.y - a.y), after = Math.hypot(c.x - b.x, c.y - b.y);
+    const r = Math.min(radius, before / 2, after / 2);
+    if ((b.x - a.x) * (c.y - b.y) === (b.y - a.y) * (c.x - b.x)) {
+      path += ` L ${b.x} ${b.y}`;
+      continue;
+    }
+    path += ` L ${b.x + (a.x - b.x) * r / before} ${b.y + (a.y - b.y) * r / before}`;
+    path += ` Q ${b.x} ${b.y} ${b.x + (c.x - b.x) * r / after} ${b.y + (c.y - b.y) * r / after}`;
+  }
+  if (clean.length > 1) path += ` L ${clean.at(-1)!.x} ${clean.at(-1)!.y}`;
+  return path;
+}
 export function wireGeometry(wire: TreeWire, layout: TreeLayout): {
-  path: string; x: number; y: number; direction: 'up' | 'down' | 'left' | 'right';
+  path: string; x: number; y: number; direction: 'up' | 'down' | 'left' | 'right'; points?: TreePoint[];
 } {
+  if (layout.source) {
+    const source = wireGeometry(wire, layout.source);
+    const points = source.points?.map(horizontalPoint);
+    const direction = { up: 'left', down: 'right', left: 'up', right: 'down' } as const;
+    return { ...source, ...horizontalPoint(source), points,
+      path: points ? roundedPath(points) : horizontalPath(source.path), direction: direction[source.direction] };
+  }
   const from = layout.tiles.find((n) => n.key === wire.from) || layout.regions?.find((n) => n.key === wire.from),
     to = layout.tiles.find((n) => n.key === wire.to) || layout.regions?.find((n) => n.key === wire.to);
   if (!from || !to) throw new Error('Missing wire endpoint: ' + wire.key);
-  const x1 = from.x + from.width / 2,
+  const fromFraction = wire.fromFraction ?? 0.5, toFraction = wire.toFraction ?? 0.5;
+  const x1 = from.x + from.width * fromFraction,
     y1 = from.y + from.height + 3,
-    x2 = to.x + to.width / 2,
+    x2 = to.x + to.width * toFraction,
     y2 = to.y - 5;
+  function routed(points: TreePoint[], x: number, y: number, direction: 'up' | 'down' | 'left' | 'right') {
+    return { points, path: roundedPath(points), x, y, direction };
+  }
   if (wire.viaY !== undefined) {
-    const outsideX = from.x + from.width + 35;
+    const startX = wire.sourceSide === 'left' ? from.x : from.x + from.width;
+    const outsideX = startX + (wire.sourceSide === 'left' ? -1 : 1) * (wire.trackOffset ?? 35);
+    const startY = from.y + from.height * fromFraction;
     if (wire.targetSide) {
       const targetX = to.x - 38;
-      const endY = to.y + to.height / 2;
-      return { path: `M ${from.x + from.width} ${from.y + from.height / 2} H ${outsideX} V ${wire.viaY} H ${targetX} V ${endY} H ${to.x - 5}`,
-        x: (outsideX + targetX) / 2, y: wire.viaY, direction: targetX < outsideX ? 'left' : 'right' };
+      const endY = to.y + to.height * toFraction;
+      return routed([{x:startX,y:startY},{x:outsideX,y:startY},{x:outsideX,y:wire.viaY},{x:targetX,y:wire.viaY},{x:targetX,y:endY},{x:to.x-5,y:endY}],
+        (outsideX + targetX) / 2, wire.viaY, targetX < outsideX ? 'left' : 'right');
     }
-    return { path: `M ${from.x + from.width} ${from.y + from.height / 2} H ${outsideX} V ${wire.viaY} H ${x2} V ${y2}`,
-      x: (outsideX + x2) / 2, y: wire.viaY, direction: x2 < outsideX ? 'left' : 'right' };
+    return routed([{x:startX,y:startY},{x:outsideX,y:startY},{x:outsideX,y:wire.viaY},{x:x2,y:wire.viaY},{x:x2,y:y2}],
+      (outsideX + x2) / 2, wire.viaY, x2 < outsideX ? 'left' : 'right');
   }
   if (wire.viaX !== undefined) {
-    const startY = from.y + from.height / 2;
-    const endY = to.y + to.height / 2;
+    const startY = from.y + from.height * fromFraction;
+    const endY = to.y + to.height * toFraction;
     const startX = wire.viaX < from.x ? from.x : from.x + from.width;
     const endX = wire.viaX < to.x ? to.x - 5 : to.x + to.width + 5;
-    return { path: `M ${startX} ${startY} H ${wire.viaX} V ${endY} H ${endX}`,
-      x: wire.viaX, y: (startY + endY) / 2, direction: endY < startY ? 'up' : 'down' };
+    return routed([{x:startX,y:startY},{x:wire.viaX,y:startY},{x:wire.viaX,y:endY},{x:endX,y:endY}],
+      wire.viaX, (startY + endY) / 2, endY < startY ? 'up' : 'down');
   }
   if (from.y === to.y) {
     const leftward = from.x > to.x;
     const start = leftward ? from.x : from.x + from.width;
     const end = leftward ? to.x + to.width + 5 : to.x - 5;
-    return { path: `M ${start} ${from.y + from.height / 2} H ${end}`, x: (start + end) / 2, y: from.y + from.height / 2, direction: leftward ? 'left' : 'right' };
+    return routed([{x:start,y:from.y+from.height/2},{x:end,y:to.y+to.height/2}],
+      (start + end) / 2, from.y + from.height / 2, leftward ? 'left' : 'right');
   }
   if (y2 < y1) {
     const x = from.x + from.width + 78;
@@ -277,16 +329,43 @@ export function wireGeometry(wire: TreeWire, layout: TreeLayout): {
     };
   }
   const mid = wire.busY ?? (y1 + y2) / 2;
+  return routed([{x:x1,y:y1},{x:x1,y:mid},{x:x2,y:mid},{x:x2,y:y2}],
+    (x1 + x2) / 2, mid, x1 === x2 ? 'down' : x2 < x1 ? 'left' : 'right');
+}
+export function forkGeometry(fork: TreeFork, layout: TreeLayout): {
+  trunk: string; branches: { key: string; x: number; color: string; path: string }[]; junctions: TreePoint[];
+} {
+  if (layout.source) {
+    const source = forkGeometry(fork, layout.source);
+    return { ...source, trunk: horizontalPath(source.trunk),
+      branches: source.branches.map((b) => ({ ...b, path: horizontalPath(b.path) })),
+      junctions: source.junctions.map(horizontalPoint) };
+  }
+  const from = layout.tiles.find((t) => t.key === fork.from);
+  const targets = fork.targets.map((key) => layout.tiles.find((t) => t.key === key));
+  if (!from || targets.some((t) => !t)) throw new Error('Missing fork endpoint: ' + fork.key);
+  const sourceX = from.x + from.width / 2;
+  const branches = targets.map((t) => ({
+    key: t!.key, x: t!.x + t!.width / 2, color: t!.color,
+    path: `M ${t!.x + t!.width / 2} ${fork.busY} V ${t!.y - 5}`,
+  }));
+  const junctionXs = [...new Set([sourceX, ...branches.map((b) => b.x)])];
   return {
-    path: x1 === x2
-      ? `M ${x1} ${y1} V ${y2}`
-      : `M ${x1} ${y1} V ${mid} H ${x2} V ${y2}`,
-    x: (x1 + x2) / 2,
-    y: mid,
-    direction: x1 === x2 ? 'down' : x2 < x1 ? 'left' : 'right',
+    trunk: `M ${sourceX} ${from.y + from.height + 3} V ${fork.busY} M ${Math.min(...junctionXs)} ${fork.busY} H ${Math.max(...junctionXs)}`,
+    branches,
+    junctions: junctionXs.map((x) => ({ x, y: fork.busY })),
   };
 }
-export function joinGeometry(join: TreeJoin, layout: TreeLayout) {
+export function joinJunctions(join: TreeJoin, layout: TreeLayout): TreePoint[] {
+  if (layout.source) return joinJunctions(layout.source.joins!.find((j) => j.edge === join.edge)!, layout.source).map(horizontalPoint);
+  const x = join.inputs.map((key) => {
+    const r = layout.regions?.find((r) => r.key === key) || layout.tiles.find((t) => t.key === key)!;
+    return r.x + r.width / 2;
+  });
+  return [...new Set([...x, join.x])].map((x) => ({ x, y: join.y - 25 }));
+}
+export function joinGeometry(join: TreeJoin, layout: TreeLayout): string {
+  if (layout.source) return horizontalPath(joinGeometry(layout.source.joins!.find((j) => j.edge === join.edge)!, layout.source));
   const inputs = join.inputs.map((key) =>
     layout.regions?.find((r) => r.key === key) || layout.tiles.find((t) => t.key === key)!,
   );

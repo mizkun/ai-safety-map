@@ -226,13 +226,6 @@ a:focus-visible {
 .tile-route .tile-title {
   font-size: 21px;
 }
-.tile-arrow {
-  position: absolute;
-  top: 15px;
-  right: 16px;
-  color: var(--branch-color);
-  opacity: 0.62;
-}
 .tile-review {
   display: inline-flex;
   color: #a96f28;
@@ -1162,3 +1155,5 @@ a:focus-visible {
   border-radius: 10px; font-size: 12px; display: flex; gap: 6px; white-space: nowrap;
 }
 .influence-button.mitigation { background: #e5f3ec; color: #2e7665; border-style: solid; }
+.horizontal-flow .region-relation { transform: translate(-50%, -50%); min-width: 54px; justify-content: center; }
+.horizontal-flow .region-relation span { display: none; }
