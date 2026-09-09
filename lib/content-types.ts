@@ -15,7 +15,7 @@ export type LocaleOption = {
 export type SiteContent = {
   locales: LocaleOption[];
   content: { ja: Content; en?: Content };
-  detailsUrl?: string;
+  detailsUrls?: Partial<Record<'ja' | 'en', string>>;
 };
 export type Question = {
   q: string;
@@ -35,7 +35,11 @@ export type Research = {
   result: string;
   limitation: string;
 };
-export type EvidenceState = 'observed' | 'limited' | 'hypothesis' | 'definition';
+export type EvidenceState =
+  | 'observed'
+  | 'limited'
+  | 'hypothesis'
+  | 'definition';
 export type Review = {
   checkedAt: string;
   intervalDays: number;
@@ -53,6 +57,7 @@ export type Node = {
   review: Review;
   id: string;
   title: string;
+  shortTitle: string;
   explanation: string;
   body: Record<string, string>;
   status: EvidenceState;
@@ -74,7 +79,13 @@ export type Edge = {
   from: string;
   to: string;
   label: string;
-  relation: 'conditional' | 'joint' | 'alternative' | 'feedback' | 'influence' | 'mitigation';
+  relation:
+    | 'conditional'
+    | 'joint'
+    | 'alternative'
+    | 'feedback'
+    | 'influence'
+    | 'mitigation';
   requires?: string[];
   explanation: string;
   conditions: string[];

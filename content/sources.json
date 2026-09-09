@@ -358,5 +358,32 @@
     "period": "2025年3月〜2026年3月に停止されたアカウントのうち、分析に十分な記録のあった832件",
     "checked": "2026-09-10",
     "primary": "Anthropicの脅威調査チームによる、自社サービスの悪用記録の原分析"
+  },
+  "time-reallocation": {
+    "title": "Suh・Oh — Generative AI and the Reallocation of Time",
+    "published": "2026-02-13",
+    "period": "韓国の就業者5,512人。調査は2025年5月19日〜6月17日",
+    "date": "2026-02-13／韓国の就業者5,512人。調査は2025年5月19日〜6月17日",
+    "checked": "2026-09-10",
+    "url": "https://arxiv.org/html/2602.12695v1",
+    "primary": "調査を実施した著者による原論文（プレプリント）"
+  },
+  "monetary-trust": {
+    "title": "ECB・Philip R. Lane — The digital euro: maintaining the autonomy of the monetary system",
+    "published": "2025-03-20",
+    "period": "中央銀行・銀行預金・通貨への信用に関する制度説明",
+    "date": "2025-03-20／中央銀行・銀行預金・通貨への信用に関する制度説明",
+    "checked": "2026-09-10",
+    "url": "https://www.ecb.europa.eu/press/key/date/2025/html/ecb.sp250320_1~41c9459722.en.html",
+    "primary": "通貨制度の運営主体による原講演。政策上の主張を含む"
+  },
+  "payment-resilience": {
+    "title": "ECB — The Eurosystem’s comprehensive payments strategy",
+    "published": null,
+    "period": "2026年3月の決済戦略。導入済みの仕組みと将来の計画を含む",
+    "date": "2026年3月／決済制度の原戦略文書",
+    "checked": "2026-09-10",
+    "url": "https://www.ecb.europa.eu/pub/pdf/other/ecb.eurosystemcomprehensivepaymentsstrategy202603.en.pdf",
+    "primary": "決済制度を運営・監督する主体の原戦略文書"
   }
 }

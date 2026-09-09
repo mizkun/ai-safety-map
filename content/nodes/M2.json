@@ -27,5 +27,6 @@
   "research": [
     "astra-cyber",
     "gemini-safety"
-  ]
+  ],
+  "shortTitle": "AIが危害の実行を支援"
 }

@@ -1,0 +1,33 @@
+{
+  "id": "P4",
+  "title": "価格以外の方法で、資源や利用機会を配分する",
+  "shortTitle": "価格以外の配分が重要に",
+  "explanation": "P4.md",
+  "topics": [
+    "scarcity",
+    "distribution"
+  ],
+  "terms": [
+    "scarcity",
+    "distribution"
+  ],
+  "sources": [
+    "ecb-money",
+    "imf-distribution"
+  ],
+  "questions": [],
+  "related": [],
+  "watch": [
+    "前の状態と追加条件が、同じ地域・時期で成立したか。"
+  ],
+  "review": {
+    "checkedAt": "2026-09-10",
+    "intervalDays": 30,
+    "reason": "暮らしへの帰結と制度の条件を継続して点検するため。"
+  },
+  "status": "hypothesis",
+  "research": [
+    "money-functions",
+    "distribution"
+  ]
+}

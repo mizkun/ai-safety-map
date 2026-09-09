@@ -1,0 +1,33 @@
+{
+  "id": "F5",
+  "title": "通貨や預金への信用が損なわれ、取引が広く成り立たなくなる",
+  "shortTitle": "通貨・決済への信用が崩れる",
+  "explanation": "F5.md",
+  "topics": [
+    "money",
+    "financial-stability"
+  ],
+  "terms": [
+    "money",
+    "financial-stability"
+  ],
+  "sources": [
+    "monetary-trust",
+    "fsb-ai"
+  ],
+  "questions": [],
+  "related": [],
+  "watch": [
+    "前の状態と追加条件が、同じ地域・時期で成立したか。"
+  ],
+  "review": {
+    "checkedAt": "2026-09-10",
+    "intervalDays": 30,
+    "reason": "暮らしへの帰結と制度の条件を継続して点検するため。"
+  },
+  "status": "hypothesis",
+  "research": [
+    "monetary-trust",
+    "finance-risk"
+  ]
+}

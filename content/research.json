@@ -442,5 +442,41 @@
     "result": "AIを用いたサイバー悪用の試行を確認した。攻撃の準備に使う例が多く、実際の操作への利用例もある。",
     "limitation": "停止された利用者から選んだ標本で、全利用者の悪用率ではない。独自のリスク得点は攻撃の成功率を予測する値でもなく、世界の被害総数は分からない。",
     "type": "observation"
+  },
+  "time-reallocation": {
+    "title": "AIで浮いた時間は、何に使われるか",
+    "type": "observation",
+    "kind": "就業者へのオンライン調査・原分析",
+    "source": "time-reallocation",
+    "locator": "§2.1 Survey Design and Sampling; §6 Welfare channels; §8 Conclusion",
+    "evaluator": "Donghyun Suh・Samil Oh",
+    "setting": "韓国の15〜64歳の就業者5,512人。2025年5〜6月に調査し、職業・年齢・性別を人口構成に合わせて重み付け。",
+    "method": "AIの業務利用、作業別の時間変化、成果、満足度を本人に尋ねる。実験による無作為割付ではない。",
+    "result": "51.8%が業務で生成AIを利用。時間の節約は、成果の増加だけでなく仕事中の余裕にもつながると著者らは分析した。",
+    "limitation": "自己申告の相関分析。勤務時間外の余暇が増えた証明でも、社会全体が働かず暮らせる証明でもない。"
+  },
+  "monetary-trust": {
+    "title": "通貨と銀行預金は、何を根拠に使えるのか",
+    "type": "argument",
+    "kind": "中央銀行による制度の原説明",
+    "source": "monetary-trust",
+    "locator": "Our current monetary system; The three main properties of money; paragraphs on convertibility and safeguards",
+    "evaluator": "ECB理事Philip R. Lane",
+    "setting": "2025年3月の講演。中央銀行通貨、銀行預金、決済を区別する。",
+    "method": "預金を通貨に交換できる仕組み、中央銀行の信用、預金保険や流動性供給の役割を説明する。",
+    "result": "銀行預金への不安に対して、中央銀行通貨や安全策が支えになる。銀行の危機と、通貨そのものへの信用の喪失は同じではない。",
+    "limitation": "制度の説明と政策上の論考。AIが貨幣経済を崩壊させる頻度や時期を推定した研究ではない。"
+  },
+  "payment-resilience": {
+    "title": "決済が止まったときの代替手段をどう確保するか",
+    "type": "argument",
+    "kind": "決済当局の原戦略文書",
+    "source": "payment-resilience",
+    "locator": "§2 Settlement assets; §5 Retail payments, printed pp. 16–17",
+    "evaluator": "ユーロシステム／ECB",
+    "setting": "2026年3月。既存の現金・決済と、デジタルユーロなどの計画を含む。",
+    "method": "決済手段の依存、互換性、障害時の代替、金融包摂を制度設計として点検する。",
+    "result": "決済の継続と代替手段を重視し、カード決済の代替策やオフライン決済を検討している。デジタルユーロの計画を導入済みとは扱わない。",
+    "limitation": "戦略は対策の実効性を実証する試験ではない。新しい決済手段にも信用、接続、利用可能性の制約がある。"
   }
 }

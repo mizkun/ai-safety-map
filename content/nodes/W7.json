@@ -1,0 +1,31 @@
+{
+  "id": "W7",
+  "title": "仕事が減った人に、十分な所得や生活資源が届かない",
+  "shortTitle": "失職・所得減で生活が不安定",
+  "explanation": "W7.md",
+  "topics": [
+    "distribution"
+  ],
+  "terms": [
+    "distribution"
+  ],
+  "sources": [
+    "imf-distribution",
+    "census-adoption"
+  ],
+  "questions": [],
+  "related": [],
+  "watch": [
+    "前の状態と追加条件が、同じ地域・時期で成立したか。"
+  ],
+  "review": {
+    "checkedAt": "2026-09-10",
+    "intervalDays": 30,
+    "reason": "暮らしへの帰結と制度の条件を継続して点検するため。"
+  },
+  "status": "hypothesis",
+  "research": [
+    "distribution",
+    "adoption"
+  ]
+}

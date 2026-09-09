@@ -58,7 +58,11 @@ function review(value, label) {
   required(value, ['reason'], label + ' review');
 }
 for (const [id, s] of Object.entries(sources)) {
-  required(s, ['title', 'date', 'url', 'period', 'checked', 'primary'], 'source ' + id);
+  required(
+    s,
+    ['title', 'date', 'url', 'period', 'checked', 'primary'],
+    'source ' + id,
+  );
   check(
     s.published === null || /^\d{4}-\d{2}(-\d{2})?$/.test(s.published),
     'source ' +
@@ -83,13 +87,36 @@ for (const [id, s] of Object.entries(sources)) {
   );
 }
 for (const [id, r] of Object.entries(research)) {
-  required(r, ['title', 'kind', 'source', 'locator', 'evaluator', 'setting', 'method', 'result', 'limitation'], 'research ' + id);
+  required(
+    r,
+    [
+      'title',
+      'kind',
+      'source',
+      'locator',
+      'evaluator',
+      'setting',
+      'method',
+      'result',
+      'limitation',
+    ],
+    'research ' + id,
+  );
   sourceRefs([r.source], id);
-  check(['evaluation', 'observation', 'model', 'definition', 'argument'].includes(r.type), id + ': explicit research type required');
+  check(
+    ['evaluation', 'observation', 'model', 'definition', 'argument'].includes(
+      r.type,
+    ),
+    id + ': explicit research type required',
+  );
 }
 function researchRefs(refs, label) {
-  check(Array.isArray(refs) && refs.length > 0, label + ': research records required');
-  for (const id of refs || []) check(Boolean(research[id]), label + ': unknown research ' + id);
+  check(
+    Array.isArray(refs) && refs.length > 0,
+    label + ': research records required',
+  );
+  for (const id of refs || [])
+    check(Boolean(research[id]), label + ': unknown research ' + id);
 }
 for (const file of nodeFiles) {
   const node = read('nodes/' + file);
@@ -107,7 +134,7 @@ function questions(items, label) {
 }
 for (const [id, n] of Object.entries(nodes)) {
   review(n.review, id);
-  required(n, ['id', 'title', 'explanation'], id);
+  required(n, ['id', 'title', 'shortTitle', 'explanation'], id);
   check(
     n.explanation === id + '.md',
     id + ': explanation must be the matching Markdown filename',
@@ -141,7 +168,10 @@ for (const [id, n] of Object.entries(nodes)) {
     check(nonempty(section), id + ': empty section ' + h);
   }
   sourceRefs(n.sources, id);
-  check(['observed', 'limited', 'hypothesis', 'definition'].includes(n.status), id + ': evidence status required');
+  check(
+    ['observed', 'limited', 'hypothesis', 'definition'].includes(n.status),
+    id + ': evidence status required',
+  );
   researchRefs(n.research, id);
   questions(n.questions, id);
   check(Array.isArray(n.related), id + ': related must be an array');
@@ -199,7 +229,14 @@ for (const [id, e] of Object.entries(map.edges)) {
     id + ': edge has an unknown endpoint',
   );
   check(
-    ['conditional', 'joint', 'alternative', 'feedback', 'influence', 'mitigation'].includes(e.relation),
+    [
+      'conditional',
+      'joint',
+      'alternative',
+      'feedback',
+      'influence',
+      'mitigation',
+    ].includes(e.relation),
     id + ': unknown relation',
   );
   check(
@@ -211,12 +248,20 @@ for (const [id, e] of Object.entries(map.edges)) {
   sourceRefs(e.sources, id);
   researchRefs(e.research, id);
   if (e.requires) {
-    check(e.relation === 'joint', id + ': joint inputs require a joint relation');
-    check(e.requires.length > 1 && new Set(e.requires).size === e.requires.length,
-      id + ': joint inputs must be distinct');
+    check(
+      e.relation === 'joint',
+      id + ': joint inputs require a joint relation',
+    );
+    check(
+      e.requires.length > 1 && new Set(e.requires).size === e.requires.length,
+      id + ': joint inputs must be distinct',
+    );
     check(e.requires.includes(e.from), id + ': primary input must be included');
     for (const input of e.requires)
-      check(Boolean(nodes[input]) && input !== e.to, id + ': invalid joint input ' + input);
+      check(
+        Boolean(nodes[input]) && input !== e.to,
+        id + ': invalid joint input ' + input,
+      );
   }
 }
 for (const [id, g] of Object.entries(map.graphs)) {
@@ -268,13 +313,23 @@ for (const r of map.routes) {
   check(Boolean(stories[r.id]), r.id + ': story required');
 }
 for (const [id, story] of Object.entries(stories)) {
-  check(story.id === id && map.routes.some((r) => r.id === id), id + ': story route mismatch');
+  check(
+    story.id === id && map.routes.some((r) => r.id === id),
+    id + ': story route mismatch',
+  );
   required(story, ['title', 'intro', 'outlook'], id + ' story');
-  check(Array.isArray(story.chapters) && story.chapters.length > 0, id + ': story chapters required');
+  check(
+    Array.isArray(story.chapters) && story.chapters.length > 0,
+    id + ': story chapters required',
+  );
   for (const chapter of story.chapters || []) {
     required(chapter, ['title', 'text'], id + ' chapter');
-    check(Array.isArray(chapter.nodes) && chapter.nodes.length > 0, id + ': linked nodes required');
-    for (const n of chapter.nodes || []) check(Boolean(nodes[n]), id + ': unknown story node ' + n);
+    check(
+      Array.isArray(chapter.nodes) && chapter.nodes.length > 0,
+      id + ': linked nodes required',
+    );
+    for (const n of chapter.nodes || [])
+      check(Boolean(nodes[n]), id + ': unknown story node ' + n);
   }
 }
 check(

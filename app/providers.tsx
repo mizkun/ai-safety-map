@@ -27,6 +27,7 @@ const theme = createTheme({
     MuiIconButton: { styleOverrides: { root: { color: '#64677d' } } },
     MuiPaper: { styleOverrides: { root: { backgroundImage: 'none' } } },
     MuiAccordion: {
+      defaultProps: { slotProps: { transition: { timeout: 0 } } },
       styleOverrides: {
         root: {
           background: 'transparent',

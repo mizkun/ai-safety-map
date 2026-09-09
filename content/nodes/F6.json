@@ -1,0 +1,31 @@
+{
+  "id": "F6",
+  "title": "取引の停止が、生産と必需品の入手にまで波及する",
+  "shortTitle": "生産・必需品の入手が滞る",
+  "explanation": "F6.md",
+  "topics": [
+    "resilience"
+  ],
+  "terms": [
+    "resilience"
+  ],
+  "sources": [
+    "payment-resilience",
+    "monetary-trust"
+  ],
+  "questions": [],
+  "related": [],
+  "watch": [
+    "前の状態と追加条件が、同じ地域・時期で成立したか。"
+  ],
+  "review": {
+    "checkedAt": "2026-09-10",
+    "intervalDays": 30,
+    "reason": "暮らしへの帰結と制度の条件を継続して点検するため。"
+  },
+  "status": "hypothesis",
+  "research": [
+    "payment-resilience",
+    "monetary-trust"
+  ]
+}

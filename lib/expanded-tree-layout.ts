@@ -1,30 +1,94 @@
 import type { Content } from './content-types';
-import type { TreeLayout, TreeTile, TreeArea } from './tree-layout';
+import type {
+  TreeLayout,
+  TreeTile,
+  TreeArea,
+  TreeExpansion,
+} from './tree-layout';
 
-type Bounds = { key: string; x: number; y: number; width: number; height: number };
+type Bounds = {
+  key: string;
+  x: number;
+  y: number;
+  width: number;
+  height: number;
+};
 const CARD = 148;
 const GAP = 96;
 const PAD = 88;
 
 // Branches show alternative mechanisms. Frames contain joint conditions, not a timeline.
-export function expandedTreeLayout(data: Content, view: string, expanded: boolean, colors: Record<string, string>): TreeLayout {
-  const layout: TreeLayout = { width: 1200, height: 0, tiles: [], wires: [], regions: [], areas: [], joins: [], forks: [] };
+export function expandedTreeLayout(
+  data: Content,
+  view: string,
+  expansion: boolean | TreeExpansion,
+  colors: Record<string, string>,
+): TreeLayout {
+  const selection = typeof expansion === 'object' ? expansion : null;
+  const expanded = expansion === true;
+  const routeOpen = (id: string) =>
+    !selection || view !== 'overview' || selection.routes.includes(id);
+  const layout: TreeLayout = {
+    width: 1200,
+    height: 0,
+    tiles: [],
+    wires: [],
+    regions: [],
+    areas: [],
+    joins: [],
+    forks: [],
+  };
   const color = (route: string) => colors[route] || '#7963aa';
-  const children = (id: string, descend: boolean) => {
-    const graph = descend && data.nodes[id].subgraph ? data.graphs[data.nodes[id].subgraph!] : undefined;
+  const children = (id: string, descend?: boolean) => {
+    const enabled =
+      descend !== false &&
+      (selection ? selection.nodes.includes(id) : (descend ?? expanded));
+    const graph =
+      enabled && data.nodes[id].subgraph
+        ? data.graphs[data.nodes[id].subgraph!]
+        : undefined;
     return graph && ['all', 'any'].includes(graph.mode) ? graph : undefined;
   };
-  function measure(id: string, width = 332, descend = expanded): { width: number; height: number } {
+  function measure(
+    id: string,
+    width = 332,
+    descend?: boolean,
+  ): { width: number; height: number } {
     const graph = children(id, descend);
     if (!graph) return { width, height: CARD };
     const sizes = graph.nodes.map((child) => measure(child, width));
-    return { width: sizes.reduce((sum, size) => sum + size.width, 0) + GAP * (sizes.length - 1) + (graph.mode === 'all' ? PAD * 2 : 0),
-      height: CARD + 112 + Math.max(...sizes.map((size) => size.height)) + (graph.mode === 'all' ? 52 : 84) };
+    return {
+      width:
+        sizes.reduce((sum, size) => sum + size.width, 0) +
+        GAP * (sizes.length - 1) +
+        (graph.mode === 'all' ? PAD * 2 : 0),
+      height:
+        CARD +
+        112 +
+        Math.max(...sizes.map((size) => size.height)) +
+        (graph.mode === 'all' ? 52 : 84),
+    };
   }
-  function node(id: string, x: number, y: number, width: number, route: string, descend = expanded): Bounds {
+  function node(
+    id: string,
+    x: number,
+    y: number,
+    width: number,
+    route: string,
+    descend?: boolean,
+  ): Bounds {
     const graph = children(id, descend);
     const size = measure(id, width, descend);
-    const card: TreeTile = { key: id, node: id, x: x + (size.width - width) / 2, y, width, height: CARD, color: color(route), kind: 'node' };
+    const card: TreeTile = {
+      key: id,
+      node: id,
+      x: x + (size.width - width) / 2,
+      y,
+      width,
+      height: CARD,
+      color: color(route),
+      kind: 'node',
+    };
     layout.tiles.push(card);
     if (!graph) return card;
     const childY = y + CARD + 112 + (graph.mode === 'all' ? 26 : 0);
@@ -38,41 +102,137 @@ export function expandedTreeLayout(data: Content, view: string, expanded: boolea
     const area: TreeArea = { key: 'area-' + id, node: id, x, y, ...size };
     layout.areas!.push(area);
     if (graph.mode === 'any') {
-      layout.forks!.push({ key: 'alternatives-' + id, from: id, targets: graph.nodes, busY: y + CARD + 56, color: color(route), alternative: true,
-        merge: { area: area.key, inputs: descendants.map((r) => r.key), x: x + size.width / 2, y: y + size.height } });
+      layout.forks!.push({
+        key: 'alternatives-' + id,
+        from: id,
+        targets: graph.nodes,
+        busY: y + CARD + 56,
+        color: color(route),
+        alternative: true,
+        merge: {
+          area: area.key,
+          inputs: descendants.map((r) => r.key),
+          x: x + size.width / 2,
+          y: y + size.height,
+        },
+      });
     } else {
-      const group = { key: 'group-' + id, node: id, members: graph.nodes, x, y: childY - 26, width: size.width, height: size.height - CARD - 112,
-        labelX: x + 18, labelY: childY - 16, mode: 'all' as const, color: color(route),
-        edge: Object.values(data.edges).find((e) => e.to === id && e.requires?.length === graph.nodes.length && e.requires.every((n) => graph.nodes.includes(n)))?.id };
+      const group = {
+        key: 'group-' + id,
+        node: id,
+        members: graph.nodes,
+        x,
+        y: childY - 26,
+        width: size.width,
+        height: size.height - CARD - 112,
+        labelX: x + 18,
+        labelY: childY - 16,
+        mode: 'all' as const,
+        color: color(route),
+        edge: Object.values(data.edges).find(
+          (e) =>
+            e.to === id &&
+            e.requires?.length === graph.nodes.length &&
+            e.requires.every((n) => graph.nodes.includes(n)),
+        )?.id,
+      };
       layout.regions!.push(group);
-      layout.wires.push({ key: id + '-conditions', from: id, to: group.key, color: color(route), dashed: true, reference: true });
+      layout.wires.push({
+        key: id + '-conditions',
+        from: id,
+        to: group.key,
+        color: color(route),
+        dashed: true,
+        reference: true,
+      });
     }
     return area;
   }
-  function wire(from: string, to: string, route: string, edge?: string, reference = false) {
+  function wire(
+    from: string,
+    to: string,
+    route: string,
+    edge?: string,
+    reference = false,
+  ) {
     const relation = edge ? data.edges[edge].relation : undefined;
-    layout.wires.push({ key: from + '-' + to, from, to, color: color(route), edge, reference,
-      dashed: reference || edge === 'H-T' || edge === 'R3-R2' || relation === 'influence' || relation === 'mitigation' });
+    layout.wires.push({
+      key: from + '-' + to,
+      from,
+      to,
+      color: color(route),
+      edge,
+      reference,
+      dashed:
+        reference ||
+        edge === 'H-T' ||
+        edge === 'R3-R2' ||
+        relation === 'influence' ||
+        relation === 'mitigation',
+    });
   }
-  function sideWire(from: string, to: string, edge: string, viaX: number, route: string) {
-    wire(from, to, route, edge); layout.wires.at(-1)!.viaX = viaX;
+  function sideWire(
+    from: string,
+    to: string,
+    edge: string,
+    viaX: number,
+    route: string,
+  ) {
+    wire(from, to, route, edge);
+    layout.wires.at(-1)!.viaX = viaX;
   }
-  function joint(edgeId: string, inputs: Bounds[], output: string, x: number, y: number, route: string) {
+  function joint(
+    edgeId: string,
+    inputs: Bounds[],
+    output: string,
+    x: number,
+    y: number,
+    route: string,
+  ) {
     const edge = data.edges[edgeId];
-    if (!edge.requires || edge.requires.length !== inputs.length) throw new Error('Missing joint inputs: ' + edgeId);
-    layout.joins!.push({ edge: edgeId, inputs: inputs.map((b) => b.key), output, x, y, color: color(route) });
+    if (!edge.requires || edge.requires.length !== inputs.length)
+      throw new Error('Missing joint inputs: ' + edgeId);
+    layout.joins!.push({
+      edge: edgeId,
+      inputs: inputs.map((b) => b.key),
+      output,
+      x,
+      y,
+      color: color(route),
+    });
     const left = Math.min(...inputs.map((r) => r.x)) - PAD;
     const top = Math.min(...inputs.map((r) => r.y)) - 26;
-    layout.regions!.push({ key: 'joint-group-' + edgeId, node: output, members: edge.requires, x: left, y: top,
+    layout.regions!.push({
+      key: 'joint-group-' + edgeId,
+      node: output,
+      members: edge.requires,
+      x: left,
+      y: top,
       width: Math.max(...inputs.map((r) => r.x + r.width)) - left + PAD,
       height: Math.max(...inputs.map((r) => r.y + r.height)) - top + 26,
-      labelX: left + 18, labelY: top + 10, mode: 'all', color: color(route), edge: edgeId });
+      labelX: left + 18,
+      labelY: top + 10,
+      mode: 'all',
+      color: color(route),
+      edge: edgeId,
+    });
   }
-  function row(ids: string[], x: number, y: number, route: string, descend = expanded) {
+  function row(
+    ids: string[],
+    x: number,
+    y: number,
+    route: string,
+    descend?: boolean,
+  ) {
     let cursor = x;
-    return ids.map((id) => { const placed = node(id, cursor, y, 332, route, descend); cursor += placed.width + GAP; return placed; });
+    return ids.map((id) => {
+      const placed = node(id, cursor, y, 332, route, descend);
+      cursor += placed.width + GAP;
+      return placed;
+    });
   }
-  const controlWidth = () => ['C1', 'C2', 'C3'].reduce((sum, id) => sum + measure(id).width, GAP * 2);
+  const controlWidth = () =>
+    ['C1', 'C2', 'C3'].reduce((sum, id) => sum + measure(id).width, GAP * 2);
   function control(x: number, y: number) {
     const roots = row(['C1', 'C2', 'C3'], x, y, 'control');
     const center = x + controlWidth() / 2;
@@ -82,40 +242,160 @@ export function expandedTreeLayout(data: Content, view: string, expanded: boolea
     const persistent = node('C4a', center - 594, localY, 332, 'control', false);
     const local = node('L', center - 166, localY, 332, 'control', false);
     const scale = node('C4b', center + 262, localY, 332, 'control', false);
-    joint('L-C4', [local, persistent, scale], 'C4', center, localY + CARD + 84, 'control');
+    joint(
+      'L-C4',
+      [local, persistent, scale],
+      'C4',
+      center,
+      localY + CARD + 84,
+      'control',
+    );
     return node('C4', center - 166, localY + CARD + 168, 332, 'control', false);
   }
   function work(x: number, y: number) {
     const roots = row(['W1', 'W2'], x, y, 'work', false);
     const center = x + 380;
     joint('W1-W4', roots, 'W4', center, y + CARD + 84, 'work');
-    const capable = node('W4', center - 166, y + CARD + 168, 332, 'work', false);
-    const adoption = node('W3', center - 166, capable.y + CARD + 160, 332, 'work', false);
-    const distribution = node('W6', center + 262, adoption.y, 332, 'work', false);
+    const capable = node(
+      'W4',
+      center - 166,
+      y + CARD + 168,
+      332,
+      'work',
+      false,
+    );
+    const adoption = node(
+      'W3',
+      center - 166,
+      capable.y + CARD + 160,
+      332,
+      'work',
+      false,
+    );
+    const distribution = node(
+      'W6',
+      center + 262,
+      adoption.y,
+      332,
+      'work',
+      false,
+    );
     wire('W4', 'W3', 'work', 'W4-W3');
-    joint('W3-W5', [adoption, distribution], 'W5', center, adoption.y + CARD + 84, 'work');
-    return node('W5', center - 166, adoption.y + CARD + 168, 332, 'work', false);
+    joint(
+      'W3-W5',
+      [adoption, distribution],
+      'W5',
+      center,
+      adoption.y + CARD + 84,
+      'work',
+    );
+    const optional = node(
+      'W5',
+      center - 166,
+      adoption.y + CARD + 168,
+      332,
+      'work',
+      false,
+    );
+    node('W7', center + 262, optional.y, 332, 'work', false);
+    wire('W3', 'W7', 'work', 'W3-W7');
+    layout.wires.at(-1)!.fromFraction = 0.78;
+    const choice = node(
+      'W8',
+      optional.x,
+      optional.y + CARD + 100,
+      332,
+      'work',
+      false,
+    );
+    wire('W5', 'W8', 'work', 'W5-W8');
+    return choice;
   }
-  const misuseWidth = () => ['M1', 'M2', 'M3'].reduce((sum, id) => sum + measure(id).width, GAP * 2);
+  const misuseWidth = () =>
+    ['M1', 'M2', 'M3'].reduce((sum, id) => sum + measure(id).width, GAP * 2);
   function misuse(x: number, y: number): Bounds {
     const roots = row(['M1', 'M2', 'M3'], x, y, 'misuse');
     const center = x + misuseWidth() / 2;
     const joinY = Math.max(...roots.map((r) => r.y + r.height)) + 84;
     joint('M3-H', roots, 'H', center, joinY, 'misuse');
-    return { key: 'misuse-output', x: center - 166, y: joinY, width: 332, height: 0 };
+    return {
+      key: 'misuse-output',
+      x: center - 166,
+      y: joinY,
+      width: 332,
+      height: 0,
+    };
   }
-  const moneyWidth = () => ['I1', 'P3', 'F3'].reduce((sum, id) => sum + measure(id, 332, true).width, GAP * 2);
+  const moneyWidth = () =>
+    ['I1', 'P3', 'F3'].reduce(
+      (sum, id) =>
+        sum + Math.max(id === 'F3' ? 760 : 0, measure(id, 332, true).width),
+      GAP * 2,
+    );
   function money(x: number, y: number, sharedWork: boolean) {
     const income = node('I1', x, y + 264, 332, 'money', true);
-    node('I2', x + (income.width - 332) / 2, income.y + income.height + 100, 332, 'money', false);
+    node(
+      'I2',
+      x + (income.width - 332) / 2,
+      income.y + income.height + 100,
+      332,
+      'money',
+      false,
+    );
     wire(income.key, 'I2', 'money', 'I1-I2');
     const moneyX = x + income.width + GAP;
     const moneySize = measure('P3', 332, true);
-    if (!sharedWork) node('W4', moneyX + (moneySize.width - 332) / 2, y, 332, 'work', false);
-    node('P3', moneyX, y + 264, 332, 'money', true);
-    const finance = node('F3', moneyX + moneySize.width + GAP, y + 264, 332, 'money', true);
+    if (!sharedWork)
+      node('W4', moneyX + (moneySize.width - 332) / 2, y, 332, 'work', false);
+    const allocation = node('P3', moneyX, y + 264, 332, 'money', true);
+    node(
+      'P4',
+      moneyX + (allocation.width - 332) / 2,
+      allocation.y + allocation.height + 100,
+      332,
+      'money',
+      false,
+    );
+    wire(allocation.key, 'P4', 'money', 'P3-P4');
+    const financeSize = measure('F3', 332, true);
+    const finance = node(
+      'F3',
+      moneyX +
+        moneySize.width +
+        GAP +
+        Math.max(0, (760 - financeSize.width) / 2),
+      y + 264,
+      332,
+      'money',
+      true,
+    );
+    const trust = node(
+      'F5',
+      finance.x + (finance.width - 332) / 2,
+      finance.y + finance.height + 100,
+      332,
+      'money',
+      false,
+    );
+    wire(finance.key, 'F5', 'money', 'F3-F5');
+    row(
+      ['F6', 'F7'],
+      finance.x + (finance.width - 760) / 2,
+      trust.y + CARD + 100,
+      'money',
+      false,
+    );
+    wire('F5', 'F6', 'money', 'F5-F6');
+    layout.wires.at(-1)!.fromFraction = 0.3;
+    wire('F5', 'F7', 'money', 'F5-F7');
+    layout.wires.at(-1)!.fromFraction = 0.7;
     if (!sharedWork) {
-      wire('W4', 'P1', 'money', 'W4-P1');
+      wire(
+        'W4',
+        layout.tiles.some((t) => t.node === 'P1') ? 'P1' : 'P3',
+        'money',
+        'W4-P1',
+      );
       layout.wires.at(-1)!.viaY = y + 196;
       layout.wires.at(-1)!.sourceSide = 'left';
     }
@@ -148,7 +428,8 @@ export function expandedTreeLayout(data: Content, view: string, expanded: boolea
     node('W1', x + 816, y + 552, 332, 'work', false);
     const alignment = node('C1', x, y + 824, 332, 'control', false);
     for (const id of data.graphs.acceleration.edges) {
-      const e = data.edges[id]; wire(e.from, e.to, 'acceleration', id);
+      const e = data.edges[id];
+      wire(e.from, e.to, 'acceleration', id);
       if (id === 'R2-ASI') {
         layout.wires.at(-1)!.viaY = y + 202;
         layout.wires.at(-1)!.sourceSide = 'left';
@@ -166,15 +447,32 @@ export function expandedTreeLayout(data: Content, view: string, expanded: boolea
     }
     return alignment;
   }
-  function chain(route: string, ids: string[], x: number, y: number, width = 332) {
+  function chain(
+    route: string,
+    ids: string[],
+    x: number,
+    y: number,
+    width = 332,
+  ) {
     const laneWidth = Math.max(...ids.map((id) => measure(id, width).width));
     let cursor = y;
     let previous: Bounds | undefined;
     for (const id of ids) {
-      const last = node(id, x + (laneWidth - measure(id, width).width) / 2, cursor, width, route);
+      const last = node(
+        id,
+        x + (laneWidth - measure(id, width).width) / 2,
+        cursor,
+        width,
+        route,
+      );
       if (previous) {
-        const canonical = layout.areas!.find((r) => r.key === previous!.key)?.node || previous.key;
-        const edge = data.graphs[route].edges.find((key) => data.edges[key].from === canonical && data.edges[key].to === id);
+        const canonical =
+          layout.areas!.find((r) => r.key === previous!.key)?.node ||
+          previous.key;
+        const edge = data.graphs[route].edges.find(
+          (key) =>
+            data.edges[key].from === canonical && data.edges[key].to === id,
+        );
         wire(previous.key, id, route, edge);
       }
       cursor = last.y + last.height + 100;
@@ -188,16 +486,30 @@ export function expandedTreeLayout(data: Content, view: string, expanded: boolea
     const harm = node('H', x, y, 332, 'interaction', false);
     const survival = node('T', left, y + CARD + 100, 332, 'interaction');
     node('E0', left + size.width + 144, survival.y, 332, 'acceleration', false);
-    wire('H', 'E0', 'acceleration', 'H-E0'); layout.wires.at(-1)!.fromFraction = 0.78;
+    wire('H', 'E0', 'acceleration', 'H-E0');
+    layout.wires.at(-1)!.fromFraction = 0.78;
     wire('H', 'T', 'interaction', 'H-T');
-    const terminal = node('X', x, survival.y + survival.height + 100, 332, 'interaction', false);
+    const terminal = node(
+      'X',
+      x,
+      survival.y + survival.height + 100,
+      332,
+      'interaction',
+      false,
+    );
     wire(survival.key, 'X', 'interaction', 'T-X');
-    if (includeOtherResults) { node('G1', left - 476, y, 332, 'accidents', false); wire('H', 'G1', 'accidents', 'H-G1'); }
+    if (includeOtherResults) {
+      node('G1', left - 476, y, 332, 'accidents', false);
+      wire('H', 'G1', 'accidents', 'H-G1');
+    }
     return { harm, terminal };
   }
   function finish() {
     const bounds = [...layout.tiles, ...layout.regions!, ...layout.areas!];
-    layout.width = Math.max(layout.width, ...bounds.map((r) => r.x + r.width + 100));
+    layout.width = Math.max(
+      layout.width,
+      ...bounds.map((r) => r.x + r.width + 100),
+    );
     layout.height = Math.max(...bounds.map((r) => r.y + r.height)) + 100;
     return layout;
   }
@@ -207,9 +519,16 @@ export function expandedTreeLayout(data: Content, view: string, expanded: boolea
     const visited = new Set<string>();
     while (!visited.has(ancestor)) {
       visited.add(ancestor);
-      const route = Object.keys(colors).find((id) => data.graphs[id]?.nodes.includes(ancestor));
-      if (route) { node(graph.parent, 100, 56, 332, route, true); return finish(); }
-      const parent = Object.values(data.graphs).find((g) => g.nodes.includes(ancestor))?.parent;
+      const route = Object.keys(colors).find((id) =>
+        data.graphs[id]?.nodes.includes(ancestor),
+      );
+      if (route) {
+        node(graph.parent, 100, 56, 332, route, true);
+        return finish();
+      }
+      const parent = Object.values(data.graphs).find((g) =>
+        g.nodes.includes(ancestor),
+      )?.parent;
       if (!parent) break;
       ancestor = parent;
     }
@@ -236,20 +555,46 @@ export function expandedTreeLayout(data: Content, view: string, expanded: boolea
   if (graph?.mode === 'sequence') {
     const ids = graph.nodes.filter((id) => !['H', 'T', 'X', 'E0'].includes(id));
     const laneWidth = Math.max(...ids.map((id) => measure(id).width));
-    const inset = graph.nodes.includes('H') ? Math.max(0, (measure('T').width - laneWidth) / 2) : 0;
+    const inset = graph.nodes.includes('H')
+      ? (view === 'accidents' ? 476 : 0) +
+        Math.max(0, (measure('T').width - laneWidth) / 2)
+      : 0;
     const last = chain(view, ids, 100 + inset, 76);
     if (graph.nodes.includes('H')) {
-      endings(last.x, last.y + last.height + 100, false);
+      endings(last.x, last.y + last.height + 100, view === 'accidents');
       const edge = graph.edges.find((id) => data.edges[id].to === 'H');
       wire(last.key, 'H', view, edge);
     }
     return finish();
   }
-  const ids = ['control', 'misuse', 'interaction', 'accidents', 'dependence', 'acceleration', 'work', 'money'];
+  const ids = [
+    'control',
+    'misuse',
+    'interaction',
+    'accidents',
+    'dependence',
+    'acceleration',
+    'work',
+    'money',
+  ];
   let cursor = 100;
   const routes = ids.map((id) => {
-    const nodes = data.graphs[id].nodes.filter((n) => !['H', 'T', 'X'].includes(n));
-    const width = id === 'control' ? controlWidth() : id === 'misuse' ? misuseWidth() : id === 'work' ? 1188 : id === 'money' ? moneyWidth() : id === 'acceleration' ? 540 : Math.max(...nodes.map((n) => measure(n).width));
+    const nodes = data.graphs[id].nodes.filter(
+      (n) => !['H', 'T', 'X'].includes(n),
+    );
+    const width = !routeOpen(id)
+      ? 332
+      : id === 'control'
+        ? controlWidth()
+        : id === 'misuse'
+          ? misuseWidth()
+          : id === 'work'
+            ? 1188
+            : id === 'money'
+              ? moneyWidth()
+              : id === 'acceleration'
+                ? 540
+                : Math.max(...nodes.map((n) => measure(n).width));
     const route = { id, x: cursor + PAD, width, nodes };
     cursor += width + PAD * 2 + 170;
     return route;
@@ -259,34 +604,115 @@ export function expandedTreeLayout(data: Content, view: string, expanded: boolea
   const ends: { route: string; last: Bounds }[] = [];
   for (const route of routes) {
     const { id, x, width, nodes } = route;
-    layout.tiles.push({ key: 'route-' + id, graph: id, x: x + (width - 332) / 2, y: 220, width: 332, height: 98, color: color(id), kind: 'route' });
-    const last = id === 'control' ? control(x, 484) : id === 'misuse' ? misuse(x, 484) : id === 'work' ? work(x, 484) : id === 'money' ? money(x, 484, true)
-      : id === 'acceleration' ? acceleration(x, 484, true) : chain(id, nodes, x, 484);
-    const first = id === 'control' ? ['C1', 'C2', 'C3'] : id === 'misuse' ? ['M1', 'M2', 'M3'] : id === 'work' ? ['W1', 'W2'] : id === 'money' ? ['I1', 'P3', 'F3'] : [nodes[0]];
-    if (first.length > 1) layout.forks!.push({ key: 'route-conditions-' + id, from: 'route-' + id, targets: first, busY: id === 'money' ? 600 : 430, color: color(id) });
+    layout.tiles.push({
+      key: 'route-' + id,
+      graph: id,
+      x: x + (width - 332) / 2,
+      y: 220,
+      width: 332,
+      height: 98,
+      color: color(id),
+      kind: 'route',
+    });
+    if (!routeOpen(id)) {
+      ends.push({ route: id, last: layout.tiles.at(-1)! });
+      continue;
+    }
+    const last =
+      id === 'control'
+        ? control(x, 484)
+        : id === 'misuse'
+          ? misuse(x, 484)
+          : id === 'work'
+            ? work(x, 484)
+            : id === 'money'
+              ? money(x, 484, true)
+              : id === 'acceleration'
+                ? acceleration(x, 484, true)
+                : chain(id, nodes, x, 484);
+    const first =
+      id === 'control'
+        ? ['C1', 'C2', 'C3']
+        : id === 'misuse'
+          ? ['M1', 'M2', 'M3']
+          : id === 'work'
+            ? ['W1', 'W2']
+            : id === 'money'
+              ? ['I1', 'P3', 'F3']
+              : [nodes[0]];
+    if (first.length > 1)
+      layout.forks!.push({
+        key: 'route-conditions-' + id,
+        from: 'route-' + id,
+        targets: first,
+        busY: id === 'money' ? 600 : 430,
+        color: color(id),
+      });
     else wire('route-' + id, first[0], id, undefined, true);
     ends.push({ route: id, last });
   }
-  layout.forks!.push({ key: 'present-routes', from: 'NOW', targets: routes.map((r) => 'route-' + r.id), busY: 202, color: '#8b87a1' });
-  const commonY = Math.max(...ends.slice(0, 4).map(({ last }) => last.y + last.height)) + 200;
+  layout.forks!.push({
+    key: 'present-routes',
+    from: 'NOW',
+    targets: routes.map((r) => 'route-' + r.id),
+    busY: 202,
+    color: '#8b87a1',
+  });
+  const commonY =
+    Math.max(...ends.slice(0, 4).map(({ last }) => last.y + last.height)) + 200;
   const harmX = routes[1].x + routes[1].width / 2 - 166;
   endings(harmX, commonY, true);
   for (const [i, { route, last }] of ends.slice(0, 4).entries()) {
-    if (route === 'misuse') continue; // Its three inputs meet at the explicit AND join.
-    const edge = data.graphs[route].edges.find((id) => data.edges[id].to === 'H');
+    if (route === 'misuse' && routeOpen(route)) continue; // Its three inputs meet at the explicit AND join.
+    const edge = data.graphs[route].edges.find(
+      (id) => data.edges[id].to === 'H',
+    );
     wire(last.key, 'H', route, edge);
     layout.wires.at(-1)!.busY = commonY - 64 - ([1, 2].includes(i) ? 32 : 0);
     layout.wires.at(-1)!.toFraction = (i + 1) / 5;
   }
-  for (const [edge, viaY] of [['R2-C2', 354], ['R4-C1', 384], ['R2-W1', 404], ['W4-P1', 650]] as const) {
-    const e = data.edges[edge]; wire(e.from, e.to, 'acceleration', edge);
+  if (!routeOpen('dependence')) {
+    const route = routes.find((r) => r.id === 'dependence')!;
+    node('E1', route.x, commonY, 332, 'dependence', false);
+    wire('route-dependence', 'E1', 'dependence', 'D3-E1');
+  }
+  const visibleKey = (id: string) => {
+    let ancestor = id;
+    const seen = new Set<string>();
+    while (!seen.has(ancestor)) {
+      if (layout.tiles.some((t) => t.node === ancestor)) return ancestor;
+      seen.add(ancestor);
+      const parent = Object.values(data.graphs).find(
+        (g) => g.parent && g.nodes.includes(ancestor),
+      )?.parent;
+      if (!parent) break;
+      ancestor = parent;
+    }
+    const route = routes.find((r) =>
+      data.graphs[r.id].nodes.includes(ancestor),
+    );
+    return route ? 'route-' + route.id : id;
+  };
+  for (const [edge, viaY] of [
+    ['R2-C2', 354],
+    ['R4-C1', 384],
+    ['R2-W1', 404],
+    ['W4-P1', 650],
+  ] as const) {
+    if (edge === 'W4-P1' && (!routeOpen('work') || !routeOpen('money')))
+      continue;
+    const e = data.edges[edge];
+    wire(visibleKey(e.from), visibleKey(e.to), 'acceleration', edge);
     layout.wires.at(-1)!.viaY = viaY;
     if (['R2-C2', 'R4-C1'].includes(edge)) {
       layout.wires.at(-1)!.sourceSide = 'left';
       layout.wires.at(-1)!.trackOffset = edge === 'R2-C2' ? 20 : 106;
       layout.wires.at(-1)!.toFraction = 0.28;
     }
-    if (edge === 'R2-W1') { layout.wires.at(-1)!.trackOffset = 98; layout.wires.at(-1)!.toFraction = 0.24; }
+    if (edge === 'R2-W1') {
+      layout.wires.at(-1)!.trackOffset = 98;
+      layout.wires.at(-1)!.toFraction = 0.24;
+    }
   }
   return finish();
 }

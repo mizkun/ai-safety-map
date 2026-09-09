@@ -1,0 +1,33 @@
+{
+  "id": "F7",
+  "title": "代替の決済や配分を使い、取引と制度を立て直す",
+  "shortTitle": "代替決済・配給・制度再建",
+  "explanation": "F7.md",
+  "topics": [
+    "money",
+    "resilience"
+  ],
+  "terms": [
+    "money",
+    "resilience"
+  ],
+  "sources": [
+    "payment-resilience",
+    "monetary-trust"
+  ],
+  "questions": [],
+  "related": [],
+  "watch": [
+    "前の状態と追加条件が、同じ地域・時期で成立したか。"
+  ],
+  "review": {
+    "checkedAt": "2026-09-10",
+    "intervalDays": 30,
+    "reason": "暮らしへの帰結と制度の条件を継続して点検するため。"
+  },
+  "status": "hypothesis",
+  "research": [
+    "payment-resilience",
+    "monetary-trust"
+  ]
+}

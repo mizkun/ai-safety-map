@@ -22,9 +22,11 @@ for (const file of ['404.html', 'vinext-client-entry-manifest.json']) {
 fs.writeFileSync(path.join(target, '.nojekyll'), '');
 const packed = contentPackage(readSiteContent(), '/' + base);
 fs.mkdirSync(path.join(target, 'content'), { recursive: true });
-fs.writeFileSync(path.join(target, 'content', packed.filename), packed.details);
+for (const [filename, details] of Object.entries(packed.files))
+  fs.writeFileSync(path.join(target, 'content', filename), details);
 const html = fs.readFileSync(path.join(target, 'index.html'), 'utf8');
-if (!html.includes(packed.filename)) throw new Error('Initial shell and detail package versions differ');
+if (Object.keys(packed.files).some((filename) => !html.includes(filename)))
+  throw new Error('Initial shell and detail package versions differ');
 const assets = [...html.matchAll(/(?:src|href)="([^"#]+)"/g)]
   .map((m) => m[1])
   .filter(

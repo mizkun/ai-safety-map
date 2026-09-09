@@ -1,4 +1,6 @@
 import fs from 'node:fs';
+import { translationReviewHash } from '../lib/translation-review.mjs';
+import { isCalendarDate, currentReviewDay } from '../lib/freshness.mjs';
 import { createHash } from 'node:crypto';
 import { readCanonicalContent } from '../lib/content-reader.mjs';
 import {
@@ -51,9 +53,21 @@ for (const locale of locales) {
   if (translation.locale !== locale.code)
     throw new Error('Translation locale mismatch');
   if (translation.sourceHash !== digest)
-    console.warn(
-      'Translation needs review and will not be offered: ' + locale.code,
+    throw new Error(
+      'Enabled translation is stale; review and update it before publishing: ' +
+        locale.code,
     );
   else applyTranslation(canonical, translation);
+  const review = translation.review;
+  if (
+    !review?.reviewer?.trim() ||
+    !isCalendarDate(review.date) ||
+    review.date > currentReviewDay() ||
+    review.hash !== translationReviewHash(translation, base, messages)
+  )
+    throw new Error(
+      'Enabled translation needs a review matching its prose and UI: ' +
+        locale.code,
+    );
 }
 console.log('Locale messages and publication gates valid.');

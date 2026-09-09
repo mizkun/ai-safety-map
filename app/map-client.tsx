@@ -1,5 +1,13 @@
 'use client';
-import { useEffect, useMemo, useState, type ReactNode } from 'react';
+import {
+  lazy,
+  Suspense,
+  useEffect,
+  useMemo,
+  useState,
+  type CSSProperties,
+  type ReactNode,
+} from 'react';
 import {
   Accordion,
   AccordionDetails,
@@ -28,14 +36,13 @@ import {
   ArrowRight,
   ArrowUpRight,
   BookOpen,
-  Check,
   ChevronDown,
   Clock3,
   GitBranch,
-  Globe2,
   Info,
   Layers3,
   Menu as MenuIcon,
+  Play,
   ShieldCheck,
   Waypoints,
   X,
@@ -46,7 +53,10 @@ import { messages, formatMessage, type Locale } from '@/lib/i18n';
 import { routeColors } from '@/lib/tree-layout';
 import { currentEdgeId } from '@/lib/legacy-links.mjs';
 import TreeMap from './tree-map';
-import ReadingPanels, { type Panel } from './reading-panels';
+import MapTour from './map-tour';
+import { tourStops } from '@/lib/map-tour';
+import type { Panel } from './reading-panels';
+const ReadingPanels = lazy(() => import('./reading-panels'));
 
 const REPO = 'https://github.com/mizkun/ai-safety-map';
 const panels: Panel[] = [
@@ -62,40 +72,64 @@ type DetailTab = (typeof detailTabs)[number];
 
 export default function MapClient({ site }: { site: SiteContent }) {
   const [locale, setLocale] = useState<Locale>('ja');
-  const [detailContent, setDetailContent] = useState<SiteContent['content'] | null>(null);
-  const contents = detailContent || site.content;
+  const [detailContent, setDetailContent] = useState<
+    Partial<SiteContent['content']>
+  >({});
+  const contents = { ...site.content, ...detailContent };
   const data = contents[locale] || contents.ja;
   const m = messages[locale];
   const [view, setView] = useState('overview');
   const [selected, setSelected] = useState<string | null>(null);
   const [mode, setMode] = useState<'node' | 'edge'>('node');
-  const [detailReading, setDetailReading] = useState<{ key: string; tab: DetailTab } | null>(null);
+  const [detailReading, setDetailReading] = useState<{
+    key: string;
+    tab: DetailTab;
+  } | null>(null);
   const detailKey = mode + ':' + selected;
-  const detailTab = detailReading?.key === detailKey ? detailReading.tab : 'summary';
+  const detailTab =
+    detailReading?.key === detailKey ? detailReading.tab : 'summary';
   const [panel, setPanel] = useState<Panel | null>(null);
   const [termId, setTermId] = useState<string | null>(null);
   const [storyId, setStoryId] = useState<string | null>(null);
+  const [tour, setTour] = useState<{
+    index: number;
+    focus: string | null;
+  } | null>(null);
+  const [tourHeight, setTourHeight] = useState(320);
+  const stops = useMemo(() => tourStops(data), [data]);
+  const stop = tour ? stops[tour.index] || stops[0] : null;
   const [loadError, setLoadError] = useState(false);
   const [loadAttempt, setLoadAttempt] = useState(0);
-  const detailsReady = !site.detailsUrl || Boolean(detailContent);
-  const needsDetails = Boolean(selected || panel || termId || storyId);
+  const detailsUrl = site.detailsUrls?.[locale];
+  const detailsReady = !detailsUrl || Boolean(detailContent[locale]);
+  const needsDetails = Boolean(selected || panel || termId || storyId || tour);
   useEffect(() => {
-    if (!needsDetails || detailsReady || !site.detailsUrl || loadError) return;
+    if (!needsDetails || detailsReady || !detailsUrl || loadError) return;
     const controller = new AbortController();
-    fetch(site.detailsUrl, { signal: controller.signal })
-      .then((response) => { if (!response.ok) throw new Error('Content fetch failed'); return response.json(); })
-      .then((content: SiteContent['content']) => {
-        if (!content.ja?.nodes?.M2c1?.body?.['概要']) throw new Error('Invalid content package');
-        setDetailContent(content);
+    fetch(detailsUrl, { signal: controller.signal })
+      .then((response) => {
+        if (!response.ok) throw new Error('Content fetch failed');
+        return response.json();
       })
-      .catch((error) => { if (error.name !== 'AbortError') setLoadError(true); });
+      .then((content: SiteContent['content']) => {
+        if (!content[locale]?.nodes?.M2c1?.body?.['概要'])
+          throw new Error('Invalid content package');
+        setDetailContent((previous) => ({
+          ...previous,
+          [locale]: content[locale],
+        }));
+      })
+      .catch((error) => {
+        if (error.name !== 'AbortError') setLoadError(true);
+      });
     return () => controller.abort();
-  }, [needsDetails, detailsReady, site.detailsUrl, loadAttempt, loadError]);
+  }, [needsDetails, detailsReady, detailsUrl, locale, loadAttempt, loadError]);
+  const [expansionRequest, setExpansionRequest] = useState<{
+    id: string;
+    serial: number;
+  } | null>(null);
   const [routePicker, setRoutePicker] = useState(false);
   const [menuAnchor, setMenuAnchor] = useState<HTMLElement | null>(null);
-  const [languageAnchor, setLanguageAnchor] = useState<HTMLElement | null>(
-    null,
-  );
   const [today, setToday] = useState(data.asOf);
   useEffect(() => {
     const update = () => setToday(currentReviewDay());
@@ -108,6 +142,7 @@ export default function MapClient({ site }: { site: SiteContent }) {
   }, [locale]);
   useEffect(() => {
     const read = () => {
+      setTour(null);
       setDetailReading(null);
       setStoryId(null);
       const q = new URLSearchParams(location.hash.slice(1));
@@ -147,6 +182,7 @@ export default function MapClient({ site }: { site: SiteContent }) {
     map: string,
     id?: string,
     nextMode: 'node' | 'edge' = 'node',
+    replace = false,
   ) {
     const isPanel = panels.includes(map as Panel);
     if (!isPanel) setView(data.graphs[map] ? map : 'overview');
@@ -162,31 +198,68 @@ export default function MapClient({ site }: { site: SiteContent }) {
       ...(id ? { [nextMode]: id } : {}),
     });
     const hash = '#' + q.toString();
-    if (location.hash !== hash) history.pushState(null, '', hash);
+    if (location.hash !== hash) {
+      if (replace) history.replaceState(null, '', hash);
+      else history.pushState(null, '', hash);
+    }
   }
   function changeLocale(next: Locale) {
     if (!site.content[next]) return;
     setLocale(next);
-    setLanguageAnchor(null);
+    setLoadError(false);
     const q = new URLSearchParams(location.hash.slice(1));
     q.set('lang', next);
     history.replaceState(null, '', '#' + q.toString());
   }
   function openNode(id: string, map?: string) {
+    if (map && map !== view) setTour(null);
     navigate(map || view, id);
   }
   function openEdge(id: string) {
     navigate(view, id, 'edge');
   }
   function selectRoute(id: string) {
+    setTour(null);
     setRoutePicker(false);
     navigate(id);
   }
+  function moveTour(index: number) {
+    const target = stops[index];
+    if (!target) return;
+    setTour({ index, focus: null });
+    navigate(target.view, undefined, 'node', true);
+  }
+  function startTour() {
+    setRoutePicker(false);
+    setTour({ index: 0, focus: null });
+    navigate('overview');
+  }
   function loadingBody() {
-    return <output className="content-loading">
-      {loadError ? <><span>{m.loadError}</span><Button onClick={() => { setLoadError(false); setLoadAttempt((n) => n + 1); }}>{m.retry}</Button><Button onClick={() => window.location.reload()}>{m.refreshPage}</Button></>
-        : <><CircularProgress size={24} /><span>{m.loading}</span></>}
-    </output>;
+    return (
+      <output className="content-loading">
+        {loadError ? (
+          <>
+            <span>{m.loadError}</span>
+            <Button
+              onClick={() => {
+                setLoadError(false);
+                setLoadAttempt((n) => n + 1);
+              }}
+            >
+              {m.retry}
+            </Button>
+            <Button onClick={() => window.location.reload()}>
+              {m.refreshPage}
+            </Button>
+          </>
+        ) : (
+          <>
+            <CircularProgress size={24} />
+            <span>{m.loading}</span>
+          </>
+        )}
+      </output>
+    );
   }
   const termIndex = useMemo(() => {
     const aliases = new Map<string, string>();
@@ -312,79 +385,280 @@ export default function MapClient({ site }: { site: SiteContent }) {
     );
   }
   function summaryBody() {
-    if (node) return <>
-      <p className="lead-copy">{richText(node.body['概要'])}</p>
-      {detailSection(m.whyNext, <p>{richText(node.body['他の条件との関係'])}</p>)}
-      {detailSection(m.additionalConditions, <p>{richText(node.body['成立条件'])}</p>)}
-      {node.subgraph && <Button className="explore-button" fullWidth variant="outlined" startIcon={<Layers3 size={18} />} endIcon={<ArrowRight size={17} />}
-        onClick={() => navigate(node.subgraph!)}>{m.explore}</Button>}
-    </>;
+    if (node)
+      return (
+        <>
+          <p className="lead-copy">{richText(node.body['概要'])}</p>
+          {detailSection(
+            m.whyNext,
+            <p>{richText(node.body['他の条件との関係'])}</p>,
+          )}
+          {detailSection(
+            m.additionalConditions,
+            <p>{richText(node.body['成立条件'])}</p>,
+          )}
+          {node.subgraph && view !== 'overview' && view !== 'acceleration' && (
+            <Button
+              className="explore-button"
+              fullWidth
+              variant="outlined"
+              startIcon={<Layers3 size={18} />}
+              endIcon={<ArrowRight size={17} />}
+              onClick={() => {
+                setTour(null);
+                setExpansionRequest({ id: node.id, serial: Date.now() });
+                navigate(view);
+              }}
+            >
+              {m.expandHere}
+            </Button>
+          )}
+        </>
+      );
     if (!edge) return null;
-    return <>
-      <p className="lead-copy">{richText(edge.explanation)}</p>
-      <div className="edge-context">
-        <div className="edge-inputs">
-          {edge.requires && <span className="edge-joint-label">AND · {m.joint}</span>}
-          {(edge.requires || [edge.from]).map((id) => <Button key={id} onClick={() => openNode(id)}>{data.nodes[id].title}</Button>)}
+    return (
+      <>
+        <p className="lead-copy">{richText(edge.explanation)}</p>
+        <div className="edge-context">
+          <div className="edge-inputs">
+            {edge.requires && (
+              <span className="edge-joint-label">AND · {m.joint}</span>
+            )}
+            {(edge.requires || [edge.from]).map((id) => (
+              <Button key={id} onClick={() => openNode(id)}>
+                {data.nodes[id].title}
+              </Button>
+            ))}
+          </div>
+          <ArrowRight className="edge-direction" size={20} aria-hidden="true" />
+          <Button onClick={() => openNode(edge.to)}>
+            {data.nodes[edge.to].title}
+          </Button>
         </div>
-        <ArrowRight className="edge-direction" size={20} aria-hidden="true" />
-        <Button onClick={() => openNode(edge.to)}>{data.nodes[edge.to].title}</Button>
-      </div>
-      {detailSection(m.additionalConditions, <ul>{edge.conditions.map((c) => <li key={c}>{richText(c)}</li>)}</ul>)}
-    </>;
+        {detailSection(
+          m.additionalConditions,
+          <ul>
+            {edge.conditions.map((c) => (
+              <li key={c}>{richText(c)}</li>
+            ))}
+          </ul>,
+        )}
+      </>
+    );
   }
   function evidenceBody() {
     const item = node || edge;
     if (!item) return null;
     const cited = new Set(item.research.map((id) => data.research[id].source));
     const extraSources = item.sources.filter((id) => !cited.has(id));
-    return <>
-      {node && <Chip className="evidence-kind" size="small" label={{ observed: m.observed, limited: m.limited, hypothesis: m.hypothesis, definition: m.definitionState }[node.status]} />}
-      <p className="lead-copy">{richText(node ? node.body['現在の状況'] : edge!.current)}</p>
-      {edge && <p className="evidence-basis">{richText(edge.basis)}</p>}
-      {item.research.map((id, i) => {
-        const r = data.research[id];
-        return <Accordion key={id} defaultExpanded={i === 0} disableGutters className="research-card">
-          <AccordionSummary expandIcon={<ChevronDown size={18} />}><span><small>{r.kind}</small><strong>{r.title}</strong></span></AccordionSummary>
-          <AccordionDetails>
-            <dl className="research-facts">
-              {[[m.evaluator, r.evaluator], [m.setting, r.setting], [m.method, r.method], [m.result, r.result], [m.studyLimit, r.limitation]].map(([label, value]) => <div key={label}><dt>{label}</dt><dd>{richText(value)}</dd></div>)}
-            </dl>
-            {source(r.source)}
-            <p className="source-locator">{m.sourceLocation}: {r.locator}</p>
-          </AccordionDetails>
-        </Accordion>;
-      })}
-      {detailSection(m.limitations, <p>{richText(node ? node.body['根拠の限界'] : edge!.limitation)}</p>, undefined, 'limit-block')}
-      {reviewNote(item.review)}
-      {!!extraSources.length && detailSection(m.sources, <div className="source-list">{extraSources.map((id) => <div key={id}>{source(id)}</div>)}</div>)}
-      <div className="contribute-block">
-        <Link href={REPO + '/issues/new?template=correction.yml&title=' + encodeURIComponent('[' + selected + '] ' + (node?.title || edge?.label || ''))} target="_blank" rel="noreferrer">{m.reportIssue}<ArrowUpRight size={13} /></Link>
-        <Link href={REPO + '/blob/main/CONTRIBUTING.md'} target="_blank" rel="noreferrer">{m.propose}<ArrowUpRight size={13} /></Link>
-      </div>
-    </>;
+    return (
+      <>
+        {node && (
+          <Chip
+            className="evidence-kind"
+            size="small"
+            label={
+              {
+                observed: m.observed,
+                limited: m.limited,
+                hypothesis: m.hypothesis,
+                definition: m.definitionState,
+              }[node.status]
+            }
+          />
+        )}
+        <p className="lead-copy">
+          {richText(node ? node.body['現在の状況'] : edge!.current)}
+        </p>
+        {edge && <p className="evidence-basis">{richText(edge.basis)}</p>}
+        {item.research.map((id, i) => {
+          const r = data.research[id];
+          return (
+            <Accordion
+              key={id}
+              defaultExpanded={i === 0}
+              disableGutters
+              className="research-card"
+              onChange={(event, isOpen) => {
+                if (!isOpen) return;
+                const card = event.currentTarget.closest('.research-card');
+                const scroll = card?.closest('.detail-scroll');
+                if (!card || !scroll) return;
+                const offset =
+                  card.getBoundingClientRect().top -
+                  scroll.getBoundingClientRect().top;
+                requestAnimationFrame(() => {
+                  const delta =
+                    card.getBoundingClientRect().top -
+                    scroll.getBoundingClientRect().top -
+                    Math.max(8, offset);
+                  if (delta) scroll.scrollTop += delta;
+                });
+              }}
+            >
+              <AccordionSummary expandIcon={<ChevronDown size={18} />}>
+                <span>
+                  <small>{r.kind}</small>
+                  <strong>{r.title}</strong>
+                </span>
+              </AccordionSummary>
+              <AccordionDetails>
+                <dl className="research-facts">
+                  {[
+                    [m.evaluator, r.evaluator],
+                    [m.setting, r.setting],
+                    [m.method, r.method],
+                    [m.result, r.result],
+                    [m.studyLimit, r.limitation],
+                  ].map(([label, value]) => (
+                    <div key={label}>
+                      <dt>{label}</dt>
+                      <dd>{richText(value)}</dd>
+                    </div>
+                  ))}
+                </dl>
+                {source(r.source)}
+                <p className="source-locator">
+                  {m.sourceLocation}: {r.locator}
+                </p>
+              </AccordionDetails>
+            </Accordion>
+          );
+        })}
+        {detailSection(
+          m.limitations,
+          <p>{richText(node ? node.body['根拠の限界'] : edge!.limitation)}</p>,
+          undefined,
+          'limit-block',
+        )}
+        {reviewNote(item.review)}
+        {!!extraSources.length &&
+          detailSection(
+            m.sources,
+            <div className="source-list">
+              {extraSources.map((id) => (
+                <div key={id}>{source(id)}</div>
+              ))}
+            </div>,
+          )}
+        <div className="contribute-block">
+          <Link
+            href={
+              REPO +
+              '/issues/new?template=correction.yml&title=' +
+              encodeURIComponent(
+                '[' + selected + '] ' + (node?.title || edge?.label || ''),
+              )
+            }
+            target="_blank"
+            rel="noreferrer"
+          >
+            {m.reportIssue}
+            <ArrowUpRight size={13} />
+          </Link>
+          <Link
+            href={REPO + '/blob/main/CONTRIBUTING.md'}
+            target="_blank"
+            rel="noreferrer"
+          >
+            {m.propose}
+            <ArrowUpRight size={13} />
+          </Link>
+        </div>
+      </>
+    );
   }
   function moreBody() {
-    if (edge) return detailSection(m.safeguards, <p>{richText(edge.safeguards)}</p>, <ShieldCheck size={17} />);
+    if (edge)
+      return detailSection(
+        m.safeguards,
+        <p>{richText(edge.safeguards)}</p>,
+        <ShieldCheck size={17} />,
+      );
     if (!node) return null;
     const terms = [...new Set([...(node.topics || []), ...(node.terms || [])])];
     const candidates = graph?.edges || Object.keys(data.edges);
     const connections = candidates.filter((id) => {
       const e = data.edges[id];
-      return e.from === node.id || e.to === node.id || e.requires?.includes(node.id);
+      return (
+        e.from === node.id || e.to === node.id || e.requires?.includes(node.id)
+      );
     });
-    return <>
-      {detailSection(m.safeguards, <p>{richText(node.body['考えられる対策'])}</p>, <ShieldCheck size={17} />)}
-      {node.body['具体例'] && detailSection(m.example, <p>{richText(node.body['具体例'])}</p>)}
-      {!!terms.length && detailSection(m.glossary, <div className="chip-links">{terms.map((id) => <Chip key={id} size="small" label={data.glossary[id].name} onClick={() => setTermId(id)} />)}</div>)}
-      {!!node.watch?.length && detailSection(m.watch, <ul>{node.watch.map((w) => <li key={w}>{richText(w)}</li>)}</ul>)}
-      {!!node.questions.length && detailSection(m.more, questions(node.questions, node.id))}
-      {!!connections.length && detailSection(m.connections, <nav className="network-navigation" aria-label={m.connections}>
-        {connections.map((id) => <Button key={id} onClick={() => openEdge(id)} endIcon={<ArrowRight size={15} />}>{data.edges[id].label}</Button>)}
-      </nav>)}
-      {!!node.related.length && detailSection(m.related, <div className="link-stack">{node.related.map((l) => <Button key={l.text} onClick={() => openNode(l.node, l.scene)} endIcon={<ArrowRight size={16} />}>{l.text}</Button>)}</div>)}
-      {graph?.parent && <Button className="parent-link" startIcon={<ArrowLeft size={15} />} onClick={() => navigate(parentView(graph.parent!), graph.parent)}>{m.returnParent}</Button>}
-    </>;
+    return (
+      <>
+        {detailSection(
+          m.safeguards,
+          <p>{richText(node.body['考えられる対策'])}</p>,
+          <ShieldCheck size={17} />,
+        )}
+        {node.body['具体例'] &&
+          detailSection(m.example, <p>{richText(node.body['具体例'])}</p>)}
+        {!!terms.length &&
+          detailSection(
+            m.glossary,
+            <div className="chip-links">
+              {terms.map((id) => (
+                <Chip
+                  key={id}
+                  size="small"
+                  label={data.glossary[id].name}
+                  onClick={() => setTermId(id)}
+                />
+              ))}
+            </div>,
+          )}
+        {!!node.watch?.length &&
+          detailSection(
+            m.watch,
+            <ul>
+              {node.watch.map((w) => (
+                <li key={w}>{richText(w)}</li>
+              ))}
+            </ul>,
+          )}
+        {!!node.questions.length &&
+          detailSection(m.more, questions(node.questions, node.id))}
+        {!!connections.length &&
+          detailSection(
+            m.connections,
+            <nav className="network-navigation" aria-label={m.connections}>
+              {connections.map((id) => (
+                <Button
+                  key={id}
+                  onClick={() => openEdge(id)}
+                  endIcon={<ArrowRight size={15} />}
+                >
+                  {data.edges[id].label}
+                </Button>
+              ))}
+            </nav>,
+          )}
+        {!!node.related.length &&
+          detailSection(
+            m.related,
+            <div className="link-stack">
+              {node.related.map((l) => (
+                <Button
+                  key={l.text}
+                  onClick={() => openNode(l.node, l.scene)}
+                  endIcon={<ArrowRight size={16} />}
+                >
+                  {l.text}
+                </Button>
+              ))}
+            </div>,
+          )}
+        {graph?.parent && (
+          <Button
+            className="parent-link"
+            startIcon={<ArrowLeft size={15} />}
+            onClick={() => navigate(parentView(graph.parent!), graph.parent)}
+          >
+            {m.returnParent}
+          </Button>
+        )}
+      </>
+    );
   }
   function stepNavigation() {
     if (edge || view === 'overview' || graph?.mode === 'network') return null;
@@ -422,7 +696,11 @@ export default function MapClient({ site }: { site: SiteContent }) {
     );
   }
   return (
-    <Box component="main" className="map-app">
+    <Box
+      component="main"
+      className={'map-app' + (tour ? ' has-tour' : '')}
+      style={{ '--tour-panel-height': tourHeight + 'px' } as CSSProperties}
+    >
       <div className="ambient-shape ambient-one" />
       <div className="ambient-shape ambient-two" />
       <div className="ambient-shape ambient-three" />
@@ -430,28 +708,43 @@ export default function MapClient({ site }: { site: SiteContent }) {
         <Paper elevation={0} className="brand-pill glass">
           <ButtonBase
             aria-label={m.overview}
-            onClick={() => navigate('overview')}
+            onClick={() => {
+              setTour(null);
+              navigate('overview');
+            }}
           >
             <Waypoints size={21} />
             <span>AI SAFETY MAP</span>
           </ButtonBase>
         </Paper>
         <Paper elevation={0} className="header-tools glass">
+          <Button
+            className="tour-launch"
+            startIcon={<Play size={14} />}
+            onClick={startTour}
+            aria-pressed={Boolean(tour)}
+          >
+            {m.tour}
+          </Button>
           <Tooltip title={m.about}>
             <IconButton aria-label={m.about} onClick={() => navigate('about')}>
               <Info size={18} />
             </IconButton>
           </Tooltip>
-          <Tooltip title={m.language}>
-            <IconButton
-              aria-label={m.language}
-              aria-controls={languageAnchor ? 'language-menu' : undefined}
-              aria-haspopup="menu"
-              onClick={(e) => setLanguageAnchor(e.currentTarget)}
-            >
-              <Globe2 size={18} />
-            </IconButton>
-          </Tooltip>
+          <div className="language-switch" aria-label={m.language}>
+            {site.locales.map((option) => (
+              <ButtonBase
+                key={option.code}
+                aria-label={option.name}
+                aria-pressed={locale === option.code}
+                disabled={!option.enabled}
+                className={locale === option.code ? 'language-active' : ''}
+                onClick={() => changeLocale(option.code)}
+              >
+                {option.code === 'ja' ? 'JP' : 'EN'}
+              </ButtonBase>
+            ))}
+          </div>
           <Tooltip title={m.library}>
             <IconButton
               aria-label={m.library}
@@ -467,23 +760,54 @@ export default function MapClient({ site }: { site: SiteContent }) {
         </Paper>
       </header>
       {view !== 'overview' && (
-        <Paper elevation={0} className="breadcrumb-bar glass">
-          <IconButton
-            aria-label={m.back}
-            onClick={() =>
-              graph?.parent
-                ? navigate(parentView(graph.parent), graph.parent)
-                : navigate('overview')
-            }
+        <Paper elevation={0} className="breadcrumb-bar glass filtered-bar">
+          <Button
+            startIcon={<ArrowLeft size={15} />}
+            onClick={() => {
+              setTour(null);
+              navigate('overview');
+            }}
           >
-            <ArrowLeft size={17} />
-          </IconButton>
-          <span>{graph?.title}</span>
-          {data.stories[view] && <Button className="story-open" startIcon={<BookOpen size={16} />} onClick={() => setStoryId(view)}>{m.story}</Button>}
+            {m.clearFilter}
+          </Button>
+          <span className="filter-path">
+            <span>{m.overviewLabel}</span>
+            <ArrowRight size={13} />
+            <strong>
+              {data.routes.find((r) => r.id === view)?.shortTitle ||
+                graph?.title}
+            </strong>
+          </span>
+          <output
+            className="filter-status"
+            data-compact={'1 / ' + data.routes.length}
+          >
+            {formatMessage(m.filteredRoutes, { total: data.routes.length })}
+          </output>
+          {data.stories[view] && (
+            <Button
+              className="story-open"
+              startIcon={<BookOpen size={16} />}
+              onClick={() => setStoryId(view)}
+            >
+              {m.story}
+            </Button>
+          )}
         </Paper>
       )}
       <TreeMap
-        data={data}
+        key={view}
+        expansionRequest={expansionRequest}
+        tourFocus={
+          stop
+            ? {
+                key: stop.key + ':' + (tour?.focus || ''),
+                nodes: stop.nodes,
+                focus: tour?.focus || null,
+              }
+            : null
+        }
+        data={site.content[locale] || site.content.ja}
         view={view}
         today={today}
         messages={m}
@@ -494,6 +818,25 @@ export default function MapClient({ site }: { site: SiteContent }) {
         onChoose={() => setRoutePicker(true)}
         onTerm={setTermId}
       />
+      {tour && (
+        <MapTour
+          data={data}
+          m={m}
+          stops={stops}
+          index={tour.index}
+          ready={detailsReady}
+          loading={loadingBody()}
+          focus={tour.focus}
+          onMove={moveTour}
+          onClose={() => setTour(null)}
+          onFocus={(focus) =>
+            setTour((current) => (current ? { ...current, focus } : null))
+          }
+          onRead={openNode}
+          onHeight={setTourHeight}
+          richText={richText}
+        />
+      )}
       <Menu
         id="library-menu"
         anchorEl={menuAnchor}
@@ -521,30 +864,6 @@ export default function MapClient({ site }: { site: SiteContent }) {
           <span>{m.contribute}</span>
           <ArrowUpRight size={13} />
         </MenuItem>
-      </Menu>
-      <Menu
-        id="language-menu"
-        anchorEl={languageAnchor}
-        open={Boolean(languageAnchor)}
-        onClose={() => setLanguageAnchor(null)}
-        anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
-        transformOrigin={{ vertical: 'top', horizontal: 'right' }}
-      >
-        {site.locales.map((l) => (
-          <MenuItem
-            key={l.code}
-            disabled={!l.enabled}
-            onClick={() => changeLocale(l.code)}
-          >
-            <div>
-              <span>{l.name}</span>
-              {!l.enabled && (
-                <small className="language-pending">{m.comingSoon}</small>
-              )}
-            </div>
-            {locale === l.code && <Check size={15} />}
-          </MenuItem>
-        ))}
       </Menu>
       <Dialog
         open={routePicker}
@@ -607,19 +926,23 @@ export default function MapClient({ site }: { site: SiteContent }) {
           ))}
         </Tabs>
         <DialogContent dividers>
-          {!detailsReady ? loadingBody() : panel && (
-            <ReadingPanels
-              panel={panel}
-              data={data}
-              m={m}
-              today={today}
-              richText={richText}
-              source={source}
-              onNode={openNode}
-              onEdge={openEdge}
-              onTerm={setTermId}
-            />
-          )}
+          {!detailsReady
+            ? loadingBody()
+            : panel && (
+                <Suspense fallback={loadingBody()}>
+                  <ReadingPanels
+                    panel={panel}
+                    data={data}
+                    m={m}
+                    today={today}
+                    richText={richText}
+                    source={source}
+                    onNode={openNode}
+                    onEdge={openEdge}
+                    onTerm={setTermId}
+                  />
+                </Suspense>
+              )}
         </DialogContent>
       </Dialog>
       <Dialog
@@ -630,25 +953,86 @@ export default function MapClient({ site }: { site: SiteContent }) {
         className="detail-dialog"
         aria-labelledby="detail-title"
       >
-        {(node || edge) && <>
-          <div className="detail-header">
-            <div className="detail-meta">
-              <span>{node ? m.explanation : m.connection}</span>
-              <IconButton aria-label={m.close} onClick={() => navigate(view)}><X size={21} /></IconButton>
+        {(node || edge) && (
+          <>
+            <div className="detail-header">
+              <div className="detail-meta">
+                <span>{node ? m.explanation : m.connection}</span>
+                <IconButton aria-label={m.close} onClick={() => navigate(view)}>
+                  <X size={21} />
+                </IconButton>
+              </div>
+              <Typography
+                component="h2"
+                id="detail-title"
+                className="detail-title"
+              >
+                {richText(node?.title || edge?.label || '')}
+              </Typography>
+              {reviewStatus((node || edge)!.review, today).state === 'due' && (
+                <Button
+                  className="review-alert"
+                  startIcon={<Clock3 size={14} />}
+                  onClick={() =>
+                    setDetailReading({ key: detailKey, tab: 'evidence' })
+                  }
+                >
+                  {m.due}
+                </Button>
+              )}
             </div>
-            <Typography component="h2" id="detail-title" className="detail-title">{richText(node?.title || edge?.label || '')}</Typography>
-            {reviewStatus((node || edge)!.review, today).state === 'due' && <Button className="review-alert" startIcon={<Clock3 size={14} />} onClick={() => setDetailReading({ key: detailKey, tab: 'evidence' })}>{m.due}</Button>}
-          </div>
-          <Tabs value={detailTab} onChange={(_, tab: DetailTab) => setDetailReading({ key: detailKey, tab })} variant="fullWidth" className="detail-tabs" aria-label={m.detailSections}>
-            {detailTabs.map((tab) => <Tab key={tab} value={tab} id={'detail-tab-' + tab} aria-controls={'detail-panel-' + tab} label={tab === 'summary' ? m.detailSummary : tab === 'evidence' ? m.detailEvidence : m.detailMore} />)}
-          </Tabs>
-          <DialogContent className="detail-scroll" key={detailKey + ':' + detailTab}>
-            {detailTabs.map((tab) => <div key={tab} role="tabpanel" id={'detail-panel-' + tab} aria-labelledby={'detail-tab-' + tab} hidden={detailTab !== tab} tabIndex={0}>
-              {detailTab === tab && (!detailsReady ? loadingBody() : tab === 'summary' ? summaryBody() : tab === 'evidence' ? evidenceBody() : moreBody())}
-            </div>)}
-          </DialogContent>
-          {stepNavigation()}
-        </>}
+            <Tabs
+              value={detailTab}
+              onChange={(_, tab: DetailTab) =>
+                setDetailReading({ key: detailKey, tab })
+              }
+              variant="fullWidth"
+              className="detail-tabs"
+              aria-label={m.detailSections}
+            >
+              {detailTabs.map((tab) => (
+                <Tab
+                  key={tab}
+                  value={tab}
+                  id={'detail-tab-' + tab}
+                  aria-controls={'detail-panel-' + tab}
+                  label={
+                    tab === 'summary'
+                      ? m.detailSummary
+                      : tab === 'evidence'
+                        ? m.detailEvidence
+                        : m.detailMore
+                  }
+                />
+              ))}
+            </Tabs>
+            <DialogContent
+              className="detail-scroll"
+              key={detailKey + ':' + detailTab}
+            >
+              {detailTabs.map((tab) => (
+                <div
+                  key={tab}
+                  role="tabpanel"
+                  id={'detail-panel-' + tab}
+                  aria-labelledby={'detail-tab-' + tab}
+                  hidden={detailTab !== tab}
+                  tabIndex={0}
+                >
+                  {detailTab === tab &&
+                    (!detailsReady
+                      ? loadingBody()
+                      : tab === 'summary'
+                        ? summaryBody()
+                        : tab === 'evidence'
+                          ? evidenceBody()
+                          : moreBody())}
+                </div>
+              ))}
+            </DialogContent>
+            {stepNavigation()}
+          </>
+        )}
       </Dialog>
       <Dialog
         open={Boolean(term)}
@@ -664,41 +1048,74 @@ export default function MapClient({ site }: { site: SiteContent }) {
           </IconButton>
         </DialogTitle>
         <DialogContent>
-          {!detailsReady ? loadingBody() : term && (
-            <div className="term-content" key={termId}>
-              <p className="lead-copy">{richText(term.definition)}</p>
-              {term.example && (
-                <div className="example-block">
-                  <p>{richText(term.example)}</p>
+          {!detailsReady
+            ? loadingBody()
+            : term && (
+                <div className="term-content" key={termId}>
+                  <p className="lead-copy">{richText(term.definition)}</p>
+                  {term.example && (
+                    <div className="example-block">
+                      <p>{richText(term.example)}</p>
+                    </div>
+                  )}
+                  <div className="limit-block">
+                    <h3>{m.caution}</h3>
+                    <p>{richText(term.limit)}</p>
+                  </div>
+                  {term.sources.map((id) => (
+                    <div key={id}>{source(id)}</div>
+                  ))}
                 </div>
               )}
-              <div className="limit-block">
-                <h3>{m.caution}</h3>
-                <p>{richText(term.limit)}</p>
-              </div>
-              {term.sources.map((id) => (
-                <div key={id}>{source(id)}</div>
-              ))}
-            </div>
-          )}
         </DialogContent>
       </Dialog>
-      <Dialog open={Boolean(storyId)} onClose={() => setStoryId(null)} fullWidth maxWidth="md" className="story-dialog" aria-labelledby="story-title">
+      <Dialog
+        open={Boolean(storyId)}
+        onClose={() => setStoryId(null)}
+        fullWidth
+        maxWidth="md"
+        className="story-dialog"
+        aria-labelledby="story-title"
+      >
         <DialogTitle className="modal-heading" id="story-title">
           <span>{storyId ? data.stories[storyId]?.title : m.story}</span>
-          <IconButton aria-label={m.close} onClick={() => setStoryId(null)}><X size={20} /></IconButton>
+          <IconButton aria-label={m.close} onClick={() => setStoryId(null)}>
+            <X size={20} />
+          </IconButton>
         </DialogTitle>
         <DialogContent dividers>
-          {!detailsReady ? loadingBody() : storyId && <div className="story-body">
-            <p className="story-note">{m.storyNote}</p>
-            <p className="lead-copy">{richText(data.stories[storyId].intro)}</p>
-            {data.stories[storyId].chapters.map((chapter, i) => <section key={chapter.title}>
-              <h3><span>{i + 1}</span>{chapter.title}</h3>
-              <p>{richText(chapter.text)}</p>
-              <div className="story-links">{chapter.nodes.map((id) => <Button key={id} onClick={() => openNode(id, storyId)}>{data.nodes[id].title}</Button>)}</div>
-            </section>)}
-            <p className="limit-block">{richText(data.stories[storyId].outlook)}</p>
-          </div>}
+          {!detailsReady
+            ? loadingBody()
+            : storyId && (
+                <div className="story-body">
+                  <p className="story-note">{m.storyNote}</p>
+                  <p className="lead-copy">
+                    {richText(data.stories[storyId].intro)}
+                  </p>
+                  {data.stories[storyId].chapters.map((chapter, i) => (
+                    <section key={chapter.title}>
+                      <h3>
+                        <span>{i + 1}</span>
+                        {chapter.title}
+                      </h3>
+                      <p>{richText(chapter.text)}</p>
+                      <div className="story-links">
+                        {chapter.nodes.map((id) => (
+                          <Button
+                            key={id}
+                            onClick={() => openNode(id, storyId)}
+                          >
+                            {data.nodes[id].title}
+                          </Button>
+                        ))}
+                      </div>
+                    </section>
+                  ))}
+                  <p className="limit-block">
+                    {richText(data.stories[storyId].outlook)}
+                  </p>
+                </div>
+              )}
         </DialogContent>
       </Dialog>
     </Box>

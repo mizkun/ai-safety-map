@@ -29,5 +29,6 @@
     "control-protocol",
     "control-roadmap",
     "aisi-incident"
-  ]
+  ],
+  "shortTitle": "コントロールの失敗"
 }

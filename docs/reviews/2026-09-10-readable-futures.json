@@ -1,0 +1,787 @@
+{
+  "id": "2026-09-10-readable-futures",
+  "date": "2026-09-10",
+  "reviewer": "Codex — 原文と一次資料に照らした編集上の点検。独立した専門家の査読ではない。",
+  "decision": "reviewed",
+  "assessments": {
+    "labels": {
+      "mechanism": "既存の67項目の短い表示名を詳細本文と照合。因果を増やさず、状態を要約し、S2の訂正の困難さを絶対的不能へ強めなかった。",
+      "conditions": "アライメント・実行・防止の失敗を並列に保ち、ORの代替とANDの組合せを変更していない。表示名から達成度を判定しない。",
+      "counterexample": "高い能力でも接点や危険な選択がなければ同じ危害は起きない。失敗後に封じ込めた記録を停止不能とは書かない。",
+      "evidence": "前回点検済みの詳細と研究カードを保持した上で表示名を照合。今回の英訳でも試験数、対象期間、母数、限定された設定を保持した。",
+      "limits": "短い名前は条件付き状態の表示で、現在の到達を示す判定ではない。全73項目の完全性と接続を別に検査した。",
+      "mitigation": "詳細の現在状況・成立条件・限界を維持し、用語を開ける。局所の展開でも根拠と対策へアクセスできる。",
+      "primary": [
+        {
+          "source": "astra-card",
+          "locator": "Section 10.1.2",
+          "support": "能力試験の到達度と実行条件・防御を区別する根拠。"
+        },
+        {
+          "source": "aisi-incident",
+          "locator": "What happened / What we found",
+          "support": "無許可の行動と人間の封じ込めを併記する根拠。"
+        }
+      ]
+    },
+    "work": {
+      "mechanism": "仕事の代替後に所得が補われない帰結と、生計が保障され時間の裁量が増える帰結を分けた。",
+      "conditions": "W7は労働所得の持続的減少と代替所得・支援の不足。W8は生計の継続、本人の裁量、活動への機会・資源を要求する。",
+      "counterexample": "仕事が減っても新需要や所得移転で生活を維持する場合はW7に至らない。時間が増えても孤立すれば幸福の増加とは限らない。",
+      "evidence": "韓国5,512人の2025年5〜6月調査、51.8%は生成AIの業務利用。Censusの2%は全回答企業の雇用減少の自己申告。",
+      "limits": "無作為実験ではなく、世界の失業率・全員の生活保障・余暇の増加を測ったものではない。研究の範囲を超える部分は仮説とした。",
+      "mitigation": "所得移転、所有の分散、移行支援、時間の裁量、学習と参加の場を候補とし、効果を保証しない。",
+      "primary": [
+        {
+          "source": "time-reallocation",
+          "locator": "Abstract / Data and Survey Design / Results",
+          "support": "仕事中の時間再配分の自己申告による原分析。"
+        },
+        {
+          "source": "census-adoption",
+          "locator": "AI adoption and employment effects",
+          "support": "企業の回答における導入と雇用変化の限定された観測。"
+        },
+        {
+          "source": "imf-distribution",
+          "locator": "Model / Distributional effects",
+          "support": "労働所得と資産所得を区別する条件付きモデル。"
+        }
+      ]
+    },
+    "allocation": {
+      "mechanism": "豊かさによって貨幣の配分機能が縮小した先にも、希少な資源の利用者を決める問題が残るという分岐。",
+      "conditions": "価格以外のルールが設けられ、実際に必要な人が資源にアクセスできることを要する。金融危機からは接続しない。",
+      "counterexample": "貨幣への依存が減っても配分権者への依存や不公平が増える場合があり、全機能の消滅や平等は導けない。",
+      "evidence": "ECBの原解説が交換・計算単位・価値保存を区別する。将来の代替制度を実証する資料としては使っていない。",
+      "limits": "P4は編集上の仮説。残る資源制約から置いた帰結で、ECBの予測として紹介しない。",
+      "mitigation": "配分基準の公開、異議申立て、差別の監査、選択と参加の確保を候補とし、制度の比較を可能にする。",
+      "primary": [
+        {
+          "source": "ecb-money",
+          "locator": "Functions of money",
+          "support": "貨幣の複数の役割を区別する制度上の原説明。"
+        }
+      ]
+    },
+    "finance": {
+      "mechanism": "金融の危機、通貨・預金への信用喪失、長い決済不全から生活への波及、代替による再建を分けた。",
+      "conditions": "F5は不履行・停止の持続と信用回復・代替の失敗。F6は在庫や資金の余裕を超える支障。F7は代替への信用・受容・アクセス。",
+      "counterexample": "現金や別の決済で取引できれば危機があっても全体の取引停止ではない。F6とF7は地域差や時期により同時に成立し得る。",
+      "evidence": "Laneの原講演で預金・中央銀行通貨・預金保険・流動性の関係を確認。2026年3月の原戦略の16〜17頁で代替と決済継続を確認。",
+      "limits": "政策の計画を導入済み・効果実証済みとはしない。未確認の日付はnull。市場暴落を通貨消滅・物的破壊・絶滅へ接続しない。",
+      "mitigation": "決済の分散、必需品供給の継続、記録の照合、信用の回復、弱い立場の人へのアクセスを検討する。",
+      "primary": [
+        {
+          "source": "monetary-trust",
+          "locator": "Bank deposits / Central bank money / Safeguards",
+          "support": "銀行への不安と通貨への信用を区別し、制度の役割を説明。"
+        },
+        {
+          "source": "payment-resilience",
+          "locator": "Printed pp. 16–17; section 2",
+          "support": "決済継続、代替、相互運用についての原戦略。"
+        },
+        {
+          "source": "fsb-ai",
+          "locator": "Financial stability vulnerabilities",
+          "support": "共通依存と金融の連鎖は条件付きのリスク分析。"
+        }
+      ]
+    },
+    "presentation": {
+      "mechanism": "初期の要点と経路フィルタを区別し、選択経路内で条件を展開。画面の縮小を進行確率や時間と扱わない。 ツアーは既存のストーリーの章を読み進め、同時条件を同時に強調する。",
+      "conditions": "図のANDには共同条件、ORには代替機序を保持。全要素は全ノード一回表示、部分展開も他の条件との接続を保持。",
+      "counterexample": "絞り込みで見えない経路が消滅したわけではない。上部に絞り込み数と全体へ戻す操作を表示する。 ツアーの前後ボタンは読む順番であり、ANDの各条件が時間順に起こるとしない。",
+      "evidence": "既存研究と今回の三一次資料を表示する構成。画面の幾何検査は研究の真偽やスマホの実測性能を判定しない。",
+      "limits": "英語1,998文言は原文から直接翻訳。ID・接続・出典は共有。翻訳と原文・UIの変更で点検値が無効になる。独立査読ではない。",
+      "mitigation": "一次情報と限界を開ける状態を維持。言語別の遅延読み込み、描画範囲の制限、見出しの位置の保持で読む負荷を減らす。",
+      "primary": [
+        {
+          "source": "framework",
+          "locator": "Misuse / Misalignment / Mistakes / Structural risks",
+          "support": "異なる原因を区別した表示とする背景。"
+        },
+        {
+          "source": "rand-extinction",
+          "locator": "Findings and limitations",
+          "support": "大災害と文字どおりの絶滅を区別する背景。"
+        }
+      ]
+    }
+  },
+  "entries": {
+    "source:time-reallocation": {
+      "hash": "54284ba7dea018b43fd4865e0a695956a062927904f7adf9f9ce2db3691014db",
+      "assessment": "work"
+    },
+    "source:monetary-trust": {
+      "hash": "c2c2ef66ed47cdbd688a0105826845903d3df51cc77896702c3384e32b0d8eea",
+      "assessment": "finance"
+    },
+    "source:payment-resilience": {
+      "hash": "f529e52fd0499e2467fa45a4937b758002eb0a0390b9609a7944c5012496a24d",
+      "assessment": "finance"
+    },
+    "research:time-reallocation": {
+      "hash": "1fe304064544aa98a0e04d94e27f4d40cc9a86d667e9e98fe3d838211230e654",
+      "assessment": "work"
+    },
+    "research:monetary-trust": {
+      "hash": "f675644c6bb5bf051909d16e3a9bd0f9dbec9d77574f4364b5938f43ee6c8a1f",
+      "assessment": "finance"
+    },
+    "research:payment-resilience": {
+      "hash": "9328df1639b4b5b91525b988dc4451b0891281c6c8e0f2ca6c49552dffe19cc2",
+      "assessment": "finance"
+    },
+    "node:A1": {
+      "hash": "9f8bf0c6c8da6b04c6f93d318fa385e6dc6577622ed1c422247e24ffd5f45f7c",
+      "assessment": "labels"
+    },
+    "node:A2": {
+      "hash": "8e76b4df5a8f271b2cc163f0b1672bc593ea3cfaaa9f991f77c8d536aee0f88f",
+      "assessment": "labels"
+    },
+    "node:A3": {
+      "hash": "a6df88de7b984618017b51536ab349b4c29f75a84243ece53989e542c7a389ba",
+      "assessment": "labels"
+    },
+    "node:ASI": {
+      "hash": "91ca7596fcd34f30f0b6e66ac9f9b97c4fb36197bb48695e8d12dea646337010",
+      "assessment": "labels"
+    },
+    "node:C1": {
+      "hash": "d74c7972224f4dff739c56052b5022497944737abda63f90f1f0bd2559ac11c2",
+      "assessment": "labels"
+    },
+    "node:C1a": {
+      "hash": "c8bd07b737b4c7a9c2c0972d665e97f895c7521ca832927fd43b57b292cc1835",
+      "assessment": "labels"
+    },
+    "node:C1b": {
+      "hash": "1e1787f3d26d273bb3929e2bd272762d9427888f48a91558648e08a8d606a9ba",
+      "assessment": "labels"
+    },
+    "node:C2": {
+      "hash": "c80ecf1f4c69d6ac00226f22efb5f9ed1a2a4fab0cde924ab4bf7b48efec93e3",
+      "assessment": "labels"
+    },
+    "node:C2a": {
+      "hash": "201a0ade1ff327edd8a7e57c98ec73769791be69f40b8d899a1abaea3f8cd2c7",
+      "assessment": "labels"
+    },
+    "node:C2b": {
+      "hash": "e80aeb2899fa85a95dcd994085dd13c451d92da8155d33cdee297927df4645e1",
+      "assessment": "labels"
+    },
+    "node:C3": {
+      "hash": "1b51df80a12ed41c77d9776f562a71fe95bc6efa81c36c6faabf81422eedbacc",
+      "assessment": "labels"
+    },
+    "node:C3a": {
+      "hash": "9daea2747582b5043bed93c13974c29bb92cea3d82176d5b55eb09d00b34ba15",
+      "assessment": "labels"
+    },
+    "node:C3a1": {
+      "hash": "9515eed99d71eee92fa141f12d4c92874e4f9142a0aae08edcdd7ce1c19258d0",
+      "assessment": "labels"
+    },
+    "node:C3a2": {
+      "hash": "aeaa2c59c7442f51f960b84858cad905f039f81911c61d516fa30d6ca67cec75",
+      "assessment": "labels"
+    },
+    "node:C3a3": {
+      "hash": "601e0bfcf5a91c715415247ce8cf96c749d6bb02630601a85c61721b9649e432",
+      "assessment": "labels"
+    },
+    "node:C3b": {
+      "hash": "1571bd1f67c61859bf3d296d1aaa2c6576d9666e9014797b8e7d7589921a2b91",
+      "assessment": "labels"
+    },
+    "node:C4": {
+      "hash": "6844855a81f370d84bba04ac3b48de713c757e6d6461e87bf03c07fdbb712846",
+      "assessment": "labels"
+    },
+    "node:C4a": {
+      "hash": "ce52e0587e31768061a72ccf4db996513fd532a358e445075af4571390358078",
+      "assessment": "labels"
+    },
+    "node:C4b": {
+      "hash": "4edf051bc0d152beb11641bbe9f8d747891de6fa55cf5cb983c8c599b1cb726f",
+      "assessment": "labels"
+    },
+    "node:D1": {
+      "hash": "bb393a99193dea88e3b2ad20c4c791a171ecee721ad1fd812dac9ab3ef0ceab3",
+      "assessment": "labels"
+    },
+    "node:D2": {
+      "hash": "9d6fb646857b1aa9661593aa356e2b6194046c230cbb40e0287cdff4d0836ea8",
+      "assessment": "labels"
+    },
+    "node:D3": {
+      "hash": "2b8bee3edf1d0e5a5d8ded5b88de9a7ebf01509cf01b7a3d3b925d9322295e73",
+      "assessment": "labels"
+    },
+    "node:E0": {
+      "hash": "b78124331fd391fd60e1703f6afcd63679b001e8157e8b18a53009821cacda6a",
+      "assessment": "labels"
+    },
+    "node:E1": {
+      "hash": "d9918b4ccd5bb226d6dec11863c5735b5794429053b23d3ab1257a70e190e1e3",
+      "assessment": "labels"
+    },
+    "node:F1": {
+      "hash": "4d90d09f9b29b72001fb879b08a61980e63a97220d4097d493cdd65c05e07551",
+      "assessment": "labels"
+    },
+    "node:F2": {
+      "hash": "8065259f24da976452a130d5d6944755dcd89e8ece6a6cd73adc32e9149ce5a3",
+      "assessment": "labels"
+    },
+    "node:F2a": {
+      "hash": "9ccd7752aa9f70c7547a7a5c50a02eb03bfa82c44649e06905ac26b75ab0e645",
+      "assessment": "labels"
+    },
+    "node:F2b": {
+      "hash": "8509c8dd3aa2a06d9c4c736e9e7d22e8b6f79912e46457094211b8f11831342a",
+      "assessment": "labels"
+    },
+    "node:F3": {
+      "hash": "0d15b3a200f6fccf231b751b944c94e6e02036e8899b3f6f4b9195863ea94aba",
+      "assessment": "labels"
+    },
+    "node:F4": {
+      "hash": "1fcc3cda7b54e8ee0dc13da13c819177ae0b0cbaea8a25a80053bae0cd70b537",
+      "assessment": "labels"
+    },
+    "node:F5": {
+      "hash": "807784922182b203ec32af5bb0fc507117bf3694156e335ac23618b3ae225080",
+      "assessment": "finance"
+    },
+    "node:F6": {
+      "hash": "e088900e655c2e409f6ee488d60040e92ba14952b332088007bba71d1b3b6e39",
+      "assessment": "finance"
+    },
+    "node:F7": {
+      "hash": "7f27ef3ba907b7fb0c6d7e36aae545d558615d6e0fcfdbe76ac8043cf4339e96",
+      "assessment": "finance"
+    },
+    "node:G1": {
+      "hash": "8f0d1ed605ae8b4b6d8a5f6a360904ed6e734d4c71cc3ce5b142c1cb3379b079",
+      "assessment": "labels"
+    },
+    "node:H": {
+      "hash": "110afb39cac3537adaf5a59bb86842654e7baeb88ff4762339219fa113af0b47",
+      "assessment": "labels"
+    },
+    "node:I1": {
+      "hash": "9a0f4e69115ce29c56f20e2c9e0e3df94b2cd718585b9ba77186e28cfaa6d207",
+      "assessment": "labels"
+    },
+    "node:I1a": {
+      "hash": "172f01f9daa7a7a26dd7fc0cf88665262d24414b8960bc924db31017ee40a3ab",
+      "assessment": "labels"
+    },
+    "node:I1b": {
+      "hash": "95d7727987cbb28754c0f9f1777abfdb1f430ff25b6832263cdc01241b2af3bf",
+      "assessment": "labels"
+    },
+    "node:I2": {
+      "hash": "e36d9fb130e3f70fff582f1a4ab00ba2628a47890c1c23b65d91d58f68f222f6",
+      "assessment": "labels"
+    },
+    "node:L": {
+      "hash": "7d73fb70db812f2bdf576d36ac893fdd2de191eeaecdd0091da7639472ce1770",
+      "assessment": "labels"
+    },
+    "node:M1": {
+      "hash": "e57b2973b0ebbb9186dd058994308466d3d4477c5ca9008a3b2735b1d79af0b4",
+      "assessment": "labels"
+    },
+    "node:M2": {
+      "hash": "be8b18f68765740c2da7d4b65c526ffd21bfe343a255abdcf7b5daea20cc4520",
+      "assessment": "labels"
+    },
+    "node:M2b": {
+      "hash": "7e798c9b5187c1b9e326ffb1f9f6675d7511f605210ad63f1c1fe7b9812102d1",
+      "assessment": "labels"
+    },
+    "node:M2b1": {
+      "hash": "528e826a97bb13bc91c7c39a7a2921322bb743d4e68dccb97bdd2c4e5676e816",
+      "assessment": "labels"
+    },
+    "node:M2b2": {
+      "hash": "62fa8a0e476633fc9be97ec7af9badd2c395c1e227297b26638d0a91e2f1ecb4",
+      "assessment": "labels"
+    },
+    "node:M2c": {
+      "hash": "1e6b3050e57231339412e06421b9d7c92647d5cd0494dbdce3a96b6afb33409c",
+      "assessment": "labels"
+    },
+    "node:M2c1": {
+      "hash": "f73e41bb79030d3d40df9c9b0a033f64c046f446b589741f94f44de6b0ffbec8",
+      "assessment": "labels"
+    },
+    "node:M2c2": {
+      "hash": "849ed0413e2479e655c1e7e999dd411cf4e2a1063fa800bb3d51dae932d4d996",
+      "assessment": "labels"
+    },
+    "node:M3": {
+      "hash": "219db1d3ebab1ce142ca7c1ab308b7851b9022fabf69ec71d708f85c8dc49f89",
+      "assessment": "labels"
+    },
+    "node:NOW": {
+      "hash": "03e647551feaa5e24b83a76acf2b4816d7818df6bf2dff1ec14a5f429d6435e0",
+      "assessment": "labels"
+    },
+    "node:P1": {
+      "hash": "45a112882cc277a004ca177d9680bd89a2b355f6e207dd4f21be1d5495950961",
+      "assessment": "labels"
+    },
+    "node:P2": {
+      "hash": "3e5cbe0027b65b96a2b2f3ba078515fb05746318e13c498e7926f9cf68b7726d",
+      "assessment": "labels"
+    },
+    "node:P3": {
+      "hash": "36e6a556b381c62a6deb6aabf14f8b3e53b228ee669d35dbf315ac9f581e523f",
+      "assessment": "labels"
+    },
+    "node:P4": {
+      "hash": "50c45ee537c620ae80c07333b0e2e619f1ffad1397290e1ad997d0c6ae003126",
+      "assessment": "allocation"
+    },
+    "node:R1": {
+      "hash": "e03fa77f9df7fd56280c531c83c3e3aa8aa8054b7e715c93d49be0ef10d7e31d",
+      "assessment": "labels"
+    },
+    "node:R2": {
+      "hash": "33b52eac71b7081a216b06414b6932262f81c0ff440ca826a4573862d39ffcee",
+      "assessment": "labels"
+    },
+    "node:R3": {
+      "hash": "6e30ec7fe74799a145a74cbc09027559d67ebca959f8e85d15b258e70fc2f1e0",
+      "assessment": "labels"
+    },
+    "node:R4": {
+      "hash": "5848aef4f65bc43e89424ffab442a4234a807adeffe8498f40a6ea5d93742fe1",
+      "assessment": "labels"
+    },
+    "node:S1": {
+      "hash": "9ff2258ac6e45634457f0a5b798f9fd91c3996d0076d2360f69dfbbd53be6e52",
+      "assessment": "labels"
+    },
+    "node:S2": {
+      "hash": "369dd7c1c56f83d0927159600b09d525f8586e1b9de13d088e51471d0354ba07",
+      "assessment": "labels"
+    },
+    "node:S3": {
+      "hash": "0a7b16ad40e061aa787153fcd8e2ec4a52a8d108a78cb7fb3cc83b60755e5f7f",
+      "assessment": "labels"
+    },
+    "node:T": {
+      "hash": "530fed1530aa969b37e06a1650b0701273713d57e49e2c186076921049af8053",
+      "assessment": "labels"
+    },
+    "node:T1": {
+      "hash": "74cb1b70b67499a7638ff456f9f7be6d0fd9f844018c3551f2f6a2022387e2e8",
+      "assessment": "labels"
+    },
+    "node:T2": {
+      "hash": "82d3622f4b1b601dfb03f9fb92504e8bf2c56aa577fce1e811c5c098f1946cb9",
+      "assessment": "labels"
+    },
+    "node:W1": {
+      "hash": "ad5206bba4101d374dbde3dcb5dc6f1ace01b4bd184d63ae731e2f5de58a75b1",
+      "assessment": "labels"
+    },
+    "node:W2": {
+      "hash": "8fd6eccf7dcea3371478619d881566664f8936761ae4d8e6d8964e33c9479855",
+      "assessment": "labels"
+    },
+    "node:W3": {
+      "hash": "e9ab8507a88b51399d79089f3aa5d8d1c8bb04b7183368448698cb1dbfc32ee9",
+      "assessment": "labels"
+    },
+    "node:W4": {
+      "hash": "2688fdea75120549e180e2c6875ae67b7faf4e003d58fea2eea471fc22bc690d",
+      "assessment": "labels"
+    },
+    "node:W5": {
+      "hash": "e3d3e7d1f0570f32fda6e54f76f180a1fae708348f767e03d68d41570b57b2d8",
+      "assessment": "labels"
+    },
+    "node:W6": {
+      "hash": "c08f95c8772e97a55a68f9e7ea1e442ff3da6a84a9f4c6c60abb4bf5b35283bd",
+      "assessment": "labels"
+    },
+    "node:W7": {
+      "hash": "6889d9c1b80a05a8a0c53b10ff4e9535c9165cb561767b796112ac0e3f63f263",
+      "assessment": "work"
+    },
+    "node:W8": {
+      "hash": "0160d0635d4a3a49970185b33670bfdf848b196b8a9d9b569267bee5a82524a7",
+      "assessment": "work"
+    },
+    "node:X": {
+      "hash": "543d94c3e09a2ccb6e8dbb7bf8195f06a6695a6b41acdbb958ace2677f22cc6f",
+      "assessment": "labels"
+    },
+    "edge:C4-H": {
+      "hash": "2a8fc2fe6e7fa28cd63fed56907faa254dcab13e15402bf67387d9e986b1ac85",
+      "assessment": "labels"
+    },
+    "edge:M3-H": {
+      "hash": "c514306f83baceb56d65e82a505574a520a7d30044d234dfd9173752b2024ce9",
+      "assessment": "labels"
+    },
+    "edge:S1-S2": {
+      "hash": "5fb819fa5d55e1150fa7d846b6f4c153adf9c29ea5f9d2045839d70c1aa91aa4",
+      "assessment": "labels"
+    },
+    "edge:S2-S3": {
+      "hash": "f4be3af5cce5b79c9ef473556197f52fce386a6f4bffe81d8c594856bac08647",
+      "assessment": "labels"
+    },
+    "edge:S3-H": {
+      "hash": "e4cfad13942fcfa67ac0499d469b85f048baa06f6a0fbabc5bb8a499e8021189",
+      "assessment": "labels"
+    },
+    "edge:R1-R2": {
+      "hash": "bc944743227fab77131d2a268b6f4dcf25a469222e033b5e86c99885c1fc0dae",
+      "assessment": "labels"
+    },
+    "edge:R2-R3": {
+      "hash": "47eafc93430ed8d046f75927e855d27e7c6f5cbfbb07a38836a925e3d05b7d3b",
+      "assessment": "labels"
+    },
+    "edge:R3-R2": {
+      "hash": "60e84a973ead3b14e428b46aff42208a5762d060e8feb37bdff2ff667ac63f71",
+      "assessment": "labels"
+    },
+    "edge:C3-L": {
+      "hash": "d053c3e269fd55d57f68a2fdaa9dead8f638a94ce41e7e546811577a499641ee",
+      "assessment": "labels"
+    },
+    "edge:L-C4": {
+      "hash": "5098ad54b500623b87daff6d3528a56ef53d545a96cac79edaba1fdebdece8d3",
+      "assessment": "labels"
+    },
+    "edge:H-E0": {
+      "hash": "b66fc9a65d7835c6dc154a4165550edb2f6237c74985075367b9e76d8f949832",
+      "assessment": "labels"
+    },
+    "edge:H-T": {
+      "hash": "a4071e9dd6b75204ffa876308d07aa759eeeb97f2ac9e6df4ca720171177a55b",
+      "assessment": "labels"
+    },
+    "edge:T-X": {
+      "hash": "58c8e11f7e03cd7ae719258f7895d37ba540c575c3c3afd438af199ef79eec09",
+      "assessment": "labels"
+    },
+    "edge:D1-D2": {
+      "hash": "ce172817fa06c8fd22d534fb041c04fbb4ef81c480bc52a100a114fe26bfa3aa",
+      "assessment": "labels"
+    },
+    "edge:D2-D3": {
+      "hash": "535de0027170c45e4c27736a6b305bb3c33f40646c2101231fe79bcc14c1dea4",
+      "assessment": "labels"
+    },
+    "edge:D3-E1": {
+      "hash": "4b756f05d6baa2dee3988907e7f007bf305cb281110ccc9f0c8bbd3e6ad59563",
+      "assessment": "labels"
+    },
+    "edge:A1-A2": {
+      "hash": "8afa52f3f6658733c0bddc57ba523909125d872a6f27a44bbd331e08bc0f58aa",
+      "assessment": "labels"
+    },
+    "edge:A2-A3": {
+      "hash": "9b7a267419c6fe1a2fbd4f1dff2aeb2835395b906c5c6eaa0bed7817a8522ae3",
+      "assessment": "labels"
+    },
+    "edge:A3-H": {
+      "hash": "c862d319fcb04056b4227be79f9949addda5d98eeec564dfdefde87f27bcf7cb",
+      "assessment": "labels"
+    },
+    "edge:W1-W4": {
+      "hash": "fe4d07c5d288660fa6c8d6feebd0eafc585c3a447ec203dbd9a43d4b714e023e",
+      "assessment": "labels"
+    },
+    "edge:I1a-I1": {
+      "hash": "32cc99cc7ac54ef6b1cacd9c532c959a36baa0a5f11a6dce56b96a10367135d6",
+      "assessment": "labels"
+    },
+    "edge:I1-I2": {
+      "hash": "dad1fdb206f9212c39a2fcb22a9b91f5b9b175e23ec03722be9a274bdcaaf09f",
+      "assessment": "labels"
+    },
+    "edge:W4-P1": {
+      "hash": "121f9e0beda6434b92d45e502b2de09227537223e557022c40a214d696f00e6d",
+      "assessment": "labels"
+    },
+    "edge:P1-P3": {
+      "hash": "9b6f525bc8ffae556b6d5f201cce500efdca55a4baceb544c1b9b6bb2dad829b",
+      "assessment": "labels"
+    },
+    "edge:F1-F3": {
+      "hash": "1a2f6dc25751b479d22fac5acb4f558b3fc104828163ddd5b38ef22fc1749444",
+      "assessment": "labels"
+    },
+    "edge:R2-C2": {
+      "hash": "b57cb5ae3d7b8bdfa2046f2eec15da2f7065fec7718b2acec389982049e6f650",
+      "assessment": "labels"
+    },
+    "edge:R2-W1": {
+      "hash": "80af3edc412052beec8ac8d2149ef55435e3511d92713b0fb23acafc768930c1",
+      "assessment": "labels"
+    },
+    "edge:R2-ASI": {
+      "hash": "c34e5d02bfe1c9bb29f7a6bd48a9ac19eaf9eba50009229eac1fb46055990039",
+      "assessment": "labels"
+    },
+    "edge:R2-R4": {
+      "hash": "e59396a0ba8d8b539b9928d22c519beed349f7ccdd91ca4c931ee33520cfac56",
+      "assessment": "labels"
+    },
+    "edge:R4-C1": {
+      "hash": "963379bb4113a82ff18ef8052d82194d85fcfa0d81d9de394460665870dc7b8c",
+      "assessment": "labels"
+    },
+    "edge:H-G1": {
+      "hash": "cd90c53df3a07e83dac51828d532297a0ce15161b38fa9e17c1947ef0b951f86",
+      "assessment": "labels"
+    },
+    "edge:W3-W5": {
+      "hash": "41f589e82f6465d57089997f2d9668ee7d8e13f3f0db3943c230a58fc22a7921",
+      "assessment": "labels"
+    },
+    "edge:W4-W3": {
+      "hash": "963a2f05924dfab197146a918b8f3d266a71934d01684e4031090c6602f76d5e",
+      "assessment": "labels"
+    },
+    "edge:W3-W7": {
+      "hash": "f0344ae0db8d069695ac417f265c688281f98969127340e4935c4fb4f78c9819",
+      "assessment": "work"
+    },
+    "edge:W5-W8": {
+      "hash": "d005c5611d5cfcc206ca15e6177aff6d7c1d5d38d2430f781b9112cc2a4a29b2",
+      "assessment": "work"
+    },
+    "edge:P3-P4": {
+      "hash": "57b197fd1612b8883534afd18a7af78303430d566c1d0f06cffbfbfd5c38265f",
+      "assessment": "allocation"
+    },
+    "edge:F3-F5": {
+      "hash": "c2d4f1841b78d87a50ac3ff79ca34a50077f8ad6ff9d13c91e205992bd660fcf",
+      "assessment": "finance"
+    },
+    "edge:F5-F6": {
+      "hash": "96a76ba1d5aee037b6abb74eda267dcaa4f06b43e809ea0a6d8ec4e3e469444f",
+      "assessment": "finance"
+    },
+    "edge:F5-F7": {
+      "hash": "fc688faaa20b2754e2c5a617b3a0076dc136c5cb7ad707aefc1b9a30c099c429",
+      "assessment": "finance"
+    },
+    "graph:control": {
+      "hash": "ecae4af7bd05e5a848dd43e876dfe717c2f14010ea72db8fc16579c6329eefd4",
+      "assessment": "presentation"
+    },
+    "graph:misuse": {
+      "hash": "ee7c975113d8f1077685893218967090d6d61099322228c722ed4eeccba23c55",
+      "assessment": "presentation"
+    },
+    "graph:interaction": {
+      "hash": "83598c9121af14b9b17684fad6c650ba19b751c93fe73050bc4fcd25c9edd648",
+      "assessment": "presentation"
+    },
+    "graph:acceleration": {
+      "hash": "68bb81016f3097fcc49cfdafdb8d157b62759588b4749f3713837d6b0d26a2ff",
+      "assessment": "presentation"
+    },
+    "graph:intent": {
+      "hash": "bfce95526984d028a272aa5dfe53beb1407ef848b2429da2abf636306b411757",
+      "assessment": "presentation"
+    },
+    "graph:ability-access": {
+      "hash": "a24b05e828be57266f9aa0d9e9aa0a51ab7c56c843c4eaeb51c66d949049db29",
+      "assessment": "presentation"
+    },
+    "graph:oversight": {
+      "hash": "2c2e4fc101e2b1bf5831ca91bac0e47caf7a02b3d1e15187c9aa2b39ff430ee6",
+      "assessment": "presentation"
+    },
+    "graph:evaluation": {
+      "hash": "047e43e4b283ac71b21df4f792333b6658bd23cb7ad2b85a00236e8558d37867",
+      "assessment": "presentation"
+    },
+    "graph:persistence-scale": {
+      "hash": "c2927045e14e1276fd86ad036ca1d71031db7760daf562a4dd4dcbf3a2afe8e5",
+      "assessment": "presentation"
+    },
+    "graph:extinction-conditions": {
+      "hash": "40ed0dcee6c02e3b1dbdd6b33efa7d91bd484349aca16d2148345dfb2b92d1d4",
+      "assessment": "presentation"
+    },
+    "graph:dependence": {
+      "hash": "933c94d125a2bacb82d31b4f739f3794e4dc8dcc1a7edab991ee50dd82f6ea9d",
+      "assessment": "presentation"
+    },
+    "graph:accidents": {
+      "hash": "da9c27e70a2a746eac13d9f40df2d8b3b98deef0bdd21164c2386529f578708b",
+      "assessment": "presentation"
+    },
+    "graph:misuse-mechanisms": {
+      "hash": "e9b367356715f22676bcbcb637bb3b35e2ec3bf28275090bfada01b9275903a0",
+      "assessment": "presentation"
+    },
+    "graph:cyber-conditions": {
+      "hash": "e002fe116ec725b924f39fb111856319e22f940eb4139fb6b70f1d2fdfccf37f",
+      "assessment": "presentation"
+    },
+    "graph:bio-conditions": {
+      "hash": "c9d80298e768ce6357b1c0db08ba570ab41932ee8cbfad18f881a791254fcc57",
+      "assessment": "presentation"
+    },
+    "graph:work": {
+      "hash": "b46635f6c386e886c4733130775ac1084e9d72bd55e65d5be6c5f8e80ac9bf25",
+      "assessment": "presentation"
+    },
+    "graph:money": {
+      "hash": "cf290bfe59c66115e722bde2899f8e57152f955cdb01f8ac385d7f1940207e3b",
+      "assessment": "finance"
+    },
+    "graph:finance-mechanisms": {
+      "hash": "0f1069e311dd18535cc1a3b4edef5a6fe9bac907c1b55ee706012e596dc8b03d",
+      "assessment": "presentation"
+    },
+    "graph:income-conditions": {
+      "hash": "3025a92272a159536af67c941416b4b1bb5636feab6c9e36c75c7543ec1a9d91",
+      "assessment": "presentation"
+    },
+    "graph:currency-conditions": {
+      "hash": "f20b5554615e19e29ed992537d5f9afdfa5a01ea09fe13c01df8b9f3000666d8",
+      "assessment": "presentation"
+    },
+    "graph:finance-conditions": {
+      "hash": "96b020bcccf46f52ba1108f11870f094dc749fafa2669db70cec0ad9ac0a717f",
+      "assessment": "presentation"
+    },
+    "route:control": {
+      "hash": "acbee0d093401c36c4872c744ca9d9b338d47a6c85dfc9ae3637a16c86a10578",
+      "assessment": "presentation"
+    },
+    "route:misuse": {
+      "hash": "08289c408cf0b955726a436b83d63f204d80a1dfacb2e549434a316a99cc6aa3",
+      "assessment": "presentation"
+    },
+    "route:interaction": {
+      "hash": "f694d43a1e4ae26d0ddf8f2565d54bbf2e59a7b86979ad4a9010a30145ca85f8",
+      "assessment": "presentation"
+    },
+    "route:accidents": {
+      "hash": "df587684624bf00a1ffd412de0a0aa24d1b8ce26311a26916c2015e3fbdf5ed8",
+      "assessment": "presentation"
+    },
+    "route:dependence": {
+      "hash": "aee54bcfb7deeff6b71cc4611a3afd9fcb1600c0c10660e6cb4be243c95f625d",
+      "assessment": "presentation"
+    },
+    "route:acceleration": {
+      "hash": "a7733216b1573ac275e6475417976625f9b068e7f584e7dae3469900f0a464ad",
+      "assessment": "presentation"
+    },
+    "route:work": {
+      "hash": "49325e832d6bde1329a94ac3efa6a38d81ef98aec6a3830ffb89e3183e238976",
+      "assessment": "work"
+    },
+    "route:money": {
+      "hash": "9c0d50f0bc260873359ca41fdcd07cf13aad91d9337b49b4172bf633f6e8e35e",
+      "assessment": "finance"
+    },
+    "news:work-survey": {
+      "hash": "d4fcf6b1fa0a04e9f9af164a1ff553ecfa5145cca81c51f8e7ee8437181530d8",
+      "assessment": "presentation"
+    },
+    "news:agent-income": {
+      "hash": "4d6c0cf06ec9dad57518f1fcfc453c13fb0ca1369548f60338d53d5c9efff65d",
+      "assessment": "presentation"
+    },
+    "news:recent-math": {
+      "hash": "aa1aaf06ce411cd863cfb17dda8a4b11d3d69ac153f2ec45bc63343d492ac521",
+      "assessment": "presentation"
+    },
+    "news:research-lab-september": {
+      "hash": "0bba484d47aafbba2bcac684160904e88ca3dd9f30e4288a6d2cdd390dda8e67",
+      "assessment": "presentation"
+    },
+    "news:automated-safety": {
+      "hash": "a02287a2a2473dcedaecc49dc7b63b1139a9039f6c7004ad79d50106183f0a00",
+      "assessment": "presentation"
+    },
+    "news:aisi-contained": {
+      "hash": "29d861fac4c513522ab593057b60ea66420102ada9b6dafd69250ab6ad881c22",
+      "assessment": "presentation"
+    },
+    "news:astra-threshold": {
+      "hash": "14563356e628923c23374bf04ee204ce8040d04ab622012c977e22c65f5db4aa",
+      "assessment": "presentation"
+    },
+    "news:research-contribution": {
+      "hash": "7916816587c88a9193a5882431ebfe85845594e5dc7d4f5d0ce441dea14f18d6",
+      "assessment": "presentation"
+    },
+    "news:agent-behavior": {
+      "hash": "c0c2366275b76caa2a2eefbcc989ebc15f582f2ca1a01d6918069eb6786b300a",
+      "assessment": "presentation"
+    },
+    "news:time-horizons": {
+      "hash": "20a887ffc1d7a649b28e186727e6f6af7bfdd82b0ec13dcc36f7057cb614a5b0",
+      "assessment": "presentation"
+    },
+    "story:control": {
+      "hash": "f5ca5a39c4e9b2498b790c73ac9bdc5054e6037b95b664b7b3fba6d4b6901a87",
+      "assessment": "presentation"
+    },
+    "story:misuse": {
+      "hash": "8a255f1b4acd4a8ef3400ccf61d1c3bd930c5381aac438e85f26471b95acc41c",
+      "assessment": "presentation"
+    },
+    "story:interaction": {
+      "hash": "e71c1900992b3dd1820bc99a8dce0deb376195957d67488f3eee373562c78687",
+      "assessment": "presentation"
+    },
+    "story:accidents": {
+      "hash": "95c04abd0733340761855117434a033b168ca57e2dce739fb862ab7c3e7347f6",
+      "assessment": "presentation"
+    },
+    "story:dependence": {
+      "hash": "fadad31bc94f28a84e640ec0372015fa61e39dd0ab94fd0ef555658da0f0c657",
+      "assessment": "presentation"
+    },
+    "story:acceleration": {
+      "hash": "8185184422ec63f1920bcc0839b27f218c6fd960097f7d79a53a0e476de2cf89",
+      "assessment": "presentation"
+    },
+    "story:work": {
+      "hash": "5ee46ec20195d48d65348d76100216b8b0152fa3f48be856a45b79bf96920834",
+      "assessment": "work"
+    },
+    "story:money": {
+      "hash": "b8d24e48fbc7073ac5e8a7c710ea7d70357dfc888aebb42cdca8a97d07fc3303",
+      "assessment": "finance"
+    },
+    "history:changes": {
+      "hash": "c71bbc76d133230d868b52931863a9f15dee1e342407284d9dedf335ad76b392",
+      "assessment": "presentation"
+    },
+    "ui:ja": {
+      "hash": "9b96699e5deb34deaf680e1020122776e213d1d01dab6487acbe81141a01d16b",
+      "assessment": "presentation"
+    },
+    "inventory:current": {
+      "hash": "aef9142b42be0418e0bdc9ecbce83083feb0ae4cf2bd548d6abe4a8f57c4d8b0",
+      "assessment": "presentation"
+    }
+  }
+}
