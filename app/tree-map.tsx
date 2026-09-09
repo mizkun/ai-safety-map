@@ -13,9 +13,17 @@ import {
   Chip,
   Paper,
   Button,
+  ToggleButton,
+  ToggleButtonGroup,
+  Dialog,
+  DialogTitle,
+  DialogContent,
 } from '@mui/material';
 import {
   ArrowDown,
+  ArrowUp,
+  ArrowLeft,
+  ArrowRight,
   ArrowUpRight,
   Plus,
   Minus,
@@ -24,10 +32,12 @@ import {
   GitBranch,
   RotateCcw,
   Clock3,
+  Info,
+  X,
 } from 'lucide-react';
 import type { Content } from '@/lib/content-types';
 import type { Messages } from '@/lib/i18n';
-import { treeLayout, wireGeometry } from '@/lib/tree-layout';
+import { treeLayout, wireGeometry, joinGeometry } from '@/lib/tree-layout';
 import { reviewStatus } from '@/lib/freshness.mjs';
 
 type Props = {
@@ -40,6 +50,7 @@ type Props = {
   onEdge: (id: string) => void;
   onRoute: (id: string) => void;
   onChoose: () => void;
+  onTerm: (id: string) => void;
 };
 export default function TreeMap({
   data,
@@ -51,8 +62,13 @@ export default function TreeMap({
   onEdge,
   onRoute,
   onChoose,
+  onTerm,
 }: Props) {
-  const layout = useMemo(() => treeLayout(data, view), [data, view]);
+  const [expanded, setExpanded] = useState(true);
+  const [showGuide, setShowGuide] = useState(false);
+  const layout = useMemo(() => treeLayout(data, view, expanded), [data, view, expanded]);
+  const canExpand = view === 'overview' || data.graphs[view]?.mode === 'network';
+  const nodeCount = new Set(layout.tiles.flatMap((tile) => tile.node ? [tile.node] : [])).size;
   const viewport = useRef<HTMLDivElement>(null);
   const [manualZoom, setManualZoom] = useState<{
     context: string;
@@ -78,7 +94,7 @@ export default function TreeMap({
     return () => observer.disconnect();
   }, []);
   const fitScale = Math.max(
-    0.2,
+    0.04,
     Math.min(
       1,
       (size.width - 40) / layout.width,
@@ -86,28 +102,30 @@ export default function TreeMap({
     ),
   );
   const readableScale =
-    view === 'overview'
+    canExpand && expanded
+      ? size.width < 760 ? 0.94 : Math.min(1, Math.max(0.82, (size.width - 40) / 1200))
+      : view === 'overview'
       ? size.width < 760
         ? 0.82
         : fitScale
       : Math.min(1, (size.width - 28) / 380);
-  const scaleContext = view + ':' + size.width + ':' + size.height;
+  const scaleContext = view + ':' + expanded + ':' + size.width + ':' + size.height;
   const scale =
     manualZoom?.context === scaleContext ? manualZoom.value : readableScale;
   useEffect(() => {
     const frame = requestAnimationFrame(() => {
       if (viewport.current) {
         viewport.current.scrollTop = 0;
-        viewport.current.scrollLeft = Math.max(
+        viewport.current.scrollLeft = canExpand ? 0 : Math.max(
           0,
           (layout.width * readableScale - size.width) / 2,
         );
       }
     });
     return () => cancelAnimationFrame(frame);
-  }, [readableScale, layout.width, view, size.width, scaleContext]);
+  }, [readableScale, layout.width, view, size.width, scaleContext, canExpand]);
   function zoom(value: number) {
-    const next = Math.max(0.2, Math.min(1.6, value));
+    const next = Math.max(0.04, Math.min(1.6, value));
     const el = viewport.current;
     const centerX = el
       ? (el.scrollLeft + el.clientWidth / 2) / scale
@@ -123,11 +141,20 @@ export default function TreeMap({
       }
     });
   }
+  function focusRoute(id: string) {
+    const tile = layout.tiles.find((t) => t.graph === id);
+    if (!tile) return;
+    const next = Math.min(1, Math.max(0.85, (size.width - 60) / (['control', 'work', 'money'].includes(id) ? 1200 : 460)));
+    setManualZoom({ context: scaleContext, value: next });
+    requestAnimationFrame(() => {
+      viewport.current?.scrollTo({ left: Math.max(0, (tile.x - 25) * next), top: Math.max(0, (tile.y - 25) * next), behavior: 'smooth' });
+    });
+  }
   const graph = data.graphs[view];
   return (
     <>
       <div
-        className="tree-viewport"
+        className={'tree-viewport' + (canExpand ? ' with-scope' : '')}
         ref={viewport}
         aria-label={m.graphLabel}
         onPointerDown={(event) => {
@@ -181,25 +208,57 @@ export default function TreeMap({
               height={layout.height}
               aria-hidden="true"
             >
+              {layout.joins?.map((join) => (
+                <path key={join.edge} d={joinGeometry(join, layout)} fill="none" stroke={join.color}
+                  strokeWidth={3.5} strokeOpacity={0.9} strokeLinejoin="round" strokeLinecap="round" vectorEffect="non-scaling-stroke" />
+              ))}
               {layout.wires.map((w) => {
                 const g = wireGeometry(w, layout);
+                const relation = w.edge ? data.edges[w.edge].relation : undefined;
                 return (
                   <path
                     key={w.key}
                     d={g.path}
                     fill="none"
-                    stroke={w.color}
-                    strokeWidth={1.7}
-                    strokeOpacity={0.5}
-                    strokeDasharray={w.dashed ? '5 6' : undefined}
+                    stroke={relation === 'mitigation' ? '#348773' : w.color}
+                    strokeWidth={w.reference ? 2.4 : 3.5}
+                    strokeOpacity={w.reference ? 0.58 : 0.9}
+                    strokeDasharray={w.dashed ? '10 7' : undefined}
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    vectorEffect="non-scaling-stroke"
                   />
                 );
               })}
             </svg>
+            {layout.regions?.map((region) => (
+              <div key={region.key} className="condition-region" style={{ left: region.x, top: region.y, width: region.width, height: region.height, borderColor: region.color + '40' }}>
+                <ButtonBase className="region-relation" style={{ top: region.labelY - region.y }} onClick={() => region.edge ? onEdge(region.edge) : setShowGuide(true)}>
+                  <b>{region.mode === 'all' ? 'AND' : 'OR'}</b>
+                  <span>{region.mode === 'all' ? m.joint : m.alternative}</span>
+                </ButtonBase>
+              </div>
+            ))}
+            {layout.joins?.map((join) => (
+              <Tooltip key={join.edge} title={data.edges[join.edge].label}>
+                <ButtonBase className="joint-button" style={{ left: join.x, top: join.y, color: join.color }} onClick={() => onEdge(join.edge)} aria-label={'AND · ' + data.edges[join.edge].label}>
+                  <b>AND</b><span>{m.joint}</span>
+                </ButtonBase>
+              </Tooltip>
+            ))}
             {layout.wires
               .filter((w) => w.edge)
               .map((w) => {
                 const g = wireGeometry(w, layout);
+                const relation = data.edges[w.edge!].relation;
+                const DirectionIcon = { up: ArrowUp, down: ArrowDown, left: ArrowLeft, right: ArrowRight }[g.direction];
+                if (relation === 'influence' || relation === 'mitigation') return (
+                  <Tooltip title={data.edges[w.edge!].label} key={w.key}>
+                    <ButtonBase className={'influence-button ' + relation} style={{ left: g.x, top: g.y }} onClick={() => onEdge(w.edge!)} aria-label={data.edges[w.edge!].label}>
+                      {relation === 'mitigation' ? m.mitigation : m.influence}<DirectionIcon size={14} />
+                    </ButtonBase>
+                  </Tooltip>
+                );
                 return (
                   <Tooltip title={data.edges[w.edge!].label} key={w.key}>
                     <IconButton
@@ -210,23 +269,23 @@ export default function TreeMap({
                       style={{ left: g.x - 18, top: g.y - 18, color: w.color }}
                       onClick={() => onEdge(w.edge!)}
                     >
-                      {w.key === 'feedback' ? (
+                      {data.edges[w.edge!].relation === 'feedback' ? (
                         <RotateCcw size={16} />
                       ) : (
-                        <ArrowDown size={16} />
+                        <DirectionIcon size={16} />
                       )}
                     </IconButton>
                   </Tooltip>
                 );
               })}
-            {graph && graph.mode !== 'sequence' && (
+            {graph && ['all', 'any'].includes(graph.mode) && (
               <Tooltip
                 title={graph.mode === 'all' ? m.jointHelp : m.alternativeHelp}
               >
                 <Chip
                   className="condition-chip"
                   label={graph.mode === 'all' ? m.joint : m.alternative}
-                  style={{ left: layout.width / 2, top: 205 }}
+                  style={{ left: layout.width / 2, top: 235 }}
                 />
               </Tooltip>
             )}
@@ -241,7 +300,8 @@ export default function TreeMap({
               const due =
                 node && reviewStatus(node.review, today).state === 'due';
               return (
-                <ButtonBase
+                <Paper
+                  elevation={0}
                   key={tile.key}
                   className={
                     'tree-tile tile-' +
@@ -258,11 +318,8 @@ export default function TreeMap({
                       '--branch-color': tile.color,
                     } as CSSProperties
                   }
-                  onClick={() =>
-                    tile.graph ? onRoute(tile.graph) : onNode(tile.node!)
-                  }
-                  aria-label={title + ' · ' + (tile.graph ? m.branch : m.read)}
                 >
+                  <ButtonBase className="tile-open" onClick={() => tile.graph ? onRoute(tile.graph) : onNode(tile.node!)} aria-label={title + ' · ' + (tile.graph ? m.branch : m.read)}>
                   <span className="tile-eyebrow">
                     <span className="tile-dot" />
                     {tile.kind === 'research' ? (
@@ -280,19 +337,36 @@ export default function TreeMap({
                   </span>
                   <span className="tile-title">{title}</span>
                   <ArrowUpRight className="tile-arrow" size={16} />
-                </ButtonBase>
+                  </ButtonBase>
+                  {!!node?.topics?.length && <div className="tile-topics">
+                    {node.topics.map((id) => <ButtonBase key={id} className="tile-topic" onClick={() => onTerm(id)} aria-label={data.glossary[id].name + ' · ' + m.definition}>
+                      {data.glossary[id].name.split('（')[0]}<Info size={12} />
+                    </ButtonBase>)}
+                  </div>}
+                </Paper>
               );
             })}
           </div>
         </div>
       </div>
+      {canExpand && <Paper className="map-scope glass" elevation={0}>
+        <ToggleButtonGroup size="small" exclusive value={expanded ? 'all' : 'summary'} onChange={(_, value: string | null) => { if (value) setExpanded(value === 'all'); }} aria-label={m.displayScope}>
+          <ToggleButton value="summary">{m.summaryView}</ToggleButton>
+          <ToggleButton value="all">{m.allElements}</ToggleButton>
+        </ToggleButtonGroup>
+        <span className="scope-count">{nodeCount} {m.elements}</span>
+        <Tooltip title={m.parallelGuide}><IconButton aria-label={m.parallelGuide} onClick={() => setShowGuide(true)}><Info size={18} /></IconButton></Tooltip>
+      </Paper>}
+      {view === 'overview' && expanded && <Paper className="route-shortcuts glass" elevation={0} component="nav" aria-label={m.focusRoute}>
+        {data.routes.map((route) => <Button key={route.id} onClick={() => focusRoute(route.id)}>{route.shortTitle}</Button>)}
+      </Paper>}
       <div className="map-controls">
         <Paper className="zoom-controls glass" elevation={0}>
           <Tooltip title={m.zoomOut}>
             <IconButton
               aria-label={m.zoomOut}
               onClick={() => zoom(scale / 1.18)}
-              disabled={scale <= 0.2}
+              disabled={scale <= 0.04}
             >
               <Minus size={17} />
             </IconButton>
@@ -330,6 +404,16 @@ export default function TreeMap({
           {m.routes}
         </Button>
       </div>
+      <Dialog open={showGuide} onClose={() => setShowGuide(false)} fullWidth maxWidth="sm">
+        <DialogTitle className="modal-heading"><span>{m.parallelGuide}</span><IconButton aria-label={m.close} onClick={() => setShowGuide(false)}><X size={20} /></IconButton></DialogTitle>
+        <DialogContent className="parallel-guide">
+          <p><strong>AND · {m.joint}</strong>{m.jointHelp}</p>
+          <p><strong>OR · {m.alternative}</strong>{m.alternativeHelp}</p>
+          <p>{m.parallelHelp}</p>
+          <p><strong>{m.influence} / {m.mitigation}</strong>{m.influenceHelp}</p>
+          <p>{m.fullMapHelp}</p>
+        </DialogContent>
+      </Dialog>
     </>
   );
 }

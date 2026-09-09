@@ -1,0 +1,31 @@
+{
+  "id": "F4",
+  "title": "市場の余力と防壁が、連鎖を抑えられない",
+  "explanation": "F4.md",
+  "topics": [
+    "financial-stability"
+  ],
+  "terms": [
+    "financial-stability"
+  ],
+  "evidence": [
+    {
+      "kind": "ストレス伝播の条件整理",
+      "src": "bis-ai-finance",
+      "text": "流動性の不足や、相互依存を介したストレスの波及が金融安定の問題になります。"
+    }
+  ],
+  "sources": [
+    "bis-ai-finance"
+  ],
+  "questions": [],
+  "related": [],
+  "watch": [
+    "値動きだけでなく、決済や資金供給の機能が続いているかを見る。"
+  ],
+  "review": {
+    "checkedAt": "2026-09-09",
+    "intervalDays": 7,
+    "reason": "能力、実運用、経済制度、反証を分けて継続確認するため。"
+  }
+}

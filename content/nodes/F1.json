@@ -1,0 +1,31 @@
+{
+  "id": "F1",
+  "title": "金融の判断と操作を、AIに広く委ねる",
+  "explanation": "F1.md",
+  "topics": [
+    "financial-stability"
+  ],
+  "terms": [
+    "financial-stability"
+  ],
+  "evidence": [
+    {
+      "kind": "国際機関のモニタリング報告",
+      "src": "fsb-monitoring",
+      "text": "FSBは2025年、AI導入のデータ不足と、少数の供給者への依存を点検する指標を整理しました。"
+    }
+  ],
+  "sources": [
+    "fsb-monitoring"
+  ],
+  "questions": [],
+  "related": [],
+  "watch": [
+    "導入件数より、任された権限とシステム全体の依存を見る。"
+  ],
+  "review": {
+    "checkedAt": "2026-09-09",
+    "intervalDays": 7,
+    "reason": "能力、実運用、経済制度、反証を分けて継続確認するため。"
+  }
+}

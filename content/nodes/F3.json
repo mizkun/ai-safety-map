@@ -1,0 +1,32 @@
+{
+  "id": "F3",
+  "title": "暴落や信用収縮が、金融全体に波及する",
+  "explanation": "F3.md",
+  "topics": [
+    "financial-stability"
+  ],
+  "terms": [
+    "financial-stability"
+  ],
+  "evidence": [
+    {
+      "kind": "将来シナリオ・確率未推定",
+      "src": "bis-ai-finance",
+      "text": "参照資料は金融システムに混乱が広がる経路を扱います。特定時期のAIクラッシュの確率を示すものではありません。"
+    }
+  ],
+  "sources": [
+    "bis-ai-finance"
+  ],
+  "questions": [],
+  "related": [],
+  "watch": [
+    "AIの因果的な寄与、他のショック、回復までの経過を区別する。"
+  ],
+  "review": {
+    "checkedAt": "2026-09-09",
+    "intervalDays": 7,
+    "reason": "能力、実運用、経済制度、反証を分けて継続確認するため。"
+  },
+  "subgraph": "finance-conditions"
+}

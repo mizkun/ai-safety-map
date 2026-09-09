@@ -1,0 +1,31 @@
+{
+  "id": "P1",
+  "title": "生産費が下がり、多くの商品やサービスが安くなる",
+  "explanation": "P1.md",
+  "topics": [
+    "scarcity"
+  ],
+  "terms": [
+    "scarcity"
+  ],
+  "evidence": [
+    {
+      "kind": "生産性からの条件付き推論",
+      "src": "imf-distribution",
+      "text": "自動化による費用削減と、その便益の配分は別の経路として検討できます。全商品の無償化は実証されていません。"
+    }
+  ],
+  "sources": [
+    "imf-distribution"
+  ],
+  "questions": [],
+  "related": [],
+  "watch": [
+    "性能だけでなく、総費用と消費者価格、利用可能な量を見る。"
+  ],
+  "review": {
+    "checkedAt": "2026-09-09",
+    "intervalDays": 7,
+    "reason": "能力、実運用、経済制度、反証を分けて継続確認するため。"
+  }
+}

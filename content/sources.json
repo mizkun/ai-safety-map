@@ -214,5 +214,85 @@
     "period": "2026年8月に行われた11日間の取り組み。既存の証明の形式化。",
     "url": "https://www.anthropic.com/research/formalizing-fermats-last-theorem",
     "checked": "2026-09-09"
+  },
+  "control-paper": {
+    "title": "Greenblattほか — AI Control: Improving Safety Despite Intentional Subversion",
+    "date": "2023年12月12日公表／ICML 2024",
+    "url": "https://arxiv.org/abs/2312.06942",
+    "published": "2023-12-12",
+    "period": "強いモデルを信頼しない条件で、安全な運用手順を評価した研究",
+    "checked": "2026-09-09"
+  },
+  "ilo-jobs": {
+    "title": "ILO — Generative AI and jobs: A 2025 update",
+    "published": "2025-05-20",
+    "period": "職業のタスク構成から推定したGenAIへの曝露。実際の失業率ではない",
+    "date": "2025-05-20／職業のタスク構成から推定したGenAIへの曝露。実際の失業率ではない",
+    "checked": "2026-09-09",
+    "url": "https://www.ilo.org/publications/generative-ai-and-jobs-2025-update"
+  },
+  "ilo-skills": {
+    "title": "ILOほか — Changing landscape of skills in the age of AI",
+    "published": "2026-08-13",
+    "period": "AI導入に伴うスキル需要・職場の変化をまとめた報告",
+    "date": "2026-08-13／AI導入に伴うスキル需要・職場の変化をまとめた報告",
+    "checked": "2026-09-09",
+    "url": "https://www.ilo.org/publications/changing-landscape-skills-age-ai"
+  },
+  "robotics-2": {
+    "title": "Google DeepMind — Gemini Robotics 2",
+    "published": "2026-07-30",
+    "period": "特定のロボット・タスクによる開発元の評価とデモ",
+    "date": "2026-07-30／特定のロボット・タスクによる開発元の評価とデモ",
+    "checked": "2026-09-09",
+    "url": "https://deepmind.google/blog/gemini-robotics-2-brings-whole-body-intelligence-to-robots/"
+  },
+  "imf-distribution": {
+    "title": "Rockallほか — AI Adoption and Inequality",
+    "published": "2025-04-04",
+    "period": "家計データとタスクに基づく経済モデル。著者の研究でありIMFの公式予測ではない",
+    "date": "2025-04-04／家計データとタスクに基づく経済モデル。著者の研究でありIMFの公式予測ではない",
+    "checked": "2026-09-09",
+    "url": "https://www.imf.org/en/publications/wp/issues/2025/04/04/ai-adoption-and-inequality-565729"
+  },
+  "visa-agents": {
+    "title": "Visa・Artemis — Agentic Payments from the Ground Up",
+    "published": "2026-07-14",
+    "period": "記事更新：7月14日／観測データ：4月21日まで。Visaが資金提供",
+    "date": "2026-07-14／記事更新：7月14日／観測データ：4月21日まで。Visaが資金提供",
+    "checked": "2026-09-09",
+    "url": "https://www.visa.com/en-us/thought-leadership/innovation/agentic-payments-from-the-ground-up"
+  },
+  "fsb-ai": {
+    "title": "FSB — AIの金融安定への含意",
+    "published": "2024-11-14",
+    "period": "金融AIの便益とシステミックな脆弱性の整理",
+    "date": "2024-11-14／金融AIの便益とシステミックな脆弱性の整理",
+    "checked": "2026-09-09",
+    "url": "https://www.fsb.org/2024/11/fsb-assesses-the-financial-stability-implications-of-artificial-intelligence/"
+  },
+  "fsb-monitoring": {
+    "title": "FSB — AI導入と脆弱性のモニタリング",
+    "published": "2025-10-10",
+    "period": "AI導入の測定不足と、第三者への依存を点検する枠組み",
+    "date": "2025-10-10／AI導入の測定不足と、第三者への依存を点検する枠組み",
+    "checked": "2026-09-09",
+    "url": "https://www.fsb.org/2025/10/fsb-outlines-next-steps-for-authorities-on-ai-monitoring/"
+  },
+  "bis-ai-finance": {
+    "title": "BIS・Tao Zhang — AIとデジタル金融の安定性への含意",
+    "published": "2026-01-26",
+    "period": "1月26日の講演。リスクの経路であり、クラッシュ確率の推定ではない",
+    "date": "2026-01-26／1月26日の講演。リスクの経路であり、クラッシュ確率の推定ではない",
+    "checked": "2026-09-09",
+    "url": "https://www.bis.org/speeches/20260126-financial-stability-implications-artificial-intelligence-and-digital-finance"
+  },
+  "ecb-money": {
+    "title": "ECB — What is money?",
+    "published": "2015-11-24",
+    "period": "2024年6月19日更新／貨幣の機能の説明",
+    "date": "2015-11-24／2024年6月19日更新／貨幣の機能の説明",
+    "checked": "2026-09-09",
+    "url": "https://www.ecb.europa.eu/ecb-and-you/explainers/tell-me-more/html/what_is_money.en.html"
   }
 }

@@ -47,6 +47,7 @@ export type Node = {
   related: { text: string; scene: string; node: string }[];
   subgraph?: string;
   terms?: string[];
+  topics?: string[];
   watch?: string[];
 };
 export type Edge = {
@@ -56,7 +57,8 @@ export type Edge = {
   from: string;
   to: string;
   label: string;
-  relation: 'conditional' | 'joint' | 'alternative' | 'feedback';
+  relation: 'conditional' | 'joint' | 'alternative' | 'feedback' | 'influence' | 'mitigation';
+  requires?: string[];
   explanation: string;
   conditions: string[];
   limitation: string;
@@ -67,13 +69,13 @@ export type Graph = {
   id: string;
   title: string;
   description: string;
-  mode: 'sequence' | 'all' | 'any';
+  mode: 'sequence' | 'all' | 'any' | 'network';
   nodes: string[];
   edges: string[];
   parent?: string;
 };
 export type Route = {
-  outcome?: 'E1';
+  outcome?: string;
   id: string;
   number: string;
   shortTitle: string;

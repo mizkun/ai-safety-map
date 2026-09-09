@@ -1,0 +1,37 @@
+{
+  "id": "F2a",
+  "title": "AIによる不正・サイバー悪用が金融に届く",
+  "explanation": "F2a.md",
+  "topics": [
+    "cyber"
+  ],
+  "terms": [
+    "cyber"
+  ],
+  "evidence": [
+    {
+      "kind": "想定される悪用の経路",
+      "src": "fsb-ai",
+      "text": "FSBはサイバーリスク、金融詐欺、偽情報をAIが増幅し得る問題として挙げています。"
+    }
+  ],
+  "sources": [
+    "fsb-ai"
+  ],
+  "questions": [],
+  "related": [
+    {
+      "text": "サイバー悪用の条件を見る",
+      "scene": "cyber-conditions",
+      "node": "M2c1"
+    }
+  ],
+  "watch": [
+    "主張やデモではなく、確認された影響・権限・防御条件を見る。"
+  ],
+  "review": {
+    "checkedAt": "2026-09-09",
+    "intervalDays": 7,
+    "reason": "能力、実運用、経済制度、反証を分けて継続確認するため。"
+  }
+}

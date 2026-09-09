@@ -60,5 +60,8 @@
     "checkedAt": "2026-09-09",
     "intervalDays": 7,
     "reason": "能力・行動・対策の評価は短期間で変わり得るため。"
-  }
+  },
+  "topics": [
+    "loss-of-control"
+  ]
 }

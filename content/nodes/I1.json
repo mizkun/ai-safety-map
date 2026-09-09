@@ -1,0 +1,32 @@
+{
+  "id": "I1",
+  "title": "AIが代理で仕事や取引を行い、収入につなぐ",
+  "explanation": "I1.md",
+  "topics": [
+    "agentic-commerce"
+  ],
+  "terms": [
+    "agentic-commerce"
+  ],
+  "evidence": [
+    {
+      "kind": "機能の観測と将来条件の区別",
+      "src": "visa-agents",
+      "text": "支払いの自動化が進んでいるという観測と、継続的な利益を生む事業能力は区別します。"
+    }
+  ],
+  "sources": [
+    "visa-agents"
+  ],
+  "questions": [],
+  "related": [],
+  "watch": [
+    "検証可能な純利益と、その持続性を見る。"
+  ],
+  "review": {
+    "checkedAt": "2026-09-09",
+    "intervalDays": 7,
+    "reason": "能力、実運用、経済制度、反証を分けて継続確認するため。"
+  },
+  "subgraph": "income-conditions"
+}

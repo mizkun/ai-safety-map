@@ -161,6 +161,8 @@ for (const [id, n] of Object.entries(nodes)) {
   }
   for (const term of n.terms || [])
     check(Boolean(glossary[term]), id + ': unknown glossary term ' + term);
+  for (const term of n.topics || [])
+    check(Boolean(glossary[term]), id + ': unknown topic ' + term);
 }
 for (const f of fs
   .readdirSync(path.join(root, 'explanations'))
@@ -189,7 +191,7 @@ for (const [id, e] of Object.entries(map.edges)) {
     id + ': edge has an unknown endpoint',
   );
   check(
-    ['conditional', 'joint', 'alternative', 'feedback'].includes(e.relation),
+    ['conditional', 'joint', 'alternative', 'feedback', 'influence', 'mitigation'].includes(e.relation),
     id + ': unknown relation',
   );
   check(
@@ -199,12 +201,20 @@ for (const [id, e] of Object.entries(map.edges)) {
     id + ': conditions are required',
   );
   sourceRefs(e.sources, id);
+  if (e.requires) {
+    check(e.relation === 'joint', id + ': joint inputs require a joint relation');
+    check(e.requires.length > 1 && new Set(e.requires).size === e.requires.length,
+      id + ': joint inputs must be distinct');
+    check(e.requires.includes(e.from), id + ': primary input must be included');
+    for (const input of e.requires)
+      check(Boolean(nodes[input]) && input !== e.to, id + ': invalid joint input ' + input);
+  }
 }
 for (const [id, g] of Object.entries(map.graphs)) {
   check(g.id === id, id + ': graph id mismatch');
   required(g, ['id', 'title', 'description'], id);
   check(
-    ['sequence', 'all', 'any'].includes(g.mode),
+    ['sequence', 'all', 'any', 'network'].includes(g.mode),
     id + ': unknown decomposition mode',
   );
   check(Array.isArray(g.nodes) && g.nodes.length > 0, id + ': nodes required');

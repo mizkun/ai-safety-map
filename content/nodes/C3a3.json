@@ -1,0 +1,30 @@
+{
+  "id": "C3a3",
+  "title": "実行中の監督を、AIがすり抜ける",
+  "explanation": "C3a3.md",
+  "evidence": [
+    {
+      "kind": "目標と環境を与えた限定的な評価",
+      "src": "scheming",
+      "text": "In-context Scheming研究は、監督を妨げたり説明を偽ったりする行動を模擬環境で調べています。通常利用での発生率の測定ではありません。"
+    }
+  ],
+  "sources": [
+    "scheming",
+    "control-paper"
+  ],
+  "questions": [],
+  "related": [],
+  "terms": [
+    "scheming",
+    "control"
+  ],
+  "topics": [
+    "scheming"
+  ],
+  "review": {
+    "checkedAt": "2026-09-09",
+    "intervalDays": 7,
+    "reason": "監督回避と、それを防ぐ手法の評価は変化が速いため。"
+  }
+}

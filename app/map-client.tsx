@@ -148,7 +148,7 @@ export default function MapClient({ site }: { site: SiteContent }) {
   }
   function selectRoute(id: string) {
     setRoutePicker(false);
-    navigate(id, data.graphs[id].nodes[0]);
+    navigate(id);
   }
   const termIndex = useMemo(() => {
     const aliases = new Map<string, string>();
@@ -280,9 +280,9 @@ export default function MapClient({ site }: { site: SiteContent }) {
       <>
         {reviewNote(node.review)}
         <p className="lead-copy">{richText(node.body['ひとことで'])}</p>
-        {!!node.terms?.length && (
+        {!!(node.terms?.length || node.topics?.length) && (
           <div className="chip-links">
-            {node.terms.map((id) => (
+            {[...new Set([...(node.topics || []), ...(node.terms || [])])].map((id) => (
               <Chip
                 key={id}
                 size="small"
@@ -387,9 +387,10 @@ export default function MapClient({ site }: { site: SiteContent }) {
       <>
         {reviewNote(edge.review)}
         <div className="edge-context">
-          <Button onClick={() => openNode(edge.from)}>
-            {data.nodes[edge.from].title}
-          </Button>
+          {edge.requires ? <>
+            <span className="edge-joint-label">AND · {m.joint}</span>
+            <div className="edge-inputs">{edge.requires.map((id) => <Button key={id} onClick={() => openNode(id)}>{data.nodes[id].title}</Button>)}</div>
+          </> : <Button onClick={() => openNode(edge.from)}>{data.nodes[edge.from].title}</Button>}
           <ArrowDown size={18} />
           <Button onClick={() => openNode(edge.to)}>
             {data.nodes[edge.to].title}
@@ -425,6 +426,17 @@ export default function MapClient({ site }: { site: SiteContent }) {
     );
   }
   function stepNavigation() {
+    if (graph?.mode === 'network' || (view === 'overview' && node)) {
+      const candidates = graph?.edges || Object.keys(data.edges).filter((id) => !data.edges[id].basis.startsWith('旧版') && id !== 'H-X');
+      const connections = node ? candidates.filter((id) => {
+        const e = data.edges[id];
+        return e.from === node.id || e.to === node.id || e.requires?.includes(node.id);
+      }) : [];
+      return <nav className="network-navigation" aria-label={m.connections}>
+        {connections.map((id) => <Button key={id} onClick={() => openEdge(id)} endIcon={<ArrowRight size={15} />}>{data.edges[id].label}</Button>)}
+        <Button onClick={() => navigate(view)}>{m.returnMap}</Button>
+      </nav>;
+    }
     if (edge)
       return (
         <nav className="step-navigation" aria-label={m.connection}>
@@ -546,6 +558,7 @@ export default function MapClient({ site }: { site: SiteContent }) {
         onEdge={openEdge}
         onRoute={selectRoute}
         onChoose={() => setRoutePicker(true)}
+        onTerm={setTermId}
       />
       <Menu
         id="library-menu"

@@ -142,5 +142,42 @@
       "T",
       "X"
     ]
+  },
+  {
+    "id": "work-economy",
+    "name": "労働・ロボティクス・所得分配",
+    "cadence": "weekly",
+    "urls": [
+      "https://www.ilo.org/publications",
+      "https://www.imf.org/en/publications",
+      "https://deepmind.google/blog/"
+    ],
+    "focus": "タスクと職業全体、能力と導入、純利益と取引量、所得の分配を区別。身体的作業と実運用の介入も追う。",
+    "nodes": [
+      "W1",
+      "W2",
+      "W4",
+      "W5",
+      "I1",
+      "P3"
+    ]
+  },
+  {
+    "id": "financial-ai",
+    "name": "金融安定とエージェント商取引",
+    "cadence": "weekly",
+    "urls": [
+      "https://www.fsb.org/",
+      "https://www.bis.org/",
+      "https://www.visa.com/en-us/solutions/intelligent-commerce"
+    ],
+    "focus": "金融AIの権限、共通モデルへの依存、サイバー悪用、防御改善、実際の市場への影響、決済と利益の区別。",
+    "nodes": [
+      "I1",
+      "I1b",
+      "F1",
+      "F2",
+      "F3"
+    ]
   }
 ]

@@ -1,0 +1,31 @@
+{
+  "id": "I1b",
+  "title": "契約・実行・決済を任せられる",
+  "explanation": "I1b.md",
+  "topics": [
+    "agentic-commerce"
+  ],
+  "terms": [
+    "agentic-commerce"
+  ],
+  "evidence": [
+    {
+      "kind": "決済事業者と分析会社の観測",
+      "src": "visa-agents",
+      "text": "2026年7月更新の記事は、4月21日までの機械向け決済を扱います。決済の存在は、AIが独立して黒字経営できる証拠ではありません。"
+    }
+  ],
+  "sources": [
+    "visa-agents"
+  ],
+  "questions": [],
+  "related": [],
+  "watch": [
+    "承認された取引か、責任者は誰か、実際の利益はいくらかを見る。"
+  ],
+  "review": {
+    "checkedAt": "2026-09-09",
+    "intervalDays": 7,
+    "reason": "能力、実運用、経済制度、反証を分けて継続確認するため。"
+  }
+}

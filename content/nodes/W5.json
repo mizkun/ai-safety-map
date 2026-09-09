@@ -1,0 +1,31 @@
+{
+  "id": "W5",
+  "title": "生活のために働くことが、必須ではなくなる",
+  "explanation": "W5.md",
+  "topics": [
+    "distribution"
+  ],
+  "terms": [
+    "distribution"
+  ],
+  "evidence": [
+    {
+      "kind": "将来仮説・編集上の整理",
+      "src": "imf-distribution",
+      "text": "分配を別条件として扱う編集上の到達点です。参照研究が、この社会の実現を予測・実証したわけではありません。"
+    }
+  ],
+  "sources": [
+    "imf-distribution"
+  ],
+  "questions": [],
+  "related": [],
+  "watch": [
+    "非就労者も必要な生活資源に継続してアクセスできるか。"
+  ],
+  "review": {
+    "checkedAt": "2026-09-09",
+    "intervalDays": 30,
+    "reason": "能力、実運用、経済制度、反証を分けて継続確認するため。"
+  }
+}

@@ -23,5 +23,9 @@
     "checkedAt": "2026-09-09",
     "intervalDays": 90,
     "reason": "主に概念や条件の定義。関連する新証拠があれば期限前でも見直す。"
-  }
+  },
+  "topics": [
+    "specification-gaming",
+    "reward-hacking"
+  ]
 }

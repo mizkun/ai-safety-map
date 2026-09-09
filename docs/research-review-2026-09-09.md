@@ -39,3 +39,20 @@
 9月3日の[Astraシステムカード](https://deploymentsafety.openai.com/gpt-6-astra)の監督回避の節を確認し、C3へ追加しました。敵対的な指示、監督が参照できる情報、評価環境によって結果が異なることを記載します。全評価を独立して再現したわけではありません。
 
 9月4日の[証明の形式化](https://www.anthropic.com/research/formalizing-fermats-last-theorem)をC2へ、9月8日の[数学問題の解答案の公表](https://openai.com/index/navier-stokes-solution/)をR1へ追加しました。開発元の報告であること、人間の指示や資源配分を含むこと、一般的な長期自律性や再帰的自己改善の成立とは別であることを保ちます。後者について独立検証や学術的受理は、この点検では確認していません。
+
+## 並列条件と社会変革ルートの追加
+
+同日の追加改訂では、制御喪失の読み順をC1→C2→C3という因果列に見せないようにしました。意図のズレ、実行能力・権限、予防・監督の失敗をANDで束ね、各条件の下に複数の仕組みを置きます。AIコントロールの用語は[Greenblattほか](https://arxiv.org/abs/2312.06942)に沿って定義し、不適切な行動を選ぶことと、その行動を防止できないことを区別します。局所的な逸脱から社会全体での制御喪失へ進む条件も別に残します。
+
+全要素の図では、研究の加速から実行能力・知的業務・ASIの条件へ接続します。これらは必須の単一路線ではありません。R4は安全性研究を表し、対象評価の改善が失敗を抑制し得る接続も示します。
+
+| 追加した論点 | 一次資料と扱い |
+| --- | --- |
+| 仕事の自動化と全労働の代替 | [ILOの2025年タスク曝露分析](https://www.ilo.org/publications/generative-ai-and-jobs-2025-update)と[2026年8月の技能分析](https://www.ilo.org/publications/changing-landscape-skills-age-ai)。曝露率や技能の変化を、全労働の代替や失業確率の実証に変換しない |
+| 身体的作業と普及 | [Gemini Robotics 2の2026年7月報告](https://deepmind.google/blog/gemini-robotics-2-brings-whole-body-intelligence-to-robots/)。開発元による特定の作業の実演・評価として扱い、あらゆる現場の継続稼働へ一般化しない |
+| 生産と所得分配 | [IMF Working Paper](https://www.imf.org/en/publications/wp/issues/2025/04/04/ai-adoption-and-inequality-565729)。モデルによる分析であり、機関の確定予測ではない。技術的な代替と、生産物・所得を人々が利用できる条件を分ける |
+| 代理取引と収益 | [Visaの分析](https://www.visa.com/en-us/thought-leadership/innovation/agentic-payments-from-the-ground-up)。ページの2026年7月更新と4月時点の取引データを分ける。決済の存在を自律的な純利益や無制限な運用益の証拠にしない |
+| 貨幣の役割 | [ECBの定義](https://www.ecb.europa.eu/ecb-and-you/explainers/tell-me-more/html/what_is_money.en.html)。支払い・比較・保存の役割と、生産費低下や希少性の緩和を区別する。貨幣の役割縮小は編集上の将来仮説であり、ECBによる予測ではない |
+| 金融の不安定化 | [FSBのリスク整理](https://www.fsb.org/2024/11/fsb-assesses-the-financial-stability-implications-of-artificial-intelligence/)、[2025年の監視方針](https://www.fsb.org/2025/10/fsb-outlines-next-steps-for-authorities-on-ai-monitoring/)、[BISの2026年1月講演](https://www.bis.org/speeches/20260126-financial-stability-implications-artificial-intelligence-and-digital-finance)。悪用と同質な判断の増幅、広範な運用、緩衝・停止・復旧の条件を分ける。暴落の確率や貨幣価値ゼロの証明には使わない |
+
+新しいルートは初期の条件分解です。全労働の代替、労働が任意になる社会、貨幣の役割縮小、AIによる金融危機について時期や確率を新たに付与していません。[追加調査用プロンプト2本](research-brief-social-pathways.md)で、各矢印の不足条件・反証・制度と、直近の実運用を深掘りします。

@@ -1,0 +1,31 @@
+{
+  "id": "W2",
+  "title": "身体を使う仕事も、現場で自動化できる",
+  "explanation": "W2.md",
+  "topics": [
+    "robotics"
+  ],
+  "terms": [
+    "robotics"
+  ],
+  "evidence": [
+    {
+      "kind": "開発元の特定条件での評価",
+      "src": "robotics-2",
+      "text": "2026年7月のGemini Robotics 2は全身操作や複数ロボットの協調を扱います。同じ発表でも細かな指操作や速度には課題を残しています。"
+    }
+  ],
+  "sources": [
+    "robotics-2"
+  ],
+  "questions": [],
+  "related": [],
+  "watch": [
+    "実環境の稼働時間、故障率、遠隔操作の介入、維持費を見る。"
+  ],
+  "review": {
+    "checkedAt": "2026-09-09",
+    "intervalDays": 7,
+    "reason": "能力、実運用、経済制度、反証を分けて継続確認するため。"
+  }
+}

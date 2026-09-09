@@ -1,0 +1,31 @@
+{
+  "id": "W6",
+  "title": "生産物や所得へのアクセスが、広く行き渡る",
+  "explanation": "W6.md",
+  "topics": [
+    "distribution"
+  ],
+  "terms": [
+    "distribution"
+  ],
+  "evidence": [
+    {
+      "kind": "分配の経路を分析した研究",
+      "src": "imf-distribution",
+      "text": "AIの便益は賃金だけでなく資本所得にも影響し、保有の違いで受け取り方が変わり得ます。"
+    }
+  ],
+  "sources": [
+    "imf-distribution"
+  ],
+  "questions": [],
+  "related": [],
+  "watch": [
+    "平均所得だけでなく、誰が所有し、誰が利用できるかを見る。"
+  ],
+  "review": {
+    "checkedAt": "2026-09-09",
+    "intervalDays": 7,
+    "reason": "能力、実運用、経済制度、反証を分けて継続確認するため。"
+  }
+}

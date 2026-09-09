@@ -1,0 +1,31 @@
+{
+  "id": "R4",
+  "title": "AIが、安全性の研究と対策も進める",
+  "explanation": "R4.md",
+  "topics": [
+    "ai-safety-research"
+  ],
+  "terms": [
+    "ai-safety-research"
+  ],
+  "evidence": [
+    {
+      "kind": "限定的な安全性研究",
+      "src": "automated-alignment",
+      "text": "Anthropicの2026年8月研究では、AIによる研究が対象となるアライメント評価を改善しました。"
+    }
+  ],
+  "sources": [
+    "automated-alignment"
+  ],
+  "questions": [],
+  "related": [],
+  "watch": [
+    "未提示の評価、実運用、追加学習後でも効果が続くか。"
+  ],
+  "review": {
+    "checkedAt": "2026-09-09",
+    "intervalDays": 7,
+    "reason": "能力、実運用、経済制度、反証を分けて継続確認するため。"
+  }
+}
