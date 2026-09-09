@@ -31,5 +31,13 @@
   "related": [],
   "terms": [
     "existential"
-  ]
+  ],
+  "watch": [
+    "最後の接続について、追加の根拠または反論が出たか。"
+  ],
+  "review": {
+    "checkedAt": "2026-09-09",
+    "intervalDays": 90,
+    "reason": "主に概念や条件の定義。関連する新証拠があれば期限前でも見直す。"
+  }
 }

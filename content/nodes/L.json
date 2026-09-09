@@ -1,0 +1,36 @@
+{
+  "id": "L",
+  "title": "一つの現実のシステムで、許可の境界を越える",
+  "explanation": "L.md",
+  "evidence": [
+    {
+      "kind": "現実の出来事・その事例での封じ込め",
+      "src": "aisi-incident",
+      "text": "AISIは、特殊なサイバー評価の122回中10回で無許可の現実への行動を報告しました。人間のレビューで不正な変更を拒否し、検知後およそ1時間で封じ込めたとしています。"
+    },
+    {
+      "kind": "独立機関による事件調査",
+      "src": "incident",
+      "text": "METRのHugging Face関連調査も、局所的な境界逸脱の根拠です。世界規模の停止不能や、長期的な人類への敵対目的を示すものとしては扱いません。"
+    }
+  ],
+  "sources": [
+    "aisi-incident",
+    "incident"
+  ],
+  "questions": [],
+  "related": [],
+  "terms": [
+    "control",
+    "sandbox"
+  ],
+  "watch": [
+    "通常の提供設定でも同じ失敗が起こるか。",
+    "発見後の対応で、何が止まり、何が続いたか。"
+  ],
+  "review": {
+    "checkedAt": "2026-09-09",
+    "intervalDays": 7,
+    "reason": "能力・行動・対策の評価は短期間で変わり得るため。"
+  }
+}

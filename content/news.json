@@ -1,12 +1,115 @@
 [
   {
+    "id": "recent-math",
+    "title": "「AIが数学問題の解答案を公表した」",
+    "source": "navier",
+    "finding": "研究の一部を速めるR1の新しい材料です。提案・形式的な検査・独立した評価を分けて追います。",
+    "limit": "特定の成果の報告から、研究開発の全工程が無介入で回ることや、際限のない自己改善までは言えません。",
+    "next": "独立した検証、必要だった計算資源や人間の介入、他の課題でも繰り返し成功するかを確認します。",
+    "links": [
+      {
+        "map": "acceleration",
+        "node": "R1"
+      },
+      {
+        "map": "acceleration",
+        "node": "R2"
+      }
+    ]
+  },
+  {
+    "id": "research-lab-september",
+    "title": "「社内のAI研究が加速した」という報告を読む",
+    "source": "openai-rd",
+    "finding": "OpenAIの9月6日の報告は、人間の指示のもとでAIが研究作業を進めることや、コード・実験の増加を示しています。研究支援と、開発全体の改善に関係します。",
+    "limit": "開発企業自身の利用データと分析です。作業量の増加を、そのまま研究全体の倍率や、際限のない自己改善とは解釈できません。",
+    "next": "研究の質と採用された成果はどう変わったか。計算資源や人間の介入を含めても、開発全体が速くなったか。",
+    "links": [
+      {
+        "map": "acceleration",
+        "node": "R1"
+      },
+      {
+        "map": "acceleration",
+        "node": "R2"
+      }
+    ]
+  },
+  {
+    "id": "automated-safety",
+    "title": "「AIが、安全性の研究も進めた」",
+    "source": "automated-alignment",
+    "finding": "C1の失敗を弱める対策と、R2に関係する研究工程の自動化の両方に位置づきます。",
+    "limit": "限られた評価での改善です。未測定の能力への副作用や、その後の学習でも改善が保たれるかは残る論点です。",
+    "next": "独立した追試、実運用に近い条件、長期的な効果を確認します。",
+    "links": [
+      {
+        "map": "control",
+        "node": "C1"
+      },
+      {
+        "map": "acceleration",
+        "node": "R2"
+      }
+    ]
+  },
+  {
+    "id": "aisi-contained",
+    "title": "「無許可の行動を、発見して止めた」という事件を読む",
+    "source": "aisi-incident",
+    "finding": "AISIの7月の事件は、局所的な許可の境界を越えた現実の行動と、人間のレビュー・封じ込めの両方を考える材料です。",
+    "limit": "インターネット接続を許し、一部の安全策を外した評価です。隔離環境からの脱出ではなく、通常提供での頻度も分かりません。",
+    "next": "どの防壁が働き、どの防壁は行動を見逃したか。別の条件でも同じ対策が機能するか。",
+    "links": [
+      {
+        "map": "control",
+        "node": "L"
+      },
+      {
+        "map": "cyber-conditions",
+        "node": "M2c2"
+      }
+    ]
+  },
+  {
+    "id": "astra-threshold",
+    "title": "「Critical能力に到達」を、どこに置く？",
+    "source": "astra",
+    "finding": "OpenAIのAstraの発表は、同社のサイバー能力の基準に関する評価です。まず更新するのは、どんな作業ができるかという項目です。",
+    "limit": "Criticalは、世界規模の制御喪失や絶滅の達成度ではありません。同じ報告には、明示的な制約を守る傾向が改善したという結果もあります。",
+    "next": "能力の評価条件、悪用者のアクセス、制約を守る傾向、防御を別々に確かめます。",
+    "links": [
+      {
+        "map": "misuse-mechanisms",
+        "node": "M2c"
+      },
+      {
+        "map": "control",
+        "node": "C1"
+      }
+    ]
+  },
+  {
     "id": "research-contribution",
     "title": "「AIが研究を進めた」という報告を読む",
     "source": "discovery",
     "finding": "METRは、公開された発見の事例を使い、AIによる研究の加速を検討しています。まず関係するのは「研究開発の一部を助ける」という段階です。",
     "limit": "個別の貢献だけから、開発全体が同じ倍率で速くなったことや、自己改善が際限なく続くことは言えません。公開事例からは見えない活動もあります。",
     "next": "本当に時間を短縮した工程はどこか。検証を含めた開発全体も改善したか。次の世代の研究でも改善が続いたか。",
-    "links": [{"map":"acceleration","node":"R1"},{"map":"acceleration","node":"R2"},{"map":"acceleration","node":"R3"}]
+    "links": [
+      {
+        "map": "acceleration",
+        "node": "R1"
+      },
+      {
+        "map": "acceleration",
+        "node": "R2"
+      },
+      {
+        "map": "acceleration",
+        "node": "R3"
+      }
+    ]
   },
   {
     "id": "agent-behavior",
@@ -15,7 +118,20 @@
     "finding": "2026年夏の実験報告は、特定の設定でAIが意図から外れた行動を取ることや、評価の難しさを検討しています。行動を促す条件と、評価がそれを捉えられるかに関係します。",
     "limit": "実験で与えた状況と権限は重要です。その条件での観測を、日常の利用でも同じ頻度で起きることや、世界規模の制御喪失の証拠にはできません。",
     "next": "どの状況で行動が変わったか。別の設定でも再現するか。監視や権限の制限を加えると、どこで止まるか。",
-    "links": [{"map":"control","node":"C1"},{"map":"oversight","node":"C3a"},{"map":"evaluation","node":"C3a2"}]
+    "links": [
+      {
+        "map": "control",
+        "node": "C1"
+      },
+      {
+        "map": "oversight",
+        "node": "C3a"
+      },
+      {
+        "map": "evaluation",
+        "node": "C3a2"
+      }
+    ]
   },
   {
     "id": "time-horizons",
@@ -24,6 +140,19 @@
     "finding": "METRのtime horizonは、人間の専門家ならどれほどの時間がかかる課題を、AIが一定の成功率で完了できるかを表す指標です。作業を実行できる能力を考える材料になります。",
     "limit": "AIが実際に動いた時間そのものではありません。評価の対象外の仕事、現実での安定性、外部への権限、危険な行動を選ぶ傾向は、別に確認が必要です。",
     "next": "対象の仕事は何か。成功率はどれほどか。失敗を訂正できるか。現実の利用条件でも再現するか。",
-    "links": [{"map":"control","node":"C2"},{"map":"ability-access","node":"C2a"},{"map":"ability-access","node":"C2b"}]
+    "links": [
+      {
+        "map": "control",
+        "node": "C2"
+      },
+      {
+        "map": "ability-access",
+        "node": "C2a"
+      },
+      {
+        "map": "ability-access",
+        "node": "C2b"
+      }
+    ]
   }
 ]

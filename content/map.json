@@ -24,11 +24,32 @@
     {
       "id": "interaction",
       "number": "03",
-      "shortTitle": "判断と競争の連鎖",
+      "shortTitle": "軍事・競争",
       "preview": [
         "重要な判断に頼る",
         "訂正する余裕が減る",
         "対立が拡大する"
+      ]
+    },
+    {
+      "id": "accidents",
+      "number": "04",
+      "shortTitle": "事故の連鎖",
+      "preview": [
+        "重要な仕組みを共有",
+        "失敗が連鎖する",
+        "復旧が追いつかない"
+      ]
+    },
+    {
+      "id": "dependence",
+      "number": "05",
+      "shortTitle": "社会的依存",
+      "outcome": "E1",
+      "preview": [
+        "重要な仕事を委ねる",
+        "代替する力が弱まる",
+        "決定権を取り戻せない"
       ]
     },
     {
@@ -48,16 +69,20 @@
         "C1",
         "C2",
         "C3",
+        "L",
         "C4",
         "H",
+        "T",
         "X"
       ],
       "edges": [
         "C1-C2",
         "C2-C3",
-        "C3-C4",
+        "C3-L",
+        "L-C4",
         "C4-H",
-        "H-X"
+        "H-T",
+        "T-X"
       ]
     },
     "misuse": {
@@ -70,32 +95,36 @@
         "M2",
         "M3",
         "H",
+        "T",
         "X"
       ],
       "edges": [
         "M1-M2",
         "M2-M3",
         "M3-H",
-        "H-X"
+        "H-T",
+        "T-X"
       ]
     },
     "interaction": {
       "id": "interaction",
-      "title": "判断の誤りと競争が、連鎖する",
-      "description": "AIへの依存や反応の速さが、訂正しにくい判断の連鎖に関係する経路。",
+      "title": "軍事判断と競争が、対立を拡大する",
+      "description": "誤認や判断の速さが、危機での訂正や人間の介入を難しくする経路。",
       "mode": "sequence",
       "nodes": [
         "S1",
         "S2",
         "S3",
         "H",
+        "T",
         "X"
       ],
       "edges": [
         "S1-S2",
         "S2-S3",
         "S3-H",
-        "H-X"
+        "H-T",
+        "T-X"
       ]
     },
     "acceleration": {
@@ -172,6 +201,92 @@
       ],
       "edges": [],
       "parent": "C4"
+    },
+    "extinction-conditions": {
+      "id": "extinction-conditions",
+      "title": "絶滅への、最後の追加条件",
+      "description": "被害の範囲と、生存・回復の可能性を一緒に考えます。網羅的な必要十分条件を証明したものではありません。",
+      "nodes": [
+        "T1",
+        "T2"
+      ],
+      "mode": "all",
+      "edges": [],
+      "parent": "T"
+    },
+    "dependence": {
+      "id": "dependence",
+      "title": "依存が深まり、主導権を失う",
+      "description": "便利なAIへの委任が、取り戻せない依存につながるという仮説。終点は絶滅と区別します。",
+      "nodes": [
+        "D1",
+        "D2",
+        "D3",
+        "E1"
+      ],
+      "mode": "sequence",
+      "edges": [
+        "D1-D2",
+        "D2-D3",
+        "D3-E1"
+      ]
+    },
+    "accidents": {
+      "id": "accidents",
+      "title": "システムの失敗が、連鎖する",
+      "description": "共通の仕組みへの依存や相互作用が、誤りと復旧の失敗を広げる経路。",
+      "nodes": [
+        "A1",
+        "A2",
+        "A3",
+        "H",
+        "T",
+        "X"
+      ],
+      "mode": "sequence",
+      "edges": [
+        "A1-A2",
+        "A2-A3",
+        "A3-H",
+        "H-T",
+        "T-X"
+      ]
+    },
+    "misuse-mechanisms": {
+      "id": "misuse-mechanisms",
+      "title": "悪用が実害に変わる、異なる経路",
+      "description": "サイバーと生物では、必要な能力・接点・物理的な壁が違います。",
+      "nodes": [
+        "M2c",
+        "M2b"
+      ],
+      "mode": "any",
+      "edges": [],
+      "parent": "M2"
+    },
+    "cyber-conditions": {
+      "id": "cyber-conditions",
+      "title": "サイバー支援が実害に結びつく条件",
+      "description": "実行する側の能力と、防ぐ側の対応を一緒に見ます。",
+      "nodes": [
+        "M2c1",
+        "M2c2"
+      ],
+      "mode": "all",
+      "edges": [],
+      "parent": "M2c"
+    },
+    "bio-conditions": {
+      "id": "bio-conditions",
+      "title": "情報から現実の危害への条件",
+      "description": "情報の支援効果と、現実の実行・防御を分けます。",
+      "nodes": [
+        "M2b1",
+        "M2b2"
+      ],
+      "mode": "all",
+      "edges": [],
+      "parent": "M2b"
     }
   },
   "edges": {
@@ -192,7 +307,13 @@
       "sources": [
         "report",
         "framework"
-      ]
+      ],
+      "basis": "出典を参考にした、編集者による条件付きの整理",
+      "review": {
+        "checkedAt": "2026-09-09",
+        "intervalDays": 30,
+        "reason": "接続を支える能力・権限・防壁について、新しい証拠や反論を確認するため。"
+      }
     },
     "C2-C3": {
       "id": "C2-C3",
@@ -209,7 +330,13 @@
       "safeguards": "重要な操作の前の確認や、権限の取り消しを検討します。",
       "sources": [
         "control"
-      ]
+      ],
+      "basis": "出典を参考にした、編集者による条件付きの整理",
+      "review": {
+        "checkedAt": "2026-09-09",
+        "intervalDays": 7,
+        "reason": "接続を支える能力・権限・防壁について、新しい証拠や反論を確認するため。"
+      }
     },
     "C3-C4": {
       "id": "C3-C4",
@@ -228,7 +355,13 @@
       "sources": [
         "power",
         "aisi"
-      ]
+      ],
+      "basis": "出典を参考にした、編集者による条件付きの整理",
+      "review": {
+        "checkedAt": "2026-09-09",
+        "intervalDays": 30,
+        "reason": "接続を支える能力・権限・防壁について、新しい証拠や反論を確認するため。"
+      }
     },
     "C4-H": {
       "id": "C4-H",
@@ -246,7 +379,13 @@
       "sources": [
         "power",
         "framework"
-      ]
+      ],
+      "basis": "出典を参考にした、編集者による条件付きの整理",
+      "review": {
+        "checkedAt": "2026-09-09",
+        "intervalDays": 30,
+        "reason": "接続を支える能力・権限・防壁について、新しい証拠や反論を確認するため。"
+      }
     },
     "M1-M2": {
       "id": "M1-M2",
@@ -263,7 +402,13 @@
       "safeguards": "支援の提供側と実行先の両方に対策を置きます。",
       "sources": [
         "summary"
-      ]
+      ],
+      "basis": "出典を参考にした、編集者による条件付きの整理",
+      "review": {
+        "checkedAt": "2026-09-09",
+        "intervalDays": 30,
+        "reason": "接続を支える能力・権限・防壁について、新しい証拠や反論を確認するため。"
+      }
     },
     "M2-M3": {
       "id": "M2-M3",
@@ -280,7 +425,13 @@
       "safeguards": "早期発見や被害の制限、復旧を強化します。",
       "sources": [
         "framework"
-      ]
+      ],
+      "basis": "出典を参考にした、編集者による条件付きの整理",
+      "review": {
+        "checkedAt": "2026-09-09",
+        "intervalDays": 30,
+        "reason": "接続を支える能力・権限・防壁について、新しい証拠や反論を確認するため。"
+      }
     },
     "M3-H": {
       "id": "M3-H",
@@ -297,7 +448,13 @@
       "safeguards": "被害の区切り、代替、共同対応を検討します。",
       "sources": [
         "framework"
-      ]
+      ],
+      "basis": "出典を参考にした、編集者による条件付きの整理",
+      "review": {
+        "checkedAt": "2026-09-09",
+        "intervalDays": 30,
+        "reason": "接続を支える能力・権限・防壁について、新しい証拠や反論を確認するため。"
+      }
     },
     "S1-S2": {
       "id": "S1-S2",
@@ -314,7 +471,13 @@
       "safeguards": "判断の根拠、不確実性、確認の時間を確保します。",
       "sources": [
         "sipri"
-      ]
+      ],
+      "basis": "出典を参考にした、編集者による条件付きの整理",
+      "review": {
+        "checkedAt": "2026-09-09",
+        "intervalDays": 30,
+        "reason": "接続を支える能力・権限・防壁について、新しい証拠や反論を確認するため。"
+      }
     },
     "S2-S3": {
       "id": "S2-S3",
@@ -332,7 +495,13 @@
       "sources": [
         "sipri",
         "governance"
-      ]
+      ],
+      "basis": "出典を参考にした、編集者による条件付きの整理",
+      "review": {
+        "checkedAt": "2026-09-09",
+        "intervalDays": 30,
+        "reason": "接続を支える能力・権限・防壁について、新しい証拠や反論を確認するため。"
+      }
     },
     "S3-H": {
       "id": "S3-H",
@@ -350,7 +519,13 @@
       "sources": [
         "sipri",
         "governance"
-      ]
+      ],
+      "basis": "出典を参考にした、編集者による条件付きの整理",
+      "review": {
+        "checkedAt": "2026-09-09",
+        "intervalDays": 30,
+        "reason": "接続を支える能力・権限・防壁について、新しい証拠や反論を確認するため。"
+      }
     },
     "H-X": {
       "id": "H-X",
@@ -364,12 +539,18 @@
         "被害の広がりや持続が、その可能性をどう失わせるかを説明する",
         "回復や介入によって進行が止まる可能性を検討する"
       ],
-      "limitation": "ここに挙げた資料だけで、人類絶滅に必要な条件一式が実証されたとは言えません。これらは確認すべき論点です。",
+      "limitation": "初版の要約した矢印です。現在の地図ではTを挟み、生存・回復の可能性が失われる追加条件を別にしています。",
       "safeguards": "前段階の予防と、被害を抑え生存・回復を支える備えの両方を検討します。",
       "sources": [
         "power",
         "debate"
-      ]
+      ],
+      "basis": "出典を参考にした、編集者による条件付きの整理",
+      "review": {
+        "checkedAt": "2026-09-09",
+        "intervalDays": 30,
+        "reason": "接続を支える能力・権限・防壁について、新しい証拠や反論を確認するため。"
+      }
     },
     "R1-R2": {
       "id": "R1-R2",
@@ -386,7 +567,13 @@
       "safeguards": "有用性と検証の質を確かめます。",
       "sources": [
         "discovery"
-      ]
+      ],
+      "basis": "出典を参考にした、編集者による条件付きの整理",
+      "review": {
+        "checkedAt": "2026-09-09",
+        "intervalDays": 7,
+        "reason": "接続を支える能力・権限・防壁について、新しい証拠や反論を確認するため。"
+      }
     },
     "R2-R3": {
       "id": "R2-R3",
@@ -404,7 +591,13 @@
       "sources": [
         "report",
         "discovery"
-      ]
+      ],
+      "basis": "出典を参考にした、編集者による条件付きの整理",
+      "review": {
+        "checkedAt": "2026-09-09",
+        "intervalDays": 7,
+        "reason": "接続を支える能力・権限・防壁について、新しい証拠や反論を確認するため。"
+      }
     },
     "R3-R2": {
       "id": "R3-R2",
@@ -421,7 +614,246 @@
       "safeguards": "研究を加速する力を、安全性の検証にも向けることを検討します。",
       "sources": [
         "discovery"
-      ]
+      ],
+      "basis": "出典を参考にした、編集者による条件付きの整理",
+      "review": {
+        "checkedAt": "2026-09-09",
+        "intervalDays": 7,
+        "reason": "接続を支える能力・権限・防壁について、新しい証拠や反論を確認するため。"
+      }
+    },
+    "C3-L": {
+      "id": "C3-L",
+      "from": "C3",
+      "to": "L",
+      "label": "監督の失敗が、現実の接点に及ぶと",
+      "relation": "conditional",
+      "basis": "出典を参考にした、編集者による条件付きの整理",
+      "explanation": "意図から外れた行動が、実在するシステムで許可の範囲を越える接続です。",
+      "conditions": [
+        "行動が現実へ届く接点がある",
+        "該当する行動を防止できない"
+      ],
+      "limitation": "模擬配備の失敗だけでは現実の境界逸脱は示せません。",
+      "safeguards": "権限の制限、レビュー、異常時の遮断を検討します。",
+      "sources": [
+        "aisi-incident",
+        "incident"
+      ],
+      "review": {
+        "checkedAt": "2026-09-09",
+        "intervalDays": 7,
+        "reason": "接続を支える能力・権限・防壁について、新しい証拠や反論を確認するため。"
+      }
+    },
+    "L-C4": {
+      "id": "L-C4",
+      "from": "L",
+      "to": "C4",
+      "label": "見つかった後も、活動を止められないと",
+      "relation": "joint",
+      "basis": "出典を参考にした、編集者による条件付きの整理",
+      "explanation": "局所的な失敗から、広く続く活動へ進むには、人間側の本格的な対処を上回る条件が必要です。",
+      "conditions": [
+        "活動を維持できる",
+        "複数の独立した対処が阻まれる"
+      ],
+      "limitation": "METRの2〜3月の評価は、この強い持続能力を観測された範囲の外としました。9月の上限には固定しません。",
+      "safeguards": "調査と停止の手段を維持し、独立した対応を組み合わせます。",
+      "sources": [
+        "frontier",
+        "power"
+      ],
+      "review": {
+        "checkedAt": "2026-09-09",
+        "intervalDays": 7,
+        "reason": "接続を支える能力・権限・防壁について、新しい証拠や反論を確認するため。"
+      }
+    },
+    "H-T": {
+      "id": "H-T",
+      "from": "H",
+      "to": "T",
+      "label": "被害を逃れ、生き直す可能性も失われるなら",
+      "relation": "conditional",
+      "basis": "未解決の接続。個別のメカニズムの説明が必要",
+      "explanation": "大災害の規模に加え、人類の生存・回復の可能性がなぜ残らないかという追加の論点です。",
+      "conditions": [
+        "影響が人類全体の存続に及ぶ",
+        "適応や復旧による回復が成立しない"
+      ],
+      "limitation": "一般的に成立する矢印とは確認されていません。経路ごとの物理的・社会的な説明が必要です。",
+      "safeguards": "生存と回復の選択肢を増やす対策を検討します。",
+      "sources": [
+        "rand-extinction"
+      ],
+      "review": {
+        "checkedAt": "2026-09-09",
+        "intervalDays": 30,
+        "reason": "接続を支える能力・権限・防壁について、新しい証拠や反論を確認するため。"
+      }
+    },
+    "T-X": {
+      "id": "T-X",
+      "from": "T",
+      "to": "X",
+      "label": "人類が存続する可能性がなくなると",
+      "relation": "conditional",
+      "basis": "出典を参考にした、編集者による条件付きの整理",
+      "explanation": "この接続で初めて人類絶滅を考えます。",
+      "conditions": [
+        "生存する人類集団が残れない"
+      ],
+      "limitation": "ここまでの全条件が現在成立していることや、将来の時期・確率を示していません。",
+      "safeguards": "この終点に至る前の各段階で予防・抑制・回復を図ります。",
+      "sources": [
+        "rand-extinction",
+        "power"
+      ],
+      "review": {
+        "checkedAt": "2026-09-09",
+        "intervalDays": 30,
+        "reason": "接続を支える能力・権限・防壁について、新しい証拠や反論を確認するため。"
+      }
+    },
+    "D1-D2": {
+      "id": "D1-D2",
+      "from": "D1",
+      "to": "D2",
+      "label": "委任とともに、代替する力が弱まると",
+      "relation": "conditional",
+      "basis": "出典を参考にした、編集者による条件付きの整理",
+      "explanation": "委任が依存を深めるという仮説です。",
+      "conditions": [
+        "人間側の技能や仕組みが失われる"
+      ],
+      "limitation": "AIの採用だけでは、代替能力の喪失を示せません。",
+      "safeguards": "代替手段を維持・検証します。",
+      "sources": [
+        "gradual"
+      ],
+      "review": {
+        "checkedAt": "2026-09-09",
+        "intervalDays": 30,
+        "reason": "接続を支える能力・権限・防壁について、新しい証拠や反論を確認するため。"
+      }
+    },
+    "D2-D3": {
+      "id": "D2-D3",
+      "from": "D2",
+      "to": "D3",
+      "label": "他の手段も、拒否する力も弱まると",
+      "relation": "conditional",
+      "basis": "出典を参考にした、編集者による条件付きの整理",
+      "explanation": "使うのをやめたり、方向を変えたりできないことが、実効的な主導権に関係します。",
+      "conditions": [
+        "重要な判断を変更しにくい",
+        "代替を再構築することも難しい"
+      ],
+      "limitation": "社会制度や人々の対応が、この進行を変える可能性があります。",
+      "safeguards": "変更可能性と、人間の意思を反映する制度を維持します。",
+      "sources": [
+        "gradual"
+      ],
+      "review": {
+        "checkedAt": "2026-09-09",
+        "intervalDays": 30,
+        "reason": "接続を支える能力・権限・防壁について、新しい証拠や反論を確認するため。"
+      }
+    },
+    "D3-E1": {
+      "id": "D3-E1",
+      "from": "D3",
+      "to": "E1",
+      "label": "その状態が広く固定され、回復できないなら",
+      "relation": "conditional",
+      "basis": "出典を参考にした、編集者による条件付きの整理",
+      "explanation": "影響力の低下が、回復困難な主導権喪失へ進む条件です。",
+      "conditions": [
+        "主導権の喪失が広域で持続する",
+        "人間が取り戻す手段を失う"
+      ],
+      "limitation": "この経路だけから、人類絶滅は導けません。",
+      "safeguards": "独立した制度と、人間が方向を変えられる手段を残します。",
+      "sources": [
+        "gradual",
+        "power"
+      ],
+      "review": {
+        "checkedAt": "2026-09-09",
+        "intervalDays": 30,
+        "reason": "接続を支える能力・権限・防壁について、新しい証拠や反論を確認するため。"
+      }
+    },
+    "A1-A2": {
+      "id": "A1-A2",
+      "from": "A1",
+      "to": "A2",
+      "label": "共通の誤りが、相互作用で広がると",
+      "relation": "joint",
+      "basis": "出典を参考にした、編集者による条件付きの整理",
+      "explanation": "共有している仕組みの失敗が、他のシステムに影響する接続です。",
+      "conditions": [
+        "共通の失敗が起きる",
+        "システム間で影響が伝わる"
+      ],
+      "limitation": "共有や連携そのものが危険だという意味ではありません。",
+      "safeguards": "独立した検証と、影響を切り離せる設計を検討します。",
+      "sources": [
+        "framework"
+      ],
+      "review": {
+        "checkedAt": "2026-09-09",
+        "intervalDays": 30,
+        "reason": "接続を支える能力・権限・防壁について、新しい証拠や反論を確認するため。"
+      }
+    },
+    "A2-A3": {
+      "id": "A2-A3",
+      "from": "A2",
+      "to": "A3",
+      "label": "検知・切り離し・復旧も追いつかないと",
+      "relation": "conditional",
+      "basis": "出典を参考にした、編集者による条件付きの整理",
+      "explanation": "失敗の連鎖が対処する能力を超える条件です。",
+      "conditions": [
+        "誤りを訂正する速度や範囲を上回る",
+        "復旧手段も影響を受ける"
+      ],
+      "limitation": "一時的な障害から、長期の復旧不能は推論できません。",
+      "safeguards": "異常時の切り離しと、独立した復旧能力を検証します。",
+      "sources": [
+        "framework"
+      ],
+      "review": {
+        "checkedAt": "2026-09-09",
+        "intervalDays": 30,
+        "reason": "接続を支える能力・権限・防壁について、新しい証拠や反論を確認するため。"
+      }
+    },
+    "A3-H": {
+      "id": "A3-H",
+      "from": "A3",
+      "to": "H",
+      "label": "生活基盤の障害が、広く長く重なると",
+      "relation": "conditional",
+      "basis": "出典を参考にした、編集者による条件付きの整理",
+      "explanation": "複数の重要な機能が失われ、残る手段で補えないと、大災害につながる可能性があります。",
+      "conditions": [
+        "被害の範囲と持続が大きい",
+        "代替手段が不足する"
+      ],
+      "limitation": "局所事故の観測だけでは、世界規模のこの接続は示せません。",
+      "safeguards": "地域や組織を越えた復旧と、共通原因による失敗への備えを検討します。",
+      "sources": [
+        "framework",
+        "summary"
+      ],
+      "review": {
+        "checkedAt": "2026-09-09",
+        "intervalDays": 30,
+        "reason": "接続を支える能力・権限・防壁について、新しい証拠や反論を確認するため。"
+      }
     }
   }
 }

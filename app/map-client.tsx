@@ -5,6 +5,7 @@ import {
   ArrowRight,
   ArrowUpRight,
   BookOpen,
+  Clock3,
   GitBranch,
   GitPullRequest,
   ShieldCheck,
@@ -34,13 +35,44 @@ import {
   DialogDescription,
   DialogClose,
 } from '@/components/ui/dialog';
-import type { Content, Question, Graph } from '@/lib/content-types';
+import type { Content, Question, Graph, Review } from '@/lib/content-types';
+import { currentReviewDay, reviewStatus } from '@/lib/freshness.mjs';
 const REPO = 'https://github.com/mizkun/ai-safety-map';
 
 export default function MapClient({ data }: { data: Content }) {
   const [view, setView] = useState('overview');
   const [termId, setTermId] = useState<string | null>(null);
   const [termSearch, setTermSearch] = useState('');
+  const [today, setToday] = useState(data.asOf);
+  useEffect(() => {
+    const refresh = () => setToday(currentReviewDay());
+    refresh();
+    const timer = window.setInterval(refresh, 60_000);
+    return () => window.clearInterval(timer);
+  }, []);
+  const reviews = useMemo(
+    () =>
+      [
+        ...Object.values(data.nodes).map((n) => ({
+          id: n.id,
+          title: n.title,
+          review: n.review,
+          mode: 'node' as const,
+        })),
+        ...Object.values(data.edges).map((e) => ({
+          id: e.id,
+          title: e.label,
+          review: e.review,
+          mode: 'edge' as const,
+        })),
+      ]
+        .map((item) => ({ ...item, ...reviewStatus(item.review, today) }))
+        .sort(
+          (a, b) => a.dueAt.localeCompare(b.dueAt) || a.id.localeCompare(b.id),
+        ),
+    [data, today],
+  );
+  const dueCount = reviews.filter((r) => r.state === 'due').length;
   const termIndex = useMemo(() => {
     const aliases = new Map<string, string>();
     for (const [id, term] of Object.entries(data.glossary))
@@ -82,9 +114,14 @@ export default function MapClient({ data }: { data: Content }) {
       if (
         graph &&
         (data.graphs[graph] ||
-          ['overview', 'history', 'sources', 'news', 'glossary'].includes(
-            graph,
-          ))
+          [
+            'overview',
+            'history',
+            'sources',
+            'news',
+            'glossary',
+            'freshness',
+          ].includes(graph))
       )
         setView(graph);
       if (node && data.nodes[node]) {
@@ -127,9 +164,39 @@ export default function MapClient({ data }: { data: Content }) {
       >
         {source.title}
         <ArrowUpRight size={14} />
-        <span>{source.date}</span>
+        <span>
+          公表：{source.published || '日付未確認'} · 対象：{source.period}
+          {' · 出典確認：'}
+          {source.checked}
+        </span>
       </a>
     ) : null;
+  }
+  function reviewNote(review: Review) {
+    const status = reviewStatus(review, today);
+    return (
+      <div className={'review-note review-' + status.state}>
+        <div>
+          <Clock3 size={16} />
+          <strong>
+            {status.state === 'due'
+              ? '要再確認'
+              : status.state === 'soon'
+                ? 'まもなく再確認'
+                : 'この説明の確認日'}
+          </strong>
+        </div>
+        <p>
+          最終点検 <time dateTime={review.checkedAt}>{review.checkedAt}</time> ·
+          再確認の目安 <time dateTime={status.dueAt}>{status.dueAt}</time>
+        </p>
+        <p>
+          {status.state === 'due'
+            ? '最近の変化をまだ反映していない可能性があります。期限を過ぎたこと自体は、誤りを意味しません。'
+            : review.reason}
+        </p>
+      </div>
+    );
   }
   function renderQuestions(items: Question[], prefix: string) {
     return (
@@ -163,7 +230,7 @@ export default function MapClient({ data }: { data: Content }) {
       >
         <span className="node-meta">
           {id === 'NOW'
-            ? '2026.09'
+            ? data.asOf.slice(0, 7).replace('-', '.')
             : id === 'X'
               ? '考えている終点'
               : id === 'H'
@@ -172,6 +239,11 @@ export default function MapClient({ data }: { data: Content }) {
         </span>
         <span className="node-title">{node.title}</span>
         <span className="node-evidence">根拠：{node.evidence[0]?.kind}</span>
+        {reviewStatus(node.review, today).state === 'due' && (
+          <span className="review-badge">
+            要再確認 · {node.review.checkedAt}の点検以降
+          </span>
+        )}
         <span className="node-open">
           {node.subgraph ? '解説・細かい条件' : '説明を読む'}
           <ArrowUpRight size={16} />
@@ -282,7 +354,14 @@ export default function MapClient({ data }: { data: Content }) {
     selected && readMode === 'edge' ? data.edges[selected] : undefined;
   const activeTab =
     data.routes.some((r) => r.id === view) ||
-    ['overview', 'sources', 'history', 'news', 'glossary'].includes(view)
+    [
+      'overview',
+      'sources',
+      'history',
+      'news',
+      'glossary',
+      'freshness',
+    ].includes(view)
       ? view
       : 'detail';
   const focusedGraph = data.graphs[view];
@@ -333,6 +412,7 @@ export default function MapClient({ data }: { data: Content }) {
     if (!node) return null;
     return (
       <div className="explanation">
+        {reviewNote(node.review)}
         <div className="node-terms">
           {node.terms?.map((id) => (
             <button key={id} onClick={() => setTermId(id)}>
@@ -396,6 +476,16 @@ export default function MapClient({ data }: { data: Content }) {
           </h3>
           <p>{richText(node.body['進行を止めるには'])}</p>
         </section>
+        {node.watch && node.watch.length > 0 && (
+          <section className="explanation-section">
+            <h3>どんなニュースで、見方が変わる？</h3>
+            <ul>
+              {node.watch.map((w) => (
+                <li key={w}>{richText(w)}</li>
+              ))}
+            </ul>
+          </section>
+        )}
         {node.questions.length > 0 && (
           <section className="explanation-section">
             <h3>気になるところを、もう少し</h3>
@@ -432,11 +522,13 @@ export default function MapClient({ data }: { data: Content }) {
     if (!edge) return null;
     return (
       <div className="explanation">
+        {reviewNote(edge.review)}
         <div className="edge-endpoints">
           <span>{data.nodes[edge.from].title}</span>
           <ArrowDown size={18} />
           <span>{data.nodes[edge.to].title}</span>
         </div>
+        <span className="evidence-type edge-basis">{edge.basis}</span>
         <p className="plain-explanation">{richText(edge.explanation)}</p>
         <section className="explanation-section">
           <h3>この矢印に必要なこと</h3>
@@ -509,10 +601,23 @@ export default function MapClient({ data }: { data: Content }) {
         </div>
         <div className="as-of">
           <span className="date-dot" />
-          資料確認日{' '}
+          直近の内容点検{' '}
           <time dateTime={data.asOf}>{data.asOf.replaceAll('-', '.')}</time>
         </div>
       </div>
+      <button
+        className={'freshness-banner' + (dueCount ? ' freshness-alert' : '')}
+        onClick={() => navigate('freshness')}
+      >
+        <Clock3 size={18} />
+        <span>
+          {dueCount
+            ? `再確認の目安に達した項目・矢印が${dueCount}件あります`
+            : '状況の変化に合わせて、項目ごとに見直します'}
+          <small>確認日・再確認の目安・更新の仕組みを見る</small>
+        </span>
+        <ArrowRight size={17} />
+      </button>
       <Tabs
         value={activeTab}
         onValueChange={(v) => {
@@ -535,6 +640,7 @@ export default function MapClient({ data }: { data: Content }) {
           )}
           <TabsTrigger value="glossary">用語集</TabsTrigger>
           <TabsTrigger value="news">ニュースの読み方</TabsTrigger>
+          <TabsTrigger value="freshness">最新情報を保つ</TabsTrigger>
           <TabsTrigger value="history">更新履歴</TabsTrigger>
           <TabsTrigger value="sources">出典・読み方</TabsTrigger>
         </TabsList>
@@ -561,7 +667,7 @@ export default function MapClient({ data }: { data: Content }) {
             </div>
             <div className="overview-routes">
               {data.routes
-                .filter((r) => r.id !== 'acceleration')
+                .filter((r) => r.id !== 'acceleration' && r.outcome !== 'E1')
                 .map((r) => (
                   <button
                     key={r.id}
@@ -597,7 +703,9 @@ export default function MapClient({ data }: { data: Content }) {
                 </div>
                 <div className="shared-outcomes">
                   {nodeButton('H')}
-                  {edgeButton('H-X')}
+                  {edgeButton('H-T')}
+                  {nodeButton('T')}
+                  {edgeButton('T-X')}
                   {nodeButton('X')}
                 </div>
                 <div className="other-outcomes">
@@ -612,6 +720,25 @@ export default function MapClient({ data }: { data: Content }) {
                 </div>
               </>
             )}
+            {data.routes
+              .filter((r) => r.outcome === 'E1')
+              .map((r) => (
+                <button
+                  className="dependence-entry"
+                  key={r.id}
+                  onClick={() => navigate(r.id, data.graphs[r.id].nodes[0])}
+                >
+                  <span className="route-number">{r.number}</span>
+                  <div>
+                    <span>主導権の喪失を考える、別の経路</span>
+                    <strong>{data.graphs[r.id].title}</strong>
+                    <p>
+                      この経路から絶滅へつなぐには、さらに別の説明が必要です。
+                    </p>
+                  </div>
+                  <ArrowRight size={20} />
+                </button>
+              ))}
             {data.graphs.acceleration && (
               <button
                 className="acceleration-entry"
@@ -728,6 +855,112 @@ export default function MapClient({ data }: { data: Content }) {
             rel="noreferrer"
           >
             新しい研究・報告を提案する
+            <ArrowUpRight size={16} />
+          </a>
+        </TabsContent>
+        <TabsContent value="freshness" className="reading-panel">
+          <div className="reading-heading">
+            <span className="eyebrow">KEEPING CURRENT</span>
+            <h2>数ヶ月前の評価を、今の上限にしない。</h2>
+            <p>
+              能力や対策は短期間で変わり得ます。情報が届いてから地図が変わるまでを、見える形にします。
+            </p>
+          </div>
+          <ol className="update-process">
+            <li>
+              <strong>新しい一次資料を探す</strong>
+              <p>
+                能力の進歩、事故の調査、対策の改善、既存の説明への反論を継続して確認します。
+              </p>
+            </li>
+            <li>
+              <strong>変わった条件を特定する</strong>
+              <p>
+                公表日と対象時期、モデルと実験条件を確かめ、どの項目・矢印の根拠が変わるかを整理します。
+              </p>
+            </li>
+            <li>
+              <strong>修正案をレビューする</strong>
+              <p>
+                変更前後の説明と理由をPRで確認し、採用した変更を履歴に残します。
+              </p>
+            </li>
+          </ol>
+          <div className="reading-copy">
+            <p>
+              能力・行動など変化の速い項目は原則7日、経路の前提は30日、主に定義を扱う項目は90日を点検の目安にしています。これは編集上の間隔です。新しい重要な証拠があれば、期限前でも見直します。
+            </p>
+            <p>
+              確認期限は閲覧時にも計算します。「要再確認」は、最近の変化を見落としていないか点検する目印です。「期限内」でも、あらゆる新情報を反映したという保証ではありません。
+            </p>
+            <p>
+              記事の公表日、実験・観測の対象時期、説明を点検した日は別々に表示します。古い研究でも、今の説明に必要な根拠として残すことがあります。
+            </p>
+          </div>
+          <div className="review-overview">
+            <div>
+              <strong>{dueCount}</strong>
+              <span>再確認の目安に達した項目・矢印</span>
+            </div>
+            <p>
+              日本時間の {today} を基準に計算 · 全{reviews.length}件
+            </p>
+          </div>
+          <details className="review-list" open={dueCount > 0}>
+            <summary>項目ごとの確認日を見る</summary>
+            {reviews.map((r) => (
+              <button
+                key={r.mode + r.id}
+                onClick={() => navigate('freshness', r.id, r.mode)}
+              >
+                <span>
+                  <strong>
+                    {r.id} · {r.title}
+                  </strong>
+                  <small>
+                    最終点検 {r.review.checkedAt} · 目安 {r.dueAt}
+                  </small>
+                </span>
+                <span className={'review-state review-state-' + r.state}>
+                  {r.state === 'due'
+                    ? '要再確認'
+                    : r.state === 'soon'
+                      ? 'まもなく再確認'
+                      : '確認目安前'}
+                </span>
+              </button>
+            ))}
+          </details>
+          <h3 className="sources-title">継続して確認する入口</h3>
+          <p className="watchlist-note">
+            これは調査先の入口です。採用する説明には、個々の論文・評価・報告を出典として付けます。
+          </p>
+          <div className="watchlist">
+            {data.watchlist.map((w) => (
+              <article key={w.id}>
+                <h4>{w.name}</h4>
+                <span>
+                  {w.cadence === 'daily'
+                    ? '毎日の確認対象'
+                    : '週ごとの確認対象'}
+                </span>
+                <p>{w.focus}</p>
+                {w.urls.map((url, i) => (
+                  <a key={url} href={url} target="_blank" rel="noreferrer">
+                    資料の入口 {w.urls.length > 1 ? i + 1 : ''}
+                    <ArrowUpRight size={13} />
+                  </a>
+                ))}
+              </article>
+            ))}
+          </div>
+          <a
+            className="text-link"
+            href={REPO + '/blob/main/docs/keeping-current.md'}
+            target="_blank"
+            rel="noreferrer"
+          >
+            点検と更新の手順を読む
             <ArrowUpRight size={16} />
           </a>
         </TabsContent>
@@ -877,6 +1110,11 @@ export default function MapClient({ data }: { data: Content }) {
                 </SheetTitle>
                 <SheetDescription className="detail-subtitle">
                   {data.graphs[view]?.title || '現在から、未来への条件をたどる'}
+                  {focusedGraph?.mode === 'all'
+                    ? ' · 一緒に考える条件'
+                    : focusedGraph?.mode === 'any'
+                      ? ' · 重なり得る別の分岐'
+                      : ''}
                 </SheetDescription>
               </SheetHeader>
               <div className="explanation-scroll" key={selected}>

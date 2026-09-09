@@ -1,0 +1,32 @@
+{
+  "id": "G1",
+  "title": "社会の基盤が、広く長く失われる",
+  "explanation": "G1.md",
+  "evidence": [
+    {
+      "kind": "将来の条件付きシナリオ",
+      "src": "rand-extinction",
+      "text": "RANDは人類絶滅を大災害や社会崩壊と区別しています。ここでの生活基盤への分解は、読み分けのための編集上の整理です。"
+    }
+  ],
+  "sources": [
+    "rand-extinction"
+  ],
+  "questions": [],
+  "related": [
+    {
+      "text": "生存・回復が失われる追加条件",
+      "scene": "control",
+      "node": "T"
+    }
+  ],
+  "terms": [
+    "resilience"
+  ],
+  "watch": [],
+  "review": {
+    "checkedAt": "2026-09-09",
+    "intervalDays": 90,
+    "reason": "主に概念や条件の定義。関連する新証拠があれば期限前でも見直す。"
+  }
+}

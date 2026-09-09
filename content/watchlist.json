@@ -1,0 +1,146 @@
+[
+  {
+    "id": "metr",
+    "name": "METR",
+    "cadence": "daily",
+    "urls": [
+      "https://metr.org/research/",
+      "https://metr.org/notes/",
+      "https://metr.org/blog/",
+      "https://metr.org/time-horizons/"
+    ],
+    "focus": "自律性、研究の加速、事故調査、独立評価、評価の限界。",
+    "nodes": [
+      "C2",
+      "C3",
+      "C4",
+      "L",
+      "R1",
+      "R2",
+      "R3"
+    ]
+  },
+  {
+    "id": "aisi",
+    "name": "UK AI Security Institute",
+    "cadence": "daily",
+    "urls": [
+      "https://www.aisi.gov.uk/blog"
+    ],
+    "focus": "能力の独立評価、監督・封じ込め、実際の事例、防御側の進歩。",
+    "nodes": [
+      "C2",
+      "C3",
+      "L",
+      "M2b",
+      "M2c"
+    ]
+  },
+  {
+    "id": "openai",
+    "name": "OpenAI",
+    "cadence": "daily",
+    "urls": [
+      "https://openai.com/safety/",
+      "https://openai.com/research/index/",
+      "https://deploymentsafety.openai.com/"
+    ],
+    "focus": "システムカード、能力の閾値、評価条件、研究の自動化、安全性の改善。開発元による報告として扱う。",
+    "nodes": [
+      "C1",
+      "C2",
+      "C3",
+      "M2",
+      "R1",
+      "R2",
+      "R3"
+    ]
+  },
+  {
+    "id": "anthropic",
+    "name": "Anthropic",
+    "cadence": "daily",
+    "urls": [
+      "https://alignment.anthropic.com/",
+      "https://www.anthropic.com/research"
+    ],
+    "focus": "目標のずれ、監督、エージェントの行動、研究支援、安全性の改善。模擬実験と実運用を分ける。",
+    "nodes": [
+      "C1",
+      "C3",
+      "L",
+      "R1",
+      "R2"
+    ]
+  },
+  {
+    "id": "deepmind",
+    "name": "Google DeepMind",
+    "cadence": "daily",
+    "urls": [
+      "https://deepmind.google/models/model-cards/",
+      "https://deepmind.google/blog/"
+    ],
+    "focus": "新しいモデルカード、危険能力評価、研究支援、制御手法。旧モデルの評価を現在の上限にしない。",
+    "nodes": [
+      "C2",
+      "C3",
+      "M2b",
+      "M2c",
+      "R1",
+      "R2"
+    ]
+  },
+  {
+    "id": "international",
+    "name": "International AI Safety Report",
+    "cadence": "weekly",
+    "urls": [
+      "https://internationalaisafetyreport.org/publications"
+    ],
+    "focus": "分野全体のレビュー、意見が分かれる前提、未知の部分、対策の有効性。",
+    "nodes": [
+      "NOW",
+      "H",
+      "T",
+      "X",
+      "A1",
+      "D1"
+    ]
+  },
+  {
+    "id": "sipri",
+    "name": "SIPRI",
+    "cadence": "weekly",
+    "urls": [
+      "https://www.sipri.org/research/armament-and-disarmament/emerging-military-and-security-technologies"
+    ],
+    "focus": "軍事的相互作用、人間の判断、危機の加速、制度的な防壁。",
+    "nodes": [
+      "S1",
+      "S2",
+      "S3"
+    ]
+  },
+  {
+    "id": "broader-review",
+    "name": "著者の論文・独立した追試・反論",
+    "cadence": "weekly",
+    "urls": [
+      "https://arxiv.org/",
+      "https://proceedings.mlr.press/"
+    ],
+    "focus": "主要組織の発表だけに偏らない検索。対象時期、査読の有無、独立性を確かめ、被害後の回復・社会的依存・対策の研究も探す。",
+    "nodes": [
+      "A1",
+      "A2",
+      "A3",
+      "D1",
+      "D2",
+      "D3",
+      "H",
+      "T",
+      "X"
+    ]
+  }
+]

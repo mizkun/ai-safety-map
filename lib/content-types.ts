@@ -1,4 +1,11 @@
-export type Source = { title: string; date: string; url: string };
+export type Source = {
+  title: string;
+  date: string;
+  url: string;
+  published: string | null;
+  period: string;
+  checked: string;
+};
 export type Question = {
   q: string;
   a: string;
@@ -6,7 +13,21 @@ export type Question = {
   children?: Question[];
 };
 export type Evidence = { kind: string; src: string; text: string };
+export type Review = {
+  checkedAt: string;
+  intervalDays: number;
+  reason: string;
+};
+export type WatchSource = {
+  id: string;
+  name: string;
+  cadence: 'daily' | 'weekly';
+  urls: string[];
+  focus: string;
+  nodes: string[];
+};
 export type Node = {
+  review: Review;
   id: string;
   title: string;
   explanation: string;
@@ -17,8 +38,11 @@ export type Node = {
   related: { text: string; scene: string; node: string }[];
   subgraph?: string;
   terms?: string[];
+  watch?: string[];
 };
 export type Edge = {
+  review: Review;
+  basis: string;
   id: string;
   from: string;
   to: string;
@@ -40,6 +64,7 @@ export type Graph = {
   parent?: string;
 };
 export type Route = {
+  outcome?: 'E1';
   id: string;
   number: string;
   shortTitle: string;
@@ -75,6 +100,7 @@ export type GlossaryTerm = {
   sources: string[];
 };
 export type Content = {
+  watchlist: WatchSource[];
   asOf: string;
   routes: Route[];
   graphs: Record<string, Graph>;

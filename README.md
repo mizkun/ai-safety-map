@@ -6,6 +6,8 @@
 
 初版の資料確認日は **2026年9月9日** です。代表的な経路を整理したもので、網羅的な調査や専門家の合意を示すものではありません。実際の出来事、限定された実験、将来についての論証を区別します。世界規模の大災害、人類の主導権喪失、人類絶滅も別々の結果として扱います。
 
+3つの調査レポートを比較し、重要な主張を一次資料で確認して改訂しています。[照合と編集判断の記録](docs/research-review-2026-09-09.md)
+
 ## 使い方
 
 1. 全体像から、関心のある経路を開きます。
@@ -24,22 +26,30 @@
 
 変更理由は content/history.json とサイトの「更新履歴」に残します。すべての差分はGitの履歴で確認できます。研究の正確さは人がレビューし、データの参照切れとビルドはCIで検査します。
 
+## 最新情報を保つ
+
+項目と矢印に最終点検日・再確認の間隔を持たせ、サイトに「要再確認」を表示します。能力や行動は原則7日、経路の前提は30日、主に定義を扱う項目は90日が目安です。公表日・対象時期・点検日を分け、古い評価を現在の能力上限として扱いません。
+
+GitHub Actionsが毎日、期限を検査し、再確認Issueを一つにまとめます。Codex側には毎朝9時の一次資料調査を設定し、重要な変化を修正PRで提案する運用にしています。危険の増加・対策の改善・反論のすべてが対象です。詳細と稼働条件は[更新手順](docs/keeping-current.md)を参照してください。定期調査のCodex設定はforkに引き継がれません。
+
 ## データと公開
 
 マップの構造はJSON、解説本文はMarkdownです。データはGitHubで管理し、PRの差分としてレビューします。公開時に静的なWebサイトへ変換し、GitHub Pagesに配信します。閲覧にアカウントは不要です。
 
 FirestoreやFirebaseプロジェクトは不要です。将来、利用者ごとの非公開メモや同時編集が必要になった場合に、公開するマップとは分けてDBを検討できます。
 
-| 場所                         | 内容                           |
-| ---------------------------- | ------------------------------ |
-| content/map.json             | 経路、矢印、下位の条件への分解 |
-| content/nodes/               | 各段階の固定ID、証拠、関連項目 |
-| content/explanations/        | 初学者向けの解説本文           |
-| content/sources.json         | 出典と公表日・対象時期の表示   |
-| content/news.json            | ニュースを位置づける実例       |
-| content/glossary.json        | タップして読める専門用語の説明 |
-| content/history.json         | 変更内容と理由                 |
-| docs/deep-research-prompt.md | 内容を拡充するための調査依頼文 |
+| 場所                         | 内容                             |
+| ---------------------------- | -------------------------------- |
+| content/map.json             | 経路、矢印、下位の条件への分解   |
+| content/nodes/               | 各段階の固定ID、証拠、関連項目   |
+| content/explanations/        | 初学者向けの解説本文             |
+| content/sources.json         | 出典と公表日・対象時期の表示     |
+| content/news.json            | ニュースを位置づける実例         |
+| content/glossary.json        | タップして読める専門用語の説明   |
+| content/history.json         | 変更内容と理由                   |
+| content/watchlist.json       | 定期的に確認する調査先と関連項目 |
+| docs/reviews/                | 説明を変更・維持した点検の記録   |
+| docs/deep-research-prompt.md | 内容を拡充するための調査依頼文   |
 
 [データ構造の説明](docs/data-model.md)
 
@@ -59,7 +69,7 @@ npm run check
 npm run build
 ```
 
-React、TypeScript、vinext、Tailwind CSS、shadcnのコンポーネントを使用しています。GitHub Pages用の静的出力は dist/client/ です。mainへの変更でGitHub Actionsが検証・公開します。別名のリポジトリで公開する場合は next.config.ts のbasePath、サイトのリンクとメタデータ、package.json のhomepageを変更してください。
+React、TypeScript、vinext、Tailwind CSS、shadcnのコンポーネントを使用しています。GitHub Pages用の静的出力は dist/pages/ です。vinextの出力から公開URLの接頭辞に対応するフォルダを取り出して配置します。mainへの変更でGitHub Actionsが検証・公開します。別名のリポジトリで公開する場合は next.config.ts のbasePath、サイトのリンクとメタデータ、package.json のhomepageを変更してください。
 
 ## ライセンス
 

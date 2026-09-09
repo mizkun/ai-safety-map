@@ -1,5 +1,6 @@
 import fs from 'node:fs';
 import path from 'node:path';
+import { currentReviewDay, isCalendarDate } from '../lib/freshness.mjs';
 
 const root = path.resolve('content');
 const errors = [];
@@ -15,6 +16,7 @@ const sources = read('sources.json');
 const history = read('history.json');
 const news = read('news.json');
 const glossary = read('glossary.json');
+const watchlist = read('watchlist.json');
 const nodes = {};
 const nodeFiles = fs
   .readdirSync(path.join(root, 'nodes'))
@@ -33,12 +35,46 @@ const sourceRefs = (refs, label) => {
 };
 const date = (value, label) =>
   check(
-    /^\d{4}-\d{2}-\d{2}$/.test(value) && !Number.isNaN(Date.parse(value)),
+    typeof value === 'string' && isCalendarDate(value),
     label + ': expected YYYY-MM-DD',
   );
 date(map.asOf, 'map.asOf');
+check(map.asOf <= currentReviewDay(), 'map.asOf cannot be in the future');
+function review(value, label) {
+  if (!value) {
+    check(false, label + ': review is required');
+    return;
+  }
+  date(value.checkedAt, label + '.review.checkedAt');
+  check(value.checkedAt <= map.asOf, label + ': review is newer than map.asOf');
+  check(
+    Number.isInteger(value.intervalDays) &&
+      value.intervalDays >= 1 &&
+      value.intervalDays <= 90,
+    label + ': review interval must be 1–90 days',
+  );
+  required(value, ['reason'], label + ' review');
+}
 for (const [id, s] of Object.entries(sources)) {
-  required(s, ['title', 'date', 'url'], 'source ' + id);
+  required(s, ['title', 'date', 'url', 'period', 'checked'], 'source ' + id);
+  check(
+    s.published === null || /^\d{4}-\d{2}(-\d{2})?$/.test(s.published),
+    'source ' +
+      id +
+      ': publication date must preserve YYYY-MM or YYYY-MM-DD precision, or null',
+  );
+  date(s.checked, 'source ' + id + '.checked');
+  check(s.checked <= map.asOf, id + ': source check is newer than map.asOf');
+  if (s.published !== null) {
+    date(
+      s.published.length === 7 ? s.published + '-01' : s.published,
+      id + '.published',
+    );
+    check(
+      s.published <= s.checked,
+      id + ': publication cannot follow its source check',
+    );
+  }
   check(
     s.url.startsWith('https://'),
     'source ' + id + ': expected HTTPS source URL',
@@ -59,6 +95,7 @@ function questions(items, label) {
   }
 }
 for (const [id, n] of Object.entries(nodes)) {
+  review(n.review, id);
   required(n, ['id', 'title', 'explanation'], id);
   check(
     n.explanation === id + '.md',
@@ -131,10 +168,20 @@ for (const f of fs
   check(Boolean(nodes[f.slice(0, -3)]), f + ': explanation has no node');
 }
 for (const [id, e] of Object.entries(map.edges)) {
+  review(e.review, id);
   check(e.id === id, id + ': edge id mismatch');
   required(
     e,
-    ['id', 'from', 'to', 'label', 'explanation', 'limitation', 'safeguards'],
+    [
+      'id',
+      'from',
+      'to',
+      'label',
+      'explanation',
+      'limitation',
+      'safeguards',
+      'basis',
+    ],
     id,
   );
   check(
@@ -249,6 +296,29 @@ for (const [id, term] of Object.entries(glossary)) {
     );
     aliases.add(alias.toLowerCase());
   }
+}
+check(
+  Array.isArray(watchlist) && watchlist.length > 0,
+  'watchlist must not be empty',
+);
+check(
+  new Set(watchlist.map((w) => w.id)).size === watchlist.length,
+  'duplicate watchlist id',
+);
+for (const w of watchlist) {
+  required(w, ['id', 'name', 'focus'], 'watchlist');
+  check(
+    ['daily', 'weekly'].includes(w.cadence),
+    w.id + ': invalid watch cadence',
+  );
+  check(
+    Array.isArray(w.urls) &&
+      w.urls.length > 0 &&
+      w.urls.every((url) => url.startsWith('https://')),
+    w.id + ': HTTPS watch URLs required',
+  );
+  for (const id of w.nodes)
+    check(Boolean(nodes[id]), w.id + ': unknown watched node ' + id);
 }
 if (errors.length) {
   console.error(errors.join('\n'));

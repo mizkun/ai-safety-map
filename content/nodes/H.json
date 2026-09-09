@@ -27,9 +27,27 @@
       "text": "生存して回復できる分岐",
       "scene": "overview",
       "node": "E0"
+    },
+    {
+      "text": "文明崩壊とは、何を区別する？",
+      "scene": "control",
+      "node": "G1"
+    },
+    {
+      "text": "生存・回復を失う追加条件",
+      "scene": "control",
+      "node": "T"
     }
   ],
   "terms": [
     "existential"
-  ]
+  ],
+  "watch": [
+    "被害の規模と、復旧できる可能性を別々に評価しているか。"
+  ],
+  "review": {
+    "checkedAt": "2026-09-09",
+    "intervalDays": 30,
+    "reason": "経路を支える前提、反論、防壁の有効性に変化がないか確認するため。"
+  }
 }

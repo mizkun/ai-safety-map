@@ -1,0 +1,26 @@
+{
+  "id": "M2b2",
+  "title": "物理的な実行と、対策突破の条件がそろう",
+  "explanation": "M2b2.md",
+  "evidence": [
+    {
+      "kind": "将来の条件付きシナリオ",
+      "src": "report",
+      "text": "情報への支援と現実の実行を分けるための条件整理です。攻撃や兵器の実行手順を列挙するものではありません。"
+    }
+  ],
+  "sources": [
+    "report"
+  ],
+  "questions": [],
+  "related": [],
+  "terms": [
+    "uplift"
+  ],
+  "watch": [],
+  "review": {
+    "checkedAt": "2026-09-09",
+    "intervalDays": 30,
+    "reason": "経路を支える前提、反論、防壁の有効性に変化がないか確認するため。"
+  }
+}

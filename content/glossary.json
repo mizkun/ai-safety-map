@@ -226,5 +226,152 @@
     "sources": [
       "generalization"
     ]
+  },
+  "sandbox": {
+    "name": "サンドボックス",
+    "aliases": [
+      "サンドボックス",
+      "sandbox"
+    ],
+    "definition": "プログラムを動かせる範囲を区切り、周囲のシステムへの影響を制限する実行環境です。",
+    "limit": "隔離された環境でも、外部への接続をどれだけ許すかでリスクは変わります。許可した通信の悪用と、隔離の突破は別です。",
+    "sources": [
+      "aisi-incident"
+    ]
+  },
+  "resilience": {
+    "name": "レジリエンス",
+    "aliases": [
+      "レジリエンス",
+      "resilience"
+    ],
+    "definition": "被害を受けても機能を保ち、失った機能を回復する力です。",
+    "limit": "被害の予防と、被害後の生存・回復は別の対策です。どの種類の被害に耐えられるかを具体的に確かめます。",
+    "sources": [
+      "rand-extinction",
+      "summary"
+    ]
+  },
+  "gradual": {
+    "name": "漸進的な主導権喪失",
+    "aliases": [
+      "漸進的な主導権喪失",
+      "gradual disempowerment"
+    ],
+    "definition": "AIへの委任や社会構造の変化が重なり、人間が社会の重要な決定に影響を与える力を、徐々に失うというリスク仮説です。",
+    "limit": "急なAIの反乱を仮定する必要はありません。人間が制度を修正し、影響力を回復できる可能性も検討します。絶滅と同義ではありません。",
+    "sources": [
+      "gradual"
+    ]
+  },
+  "cascade": {
+    "name": "カスケード障害",
+    "aliases": [
+      "カスケード障害",
+      "カスケード"
+    ],
+    "definition": "一つの障害が、つながった別のシステムにも影響し、障害が次々に広がることです。",
+    "limit": "同時に起きた複数の失敗が、必ず相互に原因となっているとは限りません。共通の原因と、影響の連鎖を分けます。",
+    "sources": [
+      "framework"
+    ]
+  },
+  "cyber": {
+    "name": "サイバー能力",
+    "aliases": [
+      "サイバー能力"
+    ],
+    "definition": "コンピューターやネットワークに関する作業を実行する力です。ここでは、脆弱性の発見やセキュリティ評価など、危険性にも関係する能力を指します。",
+    "limit": "同じ能力が防御にも使われます。能力、悪用へのアクセス、行動傾向、実際の被害は別です。",
+    "sources": [
+      "astra"
+    ]
+  },
+  "critical": {
+    "name": "Critical／CCL（危険能力の基準）",
+    "aliases": [
+      "Critical",
+      "CCL",
+      "Critical Capability Level"
+    ],
+    "definition": "開発企業の安全枠組みで、強い安全対策などを求める際に使う、特定の能力の基準です。",
+    "limit": "OpenAIのCriticalとDeepMindのCCLは同じ尺度ではありません。企業、分野、枠組みの版を確認します。人類絶滅の確率や達成度を指す言葉ではありません。",
+    "sources": [
+      "astra",
+      "gemini-safety"
+    ]
+  },
+  "uplift": {
+    "name": "能力向上効果（uplift）",
+    "aliases": [
+      "uplift",
+      "能力向上効果"
+    ],
+    "definition": "AIを使わない場合と比べて、使う人の作業能力がどれほど変わるかという効果です。",
+    "limit": "比較する情報源、参加者の専門性、測る課題で結果は変わります。知識問題の点数と、現実の実行能力は区別します。",
+    "sources": [
+      "gemini-safety"
+    ]
+  },
+  "cbrn": {
+    "name": "CBRN",
+    "aliases": [
+      "CBRN"
+    ],
+    "definition": "化学（Chemical）・生物（Biological）・放射性物質（Radiological）・核（Nuclear）の4領域をまとめた略語です。",
+    "limit": "4領域をひとまとめにした呼び名です。生物だけの結果を、化学や核を含む全領域の能力と読み替えないでください。",
+    "sources": [
+      "gemini-safety"
+    ]
+  },
+  "defense-depth": {
+    "name": "多層防御",
+    "aliases": [
+      "多層防御",
+      "defence-in-depth"
+    ],
+    "definition": "一つの対策が失敗する可能性も考え、複数の防止・検知・対応の仕組みを重ねることです。",
+    "limit": "同じ原因で全ての対策が失敗するなら、数を増やすだけでは足りません。組み合わせたときの効果を確かめる必要があります。",
+    "sources": [
+      "control",
+      "framework"
+    ]
+  },
+  "scheming": {
+    "name": "策略（scheming）",
+    "aliases": [
+      "scheming",
+      "策略"
+    ],
+    "definition": "AIが意図に反する目標を追い、そのために目的や行動を隠すような振る舞いを指します。",
+    "limit": "実験で目標を与えたときにできることと、通常運用で自発的・持続的に行うことは別です。単なる間違いを全て策略と呼ぶわけではありません。",
+    "sources": [
+      "scheming"
+    ]
+  },
+  "ai-rd": {
+    "name": "AIによる研究開発",
+    "aliases": [
+      "AI R&D"
+    ],
+    "definition": "AIが、次のAIを作る研究や開発の一部を支援・自動化することです。",
+    "limit": "一つの作業、研究プロジェクト全体、開発全体の速さ、次世代へ続く自己改善を区別します。人間の介入がどの程度あるかも重要です。",
+    "sources": [
+      "openai-rd",
+      "discovery"
+    ]
+  },
+  "formalization": {
+    "name": "証明の形式化",
+    "aliases": [
+      "証明の形式化",
+      "形式化",
+      "Lean"
+    ],
+    "definition": "人間が読む数学の証明を、コンピューターが論理の一歩ずつを検査できる形で書き直すことです。Leanは、そのための言語・証明支援システムの一つです。",
+    "limit": "既存の証明を形式化することと、未知の定理を発見することは別です。検査する定理の書き方や前提も重要で、この成功だけで現実のAIシステム全体の安全性を保証できるわけではありません。",
+    "sources": [
+      "formalization"
+    ]
   }
 }

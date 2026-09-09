@@ -14,5 +14,13 @@
   ],
   "questions": [],
   "related": [],
-  "terms": []
+  "terms": [],
+  "watch": [
+    "危機の判断を覆せる時間と権限が実際に残っているか。"
+  ],
+  "review": {
+    "checkedAt": "2026-09-09",
+    "intervalDays": 30,
+    "reason": "経路を支える前提、反論、防壁の有効性に変化がないか確認するため。"
+  }
 }

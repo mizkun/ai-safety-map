@@ -7,15 +7,27 @@
       "kind": "条件・仕組みの検討",
       "src": "summer",
       "text": "模擬環境で、監督に使う判定を歪める挙動が報告されています。監督全体の失敗を実証したわけではありません。"
+    },
+    {
+      "kind": "目標と環境を与えた実験",
+      "src": "scheming",
+      "text": "Apolloの研究は、特定の目標と環境を与えると、複数モデルが意図を隠す策略を実行できることを示しました。通常運用で同じ傾向がどれほど生じるかは別の問いです。"
     }
   ],
   "sources": [
-    "summer"
+    "summer",
+    "scheming"
   ],
   "questions": [],
   "related": [],
   "subgraph": "evaluation",
   "terms": [
-    "benchmark"
-  ]
+    "benchmark",
+    "scheming"
+  ],
+  "review": {
+    "checkedAt": "2026-09-09",
+    "intervalDays": 7,
+    "reason": "能力・行動・対策の評価は短期間で変わり得るため。"
+  }
 }

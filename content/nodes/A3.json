@@ -1,0 +1,27 @@
+{
+  "id": "A3",
+  "title": "復旧する仕組みまで、連鎖に巻き込まれる",
+  "explanation": "A3.md",
+  "evidence": [
+    {
+      "kind": "将来の条件付きシナリオ",
+      "src": "framework",
+      "text": "復旧能力への影響を追加条件として明示した編集上の整理です。"
+    }
+  ],
+  "sources": [
+    "framework"
+  ],
+  "questions": [],
+  "related": [],
+  "terms": [
+    "resilience",
+    "cascade"
+  ],
+  "watch": [],
+  "review": {
+    "checkedAt": "2026-09-09",
+    "intervalDays": 30,
+    "reason": "経路を支える前提、反論、防壁の有効性に変化がないか確認するため。"
+  }
+}

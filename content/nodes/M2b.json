@@ -1,0 +1,29 @@
+{
+  "id": "M2b",
+  "title": "生物学の知識が、現実の危害につながる",
+  "explanation": "M2b.md",
+  "evidence": [
+    {
+      "kind": "対象モデルの能力評価・限界",
+      "src": "gemini-safety",
+      "text": "Gemini 3.7 Flashの開発者評価は、専門家の誘導が必要な部分や平均的な支援効果の限界を踏まえ、自社のCBRNのCCLには未到達としました。対象モデル・条件を限った評価です。"
+    }
+  ],
+  "sources": [
+    "gemini-safety"
+  ],
+  "questions": [],
+  "related": [],
+  "terms": [
+    "uplift",
+    "cbrn",
+    "critical"
+  ],
+  "watch": [],
+  "subgraph": "bio-conditions",
+  "review": {
+    "checkedAt": "2026-09-09",
+    "intervalDays": 7,
+    "reason": "能力・行動・対策の評価は短期間で変わり得るため。"
+  }
+}

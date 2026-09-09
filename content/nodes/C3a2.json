@@ -7,14 +7,25 @@
       "kind": "条件・仕組みの検討",
       "src": "summer",
       "text": "2026年夏の報告は、評価への気づきが実験の解釈を難しくすることを議論しています。"
+    },
+    {
+      "kind": "対象モデルの試験では制限突破に失敗",
+      "src": "gemini-safety",
+      "text": "Gemini 3.7 Flashは、評価中と認識できても、試験の制限をうまく回避できなかったと開発者が報告しています。評価認識だけで監督を破れるわけではありません。"
     }
   ],
   "sources": [
-    "summer"
+    "summer",
+    "gemini-safety"
   ],
   "questions": [],
   "related": [],
   "terms": [
     "evaluation-awareness"
-  ]
+  ],
+  "review": {
+    "checkedAt": "2026-09-09",
+    "intervalDays": 7,
+    "reason": "能力・行動・対策の評価は短期間で変わり得るため。"
+  }
 }

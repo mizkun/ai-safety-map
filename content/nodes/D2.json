@@ -1,0 +1,28 @@
+{
+  "id": "D2",
+  "title": "人間が、代わりに運営する力を失う",
+  "explanation": "D2.md",
+  "evidence": [
+    {
+      "kind": "将来の条件付きシナリオ",
+      "src": "gradual",
+      "text": "論文の問題提起を、委任と代替能力の喪失に分けた項目です。不可逆となる具体的な境界は未解決です。"
+    }
+  ],
+  "sources": [
+    "gradual"
+  ],
+  "questions": [],
+  "related": [],
+  "terms": [
+    "gradual"
+  ],
+  "watch": [
+    "重要業務をAIなし、または別の仕組みで復旧できるか。"
+  ],
+  "review": {
+    "checkedAt": "2026-09-09",
+    "intervalDays": 30,
+    "reason": "経路を支える前提、反論、防壁の有効性に変化がないか確認するため。"
+  }
+}

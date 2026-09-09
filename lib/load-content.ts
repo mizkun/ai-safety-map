@@ -43,5 +43,6 @@ export function loadContent(): Content {
     history: read('history.json'),
     news: read('news.json'),
     glossary: read('glossary.json'),
+    watchlist: read('watchlist.json'),
   };
 }

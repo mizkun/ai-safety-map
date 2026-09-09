@@ -25,5 +25,14 @@
   "related": [],
   "terms": [
     "benchmark"
-  ]
+  ],
+  "subgraph": "misuse-mechanisms",
+  "watch": [
+    "AIあり・なしの比較で、どの実行上の壁が変わったか。"
+  ],
+  "review": {
+    "checkedAt": "2026-09-09",
+    "intervalDays": 7,
+    "reason": "能力・行動・対策の評価は短期間で変わり得るため。"
+  }
 }

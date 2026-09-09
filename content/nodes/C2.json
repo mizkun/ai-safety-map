@@ -7,11 +7,17 @@
       "kind": "リスクの整理",
       "src": "report",
       "text": "2026年報告書は、能力や行動の傾向に加え、配備先の重要性・アクセス・権限を制御喪失に関わる要因として挙げています。"
+    },
+    {
+      "kind": "長期の協調作業の事例・開発元報告",
+      "src": "formalization",
+      "text": "Anthropicは9月4日、複数のAIが11日間の取り組みでフェルマーの最終定理の証明を形式化したと報告しました。既存の証明、人間による一部の指示、専用の協働環境を用いた結果です。一般的な仕事を同じ期間、無介入で成功できるとは限りません。"
     }
   ],
   "sources": [
     "control",
-    "report"
+    "report",
+    "formalization"
   ],
   "questions": [
     {
@@ -28,6 +34,15 @@
   "subgraph": "ability-access",
   "terms": [
     "agent",
-    "horizon"
-  ]
+    "horizon",
+    "formalization"
+  ],
+  "watch": [
+    "課題の長さだけでなく、成功率と人の介入がどう変わるか。"
+  ],
+  "review": {
+    "checkedAt": "2026-09-09",
+    "intervalDays": 7,
+    "reason": "能力・行動・対策の評価は短期間で変わり得るため。"
+  }
 }

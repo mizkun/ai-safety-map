@@ -1,0 +1,27 @@
+{
+  "id": "M2c1",
+  "title": "現実に近い条件でも、作業を遂行できる",
+  "explanation": "M2c1.md",
+  "evidence": [
+    {
+      "kind": "条件を限定した能力評価",
+      "src": "astra",
+      "text": "Astraの報告はサイバー能力の伸びを示す一方、提示する結果の設定が通常提供と異なることを明記しています。"
+    }
+  ],
+  "sources": [
+    "astra"
+  ],
+  "questions": [],
+  "related": [],
+  "terms": [
+    "benchmark",
+    "cyber"
+  ],
+  "watch": [],
+  "review": {
+    "checkedAt": "2026-09-09",
+    "intervalDays": 7,
+    "reason": "能力・行動・対策の評価は短期間で変わり得るため。"
+  }
+}

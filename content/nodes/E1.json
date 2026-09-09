@@ -13,8 +13,19 @@
     "power"
   ],
   "questions": [],
-  "related": [],
+  "related": [
+    {
+      "text": "社会的な依存からの経路を見る",
+      "scene": "dependence",
+      "node": "D1"
+    }
+  ],
   "terms": [
     "existential"
-  ]
+  ],
+  "review": {
+    "checkedAt": "2026-09-09",
+    "intervalDays": 30,
+    "reason": "経路を支える前提、反論、防壁の有効性に変化がないか確認するため。"
+  }
 }

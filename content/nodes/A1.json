@@ -1,0 +1,26 @@
+{
+  "id": "A1",
+  "title": "多くの重要な仕組みが、同じAIや情報に依存する",
+  "explanation": "A1.md",
+  "evidence": [
+    {
+      "kind": "構造的な脅威モデル",
+      "src": "framework",
+      "text": "技術的AGI安全の枠組みが扱うミスと構造的リスクをもとに、共有と依存の条件を分けた仮説です。"
+    }
+  ],
+  "sources": [
+    "framework"
+  ],
+  "questions": [],
+  "related": [],
+  "terms": [],
+  "watch": [
+    "共通の原因による失敗が、複数組織で同時に起きたか。"
+  ],
+  "review": {
+    "checkedAt": "2026-09-09",
+    "intervalDays": 30,
+    "reason": "経路を支える前提、反論、防壁の有効性に変化がないか確認するため。"
+  }
+}
