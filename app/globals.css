@@ -1124,11 +1124,6 @@ a:focus-visible {
 .map-scope .MuiToggleButton-root.Mui-selected { background: #8271a81a; color: #5a477d; }
 .scope-count { font-size: 12px; color: #7a7589; }
 .tree-viewport.with-scope { top: 149px; }
-.route-shortcuts.MuiPaper-root {
-  position: absolute; left: 26px; top: 86px; z-index: 4; max-width: calc(100% - 360px);
-  display: flex; overflow-x: auto; scrollbar-width: none; padding: 4px 8px; border-radius: 16px;
-}
-.route-shortcuts .MuiButton-root { flex-shrink: 0; font-size: 13px; padding: 7px 11px; min-width: auto; }
 .parallel-guide p { font-size: 16px; line-height: 1.9; }
 .parallel-guide strong { display: block; margin: 8px 0; color: #6f5d92; }
 .edge-joint-label { font-size: 14px; font-weight: 600; color: #7963aa; }
@@ -1143,9 +1138,7 @@ a:focus-visible {
   .map-scope.MuiPaper-root { top: 116px; left: 14px; right: auto; height: 44px; gap: 5px; }
   .map-scope .MuiToggleButton-root { padding: 5px 10px; }
   .map-scope .MuiIconButton-root { width: 32px; height: 34px; }
-  .tree-viewport.with-scope { top: 215px; }
-  .route-shortcuts.MuiPaper-root { top: 167px; left: 14px; max-width: calc(100% - 28px); padding: 0 5px; }
-  .route-shortcuts .MuiButton-root { font-size: 12px; min-height: 37px; }
+  .tree-viewport.with-scope { top: 170px; }
   .tile-topic.MuiButtonBase-root { min-height: 28px; }
 }
 

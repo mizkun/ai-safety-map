@@ -143,15 +143,6 @@ export default function TreeMap({
       }
     });
   }
-  function focusRoute(id: string) {
-    const tile = layout.tiles.find((t) => t.graph === id);
-    if (!tile) return;
-    const next = Math.min(1, Math.max(0.85, (size.width - 60) / (['control', 'work', 'money'].includes(id) ? 1200 : 460)));
-    setManualZoom({ context: scaleContext, value: next });
-    requestAnimationFrame(() => {
-      viewport.current?.scrollTo({ left: Math.max(0, (tile.x - 25) * next), top: Math.max(0, (tile.y - 25) * next), behavior: 'smooth' });
-    });
-  }
   const graph = data.graphs[view];
   const parentTile = layout.tiles.find((t) => t.key === 'parent');
   return (
@@ -373,9 +364,6 @@ export default function TreeMap({
         </ToggleButtonGroup>
         <span className="scope-count">{nodeCount} {m.elements}</span>
         <Tooltip title={m.parallelGuide}><IconButton aria-label={m.parallelGuide} onClick={() => setShowGuide(true)}><Info size={18} /></IconButton></Tooltip>
-      </Paper>}
-      {view === 'overview' && expanded && <Paper className="route-shortcuts glass" elevation={0} component="nav" aria-label={m.focusRoute}>
-        {data.routes.map((route) => <Button key={route.id} onClick={() => focusRoute(route.id)}>{route.shortTitle}</Button>)}
       </Paper>}
       <div className="map-controls">
         <Paper className="zoom-controls glass" elevation={0}>
