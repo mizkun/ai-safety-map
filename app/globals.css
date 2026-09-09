@@ -129,6 +129,7 @@ a:focus-visible {
   color: #66677c;
 }
 .tree-viewport {
+  touch-action: none;
   position: absolute;
   inset: 87px 0 87px;
   overflow: auto;
@@ -150,8 +151,7 @@ a:focus-visible {
 }
 .tree-wires {
   position: absolute;
-  inset: 0;
-  overflow: visible;
+  overflow: hidden;
   pointer-events: none;
 }
 .MuiPaper-root.tree-tile {
@@ -471,18 +471,26 @@ a:focus-visible {
 .MuiButtonBase-root.term-inline:hover {
   background: rgba(168, 154, 206, 0.12);
 }
-.MuiPaper-root.detail-drawer {
-  width: min(560px, 100vw);
-  max-height: 100dvh;
-  background: rgba(246, 249, 253, 0.94);
-  backdrop-filter: blur(32px) saturate(140%);
-  -webkit-backdrop-filter: blur(32px) saturate(140%);
-  border-left: 1px solid rgba(255, 255, 255, 0.9);
-  box-shadow: -18px 0 90px rgba(57, 66, 98, 0.12);
+.detail-dialog .MuiDialog-paper {
+  width: min(760px, calc(100% - 48px));
+  height: min(780px, calc(100dvh - 64px));
+  max-height: calc(100dvh - 64px);
+  margin: 24px;
+  background: rgba(249, 251, 255, 0.97);
   overflow: hidden;
 }
+.detail-tabs { flex-shrink: 0; padding: 0 28px; border-bottom: 1px solid #777d961a; }
+.detail-tabs .MuiTab-root { min-height: 48px; min-width: 0; padding: 12px 8px; font-size: 14px; }
+.detail-dialog .detail-scroll { padding: 26px 32px 32px; }
+.detail-dialog .detail-scroll > [role="tabpanel"]:focus-visible { outline: 2px solid #9281b2; outline-offset: 4px; }
+.detail-dialog .detail-section:first-child { margin-top: 0; }
+.detail-dialog .detail-section:last-child { margin-bottom: 0; }
+.detail-dialog .lead-copy { font-size: 17px; line-height: 1.9; margin-bottom: 28px; }
+.review-alert.MuiButton-root { padding: 3px 0; margin-top: 10px; color: #91632f; font-size: 12px; }
+.evidence-kind { font-size: 12px; color: #796a92; font-weight: 600; }
+.evidence-basis { font-size: 14px; line-height: 1.9; }
 .detail-header {
-  padding: 19px 28px 23px;
+  padding: 18px 32px 22px;
   flex-shrink: 0;
   border-bottom: 1px solid rgba(116, 124, 151, 0.13);
 }
@@ -490,7 +498,7 @@ a:focus-visible {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 12px;
+  margin-bottom: 4px;
   gap: 15px;
 }
 .detail-meta > span {
@@ -504,15 +512,9 @@ a:focus-visible {
   line-height: 1.6;
   color: #34374e;
 }
-.detail-subtitle {
-  font-size: 11px;
-  color: #878a9d;
-  line-height: 1.8;
-  margin-top: 10px;
-}
 .parent-link.MuiButton-root {
-  font-size: 10px;
-  padding: 0 0 9px;
+  font-size: 13px;
+  padding: 8px 0;
 }
 .detail-scroll {
   flex: 1;
@@ -693,34 +695,13 @@ a:focus-visible {
   text-align: left;
   justify-content: space-between;
 }
-.source-accordion .MuiAccordionSummary-root {
-  font-size: 12px;
-  padding: 0;
-  color: #848499;
-}
-.source-accordion .MuiAccordionDetails-root {
-  padding: 0;
-}
 .contribute-block {
-  display: flex;
-  gap: 13px;
-  padding: 20px 0;
-  border-top: 1px solid rgba(133, 140, 164, 0.15);
-  margin-top: 27px;
-  color: #8d91a3;
-}
-.contribute-block > svg {
-  flex-shrink: 0;
-  margin-top: 3px;
+  display: flex; flex-wrap: wrap; gap: 10px 24px; padding-top: 22px;
+  border-top: 1px solid #858ca426; margin-top: 30px;
 }
 .contribute-block .MuiLink-root {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  font-size: 10px;
-  margin-bottom: 10px;
-  text-decoration: none;
-  color: #8b83a0;
+  display: inline-flex; align-items: center; gap: 5px; font-size: 12px;
+  min-height: 32px; text-decoration: none; color: #786790;
 }
 .step-navigation {
   flex-shrink: 0;
@@ -740,27 +721,17 @@ a:focus-visible {
   font-size: 12px;
   padding: 7px 12px;
 }
-.detail-footer {
-  flex-shrink: 0;
-  text-align: center;
-  font-size: 9px;
-  color: #a5a7b4;
-  padding: 0 15px max(10px, env(safe-area-inset-bottom));
-  background: rgba(252, 253, 255, 0.83);
-}
 .edge-context {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 12px 10px;
-  background: rgba(225, 229, 242, 0.4);
-  border-radius: 18px;
-  margin: 20px 0 26px;
-  color: #9c92af;
+  display: grid; grid-template-columns: minmax(0, 1fr) 24px minmax(0, 1fr);
+  align-items: center; gap: 16px; margin: 0 0 26px; padding-bottom: 22px;
+  border-bottom: 1px solid #858ca426; color: #8b7ca2;
 }
 .edge-context .MuiButton-root {
-  font-size: 12px;
+  font-size: 13px; line-height: 1.7; text-align: left; justify-content: flex-start;
+  padding: 8px 10px; border-radius: 10px; min-width: 0;
 }
+.edge-inputs { display: grid; gap: 4px; }
+.edge-joint-label { font-size: 12px; color: #7963aa; padding-left: 10px; }
 .term-content {
   padding: 6px 2px 20px;
 }
@@ -972,10 +943,15 @@ a:focus-visible {
   .choose-route .MuiButton-startIcon {
     margin-right: 5px;
   }
-  .MuiPaper-root.detail-drawer {
-    width: 100vw;
-    background: rgba(246, 249, 253, 0.97);
+  .detail-dialog .MuiDialog-paper {
+    width: calc(100% - 24px); margin: 12px; border-radius: 22px;
+    height: min(780px, calc(100dvh - 24px)); max-height: calc(100dvh - 24px);
   }
+  .detail-dialog .detail-scroll { padding: 22px 22px 28px; }
+  .detail-tabs { padding: 0 12px; }
+  .detail-tabs .MuiTab-root { font-size: 13px; }
+  .detail-dialog .edge-context { grid-template-columns: 1fr; gap: 6px; }
+  .edge-direction { transform: rotate(90deg); margin: 0 auto; }
   .detail-header {
     padding: 13px 21px 20px;
   }
@@ -990,9 +966,6 @@ a:focus-visible {
   }
   .lead-copy {
     font-size: 16px;
-  }
-  .detail-subtitle {
-    font-size: 10px;
   }
   .detail-section {
     font-size: 14px;
@@ -1061,6 +1034,7 @@ a:focus-visible {
   .MuiPaper-root.tree-tile {
     background: #f8f9fc;
     backdrop-filter: none;
+    -webkit-backdrop-filter: none;
   }
 }
 @media (prefers-reduced-motion: reduce) {
@@ -1126,11 +1100,8 @@ a:focus-visible {
 .tree-viewport.with-scope { top: 149px; }
 .parallel-guide p { font-size: 16px; line-height: 1.9; }
 .parallel-guide strong { display: block; margin: 8px 0; color: #6f5d92; }
-.edge-joint-label { font-size: 14px; font-weight: 600; color: #7963aa; }
-.edge-inputs { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin: 10px 0; }
-.edge-inputs .MuiButton-root { border: 1px solid #c8bed7; border-radius: 12px; padding: 10px; flex: 1 1 130px; }
-.network-navigation { flex-shrink: 0; max-height: 180px; overflow: auto; display: grid; padding: 8px 17px; border-top: 1px solid #d9d8e5; }
-.network-navigation .MuiButton-root { font-size: 13px; text-align: left; justify-content: space-between; }
+.network-navigation { display: grid; gap: 4px; }
+.network-navigation .MuiButton-root { font-size: 13px; text-align: left; justify-content: space-between; padding: 10px 0; border-radius: 8px; }
 @media (max-width: 1100px) and (min-width: 761px) {
   .breadcrumb-bar { max-width: calc(100% - 390px) !important; }
 }

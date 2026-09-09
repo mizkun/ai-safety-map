@@ -6,7 +6,36 @@ import {
   translationFields,
 } from '../lib/translation-fields.mjs';
 import { treeLayout, wireGeometry, joinGeometry, forkGeometry } from '../lib/tree-layout.ts';
+import { clampZoom, zoomAnchor, scrollAtAnchor } from '../lib/map-gestures.mjs';
+import { mapWindow, intersectsWindow } from '../lib/map-window.mjs';
 const content = readCanonicalContent();
+
+test('pinch zoom preserves the point under the fingers, including centered maps', () => {
+  for (const initial of [0.02, 0.8]) {
+    const point = { x: 195, y: 300 }, scroll = { left: 120, top: 250 };
+    const anchor = zoomAnchor(point, scroll, initial, 390, 5000);
+    const next = clampZoom(initial * 2);
+    const moved = scrollAtAnchor(anchor, point, next, 390, 5000);
+    const result = zoomAnchor(point, moved, next, 390, 5000);
+    assert.ok(Math.abs(result.x - anchor.x) < 1e-6);
+    assert.ok(Math.abs(result.y - anchor.y) < 1e-6);
+  }
+  assert.equal(clampZoom(0), 0.02);
+  assert.equal(clampZoom(9), 1.6);
+});
+
+test('mobile rendering omits distant cards while fit-to-view includes every card', () => {
+  const layout = treeLayout(content, 'overview', true);
+  const present = layout.tiles.find((t) => t.node === 'NOW');
+  const viewport = { left: 0, top: Math.max(0, (present.y + present.height / 2) * 0.94 - 300), width: 390, height: 600 };
+  const window = mapWindow(viewport, 0.94, layout.width, layout.height);
+  const visible = layout.tiles.filter((t) => intersectsWindow(t, window));
+  assert.ok(visible.includes(present));
+  assert.ok(visible.length < layout.tiles.length / 3);
+  const fit = Math.min((viewport.width - 40) / layout.width, (viewport.height - 40) / layout.height);
+  const fullWindow = mapWindow({ ...viewport, top: 0 }, fit, layout.width, layout.height);
+  assert.ok(layout.tiles.every((t) => intersectsWindow(t, fullWindow)));
+});
 
 test('translations change prose while preserving the causal graph and references', () => {
   const fields = translationFields(content);

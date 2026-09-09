@@ -12,7 +12,6 @@ import {
   Dialog,
   DialogContent,
   DialogTitle,
-  Drawer,
   IconButton,
   Link,
   Menu,
@@ -24,16 +23,13 @@ import {
   Typography,
 } from '@mui/material';
 import {
-  ArrowDown,
   ArrowLeft,
   ArrowRight,
   ArrowUpRight,
-  BookOpen,
   Check,
   ChevronDown,
   Clock3,
   GitBranch,
-  GitPullRequest,
   Globe2,
   Info,
   Layers3,
@@ -58,6 +54,8 @@ const panels: Panel[] = [
   'freshness',
   'sources',
 ];
+const detailTabs = ['summary', 'evidence', 'more'] as const;
+type DetailTab = (typeof detailTabs)[number];
 
 export default function MapClient({ site }: { site: SiteContent }) {
   const [locale, setLocale] = useState<Locale>('ja');
@@ -66,6 +64,9 @@ export default function MapClient({ site }: { site: SiteContent }) {
   const [view, setView] = useState('overview');
   const [selected, setSelected] = useState<string | null>(null);
   const [mode, setMode] = useState<'node' | 'edge'>('node');
+  const [detailReading, setDetailReading] = useState<{ key: string; tab: DetailTab } | null>(null);
+  const detailKey = mode + ':' + selected;
+  const detailTab = detailReading?.key === detailKey ? detailReading.tab : 'summary';
   const [panel, setPanel] = useState<Panel | null>(null);
   const [termId, setTermId] = useState<string | null>(null);
   const [routePicker, setRoutePicker] = useState(false);
@@ -85,6 +86,7 @@ export default function MapClient({ site }: { site: SiteContent }) {
   }, [locale]);
   useEffect(() => {
     const read = () => {
+      setDetailReading(null);
       const q = new URLSearchParams(location.hash.slice(1));
       const requested = q.get('lang');
       const language = requested === 'en' && site.content.en ? 'en' : 'ja';
@@ -123,6 +125,7 @@ export default function MapClient({ site }: { site: SiteContent }) {
     setPanel(isPanel && !id ? (map as Panel) : null);
     setSelected(id || null);
     setMode(nextMode);
+    setDetailReading(null);
     setMenuAnchor(null);
     const q = new URLSearchParams({
       lang: locale,
@@ -213,10 +216,8 @@ export default function MapClient({ site }: { site: SiteContent }) {
           <span>
             {m.lastReview} {review.checkedAt} · {m.nextReview} {r.dueAt}
           </span>
-          <Tooltip title={review.reason}>
-            <Info size={14} />
-          </Tooltip>
         </div>
+        <p>{review.reason}</p>
         {r.state === 'due' && (
           <p>
             <strong>{m.due} · </strong>
@@ -274,187 +275,73 @@ export default function MapClient({ site }: { site: SiteContent }) {
       </section>
     );
   }
-  function nodeBody() {
-    if (!node) return null;
-    return (
-      <>
-        {reviewNote(node.review)}
-        <p className="lead-copy">{richText(node.body['ひとことで'])}</p>
-        {!!(node.terms?.length || node.topics?.length) && (
-          <div className="chip-links">
-            {[...new Set([...(node.topics || []), ...(node.terms || [])])].map((id) => (
-              <Chip
-                key={id}
-                size="small"
-                icon={<BookOpen size={13} />}
-                label={data.glossary[id].name}
-                onClick={() => setTermId(id)}
-              />
-            ))}
-          </div>
-        )}
-        {node.body['たとえば'] && (
-          <div className="example-block">
-            <span>{m.example}</span>
-            <p>{richText(node.body['たとえば'])}</p>
-          </div>
-        )}
-        {node.subgraph && (
-          <Button
-            className="explore-button"
-            fullWidth
-            variant="outlined"
-            startIcon={<Layers3 size={18} />}
-            endIcon={<ArrowRight size={17} />}
-            onClick={() =>
-              navigate(node.subgraph!, data.graphs[node.subgraph!].nodes[0])
-            }
-          >
-            {m.explore}
-          </Button>
-        )}
-        {detailSection(
-          m.whyNext,
-          <p>{richText(node.body['次へ進むには'])}</p>,
-          <ArrowRight size={17} />,
-        )}
-        {detailSection(
-          m.evidence,
-          <>
-            {node.evidence.map((e, i) => (
-              <article className="evidence-block" key={i}>
-                <Chip size="small" label={e.kind} />
-                <p>{richText(e.text)}</p>
-                {source(e.src)}
-              </article>
-            ))}
-          </>,
-          <BookOpen size={17} />,
-        )}
-        {detailSection(
-          m.uncertainty,
-          <p>{richText(node.body['残る壁と不確実性'])}</p>,
-          undefined,
-          'limit-block',
-        )}
-        {detailSection(
-          m.safeguards,
-          <p>{richText(node.body['進行を止めるには'])}</p>,
-          <ShieldCheck size={17} />,
-        )}
-        {!!node.watch?.length &&
-          detailSection(
-            m.watch,
-            <ul>
-              {node.watch.map((w) => (
-                <li key={w}>{richText(w)}</li>
-              ))}
-            </ul>,
-          )}
-        {!!node.questions.length &&
-          detailSection(m.more, questions(node.questions, node.id))}
-        {!!node.related.length && (
-          <div className="link-stack">
-            {node.related.map((l) => (
-              <Button
-                key={l.text}
-                onClick={() => openNode(l.node, l.scene)}
-                endIcon={<ArrowRight size={16} />}
-              >
-                {l.text}
-              </Button>
-            ))}
-          </div>
-        )}
-        <Accordion disableGutters className="source-accordion">
-          <AccordionSummary expandIcon={<ChevronDown size={18} />}>
-            {m.nodeSources}
-          </AccordionSummary>
-          <AccordionDetails>
-            {[
-              ...new Set([...node.sources, ...node.evidence.map((e) => e.src)]),
-            ].map((id) => (
-              <div key={id}>{source(id)}</div>
-            ))}
-          </AccordionDetails>
-        </Accordion>
-      </>
-    );
-  }
-  function edgeBody() {
+  function summaryBody() {
+    if (node) return <>
+      <p className="lead-copy">{richText(node.body['ひとことで'])}</p>
+      {detailSection(m.whyNext, <p>{richText(node.body['次へ進むには'])}</p>)}
+      {detailSection(m.uncertainty, <p>{richText(node.body['残る壁と不確実性'])}</p>, undefined, 'limit-block')}
+      {node.subgraph && <Button className="explore-button" fullWidth variant="outlined" startIcon={<Layers3 size={18} />} endIcon={<ArrowRight size={17} />}
+        onClick={() => navigate(node.subgraph!, data.graphs[node.subgraph!].nodes[0])}>{m.explore}</Button>}
+    </>;
     if (!edge) return null;
-    return (
-      <>
-        {reviewNote(edge.review)}
-        <div className="edge-context">
-          {edge.requires ? <>
-            <span className="edge-joint-label">AND · {m.joint}</span>
-            <div className="edge-inputs">{edge.requires.map((id) => <Button key={id} onClick={() => openNode(id)}>{data.nodes[id].title}</Button>)}</div>
-          </> : <Button onClick={() => openNode(edge.from)}>{data.nodes[edge.from].title}</Button>}
-          <ArrowDown size={18} />
-          <Button onClick={() => openNode(edge.to)}>
-            {data.nodes[edge.to].title}
-          </Button>
+    return <>
+      <p className="lead-copy">{richText(edge.explanation)}</p>
+      <div className="edge-context">
+        <div className="edge-inputs">
+          {edge.requires && <span className="edge-joint-label">AND · {m.joint}</span>}
+          {(edge.requires || [edge.from]).map((id) => <Button key={id} onClick={() => openNode(id)}>{data.nodes[id].title}</Button>)}
         </div>
-        <Chip size="small" label={edge.basis} />
-        <p className="lead-copy">{richText(edge.explanation)}</p>
-        {detailSection(
-          m.additionalConditions,
-          <ul>
-            {edge.conditions.map((c) => (
-              <li key={c}>{richText(c)}</li>
-            ))}
-          </ul>,
-        )}
-        {detailSection(
-          m.limitations,
-          <p>{richText(edge.limitation)}</p>,
-          undefined,
-          'limit-block',
-        )}
-        {detailSection(
-          m.safeguards,
-          <p>{richText(edge.safeguards)}</p>,
-          <ShieldCheck size={17} />,
-        )}
-        <div className="source-list">
-          {edge.sources.map((id) => (
-            <div key={id}>{source(id)}</div>
-          ))}
-        </div>
-      </>
-    );
+        <ArrowRight className="edge-direction" size={20} aria-hidden="true" />
+        <Button onClick={() => openNode(edge.to)}>{data.nodes[edge.to].title}</Button>
+      </div>
+      {detailSection(m.additionalConditions, <ul>{edge.conditions.map((c) => <li key={c}>{richText(c)}</li>)}</ul>)}
+      {detailSection(m.limitations, <p>{richText(edge.limitation)}</p>, undefined, 'limit-block')}
+    </>;
+  }
+  function evidenceBody() {
+    const item = node || edge;
+    if (!item) return null;
+    const cited = new Set(node?.evidence.map((e) => e.src));
+    const extraSources = item.sources.filter((id) => !cited.has(id));
+    return <>
+      {reviewNote(item.review)}
+      {node && detailSection(m.evidence, node.evidence.map((e, i) => <article className="evidence-block" key={i}>
+        <span className="evidence-kind">{e.kind}</span>
+        <p>{richText(e.text)}</p>
+        {source(e.src)}
+      </article>))}
+      {edge && <p className="evidence-basis">{richText(edge.basis)}</p>}
+      {!!extraSources.length && detailSection(m.sources, <div className="source-list">{extraSources.map((id) => <div key={id}>{source(id)}</div>)}</div>)}
+      <div className="contribute-block">
+        <Link href={REPO + '/issues/new?template=correction.yml&title=' + encodeURIComponent('[' + selected + '] ' + (node?.title || edge?.label || ''))} target="_blank" rel="noreferrer">{m.reportIssue}<ArrowUpRight size={13} /></Link>
+        <Link href={REPO + '/blob/main/CONTRIBUTING.md'} target="_blank" rel="noreferrer">{m.propose}<ArrowUpRight size={13} /></Link>
+      </div>
+    </>;
+  }
+  function moreBody() {
+    if (edge) return detailSection(m.safeguards, <p>{richText(edge.safeguards)}</p>, <ShieldCheck size={17} />);
+    if (!node) return null;
+    const terms = [...new Set([...(node.topics || []), ...(node.terms || [])])];
+    const candidates = graph?.edges || Object.keys(data.edges).filter((id) => !data.edges[id].basis.startsWith('旧版') && id !== 'H-X');
+    const connections = candidates.filter((id) => {
+      const e = data.edges[id];
+      return e.from === node.id || e.to === node.id || e.requires?.includes(node.id);
+    });
+    return <>
+      {node.body['たとえば'] && detailSection(m.example, <p>{richText(node.body['たとえば'])}</p>)}
+      {detailSection(m.safeguards, <p>{richText(node.body['進行を止めるには'])}</p>, <ShieldCheck size={17} />)}
+      {!!terms.length && detailSection(m.glossary, <div className="chip-links">{terms.map((id) => <Chip key={id} size="small" label={data.glossary[id].name} onClick={() => setTermId(id)} />)}</div>)}
+      {!!node.watch?.length && detailSection(m.watch, <ul>{node.watch.map((w) => <li key={w}>{richText(w)}</li>)}</ul>)}
+      {!!node.questions.length && detailSection(m.more, questions(node.questions, node.id))}
+      {!!connections.length && detailSection(m.connections, <nav className="network-navigation" aria-label={m.connections}>
+        {connections.map((id) => <Button key={id} onClick={() => openEdge(id)} endIcon={<ArrowRight size={15} />}>{data.edges[id].label}</Button>)}
+      </nav>)}
+      {!!node.related.length && detailSection(m.related, <div className="link-stack">{node.related.map((l) => <Button key={l.text} onClick={() => openNode(l.node, l.scene)} endIcon={<ArrowRight size={16} />}>{l.text}</Button>)}</div>)}
+      {graph?.parent && <Button className="parent-link" startIcon={<ArrowLeft size={15} />} onClick={() => navigate(parentView(graph.parent!), graph.parent)}>{m.returnParent}</Button>}
+    </>;
   }
   function stepNavigation() {
-    if (graph?.mode === 'network' || (view === 'overview' && node)) {
-      const candidates = graph?.edges || Object.keys(data.edges).filter((id) => !data.edges[id].basis.startsWith('旧版') && id !== 'H-X');
-      const connections = node ? candidates.filter((id) => {
-        const e = data.edges[id];
-        return e.from === node.id || e.to === node.id || e.requires?.includes(node.id);
-      }) : [];
-      return <nav className="network-navigation" aria-label={m.connections}>
-        {connections.map((id) => <Button key={id} onClick={() => openEdge(id)} endIcon={<ArrowRight size={15} />}>{data.edges[id].label}</Button>)}
-        <Button onClick={() => navigate(view)}>{m.returnMap}</Button>
-      </nav>;
-    }
-    if (edge)
-      return (
-        <nav className="step-navigation" aria-label={m.connection}>
-          <Button
-            onClick={() => openNode(edge.from)}
-            startIcon={<ArrowLeft size={15} />}
-          >
-            {m.previous}
-          </Button>
-          <span>{m.connection}</span>
-          <Button
-            onClick={() => openNode(edge.to)}
-            endIcon={<ArrowRight size={15} />}
-          >
-            {m.next}
-          </Button>
-        </nav>
-      );
+    if (edge || view === 'overview' || graph?.mode === 'network') return null;
     if (!node || !graph || nodeIndex < 0) return null;
     const previous = graph.nodes[nodeIndex - 1],
       next = graph.nodes[nodeIndex + 1];
@@ -688,89 +575,34 @@ export default function MapClient({ site }: { site: SiteContent }) {
           )}
         </DialogContent>
       </Dialog>
-      <Drawer
-        anchor="right"
+      <Dialog
         open={Boolean(node || edge)}
         onClose={() => navigate(view)}
-        slotProps={{
-          paper: {
-            className: 'detail-drawer',
-            role: 'dialog',
-            'aria-modal': true,
-            'aria-labelledby': 'detail-title',
-          },
-        }}
+        fullWidth
+        maxWidth="md"
+        className="detail-dialog"
+        aria-labelledby="detail-title"
       >
-        {(node || edge) && (
-          <>
-            <div className="detail-header">
-              <div className="detail-meta">
-                <span>
-                  {node ? m.explanation : m.connection} · {selected}
-                </span>
-                <IconButton aria-label={m.close} onClick={() => navigate(view)}>
-                  <X size={21} />
-                </IconButton>
-              </div>
-              {graph?.parent && (
-                <Button
-                  size="small"
-                  className="parent-link"
-                  startIcon={<ArrowLeft size={13} />}
-                  onClick={() =>
-                    navigate(parentView(graph.parent!), graph.parent)
-                  }
-                >
-                  {m.returnParent}
-                </Button>
-              )}
-              <Typography
-                component="h2"
-                id="detail-title"
-                className="detail-title"
-              >
-                {richText(node?.title || edge?.label || '')}
-              </Typography>
-              {graph && <div className="detail-subtitle">{graph.title}</div>}
+        {(node || edge) && <>
+          <div className="detail-header">
+            <div className="detail-meta">
+              <span>{node ? m.explanation : m.connection}</span>
+              <IconButton aria-label={m.close} onClick={() => navigate(view)}><X size={21} /></IconButton>
             </div>
-            <div className="detail-scroll" key={selected}>
-              {node ? nodeBody() : edgeBody()}
-              <div className="contribute-block">
-                <GitPullRequest size={18} />
-                <div>
-                  <Link
-                    href={
-                      REPO +
-                      '/issues/new?template=correction.yml&title=' +
-                      encodeURIComponent(
-                        '[' +
-                          selected +
-                          '] ' +
-                          (node?.title || edge?.label || ''),
-                      )
-                    }
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    {m.reportIssue}
-                    <ArrowUpRight size={13} />
-                  </Link>
-                  <Link
-                    href={REPO + '/blob/main/CONTRIBUTING.md'}
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    {m.propose}
-                    <ArrowUpRight size={13} />
-                  </Link>
-                </div>
-              </div>
-            </div>
-            {stepNavigation()}
-            <div className="detail-footer">{m.permalink}</div>
-          </>
-        )}
-      </Drawer>
+            <Typography component="h2" id="detail-title" className="detail-title">{richText(node?.title || edge?.label || '')}</Typography>
+            {reviewStatus((node || edge)!.review, today).state === 'due' && <Button className="review-alert" startIcon={<Clock3 size={14} />} onClick={() => setDetailReading({ key: detailKey, tab: 'evidence' })}>{m.due}</Button>}
+          </div>
+          <Tabs value={detailTab} onChange={(_, tab: DetailTab) => setDetailReading({ key: detailKey, tab })} variant="fullWidth" className="detail-tabs" aria-label={m.detailSections}>
+            {detailTabs.map((tab) => <Tab key={tab} value={tab} id={'detail-tab-' + tab} aria-controls={'detail-panel-' + tab} label={tab === 'summary' ? m.detailSummary : tab === 'evidence' ? m.detailEvidence : m.detailMore} />)}
+          </Tabs>
+          <DialogContent className="detail-scroll" key={detailKey + ':' + detailTab}>
+            {detailTabs.map((tab) => <div key={tab} role="tabpanel" id={'detail-panel-' + tab} aria-labelledby={'detail-tab-' + tab} hidden={detailTab !== tab} tabIndex={0}>
+              {detailTab === tab && (tab === 'summary' ? summaryBody() : tab === 'evidence' ? evidenceBody() : moreBody())}
+            </div>)}
+          </DialogContent>
+          {stepNavigation()}
+        </>}
+      </Dialog>
       <Dialog
         open={Boolean(term)}
         onClose={() => setTermId(null)}

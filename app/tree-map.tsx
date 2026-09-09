@@ -38,6 +38,9 @@ import type { Content } from '@/lib/content-types';
 import type { Messages } from '@/lib/i18n';
 import { treeLayout, wireGeometry, joinGeometry, forkGeometry, joinJunctions } from '@/lib/tree-layout';
 import { reviewStatus } from '@/lib/freshness.mjs';
+import { useMapGestures } from './use-map-gestures';
+import { useMapWindow } from './use-map-window';
+import { intersectsWindow } from '@/lib/map-window.mjs';
 
 type Props = {
   data: Content;
@@ -74,12 +77,6 @@ export default function TreeMap({
     value: number;
   } | null>(null);
   const [size, setSize] = useState({ width: 1200, height: 900 });
-  const drag = useRef<{
-    x: number;
-    y: number;
-    left: number;
-    top: number;
-  } | null>(null);
   useEffect(() => {
     const element = viewport.current;
     if (!element) return;
@@ -143,6 +140,16 @@ export default function TreeMap({
       }
     });
   }
+  useMapGestures(viewport, { scale, contentWidth: layout.width, onScale: (value) => setManualZoom({ context: scaleContext, value }) });
+  const visible = useMapWindow(viewport, scale, layout.width, layout.height);
+  const visibleTiles = layout.tiles.filter((tile) => intersectsWindow(tile, visible));
+  const visibleRegions = layout.regions?.filter((region) => intersectsWindow(region, visible));
+  const visibleJoins = layout.joins?.filter((join) => intersectsWindow({ x: join.x - 100, y: join.y - 30, width: 200, height: 60 }, visible));
+  const geometry = useMemo(() => ({
+    wires: new Map(layout.wires.map((wire) => [wire.key, wireGeometry(wire, layout)])),
+    forks: new Map(layout.forks?.map((fork) => [fork.key, forkGeometry(fork, layout)])),
+    joins: new Map(layout.joins?.map((join) => [join.edge, { path: joinGeometry(join, layout), junctions: joinJunctions(join, layout) }])),
+  }), [layout]);
   const graph = data.graphs[view];
   const parentTile = layout.tiles.find((t) => t.key === 'parent');
   return (
@@ -151,34 +158,7 @@ export default function TreeMap({
         className={'tree-viewport' + (canExpand ? ' with-scope' : '')}
         ref={viewport}
         aria-label={m.graphLabel}
-        onPointerDown={(event) => {
-          if (
-            event.pointerType !== 'mouse' ||
-            event.button !== 0 ||
-            (event.target as HTMLElement).closest('button,a')
-          )
-            return;
-          drag.current = {
-            x: event.clientX,
-            y: event.clientY,
-            left: event.currentTarget.scrollLeft,
-            top: event.currentTarget.scrollTop,
-          };
-          event.currentTarget.setPointerCapture(event.pointerId);
-        }}
-        onPointerMove={(event) => {
-          if (!drag.current) return;
-          event.currentTarget.scrollLeft =
-            drag.current.left - (event.clientX - drag.current.x);
-          event.currentTarget.scrollTop =
-            drag.current.top - (event.clientY - drag.current.y);
-        }}
-        onPointerUp={() => {
-          drag.current = null;
-        }}
-        onPointerCancel={() => {
-          drag.current = null;
-        }}
+
       >
         <div
           className="tree-stage"
@@ -198,12 +178,14 @@ export default function TreeMap({
           >
             <svg
               className="tree-wires"
-              width={layout.width}
-              height={layout.height}
+              width={visible?.width || 0}
+              height={visible?.height || 0}
+              viewBox={visible ? `${visible.x} ${visible.y} ${visible.width} ${visible.height}` : '0 0 1 1'}
+              style={{ left: visible?.x || 0, top: visible?.y || 0 }}
               aria-hidden="true"
             >
               {layout.forks?.map((fork) => {
-                const g = forkGeometry(fork, layout);
+                const g = geometry.forks.get(fork.key)!;
                 return <g key={fork.key} fill="none" strokeWidth={2.4} strokeLinecap="round" strokeLinejoin="round">
                   <path d={g.trunk} stroke={fork.color} strokeOpacity={0.65} strokeDasharray="9 7" vectorEffect="non-scaling-stroke" />
                   {g.branches.map((branch) => <path key={branch.key} d={branch.path} stroke={branch.color} strokeOpacity={0.65} strokeDasharray="9 7" vectorEffect="non-scaling-stroke" />)}
@@ -212,13 +194,13 @@ export default function TreeMap({
               })}
               {layout.joins?.map((join) => (
                 <g key={join.edge}>
-                <path d={joinGeometry(join, layout)} fill="none" stroke={join.color}
+                <path d={geometry.joins.get(join.edge)!.path} fill="none" stroke={join.color}
                   strokeWidth={3.5} strokeOpacity={0.9} strokeLinejoin="round" strokeLinecap="round" vectorEffect="non-scaling-stroke" />
-                {joinJunctions(join, layout).map((p) => <circle key={p.x + ':' + p.y} cx={p.x} cy={p.y} r={4} fill={join.color} />)}
+                {geometry.joins.get(join.edge)!.junctions.map((p) => <circle key={p.x + ':' + p.y} cx={p.x} cy={p.y} r={4} fill={join.color} />)}
                 </g>
               ))}
               {[...layout.wires].sort((a, b) => Number(!!b.reference) - Number(!!a.reference)).map((w) => {
-                const g = wireGeometry(w, layout);
+                const g = geometry.wires.get(w.key)!;
                 const relation = w.edge ? data.edges[w.edge].relation : undefined;
                 return (
                   <g key={w.key}>
@@ -238,7 +220,7 @@ export default function TreeMap({
                 );
               })}
             </svg>
-            {layout.regions?.map((region) => (
+            {visibleRegions?.map((region) => (
               <div key={region.key} className="condition-region" style={{ left: region.x, top: region.y, width: region.width, height: region.height, borderColor: region.color + '40' }}>
                 <ButtonBase className="region-relation" style={{ top: region.labelY - region.y, ...(region.labelX === undefined ? {} : { left: region.labelX - region.x }) }} onClick={() => region.edge ? onEdge(region.edge) : setShowGuide(true)}>
                   <b>{region.mode === 'all' ? 'AND' : 'OR'}</b>
@@ -246,7 +228,7 @@ export default function TreeMap({
                 </ButtonBase>
               </div>
             ))}
-            {layout.joins?.map((join) => (
+            {visibleJoins?.map((join) => (
               <Tooltip key={join.edge} title={data.edges[join.edge].label}>
                 <ButtonBase className="joint-button" style={{ left: join.x, top: join.y, color: join.color }} onClick={() => onEdge(join.edge)} aria-label={'AND · ' + data.edges[join.edge].label}>
                   <b>AND</b><span>{m.joint}</span>
@@ -254,9 +236,12 @@ export default function TreeMap({
               </Tooltip>
             ))}
             {layout.wires
-              .filter((w) => w.edge)
+              .filter((w) => {
+                const g = geometry.wires.get(w.key)!;
+                return w.edge && intersectsWindow({ x: g.x - 90, y: g.y - 30, width: 180, height: 60 }, visible);
+              })
               .map((w) => {
-                const g = wireGeometry(w, layout);
+                const g = geometry.wires.get(w.key)!;
                 const relation = data.edges[w.edge!].relation;
                 const DirectionIcon = { up: ArrowUp, down: ArrowDown, left: ArrowLeft, right: ArrowRight }[g.direction];
                 if (relation === 'influence' || relation === 'mitigation') return (
@@ -298,7 +283,7 @@ export default function TreeMap({
                 />
               </Tooltip>
             )}
-            {layout.tiles.map((tile) => {
+            {visibleTiles.map((tile) => {
               const node = tile.node ? data.nodes[tile.node] : undefined;
               const route = tile.graph
                 ? data.routes.find((r) => r.id === tile.graph)
