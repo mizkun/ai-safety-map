@@ -118,22 +118,22 @@ function verticalTreeLayout(data: Content, view: string, expanded: boolean): Tre
   ) => wires.push({ key: from + '-' + to, from, to, color, edge, dashed });
   if (view === 'overview') {
     tile('present', 'NOW', undefined, 646, 32, 248, 104, '#696596', 'present');
-    const routeIds = ['control', 'misuse', 'interaction', 'accidents', 'dependence', 'work', 'money'];
+    const routeIds = ['acceleration', 'control', 'misuse', 'interaction', 'accidents', 'dependence', 'work', 'money'];
     routeIds.forEach(
       (id, i) => {
         tile(
           id,
           undefined,
           id,
-          278 + i * 244,
+          34 + i * 244,
           272,
           224,
           104,
           routeColors[id],
-          undefined,
-          'route',
+          id === 'acceleration' ? 'research' : undefined,
+          id === 'acceleration' ? 'research' : 'route',
         );
-        if (['work', 'money'].includes(id)) return;
+        if (['acceleration', 'work', 'money'].includes(id)) return;
         if (id === 'dependence') wire(id, 'agency', routeColors[id], 'D3-E1');
         else {
           const graph = data.graphs[id];
@@ -180,21 +180,12 @@ function verticalTreeLayout(data: Content, view: string, expanded: boolean): Tre
       routeColors.dependence,
       'lossOfControl',
     );
-    tile(
-      'research',
-      undefined,
-      'acceleration',
-      60,
-      752,
-      266,
-      106,
-      routeColors.acceleration,
-      'research',
-      'research',
-    );
     wire('catastrophe', 'survival', '#a67685', 'H-T', true);
     wire('survival', 'extinction', '#a67685', 'T-X');
-    wire('research', 'control', routeColors.acceleration, 'R2-C2', true);
+    wire('acceleration', 'control', routeColors.acceleration, 'R2-C2', true);
+    wires.at(-1)!.viaY = 244;
+    wires.at(-1)!.trackOffset = 10;
+    wires.at(-1)!.toFraction = 0.75;
     // Separate entry points keep independent risk routes distinguishable at H.
     wires.filter((w) => w.to === 'catastrophe').forEach((w, i) => {
       w.toFraction = (i + 1) / 5;

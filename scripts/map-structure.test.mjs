@@ -156,6 +156,18 @@ test('the present is the single left-hand origin and causal progression runs to 
   }
 });
 
+test('summary research is a present-connected peer pathway, not a distant outcome', () => {
+  const layout = treeLayout(content, 'overview', false);
+  const routes = layout.tiles.filter((t) => t.graph);
+  assert.deepEqual(new Set(routes.map((t) => t.graph)), new Set(content.routes.map((r) => r.id)));
+  assert.equal(new Set(routes.map((t) => t.x)).size, 1);
+  const research = routes.find((t) => t.graph === 'acceleration');
+  const present = layout.tiles.find((t) => t.node === 'NOW');
+  assert.ok(layout.forks.some((f) => f.from === present.key && f.targets.includes(research.key)));
+  assert.ok(layout.wires.some((w) => w.from === research.key && w.edge === 'R2-C2'));
+  assert.ok(!layout.wires.some((w) => w.from === research.key && ['catastrophe', 'extinction'].includes(w.to)));
+});
+
 test('alignment, execution, and control are joint inputs rather than a causal chain', () => {
   const layout = treeLayout(content, 'control', true);
   assert.equal(content.graphs.control.mode, 'network');
