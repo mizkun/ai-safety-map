@@ -59,7 +59,9 @@ export type TreeRegion = {
   labelX?: number;
   color: string;
   edge?: string;
+  members?: string[];
 };
+export type TreeArea = { key: string; node: string; x: number; y: number; width: number; height: number };
 export type TreeJoin = {
   edge: string;
   inputs: string[];
@@ -74,6 +76,8 @@ export type TreeFork = {
   targets: string[];
   busY: number;
   color: string;
+  alternative?: boolean;
+  merge?: { area: string; inputs: string[]; x: number; y: number };
 };
 export type TreePoint = { x: number; y: number };
 export type TreeLayout = {
@@ -82,6 +86,7 @@ export type TreeLayout = {
   tiles: TreeTile[];
   wires: TreeWire[];
   regions?: TreeRegion[];
+  areas?: TreeArea[];
   joins?: TreeJoin[];
   forks?: TreeFork[];
   flow?: 'horizontal';
@@ -91,7 +96,7 @@ export function treeLayout(data: Content, view: string, expanded = false): TreeL
   return horizontalTreeLayout(verticalTreeLayout(data, view, expanded));
 }
 function verticalTreeLayout(data: Content, view: string, expanded: boolean): TreeLayout {
-  if ((view === 'overview' && expanded) || data.graphs[view]?.mode === 'network')
+  if ((view === 'overview' && expanded) || ['network', 'all', 'any', 'sequence'].includes(data.graphs[view]?.mode))
     return expandedTreeLayout(data, view, expanded, routeColors);
   const tiles: TreeTile[] = [],
     wires: TreeWire[] = [],
@@ -271,8 +276,8 @@ export function wireGeometry(wire: TreeWire, layout: TreeLayout): {
     return { ...source, ...horizontalPoint(source), points,
       path: points ? roundedPath(points) : horizontalPath(source.path), direction: direction[source.direction] };
   }
-  const from = layout.tiles.find((n) => n.key === wire.from) || layout.regions?.find((n) => n.key === wire.from),
-    to = layout.tiles.find((n) => n.key === wire.to) || layout.regions?.find((n) => n.key === wire.to);
+  const from = layout.tiles.find((n) => n.key === wire.from) || layout.regions?.find((n) => n.key === wire.from) || layout.areas?.find((n) => n.key === wire.from),
+    to = layout.tiles.find((n) => n.key === wire.to) || layout.regions?.find((n) => n.key === wire.to) || layout.areas?.find((n) => n.key === wire.to);
   if (!from || !to) throw new Error('Missing wire endpoint: ' + wire.key);
   const fromFraction = wire.fromFraction ?? 0.5, toFraction = wire.toFraction ?? 0.5;
   const x1 = from.x + from.width * fromFraction,
@@ -324,11 +329,11 @@ export function wireGeometry(wire: TreeWire, layout: TreeLayout): {
     (x1 + x2) / 2, mid, x1 === x2 ? 'down' : x2 < x1 ? 'left' : 'right');
 }
 export function forkGeometry(fork: TreeFork, layout: TreeLayout): {
-  trunk: string; branches: { key: string; x: number; color: string; path: string }[]; junctions: TreePoint[];
+  trunk: string; branches: { key: string; x: number; color: string; path: string }[]; junctions: TreePoint[]; mergePath?: string;
 } {
   if (layout.source) {
     const source = forkGeometry(fork, layout.source);
-    return { ...source, trunk: horizontalPath(source.trunk),
+    return { ...source, trunk: horizontalPath(source.trunk), mergePath: source.mergePath ? horizontalPath(source.mergePath) : undefined,
       branches: source.branches.map((b) => ({ ...b, path: horizontalPath(b.path) })),
       junctions: source.junctions.map(horizontalPoint) };
   }
@@ -341,16 +346,28 @@ export function forkGeometry(fork: TreeFork, layout: TreeLayout): {
     path: `M ${t!.x + t!.width / 2} ${fork.busY} V ${t!.y - 5}`,
   }));
   const junctionXs = [...new Set([sourceX, ...branches.map((b) => b.x)])];
+  const merge = fork.merge;
+  let mergePath: string | undefined;
+  const mergeJunctions: TreePoint[] = [];
+  if (merge && (layout.wires.some((w) => w.from === merge.area) || layout.joins?.some((j) => j.inputs.includes(merge.area)))) {
+    const inputs = merge.inputs.map((key) => layout.areas?.find((a) => a.key === key) || layout.tiles.find((t) => t.key === key)!);
+    const centers = [...new Set([merge.x, ...inputs.map((a) => a.x + a.width / 2)])];
+    const busY = merge.y - 40;
+    mergePath = [...inputs.map((a) => `M ${a.x + a.width / 2} ${a.y + a.height + 3} V ${busY}`),
+      `M ${Math.min(...centers)} ${busY} H ${Math.max(...centers)}`, `M ${merge.x} ${busY} V ${merge.y + 3}`].join(' ');
+    mergeJunctions.push(...centers.map((x) => ({ x, y: busY })));
+  }
   return {
     trunk: `M ${sourceX} ${from.y + from.height + 3} V ${fork.busY} M ${Math.min(...junctionXs)} ${fork.busY} H ${Math.max(...junctionXs)}`,
     branches,
-    junctions: junctionXs.map((x) => ({ x, y: fork.busY })),
+    junctions: [...junctionXs.map((x) => ({ x, y: fork.busY })), ...mergeJunctions],
+    mergePath,
   };
 }
 export function joinJunctions(join: TreeJoin, layout: TreeLayout): TreePoint[] {
   if (layout.source) return joinJunctions(layout.source.joins!.find((j) => j.edge === join.edge)!, layout.source).map(horizontalPoint);
   const x = join.inputs.map((key) => {
-    const r = layout.regions?.find((r) => r.key === key) || layout.tiles.find((t) => t.key === key)!;
+    const r = layout.regions?.find((r) => r.key === key) || layout.areas?.find((r) => r.key === key) || layout.tiles.find((t) => t.key === key)!;
     return r.x + r.width / 2;
   });
   return [...new Set([...x, join.x])].map((x) => ({ x, y: join.y - 25 }));
@@ -358,7 +375,7 @@ export function joinJunctions(join: TreeJoin, layout: TreeLayout): TreePoint[] {
 export function joinGeometry(join: TreeJoin, layout: TreeLayout): string {
   if (layout.source) return horizontalPath(joinGeometry(layout.source.joins!.find((j) => j.edge === join.edge)!, layout.source));
   const inputs = join.inputs.map((key) =>
-    layout.regions?.find((r) => r.key === key) || layout.tiles.find((t) => t.key === key)!,
+    layout.regions?.find((r) => r.key === key) || layout.areas?.find((r) => r.key === key) || layout.tiles.find((t) => t.key === key)!,
   );
   const output = layout.tiles.find((t) => t.key === join.output)!;
   const centers = inputs.map((r) => r.x + r.width / 2);

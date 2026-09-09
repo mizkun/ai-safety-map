@@ -1119,5 +1119,7 @@ a:focus-visible {
   border-radius: 10px; font-size: 12px; display: flex; gap: 6px; white-space: nowrap;
 }
 .influence-button.mitigation { background: #e5f3ec; color: #2e7665; border-style: solid; }
-.horizontal-flow .region-relation { transform: translate(-50%, -50%); min-width: 54px; justify-content: center; }
-.horizontal-flow .region-relation span { display: none; }
+.horizontal-flow .region-relation { transform: none; right: auto; width: max-content; min-height: 26px; justify-content: flex-start; font-size: 12px; }
+.fork-label.MuiButtonBase-root { position: absolute; transform: translate(-50%, -50%); display: flex; gap: 8px; padding: 7px 12px; min-height: 32px; border-radius: 12px; background: #f0f2f8; font-size: 12px; }
+.condition-region { border-style: solid; background: rgba(224,224,243,.1); }
+

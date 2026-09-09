@@ -40,9 +40,10 @@ export function horizontalTreeLayout(source: TreeLayout): TreeLayout {
     width: source.height * FLOW_SCALE,
     height: source.width * BRANCH_SCALE,
     tiles: source.tiles.map(rect),
+    areas: source.areas?.map(rect),
     regions: source.regions?.map((r) => ({
-      ...rect(r), labelX: (r.labelY + 16) * FLOW_SCALE,
-      labelY: (r.x + r.width / 2) * BRANCH_SCALE,
+      ...rect(r), labelX: r.labelY * FLOW_SCALE,
+      labelY: (r.labelX ?? (r.x + r.width / 2)) * BRANCH_SCALE,
     })),
     joins: source.joins?.map((j) => ({ ...j, ...horizontalPoint(j) })),
     flow: 'horizontal',

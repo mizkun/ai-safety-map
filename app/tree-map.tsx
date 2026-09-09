@@ -10,7 +10,6 @@ import {
   ButtonBase,
   IconButton,
   Tooltip,
-  Chip,
   Paper,
   Button,
   ToggleButton,
@@ -69,7 +68,7 @@ export default function TreeMap({
   const [expanded, setExpanded] = useState(true);
   const [showGuide, setShowGuide] = useState(false);
   const layout = useMemo(() => treeLayout(data, view, expanded), [data, view, expanded]);
-  const canExpand = view === 'overview' || data.graphs[view]?.mode === 'network';
+  const canExpand = view === 'overview' || ['network', 'all', 'any', 'sequence'].includes(data.graphs[view]?.mode);
   const nodeCount = new Set(layout.tiles.flatMap((tile) => tile.node ? [tile.node] : [])).size;
   const viewport = useRef<HTMLDivElement>(null);
   const [manualZoom, setManualZoom] = useState<{
@@ -150,8 +149,6 @@ export default function TreeMap({
     forks: new Map(layout.forks?.map((fork) => [fork.key, forkGeometry(fork, layout)])),
     joins: new Map(layout.joins?.map((join) => [join.edge, { path: joinGeometry(join, layout), junctions: joinJunctions(join, layout) }])),
   }), [layout]);
-  const graph = data.graphs[view];
-  const parentTile = layout.tiles.find((t) => t.key === 'parent');
   return (
     <>
       <div
@@ -188,6 +185,7 @@ export default function TreeMap({
                 const g = geometry.forks.get(fork.key)!;
                 return <g key={fork.key} fill="none" strokeWidth={2.4} strokeLinecap="round" strokeLinejoin="round">
                   <path d={g.trunk} stroke={fork.color} strokeOpacity={0.65} strokeDasharray="9 7" vectorEffect="non-scaling-stroke" />
+                  {g.mergePath && <path d={g.mergePath} stroke={fork.color} strokeOpacity={0.65} strokeDasharray="9 7" vectorEffect="non-scaling-stroke" />}
                   {g.branches.map((branch) => <path key={branch.key} d={branch.path} stroke={branch.color} strokeOpacity={0.65} strokeDasharray="9 7" vectorEffect="non-scaling-stroke" />)}
                   {g.junctions.map((p) => <circle key={p.x + ':' + p.y} cx={p.x} cy={p.y} r={3.8} fill="#f1f3fa" stroke={fork.color} vectorEffect="non-scaling-stroke" />)}
                 </g>;
@@ -220,6 +218,14 @@ export default function TreeMap({
                 );
               })}
             </svg>
+            {layout.forks?.filter((fork) => fork.alternative).map((fork) => {
+              const from = layout.tiles.find((tile) => tile.key === fork.from)!;
+              const g = geometry.forks.get(fork.key)!;
+              const targetY = from.y + from.height / 2;
+              const point = g.junctions.reduce((best, p) => Math.abs(p.y - targetY) < Math.abs(best.y - targetY) ? p : best);
+              if (!intersectsWindow({ x: point.x - 80, y: point.y - 20, width: 160, height: 40 }, visible)) return null;
+              return <ButtonBase key={fork.key} className="fork-label" style={{ left: point.x, top: point.y, color: fork.color }} onClick={() => setShowGuide(true)} aria-label={'OR · ' + m.alternative}><b>OR</b><span>{m.alternative}</span></ButtonBase>;
+            })}
             {visibleRegions?.map((region) => (
               <div key={region.key} className="condition-region" style={{ left: region.x, top: region.y, width: region.width, height: region.height, borderColor: region.color + '40' }}>
                 <ButtonBase className="region-relation" style={{ top: region.labelY - region.y, ...(region.labelX === undefined ? {} : { left: region.labelX - region.x }) }} onClick={() => region.edge ? onEdge(region.edge) : setShowGuide(true)}>
@@ -230,9 +236,9 @@ export default function TreeMap({
             ))}
             {visibleJoins?.map((join) => (
               <Tooltip key={join.edge} title={data.edges[join.edge].label}>
-                <ButtonBase className="joint-button" style={{ left: join.x, top: join.y, color: join.color }} onClick={() => onEdge(join.edge)} aria-label={'AND · ' + data.edges[join.edge].label}>
-                  <b>AND</b><span>{m.joint}</span>
-                </ButtonBase>
+                <IconButton className="wire-button" style={{ left: join.x - 18, top: join.y - 18, color: join.color }} onClick={() => onEdge(join.edge)} aria-label={m.connection + ' · ' + data.edges[join.edge].label}>
+                  <ArrowRight size={16} />
+                </IconButton>
               </Tooltip>
             ))}
             {layout.wires
@@ -270,19 +276,6 @@ export default function TreeMap({
                   </Tooltip>
                 );
               })}
-            {graph && ['all', 'any'].includes(graph.mode) && (
-              <Tooltip
-                title={graph.mode === 'all' ? m.jointHelp : m.alternativeHelp}
-              >
-                <Chip
-                  className="condition-chip"
-                  label={graph.mode === 'all' ? m.joint : m.alternative}
-                  style={layout.flow === 'horizontal' && parentTile
-                    ? { left: parentTile.x + parentTile.width + 102, top: parentTile.y + parentTile.height / 2 - 17 }
-                    : { left: layout.width / 2, top: 235 }}
-                />
-              </Tooltip>
-            )}
             {visibleTiles.map((tile) => {
               const node = tile.node ? data.nodes[tile.node] : undefined;
               const route = tile.graph

@@ -112,7 +112,7 @@ test('every fixed tree has valid connections, bounded tiles, and no overlapping 
       assert.ok(!geometry.path.includes('NaN'));
     }
     for (const join of layout.joins || []) {
-      const ids = join.inputs.map((key) => layout.regions?.find((r) => r.key === key)?.node || layout.tiles.find((t) => t.key === key)?.node);
+      const ids = join.inputs.map((key) => layout.regions?.find((r) => r.key === key)?.node || layout.areas?.find((r) => r.key === key)?.node || layout.tiles.find((t) => t.key === key)?.node);
       assert.deepEqual(new Set(ids), new Set(content.edges[join.edge].requires));
       assert.equal(join.output, content.edges[join.edge].to);
       assert.ok(!joinGeometry(join, layout).includes('NaN'));
@@ -132,13 +132,13 @@ test('all-elements overview contains every canonical node exactly once and none 
   assert.equal(nodes.length, new Set(nodes).size);
   assert.deepEqual(new Set(nodes), new Set(Object.keys(content.nodes)));
   const connected = new Set();
-  const canonical = (key) => layout.tiles.find((t) => t.key === key)?.node || layout.regions?.find((r) => r.key === key)?.node;
+  const canonical = (key) => layout.tiles.find((t) => t.key === key)?.node || layout.regions?.find((r) => r.key === key)?.node || layout.areas?.find((r) => r.key === key)?.node;
   for (const wire of layout.wires) for (const key of [wire.from, wire.to]) connected.add(canonical(key));
   for (const fork of layout.forks) for (const key of [fork.from, ...fork.targets]) connected.add(canonical(key));
   for (const join of layout.joins) for (const key of [...join.inputs, join.output]) connected.add(canonical(key));
   for (const region of layout.regions) {
     connected.add(region.node);
-    for (const child of content.graphs[content.nodes[region.node].subgraph].nodes) connected.add(child);
+    for (const child of region.members || content.graphs[content.nodes[region.node].subgraph].nodes) connected.add(child);
   }
   for (const id of nodes) assert.ok(connected.has(id), 'Isolated node: ' + id);
 });
@@ -204,7 +204,8 @@ test('alignment, execution, and control are joint inputs rather than a causal ch
   const columns = ['C1', 'C2', 'C3'].map((id) => layout.tiles.find((t) => t.node === id).x);
   assert.equal(new Set(columns).size, 1);
   assert.ok(!layout.wires.some((w) => ['C1-C2', 'C2-C3'].includes(w.edge)));
-  assert.equal(layout.regions.find((r) => r.node === 'C1').mode, 'any');
+  assert.ok(layout.forks.some((f) => f.from === 'C1' && f.alternative));
+  assert.ok(!layout.regions.some((r) => r.mode === 'any'));
   assert.equal(layout.regions.find((r) => r.node === 'C2').mode, 'all');
   assert.ok(content.nodes.C1.topics.includes('alignment'));
   assert.ok(content.nodes.C3.topics.includes('control'));
@@ -258,4 +259,27 @@ test('the overview keeps loss of agency distinct from extinction', () => {
         w.from === 'catastrophe' && w.to === 'survival' && w.edge === 'H-T',
     ),
   );
+});
+
+
+test('OR mechanisms branch and rejoin; AND frames separate the result from its conditions', () => {
+  const layout = treeLayout(content, 'misuse', true);
+  const tile = (id) => layout.tiles.find((t) => t.node === id);
+  const fork = layout.forks.find((f) => f.from === 'M2');
+  assert.ok(fork.alternative);
+  assert.ok(forkGeometry(fork, layout).mergePath);
+  assert.equal(tile('M2c').x, tile('M2b').x);
+  assert.notEqual(tile('M2c').y, tile('M2b').y);
+  for (const id of ['M2c', 'M2b']) {
+    const frame = layout.regions.find((r) => r.node === id);
+    assert.ok(tile(id).x + tile(id).width < frame.x);
+    for (const child of frame.members) {
+      const t = tile(child);
+      assert.ok(t.x - frame.x >= 24 && t.y - frame.y >= 24);
+      assert.ok(frame.x + frame.width - t.x - t.width >= 24);
+      assert.ok(frame.y + frame.height - t.y - t.height >= 24);
+    }
+  }
+  const dedicated = treeLayout(content, 'cyber-conditions', true);
+  assert.equal(dedicated.tiles.find((t) => t.node === 'M2c1').color, tile('M2c1').color);
 });
