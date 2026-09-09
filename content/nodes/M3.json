@@ -1,0 +1,18 @@
+{
+  "id": "M3",
+  "title": "防止・封じ込めが、被害に追いつかない",
+  "explanation": "M3.md",
+  "evidence": [
+    {
+      "kind": "対策の考え方",
+      "src": "framework",
+      "text": "2025年の技術論文は、安全な応答の学習だけでなく、アクセス制限や監視などを重ねる対策を扱っています。このノードへのまとめ方は本マップの整理です。"
+    }
+  ],
+  "sources": [
+    "framework"
+  ],
+  "questions": [],
+  "related": [],
+  "terms": []
+}

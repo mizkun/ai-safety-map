@@ -1,0 +1,18 @@
+{
+  "id": "C4b",
+  "title": "一つの組織を超えて、制御の失敗が広がる",
+  "explanation": "C4b.md",
+  "evidence": [
+    {
+      "kind": "条件・仕組みの検討",
+      "src": "power",
+      "text": "影響が人類全体の主導権喪失へ広がることは、論証の中でも別の前提です。"
+    }
+  ],
+  "sources": [
+    "power"
+  ],
+  "questions": [],
+  "related": [],
+  "terms": []
+}

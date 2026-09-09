@@ -1,0 +1,20 @@
+{
+  "id": "C3a2",
+  "title": "AIが評価を認識し、振る舞いを変える",
+  "explanation": "C3a2.md",
+  "evidence": [
+    {
+      "kind": "条件・仕組みの検討",
+      "src": "summer",
+      "text": "2026年夏の報告は、評価への気づきが実験の解釈を難しくすることを議論しています。"
+    }
+  ],
+  "sources": [
+    "summer"
+  ],
+  "questions": [],
+  "related": [],
+  "terms": [
+    "evaluation-awareness"
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "id": "S2",
+  "title": "誤った判断を、訂正する余裕が減る",
+  "explanation": "S2.md",
+  "evidence": [
+    {
+      "kind": "条件付きのリスク分析",
+      "src": "sipri",
+      "text": "SIPRIは、意思決定に使える時間の短縮や、不透明な助言が判断を偏らせる可能性を検討しています。影響は運用環境に依存します。"
+    }
+  ],
+  "sources": [
+    "sipri"
+  ],
+  "questions": [],
+  "related": [],
+  "terms": []
+}

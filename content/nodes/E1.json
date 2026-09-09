@@ -1,0 +1,20 @@
+{
+  "id": "E1",
+  "title": "人類は生存するが、主導権を失ったままになる",
+  "explanation": "E1.md",
+  "evidence": [
+    {
+      "kind": "将来の条件付き論証",
+      "src": "power",
+      "text": "Carlsmithの論証では、人類全体の主導権喪失と、そこから生じる実存的破局を区別して検討しています。"
+    }
+  ],
+  "sources": [
+    "power"
+  ],
+  "questions": [],
+  "related": [],
+  "terms": [
+    "existential"
+  ]
+}

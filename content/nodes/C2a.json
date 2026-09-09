@@ -1,0 +1,21 @@
+{
+  "id": "C2a",
+  "title": "必要な作業を、途中で破綻せず実行できる",
+  "explanation": "C2a.md",
+  "evidence": [
+    {
+      "kind": "条件・仕組みの検討",
+      "src": "horizon",
+      "text": "METRの指標は、一定の成功率で解ける課題の長さを、人間の専門家の所要時間で表します。"
+    }
+  ],
+  "sources": [
+    "horizon"
+  ],
+  "questions": [],
+  "related": [],
+  "terms": [
+    "horizon",
+    "benchmark"
+  ]
+}

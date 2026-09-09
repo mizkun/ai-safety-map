@@ -1,0 +1,77 @@
+{
+  "report": {
+    "title": "International AI Safety Report 2026",
+    "date": "2026年2月公表",
+    "url": "https://internationalaisafetyreport.org/publication/international-ai-safety-report-2026"
+  },
+  "summary": {
+    "title": "International AI Safety Report 2026 — 政策担当者向け拡張要約",
+    "date": "2026年2月公表",
+    "url": "https://internationalaisafetyreport.org/publication/2026-report-extended-summary-policymakers"
+  },
+  "summer": {
+    "title": "Anthropicほか — Agentic Misalignment in Summer 2026",
+    "date": "対象：2026年夏の実験",
+    "url": "https://alignment.anthropic.com/2026/agentic-misalignment-summer-2026/"
+  },
+  "incident": {
+    "title": "METR — Hugging Face関連インシデントの独立調査",
+    "date": "2026年8月26日公表／主な分析対象：7月7〜13日",
+    "url": "https://metr.org/blog/2026-08-26-openai-hugging-face-incident-investigation/"
+  },
+  "horizon": {
+    "title": "METR — Task-Completion Time Horizons",
+    "date": "ページの更新日：2026年5月8日",
+    "url": "https://metr.org/time-horizons/"
+  },
+  "discovery": {
+    "title": "METR — Have We Seen an Acceleration in Discoveries?",
+    "date": "2026年8月14日公表",
+    "url": "https://metr.org/notes/2026-08-14-llm-contribution-to-discoveries/"
+  },
+  "aisi": {
+    "title": "英国AISI — Frontier AI Trends Report",
+    "date": "ここで参照する自己複製評価の対象：2023〜2025年",
+    "url": "https://www.aisi.gov.uk/frontier-ai-trends-report"
+  },
+  "control": {
+    "title": "Google DeepMind — AI Control Roadmapの解説",
+    "date": "2026年6月18日公表",
+    "url": "https://deepmind.google/blog/securing-the-future-of-ai-agents/"
+  },
+  "framework": {
+    "title": "Google DeepMind — An Approach to Technical AGI Safety and Security",
+    "date": "2025年4月公表",
+    "url": "https://arxiv.org/abs/2504.01849"
+  },
+  "power": {
+    "title": "Joseph Carlsmith — Is Power-Seeking AI an Existential Risk?",
+    "date": "2022年版／条件付きの論証",
+    "url": "https://arxiv.org/abs/2206.13353"
+  },
+  "debate": {
+    "title": "Joseph Carlsmith — 各前提に対する予測者の評価の比較",
+    "date": "2023年10月公表",
+    "url": "https://joecarlsmith.com/2023/10/18/superforecasting-the-premises-in-is-power-seeking-ai-an-existential-risk/"
+  },
+  "sipri": {
+    "title": "SIPRI — 軍事AIが核エスカレーションに与える影響",
+    "date": "2025年6月公表",
+    "url": "https://www.sipri.org/publications/2025/sipri-insights-peace-and-security/impact-military-artificial-intelligence-nuclear-escalation-risk"
+  },
+  "governance": {
+    "title": "SIPRI — AIと核の関係をどう統治するか",
+    "date": "2025年10月公表",
+    "url": "https://www.sipri.org/publications/2025/other-publications/pragmatic-approaches-governance-artificial-intelligence-nuclear-nexus"
+  },
+  "specification": {
+    "title": "Google DeepMind — Specification gaming: the flip side of AI ingenuity",
+    "date": "2020年4月21日公表",
+    "url": "https://deepmind.google/blog/specification-gaming-the-flip-side-of-ai-ingenuity/"
+  },
+  "generalization": {
+    "title": "Google DeepMind — How undesired goals can arise with correct rewards",
+    "date": "2022年10月7日公表",
+    "url": "https://deepmind.google/blog/how-undesired-goals-can-arise-with-correct-rewards/"
+  }
+}

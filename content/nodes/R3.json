@@ -1,0 +1,26 @@
+{
+  "id": "R3",
+  "title": "改良されたAIが、さらに次の開発を進める",
+  "explanation": "R3.md",
+  "evidence": [
+    {
+      "kind": "公開証拠の限界",
+      "src": "discovery",
+      "text": "METRの2026年8月の分析は、公開データだけから研究の加速を読み取る難しさを述べています。際限のない自己改善を実証する資料ではありません。"
+    }
+  ],
+  "sources": [
+    "discovery"
+  ],
+  "questions": [],
+  "related": [
+    {
+      "text": "ASIは、この循環と同じ意味？",
+      "scene": "acceleration",
+      "node": "ASI"
+    }
+  ],
+  "terms": [
+    "rsi"
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "id": "E0",
+  "title": "人々が生存し、状況を立て直せる",
+  "explanation": "E0.md",
+  "evidence": [
+    {
+      "kind": "防御の設計",
+      "src": "control",
+      "text": "DeepMindの2026年6月の説明は、目標の調整だけでなく、監督やシステム上の制限を重ねる考え方を紹介しています。どんな将来のAIにも安全を保証する証明ではありません。"
+    }
+  ],
+  "sources": [
+    "control"
+  ],
+  "questions": [],
+  "related": [],
+  "terms": []
+}

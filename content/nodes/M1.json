@@ -1,0 +1,20 @@
+{
+  "id": "M1",
+  "title": "人間が、AIを危険な目的に使う",
+  "explanation": "M1.md",
+  "evidence": [
+    {
+      "kind": "リスクの分類",
+      "src": "framework",
+      "text": "DeepMindの2025年の論文は、人間が危険な目的でAIを利用する悪用と、AIの目標が人間の意図からズレる問題を分けています。"
+    }
+  ],
+  "sources": [
+    "framework"
+  ],
+  "questions": [],
+  "related": [],
+  "terms": [
+    "misuse"
+  ]
+}

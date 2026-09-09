@@ -1,0 +1,18 @@
+{
+  "id": "C3a1",
+  "title": "テストと、実際の仕事の条件が違う",
+  "explanation": "C3a1.md",
+  "evidence": [
+    {
+      "kind": "条件・仕組みの検討",
+      "src": "summer",
+      "text": "研究の著者は、模擬環境が実際の配備を完全に再現するわけではないと明記しています。"
+    }
+  ],
+  "sources": [
+    "summer"
+  ],
+  "questions": [],
+  "related": [],
+  "terms": []
+}

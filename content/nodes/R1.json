@@ -1,0 +1,20 @@
+{
+  "id": "R1",
+  "title": "AIが、研究の一部を速くする",
+  "explanation": "R1.md",
+  "evidence": [
+    {
+      "kind": "公開データの分析",
+      "src": "discovery",
+      "text": "METRの2026年8月14日の研究ノートは、公開された発見の増え方が分野によって異なると報告しています。データの質や非公開の成果についても限界を記しています。"
+    }
+  ],
+  "sources": [
+    "discovery"
+  ],
+  "questions": [],
+  "related": [],
+  "terms": [
+    "agi"
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "id": "C3a",
+  "title": "危険を見つける評価・監督が見落とす",
+  "explanation": "C3a.md",
+  "evidence": [
+    {
+      "kind": "条件・仕組みの検討",
+      "src": "summer",
+      "text": "模擬環境で、監督に使う判定を歪める挙動が報告されています。監督全体の失敗を実証したわけではありません。"
+    }
+  ],
+  "sources": [
+    "summer"
+  ],
+  "questions": [],
+  "related": [],
+  "subgraph": "evaluation",
+  "terms": [
+    "benchmark"
+  ]
+}

@@ -1,0 +1,31 @@
+name: 新しい研究・報告
+description: マップに追加したい根拠や反論を知らせる
+title: "[研究] "
+body:
+  - type: input
+    id: source
+    attributes:
+      label: 資料のURL
+    validations:
+      required: true
+  - type: input
+    id: dates
+    attributes:
+      label: 公表日と対象の時期
+      description: 分かる範囲で記載してください。
+  - type: input
+    id: location
+    attributes:
+      label: 関係しそうな項目・矢印
+  - type: textarea
+    id: finding
+    attributes:
+      label: 何が分かったか
+      description: どの主張を支持する、または弱める報告ですか。
+    validations:
+      required: true
+  - type: textarea
+    id: limitation
+    attributes:
+      label: 何までは分からないか
+      description: 実験条件、対象の範囲、限界、反する結果など。

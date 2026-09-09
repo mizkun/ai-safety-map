@@ -1,0 +1,27 @@
+name: 誤り・分かりにくさ
+description: 内容の訂正や説明の改善を提案する
+title: "[修正] "
+body:
+  - type: input
+    id: location
+    attributes:
+      label: 該当する項目のURLまたはID
+      placeholder: C1、H-X、または項目を開いたURL
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: 気になったこと
+      description: 現在のどの文や接続が、なぜ分かりにくい・正確でないと思いますか。
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: 修正案（任意）
+  - type: textarea
+    id: evidence
+    attributes:
+      label: 根拠や出典（あれば）
+      description: 資料のURLと該当箇所、支持する主張や限界を記載してください。

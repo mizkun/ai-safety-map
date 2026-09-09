@@ -1,0 +1,18 @@
+{
+  "id": "C2b",
+  "title": "現実に働きかける接点・権限を持つ",
+  "explanation": "C2b.md",
+  "evidence": [
+    {
+      "kind": "条件・仕組みの検討",
+      "src": "control",
+      "text": "AIの行動を、監督やシステム上の制約と組み合わせて制御する考え方が示されています。"
+    }
+  ],
+  "sources": [
+    "control"
+  ],
+  "questions": [],
+  "related": [],
+  "terms": []
+}

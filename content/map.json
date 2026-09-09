@@ -1,0 +1,427 @@
+{
+  "asOf": "2026-09-09",
+  "routes": [
+    {
+      "id": "control",
+      "number": "01",
+      "shortTitle": "AIの制御喪失",
+      "preview": [
+        "意図から外れる",
+        "現実に実行できる",
+        "人間が止められない"
+      ]
+    },
+    {
+      "id": "misuse",
+      "number": "02",
+      "shortTitle": "人間による悪用",
+      "preview": [
+        "危険な目的で使う",
+        "実行の壁が低くなる",
+        "封じ込めが追いつかない"
+      ]
+    },
+    {
+      "id": "interaction",
+      "number": "03",
+      "shortTitle": "判断と競争の連鎖",
+      "preview": [
+        "重要な判断に頼る",
+        "訂正する余裕が減る",
+        "対立が拡大する"
+      ]
+    },
+    {
+      "id": "acceleration",
+      "number": "↻",
+      "shortTitle": "自己改善・ASI",
+      "preview": []
+    }
+  ],
+  "graphs": {
+    "control": {
+      "id": "control",
+      "title": "AIを、人間が制御できなくなる",
+      "description": "意図から外れた行動が、停止や修正の失敗につながる経路。",
+      "mode": "sequence",
+      "nodes": [
+        "C1",
+        "C2",
+        "C3",
+        "C4",
+        "H",
+        "X"
+      ],
+      "edges": [
+        "C1-C2",
+        "C2-C3",
+        "C3-C4",
+        "C4-H",
+        "H-X"
+      ]
+    },
+    "misuse": {
+      "id": "misuse",
+      "title": "人間が、AIを危険な目的に使う",
+      "description": "AIの支援によって危害を実行しやすくなり、防御が追いつかなくなる経路。",
+      "mode": "sequence",
+      "nodes": [
+        "M1",
+        "M2",
+        "M3",
+        "H",
+        "X"
+      ],
+      "edges": [
+        "M1-M2",
+        "M2-M3",
+        "M3-H",
+        "H-X"
+      ]
+    },
+    "interaction": {
+      "id": "interaction",
+      "title": "判断の誤りと競争が、連鎖する",
+      "description": "AIへの依存や反応の速さが、訂正しにくい判断の連鎖に関係する経路。",
+      "mode": "sequence",
+      "nodes": [
+        "S1",
+        "S2",
+        "S3",
+        "H",
+        "X"
+      ],
+      "edges": [
+        "S1-S2",
+        "S2-S3",
+        "S3-H",
+        "H-X"
+      ]
+    },
+    "acceleration": {
+      "id": "acceleration",
+      "title": "AIが、次のAIの開発を進める",
+      "description": "研究の一部の改善、開発全体の改善、自己改善の循環を区別します。",
+      "mode": "sequence",
+      "nodes": [
+        "R1",
+        "R2",
+        "R3"
+      ],
+      "edges": [
+        "R1-R2",
+        "R2-R3"
+      ]
+    },
+    "intent": {
+      "id": "intent",
+      "title": "なぜ、人間の意図からズレる？",
+      "description": "意図のズレが生まれる、異なる仕組みを見ます。",
+      "mode": "any",
+      "nodes": [
+        "C1a",
+        "C1b"
+      ],
+      "edges": [],
+      "parent": "C1"
+    },
+    "ability-access": {
+      "id": "ability-access",
+      "title": "実行できるために、何がそろう？",
+      "description": "作業を進める能力と、現実に働きかける手段を分けて見ます。",
+      "mode": "all",
+      "nodes": [
+        "C2a",
+        "C2b"
+      ],
+      "edges": [],
+      "parent": "C2"
+    },
+    "oversight": {
+      "id": "oversight",
+      "title": "なぜ、途中で止められない？",
+      "description": "見落としと、気づいた後の対処の失敗は別の分岐です。",
+      "mode": "any",
+      "nodes": [
+        "C3a",
+        "C3b"
+      ],
+      "edges": [],
+      "parent": "C3"
+    },
+    "evaluation": {
+      "id": "evaluation",
+      "title": "なぜ、評価で危険が見えない？",
+      "description": "環境の違いと、評価への気づきを分けます。",
+      "mode": "any",
+      "nodes": [
+        "C3a1",
+        "C3a2"
+      ],
+      "edges": [],
+      "parent": "C3a"
+    },
+    "persistence-scale": {
+      "id": "persistence-scale",
+      "title": "なぜ、人類が制御を取り戻せない？",
+      "description": "活動が続くことと、対処の失敗が広がることを別々に検討します。",
+      "mode": "all",
+      "nodes": [
+        "C4a",
+        "C4b"
+      ],
+      "edges": [],
+      "parent": "C4"
+    }
+  },
+  "edges": {
+    "C1-C2": {
+      "id": "C1-C2",
+      "from": "C1",
+      "to": "C2",
+      "label": "能力と、現実への接点もそろうと",
+      "relation": "joint",
+      "explanation": "意図のズレが能力を生み出す、という因果関係ではありません。危険な結果を生むには、ズレに加えて実行できる条件が必要です。",
+      "conditions": [
+        "意図と食い違う選び方が、その場面でも続く",
+        "必要な作業ができる",
+        "現実に働きかける接点がある"
+      ],
+      "limitation": "一つの条件だけから、危険な実行が起きるとは言えません。",
+      "safeguards": "目標の調整と、権限や接点の制限を組み合わせます。",
+      "sources": [
+        "report",
+        "framework"
+      ]
+    },
+    "C2-C3": {
+      "id": "C2-C3",
+      "from": "C2",
+      "to": "C3",
+      "label": "さらに、監督が止められないと",
+      "relation": "conditional",
+      "explanation": "現実を操作できても、危険な行動を見つけて止められれば、この経路の進行を防げる可能性があります。",
+      "conditions": [
+        "危険な行動が実際に選ばれる",
+        "発見されない、または対処が間に合わない"
+      ],
+      "limitation": "能力が高いことだけでは、監督の失敗を意味しません。",
+      "safeguards": "重要な操作の前の確認や、権限の取り消しを検討します。",
+      "sources": [
+        "control"
+      ]
+    },
+    "C3-C4": {
+      "id": "C3-C4",
+      "from": "C3",
+      "to": "C4",
+      "label": "失敗が広がり、回復もできないと",
+      "relation": "joint",
+      "explanation": "一つの仕事での失敗と、人類が主導権を取り戻せないことの間には、規模と持続性の追加条件があります。",
+      "conditions": [
+        "人間側の停止や修正でも活動が収まらない",
+        "局所に封じ込められない",
+        "独立した代替手段や協力による対応も十分に働かない"
+      ],
+      "limitation": "個別の実験や事件だけで、この規模の制御喪失を実証したとは言えません。",
+      "safeguards": "複数の対策と組織間の対応、独立した回復手段を検討します。",
+      "sources": [
+        "power",
+        "aisi"
+      ]
+    },
+    "C4-H": {
+      "id": "C4-H",
+      "from": "C4",
+      "to": "H",
+      "label": "生命や社会を支えるものに影響すると",
+      "relation": "conditional",
+      "explanation": "制御を失うことに加えて、その活動が人間の生存や生活を深刻に損なうことが必要です。",
+      "conditions": [
+        "人間の生命や社会の重要な機能に大きな被害が及ぶ",
+        "被害を局所に抑えたり、代替したりできない"
+      ],
+      "limitation": "主導権の喪失だけでは、人類の全員死亡までは示されません。",
+      "safeguards": "被害の連鎖を抑える設計や代替手段を検討します。",
+      "sources": [
+        "power",
+        "framework"
+      ]
+    },
+    "M1-M2": {
+      "id": "M1-M2",
+      "from": "M1",
+      "to": "M2",
+      "label": "実際の難所を、AIが助けると",
+      "relation": "joint",
+      "explanation": "AIの支援で、危害を実行するうえで重要だった障壁が低くなる場合を考えます。",
+      "conditions": [
+        "その人にとって役立つ支援が利用できる",
+        "実行に必要な残りの条件も用意できる"
+      ],
+      "limitation": "知識の試験に答えることと、危害の成功は同じではありません。",
+      "safeguards": "支援の提供側と実行先の両方に対策を置きます。",
+      "sources": [
+        "summary"
+      ]
+    },
+    "M2-M3": {
+      "id": "M2-M3",
+      "from": "M2",
+      "to": "M3",
+      "label": "実行され、防御が追いつかないと",
+      "relation": "conditional",
+      "explanation": "実行しやすくなるだけでなく、実際の危害と防御の失敗が必要です。",
+      "conditions": [
+        "支援を受けた人が実際に危害を実行する",
+        "予防や検知、封じ込めが十分に働かない"
+      ],
+      "limitation": "攻撃側だけでなく、防御側の変化も評価する必要があります。",
+      "safeguards": "早期発見や被害の制限、復旧を強化します。",
+      "sources": [
+        "framework"
+      ]
+    },
+    "M3-H": {
+      "id": "M3-H",
+      "from": "M3",
+      "to": "H",
+      "label": "被害が広い範囲へ連鎖すると",
+      "relation": "conditional",
+      "explanation": "局所の被害から世界規模の影響へ広がる条件は、対象や社会の構造によって異なります。",
+      "conditions": [
+        "被害の広がりを抑える仕組みが十分に働かない",
+        "重要な機能が損なわれ、代替も不足する"
+      ],
+      "limitation": "一つの悪用事例から世界規模の被害を直接推論できません。",
+      "safeguards": "被害の区切り、代替、共同対応を検討します。",
+      "sources": [
+        "framework"
+      ]
+    },
+    "S1-S2": {
+      "id": "S1-S2",
+      "from": "S1",
+      "to": "S2",
+      "label": "確認する力や時間が不足すると",
+      "relation": "joint",
+      "explanation": "AIの助言に誤りがあっても、人間が気づいて直せるなら連鎖を防げる可能性があります。",
+      "conditions": [
+        "助言や情報に重要な誤り・偏りがある",
+        "人間が確かめる時間や材料が十分でない"
+      ],
+      "limitation": "AIの利用そのものが、必ず判断を悪くするわけではありません。",
+      "safeguards": "判断の根拠、不確実性、確認の時間を確保します。",
+      "sources": [
+        "sipri"
+      ]
+    },
+    "S2-S3": {
+      "id": "S2-S3",
+      "from": "S2",
+      "to": "S3",
+      "label": "他者の反応が、次の判断を急がせると",
+      "relation": "conditional",
+      "explanation": "一度の誤判断だけでなく、相手の反応と自分の反応が連鎖する状況を考えます。",
+      "conditions": [
+        "相手の行動を脅威として受け取る",
+        "連絡や判断の修正が十分に働かない"
+      ],
+      "limitation": "必然的な反応ではなく、状況に依存するシナリオです。",
+      "safeguards": "意図の確認と、拙速な行動を避ける手順を用意します。",
+      "sources": [
+        "sipri",
+        "governance"
+      ]
+    },
+    "S3-H": {
+      "id": "S3-H",
+      "from": "S3",
+      "to": "H",
+      "label": "破壊的な行動と、被害の拡大が重なると",
+      "relation": "conditional",
+      "explanation": "対立があることと、世界規模の破局は違います。実際に深刻な被害へ進む条件が必要です。",
+      "conditions": [
+        "対立が破壊的な行動に発展する",
+        "抑制や被害の封じ込めが働かない"
+      ],
+      "limitation": "軍事AIの研究は、特定の戦争や人類絶滅を予告するものではありません。",
+      "safeguards": "人間による実質的な判断、連絡、被害を抑える備えを検討します。",
+      "sources": [
+        "sipri",
+        "governance"
+      ]
+    },
+    "H-X": {
+      "id": "H-X",
+      "from": "H",
+      "to": "X",
+      "label": "生存の可能性まで、失われると",
+      "relation": "conditional",
+      "explanation": "「多くの人が亡くなる」から「人類が一人も残らない」には、さらに説明が必要です。この接続は、根拠と反論を詳しく調べるべき重要な区間です。",
+      "conditions": [
+        "生存できる人々や環境が残る可能性を説明する",
+        "被害の広がりや持続が、その可能性をどう失わせるかを説明する",
+        "回復や介入によって進行が止まる可能性を検討する"
+      ],
+      "limitation": "ここに挙げた資料だけで、人類絶滅に必要な条件一式が実証されたとは言えません。これらは確認すべき論点です。",
+      "safeguards": "前段階の予防と、被害を抑え生存・回復を支える備えの両方を検討します。",
+      "sources": [
+        "power",
+        "debate"
+      ]
+    },
+    "R1-R2": {
+      "id": "R1-R2",
+      "from": "R1",
+      "to": "R2",
+      "label": "開発全体の難所が改善されると",
+      "relation": "conditional",
+      "explanation": "速くなった部分が、全体の速度を制約していた部分なら、開発全体も速くなる可能性があります。",
+      "conditions": [
+        "改善が実際に有用である",
+        "他の工程や検証の時間が、効果を相殺しない"
+      ],
+      "limitation": "作業量やコード量の増加を、研究開発全体の倍率とは読み替えられません。",
+      "safeguards": "有用性と検証の質を確かめます。",
+      "sources": [
+        "discovery"
+      ]
+    },
+    "R2-R3": {
+      "id": "R2-R3",
+      "from": "R2",
+      "to": "R3",
+      "label": "できたAIが、次の開発でも役立つと",
+      "relation": "conditional",
+      "explanation": "開発で得られた改善が、さらに次の開発を助けると循環になります。",
+      "conditions": [
+        "改良されたAIが次の研究に有用である",
+        "繰り返し改善できる余地がある"
+      ],
+      "limitation": "一度の改善で、長期的な加速やASIの到来が証明されるわけではありません。",
+      "safeguards": "各世代での能力と安全性の評価を維持します。",
+      "sources": [
+        "report",
+        "discovery"
+      ]
+    },
+    "R3-R2": {
+      "id": "R3-R2",
+      "from": "R3",
+      "to": "R2",
+      "label": "改善が、次の改善を助ける",
+      "relation": "feedback",
+      "explanation": "自己改善の循環を表す戻りの矢印です。循環があるだけで、際限のない加速が決まるわけではありません。",
+      "conditions": [
+        "次のAIの研究開発がさらに改善される",
+        "費用や検証などの制約を含めても、改善が続く"
+      ],
+      "limitation": "加速の強さ、持続、公開されていない進歩には不確実性があります。",
+      "safeguards": "研究を加速する力を、安全性の検証にも向けることを検討します。",
+      "sources": [
+        "discovery"
+      ]
+    }
+  }
+}
