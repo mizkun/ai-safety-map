@@ -8,14 +8,8 @@
   "terms": [
     "agentic-commerce"
   ],
-  "evidence": [
-    {
-      "kind": "機能の観測と将来条件の区別",
-      "src": "visa-agents",
-      "text": "支払いの自動化が進んでいるという観測と、継続的な利益を生む事業能力は区別します。"
-    }
-  ],
   "sources": [
+    "vend",
     "visa-agents"
   ],
   "questions": [],
@@ -24,9 +18,14 @@
     "検証可能な純利益と、その持続性を見る。"
   ],
   "review": {
-    "checkedAt": "2026-09-09",
+    "checkedAt": "2026-09-10",
     "intervalDays": 7,
     "reason": "能力、実運用、経済制度、反証を分けて継続確認するため。"
   },
-  "subgraph": "income-conditions"
+  "subgraph": "income-conditions",
+  "status": "limited",
+  "research": [
+    "vend",
+    "payments"
+  ]
 }

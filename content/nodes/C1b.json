@@ -2,15 +2,7 @@
   "id": "C1b",
   "title": "環境が変わると、学んだ判断がズレる",
   "explanation": "C1b.md",
-  "evidence": [
-    {
-      "kind": "研究で扱われる仕組み",
-      "src": "generalization",
-      "text": "DeepMindの研究は、能力が新しい環境でも使える一方で、意図した目標を追わなくなるケースを検討しています。"
-    }
-  ],
   "sources": [
-    "framework",
     "generalization"
   ],
   "questions": [],
@@ -19,11 +11,15 @@
     "goal-misgeneralization"
   ],
   "review": {
-    "checkedAt": "2026-09-09",
+    "checkedAt": "2026-09-10",
     "intervalDays": 90,
     "reason": "主に概念や条件の定義。関連する新証拠があれば期限前でも見直す。"
   },
   "topics": [
     "goal-misgeneralization"
+  ],
+  "status": "limited",
+  "research": [
+    "generalization"
   ]
 }

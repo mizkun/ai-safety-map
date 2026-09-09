@@ -8,14 +8,8 @@
   "terms": [
     "financial-stability"
   ],
-  "evidence": [
-    {
-      "kind": "国際機関のモニタリング報告",
-      "src": "fsb-monitoring",
-      "text": "FSBは2025年、AI導入のデータ不足と、少数の供給者への依存を点検する指標を整理しました。"
-    }
-  ],
   "sources": [
+    "finance-survey",
     "fsb-monitoring"
   ],
   "questions": [],
@@ -24,8 +18,13 @@
     "導入件数より、任された権限とシステム全体の依存を見る。"
   ],
   "review": {
-    "checkedAt": "2026-09-09",
+    "checkedAt": "2026-09-10",
     "intervalDays": 7,
     "reason": "能力、実運用、経済制度、反証を分けて継続確認するため。"
-  }
+  },
+  "status": "limited",
+  "research": [
+    "finance-use",
+    "finance-monitor"
+  ]
 }

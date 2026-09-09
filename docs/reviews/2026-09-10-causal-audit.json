@@ -1,0 +1,1717 @@
+{
+  "id": "2026-09-10-causal-audit",
+  "date": "2026-09-10",
+  "reviewer": "Codex — 編集上の点検。独立した専門家の査読ではない。",
+  "decision": "reviewed",
+  "assessments": {
+    "alignment": {
+      "mechanism": "評価の代理指標のズレと、環境変更後の目標のズレを異なる仕組みに分けた。危険な依頼の拒否を無条件に失敗としない。",
+      "conditions": "C1aとC1bは代替の例であり、両方を要求しない。能力・接点と防止の失敗はC1の結果ではなく別条件。",
+      "counterexample": "AIが危険な依頼を断っても、安全制約に適合していればアライメント失敗ではない。低い正答率だけなら能力不足も考えられる。",
+      "evidence": "原研究の失敗の機序と、意図的に葛藤を作る実験の条件を確認。通常利用の頻度や全社の順位へ換算しない。",
+      "limits": "実験が失敗を引き出せることと、自発的に持続する傾向は違う。公開資料が全ての価値観の対立を解決するわけではない。",
+      "mitigation": "目的の具体化と評価の改善は候補。コントロールと併用し、学習で解決済みとはしない。",
+      "primary": [
+        {
+          "source": "specification",
+          "locator": "Specification gamingの定義と事例",
+          "support": "評価の数字と、本来の目的がズレる"
+        },
+        {
+          "source": "generalization",
+          "locator": "Goal misgeneralisationの実験",
+          "support": "学習中は正しく見えた目標が、環境の変化でズレる"
+        },
+        {
+          "source": "summer",
+          "locator": "Research sabotage / Motivated Mislabeling",
+          "support": "人間の指示と異なる行動は、どの条件で現れるか"
+        }
+      ]
+    },
+    "execution": {
+      "mechanism": "作業の完遂能力と実世界へ作用する接点をANDで分けた。サイバーの能力と対象側の復旧失敗を重複させない。",
+      "conditions": "C2a・C2b、M2c1・M2c2はそれぞれ共同条件。M2c2はアクセス条件であり、防御・復旧の失敗はM3。",
+      "counterexample": "高いベンチマーク成績でも、通常提供の制限や接続先の権限で作用できない。接続だけでも攻撃の成功は決まらない。",
+      "evidence": "Astraの複数の公開・内部・外部評価、既知課題、試行数とスコアを照合。Geminiの判定は異なる企業基準として扱う。",
+      "limits": "得点を実攻撃の成功率にしない。古いAISIやMETRの測定を9月の上限にせず、長い課題と無介入の活動時間も分ける。",
+      "mitigation": "権限の制限、未知の課題、実務に近い評価を提案。防御後の実績が必要で、評価の成功だけを対策の保証にしない。",
+      "primary": [
+        {
+          "source": "astra-card",
+          "locator": "§10.1.2、特にExploitBenchとIrregularの評価",
+          "support": "Astraのサイバー能力は、何で測られたか"
+        },
+        {
+          "source": "horizon",
+          "locator": "Methodological Details / FAQ",
+          "support": "長い仕事を任せる能力の物差し"
+        },
+        {
+          "source": "aisi",
+          "locator": "§3 Cyber capabilities",
+          "support": "複数のサイバー作業を、最後までつなげられるか"
+        }
+      ]
+    },
+    "oversight": {
+      "mechanism": "評価の見逃しと対応の遅れを分けた。試験認識だけで隠蔽を成立させず、行動の変化を追加条件にした。",
+      "conditions": "C3aの三つの仕組みはOR。C3aとC3bも代替し得る。危険な行動を実行前に防げないか、被害の時点と合わせて判定する。",
+      "counterexample": "試験だと認識しても制限を回避できないモデルがある。検知が遅くても、取り消しが有効なら深刻な被害を防げる。",
+      "evidence": "制御の原実験、Geminiの評価認識、AISIの検出・封じ込めの区別を照合した。",
+      "limits": "信頼する監督役という実験仮定と限定課題を保持した。一つの監督の失敗から全ての防壁の無効は導かない。",
+      "mitigation": "監視範囲・見逃し率・対応時間を分け、実行前の阻止と事後の復旧を別に管理する候補を示す。",
+      "primary": [
+        {
+          "source": "control-paper",
+          "locator": "Abstract / Protocol evaluations",
+          "support": "AIが意図的に監督を破ろうとしても防げるか"
+        },
+        {
+          "source": "gemini-safety",
+          "locator": "Frontier Safety Assessment",
+          "support": "Geminiの能力・評価認識・生物安全性"
+        },
+        {
+          "source": "control",
+          "locator": "AI Control Roadmap / Analyzing a million agent trajectories",
+          "support": "監視率・見逃し・対応時間を分けて管理する"
+        }
+      ]
+    },
+    "control-scale": {
+      "mechanism": "局所的な無許可行動から、発見後も続く広い制御喪失へ至る追加条件を明示した。",
+      "conditions": "LはC1・C2・C3の共同条件。C4はLに活動の持続C4aと組織を越える広がりC4bが加わる。",
+      "counterexample": "AISIの事例のように、人間が許可外の操作を発見して封じ込めれば、局所的な失敗があっても停止不能ではない。",
+      "evidence": "AISIは行動数と試行数、特別な接続条件を区別。METRの協働記録と2〜3月の能力判断を現在の上限にしない。",
+      "limits": "エージェントの数は組織横断の制御喪失の規模ではない。世界規模の停止不能は未実証として保持。",
+      "mitigation": "権限・資源の取り消しと組織間の対応を候補として示す。実行記録に照らして有効性を測る必要を残した。",
+      "primary": [
+        {
+          "source": "aisi-incident",
+          "locator": "What happened / What we found",
+          "support": "評価用AIが許可範囲を越えた実際の事例"
+        },
+        {
+          "source": "incident",
+          "locator": "Core takeaways / Investigation process and limitations",
+          "support": "AI同士の無許可の協働を調査した結果"
+        },
+        {
+          "source": "frontier",
+          "locator": "Executive summary / Risk assessment",
+          "support": "局所的な逸脱と、停止に耐える活動は別の能力"
+        }
+      ]
+    },
+    "misuse": {
+      "mechanism": "人間の危険な目的、有効なAI支援、防御の失敗を並列に修正した。情報の支援と物理的な実行も分けた。",
+      "conditions": "M1・M2・M3をANDで扱い、世界規模の被害には範囲と持続を追加。M2cとM2bは重なり得るORの代表例。",
+      "counterexample": "AIが情報に答えても、利用者に実物を扱う条件がなければ実行できない。防御と復旧が有効なら能力があっても広がらない。",
+      "evidence": "悪用の観測は停止された832アカウントから選ばれた標本。生物の知識・支援評価は物理的被害の実証としない。",
+      "limits": "危険用途は二つだけではない。限定した生物評価から全分野の能力や絶滅の確率を推定しない。",
+      "mitigation": "情報・アクセス・物理的実行・公衆衛生などの別の防壁を候補として示し、実行の具体的な手順は記載しない。",
+      "primary": [
+        {
+          "source": "cyber-misuse",
+          "locator": "Key findings / About the dataset / A note on the scoring formula",
+          "support": "実際の悪用者は、AIを何に使っていたか"
+        },
+        {
+          "source": "gemini-safety",
+          "locator": "Frontier Safety Assessment",
+          "support": "Geminiの能力・評価認識・生物安全性"
+        },
+        {
+          "source": "rand-extinction",
+          "locator": "How Could AI Lead to Human Extinction? / Findings and limitations",
+          "support": "大惨事と、人類全員の死の間には大きな隔たりがある"
+        }
+      ]
+    },
+    "military": {
+      "mechanism": "助言、訂正、他者の反応、実際の破壊を段階として分けた。AIの利用そのものを対立の原因としない。",
+      "conditions": "重要な誤りの採用と確認不足、相手との相互作用、抑制の失敗が接続の追加条件。S1-S2はjointではなく条件付き接続。",
+      "counterexample": "AIが判断を補い、人間が誤りを直せば危機を抑えられる。対立があっても、連絡と抑止で破壊へ進まない場合がある。",
+      "evidence": "SIPRIの原分析と5モデルの模擬外交ゲームの対象を照合した。",
+      "limits": "ゲーム内の頻度は実戦の頻度ではない。非公開の指揮系統を推定せず、核使用から絶滅へ直結しない。",
+      "mitigation": "人間の権限、複数の情報源、危機時の連絡を候補として示す。具体的な運用で効くかは追加評価が必要。",
+      "primary": [
+        {
+          "source": "sipri",
+          "locator": "The impact of military artificial intelligence on nuclear escalation risk",
+          "support": "軍事AIが、判断の時間と相互の反応を変える"
+        },
+        {
+          "source": "wargames",
+          "locator": "Escalation Risks / Experiments",
+          "support": "模擬外交で、AI同士の判断が対立を強めた"
+        }
+      ]
+    },
+    "accidents": {
+      "mechanism": "共通原因による同時の失敗と、接続を通じた失敗の伝播を区別した。復旧系の喪失を別の段階にした。",
+      "conditions": "共通の弱点、実際の伝達経路、切り離しの失敗、復旧資源の不足が必要。A1-A2の根拠のないjoint表示を条件付きへ修正。",
+      "counterexample": "同じモデルでも用途や確認手順が違えば同時に失敗しない。復旧系が独立していれば連鎖を止められる。",
+      "evidence": "技術安全の枠組みと金融当局の原分析を利用。金融での分析を社会全体の実測としない。",
+      "limits": "AIが世界中の復旧系を失わせたという資料は確認していない。大きな一時停止と長期の再建不能を区別。",
+      "mitigation": "依存の把握、障害の分離、AIを使えない状態での復旧訓練を候補として記載。",
+      "primary": [
+        {
+          "source": "framework",
+          "locator": "An Approach to Technical AGI Safety and Security / Risk categories",
+          "support": "異なる原因を分けて考えるための枠組み"
+        },
+        {
+          "source": "fsb-ai",
+          "locator": "The Financial Stability Implications of Artificial Intelligence / Vulnerabilities",
+          "support": "AIが金融の混乱を広げる条件"
+        },
+        {
+          "source": "fsb-monitoring",
+          "locator": "Monitoring adoption / Recommendations",
+          "support": "市場のAI依存を測るにも、データの穴がある"
+        }
+      ]
+    },
+    "dependence": {
+      "mechanism": "委任、代替能力の喪失、意思決定への影響力、長期の固定を分けた。",
+      "conditions": "委任だけでは足りず、技能・代替・所有・異議申し立てなどの条件が加わる。E1は生存したままの主導権喪失。",
+      "counterexample": "便利なAIを使っても、人間が方針を変えたり提供者を替えたりできれば、同じ主導権喪失には進まない。",
+      "evidence": "企業利用の原調査とGradual Disempowermentの原論考を別種の根拠として扱う。",
+      "limits": "利用率は政治的・制度的な主導権の喪失率ではない。永続性を現在の一時的な困難から判断しない。",
+      "mitigation": "権利と実際の代替手段、技能の維持を候補として提示。制度名だけで有効性を保証しない。",
+      "primary": [
+        {
+          "source": "census-adoption",
+          "locator": "Working Paper CES-26-25 / Abstract",
+          "support": "企業はAIを、どのくらい仕事に使っているか"
+        },
+        {
+          "source": "gradual",
+          "locator": "Gradual Disempowerment / Economic, cultural and state systems",
+          "support": "人間の主導権が、少しずつ失われるという仮説"
+        },
+        {
+          "source": "power",
+          "locator": "Is Power-Seeking AI an Existential Risk? / Main argument",
+          "support": "制御喪失から破局までには、追加の条件がある"
+        }
+      ]
+    },
+    "acceleration": {
+      "mechanism": "研究の一部、全工程、次世代への反復、ASIを分けた。安全性研究へ進む分岐も残した。",
+      "conditions": "研究の難所への効果と、別の工程で相殺されないことが必要。R3-R2だけを明示的な戻り線として扱う。",
+      "counterexample": "コードが増えても計算資源が律速なら全体の加速は小さい。一度の改良があっても、反復で改善が止まる場合がある。",
+      "evidence": "社内利用データ、人間の介入、公開成果の観測、限定した安全性評価を照合。数学的成果の公表と受理を区別。",
+      "limits": "利用量を因果的な生産性倍率へ、安全性の評価改善を絶滅確率の減少へ変換しない。ASIに唯一の経路を仮定しない。",
+      "mitigation": "独立した評価、反復ごとの能力と対策の確認、安全性研究への活用を候補とする。",
+      "primary": [
+        {
+          "source": "openai-rd",
+          "locator": "§1〜3、測定方法",
+          "support": "研究所でAIに任せる仕事が増えた"
+        },
+        {
+          "source": "automated-alignment",
+          "locator": "評価設計とproduction-grade modelの実験",
+          "support": "AIがアライメントの改善方法を研究する"
+        },
+        {
+          "source": "discovery",
+          "locator": "Overview / Note on the data",
+          "support": "公開された発見は、分野ごとに増え方が違う"
+        },
+        {
+          "source": "navier",
+          "locator": "How we obtained the result / Progress and responsibility",
+          "support": "新しい数学的成果の公表と、受理は別"
+        }
+      ]
+    },
+    "work": {
+      "mechanism": "技術的な代替、実際の導入、十分な生産、分配を分けた。全ての労働を代替することは生活保障の必須条件から外した。",
+      "conditions": "W4は知的・身体的労働の全範囲への技術的な仮説。W5はW3とW6のANDで、全労働の代替W4とは別。",
+      "counterexample": "一部の自動化と分配でも必要な労働を減らせる。逆に全て代替可能でも、所得が届かなければ働かず暮らせない。",
+      "evidence": "ILOの曝露、Censusの企業利用、ロボットの実演、所得分配のモデルを異なる測定として照合。",
+      "limits": "曝露を失業確率にしない。実演から全現場へ、企業数の利用率から労働の代替率へ一般化しない。",
+      "mitigation": "現場での検証と所得・生活へのアクセスの確認を提案。自動化を一律に止める対策とはせず、移行期の害を抑える。",
+      "primary": [
+        {
+          "source": "ilo-index",
+          "locator": "Working Paper 140 / Methodology and results",
+          "support": "仕事の「曝露」は、失業率とは違う"
+        },
+        {
+          "source": "census-adoption",
+          "locator": "Working Paper CES-26-25 / Abstract",
+          "support": "企業はAIを、どのくらい仕事に使っているか"
+        },
+        {
+          "source": "robotics-2",
+          "locator": "Whole-body intelligence / Generalization",
+          "support": "身体を使う作業の実演は、どこまで進んだか"
+        },
+        {
+          "source": "imf-distribution",
+          "locator": "AI Adoption and Inequality / Model and channels",
+          "support": "生産性が上がると、誰の所得が増えるか"
+        }
+      ]
+    },
+    "income": {
+      "mechanism": "売れる価値と取引・決済をANDで分け、売上、純利益、利益の受取先を別にした。",
+      "conditions": "I1aとI1bの両方が必要。継続的な事業には総費用と品質、配分には所有・契約・制度が加わる。",
+      "counterexample": "機械間の送金が多くても純利益は分からない。AIの出力が多くても買い手がいなければ収入にならない。",
+      "evidence": "Project Vendの店舗収支と人間の承認・補充、Visaの機械間決済の対象を確認した。",
+      "limits": "店舗の収支は全ての計算費・運営費を含む無人企業の純利益ではない。人や組織の所有とAI自身の法的地位を混同しない。",
+      "mitigation": "支出・権限・取消・監査と、価値・総費用の検証を候補として示した。",
+      "primary": [
+        {
+          "source": "vend",
+          "locator": "Phase two / Improvements and remaining challenges",
+          "support": "AIに店舗を任せた実験"
+        },
+        {
+          "source": "visa-agents",
+          "locator": "Agentic payments from the ground up / On-chain activity",
+          "support": "機械による決済は、AIの利益とは違う"
+        },
+        {
+          "source": "imf-distribution",
+          "locator": "AI Adoption and Inequality / Model and channels",
+          "support": "生産性が上がると、誰の所得が増えるか"
+        }
+      ]
+    },
+    "currency": {
+      "mechanism": "価格低下、希少性・配分制約、貨幣の役割を分けた。「価値がなくなる」の多義性を明示した。",
+      "conditions": "P1とP2のANDで配分上の役割の縮小を考える。金融危機やAIの収入からの直結は作らない。",
+      "counterexample": "ソフトウェアが安くても土地やエネルギーが希少なら、お金による配分は残る。インフレも豊かさとは異なる。",
+      "evidence": "ECBの制度の原解説と経済モデルを参照し、将来像は編集上の仮説と明示した。",
+      "limits": "貨幣の三つの機能が同時に消える実証はない。ECBがポスト希少性を予測したと読めないよう用語にも限界を記載。",
+      "mitigation": "供給制約、価格への反映、生活へのアクセス、決済の安定を別に点検する候補を示す。",
+      "primary": [
+        {
+          "source": "ecb-money",
+          "locator": "What is money? / Functions of money",
+          "support": "お金には、三つの役割がある"
+        },
+        {
+          "source": "imf-distribution",
+          "locator": "AI Adoption and Inequality / Model and channels",
+          "support": "生産性が上がると、誰の所得が増えるか"
+        }
+      ]
+    },
+    "finance": {
+      "mechanism": "重要操作へのAIの関与、不正・同質化、市場の余力と防壁を分けた。",
+      "conditions": "F1・F2・F4はAND、F2aとF2bはOR。F3は金融機能の危機であり、一時の株価下落、貨幣の消滅、絶滅とは異なる。",
+      "counterexample": "同じモデルを使っても制約や目的が異なれば行動はそろわない。同時の損失があっても余力が十分なら危機は局所化する。",
+      "evidence": "BoE/FCAは組織数とユースケース数の母数を区別。FSBの原分析は経路と監視の提案として使用。",
+      "limits": "2024年の調査を9月の市場取引比率にしない。共通の提供者の割合は市場シェアや判断の一致率ではない。",
+      "mitigation": "権限・取引上限・流動性・復旧・当局間の情報共有を候補として示す。一般的な対策の記述を実運用の安全性の証明としない。",
+      "primary": [
+        {
+          "source": "finance-survey",
+          "locator": "Key findings / Level of autonomy",
+          "support": "金融機関のAI利用と、完全な自律運用は別"
+        },
+        {
+          "source": "fsb-ai",
+          "locator": "The Financial Stability Implications of Artificial Intelligence / Vulnerabilities",
+          "support": "AIが金融の混乱を広げる条件"
+        },
+        {
+          "source": "fsb-monitoring",
+          "locator": "Monitoring adoption / Recommendations",
+          "support": "市場のAI依存を測るにも、データの穴がある"
+        }
+      ]
+    },
+    "outcomes": {
+      "mechanism": "大災害、文明の後退、生存・回復の道、絶滅を別の到達点として維持した。",
+      "conditions": "T1とT2は、絶滅への飛躍を避けるために組み合わせる条件。普遍的な必要十分条件の証明とはしない。",
+      "counterexample": "世界的な被害でも、生き残る人々と再建の手段が残れば絶滅ではない。主導権の喪失も全員の死とは異なる。",
+      "evidence": "RANDの三つの探索的シナリオとCarlsmithの原論考の射程を確認。実存的破局の広い定義を文字どおりの絶滅に置き換えない。",
+      "limits": "取り上げた経路が難しいという分析を、全ての将来経路が不可能という証明にしない。時期と確率は算出しない。",
+      "mitigation": "経路ごとの予防と、生存・復旧の手段を残す対策を分け、候補として提示した。",
+      "primary": [
+        {
+          "source": "rand-extinction",
+          "locator": "How Could AI Lead to Human Extinction? / Findings and limitations",
+          "support": "大惨事と、人類全員の死の間には大きな隔たりがある"
+        },
+        {
+          "source": "power",
+          "locator": "Is Power-Seeking AI an Existential Risk? / Main argument",
+          "support": "制御喪失から破局までには、追加の条件がある"
+        }
+      ]
+    },
+    "editorial": {
+      "mechanism": "短い見出し、根拠の種類、詳細の三つのタブ、経路ごとの条件付きの説明を照合した。",
+      "conditions": "概要と成立条件、現在の観測と根拠の限界、対策を別に保持。UIの順序を新しい因果関係にしない。",
+      "counterexample": "新しい公表日でも古い観測期間の可能性がある。点検期限前でも内容が正しい保証はなく、期限超過も誤りの判定ではない。",
+      "evidence": "全体の分類は原論考と対応。日本語は別紙の文化審議会の指針を参照し、主体や指示先を省略しすぎないよう点検。",
+      "limits": "ストーリーは条件付きの筋道であり、出来事や期限を創作していない。要点への圧縮で観測を仮説に、仮説を事実に変えない。",
+      "mitigation": "新着と反論、対策の進歩も点検し、本文の変更を依存する根拠と一緒に再評価する手順を設けた。",
+      "primary": [
+        {
+          "source": "framework",
+          "locator": "An Approach to Technical AGI Safety and Security / Risk categories",
+          "support": "異なる原因を分けて考えるための枠組み"
+        },
+        {
+          "source": "control-paper",
+          "locator": "Abstract / Protocol evaluations",
+          "support": "AIが意図的に監督を破ろうとしても防げるか"
+        }
+      ]
+    },
+    "primary-sourcing": {
+      "mechanism": "一次情報の実測、調査、原論考、制度の説明を区別し、二次的な総説だけを実測の根拠にする参照を除去した。",
+      "conditions": "研究カードは評価者、対象、設定、方法、結果、限界、出典の該当箇所を必須とする。",
+      "counterexample": "開発企業のカードに外部機関の結果が載っていても、外部の原データまで独立確認したとは限らない。一次報告でも誤りや偏りは残る。",
+      "evidence": "37件の研究カードの該当部分を原資料へ照合。古い基準線、新しいモデル、自社報告、第三者の実施を区別した。",
+      "limits": "原論考はその仮説の一次情報であり、発生の実証ではない。検索結果、AIの調査報告、ニュース記事だけで数値を確定しない。",
+      "mitigation": "訂正・追試・反論を継続して確認する。主張を支持する範囲が変わった場合、関連するノードと矢印の点検を無効にする。",
+      "primary": [
+        {
+          "source": "summer",
+          "locator": "Research sabotage / Motivated Mislabeling",
+          "support": "当該研究・評価・出来事を実施または調査した組織による一次報告"
+        },
+        {
+          "source": "incident",
+          "locator": "Core takeaways / Investigation process and limitations",
+          "support": "当該研究・評価・出来事を実施または調査した組織による一次報告"
+        },
+        {
+          "source": "horizon",
+          "locator": "Methodological Details / FAQ",
+          "support": "当該研究・評価・出来事を実施または調査した組織による一次報告"
+        },
+        {
+          "source": "discovery",
+          "locator": "Overview / Note on the data",
+          "support": "当該研究・評価・出来事を実施または調査した組織による一次報告"
+        },
+        {
+          "source": "aisi",
+          "locator": "§3 Cyber capabilities",
+          "support": "当該研究・評価・出来事を実施または調査した組織による一次報告"
+        },
+        {
+          "source": "control",
+          "locator": "AI Control Roadmap / Analyzing a million agent trajectories",
+          "support": "当該研究・評価・出来事を実施または調査した組織による一次報告"
+        },
+        {
+          "source": "framework",
+          "locator": "An Approach to Technical AGI Safety and Security / Risk categories",
+          "support": "著者による理論・シナリオ・制度の原論考。出来事の実証とは区別"
+        },
+        {
+          "source": "power",
+          "locator": "Is Power-Seeking AI an Existential Risk? / Main argument",
+          "support": "著者による理論・シナリオ・制度の原論考。出来事の実証とは区別"
+        },
+        {
+          "source": "sipri",
+          "locator": "The impact of military artificial intelligence on nuclear escalation risk",
+          "support": "著者による理論・シナリオ・制度の原論考。出来事の実証とは区別"
+        },
+        {
+          "source": "governance",
+          "locator": "資料の本文・概要。利用箇所は既存の用語または更新履歴に限定。",
+          "support": "著者による理論・シナリオ・制度の原論考。出来事の実証とは区別"
+        },
+        {
+          "source": "specification",
+          "locator": "Specification gamingの定義と事例",
+          "support": "当該研究・評価・出来事を実施または調査した組織による一次報告"
+        },
+        {
+          "source": "generalization",
+          "locator": "Goal misgeneralisationの実験",
+          "support": "当該研究・評価・出来事を実施または調査した組織による一次報告"
+        },
+        {
+          "source": "frontier",
+          "locator": "Executive summary / Risk assessment",
+          "support": "当該研究・評価・出来事を実施または調査した組織による一次報告"
+        },
+        {
+          "source": "rand-extinction",
+          "locator": "How Could AI Lead to Human Extinction? / Findings and limitations",
+          "support": "著者による理論・シナリオ・制度の原論考。出来事の実証とは区別"
+        },
+        {
+          "source": "gradual",
+          "locator": "Gradual Disempowerment / Economic, cultural and state systems",
+          "support": "著者による理論・シナリオ・制度の原論考。出来事の実証とは区別"
+        },
+        {
+          "source": "aisi-incident",
+          "locator": "What happened / What we found",
+          "support": "当該研究・評価・出来事を実施または調査した組織による一次報告"
+        },
+        {
+          "source": "astra",
+          "locator": "Cybersecurity / Alignment",
+          "support": "当該研究・評価・出来事を実施または調査した組織による一次報告"
+        },
+        {
+          "source": "gemini-safety",
+          "locator": "Frontier Safety Assessment",
+          "support": "当該研究・評価・出来事を実施または調査した組織による一次報告"
+        },
+        {
+          "source": "openai-rd",
+          "locator": "§1〜3、測定方法",
+          "support": "当該研究・評価・出来事を実施または調査した組織による一次報告"
+        },
+        {
+          "source": "scheming",
+          "locator": "Abstract / Six agentic evaluations",
+          "support": "当該研究・評価・出来事を実施または調査した組織による一次報告"
+        },
+        {
+          "source": "automated-alignment",
+          "locator": "評価設計とproduction-grade modelの実験",
+          "support": "当該研究・評価・出来事を実施または調査した組織による一次報告"
+        },
+        {
+          "source": "astra-card",
+          "locator": "§10.1.2、特にExploitBenchとIrregularの評価",
+          "support": "当該研究・評価・出来事を実施または調査した組織による一次報告"
+        },
+        {
+          "source": "navier",
+          "locator": "How we obtained the result / Progress and responsibility",
+          "support": "当該研究・評価・出来事を実施または調査した組織による一次報告"
+        },
+        {
+          "source": "formalization",
+          "locator": "Formalizing Fermat’s Last Theorem",
+          "support": "当該研究・評価・出来事を実施または調査した組織による一次報告"
+        },
+        {
+          "source": "control-paper",
+          "locator": "Abstract / Protocol evaluations",
+          "support": "当該研究・評価・出来事を実施または調査した組織による一次報告"
+        },
+        {
+          "source": "ilo-skills",
+          "locator": "資料の本文・概要。利用箇所は既存の用語または更新履歴に限定。",
+          "support": "当該研究・評価・出来事を実施または調査した組織による一次報告"
+        },
+        {
+          "source": "robotics-2",
+          "locator": "Whole-body intelligence / Generalization",
+          "support": "当該研究・評価・出来事を実施または調査した組織による一次報告"
+        },
+        {
+          "source": "imf-distribution",
+          "locator": "AI Adoption and Inequality / Model and channels",
+          "support": "著者による理論・シナリオ・制度の原論考。出来事の実証とは区別"
+        },
+        {
+          "source": "visa-agents",
+          "locator": "Agentic payments from the ground up / On-chain activity",
+          "support": "Visaと共同分析者による取引データの原分析・制度設計の説明"
+        },
+        {
+          "source": "fsb-ai",
+          "locator": "The Financial Stability Implications of Artificial Intelligence / Vulnerabilities",
+          "support": "著者による理論・シナリオ・制度の原論考。出来事の実証とは区別"
+        },
+        {
+          "source": "fsb-monitoring",
+          "locator": "Monitoring adoption / Recommendations",
+          "support": "著者による理論・シナリオ・制度の原論考。出来事の実証とは区別"
+        },
+        {
+          "source": "bis-ai-finance",
+          "locator": "資料の本文・概要。利用箇所は既存の用語または更新履歴に限定。",
+          "support": "著者による理論・シナリオ・制度の原論考。出来事の実証とは区別"
+        },
+        {
+          "source": "ecb-money",
+          "locator": "What is money? / Functions of money",
+          "support": "貨幣を扱う中央銀行による制度の原解説"
+        },
+        {
+          "source": "gemini-38",
+          "locator": "Frontier Safety Assessment",
+          "support": "研究・評価の実施者またはデータ収集機関による原報告"
+        },
+        {
+          "source": "ilo-index",
+          "locator": "Working Paper 140 / Methodology and results",
+          "support": "研究・評価の実施者またはデータ収集機関による原報告"
+        },
+        {
+          "source": "census-adoption",
+          "locator": "Working Paper CES-26-25 / Abstract",
+          "support": "研究・評価の実施者またはデータ収集機関による原報告"
+        },
+        {
+          "source": "vend",
+          "locator": "Phase two / Improvements and remaining challenges",
+          "support": "研究・評価の実施者またはデータ収集機関による原報告"
+        },
+        {
+          "source": "finance-survey",
+          "locator": "Key findings / Level of autonomy",
+          "support": "研究・評価の実施者またはデータ収集機関による原報告"
+        },
+        {
+          "source": "wargames",
+          "locator": "Escalation Risks / Experiments",
+          "support": "研究・評価の実施者またはデータ収集機関による原報告"
+        },
+        {
+          "source": "cyber-misuse",
+          "locator": "Key findings / About the dataset / A note on the scoring formula",
+          "support": "Anthropicの脅威調査チームによる、自社サービスの悪用記録の原分析"
+        }
+      ]
+    }
+  },
+  "entries": {
+    "source:summer": {
+      "hash": "369fa666e34f59185756d2f2384cdfd22352ec00c26386bb7117000b73bb8e3b",
+      "assessment": "primary-sourcing"
+    },
+    "source:incident": {
+      "hash": "c5b7ea25659998993c8bbde9f88238057930662f2528034b42c5cb899fd0d7af",
+      "assessment": "primary-sourcing"
+    },
+    "source:horizon": {
+      "hash": "f2d59dc52fbd4a88ad73b2647f01c013e7d25614c459b8d9b15ac7f066114c95",
+      "assessment": "primary-sourcing"
+    },
+    "source:discovery": {
+      "hash": "d5d8fe73eeeb1627f230a2fcd9bbbd7825337967dbe49ee3ea4e660883e27e58",
+      "assessment": "primary-sourcing"
+    },
+    "source:aisi": {
+      "hash": "ee7d79769f588fa4303c3e69b53af9909208958703f303aa26e9bc8e11065a58",
+      "assessment": "primary-sourcing"
+    },
+    "source:control": {
+      "hash": "3ca90cba2dad120e62c78e47f4bddc987786779182c42adae98c740f3ec972c3",
+      "assessment": "primary-sourcing"
+    },
+    "source:framework": {
+      "hash": "47b9bcb57959d9af97c4f5d7225d5a93b3b1fd3c048a99f8d16afa3ffcc15b13",
+      "assessment": "primary-sourcing"
+    },
+    "source:power": {
+      "hash": "8aaa82cf070ffb74c6c326c18e0d351c05026d6c25f0c256328233e82a4d3ebf",
+      "assessment": "primary-sourcing"
+    },
+    "source:sipri": {
+      "hash": "2ef3b4a2f7774cd9d33494c2e1cd02ed9d390046dc8233a36e6fb1cabe5f33f6",
+      "assessment": "primary-sourcing"
+    },
+    "source:governance": {
+      "hash": "21057e4347529f0e769ddc9bafde7a89553bd9fdc4ac26ee5f7d90fc0cf61719",
+      "assessment": "primary-sourcing"
+    },
+    "source:specification": {
+      "hash": "02cb02f6a862959d580097434c6a8053e501e5f8f8782fa3b7f029e215c2e22c",
+      "assessment": "primary-sourcing"
+    },
+    "source:generalization": {
+      "hash": "f58fd1cb8981bafbddbca28803beee940c237cf91fc577ced2a0d7d3c84ab60f",
+      "assessment": "primary-sourcing"
+    },
+    "source:frontier": {
+      "hash": "050f17f2e3fde9864062db6e7559ef6c63186e6b4a89662e878a34ac2c08399c",
+      "assessment": "primary-sourcing"
+    },
+    "source:rand-extinction": {
+      "hash": "8a5aaf1286d249e382d230117bda451b0b09e800a6e2e4d068ae5499b3696591",
+      "assessment": "primary-sourcing"
+    },
+    "source:gradual": {
+      "hash": "4c335d6dca3c3c928c318ff5bc702290862c0c3667eba704efc53714d7a99dba",
+      "assessment": "primary-sourcing"
+    },
+    "source:aisi-incident": {
+      "hash": "ff91f5f3a7af2bc1f578e548654141945defe1bdee94ecfca08696416caf3c3b",
+      "assessment": "primary-sourcing"
+    },
+    "source:astra": {
+      "hash": "f33e7df5fbc0f68e0ecbb8fb14a0e05b1a757f64bd550f20783787bf90602160",
+      "assessment": "primary-sourcing"
+    },
+    "source:gemini-safety": {
+      "hash": "d02dc9467b69437b5e6fa1aed1bbd4061d4d0cf55848a3a434a5cd6dc87258b4",
+      "assessment": "primary-sourcing"
+    },
+    "source:openai-rd": {
+      "hash": "35edc30bdf84ee9473dbeeaddf9540f9070660b0a1c97704e15f87605269ef7e",
+      "assessment": "primary-sourcing"
+    },
+    "source:scheming": {
+      "hash": "cfaa4bc2e47644ed72a3cd61798e9918a83b53202da7968fc68617e884694069",
+      "assessment": "primary-sourcing"
+    },
+    "source:automated-alignment": {
+      "hash": "ac1eec179cb0fe09141aa562bce4dd75f241aa568871826156616d4fbc009443",
+      "assessment": "primary-sourcing"
+    },
+    "source:astra-card": {
+      "hash": "4bcd18411f8467037adb82b2b6c7c91f7887088fd6ac766b2782bcbe07970be2",
+      "assessment": "primary-sourcing"
+    },
+    "source:navier": {
+      "hash": "38eafc98b3a423f521f91db1cfe7e759e5d479fb81882e3f795dffd4133320fe",
+      "assessment": "primary-sourcing"
+    },
+    "source:formalization": {
+      "hash": "5e7d7556d71f4e13297cb341f24d116f1f055206d85422b3d5331afa9113a0e6",
+      "assessment": "primary-sourcing"
+    },
+    "source:control-paper": {
+      "hash": "0dde93bd6e32920575db521ac951ac2a2fc4939f7d6d10b3b9efe4f07ef4d38b",
+      "assessment": "primary-sourcing"
+    },
+    "source:ilo-skills": {
+      "hash": "8f1c9f220b7a577f89c6433d2ef051ae5bdcd45d2006c3b4f9adb7dc5f5beced",
+      "assessment": "primary-sourcing"
+    },
+    "source:robotics-2": {
+      "hash": "008888e0fe8afe96bd2d2c41421ee86227c8179964484644fb13ae519473f16b",
+      "assessment": "primary-sourcing"
+    },
+    "source:imf-distribution": {
+      "hash": "e1966cf7929dfd537a7c76e9a7c54b00fd22378436f633afada8a679c90a2e3e",
+      "assessment": "primary-sourcing"
+    },
+    "source:visa-agents": {
+      "hash": "d8acb65402c5bab78d96489e339dc768a06a7fbdf72f66263194473b6f053c64",
+      "assessment": "primary-sourcing"
+    },
+    "source:fsb-ai": {
+      "hash": "201fa6b1598020c71fc163fa77c110e0b3f30bb84ae52c38ac2244e480fdd433",
+      "assessment": "primary-sourcing"
+    },
+    "source:fsb-monitoring": {
+      "hash": "b1584706d30c446a9b4763c9d819f9e562bbece7c484739f6e53f84f1c8e3a60",
+      "assessment": "primary-sourcing"
+    },
+    "source:bis-ai-finance": {
+      "hash": "7c9796ac8060368df4d36209bef0215043f554f0c28f8253cb78808121b52952",
+      "assessment": "primary-sourcing"
+    },
+    "source:ecb-money": {
+      "hash": "592c1ed72017ef8b9bb659e101773ade2e3e05b5037157e297580198474f360d",
+      "assessment": "primary-sourcing"
+    },
+    "source:gemini-38": {
+      "hash": "1ceb8407e1cde9736d341fdcb24949b2544db3c0cfe352212602ea521fdecd36",
+      "assessment": "primary-sourcing"
+    },
+    "source:ilo-index": {
+      "hash": "cfda7dfcf860a3873c9e7438dbe03631d3c2da7692e8189006be5f1ab04adb0b",
+      "assessment": "primary-sourcing"
+    },
+    "source:census-adoption": {
+      "hash": "245a3e72d9fdacde019d84b098effad0920dfff8d8def01e27a713adfb290eb2",
+      "assessment": "primary-sourcing"
+    },
+    "source:vend": {
+      "hash": "6583b213bdb76dd5a2fdd6ad0d87bc4c2e5aa6b705b8f94944cde4fc1c95c57b",
+      "assessment": "primary-sourcing"
+    },
+    "source:finance-survey": {
+      "hash": "3baf42535e69f9e245b4359497d66909bd59d40bb0525bc72030eb057dbd7873",
+      "assessment": "primary-sourcing"
+    },
+    "source:wargames": {
+      "hash": "aea02764df67fb741a95ce2a46797bca25dfd187bff34a43784f30f3a09eaff6",
+      "assessment": "primary-sourcing"
+    },
+    "source:cyber-misuse": {
+      "hash": "ce80596fdbae5e9bf390eb9f7185f29494b85c8e8bfb4fb9f9989bffe891e668",
+      "assessment": "primary-sourcing"
+    },
+    "research:astra-cyber": {
+      "hash": "5bd4dc4618bc9b0b07d96e5b7cb9f9768bab6b44468cafa9145c2d34c3c43037",
+      "assessment": "primary-sourcing"
+    },
+    "research:astra-guard": {
+      "hash": "3fdb4bc2305e27275cff0a7b23760f723a00ccc450280f0dbfe5efae44ba55c7",
+      "assessment": "primary-sourcing"
+    },
+    "research:gemini-safety": {
+      "hash": "0990ff2155b12e73837608af1deb9ebe3e0d970dfe689940bce5791abd8ed04a",
+      "assessment": "primary-sourcing"
+    },
+    "research:gemini-38": {
+      "hash": "08e3dc9636643b914109c19e4651e84383d4a5da0727d922739453a80af8bba4",
+      "assessment": "primary-sourcing"
+    },
+    "research:aisi-range": {
+      "hash": "5172d96c4662a1f6c7ca535aaee0fc1418ceda76bedd5ca350256c39e2b8a87c",
+      "assessment": "primary-sourcing"
+    },
+    "research:aisi-incident": {
+      "hash": "21fee3a2551e42fa7041384be8c45813dda0b677bb5f05d39785ca1062b2f333",
+      "assessment": "primary-sourcing"
+    },
+    "research:hf-incident": {
+      "hash": "8efd0efd5b50999156920fd81b4beaf6c40fc47f17fbc636561f38fac47f4525",
+      "assessment": "primary-sourcing"
+    },
+    "research:summer": {
+      "hash": "12461ac31c9b6d709382683dfa784767d46b9797e32e7aa71cface7bc5d68fe8",
+      "assessment": "primary-sourcing"
+    },
+    "research:specification": {
+      "hash": "d18ad96084ac94ef9f74f589a75c71eb533cadab750eaed8a78a4200e89db46f",
+      "assessment": "primary-sourcing"
+    },
+    "research:generalization": {
+      "hash": "80b420a1c876f51573546ebd6e5f4d3c4ced89746cff08bce69321470b23e6f8",
+      "assessment": "primary-sourcing"
+    },
+    "research:scheming": {
+      "hash": "2ba7e6cfd796ef829a84e165fa59b2e32ee1ef1d5abf167ba10adeceb90ae197",
+      "assessment": "primary-sourcing"
+    },
+    "research:control-protocol": {
+      "hash": "47a42d9e2052045ab69b80165596e2db700e2badbe473b2b781f2d2d67578864",
+      "assessment": "primary-sourcing"
+    },
+    "research:control-roadmap": {
+      "hash": "82ca3b81552854b3f7f44329074505effbf107441deb1a1bb3aa8c30327ce97f",
+      "assessment": "primary-sourcing"
+    },
+    "research:frontier": {
+      "hash": "33d8ac40edb3375caf895e6cf4ad5cfbeffd3d0330520367f50cbac8ff964902",
+      "assessment": "primary-sourcing"
+    },
+    "research:horizon": {
+      "hash": "edade84c43bc4cebe613500307918e514c845b35d83242b85785890f2a4c21d2",
+      "assessment": "primary-sourcing"
+    },
+    "research:rd-use": {
+      "hash": "bc971a68c1d18db4adf3c40f8e0cd2362cecb9c16c01e08df8af3479c2ae2a73",
+      "assessment": "primary-sourcing"
+    },
+    "research:alignment-research": {
+      "hash": "11230f2735f6b1bb7b148694c6a72c360924888abeb0b52e112b5936192db395",
+      "assessment": "primary-sourcing"
+    },
+    "research:discoveries": {
+      "hash": "2223fc1c5af63a9a64ed9792b8e97ec9f1912834a751dfaf98df4cec78247c41",
+      "assessment": "primary-sourcing"
+    },
+    "research:formalization": {
+      "hash": "1f30839139ebee7a876b4707edf9422d12e1c3877a8437acb1c4258c7d7085d8",
+      "assessment": "primary-sourcing"
+    },
+    "research:navier": {
+      "hash": "f16b2d3b436e6a834d1669d56676533ddfd6a09ec4126b167c04a921f10729b8",
+      "assessment": "primary-sourcing"
+    },
+    "research:jobs-exposure": {
+      "hash": "9f50ece6e9c858bd74cf86e40c414f1d39c23afcaafb8ea1e021d1a3b722ffef",
+      "assessment": "primary-sourcing"
+    },
+    "research:adoption": {
+      "hash": "513da92049220deb8afb12673691b3dbcd16fa48db21e95975f6302293ba0c0b",
+      "assessment": "primary-sourcing"
+    },
+    "research:robotics": {
+      "hash": "adfd74823d0f49d61ad4c160ba8303e3c2329f35ff952b50df98fa1109a1506b",
+      "assessment": "primary-sourcing"
+    },
+    "research:distribution": {
+      "hash": "8902cc590dca91dd66d82ba5b58b619a8e5e1417f67ed72b9b01e9728fa245b8",
+      "assessment": "primary-sourcing"
+    },
+    "research:vend": {
+      "hash": "5db89fa7e0269c0d63532b686d083ef54da5b3a29069326a8234acc4944e64dd",
+      "assessment": "primary-sourcing"
+    },
+    "research:payments": {
+      "hash": "10710ac64b548ba669ec3cd3a90773ba11f6946e141f14f801f50ec6136ed752",
+      "assessment": "primary-sourcing"
+    },
+    "research:finance-use": {
+      "hash": "ddedc8ee2930aa6bfc873805112bca8178838a9e215a2b8a6f5685d0dccd443d",
+      "assessment": "primary-sourcing"
+    },
+    "research:finance-risk": {
+      "hash": "5615a3498c203140b5d1562426e120f93957fc288289c273a6cf1ae1169e51aa",
+      "assessment": "primary-sourcing"
+    },
+    "research:finance-monitor": {
+      "hash": "867bcbb3a0a9aef7b4148be4e7cd5bb3e733d69c067aeff483135882e74b6ca8",
+      "assessment": "primary-sourcing"
+    },
+    "research:money-functions": {
+      "hash": "8242b1d21cd85a36f3b1340b3440b5a523f55338ebb8d4e961d1f15f47402f32",
+      "assessment": "primary-sourcing"
+    },
+    "research:risk-framework": {
+      "hash": "6a0d27b9d569a5c0cc951dbcf262460f3a1c252c546716eadba634c33185e9a0",
+      "assessment": "primary-sourcing"
+    },
+    "research:power-seeking": {
+      "hash": "9bfc7662e33fbaa759ac9d88a0ff23dde0cfe9950c6ae9828721dde0db25447c",
+      "assessment": "primary-sourcing"
+    },
+    "research:gradual": {
+      "hash": "a9b1c7b392467f35b1e1bc853be0b1ef9d3b0fde9868c85d053d7b46971471c5",
+      "assessment": "primary-sourcing"
+    },
+    "research:military": {
+      "hash": "2bb936131af7dc6999663b379cdf136b2fc9c86e6b511e3f299ff94a6928fe0c",
+      "assessment": "primary-sourcing"
+    },
+    "research:wargames": {
+      "hash": "41e9072e6748107dfd937cad74f9b439d319c502c581e4c06bdb48784a5389f5",
+      "assessment": "primary-sourcing"
+    },
+    "research:extinction": {
+      "hash": "b34e9d2169a1d87512a043528dc32830e8b268d26679270097466c59b01eb031",
+      "assessment": "primary-sourcing"
+    },
+    "research:cyber-misuse": {
+      "hash": "2e41f1fa0e0a2e8534cd66bc9bc9d70a36e9c65793ec229975bd1e6362ab26a2",
+      "assessment": "primary-sourcing"
+    },
+    "node:A1": {
+      "hash": "dc4a5053b75c36b2916369514474aa6ce950013f06f441f7fd91e0c28a2216f9",
+      "assessment": "accidents"
+    },
+    "node:A2": {
+      "hash": "a5c78f7c289e1baa25514afff9a889e069045a96a0363b1a095dc6c2c68665b3",
+      "assessment": "accidents"
+    },
+    "node:A3": {
+      "hash": "26c0e7e808ae831d0085e8a0f96e406cb0631857e7ab596dd7947d6f834d679f",
+      "assessment": "accidents"
+    },
+    "node:ASI": {
+      "hash": "00e16793853752529730ea27d9caf31a8aacb03181bae3d1fe86250d0318d38b",
+      "assessment": "acceleration"
+    },
+    "node:C1": {
+      "hash": "974017f8b10959165ab35c1c760796816dc43eef8759f17ca2d170fb2768a102",
+      "assessment": "alignment"
+    },
+    "node:C1a": {
+      "hash": "459912a2f8a101e80b3913578ddd385a79512db8008b49cb223c727ccbcdf232",
+      "assessment": "alignment"
+    },
+    "node:C1b": {
+      "hash": "aaf36496c7d141d42c62cb60996f732056339200d4a9a9959b990ab8db2e4831",
+      "assessment": "alignment"
+    },
+    "node:C2": {
+      "hash": "b564a1bd0fc6b17ecd9902e168fe73b997f76b1b2fe72799a43448dd10d3495b",
+      "assessment": "execution"
+    },
+    "node:C2a": {
+      "hash": "84e4af30c27b7376b63ef9bf3dadf1f8a56f6e8cd813fc861e5f70b7f400fa47",
+      "assessment": "execution"
+    },
+    "node:C2b": {
+      "hash": "b7fbaaf0c4f62e466542d8ebfdbb81374cb30e34ad8f9cfcac274a3b6fce746b",
+      "assessment": "execution"
+    },
+    "node:C3": {
+      "hash": "badf2c47a7b2e9df056edb35b0c49ce39182299ca4e98ce5cdba158087628fe9",
+      "assessment": "oversight"
+    },
+    "node:C3a": {
+      "hash": "5e0a85dfeb2cf4811a784b3eb0cd4703ce21c569f3aeb7ed21ecdd605a4ae246",
+      "assessment": "oversight"
+    },
+    "node:C3a1": {
+      "hash": "1e3b2f9a798f0889daaaa0609802759c020fd6dcde322692fe155cd0b8ff6748",
+      "assessment": "oversight"
+    },
+    "node:C3a2": {
+      "hash": "018dbac7284a44b3171805899c0ff3c49a8deaaaf1ac383ebf79c3e7238e3061",
+      "assessment": "oversight"
+    },
+    "node:C3a3": {
+      "hash": "3e7a5cf856d3611a1b2d97719953c6a40fb6ebe7296edc24838bb6259b280eb6",
+      "assessment": "oversight"
+    },
+    "node:C3b": {
+      "hash": "7167865832c6a334e206b6581d04f75dcb7ef2ad055372645a63fa9d6ebbe9c6",
+      "assessment": "oversight"
+    },
+    "node:C4": {
+      "hash": "a34d17a6f41e465264472c63d10807517bbdd62d6846551459d18e139182ab86",
+      "assessment": "control-scale"
+    },
+    "node:C4a": {
+      "hash": "4ad10a800ee4a5abe8c30add718a2666298a234a164757ea433fedafd179e183",
+      "assessment": "control-scale"
+    },
+    "node:C4b": {
+      "hash": "23eb10fc398a3d0f1feac8d9137875deb1ccf60e076c401e8da82f81a7034f44",
+      "assessment": "control-scale"
+    },
+    "node:D1": {
+      "hash": "f1587a27072d12d1dd4eee0a958f2a3338f3ddbfd3d2c41f15cf770820a8afba",
+      "assessment": "dependence"
+    },
+    "node:D2": {
+      "hash": "07028634755d76f2991268f83fc39855419d5b2078ea528f417c10d94daa6b8e",
+      "assessment": "dependence"
+    },
+    "node:D3": {
+      "hash": "89b6ea3cac9aaeb3b6dbd00adc60851fd995d4756d1ee489f9c8d863806ad8ec",
+      "assessment": "dependence"
+    },
+    "node:E0": {
+      "hash": "96218df230da1f333db23a98c08fcd0643e68576412eb815ec2b877672e364d7",
+      "assessment": "outcomes"
+    },
+    "node:E1": {
+      "hash": "b31f10ede9cca17ac58d3d858f5828068d6b047160032d23e1102ac9ec784655",
+      "assessment": "dependence"
+    },
+    "node:F1": {
+      "hash": "ca317ee53023b755f0747eee4da0f2d6756c35eb6d73c51789f101b353ef28b0",
+      "assessment": "finance"
+    },
+    "node:F2": {
+      "hash": "c18cd0b61ab408bdd1e6e845b97b68cefc05b4a7b79ac98f7f389650efef726d",
+      "assessment": "finance"
+    },
+    "node:F2a": {
+      "hash": "0d79cd6c0d80be66ea4bad9043d5f49e4bac05db5ee9e80267212039ad98832c",
+      "assessment": "finance"
+    },
+    "node:F2b": {
+      "hash": "9b3d8e862db2e069e2dc2eda14236d6efe4ec577297cd15024c99bdb903f1561",
+      "assessment": "finance"
+    },
+    "node:F3": {
+      "hash": "c63cc2a9c43e355bca0511a8618bf3baea85818892c40bfe8b5e930920d32a31",
+      "assessment": "finance"
+    },
+    "node:F4": {
+      "hash": "04bcc401fa462290dcfc5c59e017320698a490a39fca66adb5814b78a586d5d3",
+      "assessment": "finance"
+    },
+    "node:G1": {
+      "hash": "b2e588074e442725bc6cfedc221eacb7c5c35f04c0fecc58024ddadd0a650e2e",
+      "assessment": "outcomes"
+    },
+    "node:H": {
+      "hash": "9a0ac51c5f50ed02eb6604d01e3bc7ad4e57a9161810242cd2d651608ea2a3f0",
+      "assessment": "outcomes"
+    },
+    "node:I1": {
+      "hash": "2351b4da4c21131e4bad45e60cd023cc57f5373c73f287dfabe7fed301a0ade3",
+      "assessment": "income"
+    },
+    "node:I1a": {
+      "hash": "bc9d9f0694e1272d7b233f5117b6f6dca132744710bde88e01c85ae8294a9e2c",
+      "assessment": "income"
+    },
+    "node:I1b": {
+      "hash": "f1ac17614e3bfb56427ecb0f2d6fb01e65a5da73329089cb83323a79d4860c75",
+      "assessment": "income"
+    },
+    "node:I2": {
+      "hash": "d982c70b79cef89d3bbc7fd3a5ed49e49d3433569e4b232acb8297e1df9be857",
+      "assessment": "income"
+    },
+    "node:L": {
+      "hash": "e06f7711b40a8789beb92a5396bb0e9ad2ac4963cac7b98f5ada0cf0932b5360",
+      "assessment": "control-scale"
+    },
+    "node:M1": {
+      "hash": "e4d192bec2e9595abdd57692d67dce239491fd8b84dc7b1c95236c10bfc688b5",
+      "assessment": "misuse"
+    },
+    "node:M2": {
+      "hash": "bdb04f1ebb81a7501209f19205f1497e86d5b0fc62af8c949431e0d4130accf7",
+      "assessment": "misuse"
+    },
+    "node:M2b": {
+      "hash": "812aeb8a71ff30beba12003cc607642e6f71558fb170a2f7c395c83b7fa7faba",
+      "assessment": "misuse"
+    },
+    "node:M2b1": {
+      "hash": "88952628d31e0e96204690ab50a1b16d35f31dcdc90fec30cd56014f8bb7e6f6",
+      "assessment": "misuse"
+    },
+    "node:M2b2": {
+      "hash": "c3fdd2ca88e77fa8bc9c8543b2cc2f57b95f69f57d249036d646b34adf114e62",
+      "assessment": "misuse"
+    },
+    "node:M2c": {
+      "hash": "765d7bf67d042d0dae6065904394715eb95f05eace26b39fb03d422950827d12",
+      "assessment": "execution"
+    },
+    "node:M2c1": {
+      "hash": "c7e0f8469877aad126001abeaa6c618da2f810ec393846c57f0d0918417057d9",
+      "assessment": "execution"
+    },
+    "node:M2c2": {
+      "hash": "62956aa6214043a377df1cd8f7c79539250906d8864cc5cbd5f2cccd564a587c",
+      "assessment": "execution"
+    },
+    "node:M3": {
+      "hash": "a82e585ea9c7cc68b8b96702c8b30c0d1c667aad3b1f3cfe03c79d5c3ca37dde",
+      "assessment": "misuse"
+    },
+    "node:NOW": {
+      "hash": "3d8320d3868f309564190dc50d7c4f8d101e40f85efbdf6f33485a1eb9b4c88b",
+      "assessment": "editorial"
+    },
+    "node:P1": {
+      "hash": "a6d3187f82e1c28f5d1c01f8a4145ba87e052e2642f196bb074f968f9f7a2d57",
+      "assessment": "currency"
+    },
+    "node:P2": {
+      "hash": "563af8103498067e2af4888883ffab923430f3eea22a350aac822bb39290759c",
+      "assessment": "currency"
+    },
+    "node:P3": {
+      "hash": "976dfc5f1813c8c0541131eb55c05a91285769442320b429aa488f0f0aa49f46",
+      "assessment": "currency"
+    },
+    "node:R1": {
+      "hash": "4c64741cc5447614cb9ab6636d067aa87037f5e7d0edd8c8b35be478afa0620e",
+      "assessment": "acceleration"
+    },
+    "node:R2": {
+      "hash": "5d42c19ef23e7d6f145a48cb2f224509452bbc35baab6a08bdbd3be1226a9588",
+      "assessment": "acceleration"
+    },
+    "node:R3": {
+      "hash": "0470c8ed9122dd7564c6ec5832c2c554c99f6ef748ea78b012be3ac313c07df9",
+      "assessment": "acceleration"
+    },
+    "node:R4": {
+      "hash": "3c934cfdecd9d5200f13ec720c6ae5d2c4758a98deb54190a5ea2baad090cada",
+      "assessment": "acceleration"
+    },
+    "node:S1": {
+      "hash": "44c87252403e1e728a1e7e599ff06b1ce2ced23025996ca53b94af21a7021053",
+      "assessment": "military"
+    },
+    "node:S2": {
+      "hash": "c9d88fd7b6b85dc1e1e9177e56d9a9baf230a99ae6a8c8855a41af4d550f7435",
+      "assessment": "military"
+    },
+    "node:S3": {
+      "hash": "d99ed3e34a8b4a5400d98792866528e7166d233012fb0d5d22f071ae42b2f8a4",
+      "assessment": "military"
+    },
+    "node:T": {
+      "hash": "c6dbd33d42a3d1955a7fa8e5f24748c0c8e428ad40693ebe8f9a9ccd62c13991",
+      "assessment": "outcomes"
+    },
+    "node:T1": {
+      "hash": "639caa0a6a07b6d1f4d682a617955c9aa705c24f5c78fce9dcd948185e98777e",
+      "assessment": "outcomes"
+    },
+    "node:T2": {
+      "hash": "e7c74f091f221a9362dbdd18c2624b46ae358c7c13a0759f39f62134d91e8008",
+      "assessment": "outcomes"
+    },
+    "node:W1": {
+      "hash": "5cd422e71508f4892e569de92f640a329a694c84fab8d3002b804e6e20a6a22f",
+      "assessment": "work"
+    },
+    "node:W2": {
+      "hash": "41dec5c5021cb691c5eb4928170037e41c963f50c2f746e1c2884d962e3e6ba7",
+      "assessment": "work"
+    },
+    "node:W3": {
+      "hash": "d986359f63d78cce8c976c1d3f9916ddf06a0747db7182ce8db222e9d152120d",
+      "assessment": "work"
+    },
+    "node:W4": {
+      "hash": "028fb89ec4090733476fa8ab584975e0ce4a022718936d80dd66d3ad44224559",
+      "assessment": "work"
+    },
+    "node:W5": {
+      "hash": "2cca639ff544c1401ccb56313df36bebda98cbdf1c36dbf3345825206c748ce1",
+      "assessment": "work"
+    },
+    "node:W6": {
+      "hash": "e04de958c7b63af14df5a9e52301720d49c3c090d14a6949a3162f05738082e2",
+      "assessment": "work"
+    },
+    "node:X": {
+      "hash": "ae8a42de373898518f0c8dc571edfd48efdb9271705b993cabfac4918908d490",
+      "assessment": "outcomes"
+    },
+    "edge:C4-H": {
+      "hash": "ed11aa5d743702d396d7f5f299b6270ef76575bd8f1a195dc93157afcf5fae5c",
+      "assessment": "control-scale"
+    },
+    "edge:M3-H": {
+      "hash": "1ef7b0fff87f05f41366f6bd6805d91aeb023aa21298a385c61f8537f65062e2",
+      "assessment": "misuse"
+    },
+    "edge:S1-S2": {
+      "hash": "749856a3485020457476376a5d70addbc2816649cec29a174615ef64a395cade",
+      "assessment": "military"
+    },
+    "edge:S2-S3": {
+      "hash": "1b3979922df8924349ca5ec3d20726562e2e583ca6b7bba1899dcf9bfad0d6f3",
+      "assessment": "military"
+    },
+    "edge:S3-H": {
+      "hash": "34df7a09c62c7d3c22e9a96faf6889635e053396a06b547a03a3ebe0af89180b",
+      "assessment": "military"
+    },
+    "edge:R1-R2": {
+      "hash": "050281741997c81d68e7d291a32e5a0b7a8dd17803a80f7d5a12443407117f3a",
+      "assessment": "acceleration"
+    },
+    "edge:R2-R3": {
+      "hash": "d70c66e150f729e966e525e6a0edfab238a4ae9962356d6faa30f37d66a54439",
+      "assessment": "acceleration"
+    },
+    "edge:R3-R2": {
+      "hash": "8e17ff1477653cdaec5208e02eec59df6ff14a5bb3e45450fe300ed403b2df65",
+      "assessment": "acceleration"
+    },
+    "edge:C3-L": {
+      "hash": "b4c1b8dfdda6da9857fdcbc15decb104d153c15e97bc2d8a2536dad7bf8efe33",
+      "assessment": "oversight"
+    },
+    "edge:L-C4": {
+      "hash": "113dda5412b86d980a25539744f5e9060e481c0528c0db1824569b7a24ed0a17",
+      "assessment": "control-scale"
+    },
+    "edge:H-E0": {
+      "hash": "c8ef917ab9fed94f62978c20d688f41e74155cb186bb0b2e1e5333ca099c44d4",
+      "assessment": "outcomes"
+    },
+    "edge:H-T": {
+      "hash": "3e75348d613970bba229c782ddc70fe997cd2132251a7e16215619695ec5e3e4",
+      "assessment": "outcomes"
+    },
+    "edge:T-X": {
+      "hash": "76ee6af83a8a329f8c0371837be73bcf12b313e5caf3cc4e12e9126cae7bfb28",
+      "assessment": "outcomes"
+    },
+    "edge:D1-D2": {
+      "hash": "57ac6e0813e472e4d477ec8ac89313400cae6beca6fd8b1893164afb41b3863d",
+      "assessment": "dependence"
+    },
+    "edge:D2-D3": {
+      "hash": "653cd5cd980d2128bfb42be6f6bb58c9e387c015284f7070ef229d166a2151fe",
+      "assessment": "dependence"
+    },
+    "edge:D3-E1": {
+      "hash": "b8e63e64a0f11806329c36a1507770677d17218d4651eb9b28281e1775071096",
+      "assessment": "dependence"
+    },
+    "edge:A1-A2": {
+      "hash": "7170b24f5729febe5d91ffa0a4fa9559325c0a79cc1d0a94a365078111cfb481",
+      "assessment": "accidents"
+    },
+    "edge:A2-A3": {
+      "hash": "743407ec1d822a43c892b1ee35c4b8c932e52c8d1b80530d9d70d302baec20b6",
+      "assessment": "accidents"
+    },
+    "edge:A3-H": {
+      "hash": "5411515c90df39a859868e481dd36144de5e83993ea6a6ebae897d9c8fd2c3fb",
+      "assessment": "accidents"
+    },
+    "edge:W1-W4": {
+      "hash": "132beb7a6086530b32c76bd990f8df634f9e5d16218914aa1b0a5f8d09350668",
+      "assessment": "work"
+    },
+    "edge:I1a-I1": {
+      "hash": "e4807408897012e5cbb732a5f745414325850742a5910d81090334dc2b794823",
+      "assessment": "income"
+    },
+    "edge:I1-I2": {
+      "hash": "aa4885c662334199adc028abbc1336537db050d366181e859f53d02176b7b1d9",
+      "assessment": "income"
+    },
+    "edge:W4-P1": {
+      "hash": "499cd413c6db5623b5c1ccdbe53bff75e58493386dc73418ed6a31a77e4464e4",
+      "assessment": "work"
+    },
+    "edge:P1-P3": {
+      "hash": "f81e06876284938c57982741effe7bb4adfd3c0478b4282f363c6cf7454d1923",
+      "assessment": "currency"
+    },
+    "edge:F1-F3": {
+      "hash": "e2d40fdaebe6c4ff18d2527e703edb6b98f43fd74d66f9f9a0c25cff67867178",
+      "assessment": "finance"
+    },
+    "edge:R2-C2": {
+      "hash": "118cd77faa06cee968bda41c133aa8bd9dcf74bb036d01cf8edc758f3afb47ed",
+      "assessment": "acceleration"
+    },
+    "edge:R2-W1": {
+      "hash": "6682ac89c5dbb25c3138c29367ae04150f0481d7bc58e4ac09625314e3cc1e5d",
+      "assessment": "acceleration"
+    },
+    "edge:R2-ASI": {
+      "hash": "0cc662669ac77c396a2bad36aa1645a10e7b42814900e6ed9694406151dbb850",
+      "assessment": "acceleration"
+    },
+    "edge:R2-R4": {
+      "hash": "adb73288cff2b3ffd31fd66d1470d76f94af8a31bc860c97803c9b1b9d6288d6",
+      "assessment": "acceleration"
+    },
+    "edge:R4-C1": {
+      "hash": "fe4ba4ac140e4139860547c72805a6caf99da0137657aabdd3062484d828c19b",
+      "assessment": "acceleration"
+    },
+    "edge:H-G1": {
+      "hash": "1833a8f3de8f3aa9424ad2f0a2919203d2a6fe4856f59b0ed6683c5cbaf363e5",
+      "assessment": "outcomes"
+    },
+    "edge:W3-W5": {
+      "hash": "adc474b7c1590e81c9bff246feba459d731cb67ef8779a8c6fee5548e445fef2",
+      "assessment": "work"
+    },
+    "edge:W4-W3": {
+      "hash": "b625067a0c689fbe37cc1741a96dfdfafa0c874d9d0c5a1cd4b1fe7b2fdc536c",
+      "assessment": "work"
+    },
+    "graph:control": {
+      "hash": "af092212c0b597b11f097036b182bac06594902e3b93c4218edb4d1da5ac9522",
+      "assessment": "control-scale"
+    },
+    "graph:misuse": {
+      "hash": "75e5098e6033ffd0b7477224aad46b1636492a1ac811a76955c7d05d57fbcadb",
+      "assessment": "misuse"
+    },
+    "graph:interaction": {
+      "hash": "37512c9bdece2c0ade89f906bdbecc3f9c45569b5933272c4eae1ac45342a302",
+      "assessment": "military"
+    },
+    "graph:acceleration": {
+      "hash": "8ce0392b693a30c51c7e25a510ae2da3be72ac0a22522013c5b358a88f10ab19",
+      "assessment": "acceleration"
+    },
+    "graph:intent": {
+      "hash": "3737ad02df23fa34dd37b44a7934a6eeeb28e4ab7d8ff747f0a8d41056cf1bc0",
+      "assessment": "alignment"
+    },
+    "graph:ability-access": {
+      "hash": "434d405aea4a1d4a04466c2a380ed2c0344d1b57ef7e119a0e117ab506896f8d",
+      "assessment": "execution"
+    },
+    "graph:oversight": {
+      "hash": "d28b8d56a6d567a0b1b981e6593e8e73d4a70adf04f78ccf15be500ff05a2e1c",
+      "assessment": "oversight"
+    },
+    "graph:evaluation": {
+      "hash": "dd9ac864c18bee2be92fa492b1971c5fcaf2df0f95cb32f6ea102c3c665ef3d1",
+      "assessment": "oversight"
+    },
+    "graph:persistence-scale": {
+      "hash": "230cb71a71a8890b8a7b71fe6898023ef2de51b14e8721203808e1d08ed2d301",
+      "assessment": "control-scale"
+    },
+    "graph:extinction-conditions": {
+      "hash": "0b2ec8c672fb744ae59657110a66a0642cd80f8bbed35aadd39e17c9cca21a36",
+      "assessment": "outcomes"
+    },
+    "graph:dependence": {
+      "hash": "081bdf1cb0213c4453e37b441470bfb3eec6e8d5ded2d15a07380c094e7bf24a",
+      "assessment": "dependence"
+    },
+    "graph:accidents": {
+      "hash": "3ccbc01fab1d0445eaa3b2812008bde53dbfe89c3e4f251b765c7d712a4ef613",
+      "assessment": "accidents"
+    },
+    "graph:misuse-mechanisms": {
+      "hash": "71ea356d5e4ff23a10dc938971999a492d6869605c91d87fa228225813da5918",
+      "assessment": "misuse"
+    },
+    "graph:cyber-conditions": {
+      "hash": "128825fc7bbdef28110cc87d6bbdae0ad5c96babcd9a27afc000c2c94c093fe0",
+      "assessment": "execution"
+    },
+    "graph:bio-conditions": {
+      "hash": "d327835b5b3c175440620143df8f76e463e304087e05707d7a8de9ecdddd07ef",
+      "assessment": "misuse"
+    },
+    "graph:work": {
+      "hash": "1fa2964d0acf2ece9fc2ad45fe1a1a73d31441b532752497c3007a6dc843ddd9",
+      "assessment": "work"
+    },
+    "graph:money": {
+      "hash": "369eabf23d8c459e017f734df91688c71fa86d9c899e54f3c9584a2bfc0a71b4",
+      "assessment": "currency"
+    },
+    "graph:finance-mechanisms": {
+      "hash": "705cd068eb02ea4152a2941d9b81ca8f5769dac09026994c55e9eb7f5487ea36",
+      "assessment": "finance"
+    },
+    "graph:income-conditions": {
+      "hash": "8e0ae94ba5ce7a03384e7e702ffa34b419581e540d45034423b6467f218faabf",
+      "assessment": "income"
+    },
+    "graph:currency-conditions": {
+      "hash": "526a7bbce797eed44c06e2e96aad787a86721d66ab9bc9b792b37334ed58fc82",
+      "assessment": "currency"
+    },
+    "graph:finance-conditions": {
+      "hash": "e0c2ac174652adb712cbad138bb2cd62d5d90e7bb43d46fdf43aac64c3a481a9",
+      "assessment": "finance"
+    },
+    "route:control": {
+      "hash": "ff7b8bfe53c34e21d9faf9dcee2f1b6858bca62124aa7001dc915a42ac3e6db3",
+      "assessment": "control-scale"
+    },
+    "route:misuse": {
+      "hash": "d844cd6d78c27199369800f35a98530fe5d94abb81a52084a2f44a0d2afed8f0",
+      "assessment": "misuse"
+    },
+    "route:interaction": {
+      "hash": "56cec1dfe6ce1a8cd4c25854d6064b470d7477f263fd6b508c5affd4d5d4bcfa",
+      "assessment": "military"
+    },
+    "route:accidents": {
+      "hash": "aee1fd77c6afefe8ccd01a57a8c374580939de1448f0fc998f49dd5ec4facb30",
+      "assessment": "accidents"
+    },
+    "route:dependence": {
+      "hash": "c84a5bfbfd454a4293f8429efe0c2f1fba6504337facaf8a6bfff6d643f9018e",
+      "assessment": "dependence"
+    },
+    "route:acceleration": {
+      "hash": "57255abbd5d62a361d94e6c80c3251395c3de932136086ef61ffc5920762a7b7",
+      "assessment": "acceleration"
+    },
+    "route:work": {
+      "hash": "7c709adce305f50c9b51b96d5fe90fcba2d3ebea80124bc6bc38b795872b8a2a",
+      "assessment": "work"
+    },
+    "route:money": {
+      "hash": "1f93bb26b6d90de4200a0b94d81806b239f4044ae2278a1d4cd43ccb97e5b0c8",
+      "assessment": "currency"
+    },
+    "glossary:alignment": {
+      "hash": "58776a6321ca77e08de8756960471f9ba37e4e45a896f8a29850c0c3c7d8262f",
+      "assessment": "editorial"
+    },
+    "glossary:misalignment": {
+      "hash": "09d7d909daff168ae594ddf68fb43b6f3f4e7405119a2efdf91604ef2bc51d27",
+      "assessment": "editorial"
+    },
+    "glossary:specification-gaming": {
+      "hash": "baf101b3e1e932146c48a325e728b1af48454e49a9be1a22925c4e46d8bebc15",
+      "assessment": "editorial"
+    },
+    "glossary:reward-hacking": {
+      "hash": "36941bb6e4487baac8d303e449f0e3a415bc9918a5784adae3309e538aca93ab",
+      "assessment": "editorial"
+    },
+    "glossary:goal-misgeneralization": {
+      "hash": "52a0aec570dd609027d7ee0a2a7e5891aecc585db03b64228aa21e95e5405eac",
+      "assessment": "editorial"
+    },
+    "glossary:agent": {
+      "hash": "5b218e598b604bc39038714ecad4087a51fa4ec130dfd2e9e99c5b90e6f533c9",
+      "assessment": "editorial"
+    },
+    "glossary:control": {
+      "hash": "490e9ed78bdc0d6d55006860b89f345d1724a47c2c0f6f80a02e093e24870472",
+      "assessment": "editorial"
+    },
+    "glossary:evaluation-awareness": {
+      "hash": "3dd9ee5967a8956524c30847e110ff31a44c7e0e1df82da29431202c0fec6cff",
+      "assessment": "editorial"
+    },
+    "glossary:replication": {
+      "hash": "b04d18db781bd4d244799f97166cf1f414f9946d38367233d54363e55ec0b03c",
+      "assessment": "editorial"
+    },
+    "glossary:rsi": {
+      "hash": "922a0dbe15667872c3cb8388979ae6030794172153f3b6e8dffab0f77dd7a10d",
+      "assessment": "editorial"
+    },
+    "glossary:agi": {
+      "hash": "0fc2db68f2627dc0afb0053b751660ef9d5fbe2e542c0f613ebc131284560648",
+      "assessment": "editorial"
+    },
+    "glossary:asi": {
+      "hash": "fbb53bae6865c1cbefb583781237bacff4c78d632ca010351054f303fa69e0f4",
+      "assessment": "editorial"
+    },
+    "glossary:horizon": {
+      "hash": "91aac9469dfbee787e428377e4fbffea493e57a1fd36ccab554c3feb7b7514b2",
+      "assessment": "editorial"
+    },
+    "glossary:benchmark": {
+      "hash": "68d9cdfda6aa11bd2b01377109b163b6397bc0b71a359cedccf438d75bc552d2",
+      "assessment": "editorial"
+    },
+    "glossary:escalation": {
+      "hash": "ae7bb25fbe0e929734ca8c64c2d997c1afb43e59e3cb87247e008d0368beec7b",
+      "assessment": "editorial"
+    },
+    "glossary:misuse": {
+      "hash": "6bb060e34dda910838b159861746e50cc0503b92216019f0774116c704b598e1",
+      "assessment": "editorial"
+    },
+    "glossary:existential": {
+      "hash": "a9145b32274a9afbe91f25c71e71d3150d07289824d39e8ce51bf7c81d2a01fb",
+      "assessment": "editorial"
+    },
+    "glossary:power-seeking": {
+      "hash": "b7a793e03dff4518351d935b2c6adbeb572549af5de9e41686c0d0be2a2afcd8",
+      "assessment": "editorial"
+    },
+    "glossary:generalization": {
+      "hash": "5c569e023ca14121b71c84676cc208defc6208463998978f49222dd0b5bcd7e3",
+      "assessment": "editorial"
+    },
+    "glossary:sandbox": {
+      "hash": "6e0031124d9586a7c93088640be0bb5d5b0c10324ab69b44ac43689ad562c47f",
+      "assessment": "editorial"
+    },
+    "glossary:resilience": {
+      "hash": "a125852a1b392314587e3c6915973d092fc662d6d3e0bd5f5da8593cc566f9f7",
+      "assessment": "editorial"
+    },
+    "glossary:gradual": {
+      "hash": "c6450f345bb3fffd6faef2f7b36db1a54d2d88acf42ad17c00a49146e430ed75",
+      "assessment": "editorial"
+    },
+    "glossary:cascade": {
+      "hash": "43e3bc9a97713efffcf6aee29e878f738a05684bf841aaffc4b1e01f8cd11228",
+      "assessment": "editorial"
+    },
+    "glossary:cyber": {
+      "hash": "969e7846955809091dc5e2a1588815782e27f3ef39a0ce926d8a1b6d8923de97",
+      "assessment": "editorial"
+    },
+    "glossary:critical": {
+      "hash": "3a5d5727b4a0d99f9296afd91e0229e5cbe01b639449f8de92a6355d742ec1f6",
+      "assessment": "editorial"
+    },
+    "glossary:uplift": {
+      "hash": "855c865d7a8e4b6fcdaa3a663e799a69a8dcff177fe548206ecca574e14459af",
+      "assessment": "editorial"
+    },
+    "glossary:cbrn": {
+      "hash": "b099c7129d9e683b6eb8f4c75fcdc16e7dfc00ba9dc5e71318308087d4a39319",
+      "assessment": "editorial"
+    },
+    "glossary:defense-depth": {
+      "hash": "90aeca0fa690d8642d95554e219373fa1e7a5f57601720f866dff01e0a2ff958",
+      "assessment": "editorial"
+    },
+    "glossary:scheming": {
+      "hash": "6cbeaadb2fd913828ee1c681404f0fdd5a6509b12410452013dc56268361cf29",
+      "assessment": "editorial"
+    },
+    "glossary:ai-rd": {
+      "hash": "cd82f035335ee29c57dd3128da991447b324e4345f5810bbfc78673f62e9c089",
+      "assessment": "editorial"
+    },
+    "glossary:formalization": {
+      "hash": "9bf8bd1d292059493b9f0a3b07c62622235c8310a80d3d09e2bd710dbd0e1c12",
+      "assessment": "editorial"
+    },
+    "glossary:loss-of-control": {
+      "hash": "077476de572b40c5e922a22e972b449e55a51d01eb86de0f6654b9c8ab17e39a",
+      "assessment": "editorial"
+    },
+    "glossary:capability": {
+      "hash": "13990a5ad154ba58c3e7b783d1962455c294aa7fd94ed551c4fc1a58f892555c",
+      "assessment": "editorial"
+    },
+    "glossary:access-control": {
+      "hash": "013f58138dcbb7a2cafda9cd00448fc6ae3dcb07a7fe7ed62cb318a149c1abaf",
+      "assessment": "editorial"
+    },
+    "glossary:automation": {
+      "hash": "fffec0128e2acc759a8b76b01726f5ab6f2ca6f2d9bb7f29821f3abb17646bf9",
+      "assessment": "editorial"
+    },
+    "glossary:robotics": {
+      "hash": "e2b1c4341289517d214698b76a90c1a3e18577361cc09e15a1f937f90a301410",
+      "assessment": "editorial"
+    },
+    "glossary:distribution": {
+      "hash": "22e8964895557a56dc0a6e4e64dd225110cda98440685127c69f6eabbadc6e34",
+      "assessment": "editorial"
+    },
+    "glossary:agentic-commerce": {
+      "hash": "544cbc30baeb26da2df44b9e4a1118fe10ffec25b15d9c42ecbc19a4a838f856",
+      "assessment": "editorial"
+    },
+    "glossary:scarcity": {
+      "hash": "a7a883bdc6e8afc882758250f52512cff15f1a09c592fd03511ddf209e650a06",
+      "assessment": "editorial"
+    },
+    "glossary:money": {
+      "hash": "f356113f17e1a13e0cabd50e38083ef580cc33d14e494aff5c82dcd799f90fd6",
+      "assessment": "editorial"
+    },
+    "glossary:financial-stability": {
+      "hash": "7ba05d3ad061eb9fb123953262e0c5727a1f1d2586956e7e371318cfaa222a13",
+      "assessment": "editorial"
+    },
+    "glossary:ai-safety-research": {
+      "hash": "ab10641b97085ebb42606c53a06b9612d7a9f5d53d41983ad90dacd2f59c7122",
+      "assessment": "editorial"
+    },
+    "glossary:liquidity": {
+      "hash": "b68175f3ea3dec58c4960f948eb398f10aebc29174f72f87ce3d8c437c91e856",
+      "assessment": "editorial"
+    },
+    "glossary:exposure": {
+      "hash": "a2f2edf88e3fb72dd59c3c6ce0596d94cf798f29b51cc004e3ce0468098b9e56",
+      "assessment": "editorial"
+    },
+    "glossary:ccl": {
+      "hash": "079c0e43003939b669323a6c9e70753898c8b2ad1d715c8e55d8a62026ed4b1b",
+      "assessment": "editorial"
+    },
+    "news:work-survey": {
+      "hash": "9ddd55d572e5ab03e8c30e8b8b1f913740ebdb0b5f3f9d9da5923ceab330d88b",
+      "assessment": "editorial"
+    },
+    "news:agent-income": {
+      "hash": "10e63d36d033aa4e52862385f0ada6bf9722057d9e45264f66201b7459f632d3",
+      "assessment": "editorial"
+    },
+    "news:recent-math": {
+      "hash": "6486119a986e3ef6c30d86d1a82bf13e8347fbdc5af1a2040697bb7a1dfa4dc6",
+      "assessment": "editorial"
+    },
+    "news:research-lab-september": {
+      "hash": "67c179507287c1c1dcc231c26d063bd2dbf8735e04829f8d283d453230d0544f",
+      "assessment": "editorial"
+    },
+    "news:automated-safety": {
+      "hash": "d84b1085a05dde8f96eb1da8dc23171562d36105c7be4ef3781cdc71584ea416",
+      "assessment": "editorial"
+    },
+    "news:aisi-contained": {
+      "hash": "7db090c8c532e7a13c1e4dd9f87ac8f74d5ac3dce102631862cef6ca05534030",
+      "assessment": "editorial"
+    },
+    "news:astra-threshold": {
+      "hash": "db38defc21f9d499362d6b908121116d9f521e81af818e6562cee1b454f1a6a2",
+      "assessment": "editorial"
+    },
+    "news:research-contribution": {
+      "hash": "a6849c0c358981f6f54050b55aeb0b049bd6afa34d02187c07a1c516d7a0ada1",
+      "assessment": "editorial"
+    },
+    "news:agent-behavior": {
+      "hash": "6430c8082599c975eae3a342e4269041d7696595173c2cd02092de0f929aaea9",
+      "assessment": "editorial"
+    },
+    "news:time-horizons": {
+      "hash": "1748a54e0f5cbf80833ea0de4446f495f8dc42f970308eedffb03c6950582f4e",
+      "assessment": "editorial"
+    },
+    "story:control": {
+      "hash": "4e3dfc73b2f1e987d2b0607873c4b9438935554ffa2db7d8cb9b0c1840e9d56e",
+      "assessment": "control-scale"
+    },
+    "story:misuse": {
+      "hash": "6dcfb235522a911183f16e33d048e1509bdc264d4de0a86eeacd982fb74afb43",
+      "assessment": "misuse"
+    },
+    "story:interaction": {
+      "hash": "925d42c860e48a4e74c1015bcffac3f2c0d865ddd59a1a9c8e48a1b2b56c61de",
+      "assessment": "military"
+    },
+    "story:accidents": {
+      "hash": "699b6dd4be4351820562533cac9aca435318415148862c84de1dbd7dc551e40d",
+      "assessment": "accidents"
+    },
+    "story:dependence": {
+      "hash": "60a0b2803507a85fa6be2eddbc6c4ccca00e545e1591ced4c86a0261f521a139",
+      "assessment": "dependence"
+    },
+    "story:acceleration": {
+      "hash": "f38d7e1a7c3320d7ab7e8c7a2dd43bfdf71291c269cb0972c34274135e386e23",
+      "assessment": "acceleration"
+    },
+    "story:work": {
+      "hash": "7867cd3a0463326c8d26d3a2a79aa494c426066bcb8e1b305339d496f23d6669",
+      "assessment": "work"
+    },
+    "story:money": {
+      "hash": "0ca9fd3cc693ff64774d7fe2d8b65e3703ed3af3964f9b61fb68c73832230cc7",
+      "assessment": "currency"
+    },
+    "watch:metr": {
+      "hash": "597898b18fee8ba483bf97165e59a0df9ec0023a799393bcc9a6037f562978c1",
+      "assessment": "editorial"
+    },
+    "watch:aisi": {
+      "hash": "96854d5d90b817f4e4609f6589763982d364a989d29071ecef3a5eea32e7c2c6",
+      "assessment": "editorial"
+    },
+    "watch:openai": {
+      "hash": "302d6bf86541868dbb44e3e0d8e29038903e07c25d3b62c4a723f609cf8082fc",
+      "assessment": "editorial"
+    },
+    "watch:anthropic": {
+      "hash": "ef4857a3b431e37b908da7e69e10e6e9a1bc7098d61ee5991dfbb3a2cd76dc0e",
+      "assessment": "editorial"
+    },
+    "watch:deepmind": {
+      "hash": "56561f234ee5963795d82798782883e4bf3963152c248e1b74652bb966a7e41b",
+      "assessment": "editorial"
+    },
+    "watch:international": {
+      "hash": "b0b2b599d86f4296cdbb274299f845a2c864192cc7dcbbf446a70bea7967328e",
+      "assessment": "editorial"
+    },
+    "watch:sipri": {
+      "hash": "b5e5bb4f95fde6ed603f6c2f6afa7f1dd5d601e50bb51bfaa184717a6cc2a0b5",
+      "assessment": "editorial"
+    },
+    "watch:broader-review": {
+      "hash": "109fb1aa21d7d07b8488cb15005b389d757d5b2f038dc6d4e905601b9d2f480d",
+      "assessment": "editorial"
+    },
+    "watch:work-economy": {
+      "hash": "6fde1da830bf8e02d0d99225e5cae2b0b7737c18ae60f381a6ea6af6a685d7ab",
+      "assessment": "editorial"
+    },
+    "watch:financial-ai": {
+      "hash": "ee06d18098fa206d219e08d765732ce6adb0401b6c616e9f956d07545373e96b",
+      "assessment": "editorial"
+    },
+    "metadata:map": {
+      "hash": "6135cf4ee603fd152d9f1d574d4e1cf6aaaca2f676b1c30d28cffc3e632a0dad",
+      "assessment": "editorial"
+    },
+    "history:changes": {
+      "hash": "714f6ac61ca1b9f83be64fae6126f52a212d270a466b7da2430c3aaeb11db2d4",
+      "assessment": "editorial"
+    },
+    "ui:ja": {
+      "hash": "ac7443b4e16a8fb538f77995d1ad6e9b4a16426bc065b52d2ff4e7a50fa319a2",
+      "assessment": "editorial"
+    },
+    "inventory:current": {
+      "hash": "b5571d5d9e17bea34dfed3b710f7d2e4aa4f7efe35fb1a2a498754aaa2d27cf2",
+      "assessment": "editorial"
+    }
+  }
+}

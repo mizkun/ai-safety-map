@@ -9,6 +9,7 @@ import {
   Button,
   ButtonBase,
   Chip,
+  CircularProgress,
   Dialog,
   DialogContent,
   DialogTitle,
@@ -26,6 +27,7 @@ import {
   ArrowLeft,
   ArrowRight,
   ArrowUpRight,
+  BookOpen,
   Check,
   ChevronDown,
   Clock3,
@@ -42,6 +44,7 @@ import type { Question, Review, SiteContent } from '@/lib/content-types';
 import { currentReviewDay, reviewStatus } from '@/lib/freshness.mjs';
 import { messages, formatMessage, type Locale } from '@/lib/i18n';
 import { routeColors } from '@/lib/tree-layout';
+import { currentEdgeId } from '@/lib/legacy-links.mjs';
 import TreeMap from './tree-map';
 import ReadingPanels, { type Panel } from './reading-panels';
 
@@ -59,7 +62,9 @@ type DetailTab = (typeof detailTabs)[number];
 
 export default function MapClient({ site }: { site: SiteContent }) {
   const [locale, setLocale] = useState<Locale>('ja');
-  const data = site.content[locale] || site.content.ja;
+  const [detailContent, setDetailContent] = useState<SiteContent['content'] | null>(null);
+  const contents = detailContent || site.content;
+  const data = contents[locale] || contents.ja;
   const m = messages[locale];
   const [view, setView] = useState('overview');
   const [selected, setSelected] = useState<string | null>(null);
@@ -69,6 +74,23 @@ export default function MapClient({ site }: { site: SiteContent }) {
   const detailTab = detailReading?.key === detailKey ? detailReading.tab : 'summary';
   const [panel, setPanel] = useState<Panel | null>(null);
   const [termId, setTermId] = useState<string | null>(null);
+  const [storyId, setStoryId] = useState<string | null>(null);
+  const [loadError, setLoadError] = useState(false);
+  const [loadAttempt, setLoadAttempt] = useState(0);
+  const detailsReady = !site.detailsUrl || Boolean(detailContent);
+  const needsDetails = Boolean(selected || panel || termId || storyId);
+  useEffect(() => {
+    if (!needsDetails || detailsReady || !site.detailsUrl || loadError) return;
+    const controller = new AbortController();
+    fetch(site.detailsUrl, { signal: controller.signal })
+      .then((response) => { if (!response.ok) throw new Error('Content fetch failed'); return response.json(); })
+      .then((content: SiteContent['content']) => {
+        if (!content.ja?.nodes?.M2c1?.body?.['概要']) throw new Error('Invalid content package');
+        setDetailContent(content);
+      })
+      .catch((error) => { if (error.name !== 'AbortError') setLoadError(true); });
+    return () => controller.abort();
+  }, [needsDetails, detailsReady, site.detailsUrl, loadAttempt, loadError]);
   const [routePicker, setRoutePicker] = useState(false);
   const [menuAnchor, setMenuAnchor] = useState<HTMLElement | null>(null);
   const [languageAnchor, setLanguageAnchor] = useState<HTMLElement | null>(
@@ -87,6 +109,7 @@ export default function MapClient({ site }: { site: SiteContent }) {
   useEffect(() => {
     const read = () => {
       setDetailReading(null);
+      setStoryId(null);
       const q = new URLSearchParams(location.hash.slice(1));
       const requested = q.get('lang');
       const language = requested === 'en' && site.content.en ? 'en' : 'ja';
@@ -97,8 +120,13 @@ export default function MapClient({ site }: { site: SiteContent }) {
       }
       const content = site.content[language]!;
       const map = q.get('map') || 'overview';
-      const id = q.get('node'),
-        edge = q.get('edge');
+      const id = q.get('node');
+      const requestedEdge = q.get('edge');
+      const edge = requestedEdge ? currentEdgeId(requestedEdge) : null;
+      if (edge && edge !== requestedEdge) {
+        q.set('edge', edge);
+        history.replaceState(null, '', '#' + q.toString());
+      }
       setView(content.graphs[map] ? map : 'overview');
       setPanel(
         panels.includes(map as Panel) && !id && !edge ? (map as Panel) : null,
@@ -125,6 +153,7 @@ export default function MapClient({ site }: { site: SiteContent }) {
     setPanel(isPanel && !id ? (map as Panel) : null);
     setSelected(id || null);
     setMode(nextMode);
+    setStoryId(null);
     setDetailReading(null);
     setMenuAnchor(null);
     const q = new URLSearchParams({
@@ -152,6 +181,12 @@ export default function MapClient({ site }: { site: SiteContent }) {
   function selectRoute(id: string) {
     setRoutePicker(false);
     navigate(id);
+  }
+  function loadingBody() {
+    return <output className="content-loading">
+      {loadError ? <><span>{m.loadError}</span><Button onClick={() => { setLoadError(false); setLoadAttempt((n) => n + 1); }}>{m.retry}</Button><Button onClick={() => window.location.reload()}>{m.refreshPage}</Button></>
+        : <><CircularProgress size={24} /><span>{m.loading}</span></>}
+    </output>;
   }
   const termIndex = useMemo(() => {
     const aliases = new Map<string, string>();
@@ -202,6 +237,7 @@ export default function MapClient({ site }: { site: SiteContent }) {
           {m.published}: {s.published || m.unknownDate} · {m.period}: {s.period}{' '}
           · {m.checked}: {s.checked}
         </small>
+        <small>{s.primary}</small>
       </Link>
     ) : null;
   }
@@ -277,11 +313,11 @@ export default function MapClient({ site }: { site: SiteContent }) {
   }
   function summaryBody() {
     if (node) return <>
-      <p className="lead-copy">{richText(node.body['ひとことで'])}</p>
-      {detailSection(m.whyNext, <p>{richText(node.body['次へ進むには'])}</p>)}
-      {detailSection(m.uncertainty, <p>{richText(node.body['残る壁と不確実性'])}</p>, undefined, 'limit-block')}
+      <p className="lead-copy">{richText(node.body['概要'])}</p>
+      {detailSection(m.whyNext, <p>{richText(node.body['他の条件との関係'])}</p>)}
+      {detailSection(m.additionalConditions, <p>{richText(node.body['成立条件'])}</p>)}
       {node.subgraph && <Button className="explore-button" fullWidth variant="outlined" startIcon={<Layers3 size={18} />} endIcon={<ArrowRight size={17} />}
-        onClick={() => navigate(node.subgraph!, data.graphs[node.subgraph!].nodes[0])}>{m.explore}</Button>}
+        onClick={() => navigate(node.subgraph!)}>{m.explore}</Button>}
     </>;
     if (!edge) return null;
     return <>
@@ -295,22 +331,32 @@ export default function MapClient({ site }: { site: SiteContent }) {
         <Button onClick={() => openNode(edge.to)}>{data.nodes[edge.to].title}</Button>
       </div>
       {detailSection(m.additionalConditions, <ul>{edge.conditions.map((c) => <li key={c}>{richText(c)}</li>)}</ul>)}
-      {detailSection(m.limitations, <p>{richText(edge.limitation)}</p>, undefined, 'limit-block')}
     </>;
   }
   function evidenceBody() {
     const item = node || edge;
     if (!item) return null;
-    const cited = new Set(node?.evidence.map((e) => e.src));
+    const cited = new Set(item.research.map((id) => data.research[id].source));
     const extraSources = item.sources.filter((id) => !cited.has(id));
     return <>
-      {reviewNote(item.review)}
-      {node && detailSection(m.evidence, node.evidence.map((e, i) => <article className="evidence-block" key={i}>
-        <span className="evidence-kind">{e.kind}</span>
-        <p>{richText(e.text)}</p>
-        {source(e.src)}
-      </article>))}
+      {node && <Chip className="evidence-kind" size="small" label={{ observed: m.observed, limited: m.limited, hypothesis: m.hypothesis, definition: m.definitionState }[node.status]} />}
+      <p className="lead-copy">{richText(node ? node.body['現在の状況'] : edge!.current)}</p>
       {edge && <p className="evidence-basis">{richText(edge.basis)}</p>}
+      {item.research.map((id, i) => {
+        const r = data.research[id];
+        return <Accordion key={id} defaultExpanded={i === 0} disableGutters className="research-card">
+          <AccordionSummary expandIcon={<ChevronDown size={18} />}><span><small>{r.kind}</small><strong>{r.title}</strong></span></AccordionSummary>
+          <AccordionDetails>
+            <dl className="research-facts">
+              {[[m.evaluator, r.evaluator], [m.setting, r.setting], [m.method, r.method], [m.result, r.result], [m.studyLimit, r.limitation]].map(([label, value]) => <div key={label}><dt>{label}</dt><dd>{richText(value)}</dd></div>)}
+            </dl>
+            {source(r.source)}
+            <p className="source-locator">{m.sourceLocation}: {r.locator}</p>
+          </AccordionDetails>
+        </Accordion>;
+      })}
+      {detailSection(m.limitations, <p>{richText(node ? node.body['根拠の限界'] : edge!.limitation)}</p>, undefined, 'limit-block')}
+      {reviewNote(item.review)}
       {!!extraSources.length && detailSection(m.sources, <div className="source-list">{extraSources.map((id) => <div key={id}>{source(id)}</div>)}</div>)}
       <div className="contribute-block">
         <Link href={REPO + '/issues/new?template=correction.yml&title=' + encodeURIComponent('[' + selected + '] ' + (node?.title || edge?.label || ''))} target="_blank" rel="noreferrer">{m.reportIssue}<ArrowUpRight size={13} /></Link>
@@ -322,14 +368,14 @@ export default function MapClient({ site }: { site: SiteContent }) {
     if (edge) return detailSection(m.safeguards, <p>{richText(edge.safeguards)}</p>, <ShieldCheck size={17} />);
     if (!node) return null;
     const terms = [...new Set([...(node.topics || []), ...(node.terms || [])])];
-    const candidates = graph?.edges || Object.keys(data.edges).filter((id) => !data.edges[id].basis.startsWith('旧版') && id !== 'H-X');
+    const candidates = graph?.edges || Object.keys(data.edges);
     const connections = candidates.filter((id) => {
       const e = data.edges[id];
       return e.from === node.id || e.to === node.id || e.requires?.includes(node.id);
     });
     return <>
-      {node.body['たとえば'] && detailSection(m.example, <p>{richText(node.body['たとえば'])}</p>)}
-      {detailSection(m.safeguards, <p>{richText(node.body['進行を止めるには'])}</p>, <ShieldCheck size={17} />)}
+      {detailSection(m.safeguards, <p>{richText(node.body['考えられる対策'])}</p>, <ShieldCheck size={17} />)}
+      {node.body['具体例'] && detailSection(m.example, <p>{richText(node.body['具体例'])}</p>)}
       {!!terms.length && detailSection(m.glossary, <div className="chip-links">{terms.map((id) => <Chip key={id} size="small" label={data.glossary[id].name} onClick={() => setTermId(id)} />)}</div>)}
       {!!node.watch?.length && detailSection(m.watch, <ul>{node.watch.map((w) => <li key={w}>{richText(w)}</li>)}</ul>)}
       {!!node.questions.length && detailSection(m.more, questions(node.questions, node.id))}
@@ -433,6 +479,7 @@ export default function MapClient({ site }: { site: SiteContent }) {
             <ArrowLeft size={17} />
           </IconButton>
           <span>{graph?.title}</span>
+          {data.stories[view] && <Button className="story-open" startIcon={<BookOpen size={16} />} onClick={() => setStoryId(view)}>{m.story}</Button>}
         </Paper>
       )}
       <TreeMap
@@ -560,7 +607,7 @@ export default function MapClient({ site }: { site: SiteContent }) {
           ))}
         </Tabs>
         <DialogContent dividers>
-          {panel && (
+          {!detailsReady ? loadingBody() : panel && (
             <ReadingPanels
               panel={panel}
               data={data}
@@ -597,7 +644,7 @@ export default function MapClient({ site }: { site: SiteContent }) {
           </Tabs>
           <DialogContent className="detail-scroll" key={detailKey + ':' + detailTab}>
             {detailTabs.map((tab) => <div key={tab} role="tabpanel" id={'detail-panel-' + tab} aria-labelledby={'detail-tab-' + tab} hidden={detailTab !== tab} tabIndex={0}>
-              {detailTab === tab && (tab === 'summary' ? summaryBody() : tab === 'evidence' ? evidenceBody() : moreBody())}
+              {detailTab === tab && (!detailsReady ? loadingBody() : tab === 'summary' ? summaryBody() : tab === 'evidence' ? evidenceBody() : moreBody())}
             </div>)}
           </DialogContent>
           {stepNavigation()}
@@ -617,7 +664,7 @@ export default function MapClient({ site }: { site: SiteContent }) {
           </IconButton>
         </DialogTitle>
         <DialogContent>
-          {term && (
+          {!detailsReady ? loadingBody() : term && (
             <div className="term-content" key={termId}>
               <p className="lead-copy">{richText(term.definition)}</p>
               {term.example && (
@@ -634,6 +681,24 @@ export default function MapClient({ site }: { site: SiteContent }) {
               ))}
             </div>
           )}
+        </DialogContent>
+      </Dialog>
+      <Dialog open={Boolean(storyId)} onClose={() => setStoryId(null)} fullWidth maxWidth="md" className="story-dialog" aria-labelledby="story-title">
+        <DialogTitle className="modal-heading" id="story-title">
+          <span>{storyId ? data.stories[storyId]?.title : m.story}</span>
+          <IconButton aria-label={m.close} onClick={() => setStoryId(null)}><X size={20} /></IconButton>
+        </DialogTitle>
+        <DialogContent dividers>
+          {!detailsReady ? loadingBody() : storyId && <div className="story-body">
+            <p className="story-note">{m.storyNote}</p>
+            <p className="lead-copy">{richText(data.stories[storyId].intro)}</p>
+            {data.stories[storyId].chapters.map((chapter, i) => <section key={chapter.title}>
+              <h3><span>{i + 1}</span>{chapter.title}</h3>
+              <p>{richText(chapter.text)}</p>
+              <div className="story-links">{chapter.nodes.map((id) => <Button key={id} onClick={() => openNode(id, storyId)}>{data.nodes[id].title}</Button>)}</div>
+            </section>)}
+            <p className="limit-block">{richText(data.stories[storyId].outlook)}</p>
+          </div>}
         </DialogContent>
       </Dialog>
     </Box>

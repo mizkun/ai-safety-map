@@ -8,15 +8,9 @@
   "terms": [
     "distribution"
   ],
-  "evidence": [
-    {
-      "kind": "経済モデルが示す複数の経路",
-      "src": "imf-distribution",
-      "text": "賃金と資本収益では、不平等に働く経路が異なります。AIが稼ぐから全員が豊かになる、とは言えません。"
-    }
-  ],
   "sources": [
-    "imf-distribution"
+    "imf-distribution",
+    "vend"
   ],
   "questions": [],
   "related": [],
@@ -24,8 +18,13 @@
     "労働所得と資本所得、資産の保有の違いを分けて追う。"
   ],
   "review": {
-    "checkedAt": "2026-09-09",
+    "checkedAt": "2026-09-10",
     "intervalDays": 7,
     "reason": "能力、実運用、経済制度、反証を分けて継続確認するため。"
-  }
+  },
+  "status": "hypothesis",
+  "research": [
+    "distribution",
+    "vend"
+  ]
 }

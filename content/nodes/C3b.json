@@ -2,25 +2,24 @@
   "id": "C3b",
   "title": "警告に気づいても、対処が間に合わない",
   "explanation": "C3b.md",
-  "evidence": [
-    {
-      "kind": "条件・仕組みの検討",
-      "src": "control",
-      "text": "DeepMindの説明は、行動のリスクに応じ、実行前と実行後の対応を使い分ける考え方を扱っています。"
-    }
-  ],
   "sources": [
+    "aisi-incident",
     "control"
   ],
   "questions": [],
   "related": [],
   "terms": [],
   "review": {
-    "checkedAt": "2026-09-09",
+    "checkedAt": "2026-09-10",
     "intervalDays": 7,
     "reason": "能力・行動・対策の評価は短期間で変わり得るため。"
   },
   "topics": [
     "control"
+  ],
+  "status": "limited",
+  "research": [
+    "aisi-incident",
+    "control-roadmap"
   ]
 }

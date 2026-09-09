@@ -1,22 +1,11 @@
 {
   "id": "C3a2",
-  "title": "AIが評価を認識し、振る舞いを変える",
+  "title": "AIが、評価中だけ問題行動を見せない",
   "explanation": "C3a2.md",
-  "evidence": [
-    {
-      "kind": "条件・仕組みの検討",
-      "src": "summer",
-      "text": "2026年夏の報告は、評価への気づきが実験の解釈を難しくすることを議論しています。"
-    },
-    {
-      "kind": "対象モデルの試験では制限突破に失敗",
-      "src": "gemini-safety",
-      "text": "Gemini 3.7 Flashは、評価中と認識できても、試験の制限をうまく回避できなかったと開発者が報告しています。評価認識だけで監督を破れるわけではありません。"
-    }
-  ],
   "sources": [
-    "summer",
-    "gemini-safety"
+    "scheming",
+    "gemini-safety",
+    "summer"
   ],
   "questions": [],
   "related": [],
@@ -24,11 +13,17 @@
     "evaluation-awareness"
   ],
   "review": {
-    "checkedAt": "2026-09-09",
+    "checkedAt": "2026-09-10",
     "intervalDays": 7,
     "reason": "能力・行動・対策の評価は短期間で変わり得るため。"
   },
   "topics": [
     "evaluation-awareness"
+  ],
+  "status": "limited",
+  "research": [
+    "scheming",
+    "gemini-safety",
+    "summer"
   ]
 }

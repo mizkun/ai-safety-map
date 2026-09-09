@@ -121,7 +121,6 @@ export default function ReadingPanels({
               onClick={() => onTerm(id)}
             >
               {t.name}
-              <ArrowUpRight size={15} />
             </ButtonBase>
           ))}
         </div>

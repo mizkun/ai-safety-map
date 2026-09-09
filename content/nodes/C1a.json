@@ -2,15 +2,7 @@
   "id": "C1a",
   "title": "人間が欲しい結果と、評価の数字が食い違う",
   "explanation": "C1a.md",
-  "evidence": [
-    {
-      "kind": "研究で扱われる仕組み",
-      "src": "specification",
-      "text": "DeepMindは仕様ゲーミングの事例を整理し、評価基準を満たすことと、意図した結果を実現することのズレを説明しています。"
-    }
-  ],
   "sources": [
-    "framework",
     "specification"
   ],
   "questions": [],
@@ -20,12 +12,16 @@
     "reward-hacking"
   ],
   "review": {
-    "checkedAt": "2026-09-09",
+    "checkedAt": "2026-09-10",
     "intervalDays": 90,
     "reason": "主に概念や条件の定義。関連する新証拠があれば期限前でも見直す。"
   },
   "topics": [
     "specification-gaming",
     "reward-hacking"
+  ],
+  "status": "limited",
+  "research": [
+    "specification"
   ]
 }

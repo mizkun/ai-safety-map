@@ -1,16 +1,11 @@
 {
   "id": "M2c1",
-  "title": "現実に近い条件でも、作業を遂行できる",
+  "title": "AIが現実に近い環境でサイバー作業を遂行できる",
   "explanation": "M2c1.md",
-  "evidence": [
-    {
-      "kind": "条件を限定した能力評価",
-      "src": "astra",
-      "text": "Astraの報告はサイバー能力の伸びを示す一方、提示する結果の設定が通常提供と異なることを明記しています。"
-    }
-  ],
   "sources": [
-    "astra"
+    "astra-card",
+    "aisi",
+    "gemini-38"
   ],
   "questions": [],
   "related": [],
@@ -18,10 +13,19 @@
     "benchmark",
     "cyber"
   ],
-  "watch": [],
+  "watch": [
+    "対象モデル・版、課題の種類、人間の支援、試行回数、成功の母数は何か。",
+    "既知の課題への成績と、未知の課題・強い防御への成績はどう違うか。"
+  ],
   "review": {
-    "checkedAt": "2026-09-09",
+    "checkedAt": "2026-09-10",
     "intervalDays": 7,
     "reason": "能力・行動・対策の評価は短期間で変わり得るため。"
-  }
+  },
+  "status": "limited",
+  "research": [
+    "astra-cyber",
+    "aisi-range",
+    "gemini-38"
+  ]
 }

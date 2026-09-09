@@ -2,15 +2,10 @@
   "id": "M3",
   "title": "防止・封じ込めが、被害に追いつかない",
   "explanation": "M3.md",
-  "evidence": [
-    {
-      "kind": "対策の考え方",
-      "src": "framework",
-      "text": "2025年の技術論文は、安全な応答の学習だけでなく、アクセス制限や監視などを重ねる対策を扱っています。このノードへのまとめ方は本マップの整理です。"
-    }
-  ],
   "sources": [
-    "framework"
+    "astra-card",
+    "control",
+    "rand-extinction"
   ],
   "questions": [],
   "related": [],
@@ -19,8 +14,14 @@
     "実害だけでなく、防御と封じ込めが働いた例も報告されたか。"
   ],
   "review": {
-    "checkedAt": "2026-09-09",
+    "checkedAt": "2026-09-10",
     "intervalDays": 30,
     "reason": "経路を支える前提、反論、防壁の有効性に変化がないか確認するため。"
-  }
+  },
+  "status": "hypothesis",
+  "research": [
+    "astra-cyber",
+    "control-roadmap",
+    "extinction"
+  ]
 }

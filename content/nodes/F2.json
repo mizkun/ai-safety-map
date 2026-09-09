@@ -8,15 +8,9 @@
   "terms": [
     "financial-stability"
   ],
-  "evidence": [
-    {
-      "kind": "金融リスクの経路整理",
-      "src": "fsb-ai",
-      "text": "FSBはサイバー、不正・偽情報、モデルやデータへの共通依存などを、異なる脆弱性として挙げています。"
-    }
-  ],
   "sources": [
-    "fsb-ai"
+    "fsb-ai",
+    "finance-survey"
   ],
   "questions": [],
   "related": [],
@@ -24,9 +18,14 @@
     "不正、誤り、共同行動のどれが実際に起きたかを見る。"
   ],
   "review": {
-    "checkedAt": "2026-09-09",
+    "checkedAt": "2026-09-10",
     "intervalDays": 7,
     "reason": "能力、実運用、経済制度、反証を分けて継続確認するため。"
   },
-  "subgraph": "finance-mechanisms"
+  "subgraph": "finance-mechanisms",
+  "status": "hypothesis",
+  "research": [
+    "finance-risk",
+    "finance-use"
+  ]
 }

@@ -2,14 +2,8 @@
   "id": "D1",
   "title": "重要な仕事と判断を、AIへ広く委ねる",
   "explanation": "D1.md",
-  "evidence": [
-    {
-      "kind": "将来の条件付きシナリオ",
-      "src": "gradual",
-      "text": "漸進的な主導権喪失の論文は、経済・文化・国家の相互作用を分析するポジション論文です。全経路の実証ではありません。"
-    }
-  ],
   "sources": [
+    "census-adoption",
     "gradual"
   ],
   "questions": [],
@@ -21,11 +15,16 @@
     "AIへの委任と、人間の実効的な決定権を別々に測れるか。"
   ],
   "review": {
-    "checkedAt": "2026-09-09",
+    "checkedAt": "2026-09-10",
     "intervalDays": 30,
     "reason": "経路を支える前提、反論、防壁の有効性に変化がないか確認するため。"
   },
   "topics": [
+    "gradual"
+  ],
+  "status": "limited",
+  "research": [
+    "adoption",
     "gradual"
   ]
 }

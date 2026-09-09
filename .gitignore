@@ -39,3 +39,6 @@ next-env.d.ts
 
 # generated TypeScript cache
 *.tsbuildinfo
+
+# Generated, content-addressed detail bundles
+/public/content/

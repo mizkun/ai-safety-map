@@ -2,25 +2,24 @@
   "id": "C2b",
   "title": "現実に働きかける接点・権限を持つ",
   "explanation": "C2b.md",
-  "evidence": [
-    {
-      "kind": "条件・仕組みの検討",
-      "src": "control",
-      "text": "AIの行動を、監督やシステム上の制約と組み合わせて制御する考え方が示されています。"
-    }
-  ],
   "sources": [
-    "control"
+    "aisi-incident",
+    "visa-agents"
   ],
   "questions": [],
   "related": [],
   "terms": [],
   "review": {
-    "checkedAt": "2026-09-09",
+    "checkedAt": "2026-09-10",
     "intervalDays": 7,
     "reason": "能力・行動・対策の評価は短期間で変わり得るため。"
   },
   "topics": [
     "access-control"
+  ],
+  "status": "observed",
+  "research": [
+    "aisi-incident",
+    "payments"
   ]
 }

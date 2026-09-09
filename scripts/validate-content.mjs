@@ -13,6 +13,8 @@ const read = (name) =>
   JSON.parse(fs.readFileSync(path.join(root, name), 'utf8'));
 const map = read('map.json');
 const sources = read('sources.json');
+const research = read('research.json');
+const stories = read('stories.json');
 const history = read('history.json');
 const news = read('news.json');
 const glossary = read('glossary.json');
@@ -56,7 +58,7 @@ function review(value, label) {
   required(value, ['reason'], label + ' review');
 }
 for (const [id, s] of Object.entries(sources)) {
-  required(s, ['title', 'date', 'url', 'period', 'checked'], 'source ' + id);
+  required(s, ['title', 'date', 'url', 'period', 'checked', 'primary'], 'source ' + id);
   check(
     s.published === null || /^\d{4}-\d{2}(-\d{2})?$/.test(s.published),
     'source ' +
@@ -79,6 +81,15 @@ for (const [id, s] of Object.entries(sources)) {
     s.url.startsWith('https://'),
     'source ' + id + ': expected HTTPS source URL',
   );
+}
+for (const [id, r] of Object.entries(research)) {
+  required(r, ['title', 'kind', 'source', 'locator', 'evaluator', 'setting', 'method', 'result', 'limitation'], 'research ' + id);
+  sourceRefs([r.source], id);
+  check(['evaluation', 'observation', 'model', 'definition', 'argument'].includes(r.type), id + ': explicit research type required');
+}
+function researchRefs(refs, label) {
+  check(Array.isArray(refs) && refs.length > 0, label + ': research records required');
+  for (const id of refs || []) check(Boolean(research[id]), label + ': unknown research ' + id);
 }
 for (const file of nodeFiles) {
   const node = read('nodes/' + file);
@@ -115,10 +126,12 @@ for (const [id, n] of Object.entries(nodes)) {
     id + ': duplicate explanation heading',
   );
   for (const h of [
-    'ひとことで',
-    '次へ進むには',
-    '残る壁と不確実性',
-    '進行を止めるには',
+    '概要',
+    '他の条件との関係',
+    '現在の状況',
+    '成立条件',
+    '根拠の限界',
+    '考えられる対策',
   ]) {
     check(headings.includes(h), id + ': missing section ' + h);
     const section = markdown
@@ -128,14 +141,8 @@ for (const [id, n] of Object.entries(nodes)) {
     check(nonempty(section), id + ': empty section ' + h);
   }
   sourceRefs(n.sources, id);
-  check(
-    Array.isArray(n.evidence) && n.evidence.length > 0,
-    id + ': evidence is required',
-  );
-  for (const e of n.evidence || []) {
-    required(e, ['kind', 'src', 'text'], id + ' evidence');
-    sourceRefs([e.src], id);
-  }
+  check(['observed', 'limited', 'hypothesis', 'definition'].includes(n.status), id + ': evidence status required');
+  researchRefs(n.research, id);
   questions(n.questions, id);
   check(Array.isArray(n.related), id + ': related must be an array');
   for (const link of n.related || []) {
@@ -183,6 +190,7 @@ for (const [id, e] of Object.entries(map.edges)) {
       'limitation',
       'safeguards',
       'basis',
+      'current',
     ],
     id,
   );
@@ -201,6 +209,7 @@ for (const [id, e] of Object.entries(map.edges)) {
     id + ': conditions are required',
   );
   sourceRefs(e.sources, id);
+  researchRefs(e.research, id);
   if (e.requires) {
     check(e.relation === 'joint', id + ': joint inputs require a joint relation');
     check(e.requires.length > 1 && new Set(e.requires).size === e.requires.length,
@@ -256,6 +265,17 @@ for (const r of map.routes) {
   required(r, ['id', 'number', 'shortTitle'], 'route');
   check(Boolean(map.graphs[r.id]), r.id + ': route graph does not exist');
   check(Array.isArray(r.preview), r.id + ': preview must be an array');
+  check(Boolean(stories[r.id]), r.id + ': story required');
+}
+for (const [id, story] of Object.entries(stories)) {
+  check(story.id === id && map.routes.some((r) => r.id === id), id + ': story route mismatch');
+  required(story, ['title', 'intro', 'outlook'], id + ' story');
+  check(Array.isArray(story.chapters) && story.chapters.length > 0, id + ': story chapters required');
+  for (const chapter of story.chapters || []) {
+    required(chapter, ['title', 'text'], id + ' chapter');
+    check(Array.isArray(chapter.nodes) && chapter.nodes.length > 0, id + ': linked nodes required');
+    for (const n of chapter.nodes || []) check(Boolean(nodes[n]), id + ': unknown story node ' + n);
+  }
 }
 check(
   new Set(map.routes.map((r) => r.id)).size === map.routes.length,

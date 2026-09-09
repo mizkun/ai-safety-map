@@ -2,13 +2,6 @@
   "id": "M2b1",
   "title": "情報の支援が、実行の難所を減らす",
   "explanation": "M2b1.md",
-  "evidence": [
-    {
-      "kind": "限定条件での支援効果の評価",
-      "src": "gemini-safety",
-      "text": "開発者の生物関連評価でも、専門家の誘導の有無と支援効果の大きさを区別しています。"
-    }
-  ],
   "sources": [
     "gemini-safety"
   ],
@@ -19,8 +12,12 @@
   ],
   "watch": [],
   "review": {
-    "checkedAt": "2026-09-09",
+    "checkedAt": "2026-09-10",
     "intervalDays": 7,
     "reason": "能力・行動・対策の評価は短期間で変わり得るため。"
-  }
+  },
+  "status": "limited",
+  "research": [
+    "gemini-safety"
+  ]
 }

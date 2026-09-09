@@ -8,15 +8,9 @@
   "terms": [
     "scarcity"
   ],
-  "evidence": [
-    {
-      "kind": "将来仮説・編集上の整理",
-      "src": "ecb-money",
-      "text": "ECBが説明する貨幣の機能を踏まえた追加条件です。ECBがポスト希少性社会を予測しているわけではありません。"
-    }
-  ],
   "sources": [
-    "ecb-money"
+    "ecb-money",
+    "imf-distribution"
   ],
   "questions": [],
   "related": [],
@@ -24,8 +18,13 @@
     "何の希少性が減り、何の制約が残ったかを見る。"
   ],
   "review": {
-    "checkedAt": "2026-09-09",
+    "checkedAt": "2026-09-10",
     "intervalDays": 30,
     "reason": "能力、実運用、経済制度、反証を分けて継続確認するため。"
-  }
+  },
+  "status": "hypothesis",
+  "research": [
+    "money-functions",
+    "distribution"
+  ]
 }

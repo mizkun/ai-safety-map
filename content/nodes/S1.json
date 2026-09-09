@@ -2,22 +2,21 @@
   "id": "S1",
   "title": "重要な判断を、AIに頼るようになる",
   "explanation": "S1.md",
-  "evidence": [
-    {
-      "kind": "シナリオの分析",
-      "src": "sipri",
-      "text": "SIPRIの2025年の分析は、軍事AIの助言や反応速度が、危機時の判断に影響し得る仕組みを論じています。将来の戦争の発生を実証した研究ではありません。"
-    }
-  ],
   "sources": [
-    "sipri"
+    "sipri",
+    "wargames"
   ],
   "questions": [],
   "related": [],
   "terms": [],
   "review": {
-    "checkedAt": "2026-09-09",
+    "checkedAt": "2026-09-10",
     "intervalDays": 30,
     "reason": "経路を支える前提、反論、防壁の有効性に変化がないか確認するため。"
-  }
+  },
+  "status": "limited",
+  "research": [
+    "military",
+    "wargames"
+  ]
 }

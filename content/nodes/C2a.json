@@ -1,16 +1,11 @@
 {
   "id": "C2a",
-  "title": "必要な作業を、途中で破綻せず実行できる",
+  "title": "AIが必要な一連の作業を完遂できる",
   "explanation": "C2a.md",
-  "evidence": [
-    {
-      "kind": "条件・仕組みの検討",
-      "src": "horizon",
-      "text": "METRの指標は、一定の成功率で解ける課題の長さを、人間の専門家の所要時間で表します。"
-    }
-  ],
   "sources": [
-    "horizon"
+    "horizon",
+    "formalization",
+    "openai-rd"
   ],
   "questions": [],
   "related": [],
@@ -19,11 +14,17 @@
     "benchmark"
   ],
   "review": {
-    "checkedAt": "2026-09-09",
+    "checkedAt": "2026-09-10",
     "intervalDays": 7,
     "reason": "能力・行動・対策の評価は短期間で変わり得るため。"
   },
   "topics": [
     "horizon"
+  ],
+  "status": "limited",
+  "research": [
+    "horizon",
+    "formalization",
+    "rd-use"
   ]
 }

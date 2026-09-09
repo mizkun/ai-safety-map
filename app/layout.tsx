@@ -4,7 +4,7 @@ import Providers from './providers';
 export const metadata: Metadata = {
   title: 'AI Safety Map — 現在から未来への条件をたどる',
   description:
-    'AIリスクの経路、次に進む条件、現在の証拠と残る壁を、具体例から理解するオープンな学習マップ。',
+    'AIリスクの経路、次に進む条件、現在の証拠・成立条件・対策を理解するオープンな学習マップ。',
   icons: { icon: '/ai-safety-map/favicon.svg' },
   metadataBase: new URL('https://mizkun.github.io/ai-safety-map/'),
 };

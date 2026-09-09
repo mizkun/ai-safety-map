@@ -1,16 +1,10 @@
 {
   "id": "M2c",
-  "title": "サイバー支援が、現実の被害に結びつく",
+  "title": "AIがサイバー攻撃の実行を支援できる",
   "explanation": "M2c.md",
-  "evidence": [
-    {
-      "kind": "開発者による能力評価",
-      "src": "astra",
-      "text": "OpenAIはAstraを自社のCritical cybersecurity能力に到達したと評価しました。開発者の基準による、特定の道具とアクセスを含む評価です。"
-    }
-  ],
   "sources": [
-    "astra"
+    "astra-card",
+    "aisi"
   ],
   "questions": [],
   "related": [],
@@ -21,11 +15,16 @@
   "watch": [],
   "subgraph": "cyber-conditions",
   "review": {
-    "checkedAt": "2026-09-09",
+    "checkedAt": "2026-09-10",
     "intervalDays": 7,
     "reason": "能力・行動・対策の評価は短期間で変わり得るため。"
   },
   "topics": [
     "cyber"
+  ],
+  "status": "limited",
+  "research": [
+    "astra-cyber",
+    "aisi-range"
   ]
 }

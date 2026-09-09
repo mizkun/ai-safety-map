@@ -1,26 +1,27 @@
 {
   "id": "C3a1",
-  "title": "テストと、実際の仕事の条件が違う",
+  "title": "試験が、実際の仕事の失敗を捉えられない",
   "explanation": "C3a1.md",
-  "evidence": [
-    {
-      "kind": "条件・仕組みの検討",
-      "src": "summer",
-      "text": "研究の著者は、模擬環境が実際の配備を完全に再現するわけではないと明記しています。"
-    }
-  ],
   "sources": [
-    "summer"
+    "horizon",
+    "gemini-safety",
+    "astra-card"
   ],
   "questions": [],
   "related": [],
   "terms": [],
   "review": {
-    "checkedAt": "2026-09-09",
+    "checkedAt": "2026-09-10",
     "intervalDays": 7,
     "reason": "能力・行動・対策の評価は短期間で変わり得るため。"
   },
   "topics": [
     "generalization"
+  ],
+  "status": "limited",
+  "research": [
+    "horizon",
+    "gemini-safety",
+    "astra-cyber"
   ]
 }

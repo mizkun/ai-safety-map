@@ -1,5 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
+import { readSiteContent } from '../lib/read-site-content.mjs';
+import { contentPackage } from '../lib/content-package.mjs';
 
 const pkg = JSON.parse(fs.readFileSync('package.json', 'utf8'));
 const base = new URL(pkg.homepage).pathname.replace(/^\/+|\/+$/g, '');
@@ -18,7 +20,11 @@ for (const file of ['404.html', 'vinext-client-entry-manifest.json']) {
   if (fs.existsSync(source)) fs.copyFileSync(source, path.join(target, file));
 }
 fs.writeFileSync(path.join(target, '.nojekyll'), '');
+const packed = contentPackage(readSiteContent(), '/' + base);
+fs.mkdirSync(path.join(target, 'content'), { recursive: true });
+fs.writeFileSync(path.join(target, 'content', packed.filename), packed.details);
 const html = fs.readFileSync(path.join(target, 'index.html'), 'utf8');
+if (!html.includes(packed.filename)) throw new Error('Initial shell and detail package versions differ');
 const assets = [...html.matchAll(/(?:src|href)="([^"#]+)"/g)]
   .map((m) => m[1])
   .filter(

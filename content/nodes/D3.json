@@ -2,13 +2,6 @@
   "id": "D3",
   "title": "重要な社会の決定に、人間の意思が届かなくなる",
   "explanation": "D3.md",
-  "evidence": [
-    {
-      "kind": "将来の条件付きシナリオ",
-      "src": "gradual",
-      "text": "論文は領域をまたぐ相互強化を論じています。この地図上の矢印は、その主張を検討するための整理です。"
-    }
-  ],
   "sources": [
     "gradual"
   ],
@@ -20,11 +13,15 @@
   ],
   "watch": [],
   "review": {
-    "checkedAt": "2026-09-09",
+    "checkedAt": "2026-09-10",
     "intervalDays": 30,
     "reason": "経路を支える前提、反論、防壁の有効性に変化がないか確認するため。"
   },
   "topics": [
+    "gradual"
+  ],
+  "status": "hypothesis",
+  "research": [
     "gradual"
   ]
 }

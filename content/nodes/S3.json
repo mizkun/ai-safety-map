@@ -2,33 +2,26 @@
   "id": "S3",
   "title": "対応が次の反応を招き、対立が拡大する",
   "explanation": "S3.md",
-  "evidence": [
-    {
-      "kind": "統治の論点",
-      "src": "governance",
-      "text": "SIPRIの2025年10月の報告は、核に関係する意思決定で人間の制御を維持することの重要性と、その具体化についての合意の不足を扱っています。"
-    }
-  ],
   "sources": [
-    "governance"
+    "sipri",
+    "wargames"
   ],
-  "questions": [
-    {
-      "q": "AIに発射を任せなければ無関係？",
-      "a": "情報の集め方、警告、助言、通常戦力の行動なども、重要な判断に影響し得ます。最後の操作だけを見ても、経路全体は分かりません。",
-      "src": "sipri"
-    }
-  ],
+  "questions": [],
   "related": [],
   "terms": [
     "escalation"
   ],
   "review": {
-    "checkedAt": "2026-09-09",
+    "checkedAt": "2026-09-10",
     "intervalDays": 30,
     "reason": "経路を支える前提、反論、防壁の有効性に変化がないか確認するため。"
   },
   "topics": [
     "escalation"
+  ],
+  "status": "hypothesis",
+  "research": [
+    "military",
+    "wargames"
   ]
 }

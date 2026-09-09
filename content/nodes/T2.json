@@ -2,13 +2,6 @@
   "id": "T2",
   "title": "人々が、生存を維持し回復する手段を失う",
   "explanation": "T2.md",
-  "evidence": [
-    {
-      "kind": "将来の条件付きシナリオ",
-      "src": "rand-extinction",
-      "text": "この項目は生存・回復の条件を明示する編集上の分解です。人類全体に対する対策の効果が実証されたという意味ではありません。"
-    }
-  ],
   "sources": [
     "rand-extinction"
   ],
@@ -19,8 +12,12 @@
   ],
   "watch": [],
   "review": {
-    "checkedAt": "2026-09-09",
+    "checkedAt": "2026-09-10",
     "intervalDays": 90,
     "reason": "主に概念や条件の定義。関連する新証拠があれば期限前でも見直す。"
-  }
+  },
+  "status": "hypothesis",
+  "research": [
+    "extinction"
+  ]
 }

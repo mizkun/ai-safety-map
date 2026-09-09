@@ -1,15 +1,9 @@
 {
   "id": "M1",
-  "title": "人間が、AIを危険な目的に使う",
+  "title": "人間が、危険な目的でAIを使おうとする",
   "explanation": "M1.md",
-  "evidence": [
-    {
-      "kind": "リスクの分類",
-      "src": "framework",
-      "text": "DeepMindの2025年の論文は、人間が危険な目的でAIを利用する悪用と、AIの目標が人間の意図からズレる問題を分けています。"
-    }
-  ],
   "sources": [
+    "cyber-misuse",
     "framework"
   ],
   "questions": [],
@@ -18,11 +12,16 @@
     "misuse"
   ],
   "review": {
-    "checkedAt": "2026-09-09",
+    "checkedAt": "2026-09-10",
     "intervalDays": 7,
     "reason": "能力・行動・対策の評価は短期間で変わり得るため。"
   },
   "topics": [
     "misuse"
+  ],
+  "status": "observed",
+  "research": [
+    "cyber-misuse",
+    "risk-framework"
   ]
 }

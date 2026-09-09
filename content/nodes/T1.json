@@ -2,13 +2,6 @@
   "id": "T1",
   "title": "被害の範囲が、人類全体に及ぶ",
   "explanation": "T1.md",
-  "evidence": [
-    {
-      "kind": "将来の条件付きシナリオ",
-      "src": "rand-extinction",
-      "text": "絶滅への範囲の飛躍を、RANDの議論を参考に分けた項目です。数値化された成立確率は付けていません。"
-    }
-  ],
   "sources": [
     "rand-extinction"
   ],
@@ -17,8 +10,12 @@
   "terms": [],
   "watch": [],
   "review": {
-    "checkedAt": "2026-09-09",
+    "checkedAt": "2026-09-10",
     "intervalDays": 90,
     "reason": "主に概念や条件の定義。関連する新証拠があれば期限前でも見直す。"
-  }
+  },
+  "status": "hypothesis",
+  "research": [
+    "extinction"
+  ]
 }

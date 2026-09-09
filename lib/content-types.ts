@@ -1,4 +1,5 @@
 export type Source = {
+  primary: string;
   title: string;
   date: string;
   url: string;
@@ -14,6 +15,7 @@ export type LocaleOption = {
 export type SiteContent = {
   locales: LocaleOption[];
   content: { ja: Content; en?: Content };
+  detailsUrl?: string;
 };
 export type Question = {
   q: string;
@@ -21,7 +23,19 @@ export type Question = {
   src?: string;
   children?: Question[];
 };
-export type Evidence = { kind: string; src: string; text: string };
+export type Research = {
+  type: 'evaluation' | 'observation' | 'model' | 'definition' | 'argument';
+  title: string;
+  kind: string;
+  source: string;
+  locator: string;
+  evaluator: string;
+  setting: string;
+  method: string;
+  result: string;
+  limitation: string;
+};
+export type EvidenceState = 'observed' | 'limited' | 'hypothesis' | 'definition';
 export type Review = {
   checkedAt: string;
   intervalDays: number;
@@ -41,7 +55,8 @@ export type Node = {
   title: string;
   explanation: string;
   body: Record<string, string>;
-  evidence: Evidence[];
+  status: EvidenceState;
+  research: string[];
   sources: string[];
   questions: Question[];
   related: { text: string; scene: string; node: string }[];
@@ -51,6 +66,8 @@ export type Node = {
   watch?: string[];
 };
 export type Edge = {
+  current: string;
+  research: string[];
   review: Review;
   basis: string;
   id: string;
@@ -111,6 +128,8 @@ export type GlossaryTerm = {
   sources: string[];
 };
 export type Content = {
+  stories: Record<string, Story>;
+  research: Record<string, Research>;
   watchlist: WatchSource[];
   asOf: string;
   routes: Route[];
@@ -121,4 +140,11 @@ export type Content = {
   history: Revision[];
   news: ReadingExample[];
   glossary: Record<string, GlossaryTerm>;
+};
+export type Story = {
+  id: string;
+  title: string;
+  intro: string;
+  chapters: { title: string; text: string; nodes: string[] }[];
+  outlook: string;
 };

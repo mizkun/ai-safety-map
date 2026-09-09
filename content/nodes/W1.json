@@ -8,15 +8,10 @@
   "terms": [
     "automation"
   ],
-  "evidence": [
-    {
-      "kind": "職場の変化を整理した報告",
-      "src": "ilo-skills",
-      "text": "2026年8月の共同報告は、仕事で必要なスキルの変化と、新しい技術職を扱います。全職業の完全自動化を観測したものではありません。"
-    }
-  ],
   "sources": [
-    "ilo-skills"
+    "horizon",
+    "ilo-index",
+    "formalization"
   ],
   "questions": [],
   "related": [],
@@ -24,8 +19,14 @@
     "人間の介入を数えた、実際の仕事全体の完遂率はどうか。"
   ],
   "review": {
-    "checkedAt": "2026-09-09",
+    "checkedAt": "2026-09-10",
     "intervalDays": 7,
     "reason": "能力、実運用、経済制度、反証を分けて継続確認するため。"
-  }
+  },
+  "status": "limited",
+  "research": [
+    "horizon",
+    "jobs-exposure",
+    "formalization"
+  ]
 }

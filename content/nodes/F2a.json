@@ -8,15 +8,9 @@
   "terms": [
     "cyber"
   ],
-  "evidence": [
-    {
-      "kind": "想定される悪用の経路",
-      "src": "fsb-ai",
-      "text": "FSBはサイバーリスク、金融詐欺、偽情報をAIが増幅し得る問題として挙げています。"
-    }
-  ],
   "sources": [
-    "fsb-ai"
+    "fsb-ai",
+    "astra-card"
   ],
   "questions": [],
   "related": [
@@ -30,8 +24,13 @@
     "主張やデモではなく、確認された影響・権限・防御条件を見る。"
   ],
   "review": {
-    "checkedAt": "2026-09-09",
+    "checkedAt": "2026-09-10",
     "intervalDays": 7,
     "reason": "能力、実運用、経済制度、反証を分けて継続確認するため。"
-  }
+  },
+  "status": "hypothesis",
+  "research": [
+    "finance-risk",
+    "astra-cyber"
+  ]
 }

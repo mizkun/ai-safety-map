@@ -86,13 +86,23 @@ export function expandedTreeLayout(data: Content, view: string, expanded: boolea
     return node('C4', center - 166, localY + CARD + 168, 332, 'control', false);
   }
   function work(x: number, y: number) {
-    const roots = row(['W1', 'W2', 'W3'], x, y, 'work', false);
-    const center = x + 594;
+    const roots = row(['W1', 'W2'], x, y, 'work', false);
+    const center = x + 380;
     joint('W1-W4', roots, 'W4', center, y + CARD + 84, 'work');
     const capable = node('W4', center - 166, y + CARD + 168, 332, 'work', false);
-    const distribution = node('W6', center + 262, capable.y, 332, 'work', false);
-    joint('W4-W5', [capable, distribution], 'W5', center, capable.y + CARD + 84, 'work');
-    return node('W5', center - 166, capable.y + CARD + 168, 332, 'work', false);
+    const adoption = node('W3', center - 166, capable.y + CARD + 160, 332, 'work', false);
+    const distribution = node('W6', center + 262, adoption.y, 332, 'work', false);
+    wire('W4', 'W3', 'work', 'W4-W3');
+    joint('W3-W5', [adoption, distribution], 'W5', center, adoption.y + CARD + 84, 'work');
+    return node('W5', center - 166, adoption.y + CARD + 168, 332, 'work', false);
+  }
+  const misuseWidth = () => ['M1', 'M2', 'M3'].reduce((sum, id) => sum + measure(id).width, GAP * 2);
+  function misuse(x: number, y: number): Bounds {
+    const roots = row(['M1', 'M2', 'M3'], x, y, 'misuse');
+    const center = x + misuseWidth() / 2;
+    const joinY = Math.max(...roots.map((r) => r.y + r.height)) + 84;
+    joint('M3-H', roots, 'H', center, joinY, 'misuse');
+    return { key: 'misuse-output', x: center - 166, y: joinY, width: 332, height: 0 };
   }
   const moneyWidth = () => ['I1', 'P3', 'F3'].reduce((sum, id) => sum + measure(id, 332, true).width, GAP * 2);
   function money(x: number, y: number, sharedWork: boolean) {
@@ -212,6 +222,11 @@ export function expandedTreeLayout(data: Content, view: string, expanded: boolea
     wire('C4', 'H', 'control', 'C4-H');
     return finish();
   }
+  if (view === 'misuse') {
+    const last = misuse(100, 76);
+    endings(last.x, last.y + 100, false);
+    return finish();
+  }
   if (['work', 'money', 'acceleration'].includes(view)) {
     if (view === 'work') work(100, 76);
     else if (view === 'money') money(100, 76, false);
@@ -234,7 +249,7 @@ export function expandedTreeLayout(data: Content, view: string, expanded: boolea
   let cursor = 100;
   const routes = ids.map((id) => {
     const nodes = data.graphs[id].nodes.filter((n) => !['H', 'T', 'X'].includes(n));
-    const width = id === 'control' ? controlWidth() : id === 'work' ? 1188 : id === 'money' ? moneyWidth() : id === 'acceleration' ? 540 : Math.max(...nodes.map((n) => measure(n).width));
+    const width = id === 'control' ? controlWidth() : id === 'misuse' ? misuseWidth() : id === 'work' ? 1188 : id === 'money' ? moneyWidth() : id === 'acceleration' ? 540 : Math.max(...nodes.map((n) => measure(n).width));
     const route = { id, x: cursor + PAD, width, nodes };
     cursor += width + PAD * 2 + 170;
     return route;
@@ -245,9 +260,9 @@ export function expandedTreeLayout(data: Content, view: string, expanded: boolea
   for (const route of routes) {
     const { id, x, width, nodes } = route;
     layout.tiles.push({ key: 'route-' + id, graph: id, x: x + (width - 332) / 2, y: 220, width: 332, height: 98, color: color(id), kind: 'route' });
-    const last = id === 'control' ? control(x, 484) : id === 'work' ? work(x, 484) : id === 'money' ? money(x, 484, true)
+    const last = id === 'control' ? control(x, 484) : id === 'misuse' ? misuse(x, 484) : id === 'work' ? work(x, 484) : id === 'money' ? money(x, 484, true)
       : id === 'acceleration' ? acceleration(x, 484, true) : chain(id, nodes, x, 484);
-    const first = id === 'control' ? ['C1', 'C2', 'C3'] : id === 'work' ? ['W1', 'W2', 'W3'] : id === 'money' ? ['I1', 'P3', 'F3'] : [nodes[0]];
+    const first = id === 'control' ? ['C1', 'C2', 'C3'] : id === 'misuse' ? ['M1', 'M2', 'M3'] : id === 'work' ? ['W1', 'W2'] : id === 'money' ? ['I1', 'P3', 'F3'] : [nodes[0]];
     if (first.length > 1) layout.forks!.push({ key: 'route-conditions-' + id, from: 'route-' + id, targets: first, busY: id === 'money' ? 600 : 430, color: color(id) });
     else wire('route-' + id, first[0], id, undefined, true);
     ends.push({ route: id, last });
@@ -257,6 +272,7 @@ export function expandedTreeLayout(data: Content, view: string, expanded: boolea
   const harmX = routes[1].x + routes[1].width / 2 - 166;
   endings(harmX, commonY, true);
   for (const [i, { route, last }] of ends.slice(0, 4).entries()) {
+    if (route === 'misuse') continue; // Its three inputs meet at the explicit AND join.
     const edge = data.graphs[route].edges.find((id) => data.edges[id].to === 'H');
     wire(last.key, 'H', route, edge);
     layout.wires.at(-1)!.busY = commonY - 64 - ([1, 2].includes(i) ? 32 : 0);

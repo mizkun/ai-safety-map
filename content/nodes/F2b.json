@@ -8,15 +8,9 @@
   "terms": [
     "financial-stability"
   ],
-  "evidence": [
-    {
-      "kind": "中央銀行関係者によるリスク分析",
-      "src": "bis-ai-finance",
-      "text": "BISの2026年1月講演は、似たモデルやデータによる同方向の反応と、速い取引が混乱を増幅する経路を扱います。"
-    }
-  ],
   "sources": [
-    "bis-ai-finance"
+    "fsb-ai",
+    "finance-survey"
   ],
   "questions": [],
   "related": [],
@@ -24,8 +18,13 @@
     "同じモデルの利用と、実際の売買の相関を分けて確認する。"
   ],
   "review": {
-    "checkedAt": "2026-09-09",
+    "checkedAt": "2026-09-10",
     "intervalDays": 7,
     "reason": "能力、実運用、経済制度、反証を分けて継続確認するため。"
-  }
+  },
+  "status": "hypothesis",
+  "research": [
+    "finance-risk",
+    "finance-use"
+  ]
 }

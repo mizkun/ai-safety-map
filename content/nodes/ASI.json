@@ -2,33 +2,29 @@
   "id": "ASI",
   "title": "幅広い重要な仕事で、人間を大きく上回る",
   "explanation": "ASI.md",
-  "evidence": [
-    {
-      "kind": "概念と条件の整理",
-      "src": "power",
-      "text": "Carlsmithの論証は、単一の名称を閾値とするより、計画などの能力、動機、配備、影響の拡大を分けて検討しています。ここでのASIの説明は一般的な用法を示すための整理です。"
-    }
-  ],
   "sources": [
-    "power"
+    "power",
+    "openai-rd",
+    "navier"
   ],
-  "questions": [
-    {
-      "q": "再帰的自己改善がないとASIにならない？",
-      "a": "そうとは限りません。人間主導の研究や、別の技術的改善によって能力が伸びる可能性もあります。自己改善は、能力向上の仕組みの一候補です。"
-    }
-  ],
+  "questions": [],
   "related": [],
   "terms": [
     "asi",
     "agi"
   ],
   "review": {
-    "checkedAt": "2026-09-09",
+    "checkedAt": "2026-09-10",
     "intervalDays": 90,
     "reason": "主に概念や条件の定義。関連する新証拠があれば期限前でも見直す。"
   },
   "topics": [
     "asi"
+  ],
+  "status": "hypothesis",
+  "research": [
+    "power-seeking",
+    "rd-use",
+    "navier"
   ]
 }

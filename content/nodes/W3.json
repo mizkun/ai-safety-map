@@ -1,6 +1,6 @@
 {
   "id": "W3",
-  "title": "費用と制度の条件がそろい、広く導入される",
+  "title": "生活を支える生産に、AIが広く導入される",
   "explanation": "W3.md",
   "topics": [
     "automation"
@@ -8,14 +8,9 @@
   "terms": [
     "automation"
   ],
-  "evidence": [
-    {
-      "kind": "経済モデルによる分析",
-      "src": "imf-distribution",
-      "text": "この研究は企業がどれだけAIを採用するかという選択が、経済全体の結果に影響すると分析しています。"
-    }
-  ],
   "sources": [
+    "census-adoption",
+    "robotics-2",
     "imf-distribution"
   ],
   "questions": [],
@@ -24,8 +19,14 @@
     "補助金や人の隠れた作業を含めた総費用と、導入の範囲を見る。"
   ],
   "review": {
-    "checkedAt": "2026-09-09",
+    "checkedAt": "2026-09-10",
     "intervalDays": 7,
     "reason": "能力、実運用、経済制度、反証を分けて継続確認するため。"
-  }
+  },
+  "status": "limited",
+  "research": [
+    "adoption",
+    "robotics",
+    "distribution"
+  ]
 }

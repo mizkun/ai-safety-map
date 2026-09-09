@@ -1,6 +1,6 @@
 {
   "id": "W4",
-  "title": "全ての労働をAIで代替できる、という仮説",
+  "title": "全ての労働を、技術的にはAIで代替できる",
   "explanation": "W4.md",
   "topics": [
     "automation"
@@ -8,15 +8,10 @@
   "terms": [
     "automation"
   ],
-  "evidence": [
-    {
-      "kind": "将来仮説・編集上の整理",
-      "src": "ilo-jobs",
-      "text": "ILOのタスク別曝露分析は、この強い到達点の実証ではありません。図では部分的な自動化と区別した将来仮説として置きます。"
-    }
-  ],
   "sources": [
-    "ilo-jobs"
+    "ilo-index",
+    "horizon",
+    "robotics-2"
   ],
   "questions": [],
   "related": [],
@@ -24,8 +19,14 @@
     "一部の成功を全職業へ一般化していないか。残る業務は何か。"
   ],
   "review": {
-    "checkedAt": "2026-09-09",
+    "checkedAt": "2026-09-10",
     "intervalDays": 30,
     "reason": "能力、実運用、経済制度、反証を分けて継続確認するため。"
-  }
+  },
+  "status": "hypothesis",
+  "research": [
+    "jobs-exposure",
+    "horizon",
+    "robotics"
+  ]
 }

@@ -39,12 +39,12 @@ test('mobile rendering omits distant cards while fit-to-view includes every card
 
 test('translations change prose while preserving the causal graph and references', () => {
   const fields = translationFields(content);
-  assert.ok(fields['nodes.C1.body.ひとことで']);
-  assert.ok(fields['edges.C1-C2.explanation']);
+  assert.ok(fields['nodes.C1.body.概要']);
+  assert.ok(fields['edges.C3-L.explanation']);
   assert.equal(fields['nodes.C1.id'], undefined);
   assert.equal(fields['nodes.C1.explanation'], undefined);
-  assert.equal(fields['edges.C1-C2.from'], undefined);
-  assert.equal(fields['sources.report.url'], undefined);
+  assert.equal(fields['edges.C3-L.from'], undefined);
+  assert.equal(fields['sources.power.url'], undefined);
   const strings = Object.fromEntries(
     Object.entries(fields).map(([key, value]) => [key, 'Translated: ' + value]),
   );
@@ -63,7 +63,7 @@ test('translations change prose while preserving the causal graph and references
     translated.nodes.C1.review.checkedAt,
     content.nodes.C1.review.checkedAt,
   );
-  assert.equal(translated.sources.report.url, content.sources.report.url);
+  assert.equal(translated.sources.power.url, content.sources.power.url);
   assert.throws(() =>
     applyTranslation(content, {
       strings: { ...strings, 'nodes.C1.id': 'changed' },
@@ -215,7 +215,7 @@ test('research has enabling and mitigating links, and social outcomes do not imp
   const layout = treeLayout(content, 'overview', true);
   for (const id of ['R2-C2', 'R2-W1', 'R4-C1', 'R2-ASI', 'W4-P1']) assert.ok(layout.wires.some((w) => w.edge === id));
   assert.equal(content.edges['R4-C1'].relation, 'mitigation');
-  assert.deepEqual(content.edges['W4-W5'].requires, ['W4', 'W6']);
+  assert.deepEqual(content.edges['W3-W5'].requires, ['W3', 'W6']);
   for (const view of ['work', 'money']) {
     assert.ok(!content.graphs[view].nodes.includes('X'));
     for (const id of content.graphs[view].edges) assert.ok(!['X', 'H', 'T'].includes(content.edges[id].to));

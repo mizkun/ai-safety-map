@@ -1,63 +1,81 @@
 # データ構造
 
-固定IDを持つノードと矢印を複数の経路で共有します。JSONとMarkdownを同じPRで変更し、ビルド時に組み合わせます。自由なHTMLは実行しません。
+マップは固定IDを持つJSONとMarkdownで管理し、Gitの差分でレビューします。公開サイトは静的ファイルです。閲覧のためのDBやFirebaseプロジェクトは必要ありません。
 
 ## ノード
 
-content/nodes/C1.json のように、一つのIDを一つのファイルで管理します。
+`content/nodes/C1.json` と `content/explanations/C1.md` が一つの項目です。
 
-| フィールド  | 意味                                                                                   |
-| ----------- | -------------------------------------------------------------------------------------- |
-| id          | 項目と共有URLに使う固定ID                                                              |
-| title       | 普通の日本語による短い名称                                                             |
-| explanation | 同じIDのMarkdownファイル名                                                             |
-| evidence    | kind（証拠の種類）、src（出典ID）、text（主張と限界）の配列                            |
-| sources     | 参照する出典ID                                                                         |
-| questions   | q、a、任意のsrcとchildren。深さは固定しない                                            |
-| related     | text、scene（地図ID）、node（項目ID）の関連リンク                                      |
-| subgraph    | 任意。詳しい条件を開く地図ID                                                           |
-| terms       | 任意。この項目から意味を開ける用語IDの配列                                             |
-| topics      | 任意。カードに分野・概念の名称を表示する用語IDの配列。タップで定義を開く               |
-| review      | checkedAt（説明の最終点検日）、intervalDays（1〜90日の点検間隔）、reason（間隔の理由） |
+| フィールド | 意味 |
+| --- | --- |
+| id / title | 固定IDと、図に表示する短い名称 |
+| explanation | 同じIDのMarkdownファイル名 |
+| status | observed（観測例あり）、limited（限定した条件の証拠）、hypothesis（条件付き仮説）、definition（到達点の定義） |
+| research | research.jsonの研究カードID。複数の項目で共有できる |
+| sources | 出典ID。参照する研究カードの出典も含める |
+| subgraph | 下位の条件を表示する図のID |
+| topics / terms | カードに併記する分野名／関連する用語のID |
+| review | checkedAt、intervalDays（1〜90日）、reason |
+| watch | どんな新しい証拠で判断を見直すか |
+| related / questions | 任意の補足リンクと、追加の問答 |
 
-解説Markdownは最初に名称の見出しを置き、以下の第2レベル見出しを使います。
+`status` は危険度や成立の割合ではありません。`observed` でも特定の条件での観測であり、世界全体で成立したという意味ではありません。
 
-- ひとことで
-- たとえば（任意）
-- 次へ進むには
-- 残る壁と不確実性
-- 進行を止めるには
+Markdownは名称の第1見出しと、次の6節を必須とします。
 
-現在の表示は見出しごとの平文です。Markdownのリスト・表・埋め込みHTMLは本文で使わず、段落で説明してください。
+1. 概要
+2. 他の条件との関係
+3. 現在の状況
+4. 成立条件
+5. 根拠の限界
+6. 考えられる対策
+
+本文は節ごとの平文として表示します。任意の「具体例」も使えます。HTMLを実行したり、Markdown内の見出し以外の構文を展開したりはしません。
+
+## 研究カードと出典
+
+`content/research.json` は、title、type、kind、source、locator、evaluator、setting、method、result、limitationを持ちます。誰が、何を、どの条件で、どう測り、何が分かり、何が分からないかを一件ずつ管理します。typeはevaluation（評価実験）、observation（観測・記録）、model（モデルによる推計）、definition（定義）、argument（原論考）です。表示用のkindとは別に、CIで参照する分類を保持します。観測例ありには、評価実験か観測の資料が少なくとも一件必要ですが、それだけで主張を実証したとは判定しません。
+
+`sources.json` はtitle、url、primary、date、published、period、checkedを持ちます。`primary` には、その資料が誰の何の一次情報かを書きます。文字列があるだけでは一次情報の保証にならないため、内容レビューが必要です。
+
+公表日の精度が月までなら年月を保持し、未確認ならnullにします。対象期間、出典本文を確認した日、ノードの説明を再点検した日を混同しません。`map.json` の `asOf` は取り込んだ点検日の最新値です。
 
 ## 矢印
 
-content/map.json のedgesに記録します。fromとtoはノードIDです。relationは conditional（条件付き接続）、joint（他の条件も併せて検討）、alternative（別の結果）、feedback（循環）、influence（促進し得る影響）、mitigation（抑え得る影響）です。促進・抑制は、その結果の必須条件を意味しません。
+`content/map.json` の `edges` に保存します。
 
-jointに任意のrequiresを置くと、複数のノードをANDで併せて検討します。requiresはfromを含む2つ以上の異なるノードIDです。図と詳細パネルは同じ配列を使い、例えばC3-LはC1・C2・C3の3条件を束ねます。標準的な必要十分条件や独立性が証明されたという意味ではなく、成立条件と限界は本文で説明します。
+| フィールド | 意味 |
+| --- | --- |
+| from / to | 接続先のノードID |
+| relation | conditional / joint / alternative / feedback / influence / mitigation |
+| requires | jointで必須。fromを含む、異なる2項目以上のAND入力 |
+| label / explanation | 図上の短い表現と接続の概要 |
+| conditions | この接続が成立するための条件 |
+| current | 接続のどの部分まで、現在の証拠があるか |
+| limitation / basis | 根拠の限界と、編集上の仮説・定義などの区別 |
+| safeguards | 候補または検証された対策 |
+| research / sources / review | 研究、出典、点検日への参照 |
 
-labelは図上の短い説明、explanationは接続の意味、conditionsは追加条件、limitationはまだ言えないこと、safeguardsは対策、sourcesは根拠の出典IDです。
+促進・抑制は必須の前提を意味しません。フィードバックは明示します。ANDはここで扱う経路の条件であり、必要十分条件や統計的独立性を証明したものではありません。
 
-矢印にもノードと同じreviewを持たせます。日付の計算はlib/freshness.mjsをサイトと期限検査で共有します。日本時間で、checkedAtにintervalDaysを加えた日から「要再確認」です。内容の真偽や危険度を示す値ではありません。
+## 図と固定配置
 
-## 経路と分解
+`graphs` のmodeはsequence（追加条件をたどる経路）、all（AND）、any（OR）、network（複数の接続）です。下位図のparentと、親ノードのsubgraphは相互参照します。説明の分解に循環は作りません。
 
-graphsは表示する地図の集合です。nodesとedgesのIDを参照します。modeは sequence（矢印を順にたどる）、all（一緒に検討する条件）、any（代替となる分岐）、network（並列条件や複数の接続を持つ網）です。networkではnodes配列の順序を因果関係や時間順序に変換せず、edgesとrequiresから関係を読みます。
+全要素は各ノードを一度だけ描きます。ORは枝分かれと合流、ANDは余白を持つ枠として表示します。枠の手前の親カードは説明する現象、枠内のカードはその条件です。兄弟を因果の前後関係にはしません。共同条件を次の状態へ接続するANDは、矢印のrequiresと一致させます。
 
-sequenceの場合、隣り合うノードを結ぶ矢印を同じ順番で指定します。下位の地図はparentで元の項目を示し、その項目のsubgraphから参照します。説明上の分解に循環は作りません。因果関係のフィードバックはedgesで表します。
+`lib/expanded-tree-layout.ts` で固定配置し、`lib/horizontal-tree-layout.ts` で左から右へ変換します。横位置は年月ではありません。研究の加速の影響線、分類上の案内、現象の因果線は異なる意味です。
 
-全要素の図は各ノードを一度だけ配置し、共有する結果や条件を同じカードにつなぎます。all/anyの分解は枠で表し、兄弟ノード間には因果の矢印を引きません。図の固定配置はlib/expanded-tree-layout.ts、接続線はlib/tree-layout.tsです。データを追加した際は、全項目の網羅・重複・孤立・カードの重なりをnpm run test:mapで確認します。経路見出しから項目への薄い点線は分類上の案内で、因果関係ではありません。
+## ストーリーと補助資料
 
-表示はlib/horizontal-tree-layout.tsで左から右へ進む配置に変換します。カード、線、接続点、条件の枠を同じ座標変換で扱います。共有する分類線はforksで一本にまとめ、異なる因果線はポートと通過位置を分けます。生存・回復の結果E0は、HからH-E0を通る分岐であり、NOWの隣の現在状態ではありません。
+`stories.json` は経路IDごとのtitle、intro、chapters、outlookを持ちます。各chapterはtitle、textと、関連するnodesの配列を持ちます。物語は仮説の筋道を説明し、未確認の出来事や確定した時期を作りません。
 
-## そのほか
+`glossary.json` のaliasesが本文中の用語ボタンになります。`news.json` は一次資料の読み方、`history.json` は意味のある変更の記録、`watchlist.json` は定期調査の入口です。
 
-sources.jsonは資料名、日付・対象期間の表示、URLを管理します。news.jsonは研究の読み方の例、history.jsonは意味のある変更の理由と差分です。
+## 点検と配信
 
-watchlist.jsonは調査先のid、name、cadence（daily / weekly）、urls、focus、nodes（関係する項目ID）を管理します。日付だけの一括更新を避けるため、内容を点検した記録はdocs/reviews/へ残します。map.jsonのasOfは取り込まれた内容点検日の最新値です。
+[点検手順](logic-review.md)に従い、`docs/reviews/*.json` に点検の指紋と判断を残します。`lib/review-fingerprints.mjs` は参照する研究・出典も指紋に含め、根拠が変わった説明の古い点検を無効にします。指紋は内容の正しさを証明しません。
 
-glossary.jsonはname、aliases（本文内でタップ可能にする表記）、definition、任意のexample、limit（混同しやすいこと）、sourcesを持ちます。専門用語を本文に加えるときは、説明も一緒に登録してください。
+初期HTMLには地図の構造・名称・用語の別名などだけを含めます。本文や研究カードは、内容の指紋を名前に含む `content/details-….json` から、最初に詳細を開いた時に取得します。一度取得すると、同じページ内の次の詳細で再利用します。完全版はSSRの初期データへ重複埋め込みしません。
 
-scripts/validate-content.mjsがIDの整合、参照先、必須の説明・出典、時系列の並び、分解の循環を検査します。科学的な妥当性はレビューで確認してください。
-
-出典はpublished（公表日。年月までしか確認できなければその精度を保つ）、period（研究や観測の対象時期・範囲）、checked（確認日）を分けます。公表日が未確認の場合はnullにします。ノードの任意のwatchには、評価を見直す材料になる観測を記載します。矢印のbasisは、編集上の整理か未解決の接続かなど、その根拠の性質を説明します。
+地図は表示範囲外のカードを省いて描画します。ピンチによる拡大・縮小は地図だけに適用し、詳細の文章のスクロールと分けます。自動テストは構造と座標を検査しますが、実機での体感速度や見た目を保証するものではありません。

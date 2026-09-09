@@ -6,17 +6,21 @@
     "node": ">=22.13.0"
   },
   "scripts": {
-    "dev": "vinext dev",
-    "build": "npm run check:content && vinext build && node scripts/prepare-pages.mjs",
+    "dev": "node scripts/prepare-content.mjs && vinext dev",
+    "build": "npm run check:content && npm run check:logic && node scripts/prepare-content.mjs && vinext build && node scripts/prepare-pages.mjs",
     "start": "vinext start",
     "lint": "oxlint app lib scripts next.config.ts vite.config.ts",
     "format": "oxfmt",
     "check:content": "node scripts/validate-content.mjs && node scripts/validate-locales.mjs",
-    "check": "npm run check:content && npm run test:freshness && npm run test:map && tsc --noEmit && npm run lint",
+    "check": "npm run check:content && npm run check:logic && npm run test:logic && npm run test:content-package && npm run test:freshness && npm run test:map && tsc --noEmit && npm run lint",
     "check:freshness": "node scripts/check-freshness.mjs",
     "test:freshness": "node --test scripts/freshness.test.mjs",
     "i18n:export": "node scripts/export-translation.mjs",
-    "test:map": "node --experimental-strip-types --test scripts/map-structure.test.mjs"
+    "test:map": "node --experimental-strip-types --test scripts/map-structure.test.mjs",
+    "check:logic": "node scripts/check-logic.mjs",
+    "test:logic": "node --test scripts/logic.test.mjs",
+    "review:draft": "node scripts/draft-review.mjs",
+    "test:content-package": "node --test scripts/content-package.test.mjs"
   },
   "dependencies": {
     "@base-ui/react": "1.7.0",

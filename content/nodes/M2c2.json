@@ -1,16 +1,10 @@
 {
   "id": "M2c2",
-  "title": "実行先の防御と復旧が、被害を抑えられない",
+  "title": "AIの支援が、攻撃対象に届く",
   "explanation": "M2c2.md",
-  "evidence": [
-    {
-      "kind": "その事例で働いた防壁",
-      "src": "aisi-incident",
-      "text": "AISIの事件では人間のレビューと封じ込めが被害の抑制に働きました。その一例から、将来も必ず防げるとは言えません。"
-    }
-  ],
   "sources": [
-    "aisi-incident"
+    "aisi-incident",
+    "astra"
   ],
   "questions": [],
   "related": [],
@@ -19,8 +13,13 @@
   ],
   "watch": [],
   "review": {
-    "checkedAt": "2026-09-09",
+    "checkedAt": "2026-09-10",
     "intervalDays": 7,
     "reason": "能力・行動・対策の評価は短期間で変わり得るため。"
-  }
+  },
+  "status": "limited",
+  "research": [
+    "aisi-incident",
+    "astra-guard"
+  ]
 }

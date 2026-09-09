@@ -2,15 +2,9 @@
   "id": "T",
   "title": "生存と回復の可能性まで、失われる",
   "explanation": "T.md",
-  "evidence": [
-    {
-      "kind": "未解決の接続・シナリオ分析",
-      "src": "rand-extinction",
-      "text": "RANDの探索的分析は、調べた3つの物理的シナリオでは絶滅に重大な追加制約があると論じています。対象外の技術や経路まで否定した結論ではありません。"
-    }
-  ],
   "sources": [
-    "rand-extinction"
+    "rand-extinction",
+    "power"
   ],
   "questions": [],
   "related": [],
@@ -21,11 +15,16 @@
   ],
   "subgraph": "extinction-conditions",
   "review": {
-    "checkedAt": "2026-09-09",
+    "checkedAt": "2026-09-10",
     "intervalDays": 30,
     "reason": "経路を支える前提、反論、防壁の有効性に変化がないか確認するため。"
   },
   "topics": [
     "existential"
+  ],
+  "status": "hypothesis",
+  "research": [
+    "extinction",
+    "power-seeking"
   ]
 }

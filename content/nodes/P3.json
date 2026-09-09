@@ -8,15 +8,9 @@
   "terms": [
     "money"
   ],
-  "evidence": [
-    {
-      "kind": "将来仮説・編集上の整理",
-      "src": "ecb-money",
-      "text": "貨幣は支払い・価値の比較・保存の役割を持ちます。その一部の重要性が縮小する社会を、条件付きの将来像として置きます。"
-    }
-  ],
   "sources": [
-    "ecb-money"
+    "ecb-money",
+    "imf-distribution"
   ],
   "questions": [],
   "related": [],
@@ -24,9 +18,14 @@
     "支払わなくても使える範囲が実際に増えたかを見る。"
   ],
   "review": {
-    "checkedAt": "2026-09-09",
+    "checkedAt": "2026-09-10",
     "intervalDays": 30,
     "reason": "能力、実運用、経済制度、反証を分けて継続確認するため。"
   },
-  "subgraph": "currency-conditions"
+  "subgraph": "currency-conditions",
+  "status": "hypothesis",
+  "research": [
+    "money-functions",
+    "distribution"
+  ]
 }

@@ -2,25 +2,30 @@
   "id": "E0",
   "title": "被害の後も、生存・回復の道が残る",
   "explanation": "E0.md",
-  "evidence": [
-    {
-      "kind": "シナリオ分析を参考にした結果の区別",
-      "src": "rand-extinction",
-      "text": "RANDの探索的分析は、調べた3つの物理的シナリオで絶滅に追加の制約があると論じ、レジリエンスの強化を勧めています。ここでは被害の大きさと生存・回復の可能性を分けます。回復が保証されたという結論ではありません。"
-    }
-  ],
   "sources": [
     "rand-extinction"
   ],
   "questions": [],
   "related": [
-    { "text": "被害の大きさと、生存・回復を分けて考える", "scene": "overview", "node": "H" }
+    {
+      "text": "被害の大きさと、生存・回復を分けて考える",
+      "scene": "overview",
+      "node": "H"
+    }
   ],
-  "terms": ["resilience"],
-  "topics": ["resilience"],
+  "terms": [
+    "resilience"
+  ],
+  "topics": [
+    "resilience"
+  ],
   "review": {
-    "checkedAt": "2026-09-09",
+    "checkedAt": "2026-09-10",
     "intervalDays": 30,
     "reason": "被害後の生存・回復の条件と、対策の有効性を区別して再確認するため。"
-  }
+  },
+  "status": "hypothesis",
+  "research": [
+    "extinction"
+  ]
 }

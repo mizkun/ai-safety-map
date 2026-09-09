@@ -1,27 +1,12 @@
 {
-  "report": {
-    "title": "International AI Safety Report 2026",
-    "date": "2026年2月公表",
-    "url": "https://internationalaisafetyreport.org/publication/international-ai-safety-report-2026",
-    "published": "2026-02",
-    "period": "国際報告書が集約した資料",
-    "checked": "2026-09-09"
-  },
-  "summary": {
-    "title": "International AI Safety Report 2026 — 政策担当者向け拡張要約",
-    "date": "2026年2月公表",
-    "url": "https://internationalaisafetyreport.org/publication/2026-report-extended-summary-policymakers",
-    "published": "2026-02",
-    "period": "国際報告書の拡張要約",
-    "checked": "2026-09-09"
-  },
   "summer": {
     "title": "Anthropicほか — Agentic Misalignment in Summer 2026",
     "date": "対象：2026年夏の実験",
     "url": "https://alignment.anthropic.com/2026/agentic-misalignment-summer-2026/",
     "published": "2026-07-13",
     "period": "2026年夏の模擬配備実験",
-    "checked": "2026-09-09"
+    "checked": "2026-09-09",
+    "primary": "当該研究・評価・出来事を実施または調査した組織による一次報告"
   },
   "incident": {
     "title": "METR — Hugging Face関連インシデントの独立調査",
@@ -29,7 +14,8 @@
     "url": "https://metr.org/blog/2026-08-26-openai-hugging-face-incident-investigation/",
     "published": "2026-08-26",
     "period": "主な分析対象：2026年7月7〜13日",
-    "checked": "2026-09-09"
+    "checked": "2026-09-09",
+    "primary": "当該研究・評価・出来事を実施または調査した組織による一次報告"
   },
   "horizon": {
     "title": "METR — Task-Completion Time Horizons",
@@ -37,7 +23,8 @@
     "url": "https://metr.org/time-horizons/",
     "published": null,
     "period": "ページ更新：2026年5月8日。モデルごとの評価時期は異なる",
-    "checked": "2026-09-09"
+    "checked": "2026-09-09",
+    "primary": "当該研究・評価・出来事を実施または調査した組織による一次報告"
   },
   "discovery": {
     "title": "METR — Have We Seen an Acceleration in Discoveries?",
@@ -45,7 +32,8 @@
     "url": "https://metr.org/notes/2026-08-14-llm-contribution-to-discoveries/",
     "published": "2026-08-14",
     "period": "公開された発見の時系列。非公開の活動には限界",
-    "checked": "2026-09-09"
+    "checked": "2026-09-09",
+    "primary": "当該研究・評価・出来事を実施または調査した組織による一次報告"
   },
   "aisi": {
     "title": "英国AISI — Frontier AI Trends Report",
@@ -53,7 +41,8 @@
     "url": "https://www.aisi.gov.uk/frontier-ai-trends-report",
     "published": "2025-12-18",
     "period": "参照する自己複製評価：2023〜2025年",
-    "checked": "2026-09-09"
+    "checked": "2026-09-09",
+    "primary": "当該研究・評価・出来事を実施または調査した組織による一次報告"
   },
   "control": {
     "title": "Google DeepMind — AI Control Roadmapの解説",
@@ -61,7 +50,8 @@
     "url": "https://deepmind.google/blog/securing-the-future-of-ai-agents/",
     "published": "2026-06-18",
     "period": "将来の能力段階に応じたAI Controlのロードマップ",
-    "checked": "2026-09-09"
+    "checked": "2026-09-09",
+    "primary": "当該研究・評価・出来事を実施または調査した組織による一次報告"
   },
   "framework": {
     "title": "Google DeepMind — An Approach to Technical AGI Safety and Security",
@@ -69,7 +59,8 @@
     "url": "https://arxiv.org/abs/2504.01849",
     "published": "2025-04",
     "period": "技術的なAGIリスクと対策の枠組み",
-    "checked": "2026-09-09"
+    "checked": "2026-09-09",
+    "primary": "著者による理論・シナリオ・制度の原論考。出来事の実証とは区別"
   },
   "power": {
     "title": "Joseph Carlsmith — Is Power-Seeking AI an Existential Risk?",
@@ -77,15 +68,8 @@
     "url": "https://arxiv.org/abs/2206.13353",
     "published": "2022-06",
     "period": "条件付きの実存的リスクの論証",
-    "checked": "2026-09-09"
-  },
-  "debate": {
-    "title": "Joseph Carlsmith — 各前提に対する予測者の評価の比較",
-    "date": "2023年10月公表",
-    "url": "https://joecarlsmith.com/2023/10/18/superforecasting-the-premises-in-is-power-seeking-ai-an-existential-risk/",
-    "published": "2023-10-18",
-    "period": "論証の各前提に対する予測者の評価",
-    "checked": "2026-09-09"
+    "checked": "2026-09-09",
+    "primary": "著者による理論・シナリオ・制度の原論考。出来事の実証とは区別"
   },
   "sipri": {
     "title": "SIPRI — 軍事AIが核エスカレーションに与える影響",
@@ -93,7 +77,8 @@
     "url": "https://www.sipri.org/publications/2025/sipri-insights-peace-and-security/impact-military-artificial-intelligence-nuclear-escalation-risk",
     "published": "2025-06",
     "period": "軍事AIと核エスカレーションのシナリオ分析",
-    "checked": "2026-09-09"
+    "checked": "2026-09-09",
+    "primary": "著者による理論・シナリオ・制度の原論考。出来事の実証とは区別"
   },
   "governance": {
     "title": "SIPRI — AIと核の関係をどう統治するか",
@@ -101,7 +86,8 @@
     "url": "https://www.sipri.org/publications/2025/other-publications/pragmatic-approaches-governance-artificial-intelligence-nuclear-nexus",
     "published": "2025-10",
     "period": "AIと核のガバナンスの検討",
-    "checked": "2026-09-09"
+    "checked": "2026-09-09",
+    "primary": "著者による理論・シナリオ・制度の原論考。出来事の実証とは区別"
   },
   "specification": {
     "title": "Google DeepMind — Specification gaming: the flip side of AI ingenuity",
@@ -109,7 +95,8 @@
     "url": "https://deepmind.google/blog/specification-gaming-the-flip-side-of-ai-ingenuity/",
     "published": "2020-04-21",
     "period": "仕様ゲーミングの事例と仕組み",
-    "checked": "2026-09-09"
+    "checked": "2026-09-09",
+    "primary": "当該研究・評価・出来事を実施または調査した組織による一次報告"
   },
   "generalization": {
     "title": "Google DeepMind — How undesired goals can arise with correct rewards",
@@ -117,7 +104,8 @@
     "url": "https://deepmind.google/blog/how-undesired-goals-can-arise-with-correct-rewards/",
     "published": "2022-10-07",
     "period": "目標の誤一般化の実験・仕組み",
-    "checked": "2026-09-09"
+    "checked": "2026-09-09",
+    "primary": "当該研究・評価・出来事を実施または調査した組織による一次報告"
   },
   "frontier": {
     "title": "METR — Frontier Risk Report (February to March 2026)",
@@ -125,7 +113,8 @@
     "period": "2026年2月16日〜3月16日の評価",
     "checked": "2026-09-09",
     "date": "公表：2026-05-19／対象：2026年2月16日〜3月16日の評価",
-    "url": "https://metr.org/blog/2026-05-19-frontier-risk-report/"
+    "url": "https://metr.org/blog/2026-05-19-frontier-risk-report/",
+    "primary": "当該研究・評価・出来事を実施または調査した組織による一次報告"
   },
   "rand-extinction": {
     "title": "RAND — On the Extinction Risk from Artificial Intelligence",
@@ -133,7 +122,8 @@
     "period": "核・病原体・地球工学の探索的シナリオ分析",
     "checked": "2026-09-09",
     "date": "公表：2025-05-06／対象：核・病原体・地球工学の探索的シナリオ分析",
-    "url": "https://www.rand.org/pubs/research_reports/RRA3034-1.html"
+    "url": "https://www.rand.org/pubs/research_reports/RRA3034-1.html",
+    "primary": "著者による理論・シナリオ・制度の原論考。出来事の実証とは区別"
   },
   "gradual": {
     "title": "Kulveitほか — Humanity Faces Existential Risk from Gradual Disempowerment",
@@ -141,7 +131,8 @@
     "period": "社会的依存をめぐるポジション論文",
     "checked": "2026-09-09",
     "date": "公表：2025-07／対象：社会的依存をめぐるポジション論文",
-    "url": "https://proceedings.mlr.press/v267/kulveit25a.html"
+    "url": "https://proceedings.mlr.press/v267/kulveit25a.html",
+    "primary": "著者による理論・シナリオ・制度の原論考。出来事の実証とは区別"
   },
   "aisi-incident": {
     "title": "英国AISI — サイバー評価中の無許可行動の報告",
@@ -149,7 +140,8 @@
     "period": "2026年7月25〜28日／7月28日に検知",
     "checked": "2026-09-09",
     "date": "公表：2026-08-04／対象：2026年7月25〜28日／7月28日に検知",
-    "url": "https://www.aisi.gov.uk/blog/incident-report-unsanctioned-agent-behaviour-during-cyber-testing"
+    "url": "https://www.aisi.gov.uk/blog/incident-report-unsanctioned-agent-behaviour-during-cyber-testing",
+    "primary": "当該研究・評価・出来事を実施または調査した組織による一次報告"
   },
   "astra": {
     "title": "OpenAI — Path to Astra: critical capabilities and frontier safeguards",
@@ -157,7 +149,8 @@
     "period": "公開前の能力・安全策評価。通常提供とは異なる設定を含む",
     "checked": "2026-09-09",
     "date": "公表：2026-09-01／対象：公開前の能力・安全策評価。通常提供とは異なる設定を含む",
-    "url": "https://openai.com/index/path-to-astra/"
+    "url": "https://openai.com/index/path-to-astra/",
+    "primary": "当該研究・評価・出来事を実施または調査した組織による一次報告"
   },
   "gemini-safety": {
     "title": "Google DeepMind — Gemini 3.7 Flash Model Card",
@@ -165,7 +158,8 @@
     "period": "Gemini 3.7 Flashの評価。モデル全般の上限ではない",
     "checked": "2026-09-09",
     "date": "公表：2026-08-13／対象：Gemini 3.7 Flashの評価。モデル全般の上限ではない",
-    "url": "https://deepmind.google/models/model-cards/gemini-3-7-flash/"
+    "url": "https://deepmind.google/models/model-cards/gemini-3-7-flash/",
+    "primary": "当該研究・評価・出来事を実施または調査した組織による一次報告"
   },
   "openai-rd": {
     "title": "OpenAI — Research acceleration: The view inside OpenAI",
@@ -173,7 +167,8 @@
     "period": "主に2026年1〜8月の社内利用データ・自己報告",
     "checked": "2026-09-09",
     "date": "公表：2026-09-06／対象：主に2026年1〜8月の社内利用データ・自己報告",
-    "url": "https://openai.com/index/research-acceleration-view-inside-openai/"
+    "url": "https://openai.com/index/research-acceleration-view-inside-openai/",
+    "primary": "当該研究・評価・出来事を実施または調査した組織による一次報告"
   },
   "scheming": {
     "title": "Meinkeほか — Frontier Models are Capable of In-context Scheming",
@@ -181,7 +176,8 @@
     "period": "2025年1月14日改訂版／目標と実験環境を与えた評価",
     "checked": "2026-09-09",
     "date": "公表：2024-12-06／対象：2025年1月14日改訂版／目標と実験環境を与えた評価",
-    "url": "https://arxiv.org/abs/2412.04984"
+    "url": "https://arxiv.org/abs/2412.04984",
+    "primary": "当該研究・評価・出来事を実施または調査した組織による一次報告"
   },
   "automated-alignment": {
     "title": "Anthropic: Automated researchers can reliably mitigate alignment failures",
@@ -189,7 +185,8 @@
     "published": "2026-08-28",
     "period": "公表前の10種類の限定的なアライメント評価。実験の厳密な期間は未確認。",
     "url": "https://www.anthropic.com/research/automated-researchers-mitigate-alignment-failures",
-    "checked": "2026-09-09"
+    "checked": "2026-09-09",
+    "primary": "当該研究・評価・出来事を実施または調査した組織による一次報告"
   },
   "astra-card": {
     "title": "OpenAI: GPT-6 Astra System Card",
@@ -197,7 +194,8 @@
     "published": "2026-09-03",
     "period": "公開前のモデル評価。設定・対象時期は評価ごとに異なる。",
     "url": "https://deploymentsafety.openai.com/gpt-6-astra",
-    "checked": "2026-09-09"
+    "checked": "2026-09-09",
+    "primary": "当該研究・評価・出来事を実施または調査した組織による一次報告"
   },
   "navier": {
     "title": "OpenAI: On the Navier–Stokes Millennium Prize Problem",
@@ -205,7 +203,8 @@
     "published": "2026-09-08",
     "period": "2026年9月1〜6日の研究・形式化についての開発元報告。",
     "url": "https://openai.com/index/navier-stokes-solution/",
-    "checked": "2026-09-09"
+    "checked": "2026-09-09",
+    "primary": "当該研究・評価・出来事を実施または調査した組織による一次報告"
   },
   "formalization": {
     "title": "Anthropic: Formalizing Fermat’s Last Theorem",
@@ -213,7 +212,8 @@
     "published": "2026-09-04",
     "period": "2026年8月に行われた11日間の取り組み。既存の証明の形式化。",
     "url": "https://www.anthropic.com/research/formalizing-fermats-last-theorem",
-    "checked": "2026-09-09"
+    "checked": "2026-09-09",
+    "primary": "当該研究・評価・出来事を実施または調査した組織による一次報告"
   },
   "control-paper": {
     "title": "Greenblattほか — AI Control: Improving Safety Despite Intentional Subversion",
@@ -221,15 +221,8 @@
     "url": "https://arxiv.org/abs/2312.06942",
     "published": "2023-12-12",
     "period": "強いモデルを信頼しない条件で、安全な運用手順を評価した研究",
-    "checked": "2026-09-09"
-  },
-  "ilo-jobs": {
-    "title": "ILO — Generative AI and jobs: A 2025 update",
-    "published": "2025-05-20",
-    "period": "職業のタスク構成から推定したGenAIへの曝露。実際の失業率ではない",
-    "date": "2025-05-20／職業のタスク構成から推定したGenAIへの曝露。実際の失業率ではない",
     "checked": "2026-09-09",
-    "url": "https://www.ilo.org/publications/generative-ai-and-jobs-2025-update"
+    "primary": "当該研究・評価・出来事を実施または調査した組織による一次報告"
   },
   "ilo-skills": {
     "title": "ILOほか — Changing landscape of skills in the age of AI",
@@ -237,7 +230,8 @@
     "period": "AI導入に伴うスキル需要・職場の変化をまとめた報告",
     "date": "2026-08-13／AI導入に伴うスキル需要・職場の変化をまとめた報告",
     "checked": "2026-09-09",
-    "url": "https://www.ilo.org/publications/changing-landscape-skills-age-ai"
+    "url": "https://www.ilo.org/publications/changing-landscape-skills-age-ai",
+    "primary": "当該研究・評価・出来事を実施または調査した組織による一次報告"
   },
   "robotics-2": {
     "title": "Google DeepMind — Gemini Robotics 2",
@@ -245,7 +239,8 @@
     "period": "特定のロボット・タスクによる開発元の評価とデモ",
     "date": "2026-07-30／特定のロボット・タスクによる開発元の評価とデモ",
     "checked": "2026-09-09",
-    "url": "https://deepmind.google/blog/gemini-robotics-2-brings-whole-body-intelligence-to-robots/"
+    "url": "https://deepmind.google/blog/gemini-robotics-2-brings-whole-body-intelligence-to-robots/",
+    "primary": "当該研究・評価・出来事を実施または調査した組織による一次報告"
   },
   "imf-distribution": {
     "title": "Rockallほか — AI Adoption and Inequality",
@@ -253,7 +248,8 @@
     "period": "家計データとタスクに基づく経済モデル。著者の研究でありIMFの公式予測ではない",
     "date": "2025-04-04／家計データとタスクに基づく経済モデル。著者の研究でありIMFの公式予測ではない",
     "checked": "2026-09-09",
-    "url": "https://www.imf.org/en/publications/wp/issues/2025/04/04/ai-adoption-and-inequality-565729"
+    "url": "https://www.imf.org/en/publications/wp/issues/2025/04/04/ai-adoption-and-inequality-565729",
+    "primary": "著者による理論・シナリオ・制度の原論考。出来事の実証とは区別"
   },
   "visa-agents": {
     "title": "Visa・Artemis — Agentic Payments from the Ground Up",
@@ -261,7 +257,8 @@
     "period": "記事更新：7月14日／観測データ：4月21日まで。Visaが資金提供",
     "date": "2026-07-14／記事更新：7月14日／観測データ：4月21日まで。Visaが資金提供",
     "checked": "2026-09-09",
-    "url": "https://www.visa.com/en-us/thought-leadership/innovation/agentic-payments-from-the-ground-up"
+    "url": "https://www.visa.com/en-us/thought-leadership/innovation/agentic-payments-from-the-ground-up",
+    "primary": "Visaと共同分析者による取引データの原分析・制度設計の説明"
   },
   "fsb-ai": {
     "title": "FSB — AIの金融安定への含意",
@@ -269,7 +266,8 @@
     "period": "金融AIの便益とシステミックな脆弱性の整理",
     "date": "2024-11-14／金融AIの便益とシステミックな脆弱性の整理",
     "checked": "2026-09-09",
-    "url": "https://www.fsb.org/2024/11/fsb-assesses-the-financial-stability-implications-of-artificial-intelligence/"
+    "url": "https://www.fsb.org/2024/11/the-financial-stability-implications-of-artificial-intelligence/",
+    "primary": "著者による理論・シナリオ・制度の原論考。出来事の実証とは区別"
   },
   "fsb-monitoring": {
     "title": "FSB — AI導入と脆弱性のモニタリング",
@@ -277,7 +275,8 @@
     "period": "AI導入の測定不足と、第三者への依存を点検する枠組み",
     "date": "2025-10-10／AI導入の測定不足と、第三者への依存を点検する枠組み",
     "checked": "2026-09-09",
-    "url": "https://www.fsb.org/2025/10/fsb-outlines-next-steps-for-authorities-on-ai-monitoring/"
+    "url": "https://www.fsb.org/2025/10/monitoring-adoption-of-artificial-intelligence-and-related-vulnerabilities-in-the-financial-sector/",
+    "primary": "著者による理論・シナリオ・制度の原論考。出来事の実証とは区別"
   },
   "bis-ai-finance": {
     "title": "BIS・Tao Zhang — AIとデジタル金融の安定性への含意",
@@ -285,7 +284,8 @@
     "period": "1月26日の講演。リスクの経路であり、クラッシュ確率の推定ではない",
     "date": "2026-01-26／1月26日の講演。リスクの経路であり、クラッシュ確率の推定ではない",
     "checked": "2026-09-09",
-    "url": "https://www.bis.org/speeches/20260126-financial-stability-implications-artificial-intelligence-and-digital-finance"
+    "url": "https://www.bis.org/speeches/20260126-financial-stability-implications-artificial-intelligence-and-digital-finance",
+    "primary": "著者による理論・シナリオ・制度の原論考。出来事の実証とは区別"
   },
   "ecb-money": {
     "title": "ECB — What is money?",
@@ -293,6 +293,70 @@
     "period": "2024年6月19日更新／貨幣の機能の説明",
     "date": "2015-11-24／2024年6月19日更新／貨幣の機能の説明",
     "checked": "2026-09-09",
-    "url": "https://www.ecb.europa.eu/ecb-and-you/explainers/tell-me-more/html/what_is_money.en.html"
+    "url": "https://www.ecb.europa.eu/ecb-and-you/explainers/tell-me-more/html/what_is_money.en.html",
+    "primary": "貨幣を扱う中央銀行による制度の原解説"
+  },
+  "gemini-38": {
+    "title": "Google DeepMind — Gemini 3.8 Flash Model Card",
+    "url": "https://deepmind.google/models/model-cards/gemini-3-8-flash/",
+    "published": "2026-09-02",
+    "period": "2026年9月版。安全性判断の一部は3.7 Flashの評価を参照",
+    "checked": "2026-09-09",
+    "date": "2026-09-02 公表",
+    "primary": "研究・評価の実施者またはデータ収集機関による原報告"
+  },
+  "ilo-index": {
+    "title": "ILO Working Paper 140 — Generative AI and Jobs: A Refined Global Index of Occupational Exposure",
+    "url": "https://www.ilo.org/publications/generative-ai-and-jobs-refined-global-index-occupational-exposure",
+    "published": "2025-05-20",
+    "period": "タスク別の技術的曝露を推計。失業率の観測ではない",
+    "checked": "2026-09-09",
+    "date": "2025-05-20 公表",
+    "primary": "研究・評価の実施者またはデータ収集機関による原報告"
+  },
+  "census-adoption": {
+    "title": "米国国勢調査局 — The Microstructure of AI Diffusion",
+    "url": "https://www.census.gov/library/working-papers/2026/adrm/CES-WP-26-25.html",
+    "published": "2026-04",
+    "period": "BTOSの2025年11月〜2026年1月調査",
+    "checked": "2026-09-09",
+    "date": "2026-04 公表",
+    "primary": "研究・評価の実施者またはデータ収集機関による原報告"
+  },
+  "vend": {
+    "title": "Anthropic・Andon Labs — Project Vend: Phase two",
+    "url": "https://www.anthropic.com/research/project-vend-2",
+    "published": "2025-12-18",
+    "period": "Sonnet 4.0 / 4.5と業務用ツールを使った社内店舗実験",
+    "checked": "2026-09-09",
+    "date": "2025-12-18 公表",
+    "primary": "研究・評価の実施者またはデータ収集機関による原報告"
+  },
+  "finance-survey": {
+    "title": "Bank of England・FCA — Artificial intelligence in UK financial services 2024",
+    "url": "https://www.bankofengland.co.uk/report/2024/artificial-intelligence-in-uk-financial-services-2024",
+    "published": "2024-11-21",
+    "period": "英国金融機関等118社の回答。従来型AIも含む",
+    "checked": "2026-09-09",
+    "date": "2024-11-21 公表",
+    "primary": "研究・評価の実施者またはデータ収集機関による原報告"
+  },
+  "wargames": {
+    "title": "Riveraほか — Escalation Risks from Language Models in Military and Diplomatic Decision-Making",
+    "url": "https://arxiv.org/abs/2401.03408",
+    "published": "2024-01",
+    "period": "LLMエージェントによる模擬外交・軍事ゲーム",
+    "checked": "2026-09-09",
+    "date": "2024-01 公表",
+    "primary": "研究・評価の実施者またはデータ収集機関による原報告"
+  },
+  "cyber-misuse": {
+    "title": "Anthropic — Mapping AI-enabled cyber threats: Insights from the LLM ATT&CK Navigator",
+    "url": "https://www.anthropic.com/research/attack-navigator",
+    "published": "2026-06-03",
+    "date": "2026-06-03 公表",
+    "period": "2025年3月〜2026年3月に停止されたアカウントのうち、分析に十分な記録のあった832件",
+    "checked": "2026-09-10",
+    "primary": "Anthropicの脅威調査チームによる、自社サービスの悪用記録の原分析"
   }
 }

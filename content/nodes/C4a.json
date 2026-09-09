@@ -2,15 +2,9 @@
   "id": "C4a",
   "title": "人間が停止を試みても、活動が続く",
   "explanation": "C4a.md",
-  "evidence": [
-    {
-      "kind": "条件・仕組みの検討",
-      "src": "aisi",
-      "text": "ここで参照するAISIの2023〜2025年の評価は、簡略化した課題での進歩と限界を示します。2026年9月の能力上限ではありません。"
-    }
-  ],
   "sources": [
-    "aisi"
+    "frontier",
+    "incident"
   ],
   "questions": [],
   "related": [],
@@ -18,11 +12,16 @@
     "replication"
   ],
   "review": {
-    "checkedAt": "2026-09-09",
+    "checkedAt": "2026-09-10",
     "intervalDays": 30,
     "reason": "経路を支える前提、反論、防壁の有効性に変化がないか確認するため。"
   },
   "topics": [
     "replication"
+  ],
+  "status": "hypothesis",
+  "research": [
+    "frontier",
+    "hf-incident"
   ]
 }

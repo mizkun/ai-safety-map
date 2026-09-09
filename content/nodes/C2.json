@@ -2,34 +2,12 @@
   "id": "C2",
   "title": "ズレた行動を、現実に実行できる",
   "explanation": "C2.md",
-  "evidence": [
-    {
-      "kind": "リスクの整理",
-      "src": "report",
-      "text": "2026年報告書は、能力や行動の傾向に加え、配備先の重要性・アクセス・権限を制御喪失に関わる要因として挙げています。"
-    },
-    {
-      "kind": "長期の協調作業の事例・開発元報告",
-      "src": "formalization",
-      "text": "Anthropicは9月4日、複数のAIが11日間の取り組みでフェルマーの最終定理の証明を形式化したと報告しました。既存の証明、人間による一部の指示、専用の協働環境を用いた結果です。一般的な仕事を同じ期間、無介入で成功できるとは限りません。"
-    }
-  ],
   "sources": [
-    "control",
-    "report",
-    "formalization"
+    "astra-card",
+    "aisi-incident",
+    "horizon"
   ],
-  "questions": [
-    {
-      "q": "「長い仕事ができる」はどう測る？",
-      "a": "METRの時間指標は、ある成功率で解ける課題の長さを、人間の専門家の所要時間で表します。AIがその時間ずっと動き続けた、という数字ではありません。",
-      "src": "horizon"
-    },
-    {
-      "q": "能力・接点・権限は、全部必要？",
-      "a": "この経路では、意図した行動を実行するための能力と接点が必要です。接点は、人間が正規に与える場合と、境界の不備で生じる場合を分けます。あらゆる権限を持つ必要がある、という意味ではありません。"
-    }
-  ],
+  "questions": [],
   "related": [],
   "subgraph": "ability-access",
   "terms": [
@@ -41,12 +19,18 @@
     "課題の長さだけでなく、成功率と人の介入がどう変わるか。"
   ],
   "review": {
-    "checkedAt": "2026-09-09",
+    "checkedAt": "2026-09-10",
     "intervalDays": 7,
     "reason": "能力・行動・対策の評価は短期間で変わり得るため。"
   },
   "topics": [
     "capability",
     "access-control"
+  ],
+  "status": "limited",
+  "research": [
+    "astra-cyber",
+    "aisi-incident",
+    "horizon"
   ]
 }

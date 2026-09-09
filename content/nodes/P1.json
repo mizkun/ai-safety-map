@@ -8,15 +8,9 @@
   "terms": [
     "scarcity"
   ],
-  "evidence": [
-    {
-      "kind": "生産性からの条件付き推論",
-      "src": "imf-distribution",
-      "text": "自動化による費用削減と、その便益の配分は別の経路として検討できます。全商品の無償化は実証されていません。"
-    }
-  ],
   "sources": [
-    "imf-distribution"
+    "imf-distribution",
+    "ecb-money"
   ],
   "questions": [],
   "related": [],
@@ -24,8 +18,13 @@
     "性能だけでなく、総費用と消費者価格、利用可能な量を見る。"
   ],
   "review": {
-    "checkedAt": "2026-09-09",
+    "checkedAt": "2026-09-10",
     "intervalDays": 7,
     "reason": "能力、実運用、経済制度、反証を分けて継続確認するため。"
-  }
+  },
+  "status": "hypothesis",
+  "research": [
+    "distribution",
+    "money-functions"
+  ]
 }

@@ -2,15 +2,9 @@
   "id": "S2",
   "title": "誤った判断を、訂正する余裕が減る",
   "explanation": "S2.md",
-  "evidence": [
-    {
-      "kind": "条件付きのリスク分析",
-      "src": "sipri",
-      "text": "SIPRIは、意思決定に使える時間の短縮や、不透明な助言が判断を偏らせる可能性を検討しています。影響は運用環境に依存します。"
-    }
-  ],
   "sources": [
-    "sipri"
+    "sipri",
+    "wargames"
   ],
   "questions": [],
   "related": [],
@@ -19,11 +13,16 @@
     "危機の判断を覆せる時間と権限が実際に残っているか。"
   ],
   "review": {
-    "checkedAt": "2026-09-09",
+    "checkedAt": "2026-09-10",
     "intervalDays": 30,
     "reason": "経路を支える前提、反論、防壁の有効性に変化がないか確認するため。"
   },
   "topics": [
     "escalation"
+  ],
+  "status": "hypothesis",
+  "research": [
+    "military",
+    "wargames"
   ]
 }

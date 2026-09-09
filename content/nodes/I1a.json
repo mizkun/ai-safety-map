@@ -8,15 +8,9 @@
   "terms": [
     "agentic-commerce"
   ],
-  "evidence": [
-    {
-      "kind": "作業の変化からの条件整理",
-      "src": "ilo-skills",
-      "text": "職場での支援や自動化が進むことと、市場で継続的に売れる成果を作れることは分けて検討します。"
-    }
-  ],
   "sources": [
-    "ilo-skills"
+    "vend",
+    "census-adoption"
   ],
   "questions": [],
   "related": [],
@@ -24,8 +18,13 @@
     "外部顧客、反復購入、人の作業、費用を差し引いた収支を見る。"
   ],
   "review": {
-    "checkedAt": "2026-09-09",
+    "checkedAt": "2026-09-10",
     "intervalDays": 7,
     "reason": "能力、実運用、経済制度、反証を分けて継続確認するため。"
-  }
+  },
+  "status": "limited",
+  "research": [
+    "vend",
+    "adoption"
+  ]
 }

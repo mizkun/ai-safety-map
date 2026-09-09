@@ -2,25 +2,24 @@
   "id": "C4b",
   "title": "一つの組織を超えて、制御の失敗が広がる",
   "explanation": "C4b.md",
-  "evidence": [
-    {
-      "kind": "条件・仕組みの検討",
-      "src": "power",
-      "text": "影響が人類全体の主導権喪失へ広がることは、論証の中でも別の前提です。"
-    }
-  ],
   "sources": [
+    "incident",
     "power"
   ],
   "questions": [],
   "related": [],
   "terms": [],
   "review": {
-    "checkedAt": "2026-09-09",
+    "checkedAt": "2026-09-10",
     "intervalDays": 30,
     "reason": "経路を支える前提、反論、防壁の有効性に変化がないか確認するため。"
   },
   "topics": [
     "loss-of-control"
+  ],
+  "status": "hypothesis",
+  "research": [
+    "hf-incident",
+    "power-seeking"
   ]
 }
