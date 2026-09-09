@@ -1,0 +1,4 @@
+[
+  { "code": "ja", "name": "日本語", "enabled": true },
+  { "code": "en", "name": "English", "enabled": false }
+]

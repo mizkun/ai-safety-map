@@ -1,48 +1,34 @@
 import fs from 'node:fs';
-import path from 'node:path';
-import type { Content, Node } from './content-types';
-
-export function parseExplanation(markdown: string): Record<string, string> {
-  const sections: Record<string, string> = {};
-  let heading: string | undefined;
-  const lines: string[] = [];
-  const flush = () => {
-    if (heading) sections[heading] = lines.join('\n').trim();
-    lines.length = 0;
-  };
-  for (const line of markdown.split(/\r?\n/)) {
-    if (line.startsWith('## ')) {
-      flush();
-      heading = line.slice(3).trim();
-    } else if (heading) lines.push(line);
-  }
-  flush();
-  return sections;
-}
-
+import { createHash } from 'node:crypto';
+import type { Content, SiteContent, LocaleOption } from './content-types';
+import { readCanonicalContent } from './content-reader.mjs';
+import { applyTranslation, translationFields } from './translation-fields.mjs';
+export { parseExplanation } from './content-reader.mjs';
 export function loadContent(): Content {
-  const root = path.join(process.cwd(), 'content');
-  const read = (file: string) =>
-    JSON.parse(fs.readFileSync(path.join(root, file), 'utf8'));
-  const nodes: Record<string, Node> = {};
-  for (const file of fs
-    .readdirSync(path.join(root, 'nodes'))
-    .filter((f) => f.endsWith('.json'))
-    .sort()) {
-    const node = read(path.join('nodes', file));
-    const markdown = fs.readFileSync(
-      path.join(root, 'explanations', node.explanation),
-      'utf8',
-    );
-    nodes[node.id] = { ...node, body: parseExplanation(markdown) };
+  return readCanonicalContent() as Content;
+}
+export function loadSiteContent(): SiteContent {
+  const ja = loadContent();
+  const sourceHash = createHash('sha256')
+    .update(JSON.stringify(translationFields(ja)))
+    .digest('hex');
+  const locales: LocaleOption[] = JSON.parse(
+    fs.readFileSync('content/locales.json', 'utf8'),
+  );
+  const content: SiteContent['content'] = { ja };
+  for (const locale of locales) {
+    if (locale.code === 'ja') continue;
+    const file = 'content/translations/' + locale.code + '.json';
+    if (!locale.enabled || !fs.existsSync(file)) {
+      locale.enabled = false;
+      continue;
+    }
+    const translation = JSON.parse(fs.readFileSync(file, 'utf8'));
+    if (translation.sourceHash !== sourceHash) {
+      locale.enabled = false;
+      continue;
+    }
+    content[locale.code] = applyTranslation(ja, translation) as Content;
   }
-  return {
-    ...read('map.json'),
-    nodes,
-    sources: read('sources.json'),
-    history: read('history.json'),
-    news: read('news.json'),
-    glossary: read('glossary.json'),
-    watchlist: read('watchlist.json'),
-  };
+  return { locales, content };
 }

@@ -6,6 +6,15 @@ export type Source = {
   period: string;
   checked: string;
 };
+export type LocaleOption = {
+  code: 'ja' | 'en';
+  name: string;
+  enabled: boolean;
+};
+export type SiteContent = {
+  locales: LocaleOption[];
+  content: { ja: Content; en?: Content };
+};
 export type Question = {
   q: string;
   a: string;
