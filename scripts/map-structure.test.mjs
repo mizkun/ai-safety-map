@@ -689,6 +689,46 @@ test('the tour camera keeps each chapter visible on desktop and phone without a 
   }
 });
 
+test('short phone tour panes keep the current subject readable and fully visible', () => {
+  for (const size of [
+    { width: 268, height: 158 },
+    { width: 341, height: 186 },
+    { width: 378, height: 315 },
+  ]) {
+    for (const stop of tourStops(content).filter((s) => s.nodes.length)) {
+      const layout = treeLayout(
+        content,
+        stop.view,
+        stop.view !== 'overview',
+        true,
+        size.width,
+        false,
+      );
+      const tiles = layout.tiles.filter((t) => stop.nodes.includes(t.node));
+      const anchor = tiles.find((t) => t.node === stop.nodes[0]);
+      assert.ok(anchor, stop.key + ': the first subject exists');
+      const camera = tourCamera(tiles, size, layout, anchor);
+      assert.ok(
+        camera.scale >= 0.65,
+        stop.key + ': do not squeeze distant subjects into unreadable cards',
+      );
+      const centering = Math.max(
+        0,
+        (size.width - layout.width * camera.scale) / 2,
+      );
+      const x = anchor.x * camera.scale + centering - camera.left;
+      const y = anchor.y * camera.scale - camera.top;
+      assert.ok(
+        x >= 0 &&
+          y >= 0 &&
+          x + anchor.width * camera.scale <= size.width + 1 &&
+          y + anchor.height * camera.scale <= size.height + 1,
+        stop.key + ': the subject stays inside the map pane',
+      );
+    }
+  }
+});
+
 test('desktop routes start at a screen-fitting size while phones keep readable cards', () => {
   for (const view of ['overview', 'acceleration', 'misuse', 'work']) {
     const layout = treeLayout(content, view, false),

@@ -162,16 +162,33 @@ export function tourCamera(
   tiles: Rect[],
   viewport: { width: number; height: number },
   layout: { width: number; height: number },
+  readableAnchor?: Rect,
 ) {
   if (!tiles.length) return null;
   const left = Math.min(...tiles.map((t) => t.x));
   const top = Math.min(...tiles.map((t) => t.y));
   const width = Math.max(...tiles.map((t) => t.x + t.width)) - left;
   const height = Math.max(...tiles.map((t) => t.y + t.height)) - top;
-  const scale = Math.max(
+  let scale = Math.max(
     0.08,
     Math.min(1, (viewport.width - 40) / width, (viewport.height - 40) / height),
   );
+  let centerX = left + width / 2;
+  let centerY = top + height / 2;
+  // A short phone pane cannot fit distant chapter nodes at reading size.
+  // Start at its first subject; the complete graph and minimap remain available.
+  if (readableAnchor && scale < 0.65) {
+    scale = Math.max(
+      0.08,
+      Math.min(
+        0.65,
+        (viewport.width - 32) / readableAnchor.width,
+        (viewport.height - 32) / readableAnchor.height,
+      ),
+    );
+    centerX = readableAnchor.x + readableAnchor.width / 2;
+    centerY = readableAnchor.y + readableAnchor.height / 2;
+  }
   const centering = Math.max(0, (viewport.width - layout.width * scale) / 2);
   return {
     scale,
@@ -179,14 +196,14 @@ export function tourCamera(
       0,
       Math.min(
         layout.width * scale - viewport.width,
-        (left + width / 2) * scale + centering - viewport.width / 2,
+        centerX * scale + centering - viewport.width / 2,
       ),
     ),
     top: Math.max(
       0,
       Math.min(
         layout.height * scale - viewport.height,
-        (top + height / 2) * scale - viewport.height / 2,
+        centerY * scale - viewport.height / 2,
       ),
     ),
   };

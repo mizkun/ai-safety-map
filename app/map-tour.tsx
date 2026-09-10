@@ -271,7 +271,10 @@ export default function MapTour({
               aria-current="step"
               aria-labelledby="tour-step-title"
             >
-              <h2 id="tour-step-title">{title}</h2>
+              <div className="tour-node-heading">
+                <h2 id="tour-step-title">{title}</h2>
+                {node && <span className="node-id">{node.id}</span>}
+              </div>
               <div className="tour-prose">
                 {(prose || '').split(/\n\n+/).map((paragraph, i) => (
                   <p key={i}>{richText(paragraph)}</p>

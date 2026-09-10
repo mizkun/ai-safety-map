@@ -84,6 +84,9 @@ export default function TreeMap({
   const [size, setSize] = useState({ width: 1200, height: 900 });
   const compact = size.width < 760;
   const isTour = Boolean(tourFocus);
+  const highlightedTourNodes = tourFocus?.focus
+    ? [tourFocus.focus]
+    : tourFocus?.nodes || [];
   const phoneOverview = compact && view === 'overview' && !expanded && !isTour;
   const phoneWidth = compact ? size.width : undefined;
   const tourNodesKey = tourFocus
@@ -149,6 +152,11 @@ export default function TreeMap({
           : layout.tiles,
         size,
         layout,
+        compact
+          ? layout.tiles.find(
+              (tile) => tile.node === (tourFocus.focus || tourFocus.nodes[0]),
+            )
+          : undefined,
       )
     : null;
   const readableScale =
@@ -315,6 +323,7 @@ export default function TreeMap({
               'detail-' +
               detailLevel +
               (compact ? ' compact-layout' : '') +
+              (isTour ? ' tour-map' : '') +
               (view === 'overview' && expanded && size.width >= 1000
                 ? ' named-overview'
                 : '')
@@ -596,6 +605,11 @@ export default function TreeMap({
                 : node?.title || route?.shortTitle || '';
               const due =
                 node && reviewStatus(node.review, today).state === 'due';
+              const showId =
+                detailLevel === 'reading' &&
+                node &&
+                node.id !== 'NOW' &&
+                !tile.graph;
               return (
                 <Paper
                   elevation={0}
@@ -603,10 +617,11 @@ export default function TreeMap({
                   className={
                     'tree-tile tile-' +
                     tile.kind +
+                    (showId ? ' tile-identified' : '') +
                     (selected === tile.node ? ' tile-selected' : '') +
                     (tile.node === 'X' ? ' tile-terminal' : '') +
                     (tile.node === 'NOW' ? ' tile-present' : '') +
-                    (tourFocus?.nodes.includes(tile.node || '')
+                    (highlightedTourNodes.includes(tile.node || '')
                       ? ' tile-tour-focus'
                       : isTour && tile.kind !== 'route' && tile.node !== 'NOW'
                         ? ' tile-tour-context'
@@ -621,8 +636,14 @@ export default function TreeMap({
                     } as CSSProperties
                   }
                 >
+                  {showId && <span className="node-id tile-id">{node.id}</span>}
                   <ButtonBase
                     className="tile-open"
+                    aria-current={
+                      highlightedTourNodes.includes(tile.node || '')
+                        ? 'step'
+                        : undefined
+                    }
                     onClick={() => {
                       if (scale < 0.7 && !tile.graph) {
                         const next = Math.max(0.85, readableScale);
@@ -699,10 +720,7 @@ export default function TreeMap({
         <MapMinimap
           layout={layout}
           path={minimapPath}
-          highlighted={(tourFocus?.focus
-            ? [tourFocus.focus]
-            : tourFocus?.nodes || []
-          ).join(',')}
+          highlighted={highlightedTourNodes.join(',')}
           viewport={viewport}
           scale={scale}
           messages={m}

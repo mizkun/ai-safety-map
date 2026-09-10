@@ -52,6 +52,10 @@ import { currentReviewDay, reviewStatus } from '@/lib/freshness.mjs';
 import { messages, formatMessage, type Locale } from '@/lib/i18n';
 import { currentEdgeId } from '@/lib/legacy-links.mjs';
 import { glossaryIndex, glossarySegments } from '@/lib/glossary-text.mjs';
+import {
+  nodeReferenceIndex,
+  nodeReferenceSegments,
+} from '@/lib/node-reference-text.mjs';
 import TreeMap from './tree-map';
 import MapTour from './map-tour';
 import { tourStops } from '@/lib/map-tour';
@@ -262,6 +266,10 @@ export default function MapClient({ site }: { site: SiteContent }) {
     () => glossaryIndex(data.glossary),
     [data.glossary],
   );
+  const referenceIndex = useMemo(
+    () => nodeReferenceIndex(data.nodes),
+    [data.nodes],
+  );
   function richText(text: string): ReactNode {
     return glossarySegments(text, termIndex).map(({ text: part, id }, i) => {
       return id ? (
@@ -276,7 +284,32 @@ export default function MapClient({ site }: { site: SiteContent }) {
           {part}
         </ButtonBase>
       ) : (
-        part
+        nodeReferenceSegments(part, referenceIndex).map((reference, j) =>
+          reference.id ? (
+            <Tooltip
+              title={reference.id + ' · ' + data.nodes[reference.id].shortTitle}
+              key={i + ':' + j}
+            >
+              <ButtonBase
+                component="button"
+                disableRipple
+                className="term-inline node-reference"
+                onClick={() => openNode(reference.id!)}
+                aria-label={
+                  reference.id +
+                  ' · ' +
+                  data.nodes[reference.id].shortTitle +
+                  ' · ' +
+                  m.read
+                }
+              >
+                {reference.text}
+              </ButtonBase>
+            </Tooltip>
+          ) : (
+            reference.text
+          ),
+        )
       );
     });
   }
@@ -928,7 +961,10 @@ export default function MapClient({ site }: { site: SiteContent }) {
           <>
             <div className="detail-header">
               <div className="detail-meta">
-                <span>{node ? m.explanation : m.connection}</span>
+                <span>
+                  {node && <span className="node-id">{node.id}</span>}
+                  {node ? m.explanation : m.connection}
+                </span>
                 <IconButton aria-label={m.close} onClick={() => navigate(view)}>
                   <X size={21} />
                 </IconButton>
