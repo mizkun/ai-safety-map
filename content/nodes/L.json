@@ -4,7 +4,8 @@
   "explanation": "L.md",
   "sources": [
     "aisi-incident",
-    "incident"
+    "incident",
+    "claude-cyber-assessment"
   ],
   "questions": [],
   "related": [],
@@ -27,7 +28,8 @@
   "status": "observed",
   "research": [
     "aisi-incident",
-    "hf-incident"
+    "hf-incident",
+    "claude-cyber-incidents"
   ],
   "shortTitle": "局所的に意図しない行動"
 }

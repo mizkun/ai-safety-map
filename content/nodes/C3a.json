@@ -5,7 +5,8 @@
   "sources": [
     "control-paper",
     "summer",
-    "scheming"
+    "scheming",
+    "claude-cyber-assessment"
   ],
   "questions": [],
   "related": [],
@@ -26,7 +27,8 @@
   "research": [
     "control-protocol",
     "summer",
-    "scheming"
+    "scheming",
+    "claude-cyber-monitors"
   ],
   "shortTitle": "評価・監督が危険を見落とす"
 }

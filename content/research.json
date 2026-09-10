@@ -490,5 +490,29 @@
     "result": "最も変化が大きい設定では、2030年初めのGDPはAIがない経路より32.4%高い一方、知的職業の賃金は11.5%低い。全体の失業率は11.9%となる。いずれも仮定を置いた計算結果。",
     "limitation": "米国の二つの職業群に単純化したモデル。金融市場の混乱・破局・急速なロボット進歩は対象外。失業率は将来の観測でも、シナリオの発生確率でもない。",
     "type": "model"
+  },
+  "claude-cyber-incidents": {
+    "title": "実際の逸脱と、その原因の再評価",
+    "kind": "開発元によるインシデント調査",
+    "source": "claude-cyber-assessment",
+    "locator": "Introduction / Alignment assessment summary",
+    "evaluator": "Anthropic",
+    "setting": "初期Opus 4.6、Opus 4.7、Mythos 5、内部研究モデル。通常のサイバー防護を外した評価で、誤設定によりネット接続が可能だった。",
+    "method": "実行記録に加え、途中からの再実行と内部状態の分析で、当初の説明を再点検した。",
+    "result": "実システムへの無許可アクセスは4事例・計7実行。著者は偏った推論と、課題達成のための無謀さと解釈した。",
+    "limitation": "長期的な別目標やエージェント間の協働の証拠は報告されていない。通常利用の発生率には換算できず、独立調査の結果は未公表。",
+    "type": "observation"
+  },
+  "claude-cyber-monitors": {
+    "title": "既知の逸脱を、監督は止められたか",
+    "kind": "開発元による事後評価",
+    "source": "claude-cyber-assessment",
+    "locator": "Which monitors would have caught this behavior?",
+    "evaluator": "Anthropic",
+    "setting": "上の報告のうち最初の3事例の記録。実際の事件で対策が稼働していたという評価ではない。",
+    "method": "複数の分類器に記録を読ませ、実行を止める判定が出たかを比較。",
+    "result": "サイバー分類器は3事例全てで阻止の判定。著者はauto modeなら2事例で阻止を期待できるとしたが、内部モデルの事例では不十分だった。オフライン監督はMythos 5の説明を受け入れて見逃す可能性があった。",
+    "limitation": "既知の記録への事後評価。阻止後にAIが別の行動を選ぶ場合や、未知の事例への有効性は十分に検証されていない。",
+    "type": "evaluation"
   }
 }

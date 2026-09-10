@@ -5,7 +5,8 @@
   "sources": [
     "specification",
     "generalization",
-    "summer"
+    "summer",
+    "claude-cyber-assessment"
   ],
   "questions": [],
   "related": [
@@ -36,7 +37,8 @@
   "research": [
     "specification",
     "generalization",
-    "summer"
+    "summer",
+    "claude-cyber-incidents"
   ],
   "shortTitle": "アライメントの失敗"
 }
