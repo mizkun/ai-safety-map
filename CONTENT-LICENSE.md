@@ -1,11 +1,11 @@
-# マップと解説のライセンス
+# Map and explanation license
 
 Copyright © 2026 AI Safety Map contributors
 
-content/ 内の独自に作成したマップデータ・説明・具体例は、[Creative Commons Attribution 4.0 International（CC BY 4.0）](https://creativecommons.org/licenses/by/4.0/) の下で提供します。
+Original map data, explanations, and examples under `content/` are provided under the [Creative Commons Attribution 4.0 International license (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/).
 
-[ライセンス全文](https://creativecommons.org/licenses/by/4.0/legalcode)
+[Full license text](https://creativecommons.org/licenses/by/4.0/legalcode)
 
-表示例：AI Safety Map contributors, AI Safety Map, https://github.com/mizkun/ai-safety-map, CC BY 4.0。改変した場合はその旨を示してください。
+Suggested attribution: AI Safety Map contributors, AI Safety Map, https://github.com/mizkun/ai-safety-map, CC BY 4.0. Indicate if you have made changes.
 
-リンク先の第三者の研究、報告書、記事の権利を、このライセンスで再許諾するものではありません。コードと開発用ドキュメントは、リポジトリのLICENSEに記載したMITライセンスです。
+This license does not relicense third-party research, reports, or articles linked from the map. Code and development documentation use the MIT license in the repository's [LICENSE](LICENSE) file.

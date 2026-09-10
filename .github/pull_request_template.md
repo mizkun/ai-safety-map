@@ -1,24 +1,25 @@
-## 何が、なぜ変わるか
+## What changes and why
 
-該当する項目・矢印のIDと、変更前後の意味を書いてください。
+Identify the affected node or connection IDs, and explain the behavior or meaning before and after the change.
 
-## 論理と一次情報
+## Logic and primary evidence
 
-[点検手順](https://github.com/mizkun/ai-safety-map/blob/main/docs/logic-review.md)に沿って、今回の `docs/reviews/` のJSONまたは説明文をリンクしてください。実装・表示だけの変更なら、その範囲を記載してください。
+Link this change's review record in `docs/reviews/`, following the [review procedure](https://github.com/mizkun/ai-safety-map/blob/main/docs/logic-review.md). For implementation or presentation changes only, state that scope.
 
-- どの成立条件が変わるか。AND／OR／促進・抑制は適切か。
-- 前の条件が成立しても次が起きない反例は何か。
-- 一次資料のURLと該当箇所はどこか。誰が、何を、どんな設定で測ったか。
-- 結果が支持しない範囲はどこか。対策は実証済みか、候補か。
+- Which conditions change? Are AND, OR, influence, and mitigation relationships appropriate?
+- What is a counterexample where the previous condition holds but the next one does not?
+- Where is the relevant passage in the primary source? Who measured what, in which setting?
+- What remains unsupported? Is a safeguard tested or only proposed?
 
-## 確認
+## Validation
 
-- [ ] 能力、行動の傾向、権限、防御、被害を分けた
-- [ ] 主語・述語・接続詞・指示語を点検した
-- [ ] 数値の母数、公表日、対象時期、確認日を区別した
-- [ ] 変えた根拠に依存する項目・矢印・ストーリーも点検した
-- [ ] 対応する版の点検記録を追加した（内容変更の場合）
-- [ ] 意味のある訂正を更新履歴に記録した
-- [ ] `npm run check` と `npm run build` が通る
+- [ ] Distinguished capability, behavior, permissions, defenses, and harm
+- [ ] Checked wording, references, and logical connections
+- [ ] Kept denominators, publication dates, observation periods, and review dates distinct
+- [ ] Reviewed dependent nodes, connections, and tour text
+- [ ] Added a review record for the changed content version, where applicable
+- [ ] Recorded meaningful corrections in the change history
+- [ ] Reviewed the Japanese and English versions together
+- [ ] Passed `npm run check` and `npm run build`
 
-CI通過は科学的な正しさの保証ではありません。上の根拠と反例の内容もレビューしてください。
+Passing CI does not guarantee scientific correctness. Review the supporting evidence and counterexamples as well.

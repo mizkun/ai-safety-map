@@ -1,27 +1,27 @@
-name: 誤り・分かりにくさ
-description: 内容の訂正や説明の改善を提案する
-title: "[修正] "
+name: Error or unclear explanation
+description: Suggest a correction or a clearer explanation
+title: "[Correction] "
 body:
   - type: input
     id: location
     attributes:
-      label: 該当する項目のURLまたはID
-      placeholder: C1、C3-L、または項目を開いたURL
+      label: Item URL or ID
+      placeholder: C1, C3-L, or a URL with the item open
     validations:
       required: true
   - type: textarea
     id: problem
     attributes:
-      label: 気になったこと
-      description: 現在のどの文や接続が、なぜ分かりにくい・正確でないと思いますか。
+      label: What needs attention?
+      description: Which statement or connection seems unclear or inaccurate, and why?
     validations:
       required: true
   - type: textarea
     id: proposal
     attributes:
-      label: 修正案（任意）
+      label: Suggested correction (optional)
   - type: textarea
     id: evidence
     attributes:
-      label: 根拠や出典（あれば）
-      description: 資料のURLと該当箇所、支持する主張や限界を記載してください。
+      label: Evidence or sources, if available
+      description: Include the source URL, relevant passage, supported claim, and limitations.

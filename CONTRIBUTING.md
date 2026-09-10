@@ -1,42 +1,43 @@
-# 参加方法
+# Contributing
 
-分かりにくい一文の報告から、新しい研究に基づく修正まで歓迎します。
+Contributions can be as small as reporting an unclear sentence or as substantial as a correction based on new research.
 
-## Issueで知らせる
+## Open an issue
 
-[修正・研究追加のフォーム](https://github.com/mizkun/ai-safety-map/issues/new/choose) を選び、該当する項目のURLかID、気になったことを書いてください。書き換え案がなくても構いません。内容の正確さに関する提案では、一次資料のリンクと該当箇所を添えてください。出典をまだ探せていない場合は、その旨を書けばIssueは送れます。
+Choose a [correction or research form](https://github.com/mizkun/ai-safety-map/issues/new/choose), include the item's URL or ID, and describe the problem. You do not need to propose a rewrite. For a factual correction, include a primary-source link and the relevant passage if available. If you have not found a source yet, say so; you can still submit an issue.
 
-## PRで修正する
+## Submit a pull request
 
-1. リポジトリをforkし、変更用のブランチを作ります。
-2. 説明の修正は content/explanations/ のMarkdownを編集します。文の意味が変わる場合は、対応する content/nodes/ の証拠も確認してください。
-3. 経路や追加条件の修正は content/map.json、出典の追加は content/sources.json を編集します。既存IDはリンク先に使うので、単に名称を変えるためには変更しません。
-4. 意味が変わる修正には content/history.json の先頭に項目を追加します。「変更前」「変更後」「理由」「関係する項目」「出典」を記録してください。誤字だけの修正はGitの履歴のみでも構いません。
-5. 新たな資料で説明を点検した場合は、該当するノード・矢印のreview.checkedAtとcontent/map.jsonのasOfを更新し、出典の公表日と対象期間は混同せず記録します。関係のない項目の点検日を更新しません。点検した資料と判断はdocs/reviews/に残します。
-6. `npm run review:draft -- --id=YYYY-MM-DD-short-subject` で草案を作り、[点検手順](docs/logic-review.md)の8項目（読者の前提・話題のつながりを含む）と一次情報への対応を記入します。関係する矢印・ストーリーも再点検します。
-7. `npm run check` と `npm run build` を実行し、PRで理由と検証結果を説明します。
+1. Fork the repository and create a branch.
+2. Edit explanations in `content/explanations/`. If the meaning changes, also review the corresponding evidence in `content/nodes/`.
+3. Edit pathways and additional conditions in `content/map.json`, and sources in `content/sources.json`. Keep stable IDs when renaming labels because shared links use those IDs.
+4. For a change in meaning, add an entry at the beginning of `content/history.json` with the previous wording, the new wording, the reason, affected items, and sources. Git history alone is sufficient for a pure typo correction.
+5. When checking new evidence, update only the affected node or connection's `review.checkedAt`, and update `content/map.json`'s `asOf` when needed. Keep publication dates and observation periods distinct. Record the evidence and reasoning under `docs/reviews/`.
+6. Run `npm run review:draft -- --id=YYYY-MM-DD-short-subject`. Complete the eight questions in the [review procedure](docs/logic-review.md), including reader prerequisites and why the topic appears, and identify the relevant primary-source passages. Review dependent connections and tour text too.
+7. Update and review the English translation alongside the Japanese source. Run `npm run check` and `npm run build`, then describe the reason and validation in the PR.
 
-CIは参照切れ、AND／ORの矛盾、循環、未点検の本文の版、ビルドの失敗を検出します。研究の解釈の正しさを自動で判定するものではありません。内容のレビューを経てmainに取り込むと、サイトに反映されます。
+CI detects broken references, inconsistent AND/OR groups, undeclared cycles, stale review fingerprints, and build errors. Passing CI does not establish that a scientific interpretation is correct. Reviewed changes reach the site after merging into `main`.
 
-新しい資料の探し方、説明を維持するときの点検記録、自動処理の範囲は[最新情報を保つ手順](docs/keeping-current.md)を参照してください。
+The detailed documents under `docs/` remain in Japanese. See [Keeping the content current](docs/keeping-current.md) for research sources, records of retained explanations, and the scope of automation.
 
-## 内容をレビューするとき
+## Review content
 
-- 一つの項目で理解すべき変化・条件が明確か。
-- 事実、実験での観測、論証、予測、編集者の推論を分けているか。
-- 出典が、その文をどこまで支えるか。資料の限界や反する結果を落としていないか。
-- 「できた」「実行する傾向がある」「実行する権限がある」を混同していないか。
-- 矢印の条件と、全て必要なのか代替なのかが伝わるか。
-- 大災害や主導権喪失を、そのまま人類絶滅と扱っていないか。
-- 具体例が架空なら、そのことが読者に分かるか。
-- 専門用語の説明がcontent/glossary.jsonにあり、必要な別名も登録されているか。
+- Is the change or condition described by each item clear?
+- Are observed events, experiments, arguments, predictions, and editorial inference distinguished?
+- Does each source support the associated claim within its stated scope? Are limitations and contrary results retained?
+- Are capability, behavioral tendency, access rights, defenses, and harm kept separate?
+- Are additional conditions clear, including which are joint and which are alternatives?
+- Are catastrophe and loss of human agency distinguished from human extinction?
+- Are hypothetical examples identifiable as such?
+- Are unfamiliar terms and useful aliases included in `content/glossary.json`?
+- Do evidence colors describe support for individual conditions, without treating uncertainty as safety or computing a scenario-wide risk score?
 
-意見が分かれる場合は、どの前提で分かれるかを残します。根拠の不足は「未解決」と書けます。段階数や深さをそろえるための説明は増やしません。
+When interpretations differ, retain the assumptions behind the disagreement. Insufficient evidence can remain unresolved. Do not add conditions merely to make pathways equal in length or depth.
 
-## 翻訳への参加
+## Translation
 
-画面の文言とマップの本文は分離しています。英語本文の修正・レビューは[翻訳手順](docs/localization.md)を参照してください。ID・因果関係・出典参照は共有し、証拠の強さや不確実性を原文より強めないようにします。
+Interface text and map prose are separate. See [Localization](docs/localization.md) for translating and reviewing English content. IDs, causal relationships, and source references are shared. Do not strengthen or weaken claims or uncertainty during translation.
 
-## 投稿物のライセンス
+## Contribution licenses
 
-コードへの貢献はMIT、独自のマップデータ・解説への貢献はCC BY 4.0で提供してください。他者の文章や図を、その利用条件を確認せず転載しないでください。外部資料へのリンクと、出典を示した自分の言葉による説明を基本とします。
+Contribute code under MIT, and original map data and explanations under CC BY 4.0. Do not copy third-party text or figures without checking their terms. Prefer links to original material and explanations in your own words with attribution.

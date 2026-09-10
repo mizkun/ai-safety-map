@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   title: 'AI Safety Map',
   description:
     'AIリスクの経路、次に進む条件、現在の証拠・成立条件・対策を理解するオープンな学習マップ。',
-  icons: { icon: (process.env.NODE_ENV === 'production' ? '' : '/ai-safety-map') + '/favicon.svg?v=2' },
+  icons: { icon: (process.env.NODE_ENV === 'production' ? '' : '/ai-safety-map') + '/favicon.svg?v=3' },
   metadataBase: new URL('https://ai-safety-map.org/'),
 };
 export const viewport = {

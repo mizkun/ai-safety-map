@@ -1,94 +1,94 @@
 # AI Safety Map
 
-**[日本語](https://ai-safety-map.org/#lang=ja&map=overview) · [English](https://ai-safety-map.org/#lang=en&map=overview)**
+**[Japanese](https://ai-safety-map.org/#lang=ja&map=overview) · [English](https://ai-safety-map.org/#lang=en&map=overview)**
 
-現在のAIに関する証拠から、将来の条件付きシナリオをたどる、日本語・英語の学習用マップです。各段階と矢印を選ぶと、概要、他の条件との関係、現在の状況、成立条件、根拠の限界、対策を読めます。「ツアー」では、図と文章を一緒にたどれます。
+An interactive learning map that connects evidence about AI today with conditional paths into the future. Explore seven scenarios, read the conditions behind each connection, and follow a guided tour alongside the map.
 
-初版の資料確認日は **2026年9月9日** です。9月10日の[全体点検](docs/reviews/2026-09-10-causal-audit.md)で、67項目・33矢印と一次情報への対応を見直しました。代表的な経路を整理したもので、網羅的な調査や専門家の合意を示すものではありません。実際の出来事、限定された実験、将来についての論証を区別します。世界規模の大災害、人類の主導権喪失、人類絶滅も別々の結果として扱います。
+The map distinguishes observed events, limited experiments, and arguments about possible futures. Global catastrophe, loss of human agency, and human extinction are separate outcomes. It is an educational synthesis of selected primary sources, not a probability model, an exhaustive survey, or a statement of expert consensus.
 
-同日の[表示・英訳・社会の帰結の点検](docs/reviews/2026-09-10-readable-futures.md)で、仕事や所得の変化が暮らしへ及ぶ分岐を追加し、73項目・39矢印・43一次資料を扱う構成にしました。
+## Explore the map
 
-続いて[Anthropicの経済シナリオの点検](docs/reviews/2026-09-10-economic-scenarios.md)で、人の仕事が変わりながら続く分岐を追加しました。この改訂で社会変革の分岐を増やしました。現在は、能力向上の分岐を加えた76項目・41矢印・45一次資料です。将来のモデル計算と観測を区別し、日本語・英語・ツアーへ反映しています。
+- Start with the overview or switch to **All elements**. Desktop maps run from left to right; mobile maps run from top to bottom. Select a scenario to see its conditions.
+- Open a card for its explanation, current evidence, limitations, and possible safeguards. Connections explain the additional conditions between stages. Glossary links work within explanations and other glossary entries.
+- Start the **Tour** from the floating button. Enter, the right arrow, or the next-step button advances; the left arrow goes back. The scenario and step selectors let you jump directly, and the minimap shows your position.
+- Use the logo or the overview breadcrumb to return to the full map. Pan and zoom with the map controls; touch devices also support pinch zoom. Cards are fixed in the diagram rather than individually draggable.
+- Browser Back and Forward restore reading locations, including tour steps, card details, nested glossary entries, and map positions. URLs can be shared or reloaded at the same reading state.
 
-3つの調査レポートを比較し、重要な主張を一次資料で確認して改訂しています。[照合と編集判断の記録](docs/research-review-2026-09-09.md)
+The first visit offers a short introduction. The initial language follows the browser: Japanese for a Japanese browser, English otherwise. An explicit language in the URL takes precedence, and the language button switches between the two editions.
 
-## 使い方
+Lines connect only where a junction is marked. A crossing without a junction is not a connection. Position does not encode a date, and a group of conditions is not necessarily a sequence in time. AND and OR represent combinations and alternative mechanisms; neither turns the map into a complete causal or probability model.
 
-1. ホームは「要点」の全体像から始まります。PCは分岐図、スマホは現在から分かれる7経路を表示します。選んだ経路はシンプルなパンくずに表示します。タイトルアイコン、またはパンくずの「全体」を押すと全体に戻れます。「全要素」で全項目も開けます。能力向上の道は、自己改善なしの開発とRSIにORで分かれます。関連経路では普通のカードとして最初から表示し、他の項目と同じ「条件を分解」で詳しく見られます。ASIを通らずに実行能力へ進む接続と、ASIが監督に与える課題も分けます。
-2. カードを選び、説明と現在の証拠を読みます。カードに書かれた分野名をタップすると用語の説明が開きます。
-3. 接続部分の矢印・AND・促進／抑制ボタンで、成立条件と限界を確認します。並列の条件を一本道の前後関係に置き換えません。
-4. ORは別の仕組みへの分岐、ANDの枠は併せて検討する条件です。「条件を分解」を押すと、同じマップ上で下位の条件が開きます。
-5. 「ツアー」は現在から7経路を、76項目の細かい条件まで案内します。Enter・右矢印・「次へ」で進み、左矢印で戻れます。長い説明は続きを表示してから次の場面へ進みます。文章のスクロールでもマップが移動し、関連項目が強調されます。全体のミニマップで位置を確認し、経路や場面の一覧から移動できます。各条件の概要・関係・現在の状況を読み、詳細で根拠を確認できます。
-6. `JP / EN` で言語を切り替えます。メニューから、マップの読み方・用語集・更新履歴・出典を開けます。
+Research acceleration can contribute to capabilities, work automation, or ASI, and can also support safety research. The work, income, money, and finance paths include beneficial and adverse outcomes rather than forcing all changes into a catastrophe scenario.
 
-MUIをベースに、半透明のパネルと固定された樹形図で構成しています。図は拡大・縮小と表示位置の移動ができ、個々の要素を移動・編集する操作はありません。スマホでは「経路を選ぶ」からもすぐに詳細へ進めます。
+## Evidence and review
 
-左端の「現在」から、右へ条件付きの未来をたどります。分岐は上下に広がり、複数の条件が必要な箇所で合流します。線の丸印は接続点で、丸印のない交差は接続ではありません。横位置は年月を表さず、枠内の条件分解も時間順序ではありません。
+The initial source check was on **September 9, 2026**, followed by revisions on September 10:
 
-シナリオを選ぶと、一つのステップに焦点を当てて読めます。関連する条件に移動でき、点線の専門用語や用語ボタンをタップすると説明が開きます。解説を閉じると元の場所に戻れます。
+- [Causal audit](docs/reviews/2026-09-10-causal-audit.md): conditions, connections, and their primary-source support.
+- [Readability, translation, and social outcomes](docs/reviews/2026-09-10-readable-futures.md): work, income, and effects on everyday life.
+- [Economic scenarios](docs/reviews/2026-09-10-economic-scenarios.md): conditional economic models, including paths where human employment continues.
+- [Research comparison and editorial decisions](docs/research-review-2026-09-09.md): comparison of three research reports and checks against original sources.
 
-全要素は読みやすい倍率で始まり、画面の移動と「全体を表示」で広い図をたどれます。研究の加速は、実行能力・仕事の自動化・ASIへの条件付きの接続と、安全性の研究を通じた抑制の両方を表示します。「仕事の自動化」「所得・貨幣・金融」は社会変革の分岐で、絶滅や金融危機と同じ結果にはまとめません。
+Each node and connection records a review date and interval. Publication date, observation period, and review date remain separate. An old evaluation is not treated as a current capability ceiling.
 
-開いた項目はURLに反映されるため、同じ箇所を共有できます。読み物の入口は「ツアー」にまとめています。PCは文章と図を左右に、スマホは上下に表示します。スマホのピンチ操作でマップを拡大・縮小できます。
+GitHub Actions checks review dates daily and maintains one review issue. This checks dates; it does not discover new research, determine scientific correctness, or update review dates automatically. A separate maintainer research workflow is described in [Keeping the content current](docs/keeping-current.md); account-specific automation does not transfer to forks.
 
-初期表示には地図の構造と短い表示文だけを含め、詳しい説明は開いたときに選択中の言語のJSONから取得します。画面外のカードを省き、描画する領域も画面周辺に限ります。[高速化の方針とPWA・AMPの判断](docs/performance.md)を公開しています。取得に失敗した場合は再読み込みできます。本文をローカルで編集した後は、開発サーバーを再起動して詳細データも再生成してください。
+## Contribute
 
-## 参加する
+Report errors or unclear explanations through an [issue](https://github.com/mizkun/ai-safety-map/issues/new/choose). Expertise or a proposed rewrite is not required. For a factual correction, include the primary source and the relevant passage if available.
 
-専門家でなくても、誤りや分かりにくさを [Issue](https://github.com/mizkun/ai-safety-map/issues/new/choose) で知らせてもらえます。研究の追加や説明の修正はPRで提案できます。[参加方法](CONTRIBUTING.md) と [編集方針](docs/editorial-policy.md) を参照してください。
+See [Contributing](CONTRIBUTING.md), the [editorial policy](docs/editorial-policy.md), and the [logic and evidence review procedure](docs/logic-review.md). The detailed documents under `docs/` are currently in Japanese.
 
-変更理由は content/history.json とサイトの「更新履歴」に残します。すべての差分はGitの履歴で確認できます。研究の正確さは人がレビューします。CIは参照切れ、AND／ORの矛盾、未明示の循環、本文の版に対応する点検記録を検査します。[論理と根拠の点検手順](docs/logic-review.md)
+Meaningful corrections are recorded in `content/history.json` and shown in the site's history. Git retains every change. CI checks references, graph logic, reviewed content fingerprints, translations, and builds; it does not replace review of scientific reasoning.
 
-## 最新情報を保つ
+## Content and architecture
 
-項目と矢印に最終点検日・再確認の間隔を持たせ、サイトに「要再確認」を表示します。能力や行動は原則7日、経路の前提は30日、主に定義を扱う項目は90日が目安です。公表日・対象時期・点検日を分け、古い評価を現在の能力上限として扱いません。
+The map is a static site hosted on GitHub Pages at **https://ai-safety-map.org/**. No account or database is needed to read it. Content is versioned in Git and reviewed through pull requests.
 
-GitHub Actionsが毎日、期限を検査し、再確認Issueを一つにまとめます。Codex側には毎朝9時の一次資料調査を設定し、重要な変化を修正PRで提案する運用にしています。危険の増加・対策の改善・反論のすべてが対象です。詳細と稼働条件は[更新手順](docs/keeping-current.md)を参照してください。定期調査のCodex設定はforkに引き継がれません。
+| Path | Purpose |
+| --- | --- |
+| `content/map.json` | Scenarios, connections, and condition groups |
+| `content/nodes/` | Stable IDs, evidence states, and related items |
+| `content/explanations/` | Markdown explanations |
+| `content/sources.json` | Primary sources, publication dates, and observation periods |
+| `content/research.json` | Evaluators, settings, methods, results, and limitations |
+| `content/stories.json` | Tour chapters and narrative context |
+| `content/glossary.json` | Terms, aliases, and explanations |
+| `content/history.json` | Changes and reasons |
+| `content/watchlist.json` | Sources and topics to review regularly |
+| `content/translations/` | Reviewed English prose and source fingerprints |
+| `content/ui/` | Japanese and English interface text |
+| `content/news.json` | Retained research-reading examples |
+| `docs/reviews/` | Editorial review records |
+| `docs/deep-research-prompt.md` | Research brief for expanding the map |
+| `docs/research-brief-social-pathways.md` | Research briefs on work, distribution, finance, and money |
 
-## データと公開
+[Data model](docs/data-model.md) · [Localization](docs/localization.md) · [Performance](docs/performance.md)
 
-マップの構造はJSON、解説本文はMarkdownです。データはGitHubで管理し、PRの差分としてレビューします。公開時に静的なWebサイトへ変換し、GitHub Pagesに配信します。閲覧にアカウントは不要です。
+The initial page contains the diagram and short labels. Detailed prose is loaded on demand in the selected language from a versioned JSON package. Off-screen cards and connections are omitted from rendering. After editing local content, restart the development server to regenerate the detail package.
 
-FirestoreやFirebaseプロジェクトは不要です。将来、利用者ごとの非公開メモや同時編集が必要になった場合に、公開するマップとは分けてDBを検討できます。
+Japanese and English share IDs, topology, and source references. Pre-publication checks reject missing or stale translations. Changes in wording must preserve the original evidence strength and uncertainty.
 
-| 場所                         | 内容                             |
-| ---------------------------- | -------------------------------- |
-| content/map.json             | 経路、矢印、下位の条件への分解   |
-| content/nodes/               | 各段階の固定ID、証拠、関連項目   |
-| content/explanations/        | 初学者向けの解説本文             |
-| content/sources.json         | 出典と公表日・対象時期の表示     |
-| content/research.json      | 評価者・モデル・方法・結果・限界を持つ研究カード |
-| content/stories.json       | ツアーで読む経路ごとの本文と場面 |
-| content/news.json            | ニュースを位置づける実例         |
-| content/glossary.json        | タップして読める専門用語の説明   |
-| content/history.json         | 変更内容と理由                   |
-| content/watchlist.json       | 定期的に確認する調査先と関連項目 |
-| docs/reviews/                | 説明を変更・維持した点検の記録   |
-| docs/deep-research-prompt.md | 内容を拡充するための調査依頼文   |
-| docs/research-brief-social-pathways.md | 労働・所得分配と金融・貨幣を追加調査する2本の依頼文 |
+## Local development
 
-[データ構造の説明](docs/data-model.md) · [日英切り替えと翻訳の追加](docs/localization.md)
-
-公開本文は日本語・英語です。原文・英訳・日英UIを点検値で管理し、古い英訳や未訳を公開前の検査で止めます。ID・因果関係・出典は共有します。
-
-## ローカル開発
-
-Node.js 22.13.0以降を使用します。
+Requires **Node.js 22.13.0 or newer**.
 
 ```sh
 npm ci
 npm run dev
 ```
 
-開発サーバーが表示するURLを開いてください。標準では http://localhost:3000/ai-safety-map/ です。
+Open the URL printed by the server, normally `http://localhost:3000/ai-safety-map/`.
 
 ```sh
 npm run check
 npm run build
 ```
 
-React、TypeScript、vinext、Material UI 9、Emotionを使用しています。GitHub Pages用の静的出力は dist/pages/ です。vinextの出力から公開URLの接頭辞に対応するフォルダを取り出して配置します。mainへの変更でGitHub Actionsが検証・公開します。別名のリポジトリで公開する場合は next.config.ts のbasePath、サイトのリンクとメタデータ、package.json のhomepageを変更してください。
+The app uses React, TypeScript, vinext, Material UI, and Emotion. The static deployment artifact is `dist/pages/`. Production assets are served from the custom domain root; local development retains the `/ai-safety-map/` path. Legacy project-path bookmarks redirect to the root while preserving their reading hash.
 
-## ライセンス
+Pushes to `main` run validation and publish through GitHub Actions. For another deployment path, update the production `basePath` in `next.config.ts`, `package.json`'s `homepage`, metadata, and content-package URLs together. The export preparation checks entry-point assets before publishing.
 
-コードは [MIT](LICENSE)、独自に作成したマップデータと解説は [CC BY 4.0](CONTENT-LICENSE.md) です。出典としてリンクする第三者の資料は、それぞれの権利者の条件に従います。
+## License
+
+Code and development documentation are licensed under [MIT](LICENSE). Original map data and explanations are licensed under [CC BY 4.0](CONTENT-LICENSE.md). Linked third-party material retains its own rights and license terms.
