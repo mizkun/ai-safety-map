@@ -2782,11 +2782,12 @@ a:focus-visible {
   line-height: 1.4;
   white-space: nowrap;
 }
-.current-map-toggle .MuiSwitch-root { width: 36px; height: 22px; padding: 0; }
-.current-map-toggle .MuiSwitch-switchBase { padding: 3px; color: #fff; }
-.current-map-toggle .MuiSwitch-switchBase.Mui-checked { transform: translateX(14px); color: #fff; }
+.current-map-toggle .MuiSwitch-root { position: relative; width: 36px; height: 22px; padding: 0; }
+/* Override the small switch's nested padding and travel as one geometry. */
+.current-map-control .current-map-toggle .MuiSwitch-switchBase { width: 22px; height: 22px; margin: 0; padding: 3px; color: #fff; }
+.current-map-control .current-map-toggle .MuiSwitch-switchBase.Mui-checked { transform: translateX(14px); color: #fff; }
 .current-map-toggle .MuiSwitch-thumb { width: 16px; height: 16px; box-shadow: 0 1px 3px #33415530; }
-.current-map-toggle .MuiSwitch-track { border-radius: 11px; background: #aeb8c7; opacity: 1; }
+.current-map-toggle .MuiSwitch-track { position: absolute; inset: 0; border-radius: 11px; background: #aeb8c7; opacity: 1; }
 .current-map-toggle .MuiSwitch-switchBase.Mui-checked + .MuiSwitch-track { background: #42688e; opacity: 1; }
 .current-map-toggle:has(.Mui-focusVisible) { outline: 2px solid #6a5aad; outline-offset: 3px; border-radius: 5px; }
 .current-map-control > .MuiIconButton-root { width: 34px; height: 36px; margin-left: 2px; color: #738098; }
