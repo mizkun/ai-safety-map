@@ -18,7 +18,6 @@ import {
   type TourStop,
 } from '@/lib/map-tour';
 import { routeColors } from '@/lib/tree-layout';
-import TourLocator from './tour-locator';
 
 type Props = {
   data: Content;
@@ -208,12 +207,6 @@ export default function MapTour({
           </IconButton>
         </header>
         <div className="tour-location">
-          <TourLocator
-            data={data}
-            stop={focus ? { ...stop, nodes: [focus] } : stop}
-            label={m.overviewLabel}
-            onOverview={() => choose(0)}
-          />
           <div className="tour-route-picker">
             <select
               id="tour-route"

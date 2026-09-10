@@ -49,7 +49,6 @@ import {
 import type { Question, Review, SiteContent } from '@/lib/content-types';
 import { currentReviewDay, reviewStatus } from '@/lib/freshness.mjs';
 import { messages, formatMessage, type Locale } from '@/lib/i18n';
-import { routeColors } from '@/lib/tree-layout';
 import { currentEdgeId } from '@/lib/legacy-links.mjs';
 import { glossaryIndex, glossarySegments } from '@/lib/glossary-text.mjs';
 import TreeMap from './tree-map';
@@ -127,7 +126,6 @@ export default function MapClient({ site }: { site: SiteContent }) {
     id: string;
     serial: number;
   } | null>(null);
-  const [routePicker, setRoutePicker] = useState(false);
   const [menuAnchor, setMenuAnchor] = useState<HTMLElement | null>(null);
   const [today, setToday] = useState(data.asOf);
   useEffect(() => {
@@ -218,7 +216,6 @@ export default function MapClient({ site }: { site: SiteContent }) {
   function selectRoute(id: string) {
     setTour(null);
     setFocusRequest(null);
-    setRoutePicker(false);
     navigate(id);
   }
   function moveTour(index: number) {
@@ -228,7 +225,6 @@ export default function MapClient({ site }: { site: SiteContent }) {
     navigate(target.view, undefined, 'node', true);
   }
   function startTour() {
-    setRoutePicker(false);
     setTour({ index: 0, focus: null });
     navigate('overview');
   }
@@ -787,7 +783,6 @@ export default function MapClient({ site }: { site: SiteContent }) {
           if (tour) moveTour(stops.findIndex((s) => s.view === id));
           else selectRoute(id);
         }}
-        onChoose={() => setRoutePicker(true)}
         onTerm={setTermId}
       />
       {tour && (
@@ -797,9 +792,7 @@ export default function MapClient({ site }: { site: SiteContent }) {
           stops={stops}
           index={tour.index}
           ready={detailsReady}
-          keyboardEnabled={
-            !selected && !panel && !termId && !routePicker && !menuAnchor
-          }
+          keyboardEnabled={!selected && !panel && !termId && !menuAnchor}
           loading={loadingBody()}
           focus={tour.focus}
           onMove={moveTour}
@@ -840,43 +833,6 @@ export default function MapClient({ site }: { site: SiteContent }) {
           <ArrowUpRight size={13} />
         </MenuItem>
       </Menu>
-      <Dialog
-        open={routePicker}
-        onClose={() => setRoutePicker(false)}
-        fullWidth
-        maxWidth="sm"
-        className="route-dialog"
-      >
-        <DialogTitle className="modal-heading">
-          <span>{m.routes}</span>
-          <IconButton
-            aria-label={m.close}
-            onClick={() => setRoutePicker(false)}
-          >
-            <X size={20} />
-          </IconButton>
-        </DialogTitle>
-        <DialogContent>
-          <div className="route-picker">
-            {data.routes
-              .filter((r) => r.role !== 'factor')
-              .map((r) => (
-                <ButtonBase
-                  className="route-option"
-                  key={r.id}
-                  onClick={() => selectRoute(r.id)}
-                >
-                  <span
-                    className="route-option-dot"
-                    style={{ background: routeColors[r.id] }}
-                  />
-                  <span>{r.shortTitle}</span>
-                  <ArrowRight size={17} />
-                </ButtonBase>
-              ))}
-          </div>
-        </DialogContent>
-      </Dialog>
       <Dialog
         open={Boolean(panel)}
         onClose={() => navigate(view)}

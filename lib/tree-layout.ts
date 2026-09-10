@@ -72,6 +72,8 @@ export type TreeArea = {
   y: number;
   width: number;
   height: number;
+  // An unframed sequence still returns from its named outcome card.
+  exit?: string;
 };
 export type TreeJoin = {
   edge: string;
@@ -595,11 +597,13 @@ export function forkGeometry(
       // A nested OR returns into its parent's merge, without a separate wire.
       layout.forks?.some((parent) => parent.merge?.inputs.includes(merge.area)))
   ) {
-    const inputs = merge.inputs.map(
-      (key) =>
-        layout.areas?.find((a) => a.key === key) ||
-        layout.tiles.find((t) => t.key === key)!,
-    );
+    const inputs = merge.inputs.map((key) => {
+      const area = layout.areas?.find((a) => a.key === key);
+      return (
+        (area?.exit ? layout.tiles.find((t) => t.key === area.exit) : area) ||
+        layout.tiles.find((t) => t.key === key)!
+      );
+    });
     const centers = [
       ...new Set([merge.x, ...inputs.map((a) => a.x + a.width / 2)]),
     ];

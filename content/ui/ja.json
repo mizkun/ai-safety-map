@@ -161,5 +161,9 @@
   "tourNews": "ニュースを見るときは",
   "tourChapters": "この経路の場面を選ぶ",
   "pathwayCount": "経路",
-  "showOnMap": "地図で見る"
+  "showOnMap": "地図で見る",
+  "minimap": "ミニマップ",
+  "showMinimap": "ミニマップを表示",
+  "hideMinimap": "ミニマップを閉じる",
+  "minimapNavigate": "ミニマップ（矢印キーで移動）"
 }

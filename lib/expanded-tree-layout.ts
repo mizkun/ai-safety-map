@@ -125,7 +125,14 @@ export function expandedTreeLayout(
         layout.wires.at(-1)!.sourceSide = 'right';
         layout.wires.at(-1)!.toFraction = 0.28;
       }
-      const area: TreeArea = { key: 'area-' + id, node: id, x, y, ...size };
+      const area: TreeArea = {
+        key: 'area-' + id,
+        node: id,
+        x,
+        y,
+        ...size,
+        exit: id,
+      };
       layout.areas!.push(area);
       return area;
     }

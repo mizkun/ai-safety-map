@@ -34,7 +34,74 @@ import {
 import { relationLabels, overlaps } from '../lib/relation-labels.ts';
 import { cameraFrame, cameraAnimator } from '../lib/map-camera.mjs';
 import { connectionLabels } from '../lib/connection-labels.ts';
+import { minimapViewport, minimapCamera } from '../lib/map-minimap.ts';
 const content = readCanonicalContent();
+
+test('minimap uses the actual viewport when zoomed, panned, or horizontally centered', () => {
+  const map = { width: 2000, height: 1000 };
+  assert.deepEqual(
+    minimapViewport(
+      { left: 300, top: 150, width: 600, height: 300 },
+      0.75,
+      map,
+    ),
+    { x: 400, y: 200, width: 800, height: 400 },
+  );
+  assert.deepEqual(
+    minimapViewport({ left: 0, top: 0, width: 800, height: 600 }, 0.25, map),
+    { x: 0, y: 0, width: 2000, height: 1000 },
+  );
+  const viewport = { width: 600, height: 300 };
+  const camera = minimapCamera({ x: 1400, y: 600 }, viewport, 0.75, map);
+  const frame = minimapViewport(
+    { ...viewport, left: camera.left, top: camera.top },
+    camera.scale,
+    map,
+  );
+  assert.equal(frame.x + frame.width / 2, 1400);
+  assert.equal(frame.y + frame.height / 2, 600);
+  assert.deepEqual(minimapCamera({ x: -50, y: -50 }, viewport, 0.75, map), {
+    scale: 0.75,
+    left: 0,
+    top: 0,
+  });
+  assert.deepEqual(minimapCamera({ x: 3000, y: 2000 }, viewport, 0.75, map), {
+    scale: 0.75,
+    left: 900,
+    top: 450,
+  });
+  assert.deepEqual(minimapCamera({ x: 2000, y: 1000 }, viewport, 0.1, map), {
+    scale: 0.1,
+    left: 0,
+    top: 0,
+  });
+});
+
+test('the RSI alternative returns from its visible card, not an invisible sequence boundary', () => {
+  for (const view of ['overview', 'control', 'work', 'acceleration'])
+    for (const compact of [false, true]) {
+      const layout = treeLayout(content, view, true, compact);
+      const source = layout.source;
+      const fork = source.forks.find((f) => f.from === 'R0');
+      const sequence = source.areas.find((a) => a.key === 'area-R3');
+      const rsi = source.tiles.find((t) => t.node === 'R3');
+      assert.ok(fork.merge.inputs.includes(sequence.key));
+      assert.equal(sequence.exit, rsi.key);
+      const geometry = forkGeometry(fork, source);
+      assert.ok(
+        geometry.mergePath.includes(
+          `M ${rsi.x + rsi.width / 2} ${rsi.y + rsi.height + 3} V`,
+        ),
+        view,
+      );
+      assert.ok(
+        !geometry.mergePath.includes(
+          `M ${sequence.x + sequence.width / 2} ${sequence.y + sequence.height + 3} V`,
+        ),
+        view,
+      );
+    }
+});
 
 test('nested OR branches reconnect their leaves to the enclosing OR merge', () => {
   for (const view of ['overview', 'control'])

@@ -12,7 +12,6 @@ import {
   IconButton,
   Tooltip,
   Paper,
-  Button,
   ToggleButton,
   ToggleButtonGroup,
   Dialog,
@@ -28,7 +27,6 @@ import {
   Minus,
   Maximize2,
   Scan,
-  GitBranch,
   RotateCcw,
   Clock3,
   Info,
@@ -48,6 +46,7 @@ import { reviewStatus } from '@/lib/freshness.mjs';
 import { useMapGestures } from './use-map-gestures';
 import { useMapWindow } from './use-map-window';
 import { useMapCamera } from './use-map-camera';
+import MapMinimap from './map-minimap';
 import { intersectsWindow } from '@/lib/map-window.mjs';
 import {
   initialMapScale,
@@ -68,7 +67,6 @@ type Props = {
   onNode: (id: string) => void;
   onEdge: (id: string) => void;
   onRoute: (id: string) => void;
-  onChoose: () => void;
   onTerm: (id: string) => void;
   focusRequest?: { id: string; serial: number } | null;
   tourFocus?: {
@@ -87,7 +85,6 @@ export default function TreeMap({
   onNode,
   onEdge,
   onRoute,
-  onChoose,
   onTerm,
   focusRequest,
   tourFocus,
@@ -291,6 +288,19 @@ export default function TreeMap({
       connections: connectionLabels(layout, data, scale, relations),
     };
   }, [layout, data, scale, mobileOverview]);
+  const minimapPath = useMemo(
+    () =>
+      [
+        ...[...geometry.wires.values()].map((wire) => wire.path),
+        ...[...geometry.forks.values()].flatMap((fork) => [
+          fork.trunk,
+          ...fork.branches.map((branch) => branch.path),
+          fork.mergePath || '',
+        ]),
+        ...[...geometry.joins.values()].map((join) => join.path),
+      ].join(' '),
+    [geometry],
+  );
   return (
     <>
       <div
@@ -763,6 +773,24 @@ export default function TreeMap({
           </Tooltip>
         </Paper>
       )}
+      {isTour && (
+        <MapMinimap
+          layout={layout}
+          path={minimapPath}
+          highlighted={(tourFocus?.focus
+            ? [tourFocus.focus]
+            : tourFocus?.nodes || []
+          ).join(',')}
+          viewport={viewport}
+          scale={scale}
+          messages={m}
+          title={
+            data.routes.find((route) => route.id === view)?.shortTitle ||
+            m.overviewLabel
+          }
+          onMove={moveCamera}
+        />
+      )}
       <div className="map-controls">
         <Paper
           className="zoom-controls glass"
@@ -803,14 +831,6 @@ export default function TreeMap({
             </IconButton>
           </Tooltip>
         </Paper>
-        <Button
-          className="choose-route glass"
-          startIcon={<GitBranch size={17} />}
-          onClick={onChoose}
-          aria-label={m.routes}
-        >
-          <span className="choose-route-text">{m.routes}</span>
-        </Button>
       </div>
       <Dialog
         open={showGuide}

@@ -161,5 +161,9 @@
   "tourNews": "When you read the news",
   "tourChapters": "Choose a scene in this path",
   "pathwayCount": "pathways",
-  "showOnMap": "Show on map"
+  "showOnMap": "Show on map",
+  "minimap": "Minimap",
+  "showMinimap": "Show minimap",
+  "hideMinimap": "Hide minimap",
+  "minimapNavigate": "Minimap (use arrow keys to move)"
 }
