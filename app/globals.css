@@ -29,7 +29,9 @@ a:focus-visible {
   overflow: hidden;
   position: relative;
   isolation: isolate;
-  background: linear-gradient(135deg, #f4f7fa, #e9eff5);
+  background:
+    radial-gradient(ellipse at 95% 5%, #e5e2f3 0, transparent 55%),
+    radial-gradient(ellipse at 5% 95%, #deeced 0, transparent 55%), #eef1f7;
 }
 .ambient-shape {
   display: none;
@@ -164,32 +166,35 @@ a:focus-visible {
   gap: 6px;
   padding: 12px 20px;
   text-align: left;
-  border: 1px solid #b2c0cf;
-  border-left: 3px solid var(--branch-color);
-  border-radius: 7px;
-  background: #fff;
-  box-shadow: 0 2px 3px #142a4410;
-  color: #172a3c;
+  border: 1px solid rgba(255, 255, 255, 0.96);
+  border-radius: 14px;
+  background: linear-gradient(
+    145deg,
+    rgba(255, 255, 255, 0.92),
+    var(--tile-tint, rgba(255, 255, 255, 0.62))
+  );
+  /* Translucent fill and short shadows preserve glass without per-card blur. */
+  box-shadow:
+    0 5px 14px rgba(56, 68, 93, 0.11),
+    0 1px 3px rgba(56, 68, 93, 0.08),
+    inset 0 1px 0 #fff;
+  color: #2d384d;
   overflow: hidden;
 }
 .MuiPaper-root.tree-tile:hover {
-  background: rgba(255, 255, 255, 0.83);
-  box-shadow: 0 0 0 2px #326b9a20;
-  border-color: var(--branch-color);
+  background: rgba(255, 255, 255, 0.93);
+  box-shadow:
+    0 7px 18px rgba(56, 68, 93, 0.16),
+    0 1px 3px rgba(56, 68, 93, 0.08),
+    inset 0 1px 0 #fff;
 }
 .MuiPaper-root.tree-tile.tile-selected {
-  border-color: var(--branch-color);
-  background: rgba(255, 255, 255, 0.87);
+  border-color: color-mix(in srgb, var(--branch-color) 55%, white);
+  background: rgba(255, 255, 255, 0.94);
   box-shadow:
-    0 0 0 3px color-mix(in srgb, var(--branch-color) 12%, transparent),
-    0 14px 38px rgba(71, 78, 121, 0.08);
-}
-.MuiPaper-root.tile-terminal {
-  background: rgba(231, 208, 219, 0.35);
-}
-.MuiPaper-root.tile-research {
-  border-style: dashed;
-  background: rgba(220, 240, 233, 0.35);
+    0 0 0 2px color-mix(in srgb, var(--branch-color) 16%, transparent),
+    0 6px 16px rgba(56, 68, 93, 0.13),
+    inset 0 1px 0 #fff;
 }
 .tile-eyebrow {
   display: flex;
@@ -1456,7 +1461,7 @@ a:focus-visible {
   }
 }
 
-/* Compact flowchart: flat cards, readable labels, viewport-sized paint surface. */
+/* Compact flowchart: light glass cards, readable labels, bounded paint surface. */
 .tree-content .tile-title {
   font-size: clamp(13px, calc(17px * var(--map-scale)), 21px);
   font-weight: 650;
@@ -1491,30 +1496,13 @@ a:focus-visible {
 }
 .MuiPaper-root.tree-tile.tile-route,
 .MuiPaper-root.tree-tile.tile-research {
-  background: #213c54;
-  color: #fff;
-  border-color: #213c54;
-}
-.tile-route .tile-eyebrow,
-.tile-research .tile-eyebrow {
-  color: #c0dcef;
+  --tile-tint: color-mix(in srgb, var(--branch-color) 7%, #ffffffbc);
 }
 .MuiPaper-root.tree-tile.tile-present {
-  background: #175b87;
-  border-color: #175b87;
-  color: #fff;
-}
-.tile-present .tile-eyebrow {
-  color: #d0e8f6;
+  --tile-tint: rgba(215, 228, 247, 0.78);
 }
 .MuiPaper-root.tree-tile.tile-terminal {
-  background: #fff2f4;
-  border-color: #a3425c;
-}
-.MuiPaper-root.tree-tile.tile-selected {
-  background: #e6f1fb;
-  border-color: #175b87;
-  box-shadow: 0 0 0 2px #175b8730;
+  --tile-tint: rgba(246, 229, 236, 0.76);
 }
 .tree-content .wire-button {
   width: 30px;
@@ -1773,9 +1761,11 @@ a:focus-visible {
 }
 .mobile-present {
   font-size: 12px;
-  color: #fff;
-  background: #175b87;
-  border-radius: 5px;
+  color: #2d384d;
+  background: linear-gradient(145deg, #fffffff0, #d7e4f7c7);
+  border: 1px solid #fffffff5;
+  box-shadow: 0 3px 9px #38445d17;
+  border-radius: 9px;
   padding: 5px 10px;
   width: max-content;
   margin-bottom: 8px;
@@ -1792,10 +1782,13 @@ a:focus-visible {
   display: flex;
   align-items: flex-start;
   flex-direction: column;
-  border: 1px solid #b5c4d2;
-  border-left: 3px solid var(--branch-color);
-  background: white;
-  border-radius: 6px;
+  border: 1px solid #fffffff5;
+  background: linear-gradient(145deg, #ffffffeb, #ffffffad);
+  border-radius: 12px;
+  box-shadow:
+    0 4px 11px #38445d17,
+    0 1px 3px #38445d12,
+    inset 0 1px 0 #fff;
   padding: 9px 12px;
   min-height: 54px;
   text-align: left;
