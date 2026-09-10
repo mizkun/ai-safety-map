@@ -1850,7 +1850,13 @@ a:focus-visible {
   }
 }
 
-.header-tools .tour-launch {
+.MuiFab-root.tour-launch {
+  position: absolute;
+  right: 26px;
+  bottom: max(22px, env(safe-area-inset-bottom));
+  z-index: 6;
+  height: 52px;
+  gap: 8px;
   font-size: 14px;
   font-weight: 700;
   padding: 8px 17px;
@@ -1865,13 +1871,8 @@ a:focus-visible {
     inset 0 1px 0 #ffffff35;
   white-space: nowrap;
 }
-.header-tools .tour-launch:hover {
+.MuiFab-root.tour-launch:hover {
   background: #315a84;
-}
-.header-tools .tour-launch[aria-pressed='true'] {
-  background: #e2ebf6;
-  color: #254e73;
-  box-shadow: none;
 }
 @media (max-width: 760px) {
   .brand-pill span {
@@ -1880,13 +1881,12 @@ a:focus-visible {
   .brand-pill .MuiButtonBase-root {
     padding: 10px;
   }
-  .header-tools .tour-launch {
-    min-width: 78px;
-    font-size: 12px;
-    padding: 6px 10px;
-  }
-  .header-tools .tour-launch .MuiButton-startIcon {
-    margin-right: 3px;
+  .MuiFab-root.tour-launch {
+    right: 12px;
+    bottom: max(12px, env(safe-area-inset-bottom));
+    height: 52px;
+    min-width: 100px;
+    padding: 0 16px;
   }
 }
 
@@ -2462,24 +2462,52 @@ a:focus-visible {
   }
 }
 
-/* Phone controls stay reachable; the opening view starts at the first card. */
+/* A vertical phone summary shows the destination as well as the entry points. */
 .compact-layout.detail-reading .tile-title {
-  font-size: calc(15px * var(--map-scale));
+  font-size: calc(12px * var(--map-scale));
 }
-.phone-overview .tree-tile {
-  padding: max(4px, calc(8px * var(--map-scale)))
-    max(4px, calc(10px * var(--map-scale)));
+.vertical-flow.compact-layout .tree-tile {
+  padding-top: calc(7px * var(--map-scale));
+  padding-bottom: calc(7px * var(--map-scale));
+}
+.phone-overview .tree-content .tree-tile {
+  padding: calc(5px * var(--map-scale));
+  border-radius: calc(14px * var(--map-scale));
 }
 .phone-overview .tile-topics {
   display: none;
 }
-.phone-overview .tile-title {
+.phone-overview .tree-content .tile-title {
+  font-size: calc(clamp(10px, 3.1vw, 12px) * var(--map-scale));
   line-height: 1.35;
+  white-space: pre-line;
+  overflow-wrap: normal;
+  word-break: keep-all;
+  hyphens: none;
+}
+.phone-overview .tile-title:lang(en) {
+  hyphens: auto;
+}
+.phone-overview .tile-open {
+  padding: 0;
 }
 .phone-overview .tile-present .tile-title {
   font-size: calc(14px * var(--map-scale));
   padding-right: 0;
   white-space: nowrap;
+}
+@media (max-width: 420px) {
+  .map-app:not(.has-tour) .zoom-controls .MuiIconButton-root {
+    width: 40px;
+  }
+  .map-app:not(.has-tour) .zoom-value {
+    display: none;
+  }
+}
+@media (max-width: 360px) {
+  .map-app:not(.has-tour) .zoom-controls .MuiIconButton-root:last-child {
+    display: none;
+  }
 }
 @media (max-width: 760px) {
   .app-header {
@@ -2493,10 +2521,6 @@ a:focus-visible {
   }
   .language-switch .MuiButtonBase-root {
     min-width: 36px;
-    min-height: 40px;
-    font-size: 12px;
-  }
-  .header-tools .tour-launch {
     min-height: 40px;
     font-size: 12px;
   }

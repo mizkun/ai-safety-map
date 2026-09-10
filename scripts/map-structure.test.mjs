@@ -38,7 +38,7 @@ const content = readCanonicalContent();
 
 test('phones open on a connected tree while preserving every overview node and edge', () => {
   const original = treeLayout(content, 'overview', false);
-  for (const width of [320, 390, 430]) {
+  for (const width of [291, 320, 390, 430, 740]) {
     const layout = treeLayout(content, 'overview', false, true, width);
     const present = layout.tiles.find((t) => t.node === 'NOW');
     const routes = layout.tiles.filter((t) => t.kind === 'route');
@@ -57,14 +57,11 @@ test('phones open on a connected tree while preserving every overview node and e
     );
     assert.ok(forkGeometry(fork, layout).trunk);
     assert.equal(forkGeometry(fork, layout).branches.length, 7);
-    for (const [index, tile] of routes.entries()) {
-      assert.ok(tile.x > present.x + present.width);
-      assert.ok(tile.width >= 160 && tile.height >= 64);
-      assert.ok(tile.x + tile.width <= width - 16);
-      if (index)
-        assert.ok(
-          tile.y - routes[index - 1].y - routes[index - 1].height >= 12,
-        );
+    for (const tile of routes) {
+      assert.ok(tile.y > present.y + present.height);
+      assert.ok(tile.width >= 54 && tile.height >= 44);
+      assert.ok(tile.x + tile.width <= width - 12);
+      assert.ok(tile.shortLabel);
     }
     for (const tile of layout.tiles) {
       assert.ok(tile.x >= 0 && tile.y >= 0);
@@ -73,10 +70,125 @@ test('phones open on a connected tree while preserving every overview node and e
     }
     for (const wire of layout.wires)
       assert.ok(!wireGeometry(wire, layout).path.includes('NaN'));
+    for (const tile of layout.tiles)
+      for (const other of layout.tiles.filter((t) => t.key > tile.key))
+        assert.ok(
+          !overlaps(tile, other, 4),
+          tile.key + ' overlaps ' + other.key,
+        );
+    // Routes remain above their outcomes, and no connector cuts through a card.
+    for (const wire of layout.wires) {
+      const from = layout.tiles.find((t) => t.key === wire.from);
+      const to = layout.tiles.find((t) => t.key === wire.to);
+      assert.ok(from.y + from.height < to.y);
+      const points = wireGeometry(wire, layout).points;
+      for (let i = 1; i < points.length; i++) {
+        const a = points[i - 1],
+          b = points[i];
+        const segment = {
+          x: Math.min(a.x, b.x),
+          y: Math.min(a.y, b.y),
+          width: Math.max(1, Math.abs(a.x - b.x)),
+          height: Math.max(1, Math.abs(a.y - b.y)),
+        };
+        for (const tile of layout.tiles.filter(
+          (t) => ![wire.from, wire.to].includes(t.key),
+        ))
+          assert.ok(
+            !overlaps(segment, tile, 0),
+            wire.key + ' crosses ' + tile.key,
+          );
+      }
+    }
+    const labels = connectionLabels(layout, content, 1);
+    assert.equal(labels.length, layout.wires.length);
+    assert.ok(labels.every((label) => label.direction === 'down'));
     assert.deepEqual(
-      initialMapCamera({ width, height: 500 }, layout, present),
+      initialMapCamera({ width, height: 650 }, layout, present),
       { scale: 1, left: 0, top: 0 },
     );
+    assert.equal(
+      initialMapCamera({ width, height: 500 }, layout, present).top,
+      0,
+    );
+  }
+});
+
+test('phone scenarios stay vertical, preserve logic, and leave a clear gap after the present', () => {
+  for (const view of [...content.routes.map((r) => r.id), 'overview']) {
+    const desktop = treeLayout(content, view, true);
+    const phone = treeLayout(content, view, true, true, 320);
+    assert.equal(phone.flow, 'vertical');
+    assert.deepEqual(
+      phone.tiles.map((t) => t.key),
+      desktop.tiles.map((t) => t.key),
+    );
+    assert.deepEqual(
+      phone.wires.map((w) => [w.from, w.to, w.edge]),
+      desktop.wires.map((w) => [w.from, w.to, w.edge]),
+    );
+    assert.deepEqual(
+      phone.forks?.map((f) => [f.from, f.targets, f.merge?.inputs]),
+      desktop.forks?.map((f) => [f.from, f.targets, f.merge?.inputs]),
+    );
+    assert.deepEqual(
+      phone.joins?.map((j) => [j.inputs, j.output]),
+      desktop.joins?.map((j) => [j.inputs, j.output]),
+    );
+    const now = phone.tiles.find((t) => t.node === 'NOW');
+    if (now) {
+      const rest = phone.tiles.filter((t) => t !== now);
+      if (view !== 'overview')
+        assert.ok(
+          Math.min(...rest.map((t) => t.y)) - now.y - now.height >= 40,
+          view,
+        );
+      const camera = initialMapCamera({ width: 320, height: 550 }, phone, now);
+      assert.ok(now.y * camera.scale - camera.top >= 0);
+      assert.ok((now.y + now.height) * camera.scale - camera.top < 550);
+    }
+    for (const tile of phone.tiles) {
+      assert.ok(
+        tile.x >= 0 &&
+          tile.y >= 0 &&
+          tile.x + tile.width <= phone.width &&
+          tile.y + tile.height <= phone.height,
+      );
+      for (const other of phone.tiles.filter((t) => t.key > tile.key))
+        assert.ok(
+          !overlaps(tile, other),
+          view + ': ' + tile.key + ' / ' + other.key,
+        );
+    }
+    for (const wire of phone.wires)
+      assert.ok(!wireGeometry(wire, phone).path.includes('NaN'));
+    for (const fork of phone.forks || [])
+      assert.ok(!forkGeometry(fork, phone).trunk.includes('NaN'));
+    for (const label of connectionLabels(phone, content, 0.8))
+      for (const tile of phone.tiles)
+        assert.ok(
+          !overlaps(label, {
+            x: tile.x * 0.8,
+            y: tile.y * 0.8,
+            width: tile.width * 0.8,
+            height: tile.height * 0.8,
+          }),
+          view,
+        );
+  }
+});
+
+test('the money shortcut uses one clear lane instead of a tiny double bend', () => {
+  for (const phone of [false, true]) {
+    const layout = treeLayout(
+      content,
+      'money',
+      true,
+      phone,
+      phone ? 320 : undefined,
+    );
+    const wire = layout.wires.find((w) => w.edge === 'W4-P1');
+    assert.equal(wireGeometry(wire, layout).points.length, 3);
   }
 });
 

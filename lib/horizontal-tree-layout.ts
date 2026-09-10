@@ -9,6 +9,15 @@ const FLOW_SCALE = 1.8;
 const BRANCH_SCALE = 0.36;
 
 export function horizontalPoint(p: TreePoint, layout: TreeLayout): TreePoint {
+  if (layout.flow === 'vertical')
+    return {
+      x:
+        projectAxis(layout.projection!.branch, p.x) +
+        (layout.projection!.offsetX || 0),
+      y:
+        projectAxis(layout.projection!.flow, p.y) +
+        (layout.projection!.offsetY || 0),
+    };
   return {
     x:
       projectAxis(layout.projection!.flow, p.y) +
@@ -26,9 +35,15 @@ export function horizontalPath(path: string, layout: TreeLayout) {
   while (i < tokens.length) {
     const command = tokens[i++];
     if (command === 'H')
-      result += ` V ${projectAxis(layout.projection!.branch, Number(tokens[i++])) + (layout.projection!.offsetY || 0)}`;
+      result +=
+        layout.flow === 'vertical'
+          ? ` H ${projectAxis(layout.projection!.branch, Number(tokens[i++])) + (layout.projection!.offsetX || 0)}`
+          : ` V ${projectAxis(layout.projection!.branch, Number(tokens[i++])) + (layout.projection!.offsetY || 0)}`;
     else if (command === 'V')
-      result += ` H ${projectAxis(layout.projection!.flow, Number(tokens[i++])) + (layout.projection!.offsetX || 0)}`;
+      result +=
+        layout.flow === 'vertical'
+          ? ` V ${projectAxis(layout.projection!.flow, Number(tokens[i++])) + (layout.projection!.offsetY || 0)}`
+          : ` H ${projectAxis(layout.projection!.flow, Number(tokens[i++])) + (layout.projection!.offsetX || 0)}`;
     else {
       const pairs = command === 'C' ? 3 : command === 'Q' ? 2 : 1;
       result += ' ' + command;
@@ -47,6 +62,7 @@ export function horizontalPath(path: string, layout: TreeLayout) {
 export function horizontalTreeLayout(
   source: TreeLayout,
   compact = false,
+  vertical = false,
 ): TreeLayout {
   const present = source.tiles.find((t) => t.node === 'NOW');
   if (present) {
@@ -79,7 +95,7 @@ export function horizontalTreeLayout(
     flow: compactAxis(
       source.tiles.map((r) => [r.y, r.y + r.height]),
       source.height,
-      compact ? 1.55 : FLOW_SCALE,
+      vertical ? 0.7 : compact ? 1.55 : FLOW_SCALE,
       24,
       compact ? 18 : 36,
       tracks,
@@ -87,10 +103,11 @@ export function horizontalTreeLayout(
     branch: compactAxis(
       source.tiles.map((r) => [r.x, r.x + r.width]),
       source.width,
-      BRANCH_SCALE,
+      vertical ? 0.68 : BRANCH_SCALE,
     ),
   };
-  const projected = { ...source, projection };
+  const flow = vertical ? ('vertical' as const) : ('horizontal' as const);
+  const projected = { ...source, projection, flow };
   const point = (p: TreePoint) => horizontalPoint(p, projected);
   const rect = <
     T extends { x: number; y: number; width: number; height: number },
@@ -127,8 +144,14 @@ export function horizontalTreeLayout(
   }
   const left = Math.min(0, ...ink.map((p) => p.x));
   const top = Math.min(0, ...ink.map((p) => p.y));
-  const right = Math.max(projection.flow.size, ...ink.map((p) => p.x));
-  const bottom = Math.max(projection.branch.size, ...ink.map((p) => p.y));
+  const right = Math.max(
+    vertical ? projection.branch.size : projection.flow.size,
+    ...ink.map((p) => p.x),
+  );
+  const bottom = Math.max(
+    vertical ? projection.flow.size : projection.branch.size,
+    ...ink.map((p) => p.y),
+  );
   projection.offsetX = 54 - left;
   projection.offsetY = 70 - top;
   return {
@@ -140,11 +163,11 @@ export function horizontalTreeLayout(
     factors: source.factors?.map(rect),
     regions: source.regions?.map((r) => ({
       ...rect(r),
-      labelX: point({ x: 0, y: r.labelY }).x,
-      labelY: point({ x: r.labelX ?? r.x + r.width / 2, y: 0 }).y,
+      labelX: point({ x: r.labelX ?? r.x + r.width / 2, y: r.labelY }).x,
+      labelY: point({ x: r.labelX ?? r.x + r.width / 2, y: r.labelY }).y,
     })),
     joins: source.joins?.map((j) => ({ ...j, ...point(j) })),
-    flow: 'horizontal',
+    flow,
     projection,
     source,
   };

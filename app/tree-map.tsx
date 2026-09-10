@@ -20,8 +20,6 @@ import {
 } from '@mui/material';
 import {
   ArrowDown,
-  ArrowUp,
-  ArrowLeft,
   ArrowRight,
   Plus,
   Minus,
@@ -97,7 +95,7 @@ export default function TreeMap({
   const compact = size.width < 760;
   const isTour = Boolean(tourFocus);
   const phoneOverview = compact && view === 'overview' && !expanded && !isTour;
-  const phoneWidth = phoneOverview ? size.width : undefined;
+  const phoneWidth = compact ? size.width : undefined;
   const tourNodesKey = tourFocus
     ? tourContext(data, tourFocus.nodes, tourFocus.detail, view).join(',')
     : '';
@@ -110,8 +108,9 @@ export default function TreeMap({
         view !== 'overview' || expanded,
         compact,
         phoneWidth,
+        !isTour,
       ),
-    [data, view, expanded, compact, phoneWidth],
+    [data, view, expanded, compact, phoneWidth, isTour],
   );
   const nodeCount = new Set(
     layout.tiles.flatMap((tile) => (tile.node ? [tile.node] : [])),
@@ -326,7 +325,11 @@ export default function TreeMap({
         >
           <div
             className={
-              'tree-content horizontal-flow detail-' +
+              'tree-content ' +
+              (layout.flow === 'horizontal'
+                ? 'horizontal-flow '
+                : 'vertical-flow ') +
+              'detail-' +
               detailLevel +
               (compact ? ' compact-layout' : '')
             }
@@ -545,7 +548,11 @@ export default function TreeMap({
                     m.connection + ' · ' + data.edges[join.edge].label
                   }
                 >
-                  <ArrowRight size={16} />
+                  {layout.flow === 'horizontal' ? (
+                    <ArrowRight size={16} />
+                  ) : (
+                    <ArrowDown size={16} />
+                  )}
                 </IconButton>
               </Tooltip>
             ))}
@@ -562,12 +569,8 @@ export default function TreeMap({
                 ),
               )
               .map((label) => {
-                const DirectionIcon = {
-                  up: ArrowUp,
-                  down: ArrowDown,
-                  left: ArrowLeft,
-                  right: ArrowRight,
-                }[label.direction];
+                const DirectionIcon =
+                  layout.flow === 'horizontal' ? ArrowRight : ArrowDown;
                 return (
                   <Tooltip key={label.key} title={data.edges[label.edge].label}>
                     <ButtonBase
@@ -680,7 +683,11 @@ export default function TreeMap({
                       )}
                     </span>
                     <span className="tile-title">
-                      {tile.label ? m[tile.label] : node?.shortTitle || title}
+                      {tile.shortLabel
+                        ? m[tile.shortLabel]
+                        : tile.label
+                          ? m[tile.label]
+                          : node?.shortTitle || title}
                     </span>
                   </ButtonBase>
                   {detailLevel === 'reading' && !!node?.topics?.length && (

@@ -60,13 +60,19 @@ export function connectionLabels(
         : b.y >= a.y
           ? ('down' as const)
           : ('up' as const);
-    const candidates = [
-      { x: g.x * scale, y: g.y * scale, direction: g.direction },
-    ];
-    for (const [i, b] of (g.points || []).entries()) {
-      if (!i) continue;
-      const a = g.points![i - 1];
-      if (Math.hypot(a.x - b.x, a.y - b.y) * scale < 20) continue;
+    const phone = layout.entryView === 'phone-overview';
+    const candidates = phone
+      ? []
+      : [{ x: g.x * scale, y: g.y * scale, direction: g.direction }];
+    // In the vertical phone summary the arrow belongs on a downward stem.
+    // Start at the destination so a bend is never mistaken for a backwards step.
+    const segments = (g.points || [])
+      .map((b, i, points) => ({ a: points[i - 1], b }))
+      .filter(({ a }) => a);
+    for (const { a, b } of phone ? segments.reverse() : segments) {
+      if (phone && (a.x !== b.x || b.y <= a.y)) continue;
+      if (Math.hypot(a.x - b.x, a.y - b.y) * scale < (phone ? 12 : 20))
+        continue;
       for (const fraction of [0.5, 0.25, 0.75, 0.125, 0.875])
         candidates.push({
           x: (a.x + (b.x - a.x) * fraction) * scale,

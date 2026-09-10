@@ -21,6 +21,7 @@ import {
   Dialog,
   DialogContent,
   DialogTitle,
+  Fab,
   IconButton,
   Link,
   Menu,
@@ -703,14 +704,6 @@ export default function MapClient({ site }: { site: SiteContent }) {
           </ButtonBase>
         </Paper>
         <Paper elevation={0} className="header-tools glass">
-          <Button
-            className="tour-launch"
-            startIcon={<Play size={14} />}
-            onClick={startTour}
-            aria-pressed={Boolean(tour)}
-          >
-            {m.tour}
-          </Button>
           <Tooltip title={m.about}>
             <IconButton
               className="header-map-help"
@@ -748,6 +741,12 @@ export default function MapClient({ site }: { site: SiteContent }) {
           </Tooltip>
         </Paper>
       </header>
+      {!tour && (
+        <Fab className="tour-launch" variant="extended" onClick={startTour}>
+          <Play size={18} aria-hidden="true" />
+          {m.tour}
+        </Fab>
+      )}
       {view !== 'overview' && !tour && (
         <nav className="map-breadcrumb" aria-label={m.breadcrumb}>
           <ButtonBase onClick={() => selectRoute('overview')}>

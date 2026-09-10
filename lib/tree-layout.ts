@@ -25,6 +25,18 @@ export type TreeTile = {
   width: number;
   height: number;
   color: string;
+  shortLabel?:
+    | 'phoneControl'
+    | 'phoneMisuse'
+    | 'phoneMilitary'
+    | 'phoneAccidents'
+    | 'phoneDependence'
+    | 'phoneWork'
+    | 'phoneMoney'
+    | 'phoneCatastrophe'
+    | 'phoneAgency'
+    | 'phoneSurvival'
+    | 'phoneRecovery';
   label?:
     | 'present'
     | 'recovery'
@@ -112,7 +124,7 @@ export type TreeLayout = {
     width: number;
     height: number;
   }[];
-  flow?: 'horizontal';
+  flow?: 'horizontal' | 'vertical';
   source?: TreeLayout;
   projection?: {
     flow: ReturnType<typeof import('./axis-compaction.mjs').compactAxis>;
@@ -132,13 +144,19 @@ export function treeLayout(
   expanded: boolean | TreeExpansion = false,
   compact = false,
   phoneWidth?: number,
+  phoneSummary = true,
 ): TreeLayout {
   const layout = verticalTreeLayout(data, view, expanded);
-  if (view === 'overview' && expanded === false && phoneWidth !== undefined)
+  if (
+    phoneSummary &&
+    view === 'overview' &&
+    expanded === false &&
+    phoneWidth !== undefined
+  )
     return phoneOverviewLayout(layout, phoneWidth);
   if (view !== 'overview' && data.routes.some((route) => route.id === view))
     addScenarioPresent(layout, data, view);
-  return horizontalTreeLayout(layout, compact);
+  return horizontalTreeLayout(layout, compact, phoneWidth !== undefined);
 }
 
 // An orientation link from the present is not a new causal claim or an AND input.
@@ -154,7 +172,7 @@ function addScenarioPresent(layout: TreeLayout, data: Content, view: string) {
   if (layout.tiles.some((t) => t.node === 'NOW') || targets.some((t) => !t))
     return;
   // Reserve a leading column without changing any existing relative positions.
-  const shift = 160;
+  const shift = 216;
   const bounds = [
     ...layout.tiles,
     ...(layout.areas || []),
@@ -180,7 +198,7 @@ function addScenarioPresent(layout: TreeLayout, data: Content, view: string) {
     label: 'present',
     kind: 'node',
     x: middle.x + middle.width / 2 - 112,
-    y: top - 104,
+    y: top - 160,
     width: 224,
     height: 80,
     color: '#696596',
@@ -200,7 +218,7 @@ function addScenarioPresent(layout: TreeLayout, data: Content, view: string) {
       key: 'present-scenario',
       from: 'NOW',
       targets: targets.map((t) => t.key),
-      busY: top - 12,
+      busY: top - 40,
       color: '#8b87a1',
     });
   }
@@ -440,7 +458,10 @@ export function wireGeometry(
       ...horizontalPoint(source, layout),
       points,
       path: points ? roundedPath(points) : horizontalPath(source.path, layout),
-      direction: direction[source.direction],
+      direction:
+        layout.flow === 'vertical'
+          ? source.direction
+          : direction[source.direction],
     };
   }
   const from =
@@ -486,6 +507,33 @@ export function wireGeometry(
         (outsideX + targetX) / 2,
         wire.viaY,
         targetX < outsideX ? 'left' : 'right',
+      );
+    }
+    // When the detour lane nearly meets the destination, one clear vertical
+    // lane is enough. Do not turn twice just to move sideways a few pixels.
+    const clear = (a: TreePoint, b: TreePoint) =>
+      !layout.tiles.some(
+        (tile) =>
+          tile.key !== wire.from &&
+          tile.key !== wire.to &&
+          Math.min(a.x, b.x) < tile.x + tile.width &&
+          Math.max(a.x, b.x) > tile.x &&
+          Math.min(a.y, b.y) < tile.y + tile.height &&
+          Math.max(a.y, b.y) > tile.y,
+      );
+    const corner = { x: x2, y: startY };
+    if (
+      Math.abs(outsideX - x2) <= 32 &&
+      y2 > startY &&
+      (wire.sourceSide === 'left' ? x2 < startX : x2 > startX) &&
+      clear({ x: startX, y: startY }, corner) &&
+      clear(corner, { x: x2, y: y2 })
+    ) {
+      return routed(
+        [{ x: startX, y: startY }, corner, { x: x2, y: y2 }],
+        x2,
+        (startY + y2) / 2,
+        'down',
       );
     }
     return routed(

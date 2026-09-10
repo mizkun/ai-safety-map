@@ -71,9 +71,15 @@ export function relationLabels(
     if (!f.alternative) continue;
     const from = layout.tiles.find((t) => t.key === f.from)!;
     const geometry = forkGeometry(f, layout);
-    const targetY = from.y + from.height / 2;
+    const vertical = layout.flow !== 'horizontal';
+    const target = vertical
+      ? from.x + from.width / 2
+      : from.y + from.height / 2;
     const p = geometry.junctions.reduce((best, p) =>
-      Math.abs(p.y - targetY) < Math.abs(best.y - targetY) ? p : best,
+      Math.abs((vertical ? p.x : p.y) - target) <
+      Math.abs((vertical ? best.x : best.y) - target)
+        ? p
+        : best,
     );
     place({ key: f.key, mode: 'any', color: f.color, width: 32, height: 22 }, [
       { x: p.x * scale - 16, y: p.y * scale - 11 },

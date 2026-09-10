@@ -97,7 +97,7 @@
   "about2": "Choose a path, then select a card or arrow to read more. Terms with dotted underlines open an explanation. Start the tour if you would like to explore the whole picture in order.",
   "about3": "“Observed examples,” “Evidence under limited conditions,” and “Conditional hypothesis” describe the kind of support available, not danger or completion percentages.",
   "about4": "A catastrophe, a loss of human agency, and human extinction are different outcomes. We separately ask whether people could survive a catastrophe and rebuild.",
-  "about5": "Follow the connections from left to right. Horizontal position does not measure years. OR branches represent different mechanisms; AND frames group conditions considered together. Positions within a frame do not imply a time order either.",
+  "about5": "Follow the connections from left to right on a computer, or from top to bottom on a phone. Position does not represent years. OR branches show alternative mechanisms; AND frames group conditions considered together. Items inside a frame are not necessarily in chronological order.",
   "about6": "Capability progress branches into ordinary development and recursive self-improvement (RSI) within the control-loss and work-automation maps. ASI is another possible branch, rather than a requirement for every pathway.",
   "about7": "We distinguish publication dates, the periods studied, and the dates our explanations were reviewed. A lack of observed problems alone does not tell us whether safeguards are working.",
   "about8": "Sources link to original work by researchers and investigating organizations. The way conditions are grouped also includes editorial choices for this map. It does not prove that every pathway has exactly the necessary and sufficient conditions.",
@@ -171,5 +171,16 @@
   "minimap": "Minimap",
   "showMinimap": "Show minimap",
   "hideMinimap": "Hide minimap",
-  "minimapNavigate": "Minimap (use arrow keys to move)"
+  "minimapNavigate": "Minimap (use arrow keys to move)",
+  "phoneControl": "Loss of\nAI control",
+  "phoneMisuse": "Human\nmisuse",
+  "phoneMilitary": "Military\ncompetition",
+  "phoneAccidents": "Cascading\nfailures",
+  "phoneDependence": "Social\ndependence",
+  "phoneWork": "Work\nautomation",
+  "phoneMoney": "Income,\nmoney,\nfinance",
+  "phoneCatastrophe": "Global-scale\ncatastrophe",
+  "phoneAgency": "Loss of\nhuman agency",
+  "phoneSurvival": "Survival and recovery\nbecome impossible",
+  "phoneRecovery": "Survival and recovery\nremain possible"
 }
