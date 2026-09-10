@@ -47,6 +47,7 @@ import {
   Play,
   ShieldCheck,
   Waypoints,
+  Radar,
   X,
 } from 'lucide-react';
 import type { Question, Review, SiteContent } from '@/lib/content-types';
@@ -59,6 +60,9 @@ import {
 } from '@/lib/node-reference-text.mjs';
 import TreeMap from './tree-map';
 import MapTour from './map-tour';
+import CurrentPanel from './current-panel';
+import EvidenceMark, { evidenceLabel } from './evidence-mark';
+import { evidenceSignal } from '@/lib/current-evidence';
 import { tourStops } from '@/lib/map-tour';
 import {
   detailTabs,
@@ -108,7 +112,9 @@ export default function MapClient({ site }: { site: SiteContent }) {
   const [loadAttempt, setLoadAttempt] = useState(0);
   const detailsUrl = site.detailsUrls?.[locale];
   const detailsReady = !detailsUrl || Boolean(detailContent[locale]);
-  const needsDetails = Boolean(selected || panel || termId || tour);
+  const needsDetails = Boolean(
+    selected || panel || termId || tour || navigation.state.current,
+  );
   useEffect(() => {
     if (!needsDetails || detailsReady || !detailsUrl || loadError) return;
     const controller = new AbortController();
@@ -172,6 +178,37 @@ export default function MapClient({ site }: { site: SiteContent }) {
   }
   function openNode(id: string, map?: string) {
     navigate(map || view, id);
+  }
+  function openEvidence(id: string) {
+    navigation.go({
+      detail: { kind: 'node', id, tab: 'evidence' },
+      current: false,
+      term: null,
+      research: null,
+      questions: [],
+    });
+  }
+  function openCurrent() {
+    setMenuAnchor(null);
+    navigation.go({
+      current: true,
+      lens: 'current',
+      guide: false,
+      welcome: false,
+    });
+  }
+  function currentMap(route: string, id: string) {
+    navigation.go({
+      view: route,
+      lens: 'current',
+      current: false,
+      expanded: false,
+      tour: null,
+      detail: null,
+      term: null,
+      panel: null,
+    });
+    setFocusRequest({ id, serial: Date.now() });
   }
   function openEdge(id: string) {
     navigate(view, id, 'edge');
@@ -473,22 +510,38 @@ export default function MapClient({ site }: { site: SiteContent }) {
     return (
       <>
         {node && (
-          <Chip
-            className="evidence-kind"
-            size="small"
-            label={
-              {
-                observed: m.observed,
-                limited: m.limited,
-                hypothesis: m.hypothesis,
-                definition: m.definitionState,
-              }[node.status]
-            }
-          />
+          <div className="evidence-heading">
+            <EvidenceMark signal={evidenceSignal(node.status)} size={20} />
+            <strong>{evidenceLabel(evidenceSignal(node.status), m)}</strong>
+            <small>
+              {m.currentDate} {node.review.checkedAt}
+            </small>
+          </div>
         )}
         <p className="lead-copy">
           {richText(node ? node.body['現在の状況'] : edge!.current)}
         </p>
+        {node &&
+          data.current.safeguards[node.id] &&
+          (() => {
+            const s = data.current.safeguards[node.id];
+            return (
+              <section className="current-tested">
+                <h3>
+                  <EvidenceMark signal="mitigation" size={20} />
+                  {s.title}
+                </h3>
+                <p>{s.summary}</p>
+                <p>{s.limit}</p>
+                <small>
+                  {m.currentDate} {s.review.checkedAt}
+                </small>
+                {s.sources.map((id) => (
+                  <div key={id}>{source(id)}</div>
+                ))}
+              </section>
+            );
+          })()}
         {edge && <p className="evidence-basis">{richText(edge.basis)}</p>}
         {item.research.map((id, i) => {
           const r = data.research[id];
@@ -730,7 +783,11 @@ export default function MapClient({ site }: { site: SiteContent }) {
   return (
     <Box
       component="main"
-      className={'map-app' + (tour ? ' has-tour' : '')}
+      className={
+        'map-app' +
+        (tour ? ' has-tour' : '') +
+        (navigation.state.lens ? ' has-current' : '')
+      }
       style={{ '--tour-panel-height': tourHeight + 'px' } as CSSProperties}
     >
       <div className="ambient-shape ambient-one" />
@@ -796,6 +853,34 @@ export default function MapClient({ site }: { site: SiteContent }) {
           {m.tour}
         </Fab>
       )}
+      {!tour && (
+        <Button
+          className="current-launch glass"
+          startIcon={<Radar size={18} />}
+          onClick={openCurrent}
+        >
+          {m.currentTitle}
+        </Button>
+      )}
+      {navigation.state.lens && (
+        <Paper elevation={0} className="current-map-key glass">
+          <ButtonBase onClick={openCurrent} aria-label={m.currentKey}>
+            <Radar size={16} />
+            <span>{m.currentTitle}</span>
+            <EvidenceMark signal="observed" />
+            <EvidenceMark signal="limited" />
+            <EvidenceMark signal="unknown" />
+            <EvidenceMark signal="mitigation" />
+          </ButtonBase>
+          <IconButton
+            size="small"
+            aria-label={m.currentOff}
+            onClick={() => navigation.go({ lens: null })}
+          >
+            <X size={16} />
+          </IconButton>
+        </Paper>
+      )}
       {view !== 'overview' && !tour && (
         <nav className="map-breadcrumb" aria-label={m.breadcrumb}>
           <ButtonBase onClick={() => selectRoute('overview')}>
@@ -819,6 +904,7 @@ export default function MapClient({ site }: { site: SiteContent }) {
                 key: stop.key + ':' + (tour?.focus || ''),
                 nodes: stop.nodes,
                 detail: stop.kind === 'node',
+                edge: stop.edge,
                 focus: tour?.focus || null,
               }
             : null
@@ -830,6 +916,8 @@ export default function MapClient({ site }: { site: SiteContent }) {
         messages={m}
         selected={selected}
         onNode={openNode}
+        onEvidence={openEvidence}
+        onCurrent={openCurrent}
         onEdge={openEdge}
         onRoute={(id) => {
           if (tour) moveTour(stops.findIndex((s) => s.view === id));
@@ -842,11 +930,17 @@ export default function MapClient({ site }: { site: SiteContent }) {
         <MapTour
           data={data}
           m={m}
+          onReadEdge={openEdge}
           stops={stops}
           index={tour.index}
           ready={detailsReady}
           keyboardEnabled={
-            !selected && !panel && !termId && !menuAnchor && !showGuide
+            !selected &&
+            !panel &&
+            !termId &&
+            !menuAnchor &&
+            !showGuide &&
+            !navigation.state.current
           }
           loading={loadingBody()}
           focus={tour.focus}
@@ -871,6 +965,7 @@ export default function MapClient({ site }: { site: SiteContent }) {
         anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
         transformOrigin={{ vertical: 'top', horizontal: 'right' }}
       >
+        <MenuItem onClick={openCurrent}>{m.currentTitle}</MenuItem>
         <MenuItem
           onClick={() => {
             setMenuAnchor(null);
@@ -897,6 +992,44 @@ export default function MapClient({ site }: { site: SiteContent }) {
         </MenuItem>
       </Menu>
       <Dialog
+        open={navigation.state.current}
+        onClose={() => navigation.close('current')}
+        fullWidth
+        maxWidth="md"
+        className="current-dialog"
+        aria-labelledby="current-title"
+      >
+        <DialogTitle className="modal-heading" id="current-title">
+          <span>{m.currentTitle}</span>
+          <IconButton
+            aria-label={m.close}
+            onClick={() => navigation.close('current')}
+          >
+            <X size={20} />
+          </IconButton>
+        </DialogTitle>
+        <DialogContent>
+          {detailsReady ? (
+            <CurrentPanel
+              data={data}
+              m={m}
+              onMap={currentMap}
+              onEvidence={openEvidence}
+            />
+          ) : (
+            loadingBody()
+          )}
+        </DialogContent>
+        <DialogActions>
+          <Button
+            variant="contained"
+            onClick={() => navigation.go({ current: false, lens: 'current' })}
+          >
+            {m.currentBrowse}
+          </Button>
+        </DialogActions>
+      </Dialog>
+      <Dialog
         open={navigation.state.welcome}
         onClose={() => navigation.close('welcome')}
         fullWidth
@@ -905,7 +1038,9 @@ export default function MapClient({ site }: { site: SiteContent }) {
         slotProps={{ paper: { className: 'welcome-dialog' } }}
       >
         <DialogTitle className="modal-heading" id="welcome-title">
-          <span>{m.welcomeTitle}</span>
+          <span>
+            {m.welcomeTitle.replace('AI Safety Map', 'AI\u00a0Safety\u00a0Map')}
+          </span>
           <IconButton
             aria-label={m.close}
             onClick={() => navigation.close('welcome')}

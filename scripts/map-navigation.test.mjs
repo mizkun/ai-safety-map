@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import { readSiteContent } from '../lib/read-site-content.mjs';
 import { contentPackage } from '../lib/content-package.mjs';
 import { tourStops } from '../lib/map-tour.ts';
+import { evidenceSignal } from '../lib/current-evidence.ts';
 import {
   initialNavigation,
   readNavigation,
@@ -16,6 +17,32 @@ import {
 } from '../lib/map-navigation.ts';
 const site = readSiteContent();
 const shell = contentPackage(site).shell;
+
+test('evidence colors do not turn unconfirmed conditions into safety claims', () => {
+  assert.equal(evidenceSignal('observed'), 'observed');
+  assert.equal(evidenceSignal('limited'), 'limited');
+  for (const state of ['hypothesis','definition']) assert.equal(evidenceSignal(state),'unknown');
+  for (const data of Object.values(site.content)) {
+    assert.equal(Object.keys(data.current.routes).length, 7);
+    for (const [id,item] of Object.entries(data.current.safeguards)) {
+      assert.ok(data.nodes[id]);
+      assert.ok(item.research.some((key) => data.research[key].type === 'evaluation'));
+      assert.ok(item.limit.length > 40);
+    }
+  }
+});
+
+test('evidence view, reading detours and direct links retain their history', () => {
+  const state = {...initialNavigation(), view:'control',lens:'current',current:true};
+  assert.deepEqual(readNavigation(navigationHash(state),shell),state);
+  assert.ok(!shouldWelcome({...state,view:'overview'},false));
+  const from=rootEntry(navigationHash(state),'current');
+  const detail={...state,current:false,detail:{kind:'node',id:'L',tab:'evidence'}};
+  const next=nextEntry(from,state,detail,'detail');
+  assert.equal(closeDistance(next,'detail'),-1);
+  assert.equal(readNavigation(from.hash,shell).current,true);
+  assert.equal(closeNavigation(state,'current').lens,'current');
+});
 
 test('first-visit onboarding leaves shared reading links and returning visitors alone', () => {
   const overview = readNavigation('#map=overview', site);

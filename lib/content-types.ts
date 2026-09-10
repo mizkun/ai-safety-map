@@ -141,6 +141,30 @@ export type GlossaryTerm = {
   sources: string[];
 };
 export type Content = {
+  current: {
+    routes: Record<
+      string,
+      {
+        node: string;
+        observed: string;
+        finding: string;
+        next: string;
+        sources: string[];
+        review: Review;
+      }
+    >;
+    safeguards: Record<
+      string,
+      {
+        title: string;
+        summary: string;
+        limit: string;
+        research: string[];
+        sources: string[];
+        review: Review;
+      }
+    >;
+  };
   stories: Record<string, Story>;
   research: Record<string, Research>;
   watchlist: WatchSource[];

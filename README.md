@@ -9,8 +9,9 @@ The map distinguishes observed events, limited experiments, and arguments about 
 ## Explore the map
 
 - Start with the overview or switch to **All elements**. Desktop maps run from left to right; mobile maps run from top to bottom. Select a scenario to see its conditions.
-- Open a card for its explanation, current evidence, limitations, and possible safeguards. Connections explain the additional conditions between stages. Glossary links work within explanations and other glossary entries.
+- Open a card for its explanation, current evidence, limitations, and possible safeguards. Connections explain the additional conditions between stages. Detailed maps and tours show the conditions for worldwide harm before reaching that outcome. Glossary links work within explanations and other glossary entries.
 - Start the **Tour** from the floating button. Enter, the right arrow, or the next-step button advances; the left arrow goes back. The scenario and step selectors let you jump directly, and the minimap shows your position.
+- Open **Where we are** to see evidence colors and a selected condition to examine in each scenario. Red means cases have been reported, yellow means limited support, and gray means the condition is not established. A separate green shield marks a tested mitigation, with its scope and limitations. These are evidence labels, not danger scores or scenario completion percentages.
 - Use the logo or the overview breadcrumb to return to the full map. Pan and zoom with the map controls; touch devices also support pinch zoom. Cards are fixed in the diagram rather than individually draggable.
 - Browser Back and Forward restore reading locations, including tour steps, card details, nested glossary entries, and map positions. URLs can be shared or reloaded at the same reading state.
 
@@ -29,7 +30,7 @@ The initial source check was on **September 9, 2026**, followed by revisions on 
 - [Economic scenarios](docs/reviews/2026-09-10-economic-scenarios.md): conditional economic models, including paths where human employment continues.
 - [Research comparison and editorial decisions](docs/research-review-2026-09-09.md): comparison of three research reports and checks against original sources.
 
-Each node and connection records a review date and interval. Publication date, observation period, and review date remain separate. An old evaluation is not treated as a current capability ceiling.
+Each node and connection records a review date and interval. Publication date, observation period, and review date remain separate. An old evaluation is not treated as a current capability ceiling. The **Where we are** questions are editorial selections, not proven unique bottlenecks.
 
 GitHub Actions checks review dates daily and maintains one review issue. This checks dates; it does not discover new research, determine scientific correctness, or update review dates automatically. A separate maintainer research workflow is described in [Keeping the content current](docs/keeping-current.md); account-specific automation does not transfer to forks.
 
@@ -50,6 +51,7 @@ The map is a static site hosted on GitHub Pages at **https://ai-safety-map.org/*
 | `content/map.json` | Scenarios, connections, and condition groups |
 | `content/nodes/` | Stable IDs, evidence states, and related items |
 | `content/explanations/` | Markdown explanations |
+| `content/current.json` | Conditions to watch and scoped mitigation evidence |
 | `content/sources.json` | Primary sources, publication dates, and observation periods |
 | `content/research.json` | Evaluators, settings, methods, results, and limitations |
 | `content/stories.json` | Tour chapters and narrative context |

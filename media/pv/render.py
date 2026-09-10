@@ -2,7 +2,7 @@
 """Render a caption-free desktop product film from actual local UI captures.
 
 Screenshots are captured through CUA, never recreated or translated here.
-Pillow draws only the original vector-style closing card. FFmpeg edits video.
+The X edition uses only captured UI, including the English ending. FFmpeg edits video.
 """
 from pathlib import Path
 from concurrent.futures import ThreadPoolExecutor
@@ -33,6 +33,24 @@ SHOTS = [
     ('11-tour-step.png', 2.2, 1.00, 1.00, (.50, .50), (.50, .50)),
     ('12-tour-next.png', 2.2, 1.00, 1.00, (.50, .50), (.50, .50)),
     ('01-overview.png', 2.2, 1.06, 1.00, (.50, .50), (.50, .50)),
+]
+X_SHOTS = [
+    ('01-overview-ja.png', 4.0, 1.45, 1.00, (.32, .50), (.50, .50)),
+    ('02-control-map.png', 2.0, 1.00, 1.10, (.50, .50), (.52, .48)),
+    ('03-tour-progress.png', 3.6, 1.00, 1.02, (.50, .50), (.50, .50)),
+    ('04-tour-research.png', 3.0, 1.00, 1.00, (.50, .50), (.50, .50)),
+    ('05-detail.png', 2.6, 1.05, 1.10, (.50, .46), (.50, .46)),
+    ('06-evidence.png', 3.4, 1.08, 1.12, (.50, .48), (.50, .48)),
+    ('07-glossary.png', 2.2, 1.08, 1.13, (.50, .50), (.50, .50)),
+    ('04-tour-research.png', 1.8, 1.00, 1.00, (.50, .50), (.50, .50)),
+    ('14-harm-conditions.png', 3.2, 1.00, 1.00, (.50, .50), (.50, .50)),
+    ('08-work.png', 3.2, 1.00, 1.08, (.50, .50), (.54, .52)),
+    ('09-money.png', 3.2, 1.00, 1.08, (.50, .50), (.54, .50)),
+    ('10-all-elements.png', 2.6, 1.00, 1.06, (.50, .50), (.50, .50)),
+    ('13-current.png', 3.2, 1.00, 1.03, (.50, .50), (.50, .50)),
+    ('01-overview-ja.png', 2.0, 1.00, 1.00, (.50, .50), (.50, .50)),
+    ('11-overview-en.png', 3.4, 1.00, 1.00, (.50, .50), (.50, .50)),
+    ('12-tour-en.png', 3.6, 1.00, 1.00, (.50, .50), (.50, .50)),
 ]
 END_SECONDS = 4.8
 DURATION = sum(s[1] for s in SHOTS) + END_SECONDS - FADE * len(SHOTS)
@@ -148,7 +166,7 @@ def render_shot(index, shot, out):
     z = f'{z0}+({z1-z0})*{ease}'
     cx = f'{c0[0]}+({c1[0]-c0[0]})*{ease}'
     cy = f'{c0[1]}+({c1[1]-c0[1]})*{ease}'
-    # All captures contain the full 1904 x 1071 desktop viewport (16:9).
+    # Captures contain the full desktop viewport at 16:9, with no UI overlays.
     vf = (f"scale=3840:2160:flags=lanczos,"
           f"zoompan=z='{z}':x='max(0,min(iw-iw/zoom,iw*({cx})-iw/(2*zoom)))':"
           f"y='max(0,min(ih-ih/zoom,ih*({cy})-ih/(2*zoom)))':d={frames}:s={W}x{H}:fps={FPS},format=yuv420p")
@@ -163,31 +181,39 @@ def render_shot(index, shot, out):
 
 
 def main():
+    global SHOTS, END_SECONDS, DURATION
     parser = argparse.ArgumentParser()
+    parser.add_argument('--edition', choices=['original', 'x'], default='original')
     parser.add_argument('--out', type=Path, default=ROOT/'outputs/pv')
     parser.add_argument('--source-commit', default='77ac4b9bcd9fd13c7603625d73809265e27b0185')
     args = parser.parse_args()
+    if args.edition == 'x':
+        SHOTS, END_SECONDS = X_SHOTS, 0
+        DURATION = sum(s[1] for s in SHOTS) - FADE * (len(SHOTS) - 1)
     out = args.out.resolve()
     out.mkdir(parents=True, exist_ok=True)
+    capture_size = (1248, 702) if args.edition == 'x' else (1904, 1071)
     for name, *_ in SHOTS:
         if not (out/'captures'/name).is_file():
             raise FileNotFoundError(out/'captures'/name)
         with Image.open(out/'captures'/name) as capture:
-            if capture.size != (1904, 1071):
-                raise ValueError(f'{name}: expected a complete 1904 x 1071 viewport, got {capture.size}')
-    end_card(out)
+            if capture.size != capture_size:
+                raise ValueError(f'{name}: expected the complete {capture_size} viewport, got {capture.size}')
+    if END_SECONDS:
+        end_card(out)
     music(out)
     with ThreadPoolExecutor(max_workers=2) as pool:
         segments = list(pool.map(lambda item: render_shot(*item, out), enumerate(SHOTS)))
-    ending = out/'segment-ending.mp4'
-    run(['ffmpeg', '-y', '-hide_banner', '-filter_complex_threads', '2',
-         '-loop', '1', '-framerate', str(FPS), '-i', str(out/'ending-ja.png'),
-         '-loop', '1', '-framerate', str(FPS), '-i', str(out/'ending-en.png'),
-         '-filter_complex', '[1:v]format=rgba,fade=t=in:st=1.3:d=0.7:alpha=1[en];[0:v][en]overlay=shortest=1,format=yuv420p[v]',
-         '-map', '[v]', '-t', str(END_SECONDS), '-c:v', 'libx264', '-preset', 'veryfast',
-         '-crf', '16', '-threads', '2', '-an', str(ending)], out/'ending.log')
-    segments.append(ending)
-    durations = [s[1] for s in SHOTS] + [END_SECONDS]
+    if END_SECONDS:
+        ending = out/'segment-ending.mp4'
+        run(['ffmpeg', '-y', '-hide_banner', '-filter_complex_threads', '2',
+             '-loop', '1', '-framerate', str(FPS), '-i', str(out/'ending-ja.png'),
+             '-loop', '1', '-framerate', str(FPS), '-i', str(out/'ending-en.png'),
+             '-filter_complex', '[1:v]format=rgba,fade=t=in:st=1.3:d=0.7:alpha=1[en];[0:v][en]overlay=shortest=1,format=yuv420p[v]',
+             '-map', '[v]', '-t', str(END_SECONDS), '-c:v', 'libx264', '-preset', 'veryfast',
+             '-crf', '16', '-threads', '2', '-an', str(ending)], out/'ending.log')
+        segments.append(ending)
+    durations = [s[1] for s in SHOTS] + ([END_SECONDS] if END_SECONDS else [])
     command = ['ffmpeg', '-y', '-hide_banner', '-filter_complex_threads', '2']
     for segment in segments:
         command += ['-i', str(segment)]
@@ -204,22 +230,23 @@ def main():
         timeline += durations[i] - FADE
     filters.append(f'[{len(segments)}:a]loudnorm=I=-23:TP=-2:LRA=7[a]')
     filters.append(f'[{previous}]scale=out_range=tv:out_color_matrix=bt709,format=yuv420p,setsar=1[video]')
-    target = out/'ai-safety-map-pv-ja.mp4'
+    basename = 'ai-safety-map-x-ja-en' if args.edition == 'x' else 'ai-safety-map-pv-ja'
+    target = out/(basename + '.mp4')
     command += ['-filter_complex', ';'.join(filters), '-map', '[video]', '-map', '[a]',
                 '-t', f'{DURATION:.3f}', '-c:v', 'libx264', '-preset', 'medium', '-crf', '18', '-threads', '4',
                 '-color_range', 'tv', '-colorspace', 'bt709', '-color_trc', 'bt709', '-color_primaries', 'bt709',
                 '-c:a', 'aac', '-b:a', '192k', '-ar', '48000', '-movflags', '+faststart',
-                '-metadata', 'title=AI Safety Map — 未来の分岐を、たどる。', str(target)]
+                '-metadata', 'title=AI Safety Map', str(target)]
     print(f'Compositing {DURATION:.1f}s film', flush=True)
     run(command, out/'render.log')
     run(['ffmpeg','-y','-hide_banner','-i',str(target),'-map','0:v:0','-c:v','copy','-an',
-         '-movflags','+faststart',str(out/'ai-safety-map-pv-ja-silent.mp4')],out/'silent.log')
+         '-movflags','+faststart',str(out/(basename + '-silent.mp4'))],out/'silent.log')
     run(['ffmpeg','-y','-hide_banner','-ss',str(DURATION-1),'-i',str(target),'-frames:v','1',
          '-update','1',str(out/'poster.jpg')],out/'poster.log')
     (out/'edit.json').write_text(json.dumps({'fps':FPS, 'size':[W,H], 'duration':DURATION,
-        'crossfade':FADE, 'cuts':cuts, 'shots':SHOTS, 'endcard':{'duration':END_SECONDS,
-        'japanese':'未来の分岐を、たどる。', 'english':'Explore the paths ahead.', 'englishDelay':1.3},
-        'sourceCommit':args.source_commit, 'captureViewport':[1904,1071], 'captureDate':'2026-09-10', 'narration':False,
+        'crossfade':FADE, 'cuts':cuts, 'shots':SHOTS, 'edition':args.edition, 'languages':['ja','en'], 'endcard':({'duration':END_SECONDS,
+        'japanese':'未来の分岐を、たどる。', 'english':'Explore the paths ahead.', 'englishDelay':1.3} if END_SECONDS else None),
+        'sourceCommit':args.source_commit, 'captureViewport':list(capture_size), 'captureDate':'2026-09-10', 'narration':False,
         'explanatoryCaptions':False, 'music':'Original procedural composition, no third-party samples'},
         ensure_ascii=False,indent=2)+'\n')
     print(f'Created {target}', flush=True)

@@ -34,6 +34,8 @@ import { useMapGestures } from './use-map-gestures';
 import { useMapWindow } from './use-map-window';
 import { useMapCamera } from './use-map-camera';
 import MapMinimap from './map-minimap';
+import EvidenceMark, { evidenceLabel } from './evidence-mark';
+import { evidenceSignal, evidenceColors } from '@/lib/current-evidence';
 import { intersectsWindow } from '@/lib/map-window.mjs';
 import {
   initialMapScale,
@@ -61,6 +63,8 @@ type Props = {
   messages: Messages;
   selected: string | null;
   onNode: (id: string) => void;
+  onEvidence: (id: string) => void;
+  onCurrent: () => void;
   onEdge: (id: string) => void;
   onRoute: (id: string) => void;
   onTerm: (id: string) => void;
@@ -71,6 +75,7 @@ type Props = {
     nodes: string[];
     focus: string | null;
     detail?: boolean;
+    edge?: string;
   } | null;
 };
 export default function TreeMap({
@@ -84,6 +89,8 @@ export default function TreeMap({
   messages: m,
   selected,
   onNode,
+  onEvidence,
+  onCurrent,
   onEdge,
   onRoute,
   onTerm,
@@ -157,10 +164,14 @@ export default function TreeMap({
         : [];
   const tourDefaultCamera = tourFocus
     ? tourCamera(
-        tourTargets?.length
+        tourTargets?.length || tourFocus.edge
           ? layout.tiles.filter(
               (tile) =>
                 (tile.node && tourTargets.includes(tile.node)) ||
+                (tile.edge &&
+                  (tile.edge === tourFocus.edge ||
+                    (tourTargets.includes('H') &&
+                      data.edges[tile.edge].to === 'H'))) ||
                 (!compact &&
                   tourFocus.key.startsWith('start:') &&
                   tile.kind === 'route'),
@@ -169,8 +180,10 @@ export default function TreeMap({
         size,
         layout,
         compact
-          ? layout.tiles.find(
-              (tile) => tile.node === (tourFocus.focus || tourFocus.nodes[0]),
+          ? layout.tiles.find((tile) =>
+              tourFocus.edge
+                ? tile.edge === tourFocus.edge
+                : tile.node === (tourFocus.focus || tourFocus.nodes[0]),
             )
           : undefined,
       )
@@ -646,12 +659,16 @@ export default function TreeMap({
               })}
             {visibleTiles.map((tile) => {
               const node = tile.node ? data.nodes[tile.node] : undefined;
+              const edge = tile.edge ? data.edges[tile.edge] : undefined;
+              const tourHighlight =
+                highlightedTourNodes.includes(tile.node || '') ||
+                Boolean(tile.edge && tile.edge === tourFocus?.edge);
               const route = tile.graph
                 ? data.routes.find((r) => r.id === tile.graph)
                 : undefined;
               const title = tile.label
                 ? m[tile.label]
-                : node?.title || route?.shortTitle || '';
+                : node?.title || edge?.label || route?.shortTitle || '';
               const due =
                 node && reviewStatus(node.review, today).state === 'due';
               const showId =
@@ -659,6 +676,10 @@ export default function TreeMap({
                 node &&
                 node.id !== 'NOW' &&
                 !tile.graph;
+              const signal =
+                navigationState.lens && node && node.id !== 'NOW' && !tile.graph
+                  ? evidenceSignal(node.status)
+                  : null;
               return (
                 <Paper
                   elevation={0}
@@ -667,10 +688,11 @@ export default function TreeMap({
                     'tree-tile tile-' +
                     tile.kind +
                     (showId ? ' tile-identified' : '') +
+                    (signal ? ' tile-evidence' : '') +
                     (selected === tile.node ? ' tile-selected' : '') +
                     (tile.node === 'X' ? ' tile-terminal' : '') +
                     (tile.node === 'NOW' ? ' tile-present' : '') +
-                    (highlightedTourNodes.includes(tile.node || '')
+                    (tourHighlight
                       ? ' tile-tour-focus'
                       : isTour && tile.kind !== 'route' && tile.node !== 'NOW'
                         ? ' tile-tour-context'
@@ -682,18 +704,48 @@ export default function TreeMap({
                       width: tile.width * scale,
                       height: tile.height * scale,
                       '--branch-color': tile.color,
+                      '--evidence-color': signal
+                        ? evidenceColors[signal]
+                        : undefined,
                     } as CSSProperties
                   }
                 >
                   {showId && <span className="node-id tile-id">{node.id}</span>}
+                  {signal && node && scale >= 0.5 && (
+                    <Tooltip
+                      title={evidenceLabel(signal, m) + ' · ' + node.shortTitle}
+                    >
+                      <ButtonBase
+                        className="tile-evidence-button"
+                        onClick={() => onEvidence(node.id)}
+                        aria-label={node.id + ' · ' + evidenceLabel(signal, m)}
+                      >
+                        <EvidenceMark signal={signal} size={15} />
+                      </ButtonBase>
+                    </Tooltip>
+                  )}
+                  {signal &&
+                    node &&
+                    scale >= 0.5 &&
+                    data.current.safeguards[node.id] && (
+                      <Tooltip title={m.signalMitigation}>
+                        <ButtonBase
+                          className="tile-safeguard-button"
+                          onClick={() => onEvidence(node.id)}
+                          aria-label={node.id + ' · ' + m.signalMitigation}
+                        >
+                          <EvidenceMark signal="mitigation" size={15} />
+                        </ButtonBase>
+                      </Tooltip>
+                    )}
                   <ButtonBase
                     className="tile-open"
-                    aria-current={
-                      highlightedTourNodes.includes(tile.node || '')
-                        ? 'step'
-                        : undefined
-                    }
+                    aria-current={tourHighlight ? 'step' : undefined}
                     onClick={() => {
+                      if (navigationState.lens && node?.id === 'NOW') {
+                        onCurrent();
+                        return;
+                      }
                       if (scale < 0.7 && !tile.graph) {
                         const next = Math.max(0.85, readableScale);
                         moveCamera({
@@ -708,7 +760,8 @@ export default function TreeMap({
                           top:
                             (tile.y + tile.height / 2) * next - size.height / 2,
                         });
-                      } else if (tile.graph) onRoute(tile.graph);
+                      } else if (tile.edge) onEdge(tile.edge);
+                      else if (tile.graph) onRoute(tile.graph);
                       else onNode(tile.node!);
                     }}
                     aria-label={
@@ -726,7 +779,7 @@ export default function TreeMap({
                           data.asOf
                         )
                       ) : (
-                        route?.number || node?.id
+                        route?.number || node?.id || tile.edge
                       )}
                       {due && (
                         <span className="tile-review" title={m.due}>
@@ -741,6 +794,13 @@ export default function TreeMap({
                           ? m[tile.label]
                           : node?.shortTitle || title}
                     </span>
+                    {edge && detailLevel !== 'atlas' && (
+                      <span className="transition-conditions">
+                        {edge.conditions.map((condition) => (
+                          <span key={condition}>{condition}</span>
+                        ))}
+                      </span>
+                    )}
                   </ButtonBase>
                   {detailLevel === 'reading' && !!node?.topics?.length && (
                     <div className="tile-topics">

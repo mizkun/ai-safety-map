@@ -37,6 +37,7 @@ type Props = {
   onClose: () => void;
   onFocus: (id: string | null) => void;
   onRead: (id: string) => void;
+  onReadEdge: (id: string) => void;
   onHeight: (height: number) => void;
   richText: (text: string) => ReactNode;
 };
@@ -54,6 +55,7 @@ export default function MapTour({
   onClose,
   onFocus,
   onRead,
+  onReadEdge,
   onHeight,
   richText,
 }: Props) {
@@ -77,12 +79,13 @@ export default function MapTour({
   const routePages = navigation.steps;
   const chapter = data.stories[stop.view]?.chapters[stop.chapter];
   const node = stop.node ? data.nodes[stop.node] : null;
+  const edge = stop.edge ? data.edges[stop.edge] : null;
   const title =
     stop.kind === 'start'
       ? m.tourStartTitle
       : stop.kind === 'finish'
         ? m.tourFinishTitle
-        : node?.title || chapter?.title;
+        : node?.title || edge?.label || chapter?.title;
   const prose =
     stop.kind === 'start'
       ? m.tourStartText
@@ -90,7 +93,7 @@ export default function MapTour({
         ? m.tourFinishText
         : node
           ? node.body['概要']
-          : chapter?.text;
+          : edge?.explanation || chapter?.text;
   const nextLabel = {
     begin: m.tourBegin,
     step: m.tourNextStep,
@@ -228,9 +231,11 @@ export default function MapTour({
                           .filter(({ step }) => step.chapter === chapterIndex)
                           .map(({ step, position }) => (
                             <option key={step.key} value={position}>
-                              {step.node
-                                ? data.nodes[step.node].shortTitle
-                                : chapter.title}
+                              {step.edge
+                                ? data.edges[step.edge].label
+                                : step.node
+                                  ? data.nodes[step.node].shortTitle
+                                  : chapter.title}
                             </option>
                           ))}
                       </optgroup>
@@ -280,6 +285,25 @@ export default function MapTour({
                   <p key={i}>{richText(paragraph)}</p>
                 ))}
               </div>
+              {edge && (
+                <div className="tour-node-context">
+                  <ul className="tour-transition-conditions">
+                    {edge.conditions.map((condition) => (
+                      <li key={condition}>{richText(condition)}</li>
+                    ))}
+                  </ul>
+                  <h3>{m.evidence}</h3>
+                  <p>{richText(edge.current)}</p>
+                  <p>{richText(edge.limitation)}</p>
+                  <Button
+                    className="tour-read"
+                    onClick={() => onReadEdge(edge.id)}
+                    endIcon={<ArrowRight size={14} />}
+                  >
+                    {m.read}
+                  </Button>
+                </div>
+              )}
               {node && (
                 <div className="tour-node-context">
                   <h3>{m.whyNext}</h3>

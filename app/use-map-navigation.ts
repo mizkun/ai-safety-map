@@ -28,6 +28,11 @@ function areas(state: NavigationState) {
   const detail = state.detail;
   return [
     {
+      name: 'current',
+      selector: '.current-dialog .MuiDialogContent-root',
+      key: state.current ? state.locale + ':current' : null,
+    },
+    {
       name: 'tour',
       selector: '.tour-body',
       key: state.tour && state.locale + ':' + state.tour.step,

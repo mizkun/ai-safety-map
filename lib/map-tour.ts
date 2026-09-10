@@ -2,11 +2,12 @@ import type { Content } from './content-types';
 
 export type TourStop = {
   key: string;
-  kind: 'start' | 'chapter' | 'node' | 'finish';
+  kind: 'start' | 'chapter' | 'node' | 'edge' | 'finish';
   view: string;
   nodes: string[];
   chapter: number;
   node?: string;
+  edge?: string;
 };
 
 // The tour has two navigation levels. Chapter introductions are steps too;
@@ -20,7 +21,8 @@ export function tourNavigation(stops: TourStop[], index: number) {
     .map((step, position) => ({ step, position }))
     .filter(
       ({ step }) =>
-        step.view === stop.view && ['chapter', 'node'].includes(step.kind),
+        step.view === stop.view &&
+        ['chapter', 'node', 'edge'].includes(step.kind),
     );
   const next = stops[index + 1];
   const nextKind = !next
@@ -123,14 +125,36 @@ export function tourStops(data: Content): TourStop[] {
               nodes: chapter.nodes,
               chapter: index,
             },
-            ...chapter.nodes.flatMap(visit).map((id) => ({
-              key: route.id + ':' + index + ':' + id,
-              kind: 'node' as const,
-              view: route.id,
-              nodes: [id],
-              node: id,
-              chapter: index,
-            })),
+            ...chapter.nodes.flatMap(visit).flatMap((id): TourStop[] => {
+              const edge =
+                id === 'H'
+                  ? data.graphs[route.id].edges.find(
+                      (key) => data.edges[key].to === 'H',
+                    )
+                  : undefined;
+              return [
+                ...(edge
+                  ? [
+                      {
+                        key: route.id + ':transition:' + edge,
+                        kind: 'edge' as const,
+                        view: route.id,
+                        nodes: [],
+                        edge,
+                        chapter: index,
+                      },
+                    ]
+                  : []),
+                {
+                  key: route.id + ':' + index + ':' + id,
+                  kind: 'node',
+                  view: route.id,
+                  nodes: [id],
+                  node: id,
+                  chapter: index,
+                },
+              ];
+            }),
           ],
         );
       }),

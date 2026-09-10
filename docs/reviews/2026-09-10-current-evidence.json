@@ -1,0 +1,206 @@
+{
+  "id": "2026-09-10-current-evidence",
+  "version": 2,
+  "date": "2026-09-10",
+  "reviewer": "Codex — source-bounded evidence-view editorial review",
+  "decision": "reviewed",
+  "assessments": {
+    "interface": {
+      "mechanism": "This view exposes the existing evidence states of individual conditions. It does not aggregate them into a scenario probability or an inevitability score.",
+      "conditions": "A reported case does not establish a condition in every setting. A conjunction still requires co-occurrence, and an unobserved outcome does not identify an effective barrier.",
+      "counterexample": "AI may assist a harmful action while access restrictions, monitoring, or recovery stop it from becoming a widespread loss of control. Productive AI use can also yield beneficial outcomes.",
+      "evidence": "The short summaries retain the original observation periods and distinguish incident reports, selected abuse records, experiments, surveys, and theoretical analyses.",
+      "limits": "The selected focus is an editorial question rather than a proved unique bottleneck. Unknown and definition nodes remain gray, never green; red describes an example, not risk severity.",
+      "mitigation": "A green shield is separate from the main node status and is used only for an explicitly recorded evaluation. The scope and trusted-monitor assumptions accompany the result.",
+      "readerContext": "The legend names what each color means and uses different symbols. Each selected condition links to its map and each evidence marker opens the supporting details. The first-visit heading uses the same English product name in both editions; its non-breaking spaces preserve the name on narrow screens. No evidence claim changes.",
+      "whyHere": "The added view answers what evidence is available along a pathway and which connection to examine next, without presenting every unknown as a reassuring barrier.",
+      "primary": [
+        {
+          "source": "control-paper",
+          "locator": "Abstract, trusted editing and untrusted monitoring; GPT-4/GPT-3.5 setting",
+          "support": "Protocols improved on simple baselines in a bounded programming experiment; no current deployment-wide safety guarantee."
+        }
+      ]
+    },
+    "control": {
+      "mechanism": "This view exposes the existing evidence states of individual conditions. It does not aggregate them into a scenario probability or an inevitability score.",
+      "conditions": "A reported case does not establish a condition in every setting. A conjunction still requires co-occurrence, and an unobserved outcome does not identify an effective barrier.",
+      "counterexample": "AI may assist a harmful action while access restrictions, monitoring, or recovery stop it from becoming a widespread loss of control. Productive AI use can also yield beneficial outcomes.",
+      "evidence": "The July 2026 incident included coordinated unauthorized actions. The investigation did not establish an irreversible society-wide loss of control. Motivates testing whether monitoring can prevent harmful actions, with explicit setting limitations.",
+      "limits": "The selected focus is an editorial question rather than a proved unique bottleneck. Unknown and definition nodes remain gray, never green; red describes an example, not risk severity.",
+      "mitigation": "A green shield is separate from the main node status and is used only for an explicitly recorded evaluation. The scope and trusted-monitor assumptions accompany the result.",
+      "readerContext": "The legend names what each color means and uses different symbols. Each selected condition links to its map and each evidence marker opens the supporting details.",
+      "whyHere": "The added view answers what evidence is available along a pathway and which connection to examine next, without presenting every unknown as a reassuring barrier.",
+      "primary": [
+        {
+          "source": "incident",
+          "locator": "Core takeaways and investigation limitations",
+          "support": "The July 2026 incident included coordinated unauthorized actions. The investigation did not establish an irreversible society-wide loss of control."
+        },
+        {
+          "source": "control-paper",
+          "locator": "Abstract and protocol evaluations",
+          "support": "Motivates testing whether monitoring can prevent harmful actions, with explicit setting limitations."
+        }
+      ]
+    },
+    "misuse": {
+      "mechanism": "This view exposes the existing evidence states of individual conditions. It does not aggregate them into a scenario probability or an inevitability score.",
+      "conditions": "A reported case does not establish a condition in every setting. A conjunction still requires co-occurrence, and an unobserved outcome does not identify an effective barrier.",
+      "counterexample": "AI may assist a harmful action while access restrictions, monitoring, or recovery stop it from becoming a widespread loss of control. Productive AI use can also yield beneficial outcomes.",
+      "evidence": "Selected suspended accounts from March 2025 to March 2026 document misuse attempts; the sample is not a global abuse or success rate.",
+      "limits": "The selected focus is an editorial question rather than a proved unique bottleneck. Unknown and definition nodes remain gray, never green; red describes an example, not risk severity.",
+      "mitigation": "A green shield is separate from the main node status and is used only for an explicitly recorded evaluation. The scope and trusted-monitor assumptions accompany the result.",
+      "readerContext": "The legend names what each color means and uses different symbols. Each selected condition links to its map and each evidence marker opens the supporting details.",
+      "whyHere": "The added view answers what evidence is available along a pathway and which connection to examine next, without presenting every unknown as a reassuring barrier.",
+      "primary": [
+        {
+          "source": "cyber-misuse",
+          "locator": "Key findings and About the dataset",
+          "support": "Selected suspended accounts from March 2025 to March 2026 document misuse attempts; the sample is not a global abuse or success rate."
+        }
+      ]
+    },
+    "interaction": {
+      "mechanism": "This view exposes the existing evidence states of individual conditions. It does not aggregate them into a scenario probability or an inevitability score.",
+      "conditions": "A reported case does not establish a condition in every setting. A conjunction still requires co-occurrence, and an unobserved outcome does not identify an effective barrier.",
+      "counterexample": "AI may assist a harmful action while access restrictions, monitoring, or recovery stop it from becoming a widespread loss of control. Productive AI use can also yield beneficial outcomes.",
+      "evidence": "Escalation was observed in simulation, not in a real-world nuclear war.",
+      "limits": "The selected focus is an editorial question rather than a proved unique bottleneck. Unknown and definition nodes remain gray, never green; red describes an example, not risk severity.",
+      "mitigation": "A green shield is separate from the main node status and is used only for an explicitly recorded evaluation. The scope and trusted-monitor assumptions accompany the result.",
+      "readerContext": "The legend names what each color means and uses different symbols. Each selected condition links to its map and each evidence marker opens the supporting details.",
+      "whyHere": "The added view answers what evidence is available along a pathway and which connection to examine next, without presenting every unknown as a reassuring barrier.",
+      "primary": [
+        {
+          "source": "wargames",
+          "locator": "Abstract and simulated wargame setup",
+          "support": "Escalation was observed in simulation, not in a real-world nuclear war."
+        }
+      ]
+    },
+    "accidents": {
+      "mechanism": "This view exposes the existing evidence states of individual conditions. It does not aggregate them into a scenario probability or an inevitability score.",
+      "conditions": "A reported case does not establish a condition in every setting. A conjunction still requires co-occurrence, and an unobserved outcome does not identify an effective barrier.",
+      "counterexample": "AI may assist a harmful action while access restrictions, monitoring, or recovery stop it from becoming a widespread loss of control. Productive AI use can also yield beneficial outcomes.",
+      "evidence": "Provider concentration is a potential financial vulnerability, not evidence of global irreversible collapse.",
+      "limits": "The selected focus is an editorial question rather than a proved unique bottleneck. Unknown and definition nodes remain gray, never green; red describes an example, not risk severity.",
+      "mitigation": "A green shield is separate from the main node status and is used only for an explicitly recorded evaluation. The scope and trusted-monitor assumptions accompany the result.",
+      "readerContext": "The legend names what each color means and uses different symbols. Each selected condition links to its map and each evidence marker opens the supporting details.",
+      "whyHere": "The added view answers what evidence is available along a pathway and which connection to examine next, without presenting every unknown as a reassuring barrier.",
+      "primary": [
+        {
+          "source": "fsb-ai",
+          "locator": "Executive summary, pp. 1–2; vulnerabilities in §4.2",
+          "support": "Provider concentration is a potential financial vulnerability, not evidence of global irreversible collapse."
+        }
+      ]
+    },
+    "dependence": {
+      "mechanism": "This view exposes the existing evidence states of individual conditions. It does not aggregate them into a scenario probability or an inevitability score.",
+      "conditions": "A reported case does not establish a condition in every setting. A conjunction still requires co-occurrence, and an unobserved outcome does not identify an effective barrier.",
+      "counterexample": "AI may assist a harmful action while access restrictions, monitoring, or recovery stop it from becoming a widespread loss of control. Productive AI use can also yield beneficial outcomes.",
+      "evidence": "Reports firm AI adoption, not a loss of human decision authority. A conceptual argument informs the question about preserving alternatives; it is not an observed completed pathway.",
+      "limits": "The selected focus is an editorial question rather than a proved unique bottleneck. Unknown and definition nodes remain gray, never green; red describes an example, not risk severity.",
+      "mitigation": "A green shield is separate from the main node status and is used only for an explicitly recorded evaluation. The scope and trusted-monitor assumptions accompany the result.",
+      "readerContext": "The legend names what each color means and uses different symbols. Each selected condition links to its map and each evidence marker opens the supporting details.",
+      "whyHere": "The added view answers what evidence is available along a pathway and which connection to examine next, without presenting every unknown as a reassuring barrier.",
+      "primary": [
+        {
+          "source": "census-adoption",
+          "locator": "CES 26-25 abstract, November 2025–January 2026 reference period; Census CREAT paper 1413 and original PDF",
+          "support": "Reports firm AI adoption, not a loss of human decision authority."
+        },
+        {
+          "source": "gradual",
+          "locator": "Abstract and argument about dependence and loss of human influence",
+          "support": "A conceptual argument informs the question about preserving alternatives; it is not an observed completed pathway."
+        }
+      ]
+    },
+    "work": {
+      "mechanism": "This view exposes the existing evidence states of individual conditions. It does not aggregate them into a scenario probability or an inevitability score.",
+      "conditions": "A reported case does not establish a condition in every setting. A conjunction still requires co-occurrence, and an unobserved outcome does not identify an effective barrier.",
+      "counterexample": "AI may assist a harmful action while access restrictions, monitoring, or recovery stop it from becoming a widespread loss of control. Productive AI use can also yield beneficial outcomes.",
+      "evidence": "Software-task results cannot establish replacement of all occupations. Income and capital-ownership effects are distinct; distribution is an appropriate question rather than an observed future outcome.",
+      "limits": "The selected focus is an editorial question rather than a proved unique bottleneck. Unknown and definition nodes remain gray, never green; red describes an example, not risk severity.",
+      "mitigation": "A green shield is separate from the main node status and is used only for an explicitly recorded evaluation. The scope and trusted-monitor assumptions accompany the result.",
+      "readerContext": "The legend names what each color means and uses different symbols. Each selected condition links to its map and each evidence marker opens the supporting details.",
+      "whyHere": "The added view answers what evidence is available along a pathway and which connection to examine next, without presenting every unknown as a reassuring barrier.",
+      "primary": [
+        {
+          "source": "horizon",
+          "locator": "May 8 2026 update; FAQ on task horizons versus automating all jobs",
+          "support": "Software-task results cannot establish replacement of all occupations."
+        },
+        {
+          "source": "imf-distribution",
+          "locator": "Summary and model channels",
+          "support": "Income and capital-ownership effects are distinct; distribution is an appropriate question rather than an observed future outcome."
+        }
+      ]
+    },
+    "money": {
+      "mechanism": "This view exposes the existing evidence states of individual conditions. It does not aggregate them into a scenario probability or an inevitability score.",
+      "conditions": "A reported case does not establish a condition in every setting. A conjunction still requires co-occurrence, and an unobserved outcome does not identify an effective barrier.",
+      "counterexample": "AI may assist a harmful action while access restrictions, monitoring, or recovery stop it from becoming a widespread loss of control. Productive AI use can also yield beneficial outcomes.",
+      "evidence": "AI uses and conditional vulnerabilities support examining containment; the report does not establish a realized system-wide crisis.",
+      "limits": "The selected focus is an editorial question rather than a proved unique bottleneck. Unknown and definition nodes remain gray, never green; red describes an example, not risk severity.",
+      "mitigation": "A green shield is separate from the main node status and is used only for an explicitly recorded evaluation. The scope and trusted-monitor assumptions accompany the result.",
+      "readerContext": "The legend names what each color means and uses different symbols. Each selected condition links to its map and each evidence marker opens the supporting details.",
+      "whyHere": "The added view answers what evidence is available along a pathway and which connection to examine next, without presenting every unknown as a reassuring barrier.",
+      "primary": [
+        {
+          "source": "fsb-ai",
+          "locator": "Executive summary and §4.2 on market correlations, dependencies, monitoring and policy",
+          "support": "AI uses and conditional vulnerabilities support examining containment; the report does not establish a realized system-wide crisis."
+        }
+      ]
+    }
+  },
+  "entries": {
+    "current:control": {
+      "hash": "646260cb9160df784af6568a12ae4eee44e3c2baf309a690586b5cf3efbe5933",
+      "assessment": "control"
+    },
+    "current:misuse": {
+      "hash": "28f0b5a006fc95b059e76ef86b092a7b55f32659e85615a44acda8f3dbf7a78b",
+      "assessment": "misuse"
+    },
+    "current:interaction": {
+      "hash": "464009c73872734c060c8902279e2f65357aaade87bb6cab12043833b2411b50",
+      "assessment": "interaction"
+    },
+    "current:accidents": {
+      "hash": "6e538777d5c30c0023f54f00d3ed9bcb9b35a69b21cb7e331995e4c27a14124d",
+      "assessment": "accidents"
+    },
+    "current:dependence": {
+      "hash": "3470c9ddd43c0225ed70c890d363a8792dece8ec35456d7e7ca14caf854202a1",
+      "assessment": "dependence"
+    },
+    "current:work": {
+      "hash": "be989380ea8b62cc0f86dd7fc2d3a34e2bb233359e131cc6b89ab9ae035b577b",
+      "assessment": "work"
+    },
+    "current:money": {
+      "hash": "4babca85edd28422614245121bbd1560e012e2cd464319e8de1bcff682e5d3ff",
+      "assessment": "money"
+    },
+    "safeguard:R4": {
+      "hash": "c551545578c84eddd0e43f25250ce62268ac1521d5c487be8ea52b34e5fb20eb",
+      "assessment": "interface"
+    },
+    "history:changes": {
+      "hash": "e8396d6824df78c220882c7cb6b774075141a27395120d69d870083fd92be3e6",
+      "assessment": "interface"
+    },
+    "ui:ja": {
+      "hash": "1647980a4c43a7022eed72a7a5f1aaff27bacd2dcedaa696fd11c2b5e61c5d79",
+      "assessment": "interface"
+    },
+    "inventory:current": {
+      "hash": "85cbc6c905167a0130d4742d6b17068d97329b304f6130345c3c6bc1d1102eab",
+      "assessment": "interface"
+    }
+  }
+}

@@ -19,6 +19,7 @@ const history = read('history.json');
 const news = read('news.json');
 const glossary = read('glossary.json');
 const watchlist = read('watchlist.json');
+const current = read('current.json');
 const nodes = {};
 const nodeFiles = fs
   .readdirSync(path.join(root, 'nodes'))
@@ -200,6 +201,29 @@ for (const [id, n] of Object.entries(nodes)) {
     check(Boolean(glossary[term]), id + ': unknown glossary term ' + term);
   for (const term of n.topics || [])
     check(Boolean(glossary[term]), id + ': unknown topic ' + term);
+}
+for (const route of map.routes.filter((r) => r.role !== 'factor')) {
+  const item = current.routes[route.id];
+  check(Boolean(item), route.id + ': current focus required');
+  if (!item) continue;
+  required(item, ['finding', 'next'], 'current ' + route.id);
+  check(
+    Boolean(nodes[item.node]) && Boolean(nodes[item.observed]),
+    route.id + ': current nodes must exist',
+  );
+  sourceRefs(item.sources, 'current ' + route.id);
+  review(item.review, 'current ' + route.id);
+}
+for (const [id, item] of Object.entries(current.safeguards)) {
+  check(Boolean(nodes[id]), 'safeguard node must exist: ' + id);
+  required(item, ['title', 'summary', 'limit'], 'safeguard ' + id);
+  sourceRefs(item.sources, 'safeguard ' + id);
+  researchRefs(item.research, 'safeguard ' + id);
+  check(
+    item.research.some((key) => research[key]?.type === 'evaluation'),
+    id + ': green safeguard requires a measured evaluation',
+  );
+  review(item.review, 'safeguard ' + id);
 }
 for (const f of fs
   .readdirSync(path.join(root, 'explanations'))

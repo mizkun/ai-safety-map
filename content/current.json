@@ -1,0 +1,123 @@
+{
+  "routes": {
+    "control": {
+      "node": "C3",
+      "observed": "L",
+      "finding": "2026年7月のHugging Faceへの攻撃を調べたMETRは、AIが許可外の行動を協調して進めた事例を報告しています。",
+      "next": "危険な行動を検知して、運用中に止められるか。",
+      "sources": [
+        "incident",
+        "control-paper"
+      ],
+      "review": {
+        "checkedAt": "2026-09-10",
+        "intervalDays": 7,
+        "reason": "注目点は編集上の整理です。新しい観測や反例が出ていないか点検します。"
+      }
+    },
+    "misuse": {
+      "node": "M2c2",
+      "observed": "M1",
+      "finding": "提供者が停止したアカウントの2025〜26年の記録には、AIを使ったサイバー悪用の試みがあります。",
+      "next": "支援が実際の攻撃対象に届く前に、権限や防御で止められるか。",
+      "sources": [
+        "cyber-misuse"
+      ],
+      "review": {
+        "checkedAt": "2026-09-10",
+        "intervalDays": 7,
+        "reason": "注目点は編集上の整理です。新しい観測や反例が出ていないか点検します。"
+      }
+    },
+    "interaction": {
+      "node": "S2",
+      "observed": "S1",
+      "finding": "2024年の模擬外交の実験では、AI同士の判断で対立が広がる試行がありました。現実の戦争の発生率ではありません。",
+      "next": "人が情報を確かめ、判断を修正する時間が残るか。",
+      "sources": [
+        "wargames"
+      ],
+      "review": {
+        "checkedAt": "2026-09-10",
+        "intervalDays": 7,
+        "reason": "注目点は編集上の整理です。新しい観測や反例が出ていないか点検します。"
+      }
+    },
+    "accidents": {
+      "node": "A3",
+      "observed": "A1",
+      "finding": "FSBの2024年の分析は、同じ提供者への集中依存などを金融の弱点として挙げています。社会全体の復旧不能を観測した報告ではありません。",
+      "next": "障害が広がっても、独立した予備系統や人の対応で復旧できるか。",
+      "sources": [
+        "fsb-ai"
+      ],
+      "review": {
+        "checkedAt": "2026-09-10",
+        "intervalDays": 7,
+        "reason": "注目点は編集上の整理です。新しい観測や反例が出ていないか点検します。"
+      }
+    },
+    "dependence": {
+      "node": "D2",
+      "observed": "D1",
+      "finding": "2025年11月〜2026年1月の米国企業調査には、業務へのAI導入が表れています。人の決定権が失われた証拠とは別です。",
+      "next": "AIが使えなくても、人や別の手段で重要な判断を続けられるか。",
+      "sources": [
+        "census-adoption",
+        "gradual"
+      ],
+      "review": {
+        "checkedAt": "2026-09-10",
+        "intervalDays": 7,
+        "reason": "注目点は編集上の整理です。新しい観測や反例が出ていないか点検します。"
+      }
+    },
+    "work": {
+      "node": "W6",
+      "observed": "W1",
+      "finding": "METRのソフトウェア課題では能力の進歩が測られています。2026年5月更新の測定は、全ての仕事を代替できるかの試験ではありません。",
+      "next": "生産性の改善が、働く人の所得や生活の安定にも届くか。",
+      "sources": [
+        "horizon",
+        "imf-distribution"
+      ],
+      "review": {
+        "checkedAt": "2026-09-10",
+        "intervalDays": 7,
+        "reason": "注目点は編集上の整理です。新しい観測や反例が出ていないか点検します。"
+      }
+    },
+    "money": {
+      "node": "F4",
+      "observed": "F1",
+      "finding": "FSBの2024年の分析は、金融でのAI利用の利点と、似た判断や集中依存による波及の可能性を検討しています。",
+      "next": "市場や決済の防壁が、共通の判断・障害による連鎖を止められるか。",
+      "sources": [
+        "fsb-ai"
+      ],
+      "review": {
+        "checkedAt": "2026-09-10",
+        "intervalDays": 7,
+        "reason": "注目点は編集上の整理です。新しい観測や反例が出ていないか点検します。"
+      }
+    }
+  },
+  "safeguards": {
+    "R4": {
+      "title": "監督・コード編集の効果",
+      "summary": "2023〜24年のプログラミング実験では、AIの監督やコード編集を組み合わせた方法が、単純な方法より不正なコードを抑えました。",
+      "limit": "GPT-4とGPT-3.5を使い、監督役を信頼できると置いた実験です。最新のAIや現実の運用全体が安全だという確認ではありません。",
+      "research": [
+        "control-protocol"
+      ],
+      "sources": [
+        "control-paper"
+      ],
+      "review": {
+        "checkedAt": "2026-09-10",
+        "intervalDays": 30,
+        "reason": "対策の効果を、実験した設定の範囲に限定して確認するため。"
+      }
+    }
+  }
+}

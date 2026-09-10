@@ -21,6 +21,8 @@ export type NavigationState = {
   term: string | null;
   guide: boolean;
   welcome: boolean;
+  lens: 'current' | null;
+  current: boolean;
   search: string;
   research: string[] | null;
   questions: string[];
@@ -35,6 +37,8 @@ export const initialNavigation = (): NavigationState => ({
   term: null,
   guide: false,
   welcome: false,
+  lens: null,
+  current: false,
   search: '',
   research: null,
   questions: [],
@@ -59,6 +63,8 @@ export function navigationHash(state: NavigationState) {
   if (state.term) q.set('term', state.term);
   if (state.guide) q.set('guide', '1');
   if (state.welcome) q.set('welcome', '1');
+  if (state.lens) q.set('lens', state.lens);
+  if (state.current) q.set('current', '1');
   return '#' + q.toString();
 }
 
@@ -139,6 +145,8 @@ export function readNavigation(
   next.term = term && Object.hasOwn(data.glossary, term) ? term : null;
   next.guide = q.get('guide') === '1';
   next.welcome = q.get('welcome') === '1';
+  next.lens = q.get('lens') === 'current' ? 'current' : null;
+  next.current = q.get('current') === '1';
   return next;
 }
 
@@ -151,7 +159,9 @@ export function shouldWelcome(state: NavigationState, seen: boolean) {
     !state.detail &&
     !state.panel &&
     !state.term &&
-    !state.guide
+    !state.guide &&
+    !state.current &&
+    !state.lens
   );
 }
 
@@ -176,7 +186,13 @@ export type PresentationSnapshot = {
   camera?: MapCameraSnapshot;
   scrolls: Record<string, { key: string; top: number; left: number }>;
 };
-export type Overlay = 'detail' | 'term' | 'panel' | 'guide' | 'welcome';
+export type Overlay =
+  | 'detail'
+  | 'term'
+  | 'panel'
+  | 'guide'
+  | 'welcome'
+  | 'current';
 type Pointer = { id: string; position: number; chain: string };
 export type NavigationEntry = Pointer & {
   version: 1;
@@ -220,6 +236,7 @@ export function nextEntry(
     'panel',
     'guide',
     'welcome',
+    'current',
   ] as const) {
     const before = overlayValue(from, layer),
       after = overlayValue(to, layer);
@@ -257,6 +274,9 @@ export function closeNavigation(
   if (layer === 'panel') return { ...state, panel: null, search: '' };
   return {
     ...state,
-    [layer]: layer === 'guide' || layer === 'welcome' ? false : null,
+    [layer]:
+      layer === 'guide' || layer === 'welcome' || layer === 'current'
+        ? false
+        : null,
   };
 }
