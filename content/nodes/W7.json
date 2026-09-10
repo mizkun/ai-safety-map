@@ -11,7 +11,8 @@
   ],
   "sources": [
     "imf-distribution",
-    "census-adoption"
+    "census-adoption",
+    "econ-scenarios"
   ],
   "questions": [],
   "related": [],
@@ -26,6 +27,7 @@
   "status": "hypothesis",
   "research": [
     "distribution",
-    "adoption"
+    "adoption",
+    "econ-scenarios"
   ]
 }

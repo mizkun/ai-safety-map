@@ -1,0 +1,32 @@
+{
+  "id": "W9",
+  "title": "AIの補助や新しい需要で、人の仕事が続く",
+  "shortTitle": "仕事が変わり、人の雇用が続く",
+  "explanation": "W9.md",
+  "topics": [
+    "augmentation"
+  ],
+  "terms": [
+    "augmentation",
+    "automation"
+  ],
+  "sources": [
+    "econ-scenarios",
+    "census-adoption"
+  ],
+  "research": [
+    "econ-scenarios",
+    "adoption"
+  ],
+  "questions": [],
+  "related": [],
+  "watch": [
+    "仕事の数だけでなく、仕事内容、賃金、労働時間、転職中の所得を比べる。"
+  ],
+  "review": {
+    "checkedAt": "2026-09-10",
+    "intervalDays": 30,
+    "reason": "人の仕事が続く条件と、代替が上回る反例を継続して確認するため。"
+  },
+  "status": "hypothesis"
+}

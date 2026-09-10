@@ -331,7 +331,7 @@
     "work": {
       "id": "work",
       "title": "労働の自動化と、働かなくても暮らせる社会",
-      "description": "全労働を技術的に代替する仮説と、実際の導入・分配を分けます。働かずに暮らせるために、文字どおり全ての労働を自動化する必要はありません。",
+      "description": "能力・導入・分配を分け、導入後にも人の仕事が続く道、所得を失う道、働く必要が減る道を示します。業種や人によって、異なる結果が同時に起こり得ます。",
       "mode": "network",
       "nodes": [
         "W1",
@@ -341,14 +341,16 @@
         "W6",
         "W5",
         "W7",
-        "W8"
+        "W8",
+        "W9"
       ],
       "edges": [
         "W1-W4",
         "W4-W3",
         "W3-W5",
         "W3-W7",
-        "W5-W8"
+        "W5-W8",
+        "W3-W9"
       ]
     },
     "money": {
@@ -1084,7 +1086,8 @@
       "safeguards": "各条件の根拠と限界を個別に確認し、悪影響を抑える対策や制度が機能するかを点検します。",
       "sources": [
         "imf-distribution",
-        "vend"
+        "vend",
+        "econ-scenarios"
       ],
       "basis": "編集上の条件付き仮説。下の一次資料は、個別の能力・行動・仕組みを支持します。矢印全体の成立を実証したものではありません。",
       "review": {
@@ -1094,7 +1097,8 @@
       },
       "research": [
         "distribution",
-        "vend"
+        "vend",
+        "econ-scenarios"
       ],
       "current": "小規模な売上の例と経済モデルの分析があります。AIを使う人の利益から全員の所得増加は導けません。"
     },
@@ -1382,7 +1386,8 @@
       "safeguards": "各条件の根拠と限界を個別に確認し、悪影響を抑える対策や制度が機能するかを点検します。",
       "sources": [
         "census-adoption",
-        "imf-distribution"
+        "imf-distribution",
+        "econ-scenarios"
       ],
       "basis": "編集上の条件付き仮説。下の一次資料は、個別の能力・行動・仕組みを支持します。矢印全体の成立を実証したものではありません。",
       "review": {
@@ -1396,7 +1401,8 @@
       ],
       "research": [
         "adoption",
-        "distribution"
+        "distribution",
+        "econ-scenarios"
       ],
       "current": "実際の導入と、所得への条件付きの効果が研究されています。生産と分配がそろった世界全体の実例ではありません。"
     },
@@ -1415,7 +1421,8 @@
       "safeguards": "実際の品質、費用、責任、働く人への影響を点検しながら導入します。",
       "sources": [
         "census-adoption",
-        "robotics-2"
+        "robotics-2",
+        "econ-scenarios"
       ],
       "review": {
         "checkedAt": "2026-09-10",
@@ -1424,7 +1431,8 @@
       },
       "research": [
         "adoption",
-        "robotics"
+        "robotics",
+        "econ-scenarios"
       ],
       "current": "利用や実演の例はありますが、技術的な可能性、費用、普及を一つの指標では測れません。",
       "basis": "編集上の条件付き仮説。下の一次資料は、個別の能力・行動・仕組みを支持します。矢印全体の成立を実証したものではありません。"
@@ -1444,11 +1452,13 @@
       "safeguards": "失業だけでなく家計所得と必需品へのアクセスを追い、職業移行、所得保障、広い資本保有、労働時間の分配を検討します。",
       "sources": [
         "imf-distribution",
-        "census-adoption"
+        "census-adoption",
+        "econ-scenarios"
       ],
       "research": [
         "distribution",
-        "adoption"
+        "adoption",
+        "econ-scenarios"
       ],
       "current": "一次資料は個別の制度や観測を示します。この将来のつながり全体が実証されたという意味ではありません。",
       "basis": "編集上の条件付きシナリオ。追加条件と反例を明示し、前の状態だけから結果を決めません。",
@@ -1601,6 +1611,35 @@
         "checkedAt": "2026-09-10",
         "intervalDays": 30,
         "reason": "追加条件と、反対の結果を生む制度を継続して点検するため。"
+      }
+    },
+    "W3-W9": {
+      "id": "W3-W9",
+      "from": "W3",
+      "to": "W9",
+      "relation": "conditional",
+      "label": "人の作業への需要が残り、その仕事に就けると",
+      "explanation": "AIを導入しても、補完される作業や新しい需要が人の雇用を支える場合があります。代替された人が別の仕事へ移る場合も含みます。",
+      "conditions": [
+        "既存または新しい人の作業に、雇用を支える需要がある",
+        "必要な技能や採用機会があり、対象の人が仕事に就ける"
+      ],
+      "limitation": "新しい仕事の総数が増えても、失職した本人が就けるとは限りません。賃金上昇や全員の雇用維持も保証しません。",
+      "safeguards": "職業移動を支える求人、技能、移行期の所得を確認し、仕事を得られない人への支援も用意します。",
+      "sources": [
+        "econ-scenarios",
+        "census-adoption"
+      ],
+      "research": [
+        "econ-scenarios",
+        "adoption"
+      ],
+      "current": "補助としての利用例はあります。社会全体の将来の雇用は、能力だけでなく導入の仕方と労働市場の条件に依存する仮説です。",
+      "basis": "編集上の条件付きシナリオ。経済モデルと利用の観測を区別し、経路全体の実証とは扱いません。",
+      "review": {
+        "checkedAt": "2026-09-10",
+        "intervalDays": 30,
+        "reason": "雇用の継続と職業移動に必要な条件を点検するため。"
       }
     }
   }

@@ -10,7 +10,8 @@
   ],
   "sources": [
     "imf-distribution",
-    "ecb-money"
+    "ecb-money",
+    "econ-scenarios"
   ],
   "questions": [],
   "related": [],
@@ -25,7 +26,8 @@
   "status": "hypothesis",
   "research": [
     "distribution",
-    "money-functions"
+    "money-functions",
+    "econ-scenarios"
   ],
   "shortTitle": "生産物・所得が広く行き渡る"
 }

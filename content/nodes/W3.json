@@ -11,7 +11,8 @@
   "sources": [
     "census-adoption",
     "robotics-2",
-    "imf-distribution"
+    "imf-distribution",
+    "econ-scenarios"
   ],
   "questions": [],
   "related": [],
@@ -27,7 +28,8 @@
   "research": [
     "adoption",
     "robotics",
-    "distribution"
+    "distribution",
+    "econ-scenarios"
   ],
   "shortTitle": "生活を支える生産に広く導入"
 }

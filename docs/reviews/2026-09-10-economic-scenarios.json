@@ -1,0 +1,172 @@
+{
+  "id": "2026-09-10-economic-scenarios",
+  "date": "2026-09-10",
+  "reviewer": "Codex — original-source and bilingual editorial review (not independent peer review)",
+  "decision": "reviewed",
+  "assessments": {
+    "model": {
+      "mechanism": "能力から導入、作業の補助と代替、労働需要と所得への経路を分けた条件付きモデルとして追加した。",
+      "conditions": "2026〜2030年の米国・二つの職業群・設定された導入と職業移動の条件に限る。",
+      "counterexample": "同じ技術的能力でも導入や新しい仕事の設定が違えば、失業や所得は別の結果になる。",
+      "evidence": "Table 3のGDP +32.4%と知的賃金 -11.5%はAIなし経路との差、11.9%は全体失業率の水準。2030年初めの計算結果と確認した。",
+      "limits": "金融混乱・破局・急速なロボット進歩は対象外。発生確率、世界全体、全員の所得、年成長率へ一般化しない。",
+      "mitigation": "所得保障や移行支援は検討候補であり、原研究で効果が実証された政策とは書かない。",
+      "primary": [
+        {
+          "source": "econ-scenarios",
+          "locator": "§1 assumptions and caveats; §2.3 unemployment; Table 3, printed page 31",
+          "support": "Conditional US task model distinguishes adoption, labor demand, job transitions and income distribution; no assigned scenario probabilities."
+        }
+      ]
+    },
+    "employment": {
+      "mechanism": "W3からW9へは、人の作業への需要と、その仕事へのアクセスを追加条件とする。W7やW5と併存し得る分岐として記述した。",
+      "conditions": "技能や採用機会を含め、対象の人が仕事に就ける必要がある。AIの全労働代替能力は必須でない。",
+      "counterexample": "求人が別の地域・技能分野で増えても、失職した本人が移れなければ雇用継続を示さない。",
+      "evidence": "原モデルの職業移動と、Census原論文Abstractの補助利用の観測を区別して結びつけた。",
+      "limits": "AIによる雇用増の因果効果や全員の雇用維持を実証したとは扱わず、W9の状態はhypothesisとした。",
+      "mitigation": "再訓練、求人への接続、転職中の所得を条件への対策候補とし、実際の就職と未就職の両方を追う。",
+      "primary": [
+        {
+          "source": "econ-scenarios",
+          "locator": "§1 assumptions and caveats; §2.3 unemployment; Table 3, printed page 31",
+          "support": "Conditional US task model distinguishes adoption, labor demand, job transitions and income distribution; no assigned scenario probabilities."
+        },
+        {
+          "source": "census-adoption",
+          "locator": "CES-26-25, Abstract (printed page 1)",
+          "support": "AI task assistance is observed in the earlier survey; this is not a causal experiment or a forecast of future employment."
+        }
+      ]
+    },
+    "distribution": {
+      "mechanism": "W3とW6のANDは生産と生活へのアクセスを分ける。I1からI2には所得の受取先を決める所有・契約の追加条件がある。",
+      "conditions": "W5には就労していない人にも必要な物や所得が届く条件が必要。W7には所得減を再就職や支援で補えない条件が必要。",
+      "counterexample": "GDPが増えても資産を持たない失職者へ便益が届かなければ生活は改善しない。失職しても十分な支援があれば困窮は避けられる。",
+      "evidence": "原モデルの賃金と資本所得の区別を、IMF原著者Summaryの代替・補完・資産所得の分析と照合した。",
+      "limits": "所得構成の計算から貨幣の消滅や金融崩壊は導かない。moneyの他の分岐は既存レビューの条件を維持する。",
+      "mitigation": "分配と移行期の生活への対策を候補として残し、平均値だけでなく家計ごとの差を確認する。",
+      "primary": [
+        {
+          "source": "econ-scenarios",
+          "locator": "§1 assumptions and caveats; §2.3 unemployment; Table 3, printed page 31",
+          "support": "Conditional US task model distinguishes adoption, labor demand, job transitions and income distribution; no assigned scenario probabilities."
+        },
+        {
+          "source": "imf-distribution",
+          "locator": "Author Summary, AI Adoption and Inequality, 2025/068",
+          "support": "Wage inequality and wealth inequality follow distinct channels; capital holdings and endogenous adoption matter."
+        }
+      ]
+    },
+    "integration": {
+      "mechanism": "研究の追加に依存する図・経路・ニュース・ストーリーを照合し、仕事の第三の分岐を追加した。",
+      "conditions": "既存の並列条件、追加条件付きの矢印、未来の結果の区別を維持し、同じ社会に異なる帰結が併存すると明示した。",
+      "counterexample": "モデルが金融を扱わないことは金融の混乱が起きない証拠ではない。元のmoney経路を削除・断定していない。",
+      "evidence": "新しいW9は編集上の整理であり、原論文の3シナリオと1対1対応すると書かない。本文を変えない関連ニュースの対応先も確認した。",
+      "limits": "履歴に変更前の不足と変更理由を残す。点検済みは編集者の確認であり独立査読ではない。",
+      "mitigation": "日本語と直接作成した英訳の数値・条件・配列移動を照合した。描き忘れ・孤立・線の重複・ツアー対象は構造検査で確認する。",
+      "primary": [
+        {
+          "source": "econ-scenarios",
+          "locator": "§1 assumptions and caveats; §2.3 unemployment; Table 3, printed page 31",
+          "support": "Conditional US task model distinguishes adoption, labor demand, job transitions and income distribution; no assigned scenario probabilities."
+        }
+      ]
+    }
+  },
+  "entries": {
+    "source:econ-scenarios": {
+      "hash": "f16ce7922458d9578b67ab27f2ba50a673f5997d870a624646fb732e1412eff5",
+      "assessment": "model"
+    },
+    "research:econ-scenarios": {
+      "hash": "a159722f0c707461e4d08ab522abf2bd85236ab67708487c0834af429725d4c5",
+      "assessment": "model"
+    },
+    "node:I2": {
+      "hash": "60fde4679ff15d6127c79568e0e499d2e2d8299cd86b472c9efe646c35a42f75",
+      "assessment": "distribution"
+    },
+    "node:W3": {
+      "hash": "fac0cf1376788f38a09ae8fa138c5ccbdbb2cb1c3351fc79ed10bf17ae51959d",
+      "assessment": "employment"
+    },
+    "node:W6": {
+      "hash": "e748fbf4be0b417fa8aae80a678685fc0e957de2f33e619a573d04aa54787739",
+      "assessment": "distribution"
+    },
+    "node:W7": {
+      "hash": "7a564f4a010264e44b0559cb364b027d2ef740783e06bf49beb8be7948d1d16e",
+      "assessment": "employment"
+    },
+    "node:W9": {
+      "hash": "3cc3d23ae02f3a647e496312b78cc02a59e899cfb9c0aa5534070aaa64099b52",
+      "assessment": "employment"
+    },
+    "edge:I1-I2": {
+      "hash": "495aebb24fa41e6330fd57ac26ed29f5d3ca37a9234c388d457f9305fc3c0834",
+      "assessment": "distribution"
+    },
+    "edge:W3-W5": {
+      "hash": "68b4bbc000714dcc4918c1b3aeb1ee8fbf72ca68858bbbae6b9762ea89f289a0",
+      "assessment": "distribution"
+    },
+    "edge:W4-W3": {
+      "hash": "eb5e6dccde49f1535efd70ae8a8a54e6b767c7d44c2055e800f5dfe7e3d7bd67",
+      "assessment": "employment"
+    },
+    "edge:W3-W7": {
+      "hash": "14c9df107bc79f785eb032895ac61fbf0affc8a282650e2951f3fa9402155c0b",
+      "assessment": "employment"
+    },
+    "edge:W3-W9": {
+      "hash": "3f93c61ebce4ca004ae61c2aba8959522e19d1aff17decdc6304bb5a06889641",
+      "assessment": "employment"
+    },
+    "graph:work": {
+      "hash": "98dc8753f85c1ec3401cff358ba4fde5cddc9af0bc7f44f0616f7279fa0516a6",
+      "assessment": "integration"
+    },
+    "graph:money": {
+      "hash": "d0c8c5b8c5bdc4bb2f51a6a159a64dbd2493483209e031ce07e1c523aaa14012",
+      "assessment": "integration"
+    },
+    "route:work": {
+      "hash": "3538f1460cc09f8f4c0e3fc948436f7d1e1abf9cebbeb144ecd35b2658425a11",
+      "assessment": "integration"
+    },
+    "route:money": {
+      "hash": "8df717ea3047b9e6b2e17dcacfde7b61e4fa471475ea6aecf82ac463a81d2074",
+      "assessment": "integration"
+    },
+    "glossary:augmentation": {
+      "hash": "bb5b85667f9d23d4c0ce9812cbe337a572eab0d7daab267491b02c47ce9cf9c0",
+      "assessment": "employment"
+    },
+    "news:work-survey": {
+      "hash": "cb387d44faf36534211feb8c6b70970852b9cd945013f362b36ae55c188b08d2",
+      "assessment": "integration"
+    },
+    "news:agent-income": {
+      "hash": "00d2ae92a5129e03bdddbbd7d7e8d4ae31389db6d662625904979dde28088b5b",
+      "assessment": "integration"
+    },
+    "story:work": {
+      "hash": "8a9140edfccb34edbd56e5dccbfe1a7fbbb2b64b77c8649edff04a8f06676599",
+      "assessment": "integration"
+    },
+    "story:money": {
+      "hash": "7682619701077c1c929c7aa8aed86a78e9cd123eed0d38989af833edd21969ce",
+      "assessment": "integration"
+    },
+    "history:changes": {
+      "hash": "f40a2f54305245fed5f69bdc647a4e33f99b1088fdce5554a42abd60208e34cb",
+      "assessment": "integration"
+    },
+    "inventory:current": {
+      "hash": "c1c9e43e4840089df7d87d2ab2c173b0c9fbcc12212013402b88be8f9175c1ed",
+      "assessment": "integration"
+    }
+  }
+}

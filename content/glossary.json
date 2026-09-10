@@ -541,5 +541,18 @@
       "gemini-safety",
       "gemini-38"
     ]
+  },
+  "augmentation": {
+    "name": "労働の補完",
+    "aliases": [
+      "労働の補完",
+      "Augmentation"
+    ],
+    "definition": "AIが人の作業を助け、人が担う仕事の生産性を高めることです。AIが作業を引き受ける自動化と区別します。",
+    "limit": "同じ職業でも、補助される作業と代替される作業が混在します。補完が増えても、雇用や賃金が必ず増えるとは限りません。",
+    "sources": [
+      "econ-scenarios",
+      "census-adoption"
+    ]
   }
 }

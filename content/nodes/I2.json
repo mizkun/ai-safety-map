@@ -10,7 +10,8 @@
   ],
   "sources": [
     "imf-distribution",
-    "vend"
+    "vend",
+    "econ-scenarios"
   ],
   "questions": [],
   "related": [],
@@ -25,7 +26,8 @@
   "status": "hypothesis",
   "research": [
     "distribution",
-    "vend"
+    "vend",
+    "econ-scenarios"
   ],
   "shortTitle": "所得と所有の関係が変化"
 }

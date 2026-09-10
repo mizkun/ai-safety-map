@@ -300,6 +300,10 @@ export function expandedTreeLayout(
     node('W7', center + 262, optional.y, 332, 'work', false);
     wire('W3', 'W7', 'work', 'W3-W7');
     layout.wires.at(-1)!.fromFraction = 0.78;
+    node('W9', center + 690, optional.y, 332, 'work', false);
+    wire('W3', 'W9', 'work', 'W3-W9');
+    layout.wires.at(-1)!.fromFraction = 0.92;
+    layout.wires.at(-1)!.busY = adoption.y + CARD + 54;
     const choice = node(
       'W8',
       optional.x,
@@ -589,7 +593,7 @@ export function expandedTreeLayout(
         : id === 'misuse'
           ? misuseWidth()
           : id === 'work'
-            ? 1188
+            ? 1450
             : id === 'money'
               ? moneyWidth()
               : id === 'acceleration'

@@ -385,5 +385,14 @@
     "checked": "2026-09-10",
     "url": "https://www.ecb.europa.eu/pub/pdf/other/ecb.eurosystemcomprehensivepaymentsstrategy202603.en.pdf",
     "primary": "決済制度を運営・監督する主体の原戦略文書"
+  },
+  "econ-scenarios": {
+    "title": "Korinek et al. — Economic Scenarios for Transformative AI",
+    "url": "https://www-cdn.anthropic.com/files/4zrzovbb/website/cf58f84d46a4a76bf5a5b039ac695fba6b80041c.pdf",
+    "published": "2026-09",
+    "checked": "2026-09-10",
+    "date": "2026-09",
+    "period": "2026〜2030年の米国を対象とする条件付きモデル。Working Paper No. 2026-02、2026年9月版。公表日は月まで確認。",
+    "primary": "Korinek・Jones・Sacher・Cotter・McCroryによる原研究。著者のモデル分析であり、将来の観測やAnthropicの確定予測ではない。"
   }
 }
