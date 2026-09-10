@@ -1,0 +1,58 @@
+{
+  "id": "2026-09-10-tour-wording-precision",
+  "date": "2026-09-10",
+  "reviewer": "Codex (editorial wording correction)",
+  "decision": "reviewed",
+  "assessments": {
+    "wording": {
+      "mechanism": "導入の変化の速さを暗黙に遅いと読ませる「少しずつ」を削除し、速度を断定しない。A3も「両方」という不要な強調を外して元の復旧・封じ込めの定義と一致させた。",
+      "conditions": "A3の共同依存・伝達・復旧の条件を増減させず、二つの対処を全て失うという新たなANDを文体の変更で導入しない。",
+      "counterexample": "研究の急速な進展があっても今回の導入文と矛盾しない。復旧系の一部の失敗を全ての制御の喪失と読み替えない。",
+      "evidence": "42研究と44一次資料、現在の状況と研究の結果は変更していない。既存英訳は元から進展の速度や全手段の喪失を断定しておらず、その意味を保持した。",
+      "limits": "言い換えの精度の訂正であり、新しい評価・進歩の速度・全防壁の有効性を推定する変更ではない。",
+      "mitigation": "原文・英訳・依存する矢印と章を照合し、以前のレビューを上書きせず、訂正後の版を新しい記録で点検する。",
+      "primary": [
+        {
+          "source": "framework",
+          "locator": "Risk categories / Mistakes and structural risks",
+          "support": "事故と共通依存の条件整理を保つ背景。新しいAND条件を追加する根拠とはしていない。"
+        },
+        {
+          "source": "openai-rd",
+          "locator": "Sections 1–3 and measurement methods",
+          "support": "研究への寄与の観測に速度を補足で断定しないための範囲確認。"
+        }
+      ]
+    }
+  },
+  "entries": {
+    "node:A3": {
+      "hash": "9f6dc6390bcd21c76c56ae32e5fbd4e25f2a8101e91b5ed861d691c15a2d158b",
+      "assessment": "wording"
+    },
+    "edge:A2-A3": {
+      "hash": "4c2ab73ce5cf4bae44e379859ae71852f0d6c097f34ef4a8cd5d038ea3e17150",
+      "assessment": "wording"
+    },
+    "edge:A3-H": {
+      "hash": "807b4de9c8451a5c99fcd5c74aa8f6b03e37b336f6d2746b97af842ea01aeebb",
+      "assessment": "wording"
+    },
+    "graph:accidents": {
+      "hash": "bcd9f0db8dd8a668ab07c974ac886e37f359c72df39dd56d2b673a83df276991",
+      "assessment": "wording"
+    },
+    "route:accidents": {
+      "hash": "62e94d9157048089ada9fc494a34848f75b78cd572edd1eac50189af2b8a43de",
+      "assessment": "wording"
+    },
+    "story:accidents": {
+      "hash": "fb8143e31386de44fd3add3a46ab99e2779fa3306863e6d4202ff7b4022caed1",
+      "assessment": "wording"
+    },
+    "ui:ja": {
+      "hash": "84eb2d868f81d5e1b7db6efe51412305012b4b11af5dcd5321c0c6e6d3e909b2",
+      "assessment": "wording"
+    }
+  }
+}

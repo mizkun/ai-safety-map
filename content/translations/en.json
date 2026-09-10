@@ -1,6 +1,6 @@
 {
   "locale": "en",
-  "sourceHash": "c28b094e7e046d5820baf5a2c0c240f8f612fda12b649e9326f128c13bace4ce",
+  "sourceHash": "ce96037ffd8b8c8232a22d56f6b0052e99c3e2868183f819526bc36a158c7078",
   "reference": {
     "edges.A1-A2.basis": "編集上の条件付き仮説。下の一次資料は、個別の能力・行動・仕組みを支持します。矢印全体の成立を実証したものではありません。",
     "edges.A1-A2.conditions.0": "共通の失敗が起きる",
@@ -758,7 +758,7 @@
     "nodes.A3.body.他の条件との関係": "連鎖（A2）が起きても、復旧系が独立していれば被害を縮められます。Hへ進むには、重要な生活機能が広い範囲で長く失われる条件も加わります。",
     "nodes.A3.body.成立条件": "復旧に必要な人、電力、通信、データ、資材などが同時に使えず、外部からの援助や代替も間に合わないことです。",
     "nodes.A3.body.根拠の限界": "大きな停止が一時的に起きたことと、長期に復旧不能であることは異なります。復旧に時間がかかる理由を具体的に確かめます。",
-    "nodes.A3.body.概要": "問題を止めたいのに、復旧に使う仕組みまで動かない。ここで考えるのは、同じ障害や資源不足によって、止める手段と直す手段の両方が使えなくなる場面です。",
+    "nodes.A3.body.概要": "問題を止めたり復旧したりする仕組みまで、同じ障害や資源不足で使えなくなることです。",
     "nodes.A3.body.現在の状況": "共通依存と監視の不足は原分析で指摘されています。ただし、AI事故によって世界全体の復旧手段が失われたことを確認した資料はありません。",
     "nodes.A3.body.考えられる対策": "復旧系を通常運用から分離し、必要な資源を備えます。AIや主要な通信が使えない状況で、復旧の手順が実行できるかを訓練します。",
     "nodes.A3.review.reason": "経路を支える前提、反論、防壁の有効性に変化がないか確認するため。",
@@ -4128,8 +4128,8 @@
     "watchlist.9.name": "Financial stability and agentic commerce"
   },
   "review": {
-    "reviewer": "Codex (direct English translation and meaning review)",
+    "reviewer": "Codex (Japanese precision correction; existing English already preserves the intended meaning)",
     "date": "2026-09-10",
-    "hash": "19fd51016b9a22fb9af26c84d0f8a8f8a51605ef9a235f8f7d62b4a7d127debd"
+    "hash": "658d72a6fa2997383b48b06fca1ff10e5f571f840c311d6bc308ce3609a4c0e7"
   }
 }
