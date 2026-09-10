@@ -44,7 +44,10 @@ export function horizontalPath(path: string, layout: TreeLayout) {
   return result.trim();
 }
 
-export function horizontalTreeLayout(source: TreeLayout): TreeLayout {
+export function horizontalTreeLayout(
+  source: TreeLayout,
+  compact = false,
+): TreeLayout {
   const present = source.tiles.find((t) => t.node === 'NOW');
   if (present) {
     const branches = source.tiles.filter((t) => t.kind === 'route');
@@ -54,13 +57,34 @@ export function horizontalTreeLayout(source: TreeLayout): TreeLayout {
       : (source.width - present.width) / 2;
     present.label = 'present';
   }
+  // Routing channels are occupied space too. Compress only the empty bands
+  // between them, so independent wires never collapse against a frame or bus.
+  const tracks = [
+    ...source.wires.flatMap((wire) => {
+      const points = wireGeometry(wire, source).points || [];
+      return points
+        .slice(1)
+        .flatMap((b, i) =>
+          points[i].y === b.y && Math.abs(points[i].x - b.x) > 32 ? [b.y] : [],
+        );
+    }),
+    ...(source.forks || []).flatMap((f) => [
+      f.busY,
+      ...(f.merge ? [f.merge.y - 40] : []),
+    ]),
+    ...(source.joins || []).map((j) => j.y - 25),
+    ...(source.regions || []).flatMap((r) => [r.y, r.y + r.height]),
+  ];
   const projection = {
     offsetX: 0,
     offsetY: 0,
     flow: compactAxis(
       source.tiles.map((r) => [r.y, r.y + r.height]),
       source.height,
-      FLOW_SCALE,
+      compact ? 1.55 : FLOW_SCALE,
+      24,
+      compact ? 18 : 36,
+      tracks,
     ),
     branch: compactAxis(
       source.tiles.map((r) => [r.x, r.x + r.width]),

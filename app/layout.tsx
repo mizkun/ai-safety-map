@@ -8,6 +8,11 @@ export const metadata: Metadata = {
   icons: { icon: '/ai-safety-map/favicon.svg' },
   metadataBase: new URL('https://mizkun.github.io/ai-safety-map/'),
 };
+export const viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  viewportFit: 'cover',
+};
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {

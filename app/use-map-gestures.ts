@@ -72,6 +72,8 @@ export function useMapGestures(
       });
     };
     const down = (e: PointerEvent) => {
+      // A new click, including on a button, ends suppression from the previous drag.
+      if (!points.size) suppressClick = false;
       if (
         e.pointerType === 'mouse' &&
         (e.button !== 0 || (e.target as HTMLElement).closest('button,a'))

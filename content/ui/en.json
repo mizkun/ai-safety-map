@@ -98,7 +98,7 @@
   "about3": "“Observed examples,” “Evidence under limited conditions,” and “Conditional hypothesis” describe the kind of support available, not danger or completion percentages.",
   "about4": "A catastrophe, a loss of human agency, and human extinction are different outcomes. We separately ask whether people could survive a catastrophe and rebuild.",
   "about5": "Follow the connections from left to right. Horizontal position does not measure years. OR branches represent different mechanisms; AND frames group conditions considered together. Positions within a frame do not imply a time order either.",
-  "about6": "Research acceleration and self-improvement appear by default within the control-loss and work-automation maps. You can fold them away on the map. They are treated as important factors, without making RSI or ASI a requirement.",
+  "about6": "Capability progress branches into ordinary development and recursive self-improvement (RSI) within the control-loss and work-automation maps. ASI is another possible branch, rather than a requirement for every pathway.",
   "about7": "We distinguish publication dates, the periods studied, and the dates our explanations were reviewed. A lack of observed problems alone does not tell us whether safeguards are working.",
   "about8": "Sources link to original work by researchers and investigating organizations. The way conditions are grouped also includes editorial choices for this map. It does not prove that every pathway has exactly the necessary and sufficient conditions.",
   "feedback": "Self-improvement feedback",
@@ -135,8 +135,6 @@
   "story": "Story",
   "storyNote": "A conditional account, not a prediction of future events.",
   "refreshPage": "Refresh page",
-  "expandHere": "Expand conditions",
-  "collapseHere": "Collapse",
   "clearFilter": "Show all routes",
   "overviewLabel": "Overview",
   "filteredRoutes": "Showing 1 of {total} routes",
@@ -161,5 +159,7 @@
   "tourReading": "Tour reading area",
   "tourScene": "In this scene",
   "tourNews": "When you read the news",
-  "tourChapters": "Choose a scene in this path"
+  "tourChapters": "Choose a scene in this path",
+  "pathwayCount": "pathways",
+  "showOnMap": "Show on map"
 }

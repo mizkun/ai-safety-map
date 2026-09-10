@@ -7,11 +7,41 @@ import {
   translationFields,
 } from '../lib/translation-fields.mjs';
 import { translationReviewHash } from '../lib/translation-review.mjs';
+import { glossaryIndex, glossarySegments } from '../lib/glossary-text.mjs';
 const translation = JSON.parse(fs.readFileSync('content/translations/en.json'));
 const data = readCanonicalContent(),
   en = applyTranslation(data, translation);
 const jaUi = JSON.parse(fs.readFileSync('content/ui/ja.json')),
   enUi = JSON.parse(fs.readFileSync('content/ui/en.json'));
+test('glossary links preserve English words and still recognize Japanese-adjacent abbreviations', () => {
+  const index = glossaryIndex({
+    rsi: { aliases: ['RSI', 'recursive self-improvement'] },
+    ai: { aliases: ['AI'] },
+    asi: { aliases: ['ASI'] },
+  });
+  for (const text of [
+    'oversight and training form a basis',
+    'RSI, ASI and AI-assisted research',
+    'AIが進歩し、RSIやASIへ分岐する。',
+  ]) {
+    const parts = glossarySegments(text, index);
+    assert.equal(parts.map((p) => p.text).join(''), text);
+    assert.deepEqual(
+      parts.filter((p) => p.id).map((p) => p.id),
+      text.startsWith('oversight')
+        ? []
+        : text.startsWith('RSI')
+          ? ['rsi', 'asi', 'ai']
+          : ['ai', 'rsi', 'asi'],
+    );
+  }
+  assert.deepEqual(glossarySegments('recursive self-improvement', index), [
+    { text: 'recursive self-improvement', id: 'rsi' },
+  ]);
+  assert.deepEqual(glossarySegments('plain text', glossaryIndex({})), [
+    { text: 'plain text' },
+  ]);
+});
 test('English is complete and preserves shared scientific identifiers and evidence structure', () => {
   assert.deepEqual(translation.reference, translationFields(data));
   for (const text of Object.values(translation.strings))

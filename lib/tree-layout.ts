@@ -126,8 +126,12 @@ export function treeLayout(
   data: Content,
   view: string,
   expanded: boolean | TreeExpansion = false,
+  compact = false,
 ): TreeLayout {
-  return horizontalTreeLayout(verticalTreeLayout(data, view, expanded));
+  return horizontalTreeLayout(
+    verticalTreeLayout(data, view, expanded),
+    compact,
+  );
 }
 function verticalTreeLayout(
   data: Content,

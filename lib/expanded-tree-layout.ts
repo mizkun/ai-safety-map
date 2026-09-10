@@ -293,7 +293,7 @@ export function expandedTreeLayout(
   // Development branches are ordinary map nodes. RSI and ASI are not AND inputs.
   function progression(x: number, y: number) {
     const root = node('R0', x, y, 332, 'acceleration', true);
-    const nextY = root.y + root.height + 120;
+    const nextY = root.y + root.height + 180;
     node('ASI', x, nextY, 332, 'acceleration', false);
     node('R4', x + 428, nextY, 332, 'acceleration', false);
     sideWire('R0', 'ASI', 'R0-ASI', x - 70, 'acceleration');
@@ -315,10 +315,10 @@ export function expandedTreeLayout(
       ? 'C2a'
       : 'C2';
     wire(progress.root.key, capability, 'acceleration', 'R0-C2a');
-    layout.wires.at(-1)!.busY = progress.nextY - 60;
+    layout.wires.at(-1)!.busY = progress.nextY - 104;
     layout.wires.at(-1)!.toFraction = 0.24;
     wire('ASI', 'C3', 'acceleration', 'ASI-C3');
-    layout.wires.at(-1)!.viaY = progress.nextY - 34;
+    layout.wires.at(-1)!.viaY = progress.nextY - 62;
     layout.wires.at(-1)!.sourceSide = 'left';
     layout.wires.at(-1)!.fromFraction = 0.25;
     layout.wires.at(-1)!.toFraction = 0.72;
@@ -494,12 +494,12 @@ export function expandedTreeLayout(
     );
     wire(progress.root.key, 'C2a', 'acceleration', 'R0-C2a');
     layout.wires.at(-1)!.fromFraction = 0.4;
-    layout.wires.at(-1)!.busY = progress.nextY - 80;
+    layout.wires.at(-1)!.busY = progress.nextY - 140;
     wire(progress.root.key, 'W1', 'acceleration', 'R0-W1');
     layout.wires.at(-1)!.fromFraction = 0.6;
-    layout.wires.at(-1)!.busY = progress.nextY - 58;
+    layout.wires.at(-1)!.busY = progress.nextY - 98;
     wire('ASI', 'C3', 'acceleration', 'ASI-C3');
-    layout.wires.at(-1)!.viaY = progress.nextY - 30;
+    layout.wires.at(-1)!.viaY = progress.nextY - 56;
     layout.wires.at(-1)!.sourceSide = 'left';
     layout.wires.at(-1)!.fromFraction = 0.25;
     wire('R4', 'C1', 'acceleration', 'R4-C1');

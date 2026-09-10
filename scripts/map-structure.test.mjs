@@ -9,6 +9,7 @@ import {
   treeLayout,
   wireGeometry,
   joinGeometry,
+  joinJunctions,
   forkGeometry,
 } from '../lib/tree-layout.ts';
 import {
@@ -16,6 +17,7 @@ import {
   zoomAnchor,
   scrollAtAnchor,
   initialMapScale,
+  initialMapCamera,
   latestFrame,
   isReleasedPointer,
 } from '../lib/map-gestures.mjs';
@@ -33,6 +35,113 @@ import { relationLabels, overlaps } from '../lib/relation-labels.ts';
 import { cameraFrame, cameraAnimator } from '../lib/map-camera.mjs';
 import { connectionLabels } from '../lib/connection-labels.ts';
 const content = readCanonicalContent();
+
+test('phone openings keep the first card inside the viewport for every pathway', () => {
+  for (const viewport of [
+    { width: 320, height: 347 },
+    { width: 390, height: 623 },
+    { width: 430, height: 711 },
+  ]) {
+    for (const route of content.routes) {
+      const layout = treeLayout(content, route.id, true, true);
+      const anchor =
+        layout.tiles.find((t) => t.node === 'NOW') || layout.tiles[0];
+      const camera = initialMapCamera(viewport, layout, anchor);
+      const x = anchor.x * camera.scale - camera.left;
+      const y = anchor.y * camera.scale - camera.top;
+      assert.ok(
+        x >= 0 && x + anchor.width * camera.scale <= viewport.width,
+        route.id + ': clipped horizontally',
+      );
+      assert.ok(
+        y >= 0 && y + anchor.height * camera.scale <= viewport.height,
+        route.id + ': clipped vertically',
+      );
+      assert.ok(camera.scale >= 0.85);
+    }
+  }
+});
+
+test('routing channels stay apart from parallel wires and AND frames at reading size', () => {
+  for (const compact of [false, true])
+    for (const view of ['overview', ...content.routes.map((r) => r.id)])
+      for (const expansion of [true, { routes: [], nodes: ['R0', 'C1'] }]) {
+        const layout = treeLayout(content, view, expansion, compact);
+        for (const join of layout.joins || []) {
+          const frame = layout.regions.find(
+            (r) => r.key === 'joint-group-' + join.edge,
+          );
+          if (!frame) continue;
+          assert.ok(
+            joinJunctions(join, layout)[0].x - frame.x - frame.width >=
+              24 - 1e-6,
+            view + ': AND bus hugs its frame ' + join.edge,
+          );
+        }
+        const vertical = layout.wires
+          .filter((w) => w.edge)
+          .flatMap((w) => {
+            const points = wireGeometry(w, layout).points || [];
+            return points.slice(1).flatMap((b, i) => {
+              const a = points[i];
+              return a.x === b.x && Math.abs(a.y - b.y) > 32
+                ? [
+                    {
+                      edge: w.edge,
+                      x: a.x,
+                      start: Math.min(a.y, b.y),
+                      end: Math.max(a.y, b.y),
+                    },
+                  ]
+                : [];
+            });
+          });
+        for (const [i, a] of vertical.entries())
+          for (const b of vertical.slice(i + 1))
+            if (
+              a.edge !== b.edge &&
+              Math.min(a.end, b.end) - Math.max(a.start, b.start) > 32
+            )
+              assert.ok(
+                Math.abs(a.x - b.x) >= 24 - 1e-6,
+                view + ': crowded parallel paths ' + a.edge + '/' + b.edge,
+              );
+      }
+});
+
+test('compact phone layouts preserve every condition and keep arrow labels off cards', () => {
+  for (const view of ['overview', ...content.routes.map((r) => r.id)]) {
+    const normal = treeLayout(content, view, true);
+    const compact = treeLayout(content, view, true, true);
+    assert.ok(compact.width < normal.width, view + ': not more compact');
+    assert.deepEqual(
+      compact.tiles.map((t) => t.key),
+      normal.tiles.map((t) => t.key),
+    );
+    assert.deepEqual(
+      compact.wires.map((w) => [w.edge, w.from, w.to]),
+      normal.wires.map((w) => [w.edge, w.from, w.to]),
+    );
+    for (const [i, card] of compact.tiles.entries()) {
+      for (const other of compact.tiles.slice(i + 1))
+        assert.ok(!overlaps(card, other), view + ': cards overlap');
+    }
+    for (const scale of [0.5, 0.85, 1]) {
+      for (const label of connectionLabels(compact, content, scale)) {
+        for (const card of compact.tiles)
+          assert.ok(
+            !overlaps(label, {
+              x: card.x * scale,
+              y: card.y * scale,
+              width: card.width * scale,
+              height: card.height * scale,
+            }),
+            view + ': label covers card',
+          );
+      }
+    }
+  }
+});
 
 test('connection controls remain on their own paths without covering text, AND/OR labels, or each other', () => {
   for (const view of ['overview', ...content.routes.map((r) => r.id)]) {
@@ -313,8 +422,8 @@ test('the paint surface stays bounded by the viewport even on the full map', () 
       assert.ok(paint.height * scale <= viewport.height + 360 + 400 * scale);
     }
   assert.ok(
-    layout.width < 6000 && layout.height < 6500,
-    'empty bands must not return',
+    layout.width < 6500 && layout.height < 6500,
+    'routing channels may add space, but large empty bands must not return',
   );
 });
 

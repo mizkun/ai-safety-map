@@ -51,6 +51,7 @@ import { currentReviewDay, reviewStatus } from '@/lib/freshness.mjs';
 import { messages, formatMessage, type Locale } from '@/lib/i18n';
 import { routeColors } from '@/lib/tree-layout';
 import { currentEdgeId } from '@/lib/legacy-links.mjs';
+import { glossaryIndex, glossarySegments } from '@/lib/glossary-text.mjs';
 import TreeMap from './tree-map';
 import MapTour from './map-tour';
 import { tourStops } from '@/lib/map-tour';
@@ -122,7 +123,7 @@ export default function MapClient({ site }: { site: SiteContent }) {
       });
     return () => controller.abort();
   }, [needsDetails, detailsReady, detailsUrl, locale, loadAttempt, loadError]);
-  const [expansionRequest, setExpansionRequest] = useState<{
+  const [focusRequest, setFocusRequest] = useState<{
     id: string;
     serial: number;
   } | null>(null);
@@ -216,6 +217,7 @@ export default function MapClient({ site }: { site: SiteContent }) {
   }
   function selectRoute(id: string) {
     setTour(null);
+    setFocusRequest(null);
     setRoutePicker(false);
     navigate(id);
   }
@@ -257,21 +259,12 @@ export default function MapClient({ site }: { site: SiteContent }) {
       </output>
     );
   }
-  const termIndex = useMemo(() => {
-    const aliases = new Map<string, string>();
-    for (const [id, t] of Object.entries(data.glossary))
-      for (const alias of t.aliases) aliases.set(alias.toLowerCase(), id);
-    const escaped = [...aliases.keys()]
-      .sort((a, b) => b.length - a.length)
-      .map((s) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'));
-    return {
-      aliases,
-      pattern: new RegExp('(' + escaped.join('|') + ')', 'gi'),
-    };
-  }, [data.glossary]);
+  const termIndex = useMemo(
+    () => glossaryIndex(data.glossary),
+    [data.glossary],
+  );
   function richText(text: string): ReactNode {
-    return text.split(termIndex.pattern).map((part, i) => {
-      const id = termIndex.aliases.get(part.toLowerCase());
+    return glossarySegments(text, termIndex).map(({ text: part, id }, i) => {
       return id ? (
         <ButtonBase
           component="button"
@@ -402,11 +395,11 @@ export default function MapClient({ site }: { site: SiteContent }) {
               endIcon={<ArrowRight size={17} />}
               onClick={() => {
                 setTour(null);
-                setExpansionRequest({ id: node.id, serial: Date.now() });
+                setFocusRequest({ id: node.id, serial: Date.now() });
                 navigate(view);
               }}
             >
-              {m.expandHere}
+              {m.showOnMap}
             </Button>
           )}
         </>
@@ -723,7 +716,11 @@ export default function MapClient({ site }: { site: SiteContent }) {
             {m.tour}
           </Button>
           <Tooltip title={m.about}>
-            <IconButton aria-label={m.about} onClick={() => navigate('about')}>
+            <IconButton
+              className="header-map-help"
+              aria-label={m.about}
+              onClick={() => navigate('about')}
+            >
               <Info size={18} />
             </IconButton>
           </Tooltip>
@@ -768,7 +765,7 @@ export default function MapClient({ site }: { site: SiteContent }) {
       )}
       <TreeMap
         key={view}
-        expansionRequest={expansionRequest}
+        focusRequest={focusRequest}
         tourFocus={
           stop
             ? {
