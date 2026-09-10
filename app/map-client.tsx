@@ -12,7 +12,6 @@ import {
   Accordion,
   AccordionDetails,
   AccordionSummary,
-  Badge,
   Box,
   Button,
   ButtonBase,
@@ -60,14 +59,7 @@ import type { Panel } from './reading-panels';
 const ReadingPanels = lazy(() => import('./reading-panels'));
 
 const REPO = 'https://github.com/mizkun/ai-safety-map';
-const panels: Panel[] = [
-  'about',
-  'glossary',
-  'news',
-  'history',
-  'freshness',
-  'sources',
-];
+const panels: Panel[] = ['about', 'glossary', 'history', 'sources'];
 const detailTabs = ['summary', 'evidence', 'more'] as const;
 type DetailTab = (typeof detailTabs)[number];
 
@@ -351,13 +343,6 @@ export default function MapClient({ site }: { site: SiteContent }) {
   const term = termId ? data.glossary[termId] : undefined;
   const graph = data.graphs[view];
   const nodeIndex = node ? (graph?.nodes.indexOf(node.id) ?? -1) : -1;
-  const dueCount = useMemo(
-    () =>
-      [...Object.values(data.nodes), ...Object.values(data.edges)].filter(
-        (n) => reviewStatus(n.review, today).state === 'due',
-      ).length,
-    [data, today],
-  );
   function parentView(parent: string) {
     return (
       Object.values(data.graphs).find((g) => g.nodes.includes(parent))?.id ||
@@ -753,9 +738,7 @@ export default function MapClient({ site }: { site: SiteContent }) {
               aria-expanded={Boolean(menuAnchor)}
               onClick={(e) => setMenuAnchor(e.currentTarget)}
             >
-              <Badge color="warning" variant="dot" invisible={!dueCount}>
-                <MenuIcon size={19} />
-              </Badge>
+              <MenuIcon size={19} />
             </IconButton>
           </Tooltip>
         </Paper>
@@ -846,9 +829,6 @@ export default function MapClient({ site }: { site: SiteContent }) {
         {panels.map((p) => (
           <MenuItem key={p} onClick={() => navigate(p)}>
             <span>{m[p]}</span>
-            {p === 'freshness' && dueCount > 0 && (
-              <Chip size="small" label={dueCount} className="menu-count" />
-            )}
           </MenuItem>
         ))}
         <MenuItem
@@ -928,11 +908,8 @@ export default function MapClient({ site }: { site: SiteContent }) {
                     panel={panel}
                     data={data}
                     m={m}
-                    today={today}
-                    richText={richText}
                     source={source}
                     onNode={openNode}
-                    onEdge={openEdge}
                     onTerm={setTermId}
                   />
                 </Suspense>

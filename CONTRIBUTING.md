@@ -13,7 +13,7 @@
 3. 経路や追加条件の修正は content/map.json、出典の追加は content/sources.json を編集します。既存IDはリンク先に使うので、単に名称を変えるためには変更しません。
 4. 意味が変わる修正には content/history.json の先頭に項目を追加します。「変更前」「変更後」「理由」「関係する項目」「出典」を記録してください。誤字だけの修正はGitの履歴のみでも構いません。
 5. 新たな資料で説明を点検した場合は、該当するノード・矢印のreview.checkedAtとcontent/map.jsonのasOfを更新し、出典の公表日と対象期間は混同せず記録します。関係のない項目の点検日を更新しません。点検した資料と判断はdocs/reviews/に残します。
-6. `npm run review:draft -- --id=YYYY-MM-DD-short-subject` で草案を作り、[点検手順](docs/logic-review.md)の6項目と一次情報への対応を記入します。関係する矢印・ストーリーも再点検します。
+6. `npm run review:draft -- --id=YYYY-MM-DD-short-subject` で草案を作り、[点検手順](docs/logic-review.md)の8項目（読者の前提・話題のつながりを含む）と一次情報への対応を記入します。関係する矢印・ストーリーも再点検します。
 7. `npm run check` と `npm run build` を実行し、PRで理由と検証結果を説明します。
 
 CIは参照切れ、AND／ORの矛盾、循環、未点検の本文の版、ビルドの失敗を検出します。研究の解釈の正しさを自動で判定するものではありません。内容のレビューを経てmainに取り込むと、サイトに反映されます。
