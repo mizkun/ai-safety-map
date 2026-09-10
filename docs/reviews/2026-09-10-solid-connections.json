@@ -1,0 +1,29 @@
+{
+  "id": "2026-09-10-solid-connections",
+  "date": "2026-09-10",
+  "reviewer": "Codex — solid connection style and unchanged relation semantics",
+  "decision": "reviewed",
+  "assessments": {
+    "connections": {
+      "mechanism": "マップの接続線を実線に統一する。線種で分類する表示をやめ、カードの形、AND・ORの記号、矢印から開く説明で条件を示す。",
+      "conditions": "接続のIDとrelation、requires、条件、出典は変更しない。循環の記号と抑制のマイナスは保持する。",
+      "counterexample": "実線でつながっていても、その接続が無条件の因果関係や必須の段階になったわけではない。通常の開発とRSIの分岐、ANDの共同条件、回復の可能性は引き続き区別する。",
+      "evidence": "変更箇所はSVGの線種と読み方のUI文言であり、科学的な本文や因果グラフは変更していない。既存の構造・AND・OR・翻訳の検証を再実行する。",
+      "limits": "線種をなくすため、促進する要因と必須条件の詳細は矢印の説明で確認する必要がある。この限界を読み方の日本語・英語にも明記する。",
+      "mitigation": "図の読み方から破線の説明を取り除き、矢印がすべて必須の段階ではないことを明記する。グラフの構造とクリックできる詳細を保つ。",
+      "primary": [
+        {
+          "source": "framework",
+          "locator": "§2.1 Recursive improvement; misalignment strategy",
+          "support": "既存の条件付きリスクの区別を保つための参照。線の見た目の根拠としてこの資料を使うものではなく、科学的説明は変更していない。"
+        }
+      ]
+    }
+  },
+  "entries": {
+    "ui:ja": {
+      "hash": "985e34a4145c2dff237e2ea7841b5b9150d30d37213c06bb95aca30a4359c0d2",
+      "assessment": "connections"
+    }
+  }
+}

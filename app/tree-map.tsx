@@ -387,7 +387,6 @@ export default function TreeMap({
                       d={g.trunk}
                       stroke={fork.color}
                       strokeOpacity={0.85}
-                      strokeDasharray="5 4"
                       vectorEffect="non-scaling-stroke"
                     />
                     {g.mergePath && (
@@ -395,7 +394,6 @@ export default function TreeMap({
                         d={g.mergePath}
                         stroke={fork.color}
                         strokeOpacity={0.85}
-                        strokeDasharray="5 4"
                         vectorEffect="non-scaling-stroke"
                       />
                     )}
@@ -405,7 +403,6 @@ export default function TreeMap({
                         d={branch.path}
                         stroke={branch.color}
                         strokeOpacity={0.85}
-                        strokeDasharray="5 4"
                         vectorEffect="non-scaling-stroke"
                       />
                     ))}
@@ -475,7 +472,6 @@ export default function TreeMap({
                         stroke={relation === 'mitigation' ? '#348773' : w.color}
                         strokeWidth={w.reference ? 1.5 : 2}
                         strokeOpacity={w.reference ? 0.8 : 1}
-                        strokeDasharray={w.dashed ? '6 4' : undefined}
                         strokeLinecap="round"
                         strokeLinejoin="round"
                         vectorEffect="non-scaling-stroke"
