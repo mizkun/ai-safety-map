@@ -98,7 +98,7 @@
   "about3": "Real incidents, limited experiments, authors’ arguments, and editorial reasoning are distinguished. Evidence types are not risk scores or completion percentages.",
   "about4": "Global catastrophe, loss of human control, and extinction are distinct outcomes. Catastrophe does not automatically imply extinction.",
   "about5": "Follow conditional futures from left to right. Horizontal position does not specify a date. Branches separate vertically; AND groups joint conditions and OR shows alternative mechanisms. Decomposition inside a frame is not chronological.",
-  "about6": "Research acceleration is a separate supporting pathway. Self-improvement and ASI are not prerequisites for every route.",
+  "about6": "Research acceleration and self-improvement are optional factors affecting pathways. Expand them inside loss of control or work automation. RSI and ASI are not prerequisites.",
   "about7": "Publication dates, study periods, and review dates are distinct. Lack of observation alone does not prove safeguards are working.",
   "about8": "This initial learning map uses a limited set of primary sources. Its decomposition is not an exhaustive set of necessary and sufficient conditions and will be revised with new evidence.",
   "feedback": "Self-improvement feedback",
@@ -147,9 +147,15 @@
   "tourFocus": "Select a step to zoom in",
   "tourRead": "Read about this step",
   "tourStartTitle": "From the present to possible futures",
-  "tourStartText": "Start with today’s growing use of AI and explore eight scenarios. Select Next to follow the explanation as the relevant parts of the map light up. Select a step’s name to zoom in on it.",
+  "tourStartText": "Starting from the present, explore seven scenarios and the related factor of research acceleration and self-improvement. Next highlights the relevant part of the map. Select an item to zoom into its location.",
   "tourOrderNote": "The reading order is not necessarily a timeline. AND groups contain joint conditions; branches show different possibilities.",
   "tourFinishTitle": "See the whole picture",
-  "tourFinishText": "The eight routes involve different conditions and outcomes. When you read the news, ask which condition has changed and what remains untested. Return to any route to expand its conditions and examine the evidence.",
-  "tourFinish": "Explore the map"
+  "tourFinishText": "The seven scenarios have different conditions and outcomes. Research acceleration and self-improvement are optional factors that can affect multiple pathways. When reading news, ask which condition has changed and what remains unverified.",
+  "tourFinish": "Explore the map",
+  "optionalResearch": "Research / RSI",
+  "optionalFactor": "Optional factor",
+  "optionalFactorHelp": "Research acceleration and recursive self-improvement (RSI) are optional factors. Expand or collapse them within this map.",
+  "factorPickerHelp": "Factors affecting multiple paths. Also available inside loss of control and work automation.",
+  "scenarioGroup": "Scenarios",
+  "tourFactorChapter": "Related factor: {current} / {total}"
 }

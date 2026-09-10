@@ -16,6 +16,11 @@ test('parallel alignment and capability cannot become a serial prerequisite', ()
   assert.match(change((d) => { d.edges['C2a-C2b'] = { ...d.edges['R1-R2'], id: 'C2a-C2b', from: 'C2a', to: 'C2b' }; }), /parallel siblings/);
 });
 test('self-improvement feedback must be marked explicitly', () => assert.match(change((d) => { d.edges['R3-R2'].relation = 'conditional'; }), /unmarked causal cycle/));
+test('research factors cannot silently become peer scenarios or mandatory control inputs', () => {
+  assert.match(change((d) => { delete d.routes.find((r) => r.id === 'acceleration').role; }), /optional factor/);
+  assert.match(change((d) => { d.routes.find((r) => r.id === 'acceleration').contexts = ['missing']; }), /valid scenario contexts/);
+  assert.match(change((d) => { d.edges['C3-L'].requires.push('R3'); }), /reviewed AND/);
+});
 test('financial crisis is not money obsolescence or extinction', () => {
   for (const to of ['P3', 'X']) assert.match(change((d) => { d.edges.shortcut = { ...d.edges['R1-R2'], id: 'shortcut', from: 'F3', to }; }), /financial crisis/);
 });

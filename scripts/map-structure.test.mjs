@@ -21,6 +21,8 @@ import {
 } from '../lib/map-gestures.mjs';
 import { mapWindow, intersectsWindow } from '../lib/map-window.mjs';
 import { tourStops, tourExpansion, tourCamera } from '../lib/map-tour.ts';
+import { relationLabels, overlaps } from '../lib/relation-labels.ts';
+import { cameraFrame, cameraAnimator } from '../lib/map-camera.mjs';
 const content = readCanonicalContent();
 
 test('the tour starts now and covers every audited story without inventing a causal chain', () => {
@@ -263,7 +265,13 @@ test('translations change prose while preserving the causal graph and references
 
 test('every fixed tree has valid connections, bounded tiles, and no overlapping cards', () => {
   for (const view of ['overview', ...Object.keys(content.graphs)])
-    for (const expanded of [false, true]) {
+    for (const expanded of [
+      false,
+      true,
+      ...(['control', 'work'].includes(view)
+        ? [{ routes: [], nodes: [], factors: ['acceleration'] }]
+        : []),
+    ]) {
       const layout = treeLayout(content, view, expanded);
       for (const tile of layout.tiles) {
         assert.ok(
@@ -369,7 +377,13 @@ test('independent routed edges do not share segments or pass through unrelated c
     return 0;
   }
   for (const view of ['overview', ...Object.keys(content.graphs)])
-    for (const expanded of [false, true]) {
+    for (const expanded of [
+      false,
+      true,
+      ...(['control', 'work'].includes(view)
+        ? [{ routes: [], nodes: [], factors: ['acceleration'] }]
+        : []),
+    ]) {
       const layout = treeLayout(content, view, expanded);
       const edges = layout.wires
         .filter((w) => w.edge)
@@ -426,30 +440,115 @@ test('the present is the single left-hand origin and causal progression runs to 
   }
 });
 
-test('summary research is a present-connected peer pathway, not a distant outcome', () => {
+test('research is optional context, never a peer scenario or a required control input', () => {
   const layout = treeLayout(content, 'overview', false);
   const routes = layout.tiles.filter((t) => t.graph);
   assert.deepEqual(
     new Set(routes.map((t) => t.graph)),
-    new Set(content.routes.map((r) => r.id)),
+    new Set(content.routes.filter((r) => r.role !== 'factor').map((r) => r.id)),
   );
   assert.equal(new Set(routes.map((t) => t.x)).size, 1);
-  const research = routes.find((t) => t.graph === 'acceleration');
-  const present = layout.tiles.find((t) => t.node === 'NOW');
-  assert.ok(
-    layout.forks.some(
-      (f) => f.from === present.key && f.targets.includes(research.key),
-    ),
+  assert.ok(!routes.some((t) => t.graph === 'acceleration'));
+  assert.ok(content.graphs.acceleration, 'Legacy URLs still resolve');
+  for (const view of ['control', 'work']) {
+    const closed = treeLayout(content, view, { routes: [], nodes: [] });
+    const opened = treeLayout(content, view, {
+      routes: [],
+      nodes: [],
+      factors: ['acceleration'],
+    });
+    assert.ok(!closed.tiles.some((t) => t.node === 'R3'));
+    assert.ok(opened.tiles.some((t) => t.node === 'R3'));
+    for (const tile of closed.tiles)
+      assert.ok(opened.tiles.some((t) => t.key === tile.key));
+    assert.ok(!opened.regions.some((r) => r.members?.includes('R3')));
+    assert.ok(
+      opened.wires.some(
+        (w) => w.edge === (view === 'control' ? 'R2-C2' : 'R2-W1'),
+      ),
+    );
+  }
+  assert.deepEqual(content.edges['C3-L'].requires, ['C1', 'C2', 'C3']);
+});
+
+test('AND and OR labels never cover cards or each other across zoom levels', () => {
+  for (const view of ['overview', ...Object.keys(content.graphs)]) {
+    const layout = treeLayout(content, view, true);
+    for (const scale of [0.25, 0.5, 0.85, 1, 1.6]) {
+      const labels = relationLabels(layout, scale);
+      for (const [i, label] of labels.entries()) {
+        for (const tile of layout.tiles)
+          assert.ok(
+            !overlaps(label, {
+              x: tile.x * scale,
+              y: tile.y * scale,
+              width: tile.width * scale,
+              height: tile.height * scale,
+            }),
+            view + ': label covers ' + tile.key,
+          );
+        for (const other of labels.slice(i + 1))
+          assert.ok(!overlaps(label, other));
+      }
+      if (scale >= 0.85)
+        assert.equal(
+          labels.length,
+          (layout.regions?.length || 0) +
+            (layout.forks?.filter((f) => f.alternative).length || 0),
+          view + ': readable relations must remain labeled',
+        );
+    }
+  }
+});
+
+test('camera animation preserves the zoom anchor and reaches the exact destination', () => {
+  for (const contentWidth of [400, 4000]) {
+    const width = 1000,
+      height = 600;
+    const from = { scale: 0.4, left: 0, top: 80 };
+    const point = { x: width / 2, y: height / 2 };
+    const anchor = zoomAnchor(point, from, from.scale, width, contentWidth);
+    const to = {
+      scale: 1.2,
+      ...scrollAtAnchor(anchor, point, 1.2, width, contentWidth),
+    };
+    let previous = from.scale;
+    for (let t = 0; t <= 1; t += 0.05) {
+      const frame = cameraFrame(from, to, t, width, height, contentWidth);
+      const actual = zoomAnchor(point, frame, frame.scale, width, contentWidth);
+      assert.ok(
+        Math.abs(actual.x - anchor.x) < 1e-6 &&
+          Math.abs(actual.y - anchor.y) < 1e-6,
+      );
+      assert.ok(frame.scale >= previous && frame.scale <= to.scale);
+      previous = frame.scale;
+    }
+    const end = cameraFrame(from, to, 1, width, height, contentWidth);
+    for (const key of ['scale', 'left', 'top'])
+      assert.ok(Math.abs(end[key] - to[key]) < 1e-6);
+  }
+});
+
+test('new camera requests and manual gestures cancel older animations; reduced motion is immediate', () => {
+  const queue = new Map();
+  let id = 0;
+  const animator = cameraAnimator(
+    (callback) => {
+      queue.set(++id, callback);
+      return id;
+    },
+    (id) => queue.delete(id),
   );
-  assert.ok(
-    layout.wires.some((w) => w.from === research.key && w.edge === 'R2-C2'),
-  );
-  assert.ok(
-    !layout.wires.some(
-      (w) =>
-        w.from === research.key && ['catastrophe', 'extinction'].includes(w.to),
-    ),
-  );
+  const draws = [];
+  animator.run(360, (t) => draws.push(['old', t]));
+  const stale = [...queue.values()][0];
+  animator.run(360, (t) => draws.push(['new', t]));
+  stale(0);
+  assert.equal(draws.length, 0);
+  animator.stop();
+  assert.equal(queue.size, 0);
+  animator.run(0, (t) => draws.push(['reduced', t]));
+  assert.deepEqual(draws, [['reduced', 1]]);
 });
 
 test('alignment, execution, and control are joint inputs rather than a causal chain', () => {

@@ -780,9 +780,17 @@ export default function MapClient({ site }: { site: SiteContent }) {
           </span>
           <output
             className="filter-status"
-            data-compact={'1 / ' + data.routes.length}
+            data-compact={
+              data.routes.find((r) => r.id === view)?.role === 'factor'
+                ? m.optionalFactor
+                : '1 / ' + data.routes.filter((r) => r.role !== 'factor').length
+            }
           >
-            {formatMessage(m.filteredRoutes, { total: data.routes.length })}
+            {data.routes.find((r) => r.id === view)?.role === 'factor'
+              ? m.optionalFactor
+              : formatMessage(m.filteredRoutes, {
+                  total: data.routes.filter((r) => r.role !== 'factor').length,
+                })}
           </output>
           {data.stories[view] && (
             <Button
@@ -883,20 +891,41 @@ export default function MapClient({ site }: { site: SiteContent }) {
         </DialogTitle>
         <DialogContent>
           <div className="route-picker">
-            {data.routes.map((r) => (
-              <ButtonBase
-                className="route-option"
-                key={r.id}
-                onClick={() => selectRoute(r.id)}
-              >
-                <span
-                  className="route-option-dot"
-                  style={{ background: routeColors[r.id] }}
-                />
-                <span>{r.shortTitle}</span>
-                <ArrowRight size={17} />
-              </ButtonBase>
-            ))}
+            {data.routes
+              .filter((r) => r.role !== 'factor')
+              .map((r) => (
+                <ButtonBase
+                  className="route-option"
+                  key={r.id}
+                  onClick={() => selectRoute(r.id)}
+                >
+                  <span
+                    className="route-option-dot"
+                    style={{ background: routeColors[r.id] }}
+                  />
+                  <span>{r.shortTitle}</span>
+                  <ArrowRight size={17} />
+                </ButtonBase>
+              ))}
+          </div>
+          <p className="route-picker-note">{m.factorPickerHelp}</p>
+          <div className="route-picker">
+            {data.routes
+              .filter((r) => r.role === 'factor')
+              .map((r) => (
+                <ButtonBase
+                  className="route-option"
+                  key={r.id}
+                  onClick={() => selectRoute(r.id)}
+                >
+                  <span
+                    className="route-option-dot"
+                    style={{ background: routeColors[r.id] }}
+                  />
+                  <span>{r.shortTitle}</span>
+                  <ArrowRight size={17} />
+                </ButtonBase>
+              ))}
           </div>
         </DialogContent>
       </Dialog>

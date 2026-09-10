@@ -1,0 +1,94 @@
+{
+  "id": "2026-09-10-optional-research-factor",
+  "date": "2026-09-10",
+  "reviewer": "Codex (editorial review; not independent expert review)",
+  "decision": "reviewed",
+  "assessments": {
+    "factor": {
+      "mechanism": "研究による開発改善と、その改善を次の開発へ使う循環を区別する。RSIから制御喪失へ直接必須の経路は作らない。",
+      "conditions": "R2からの能力への転用と安全性研究への転用は個別の条件付き接続を保持。制御喪失のANDはC1・C2・C3である。",
+      "counterexample": "自己改善がなくても人間の開発で能力は高まり得る。自己改善があっても安全性研究やアクセス制限が有効なら制御喪失を示さない。",
+      "evidence": "DeepMind原論文の§2.1の議論を新しい研究カードで示し、原論考と明記。OpenAIの研究寄与の観測を、持続的な自律RSIの実証へ読み替えていない。",
+      "limits": "影響の大きさや全シナリオへの必然性は断定せず、R3は仮説状態を保持する。ここでの所属は表示上の編集判断であり排他的な科学分類ではない。",
+      "mitigation": "安全性研究R4への分岐とR4からC1への対策の接続を保持する。更新時には発生確率と試験結果の改善率を混同しない。",
+      "primary": [
+        {
+          "source": "framework",
+          "locator": "§2.1 / Recursive improvement, April 2025 version",
+          "support": "AI研究の改善循環、能力開発が対策を追い越す懸念、安全性研究にもAIを使う選択肢を述べる。"
+        },
+        {
+          "source": "openai-rd",
+          "locator": "Sections 1–4 and methods",
+          "support": "AIによる研究工程への寄与の報告であり、無制約の自律的な改善循環の証明ではない。"
+        },
+        {
+          "source": "automated-alignment",
+          "locator": "原研究 §8.1–8.2",
+          "support": "測定可能な安全性課題の改善と、未測定の失敗・一般化の限界を分ける。"
+        }
+      ]
+    },
+    "presentation": {
+      "mechanism": "シナリオと任意の要因の分類を画面・ストーリー導入・履歴で一致させ、全体図から研究の独立した初期分岐だけを外す。",
+      "conditions": "研究は制御喪失と仕事の自動化で任意に開ける。7シナリオの条件と結果を保持し、旧URLと全項目への到達性を残す。",
+      "counterexample": "研究を閉じても元のシナリオは成立条件を失わない。画面で内側に置くことは、RSIが制御喪失専用という主張ではない。",
+      "evidence": "原論文の複数方向への作用に合わせ、分類は編集上の見せ方として明記した。観測済みという新たな主張は追加していない。",
+      "limits": "ラベル衝突とズームの検査は座標と操作の機械検査。実機の滑らかさや科学的な妥当性全体の証明とはしない。",
+      "mitigation": "AND入力・フィードバック・全項目の一意表示・接続を回帰検査し、版付き点検記録と日英の一致を確認する。",
+      "primary": [
+        {
+          "source": "framework",
+          "locator": "§2.1 / Recursive improvement",
+          "support": "能力と対策の両方に関わる要因としての説明を支える。画面の階層自体は編集判断。"
+        }
+      ]
+    }
+  },
+  "entries": {
+    "research:recursive-improvement": {
+      "hash": "835c5431505801912bfaef2feea467b92a1708d4cddbd91b0c8e25c31803cae4",
+      "assessment": "factor"
+    },
+    "node:R3": {
+      "hash": "9439581e738da1e791ec9d7eb9482bb176e26761ab99dd606f685f3416fce581",
+      "assessment": "factor"
+    },
+    "edge:R2-R3": {
+      "hash": "49dfbc258f38ae92d172c9a1e7935aa0f397da285f9a304d807bc401a0488ace",
+      "assessment": "factor"
+    },
+    "edge:R3-R2": {
+      "hash": "f39daece2a22ac185c2ecad735a571f6d20519a1929d44527ae7b30f7a113553",
+      "assessment": "factor"
+    },
+    "graph:acceleration": {
+      "hash": "d846ca0967aa9f9f233ffecf976ae24b7de765db2f91be06324eb497a5983775",
+      "assessment": "factor"
+    },
+    "route:acceleration": {
+      "hash": "483070cd611b74805305b2034cad6d671d434ebb007b223312340488fc5d6dfa",
+      "assessment": "presentation"
+    },
+    "news:research-contribution": {
+      "hash": "c8420717991b7b825cdfff12221b00ddc7ffc07a43d5f1c2aee8900256e2f346",
+      "assessment": "factor"
+    },
+    "story:acceleration": {
+      "hash": "1f4ad5a4fdc9dbb05056c9946c81b6a8652197644ebf0d3127d5b7219eaa69a8",
+      "assessment": "factor"
+    },
+    "history:changes": {
+      "hash": "278aef1e740238a790f34a5706c4265c92c7a154e094c35854bc9dfd703e4c74",
+      "assessment": "presentation"
+    },
+    "ui:ja": {
+      "hash": "38577f344331765cf6dbb08db1f83e4e22bc00c1fa38b77177d45b8bf5f6e481",
+      "assessment": "presentation"
+    },
+    "inventory:current": {
+      "hash": "5cf0cc573cfda706ab77fe25317d7b37b85d51462e90af4c43c38ab48f3be15f",
+      "assessment": "presentation"
+    }
+  }
+}

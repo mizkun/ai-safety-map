@@ -103,6 +103,8 @@ export type Graph = {
   parent?: string;
 };
 export type Route = {
+  role?: 'factor';
+  contexts?: string[];
   outcome?: string;
   id: string;
   number: string;

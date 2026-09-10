@@ -107,7 +107,11 @@ export type TreeLayout = {
     branch: ReturnType<typeof import('./axis-compaction.mjs').compactAxis>;
   };
 };
-export type TreeExpansion = { routes: string[]; nodes: string[] };
+export type TreeExpansion = {
+  routes: string[];
+  nodes: string[];
+  factors?: string[];
+};
 export function treeLayout(
   data: Content,
   view: string,
@@ -151,7 +155,6 @@ function verticalTreeLayout(
   if (view === 'overview') {
     tile('present', 'NOW', undefined, 646, 32, 248, 104, '#696596', 'present');
     const routeIds = [
-      'acceleration',
       'control',
       'misuse',
       'interaction',
@@ -237,18 +240,14 @@ function verticalTreeLayout(
     );
     wire('catastrophe', 'survival', '#a67685', 'H-T', true);
     wire('survival', 'extinction', '#a67685', 'T-X');
-    wire('acceleration', 'control', routeColors.acceleration, 'R2-C2', true);
-    wires.at(-1)!.viaY = 244;
-    wires.at(-1)!.trackOffset = 10;
-    wires.at(-1)!.toFraction = 0.75;
     // Separate entry points keep independent risk routes distinguishable at H.
     wires
       .filter((w) => w.to === 'catastrophe')
       .forEach((w, i) => {
         w.toFraction = (i + 1) / 5;
-        w.busY = 506 - 64 - ([1, 2].includes(i) ? 32 : 0);
+        w.busY = 506 - 64 - i * 16;
       });
-    return { width: 2020, height: 1000, tiles, wires, forks };
+    return { width: 1780, height: 1000, tiles, wires, forks };
   }
   const graph = data.graphs[view];
   if (!graph) return verticalTreeLayout(data, 'overview', false);

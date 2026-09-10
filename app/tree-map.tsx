@@ -47,6 +47,7 @@ import {
 import { reviewStatus } from '@/lib/freshness.mjs';
 import { useMapGestures } from './use-map-gestures';
 import { useMapWindow } from './use-map-window';
+import { useMapCamera } from './use-map-camera';
 import { intersectsWindow } from '@/lib/map-window.mjs';
 import {
   initialMapScale,
@@ -54,6 +55,7 @@ import {
   scrollAtAnchor,
 } from '@/lib/map-gestures.mjs';
 import { tourCamera, tourExpansion } from '@/lib/map-tour';
+import { relationLabels } from '@/lib/relation-labels';
 
 type Props = {
   data: Content;
@@ -85,10 +87,14 @@ export default function TreeMap({
 }: Props) {
   const [expanded, setExpanded] = useState(false);
   const [openNodes, setOpenNodes] = useState<string[]>([]);
+  const [showResearch, setShowResearch] = useState(false);
   const [scopeVersion, setScopeVersion] = useState(0);
-  const pendingAnchor = useRef<{ id: string; x: number; y: number } | null>(
-    null,
-  );
+  const pendingAnchor = useRef<{
+    id: string;
+    x: number;
+    y: number;
+    scale?: number;
+  } | null>(null);
   const cameraContext = useRef('');
   const [showGuide, setShowGuide] = useState(false);
   const isTour = Boolean(tourFocus);
@@ -108,9 +114,10 @@ export default function TreeMap({
             : {
                 routes: data.routes.map((r) => r.id),
                 nodes: isTour ? tourNodes : openNodes,
+                factors: !isTour && showResearch ? ['acceleration'] : [],
               }),
       ),
-    [data, view, expanded, openNodes, isTour, tourNodes],
+    [data, view, expanded, openNodes, isTour, tourNodes, showResearch],
   );
   const canExpand =
     view === 'overview' ||
@@ -119,10 +126,6 @@ export default function TreeMap({
     layout.tiles.flatMap((tile) => (tile.node ? [tile.node] : [])),
   ).size;
   const viewport = useRef<HTMLDivElement>(null);
-  const [manualZoom, setManualZoom] = useState<{
-    context: string;
-    value: number;
-  } | null>(null);
   const [size, setSize] = useState({ width: 1200, height: 900 });
   useEffect(() => {
     const element = viewport.current;
@@ -160,6 +163,11 @@ export default function TreeMap({
     : null;
   const readableScale =
     tourDefaultCamera?.scale ?? initialMapScale(size, layout);
+  const {
+    scale,
+    move: moveCamera,
+    gestureScale,
+  } = useMapCamera(viewport, readableScale, layout.width);
   const scaleContext =
     view +
     ':' +
@@ -169,8 +177,6 @@ export default function TreeMap({
     ':' +
     size.height +
     (tourFocus ? ':tour:' + tourFocus.key : '');
-  const scale =
-    manualZoom?.context === scaleContext ? manualZoom.value : readableScale;
   useLayoutEffect(() => {
     const el = viewport.current;
     if (!el) return;
@@ -178,32 +184,51 @@ export default function TreeMap({
     if (pending) {
       const tile = layout.tiles.find((t) => t.node === pending.id);
       pendingAnchor.current = null;
-      if (tile)
-        el.scrollTo({
-          left:
-            tile.x * scale +
-            Math.max(0, (size.width - layout.width * scale) / 2) -
-            pending.x,
-          top: tile.y * scale - pending.y,
-        });
+      if (tile) {
+        const next = pending.scale ?? scale;
+        moveCamera(
+          {
+            scale: next,
+            left:
+              tile.x * next +
+              Math.max(0, (size.width - layout.width * next) / 2) -
+              pending.x,
+            top: tile.y * next - pending.y,
+          },
+          next !== scale,
+        );
+      }
     } else if (cameraContext.current !== scaleContext && tourDefaultCamera) {
-      el.scrollTo(tourDefaultCamera);
+      moveCamera(tourDefaultCamera, !!cameraContext.current);
     } else if (cameraContext.current !== scaleContext) {
       const anchor =
         layout.tiles.find((t) => t.node === 'NOW') || layout.tiles[0];
-      el.scrollTo({
-        left: 0,
-        top:
-          layout.height * scale <= size.height
-            ? 0
-            : Math.max(
-                0,
-                (anchor.y + anchor.height / 2) * scale - size.height / 2,
-              ),
-      });
+      moveCamera(
+        {
+          scale: readableScale,
+          left: 0,
+          top:
+            layout.height * readableScale <= size.height
+              ? 0
+              : Math.max(
+                  0,
+                  (anchor.y + anchor.height / 2) * readableScale -
+                    size.height / 2,
+                ),
+        },
+        !!cameraContext.current,
+      );
     }
     cameraContext.current = scaleContext;
-  }, [layout, scale, scaleContext, size, tourDefaultCamera]);
+  }, [
+    layout,
+    scale,
+    scaleContext,
+    size,
+    tourDefaultCamera,
+    readableScale,
+    moveCamera,
+  ]);
   function expandNode(id: string, forceOpen = false) {
     const tile = layout.tiles.find((t) => t.node === id),
       el = viewport.current;
@@ -213,8 +238,12 @@ export default function TreeMap({
       : null;
     if (!graph || !['all', 'any'].includes(graph.mode)) return;
     if (!tile) {
-      pendingAnchor.current = { id, x: 32, y: 32 };
-      setManualZoom({ context: scaleContext, value: Math.max(0.85, scale) });
+      pendingAnchor.current = {
+        id,
+        x: 32,
+        y: 32,
+        scale: Math.max(0.85, scale),
+      };
       setOpenNodes([
         ...new Set([...openNodes, ...tourExpansion(data, [id]), id]),
       ]);
@@ -226,7 +255,8 @@ export default function TreeMap({
     );
     if (forceOpen && allVisible) {
       const first = layout.tiles.find((t) => t.node === graph.nodes[0])!;
-      el.scrollTo({
+      moveCamera({
+        scale,
         left: Math.max(0, first.x * scale - 32),
         top: Math.max(0, first.y * scale - 48),
       });
@@ -240,7 +270,6 @@ export default function TreeMap({
         el.scrollLeft,
       y: tile.y * scale - el.scrollTop,
     };
-    setManualZoom({ context: scaleContext, value: scale });
     const current = expanded
       ? Object.values(data.nodes)
           .filter((n) => n.subgraph)
@@ -251,6 +280,7 @@ export default function TreeMap({
         ? current.filter((key) => key !== id)
         : [...new Set([...current, id])],
     );
+    if (expanded) setShowResearch(true);
     setExpanded(false);
   }
   const handledRequest = useRef<number | null>(null);
@@ -274,21 +304,17 @@ export default function TreeMap({
       size.width,
       layout.width,
     );
-    setManualZoom({ context: scaleContext, value: next });
-    requestAnimationFrame(() => {
-      if (el) {
-        el.scrollTo(
-          next === fitScale
-            ? { left: 0, top: 0 }
-            : scrollAtAnchor(anchor, point, next, size.width, layout.width),
-        );
-      }
+    moveCamera({
+      scale: next,
+      ...(next === fitScale
+        ? { left: 0, top: 0 }
+        : scrollAtAnchor(anchor, point, next, size.width, layout.width)),
     });
   }
   useMapGestures(viewport, {
     scale,
     contentWidth: layout.width,
-    onScale: (value) => setManualZoom({ context: scaleContext, value }),
+    onScale: gestureScale,
   });
   const visible = useMapWindow(viewport, scale, layout.width, layout.height);
   const paint = visible || { x: 0, y: 0, width: 0, height: 0 };
@@ -498,61 +524,44 @@ export default function TreeMap({
                   );
                 })}
             </svg>
-            {layout.forks
-              ?.filter((fork) => fork.alternative)
-              .map((fork) => {
-                const from = layout.tiles.find(
-                  (tile) => tile.key === fork.from,
-                )!;
-                const g = geometry.forks.get(fork.key)!;
-                const targetY = from.y + from.height / 2;
-                const point = g.junctions.reduce((best, p) =>
-                  Math.abs(p.y - targetY) < Math.abs(best.y - targetY)
-                    ? p
-                    : best,
-                );
-                if (
-                  !intersectsWindow(
-                    {
-                      x: point.x - 80,
-                      y: point.y - 20,
-                      width: 160,
-                      height: 40,
-                    },
-                    visible,
-                  )
-                )
-                  return null;
-                return (
+            {relationLabels(layout, scale)
+              .filter((label) =>
+                intersectsWindow(
+                  {
+                    x: label.x / scale,
+                    y: label.y / scale,
+                    width: label.width / scale,
+                    height: label.height / scale,
+                  },
+                  visible,
+                ),
+              )
+              .map((label) => (
+                <Tooltip
+                  key={label.key}
+                  title={label.mode === 'all' ? m.jointHelp : m.alternativeHelp}
+                >
                   <ButtonBase
-                    key={fork.key}
-                    className="fork-label"
-                    style={{ ...screen(point.x, point.y), color: fork.color }}
-                    onClick={() => setShowGuide(true)}
-                    aria-label={'OR · ' + m.alternative}
+                    className="relation-label"
+                    style={{
+                      ...screen(label.x / scale, label.y / scale),
+                      width: label.width,
+                      height: label.height,
+                      color: label.color,
+                    }}
+                    onClick={() =>
+                      label.edge ? onEdge(label.edge) : setShowGuide(true)
+                    }
+                    aria-label={
+                      label.mode === 'all'
+                        ? 'AND · ' + m.joint
+                        : 'OR · ' + m.alternative
+                    }
                   >
-                    <b>OR</b>
-                    <span>{m.alternative}</span>
+                    {label.mode === 'all' ? 'AND' : 'OR'}
                   </ButtonBase>
-                );
-              })}
-            {visibleRegions?.map((region) => (
-              <ButtonBase
-                key={region.key}
-                className="region-relation"
-                style={{
-                  ...screen(region.labelX ?? region.x + 12, region.labelY),
-                  color: region.color,
-                }}
-                onClick={() =>
-                  region.edge ? onEdge(region.edge) : setShowGuide(true)
-                }
-                aria-label={'AND · ' + m.joint}
-              >
-                <b>AND</b>
-                <span>{m.joint}</span>
-              </ButtonBase>
-            ))}
+                </Tooltip>
+              ))}
             {visibleJoins?.map((join) => (
               <Tooltip key={join.edge} title={data.edges[join.edge].label}>
                 <IconButton
@@ -672,16 +681,18 @@ export default function TreeMap({
                     onClick={() => {
                       if (scale < 0.7 && !tile.graph) {
                         const next = Math.max(0.85, readableScale);
-                        setManualZoom({ context: scaleContext, value: next });
-                        requestAnimationFrame(() =>
-                          viewport.current?.scrollTo({
-                            left:
-                              (tile.x + tile.width / 2) * next - size.width / 2,
-                            top:
-                              (tile.y + tile.height / 2) * next -
-                              size.height / 2,
-                          }),
-                        );
+                        moveCamera({
+                          scale: next,
+                          left:
+                            (tile.x + tile.width / 2) * next +
+                            Math.max(
+                              0,
+                              (size.width - layout.width * next) / 2,
+                            ) -
+                            size.width / 2,
+                          top:
+                            (tile.y + tile.height / 2) * next - size.height / 2,
+                        });
                       } else if (tile.graph) onRoute(tile.graph);
                       else onNode(tile.node!);
                     }}
@@ -699,6 +710,8 @@ export default function TreeMap({
                         ) : (
                           data.asOf
                         )
+                      ) : tile.node === 'R1' && view !== 'acceleration' ? (
+                        m.optionalFactor
                       ) : (
                         route?.number || node?.id
                       )}
@@ -754,19 +767,21 @@ export default function TreeMap({
         <nav className="mobile-branch-picker" aria-label={m.routes}>
           <div className="mobile-present">{m.present}</div>
           <div className="mobile-branches">
-            {data.routes.map((route) => (
-              <ButtonBase
-                key={route.id}
-                className="mobile-branch"
-                onClick={() => onRoute(route.id)}
-                style={
-                  { '--branch-color': routeColors[route.id] } as CSSProperties
-                }
-              >
-                <strong>{route.shortTitle}</strong>
-                <span>{route.preview.join(' · ')}</span>
-              </ButtonBase>
-            ))}
+            {data.routes
+              .filter((r) => r.role !== 'factor')
+              .map((route) => (
+                <ButtonBase
+                  key={route.id}
+                  className="mobile-branch"
+                  onClick={() => onRoute(route.id)}
+                  style={
+                    { '--branch-color': routeColors[route.id] } as CSSProperties
+                  }
+                >
+                  <strong>{route.shortTitle}</strong>
+                  <span>{route.preview.join(' · ')}</span>
+                </ButtonBase>
+              ))}
           </div>
         </nav>
       )}
@@ -779,6 +794,7 @@ export default function TreeMap({
             onChange={(_, value: string | null) => {
               if (value) {
                 setExpanded(value === 'all');
+                setShowResearch(false);
                 setOpenNodes([]);
                 setScopeVersion((n) => n + 1);
               }
@@ -791,6 +807,38 @@ export default function TreeMap({
           <span className="scope-count">
             {nodeCount} {m.elements}
           </span>
+          {data.routes
+            .find((r) => r.id === 'acceleration')
+            ?.contexts?.includes(view) && (
+            <Tooltip title={m.optionalFactorHelp}>
+              <Button
+                className="factor-toggle"
+                size="small"
+                aria-expanded={expanded || showResearch}
+                startIcon={
+                  expanded || showResearch ? (
+                    <Minus size={14} />
+                  ) : (
+                    <Plus size={14} />
+                  )
+                }
+                onClick={() => {
+                  if (expanded) {
+                    setOpenNodes(
+                      Object.values(data.nodes)
+                        .filter((n) => n.subgraph)
+                        .map((n) => n.id),
+                    );
+                    setExpanded(false);
+                    setShowResearch(false);
+                  } else setShowResearch(!showResearch);
+                  setScopeVersion((n) => n + 1);
+                }}
+              >
+                {m.optionalResearch}
+              </Button>
+            </Tooltip>
+          )}
           <Tooltip title={m.parallelGuide}>
             <IconButton
               aria-label={m.parallelGuide}

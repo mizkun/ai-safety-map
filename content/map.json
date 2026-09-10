@@ -55,11 +55,16 @@
     {
       "id": "acceleration",
       "number": "↻",
-      "shortTitle": "自己改善・ASI",
+      "shortTitle": "研究の加速・自己改善",
       "preview": [
         "研究の一部",
         "開発全体",
         "次の開発への循環"
+      ],
+      "role": "factor",
+      "contexts": [
+        "control",
+        "work"
       ]
     },
     {
@@ -158,7 +163,7 @@
     "acceleration": {
       "id": "acceleration",
       "title": "AIが、次のAIの開発を進める",
-      "description": "研究の一部の改善、開発全体の改善、自己改善の循環を区別します。",
+      "description": "制御喪失や仕事の自動化に影響し得る、任意の要因です。研究の一部、開発全体、自己改善の循環を区別します。どの経路にも必須という意味ではありません。",
       "mode": "network",
       "nodes": [
         "R1",

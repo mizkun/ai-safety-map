@@ -108,20 +108,36 @@ export default function MapTour({
           }
         >
           <option value="start">{m.present}</option>
-          {data.routes.map((r) => (
-            <option key={r.id} value={r.id}>
-              {r.number} · {r.shortTitle}
-            </option>
-          ))}
+          <optgroup label={m.scenarioGroup}>
+            {data.routes
+              .filter((r) => r.role !== 'factor')
+              .map((r) => (
+                <option key={r.id} value={r.id}>
+                  {r.number} · {r.shortTitle}
+                </option>
+              ))}
+          </optgroup>
+          <optgroup label={m.optionalFactor}>
+            {data.routes
+              .filter((r) => r.role === 'factor')
+              .map((r) => (
+                <option key={r.id} value={r.id}>
+                  {r.shortTitle}
+                </option>
+              ))}
+          </optgroup>
           <option value="finish">{m.tourFinishTitle}</option>
         </select>
         <div aria-live="polite" aria-atomic="true">
           {route && (
             <p className="tour-chapter-count">
-              {formatMessage(m.tourChapter, {
-                current: stop.chapter + 1,
-                total: data.stories[stop.view].chapters.length,
-              })}
+              {formatMessage(
+                route.role === 'factor' ? m.tourFactorChapter : m.tourChapter,
+                {
+                  current: stop.chapter + 1,
+                  total: data.stories[stop.view].chapters.length,
+                },
+              )}
             </p>
           )}
           <h2>{title}</h2>

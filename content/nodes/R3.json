@@ -4,7 +4,8 @@
   "explanation": "R3.md",
   "sources": [
     "openai-rd",
-    "gemini-safety"
+    "gemini-safety",
+    "framework"
   ],
   "questions": [],
   "related": [
@@ -32,7 +33,8 @@
   "status": "hypothesis",
   "research": [
     "rd-use",
-    "gemini-safety"
+    "gemini-safety",
+    "recursive-improvement"
   ],
   "shortTitle": "再帰的自己改善"
 }
