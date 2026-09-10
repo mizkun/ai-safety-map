@@ -182,5 +182,14 @@
   "phoneCatastrophe": "Global-scale\ncatastrophe",
   "phoneAgency": "Loss of\nhuman agency",
   "phoneSurvival": "Survival and recovery\nbecome impossible",
-  "phoneRecovery": "Survival and recovery\nremain possible"
+  "phoneRecovery": "Survival and recovery\nremain possible",
+  "welcomeTitle": "Welcome to AI Safety Map",
+  "welcomeMapTitle": "Explore possible futures",
+  "welcomeMapText": "Follow the conditions and outcomes across seven scenarios.",
+  "welcomeTourTitle": "Take a guided tour",
+  "welcomeTourText": "Read one step at a time, alongside the map.",
+  "welcomeReadTitle": "Explore evidence and terms",
+  "welcomeReadText": "Open a card to find research and explanations of unfamiliar terms.",
+  "welcomeBrowse": "Explore the map",
+  "welcomeStart": "Start the tour"
 }

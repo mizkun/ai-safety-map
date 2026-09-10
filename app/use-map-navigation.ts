@@ -10,6 +10,7 @@ import type { SiteContent } from '@/lib/content-types';
 import {
   initialNavigation,
   readNavigation,
+  shouldWelcome,
   navigationHash,
   mapContext,
   rootEntry,
@@ -103,6 +104,7 @@ export function useMapNavigation(site: SiteContent) {
     state: NavigationState;
     entry: NavigationEntry;
   } | null>(null);
+  const welcomed = useRef(false);
   const snapshots = useRef(new Map<string, PresentationSnapshot>());
   const pending = useRef<ReturnType<typeof setTimeout> | null>(null);
   const save = useCallback(() => {
@@ -129,6 +131,23 @@ export function useMapNavigation(site: SiteContent) {
   useEffect(() => {
     const read = () => {
       const next = readNavigation(location.hash, site, navigator.language);
+      if (!current.current) {
+        let seen = welcomed.current;
+        try {
+          seen ||= localStorage.getItem('ai-safety-map-welcome') === '1';
+        } catch {
+          /* Storage may be unavailable in private mode. */
+        }
+        if (shouldWelcome(next, seen)) next.welcome = true;
+        if (next.welcome) {
+          welcomed.current = true;
+          try {
+            localStorage.setItem('ai-safety-map-welcome', '1');
+          } catch {
+            /* Keep the session usable without storage. */
+          }
+        }
+      }
       const hash = navigationHash(next);
       const stored = storedEntry(hash);
       if (

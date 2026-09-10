@@ -182,5 +182,14 @@
   "phoneCatastrophe": "世界規模の\n大災害",
   "phoneAgency": "人類の\n主導権の喪失",
   "phoneSurvival": "生存と回復の\n可能性も失う",
-  "phoneRecovery": "生存・回復の\n道が残る"
+  "phoneRecovery": "生存・回復の\n道が残る",
+  "welcomeTitle": "AI Safety Map へようこそ",
+  "welcomeMapTitle": "未来の分岐をたどる",
+  "welcomeMapText": "7つのシナリオを、条件や結果のつながりから見られます。",
+  "welcomeTourTitle": "ツアーで順に読む",
+  "welcomeTourText": "マップを見ながら、一つずつ説明を読めます。",
+  "welcomeReadTitle": "根拠や用語を調べる",
+  "welcomeReadText": "気になるカードから、研究や用語の説明へ進めます。",
+  "welcomeBrowse": "マップを見る",
+  "welcomeStart": "ツアーをはじめる"
 }

@@ -1,0 +1,32 @@
+{
+  "id": "2026-09-10-welcome",
+  "version": 2,
+  "date": "2026-09-10",
+  "reviewer": "Codex — bilingual onboarding copy and UI review",
+  "decision": "reviewed",
+  "assessments": {
+    "draft": {
+      "mechanism": "初回の紹介を、マップ、ツアー、根拠・用語という既存の三つの機能に限定した。新しいAIの能力や因果関係は主張しない。",
+      "conditions": "七つのシナリオは現行routesの要素数と一致し、条件や結果のつながりという表現は図の分岐・AND・ORを踏まえる。",
+      "counterexample": "ツアーで読む順序が出来事の確定した発生順序であるとは書かない。研究を開く機能を、シナリオ全体が実証済みだという説明にはしていない。",
+      "evidence": "日本語と英語で実装済みの機能名・操作先を照合し、マップ・ツアー・カードの既存動作と一致することを確認した。科学的な追加主張はない。",
+      "limits": "この案内はサービスの操作範囲の説明であり、未来の予測精度やシナリオの網羅性、学習効果の保証ではない。",
+      "mitigation": "初回の全体図だけで表示し、共有されたツアー・詳細・用語のURLを遮らない。閉じると閲覧でき、ツアー開始後の戻るで再び案内を挟まない。",
+      "readerContext": "マップを見る前の読者に、たどる・順に読む・根拠を調べるという三つの行動を短く示す。略語やノード番号を必要としない。",
+      "whyHere": "初めて開く人がサービスでできることを理解し、マップかツアーを選べるようにする。ユーザーの依頼に沿った初回導線であり、新しい内容の章は追加しない。",
+      "primary": [
+        {
+          "source": "framework",
+          "locator": "Existing map framework source; implementation: routes, MapTour, detail and glossary panels",
+          "support": "The existing scenario framework supplies the context for conditional paths. The count of seven and the available controls were checked against this site, not attributed to a research finding."
+        }
+      ]
+    }
+  },
+  "entries": {
+    "ui:ja": {
+      "hash": "e62e9bce6076cb8ac5d04647f12e69a62e781ec075fd031e776320d07023fee5",
+      "assessment": "draft"
+    }
+  }
+}

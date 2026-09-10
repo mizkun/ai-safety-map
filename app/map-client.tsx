@@ -13,6 +13,7 @@ import {
   AccordionDetails,
   AccordionSummary,
   Box,
+  DialogActions,
   Button,
   ButtonBase,
   Chip,
@@ -39,6 +40,7 @@ import {
   ArrowUpRight,
   ChevronDown,
   Clock3,
+  BookOpen,
   GitBranch,
   Layers3,
   Menu as MenuIcon,
@@ -197,6 +199,7 @@ export default function MapClient({ site }: { site: SiteContent }) {
       panel: null,
       term: null,
       guide: false,
+      welcome: false,
     });
   }
   function startTour() {
@@ -893,6 +896,64 @@ export default function MapClient({ site }: { site: SiteContent }) {
           <ArrowUpRight size={13} />
         </MenuItem>
       </Menu>
+      <Dialog
+        open={navigation.state.welcome}
+        onClose={() => navigation.close('welcome')}
+        fullWidth
+        maxWidth="xs"
+        aria-labelledby="welcome-title"
+        slotProps={{ paper: { className: 'welcome-dialog' } }}
+      >
+        <DialogTitle className="modal-heading" id="welcome-title">
+          <span>{m.welcomeTitle}</span>
+          <IconButton
+            aria-label={m.close}
+            onClick={() => navigation.close('welcome')}
+          >
+            <X size={20} />
+          </IconButton>
+        </DialogTitle>
+        <DialogContent>
+          {[
+            {
+              Icon: Waypoints,
+              title: m.welcomeMapTitle,
+              text: m.welcomeMapText,
+            },
+            { Icon: Play, title: m.welcomeTourTitle, text: m.welcomeTourText },
+            {
+              Icon: BookOpen,
+              title: m.welcomeReadTitle,
+              text: m.welcomeReadText,
+            },
+          ].map(({ Icon, title, text }) => {
+            return (
+              <div className="welcome-feature" key={title as string}>
+                <Icon size={22} />
+                <div>
+                  <h3>{title}</h3>
+                  <p>{text}</p>
+                </div>
+              </div>
+            );
+          })}
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={() => navigation.close('welcome')}>
+            {m.welcomeBrowse}
+          </Button>
+          <Button
+            variant="contained"
+            startIcon={<Play size={16} />}
+            onClick={() => {
+              navigation.go({ welcome: false }, true);
+              startTour();
+            }}
+          >
+            {m.welcomeStart}
+          </Button>
+        </DialogActions>
+      </Dialog>
       <Dialog
         open={showGuide}
         onClose={() => navigation.close('guide')}

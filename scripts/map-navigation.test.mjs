@@ -6,6 +6,7 @@ import { tourStops } from '../lib/map-tour.ts';
 import {
   initialNavigation,
   readNavigation,
+  shouldWelcome,
   navigationHash,
   mapContext,
   rootEntry,
@@ -15,6 +16,25 @@ import {
 } from '../lib/map-navigation.ts';
 const site = readSiteContent();
 const shell = contentPackage(site).shell;
+
+test('first-visit onboarding leaves shared reading links and returning visitors alone', () => {
+  const overview = readNavigation('#map=overview', site);
+  assert.ok(shouldWelcome(overview, false));
+  assert.ok(!shouldWelcome(overview, true));
+  for (const hash of [
+    '#map=control',
+    '#map=overview&scope=all',
+    '#map=overview&node=R5',
+    '#map=overview&tour=start',
+    '#map=overview&term=lean',
+    '#map=overview&panel=glossary',
+    '#map=overview&guide=1',
+  ])
+    assert.ok(!shouldWelcome(readNavigation(hash, site), false), hash);
+  const welcome = { ...overview, welcome: true };
+  assert.deepEqual(readNavigation(navigationHash(welcome), site), welcome);
+  assert.equal(closeNavigation(welcome, 'welcome').welcome, false);
+});
 
 test('the browser language chooses the initial edition unless the URL specifies one', () => {
   for (const language of ['ja', 'ja-JP', 'JA-jp'])

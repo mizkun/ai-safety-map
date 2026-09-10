@@ -20,6 +20,7 @@ export type NavigationState = {
   panel: LibraryPanel | null;
   term: string | null;
   guide: boolean;
+  welcome: boolean;
   search: string;
   research: string[] | null;
   questions: string[];
@@ -33,6 +34,7 @@ export const initialNavigation = (): NavigationState => ({
   panel: null,
   term: null,
   guide: false,
+  welcome: false,
   search: '',
   research: null,
   questions: [],
@@ -56,6 +58,7 @@ export function navigationHash(state: NavigationState) {
   }
   if (state.term) q.set('term', state.term);
   if (state.guide) q.set('guide', '1');
+  if (state.welcome) q.set('welcome', '1');
   return '#' + q.toString();
 }
 
@@ -135,7 +138,21 @@ export function readNavigation(
   const term = q.get('term');
   next.term = term && Object.hasOwn(data.glossary, term) ? term : null;
   next.guide = q.get('guide') === '1';
+  next.welcome = q.get('welcome') === '1';
   return next;
+}
+
+export function shouldWelcome(state: NavigationState, seen: boolean) {
+  return (
+    !seen &&
+    state.view === 'overview' &&
+    !state.expanded &&
+    !state.tour &&
+    !state.detail &&
+    !state.panel &&
+    !state.term &&
+    !state.guide
+  );
 }
 
 export function mapContext(state: NavigationState) {
@@ -159,7 +176,7 @@ export type PresentationSnapshot = {
   camera?: MapCameraSnapshot;
   scrolls: Record<string, { key: string; top: number; left: number }>;
 };
-export type Overlay = 'detail' | 'term' | 'panel' | 'guide';
+export type Overlay = 'detail' | 'term' | 'panel' | 'guide' | 'welcome';
 type Pointer = { id: string; position: number; chain: string };
 export type NavigationEntry = Pointer & {
   version: 1;
@@ -197,7 +214,13 @@ export function nextEntry(
     chain: previous.chain,
   };
   const close = { ...previous.close };
-  for (const layer of ['detail', 'term', 'panel', 'guide'] as const) {
+  for (const layer of [
+    'detail',
+    'term',
+    'panel',
+    'guide',
+    'welcome',
+  ] as const) {
     const before = overlayValue(from, layer),
       after = overlayValue(to, layer);
     if (!after) delete close[layer];
@@ -232,5 +255,8 @@ export function closeNavigation(
   if (layer === 'detail')
     return { ...state, detail: null, research: null, questions: [] };
   if (layer === 'panel') return { ...state, panel: null, search: '' };
-  return { ...state, [layer]: layer === 'guide' ? false : null };
+  return {
+    ...state,
+    [layer]: layer === 'guide' || layer === 'welcome' ? false : null,
+  };
 }
