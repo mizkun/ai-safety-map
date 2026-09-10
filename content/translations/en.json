@@ -1,6 +1,6 @@
 {
   "locale": "en",
-  "sourceHash": "88ada5711c195b480e31d1178fe9c510555472d9239a92c234542fd84c4204bb",
+  "sourceHash": "6d0f3b8d94a236b08c8f42d2d3b7129f215cf028674b1b8daa464a8d1eab950d",
   "reference": {
     "edges.A1-A2.basis": "編集上の条件付き仮説。下の一次資料は、個別の能力・行動・仕組みを支持します。矢印全体の成立を実証したものではありません。",
     "edges.A1-A2.conditions.0": "共通の失敗が起きる",
@@ -495,7 +495,6 @@
     "glossary.financial-stability.name": "金融安定・システミックリスク",
     "glossary.formalization.aliases.0": "証明の形式化",
     "glossary.formalization.aliases.1": "形式化",
-    "glossary.formalization.aliases.2": "Lean",
     "glossary.formalization.definition": "人間が読む数学の証明を、コンピューターが論理の一歩ずつを検査できる形で書き直すことです。Leanは、そのための言語・証明支援システムの一つです。",
     "glossary.formalization.limit": "既存の証明を形式化することと、未知の定理を発見することは別です。検査する定理の書き方や前提も重要で、この成功だけで現実のAIシステム全体の安全性を保証できるわけではありません。",
     "glossary.formalization.name": "証明の形式化",
@@ -520,6 +519,10 @@
     "glossary.horizon.definition": "METRの評価では、人間の専門家が取り組むと何時間かかる課題を、AIが一定の成功率で完了できるかを示す尺度です。",
     "glossary.horizon.limit": "AIの実行時間そのものではありません。対象の課題と成功率が変われば意味も変わり、現実の仕事全般への保証にはなりません。",
     "glossary.horizon.name": "タスク完了の時間地平",
+    "glossary.lean.aliases.0": "Lean",
+    "glossary.lean.definition": "数学の定義や定理、証明を書き、論理の各段階をコンピューターで検査するための言語・証明支援システムです。証明の形式化に使われます。",
+    "glossary.lean.limit": "Leanが確かめるのは、書かれた前提のもとで証明が成り立つかです。その前提が現実のAIシステムを十分に表しているかは、別に確認する必要があります。",
+    "glossary.lean.name": "Lean",
     "glossary.liquidity.aliases.0": "流動性",
     "glossary.liquidity.definition": "必要なときに現金を用意したり、大きく価格を下げずに売買したりできる度合いです。金融では資金を調達する流動性と、市場で売買する流動性を分けます。",
     "glossary.liquidity.limit": "資産の価値があることと、すぐに支払いに使えることは異なります。",
@@ -1982,6 +1985,9 @@
     "sources.incident.period": "主な分析対象：2026年7月7〜13日",
     "sources.incident.primary": "当該研究・評価・出来事を実施または調査した組織による一次報告",
     "sources.incident.title": "METR — Hugging Face関連インシデントの独立調査",
+    "sources.lean.period": "言語と証明支援システムの概要",
+    "sources.lean.primary": "Lean開発元による公式の言語・機能の説明",
+    "sources.lean.title": "Lean — 公式サイト",
     "sources.monetary-trust.period": "中央銀行・銀行預金・通貨への信用に関する制度説明",
     "sources.monetary-trust.primary": "通貨制度の運営主体による原講演。政策上の主張を含む",
     "sources.monetary-trust.title": "ECB・Philip R. Lane — The digital euro: maintaining the autonomy of the monetary system",
@@ -2622,7 +2628,6 @@
     "glossary.financial-stability.name": "Financial stability and systemic risk",
     "glossary.formalization.aliases.0": "proof formalization",
     "glossary.formalization.aliases.1": "formalization",
-    "glossary.formalization.aliases.2": "Lean",
     "glossary.formalization.definition": "Rewriting a human-readable mathematical proof so a computer can check its logical steps. Lean is one language and proof-assistant system for doing this.",
     "glossary.formalization.limit": "Formalizing an existing proof is different from discovering an unknown theorem. The theorem's specification and assumptions also matter. This success alone does not guarantee the safety of an entire real-world AI system.",
     "glossary.formalization.name": "proof formalization",
@@ -2647,6 +2652,10 @@
     "glossary.horizon.definition": "In METR's evaluations, the duration of tasks for human experts that an AI can complete at a specified success rate.",
     "glossary.horizon.limit": "It is not the AI's own runtime. Its meaning depends on the tasks and success rate, and it does not guarantee performance across all real-world work.",
     "glossary.horizon.name": "Task-completion time horizon",
+    "glossary.lean.aliases.0": "Lean",
+    "glossary.lean.definition": "A language and proof assistant for writing mathematical definitions, theorems, and proofs, and having a computer check each logical step. It is used for proof formalization.",
+    "glossary.lean.limit": "Lean checks whether a proof follows from its stated assumptions. Whether those assumptions adequately describe a real AI system needs a separate check.",
+    "glossary.lean.name": "Lean",
     "glossary.liquidity.aliases.0": "liquidity",
     "glossary.liquidity.definition": "The ability to obtain cash when needed or trade without a large price change. Finance distinguishes funding liquidity from market liquidity.",
     "glossary.liquidity.limit": "An asset having value is different from being immediately available to make payments.",
@@ -4109,6 +4118,9 @@
     "sources.incident.period": "Main analysis period: July 7–13, 2026",
     "sources.incident.primary": "First-hand report by the organization conducting or investigating the research, evaluation, or event",
     "sources.incident.title": "METR — Independent investigation of the Hugging Face-related incident",
+    "sources.lean.period": "Overview of the language and proof assistant",
+    "sources.lean.primary": "Official description of the language and its features by Lean’s developers",
+    "sources.lean.title": "Lean — official website",
     "sources.monetary-trust.period": "Institutional explanation of trust in central banks, bank deposits, and currency",
     "sources.monetary-trust.primary": "Original speech by a monetary-system operator, including policy arguments",
     "sources.monetary-trust.title": "ECB・Philip R. Lane — The digital euro: maintaining the autonomy of the monetary system",
@@ -4256,8 +4268,8 @@
     "watchlist.9.name": "Financial stability and agentic commerce"
   },
   "review": {
-    "reviewer": "Codex — bilingual prerequisite and evidence-scope review; RSI/ASI event-label review",
+    "reviewer": "Codex — Japanese/English glossary split and source review",
     "date": "2026-09-10",
-    "hash": "1bf16c7d3ce0aa17a0e68be1d6ecc5ce613281c35d296929173adc31b2b70702"
+    "hash": "71c8107f1a4d87c0446e369565aa129fb5fad6eb5b600e74229b6462fda222b9"
   }
 }

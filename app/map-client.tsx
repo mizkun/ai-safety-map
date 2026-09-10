@@ -50,7 +50,6 @@ import {
 import type { Question, Review, SiteContent } from '@/lib/content-types';
 import { currentReviewDay, reviewStatus } from '@/lib/freshness.mjs';
 import { messages, formatMessage, type Locale } from '@/lib/i18n';
-import { currentEdgeId } from '@/lib/legacy-links.mjs';
 import { glossaryIndex, glossarySegments } from '@/lib/glossary-text.mjs';
 import {
   nodeReferenceIndex,
@@ -59,16 +58,28 @@ import {
 import TreeMap from './tree-map';
 import MapTour from './map-tour';
 import { tourStops } from '@/lib/map-tour';
+import {
+  detailTabs,
+  libraryPanels,
+  type DetailTab,
+} from '@/lib/map-navigation';
+import { useMapNavigation } from './use-map-navigation';
 import type { Panel } from './reading-panels';
 const ReadingPanels = lazy(() => import('./reading-panels'));
 
 const REPO = 'https://github.com/mizkun/ai-safety-map';
-const panels: Panel[] = ['about', 'glossary', 'history', 'sources'];
-const detailTabs = ['summary', 'evidence', 'more'] as const;
-type DetailTab = (typeof detailTabs)[number];
+const panels = libraryPanels;
 
 export default function MapClient({ site }: { site: SiteContent }) {
-  const [locale, setLocale] = useState<Locale>('ja');
+  const navigation = useMapNavigation(site);
+  const {
+    locale,
+    view,
+    expanded,
+    panel,
+    term: termId,
+    guide: showGuide,
+  } = navigation.state;
   const [detailContent, setDetailContent] = useState<
     Partial<SiteContent['content']>
   >({});
@@ -78,26 +89,18 @@ export default function MapClient({ site }: { site: SiteContent }) {
   const alternateLocale = site.locales.find(
     (option) => option.enabled && option.code !== locale,
   );
-  const [view, setView] = useState('overview');
-  const [expanded, setExpanded] = useState(false);
-  const [showGuide, setShowGuide] = useState(false);
-  const [selected, setSelected] = useState<string | null>(null);
-  const [mode, setMode] = useState<'node' | 'edge'>('node');
-  const [detailReading, setDetailReading] = useState<{
-    key: string;
-    tab: DetailTab;
-  } | null>(null);
+  const selected = navigation.state.detail?.id || null;
+  const mode = navigation.state.detail?.kind || 'node';
   const detailKey = mode + ':' + selected;
-  const detailTab =
-    detailReading?.key === detailKey ? detailReading.tab : 'summary';
-  const [panel, setPanel] = useState<Panel | null>(null);
-  const [termId, setTermId] = useState<string | null>(null);
-  const [tour, setTour] = useState<{
-    index: number;
-    focus: string | null;
-  } | null>(null);
+  const detailTab = navigation.state.detail?.tab || 'summary';
   const [tourHeight, setTourHeight] = useState(320);
   const stops = useMemo(() => tourStops(data), [data]);
+  const tour = navigation.state.tour
+    ? {
+        index: stops.findIndex((s) => s.key === navigation.state.tour?.step),
+        focus: navigation.state.tour.focus,
+      }
+    : null;
   const stop = tour ? stops[tour.index] || stops[0] : null;
   const [loadError, setLoadError] = useState(false);
   const [loadAttempt, setLoadAttempt] = useState(0);
@@ -140,100 +143,85 @@ export default function MapClient({ site }: { site: SiteContent }) {
   useEffect(() => {
     document.documentElement.lang = locale;
   }, [locale]);
-  useEffect(() => {
-    const read = () => {
-      setTour(null);
-      setExpanded(false);
-      setShowGuide(false);
-      setDetailReading(null);
-      const q = new URLSearchParams(location.hash.slice(1));
-      const requested = q.get('lang');
-      const language = requested === 'en' && site.content.en ? 'en' : 'ja';
-      setLocale(language);
-      if (requested === 'en' && language !== 'en') {
-        q.set('lang', 'ja');
-        history.replaceState(null, '', '#' + q.toString());
-      }
-      const content = site.content[language]!;
-      const map = q.get('map') || 'overview';
-      const id = q.get('node');
-      const requestedEdge = q.get('edge');
-      const edge = requestedEdge ? currentEdgeId(requestedEdge) : null;
-      if (edge && edge !== requestedEdge) {
-        q.set('edge', edge);
-        history.replaceState(null, '', '#' + q.toString());
-      }
-      setView(content.graphs[map] ? map : 'overview');
-      setPanel(
-        panels.includes(map as Panel) && !id && !edge ? (map as Panel) : null,
-      );
-      if (id && content.nodes[id]) {
-        setSelected(id);
-        setMode('node');
-      } else if (edge && content.edges[edge]) {
-        setSelected(edge);
-        setMode('edge');
-      } else setSelected(null);
-    };
-    read();
-    window.addEventListener('hashchange', read);
-    return () => window.removeEventListener('hashchange', read);
-  }, [site]);
   function navigate(
     map: string,
     id?: string,
     nextMode: 'node' | 'edge' = 'node',
-    replace = false,
   ) {
     const isPanel = panels.includes(map as Panel);
-    if (!isPanel && map !== view) setExpanded(false);
-    if (!isPanel) setView(data.graphs[map] ? map : 'overview');
-    setPanel(isPanel && !id ? (map as Panel) : null);
-    setSelected(id || null);
-    setMode(nextMode);
-    setDetailReading(null);
     setMenuAnchor(null);
-    const q = new URLSearchParams({
-      lang: locale,
-      map,
-      ...(id ? { [nextMode]: id } : {}),
-    });
-    const hash = '#' + q.toString();
-    if (location.hash !== hash) {
-      if (replace) history.replaceState(null, '', hash);
-      else history.pushState(null, '', hash);
-    }
+    navigation.go((previous) => ({
+      ...previous,
+      view: isPanel ? previous.view : map,
+      expanded: isPanel || previous.view === map ? previous.expanded : false,
+      tour: isPanel || previous.view === map ? previous.tour : null,
+      panel: isPanel ? (map as Panel) : null,
+      detail: id ? { kind: nextMode, id, tab: 'summary' } : null,
+      term: null,
+      guide: false,
+      research: null,
+      questions: [],
+    }));
   }
   function changeLocale(next: Locale) {
     if (!site.content[next]) return;
-    setLocale(next);
     setLoadError(false);
-    const q = new URLSearchParams(location.hash.slice(1));
-    q.set('lang', next);
-    history.replaceState(null, '', '#' + q.toString());
+    navigation.go({ locale: next });
   }
   function openNode(id: string, map?: string) {
-    if (map && map !== view) setTour(null);
     navigate(map || view, id);
   }
   function openEdge(id: string) {
     navigate(view, id, 'edge');
   }
   function selectRoute(id: string) {
-    setTour(null);
     setFocusRequest(null);
-    navigate(id);
+    navigation.go({
+      view: id,
+      tour: null,
+      expanded: false,
+      detail: null,
+      panel: null,
+      term: null,
+      guide: false,
+    });
   }
   function moveTour(index: number) {
     const target = stops[index];
     if (!target) return;
-    setTour({ index, focus: null });
-    navigate(target.view, undefined, 'node', true);
+    navigation.go({
+      view: target.view,
+      tour: { step: target.key, focus: null },
+      expanded: false,
+      detail: null,
+      panel: null,
+      term: null,
+      guide: false,
+    });
   }
   function startTour() {
-    setExpanded(false);
-    setTour({ index: 0, focus: null });
-    navigate('overview');
+    moveTour(0);
+  }
+  function openTerm(id: string) {
+    navigation.go({ term: id, guide: false });
+  }
+  function setDetailTab(tab: DetailTab) {
+    navigation.go((previous) =>
+      previous.detail
+        ? { ...previous, detail: { ...previous.detail, tab } }
+        : previous,
+    );
+  }
+  function historyBackButton() {
+    return (
+      navigation.canBack && (
+        <Tooltip title={m.previous}>
+          <IconButton aria-label={m.previous} onClick={navigation.back}>
+            <ArrowLeft size={19} />
+          </IconButton>
+        </Tooltip>
+      )
+    );
   }
   function loadingBody() {
     return (
@@ -272,13 +260,15 @@ export default function MapClient({ site }: { site: SiteContent }) {
   );
   function richText(text: string): ReactNode {
     return glossarySegments(text, termIndex).map(({ text: part, id }, i) => {
-      return id ? (
+      return id === termId ? (
+        part
+      ) : id ? (
         <ButtonBase
           component="button"
           disableRipple
           className="term-inline"
           key={i}
-          onClick={() => setTermId(id)}
+          onClick={() => openTerm(id)}
           aria-label={part + ' · ' + m.definition}
         >
           {part}
@@ -359,7 +349,20 @@ export default function MapClient({ site }: { site: SiteContent }) {
   }
   function questions(items: Question[], prefix: string): ReactNode {
     return items.map((q, i) => (
-      <Accordion disableGutters key={prefix + i} className="question">
+      <Accordion
+        disableGutters
+        key={prefix + '.' + i}
+        className="question"
+        expanded={navigation.state.questions.includes(prefix + '.' + i)}
+        onChange={(_, open) =>
+          navigation.go((previous) => ({
+            ...previous,
+            questions: open
+              ? [...previous.questions, prefix + '.' + i]
+              : previous.questions.filter((id) => id !== prefix + '.' + i),
+          }))
+        }
+      >
         <AccordionSummary expandIcon={<ChevronDown size={17} />}>
           {q.q}
         </AccordionSummary>
@@ -419,9 +422,8 @@ export default function MapClient({ site }: { site: SiteContent }) {
               startIcon={<Layers3 size={18} />}
               endIcon={<ArrowRight size={17} />}
               onClick={() => {
-                setTour(null);
                 setFocusRequest({ id: node.id, serial: Date.now() });
-                navigate(view);
+                navigation.go({ tour: null, detail: null });
               }}
             >
               {m.showOnMap}
@@ -490,10 +492,21 @@ export default function MapClient({ site }: { site: SiteContent }) {
           return (
             <Accordion
               key={id}
-              defaultExpanded={i === 0}
+              expanded={
+                navigation.state.research
+                  ? navigation.state.research.includes(id)
+                  : i === 0
+              }
               disableGutters
               className="research-card"
               onChange={(event, isOpen) => {
+                const current =
+                  navigation.state.research || item.research.slice(0, 1);
+                navigation.go({
+                  research: isOpen
+                    ? [...current, id]
+                    : current.filter((key) => key !== id),
+                });
                 if (!isOpen) return;
                 const card = event.currentTarget.closest('.research-card');
                 const scroll = card?.closest('.detail-scroll');
@@ -616,7 +629,7 @@ export default function MapClient({ site }: { site: SiteContent }) {
                   key={id}
                   size="small"
                   label={data.glossary[id].name}
-                  onClick={() => setTermId(id)}
+                  onClick={() => openTerm(id)}
                 />
               ))}
             </div>,
@@ -704,7 +717,9 @@ export default function MapClient({ site }: { site: SiteContent }) {
             {m.next}
           </Button>
         ) : (
-          <Button onClick={() => navigate(view)}>{m.returnMap}</Button>
+          <Button onClick={() => navigation.close('detail')}>
+            {m.returnMap}
+          </Button>
         )}
       </nav>
     );
@@ -722,11 +737,7 @@ export default function MapClient({ site }: { site: SiteContent }) {
         <Paper elevation={0} className="brand-pill glass">
           <ButtonBase
             aria-label={m.overview}
-            onClick={() => {
-              setTour(null);
-              setExpanded(false);
-              navigate('overview');
-            }}
+            onClick={() => selectRoute('overview')}
           >
             <Waypoints size={21} />
             <span>AI SAFETY MAP</span>
@@ -741,7 +752,7 @@ export default function MapClient({ site }: { site: SiteContent }) {
                 exclusive
                 value={expanded ? 'all' : 'summary'}
                 onChange={(_, value: string | null) => {
-                  if (value) setExpanded(value === 'all');
+                  if (value) navigation.go({ expanded: value === 'all' });
                 }}
                 aria-label={m.displayScope}
               >
@@ -795,6 +806,9 @@ export default function MapClient({ site }: { site: SiteContent }) {
       )}
       <TreeMap
         key={view}
+        navigationState={navigation.state}
+        restoration={navigation.restoration}
+        onCameraChange={navigation.checkpoint}
         focusRequest={focusRequest}
         tourFocus={
           stop
@@ -818,8 +832,8 @@ export default function MapClient({ site }: { site: SiteContent }) {
           if (tour) moveTour(stops.findIndex((s) => s.view === id));
           else selectRoute(id);
         }}
-        onTerm={setTermId}
-        onGuide={() => setShowGuide(true)}
+        onTerm={openTerm}
+        onGuide={() => navigation.go({ guide: true })}
       />
       {tour && (
         <MapTour
@@ -834,9 +848,12 @@ export default function MapClient({ site }: { site: SiteContent }) {
           loading={loadingBody()}
           focus={tour.focus}
           onMove={moveTour}
-          onClose={() => setTour(null)}
+          onClose={() => navigation.go({ tour: null })}
           onFocus={(focus) =>
-            setTour((current) => (current ? { ...current, focus } : null))
+            navigation.go((previous) => ({
+              ...previous,
+              tour: previous.tour ? { ...previous.tour, focus } : null,
+            }))
           }
           onRead={openNode}
           onHeight={setTourHeight}
@@ -854,7 +871,7 @@ export default function MapClient({ site }: { site: SiteContent }) {
         <MenuItem
           onClick={() => {
             setMenuAnchor(null);
-            setShowGuide(true);
+            navigation.go({ guide: true });
           }}
         >
           {m.parallelGuide}
@@ -878,13 +895,16 @@ export default function MapClient({ site }: { site: SiteContent }) {
       </Menu>
       <Dialog
         open={showGuide}
-        onClose={() => setShowGuide(false)}
+        onClose={() => navigation.close('guide')}
         fullWidth
         maxWidth="sm"
       >
         <DialogTitle className="modal-heading">
           <span>{m.parallelGuide}</span>
-          <IconButton aria-label={m.close} onClick={() => setShowGuide(false)}>
+          <IconButton
+            aria-label={m.close}
+            onClick={() => navigation.close('guide')}
+          >
             <X size={20} />
           </IconButton>
         </DialogTitle>
@@ -909,14 +929,17 @@ export default function MapClient({ site }: { site: SiteContent }) {
       </Dialog>
       <Dialog
         open={Boolean(panel)}
-        onClose={() => navigate(view)}
+        onClose={() => navigation.close('panel')}
         fullWidth
         maxWidth="md"
         className="library-dialog"
       >
         <DialogTitle className="modal-heading">
           <span>{panel ? m[panel] : m.library}</span>
-          <IconButton aria-label={m.close} onClick={() => navigate(view)}>
+          <IconButton
+            aria-label={m.close}
+            onClick={() => navigation.close('panel')}
+          >
             <X size={20} />
           </IconButton>
         </DialogTitle>
@@ -943,7 +966,9 @@ export default function MapClient({ site }: { site: SiteContent }) {
                     m={m}
                     source={source}
                     onNode={openNode}
-                    onTerm={setTermId}
+                    onTerm={openTerm}
+                    search={navigation.state.search}
+                    onSearch={(search) => navigation.go({ search }, true)}
                   />
                 </Suspense>
               )}
@@ -951,7 +976,7 @@ export default function MapClient({ site }: { site: SiteContent }) {
       </Dialog>
       <Dialog
         open={Boolean(node || edge)}
-        onClose={() => navigate(view)}
+        onClose={() => navigation.close('detail')}
         fullWidth
         maxWidth="md"
         className="detail-dialog"
@@ -962,10 +987,14 @@ export default function MapClient({ site }: { site: SiteContent }) {
             <div className="detail-header">
               <div className="detail-meta">
                 <span>
+                  {historyBackButton()}
                   {node && <span className="node-id">{node.id}</span>}
                   {node ? m.explanation : m.connection}
                 </span>
-                <IconButton aria-label={m.close} onClick={() => navigate(view)}>
+                <IconButton
+                  aria-label={m.close}
+                  onClick={() => navigation.close('detail')}
+                >
                   <X size={21} />
                 </IconButton>
               </div>
@@ -980,9 +1009,7 @@ export default function MapClient({ site }: { site: SiteContent }) {
                 <Button
                   className="review-alert"
                   startIcon={<Clock3 size={14} />}
-                  onClick={() =>
-                    setDetailReading({ key: detailKey, tab: 'evidence' })
-                  }
+                  onClick={() => setDetailTab('evidence')}
                 >
                   {m.due}
                 </Button>
@@ -990,9 +1017,7 @@ export default function MapClient({ site }: { site: SiteContent }) {
             </div>
             <Tabs
               value={detailTab}
-              onChange={(_, tab: DetailTab) =>
-                setDetailReading({ key: detailKey, tab })
-              }
+              onChange={(_, tab: DetailTab) => setDetailTab(tab)}
               variant="fullWidth"
               className="detail-tabs"
               aria-label={m.detailSections}
@@ -1043,14 +1068,20 @@ export default function MapClient({ site }: { site: SiteContent }) {
       </Dialog>
       <Dialog
         open={Boolean(term)}
-        onClose={() => setTermId(null)}
+        onClose={() => navigation.close('term')}
         fullWidth
         maxWidth="sm"
         className="term-dialog"
       >
         <DialogTitle className="modal-heading">
-          <span>{term?.name || m.definition}</span>
-          <IconButton aria-label={m.close} onClick={() => setTermId(null)}>
+          <span className="term-heading">
+            {historyBackButton()}
+            {term?.name || m.definition}
+          </span>
+          <IconButton
+            aria-label={m.close}
+            onClick={() => navigation.close('term')}
+          >
             <X size={20} />
           </IconButton>
         </DialogTitle>

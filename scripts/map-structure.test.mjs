@@ -11,6 +11,7 @@ import {
   joinGeometry,
   joinJunctions,
   forkGeometry,
+  cardPorts,
 } from '../lib/tree-layout.ts';
 import {
   clampZoom,
@@ -36,6 +37,28 @@ import { connectionLabels } from '../lib/connection-labels.ts';
 import { minimapViewport, minimapCamera } from '../lib/map-minimap.ts';
 import { horizontalPoint } from '../lib/horizontal-tree-layout.ts';
 const content = readCanonicalContent();
+
+test('card connection ports sit on real card boundaries and bridge endpoint gaps', () => {
+  for (const view of ['overview', ...content.routes.map((r) => r.id)]) {
+    for (const phone of [false, true]) {
+      const layout = treeLayout(content, view, true, phone, 390);
+      const ports = cardPorts(layout);
+      assert.ok(ports.length > 0);
+      assert.equal(ports.length, new Set(ports.map((p) => p.key)).size);
+      for (const port of ports) {
+        const tile = layout.tiles.find((t) => (t.node || t.key) === port.node);
+        assert.ok(tile);
+        assert.ok(port.x >= tile.x && port.x <= tile.x + tile.width);
+        assert.ok(port.y >= tile.y && port.y <= tile.y + tile.height);
+        assert.ok(
+          [tile.x, tile.x + tile.width].includes(port.x) ||
+            [tile.y, tile.y + tile.height].includes(port.y),
+        );
+        assert.ok(Math.hypot(port.x - port.line.x, port.y - port.line.y) <= 12);
+      }
+    }
+  }
+});
 
 test('phones open on a connected tree while preserving every overview node and edge', () => {
   const original = treeLayout(content, 'overview', false);
@@ -496,6 +519,26 @@ test('connection controls remain on their own paths without covering text, AND/O
           );
         const wire = layout.wires.find((w) => w.key === label.key),
           path = wireGeometry(wire, layout);
+        for (const other of layout.wires.filter((w) => w.key !== wire.key)) {
+          const points = wireGeometry(other, layout).points || [];
+          for (let n = 1; n < points.length; n++) {
+            const a = points[n - 1],
+              b = points[n];
+            assert.ok(
+              !overlaps(
+                label,
+                {
+                  x: Math.min(a.x, b.x) * scale,
+                  y: Math.min(a.y, b.y) * scale,
+                  width: Math.abs(a.x - b.x) * scale,
+                  height: Math.abs(a.y - b.y) * scale,
+                },
+                3,
+              ),
+              view + ': ' + label.edge + ' covers another line ' + other.key,
+            );
+          }
+        }
         const onSegment = (path.points || []).slice(1).some((b, i) => {
           const a = path.points[i],
             x = label.centerX / scale,
@@ -522,6 +565,26 @@ test('connection controls remain on their own paths without covering text, AND/O
             labels.some((l) => l.key === wire.key),
             view + ': missing readable connection control ' + wire.edge,
           );
+    }
+  }
+});
+
+test('the research sequence arrow stays clear of the RSI alternative return bus', () => {
+  for (const view of ['control', 'overview']) {
+    for (const phone of [false, true]) {
+      const layout = treeLayout(content, view, true, phone, 390);
+      const label = connectionLabels(layout, content, 1).find(
+        (l) => l.edge === 'R1-R2',
+      );
+      const rsi = layout.tiles.find((t) => t.node === 'R3');
+      assert.ok(label, 'the connection remains accessible');
+      const distance = phone
+        ? Math.abs(label.centerX - (rsi.x + rsi.width / 2))
+        : Math.abs(label.centerY - (rsi.y + rsi.height / 2));
+      assert.ok(
+        distance >= label.width / 2 + 4,
+        'arrow overlaps the return bus',
+      );
     }
   }
 });

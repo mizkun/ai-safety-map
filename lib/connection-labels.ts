@@ -1,5 +1,7 @@
 import {
   wireGeometry,
+  forkGeometry,
+  joinGeometry,
   type TreeLayout,
   type TreePoint,
 } from './tree-layout.ts';
@@ -19,7 +21,33 @@ type ConnectionLabel = {
   centerY: number;
 };
 
-// Keep an arrow's control on its own line, but out of card text and other controls.
+// Bounds of the rendered M/L/Q segments. Curve control points make the bounds
+// conservative, keeping controls clear of rounded elbows as well as crossings.
+function pathBounds(path: string, scale: number) {
+  const tokens = path.match(/[MLQ]|-?\d+(?:\.\d+)?(?:e[+-]?\d+)?/gi) || [];
+  const bounds = [];
+  let previous = { x: 0, y: 0 };
+  for (let i = 0; i < tokens.length;) {
+    const command = tokens[i++];
+    const points = [previous];
+    const count = command === 'Q' ? 2 : 1;
+    for (let n = 0; n < count; n++)
+      points.push({ x: Number(tokens[i++]), y: Number(tokens[i++]) });
+    previous = points.at(-1)!;
+    if (command === 'M') continue;
+    const xs = points.map((p) => p.x * scale);
+    const ys = points.map((p) => p.y * scale);
+    bounds.push({
+      x: Math.min(...xs),
+      y: Math.min(...ys),
+      width: Math.max(...xs) - Math.min(...xs),
+      height: Math.max(...ys) - Math.min(...ys),
+    });
+  }
+  return bounds;
+}
+
+// Keep each control on its own line, clear of other lines and readable content.
 export function connectionLabels(
   layout: TreeLayout,
   data: Content,
@@ -27,6 +55,30 @@ export function connectionLabels(
   relations = relationLabels(layout, scale),
 ) {
   if (scale < 0.24) return [];
+  const geometries = layout.wires.map((wire) => ({
+    wire,
+    geometry: wireGeometry(wire, layout),
+  }));
+  const lines = [
+    ...geometries.flatMap(({ wire, geometry }) =>
+      pathBounds(geometry.path, scale).map((rect) => ({
+        ...rect,
+        owner: wire.key,
+      })),
+    ),
+    ...(layout.forks || []).flatMap((fork) => {
+      const g = forkGeometry(fork, layout);
+      return [g.trunk, g.mergePath || '', ...g.branches.map((b) => b.path)]
+        .flatMap((path) => pathBounds(path, scale))
+        .map((rect) => ({ ...rect, owner: 'fork:' + fork.key }));
+    }),
+    ...(layout.joins || []).flatMap((join) =>
+      pathBounds(joinGeometry(join, layout), scale).map((rect) => ({
+        ...rect,
+        owner: 'join:' + join.edge,
+      })),
+    ),
+  ];
   const occupied = [
     ...layout.tiles.map((t) => ({
       x: t.x * scale,
@@ -49,9 +101,8 @@ export function connectionLabels(
     })),
   ];
   const labels: ConnectionLabel[] = [];
-  for (const wire of layout.wires) {
+  for (const { wire, geometry: g } of geometries) {
     if (!wire.edge) continue;
-    const g = wireGeometry(wire, layout);
     const direction = (a: TreePoint, b: TreePoint) =>
       Math.abs(b.x - a.x) >= Math.abs(b.y - a.y)
         ? b.x >= a.x
@@ -73,7 +124,7 @@ export function connectionLabels(
       if (phone && (a.x !== b.x || b.y <= a.y)) continue;
       if (Math.hypot(a.x - b.x, a.y - b.y) * scale < (phone ? 12 : 20))
         continue;
-      for (const fraction of [0.5, 0.25, 0.75, 0.125, 0.875])
+      for (const fraction of [0.5, 0.25, 0.75, 0.125, 0.875, 0.375, 0.625])
         candidates.push({
           x: (a.x + (b.x - a.x) * fraction) * scale,
           y: (a.y + (b.y - a.y) * fraction) * scale,
@@ -95,6 +146,8 @@ export function connectionLabels(
         )
           continue;
         if (occupied.some((r) => overlaps(rect, r, 2))) continue;
+        if (lines.some((r) => r.owner !== wire.key && overlaps(rect, r, 4)))
+          continue;
         chosen = {
           ...rect,
           key: wire.key,

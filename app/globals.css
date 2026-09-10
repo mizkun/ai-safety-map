@@ -562,6 +562,11 @@ a:focus-visible {
   color: #8a8ba0;
   letter-spacing: 0.07em;
 }
+.term-heading {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
 .detail-title.MuiTypography-root {
   font-size: 23px;
   font-weight: 600;
@@ -1450,6 +1455,7 @@ a:focus-visible {
   flex-shrink: 0;
   width: 100%;
   text-align: center;
+  padding-right: 0;
   hyphens: auto;
 }
 .tree-content .tile-eyebrow {
@@ -1471,9 +1477,20 @@ a:focus-visible {
   font-size: calc(9px * var(--map-scale));
   pointer-events: none;
 }
+.card-port {
+  position: absolute;
+  z-index: 2;
+  width: 6px;
+  height: 6px;
+  transform: translate(-50%, -50%);
+  border: 1.5px solid currentColor;
+  border-radius: 50%;
+  background: #f7f9fc;
+  pointer-events: none;
+}
 .tree-content .tree-tile.tile-identified {
-  padding-top: calc(20px * var(--map-scale));
-  padding-bottom: calc(8px * var(--map-scale));
+  padding-top: calc(14px * var(--map-scale));
+  padding-bottom: calc(14px * var(--map-scale));
 }
 .tree-content .tile-topics {
   flex-wrap: wrap;

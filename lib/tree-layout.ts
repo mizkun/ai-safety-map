@@ -612,6 +612,7 @@ export function forkGeometry(
   junctions: TreePoint[];
   markers: TreePoint[];
   mergePath?: string;
+  ports: { key: string; point: TreePoint; color: string }[];
 } {
   const source = layout.source || layout;
   const project = (p: TreePoint) =>
@@ -652,6 +653,11 @@ export function forkGeometry(
   let mergePath: string | undefined;
   const mergeJunctions: TreePoint[] = [];
   const mergeMarkers: TreePoint[] = [];
+  const ports = bus.ports.map((p, i) => ({
+    key: i === 0 ? fork.from : p.key,
+    point: p.point,
+    color: p.color,
+  }));
   if (
     merge &&
     (source.wires.some((w) => w.from === merge.area) ||
@@ -685,6 +691,13 @@ export function forkGeometry(
     mergePath = [...merged.ports.map((p) => p.path), merged.trunk].join(' ');
     mergeJunctions.push(...merged.anchors);
     mergeMarkers.push(...merged.markers);
+    ports.push(
+      ...merged.ports.map((p) => ({
+        key: p.key,
+        point: p.point,
+        color: fork.color,
+      })),
+    );
   }
   return {
     trunk: [bus.ports[0].path, bus.trunk].join(' '),
@@ -694,6 +707,7 @@ export function forkGeometry(
     junctions: [...bus.anchors, ...mergeJunctions],
     markers: [...bus.markers, ...mergeMarkers],
     mergePath,
+    ports,
   };
 }
 function joinBus(join: TreeJoin, layout: TreeLayout) {
@@ -733,4 +747,65 @@ export function joinJunctions(join: TreeJoin, layout: TreeLayout): TreePoint[] {
 export function joinGeometry(join: TreeJoin, layout: TreeLayout): string {
   const bus = joinBus(join, layout);
   return [...bus.ports.map((p) => p.path), bus.trunk].join(' ');
+}
+
+// Only real card endpoints receive ports. Lines terminating at an AND frame or
+// an OR merge remain group connections, without an invented card attachment.
+export function cardPorts(layout: TreeLayout) {
+  const ports = new Map<
+    string,
+    {
+      key: string;
+      node: string;
+      x: number;
+      y: number;
+      line: TreePoint;
+      color: string;
+    }
+  >();
+  const add = (key: string, p: TreePoint | undefined, color: string) => {
+    const tile = layout.tiles.find((t) => t.key === key);
+    if (!tile || !p) return;
+    const candidates = [
+      { x: tile.x, y: Math.max(tile.y, Math.min(tile.y + tile.height, p.y)) },
+      {
+        x: tile.x + tile.width,
+        y: Math.max(tile.y, Math.min(tile.y + tile.height, p.y)),
+      },
+      { y: tile.y, x: Math.max(tile.x, Math.min(tile.x + tile.width, p.x)) },
+      {
+        y: tile.y + tile.height,
+        x: Math.max(tile.x, Math.min(tile.x + tile.width, p.x)),
+      },
+    ].sort(
+      (a, b) =>
+        Math.hypot(a.x - p.x, a.y - p.y) - Math.hypot(b.x - p.x, b.y - p.y),
+    );
+    const at = candidates[0];
+    if (Math.hypot(at.x - p.x, at.y - p.y) > 12) return;
+    const id = key + ':' + at.x.toFixed(2) + ':' + at.y.toFixed(2);
+    ports.set(id, {
+      key: id,
+      node: tile.node || tile.key,
+      ...at,
+      line: p,
+      color,
+    });
+  };
+  for (const wire of layout.wires) {
+    const points = wireGeometry(wire, layout).points;
+    add(wire.from, points?.[0], wire.color);
+    add(wire.to, points?.at(-1), wire.color);
+  }
+  for (const fork of layout.forks || [])
+    for (const p of forkGeometry(fork, layout).ports)
+      add(p.key, p.point, p.color);
+  for (const join of layout.joins || [])
+    for (const p of joinBus(join, layout).ports)
+      add(
+        p.key === 'output:' + join.edge ? join.output : p.key,
+        p.point,
+        join.color,
+      );
+  return [...ports.values()];
 }

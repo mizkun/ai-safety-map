@@ -403,5 +403,14 @@
     "period": "言語モデルの学習計算量・モデル規模・データ量の比較",
     "checked": "2026-09-10",
     "primary": "学習実験を実施した研究者による原論文。"
+  },
+  "lean": {
+    "title": "Lean — 公式サイト",
+    "date": "公開日記載なし",
+    "url": "https://lean-lang.org/",
+    "published": null,
+    "period": "言語と証明支援システムの概要",
+    "checked": "2026-09-10",
+    "primary": "Lean開発元による公式の言語・機能の説明"
   }
 }

@@ -9,7 +9,10 @@ test('initial map excludes detailed prose and preserves causal relationships', (
   assert.deepEqual(shell.nodes.M2c1.body, {});
   assert.deepEqual(shell.research, {});
   for (const [id, story] of Object.entries(shell.stories)) {
-    assert.deepEqual(story.chapters.map((c) => c.nodes), full.content.ja.stories[id].chapters.map((c) => c.nodes));
+    assert.deepEqual(
+      story.chapters.map((c) => c.nodes),
+      full.content.ja.stories[id].chapters.map((c) => c.nodes),
+    );
     assert.ok(story.chapters.every((c) => !c.text && !c.title));
   }
   assert.ok(
@@ -21,8 +24,12 @@ test('initial map excludes detailed prose and preserves causal relationships', (
     JSON.stringify(packed.shell).length <
       Object.values(packed.files).join('').length * 0.5,
   );
-  for (const [id, edge] of Object.entries(shell.edges))
+  for (const [id, node] of Object.entries(shell.nodes))
+    assert.deepEqual(node.research, full.content.ja.nodes[id].research);
+  for (const [id, edge] of Object.entries(shell.edges)) {
     assert.deepEqual(edge.requires, full.content.ja.edges[id].requires);
+    assert.deepEqual(edge.research, full.content.ja.edges[id].research);
+  }
 });
 test('only the requested language is transferred with its details', () => {
   const packed = contentPackage(full);

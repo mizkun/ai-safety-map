@@ -15,6 +15,9 @@ type Bounds = {
 };
 const CARD = 148;
 const GAP = 96;
+// The RSI return bus crosses between these cards. Leave a separate stretch for
+// the sequence arrow instead of putting its button directly on that crossing.
+const SEQUENCE_GAP = 224;
 const PAD = 88;
 
 // Branches show alternative mechanisms. Frames contain joint conditions, not a timeline.
@@ -66,7 +69,7 @@ export function expandedTreeLayout(
       return {
         width:
           sizes.reduce((sum, s) => sum + s.width, 0) +
-          GAP * (sizes.length - 1) +
+          SEQUENCE_GAP * (sizes.length - 1) +
           160,
         height: CARD + 112 + Math.max(...sizes.map((s) => s.height)) + 60,
       };
@@ -108,7 +111,7 @@ export function expandedTreeLayout(
       let cursor = x + 80;
       const descendants = graph.nodes.map((id) => {
         const child = node(id, cursor, y + CARD + 112, width, route);
-        cursor += child.width + GAP;
+        cursor += child.width + SEQUENCE_GAP;
         return child;
       });
       for (const edge of graph.edges) {

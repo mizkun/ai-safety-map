@@ -1,5 +1,5 @@
 'use client';
-import { useState, type ReactNode } from 'react';
+import type { ReactNode } from 'react';
 import { Button, ButtonBase, Chip, TextField, Typography } from '@mui/material';
 import { ArrowRight, ArrowUpRight, Search } from 'lucide-react';
 import type { Content } from '@/lib/content-types';
@@ -13,6 +13,8 @@ type Props = {
   source: (id: string) => ReactNode;
   onNode: (id: string, map?: string) => void;
   onTerm: (id: string) => void;
+  search: string;
+  onSearch: (value: string) => void;
 };
 export default function ReadingPanels({
   panel,
@@ -21,8 +23,9 @@ export default function ReadingPanels({
   source,
   onNode,
   onTerm,
+  search,
+  onSearch,
 }: Props) {
-  const [search, setSearch] = useState('');
   if (panel === 'about')
     return (
       <div className="reading-body">
@@ -60,7 +63,7 @@ export default function ReadingPanels({
           fullWidth
           label={m.termSearch}
           value={search}
-          onChange={(e) => setSearch(e.target.value)}
+          onChange={(e) => onSearch(e.target.value)}
           size="small"
           slotProps={{
             input: {

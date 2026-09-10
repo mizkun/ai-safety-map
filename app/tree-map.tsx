@@ -27,6 +27,7 @@ import {
   joinGeometry,
   forkGeometry,
   joinJunctions,
+  cardPorts,
 } from '@/lib/tree-layout';
 import { reviewStatus } from '@/lib/freshness.mjs';
 import { useMapGestures } from './use-map-gestures';
@@ -43,8 +44,16 @@ import {
 import { tourCamera, tourContext } from '@/lib/map-tour';
 import { connectionLabels } from '@/lib/connection-labels';
 import { relationLabels } from '@/lib/relation-labels';
+import {
+  mapContext,
+  type NavigationEntry,
+  type NavigationState,
+} from '@/lib/map-navigation';
 
 type Props = {
+  navigationState: NavigationState;
+  restoration: NavigationEntry | null;
+  onCameraChange: () => void;
   data: Content;
   view: string;
   expanded: boolean;
@@ -65,6 +74,9 @@ type Props = {
   } | null;
 };
 export default function TreeMap({
+  navigationState,
+  restoration,
+  onCameraChange,
   data,
   view,
   expanded,
@@ -81,8 +93,9 @@ export default function TreeMap({
 }: Props) {
   const [tracedEdge, setTracedEdge] = useState<string | null>(null);
   const cameraContext = useRef('');
+  const restoredEntry = useRef<string | null>(null);
   const [size, setSize] = useState({ width: 1200, height: 900 });
-  const compact = size.width < 760;
+  const [compact, setCompact] = useState(false);
   const isTour = Boolean(tourFocus);
   const highlightedTourNodes = tourFocus?.focus
     ? [tourFocus.focus]
@@ -109,7 +122,9 @@ export default function TreeMap({
   useLayoutEffect(() => {
     const element = viewport.current;
     if (!element) return;
-    const measure = () =>
+    const measure = () => {
+      // A desktop tour's sidebar must not turn the map into the phone layout.
+      setCompact(window.innerWidth < 760);
       setSize((previous) => {
         const next = {
           width: element.clientWidth,
@@ -119,6 +134,7 @@ export default function TreeMap({
           ? previous
           : next;
       });
+    };
     measure();
     const observer = new ResizeObserver(measure);
     observer.observe(element);
@@ -166,7 +182,10 @@ export default function TreeMap({
     move: moveCamera,
     gestureScale,
   } = useMapCamera(viewport, readableScale, layout.width);
+  const layoutKey = [layout.flow, layout.width, layout.height].join(':');
   const scaleContext =
+    layoutKey +
+    ':' +
     view +
     ':' +
     expanded +
@@ -180,7 +199,18 @@ export default function TreeMap({
     // Wait for the actual screen dimensions, so hydration never animates from a desktop-sized camera.
     if (!el || el.clientWidth !== size.width || el.clientHeight !== size.height)
       return;
-    if (cameraContext.current !== scaleContext && tourDefaultCamera) {
+    const saved = restoration?.snapshot.camera;
+    const restoreRequested =
+      restoration && restoredEntry.current !== restoration.id;
+    if (
+      restoreRequested &&
+      saved?.context === mapContext(navigationState) &&
+      saved.layout === layoutKey &&
+      saved.width === size.width &&
+      saved.height === size.height
+    ) {
+      moveCamera(saved, false);
+    } else if (cameraContext.current !== scaleContext && tourDefaultCamera) {
       moveCamera(tourDefaultCamera, !!cameraContext.current);
     } else if (cameraContext.current !== scaleContext) {
       const anchor =
@@ -191,15 +221,20 @@ export default function TreeMap({
       );
     }
     cameraContext.current = scaleContext;
+    restoredEntry.current = restoration?.id || null;
   }, [
     layout,
+    layoutKey,
     scale,
     scaleContext,
     size,
     tourDefaultCamera,
     readableScale,
     moveCamera,
+    restoration,
+    navigationState,
   ]);
+  useEffect(() => onCameraChange(), [scale, onCameraChange]);
   const handledRequest = useRef<number | null>(null);
   useEffect(() => {
     const element = viewport.current;
@@ -262,6 +297,7 @@ export default function TreeMap({
   );
   const geometry = useMemo(
     () => ({
+      ports: cardPorts(layout),
       wires: new Map(
         layout.wires.map((wire) => [wire.key, wireGeometry(wire, layout)]),
       ),
@@ -305,6 +341,9 @@ export default function TreeMap({
       <div
         className={'tree-viewport' + (phoneOverview ? ' phone-overview' : '')}
         ref={viewport}
+        data-map-context={mapContext(navigationState)}
+        data-map-layout={layoutKey}
+        data-map-scale={scale}
         aria-label={m.graphLabel}
       >
         <div
@@ -490,6 +529,16 @@ export default function TreeMap({
                     </g>
                   );
                 })}
+              {geometry.ports.map((port) => (
+                <path
+                  key={port.key}
+                  d={`M ${port.line.x} ${port.line.y} L ${port.x} ${port.y}`}
+                  fill="none"
+                  stroke={port.color}
+                  strokeWidth={1.6}
+                  vectorEffect="non-scaling-stroke"
+                />
+              ))}
             </svg>
             {annotations.relations
               .filter((label) =>
@@ -713,6 +762,23 @@ export default function TreeMap({
                 </Paper>
               );
             })}
+            {scale >= 0.5 &&
+              geometry.ports
+                .filter((port) =>
+                  intersectsWindow(
+                    { x: port.x - 6, y: port.y - 6, width: 12, height: 12 },
+                    visible,
+                  ),
+                )
+                .map((port) => (
+                  <span
+                    key={port.key}
+                    className="card-port"
+                    aria-hidden="true"
+                    data-node={port.node}
+                    style={{ ...screen(port.x, port.y), color: port.color }}
+                  />
+                ))}
           </div>
         </div>
       </div>

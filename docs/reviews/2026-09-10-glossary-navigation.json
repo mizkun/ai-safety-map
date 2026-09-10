@@ -1,0 +1,44 @@
+{
+  "id": "2026-09-10-glossary-navigation",
+  "version": 2,
+  "date": "2026-09-10",
+  "reviewer": "Codex — primary-source and bilingual reading review",
+  "decision": "reviewed",
+  "assessments": {
+    "draft": {
+      "mechanism": "Leanという道具と、証明の形式化という作業を別の用語に分ける。形式化の本文と限界は変更せず、別名Leanのみを移す。",
+      "conditions": "検査対象は形式的に書かれた定義・前提・証明であることを両言語で明記した。マップの因果関係やAND・ORは変更しない。",
+      "counterexample": "数学の証明が検査を通っても、現実のAIシステムの安全性が自動的に示されるわけではない。元の限定と新しいLeanの限定が一致する。",
+      "evidence": "Lean公式サイトの冒頭、Get Started with Lean、および定理・証明のコード例で、プログラミング言語と証明支援、定義と論理の検査を確認した。",
+      "limits": "公式サイトによる機能説明であり、将来のAI安全性や汎用能力の実験結果ではない。前提と現実の対応は別の点検が必要だと限定する。",
+      "mitigation": "Leanを安全策の万能な保証とは位置付けず、何を検査できる道具かと、その前提の限界を同じ解説に置く。",
+      "readerContext": "用語集から初めて読んでも、Leanが何であり何に使うかを冒頭で説明する。日本語と英語の実際の表示原稿をoutputs/reading-reviewで照合した。",
+      "whyHere": "証明の形式化の説明内に登場するLeanを押しても同じ説明が再表示されていたため、独立した説明先が必要だった。公開日不明と確認日を分け、既存資料の主張は増やしていない。",
+      "primary": [
+        {
+          "source": "lean",
+          "locator": "Opening description; Get Started with Lean; mathematical proof examples",
+          "support": "Lean is a programming language and proof assistant for writing and checking formal definitions and proofs. The safety limitation is the scope of that verification, not a claimed experimental outcome."
+        }
+      ]
+    }
+  },
+  "entries": {
+    "source:lean": {
+      "hash": "d08fee30271d2b04ec3d801ef8eed83c5fa8205840fe9d4716cfa9a822481746",
+      "assessment": "draft"
+    },
+    "glossary:formalization": {
+      "hash": "1b3eb6d6d91713f9b11c3c5d1597e8bf682630eabb48c3ee11c66420054f2a67",
+      "assessment": "draft"
+    },
+    "glossary:lean": {
+      "hash": "0efb05db7fb3f2a7479ec23e83bd7c83fbc0314fdbccdd3bd27a049d37db5340",
+      "assessment": "draft"
+    },
+    "inventory:current": {
+      "hash": "fa1355ad4e6b3991aa9eb39323844216c7cdcf8afb5bf2601e3bd0b9d780b678",
+      "assessment": "draft"
+    }
+  }
+}
