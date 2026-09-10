@@ -7,17 +7,7 @@ import {
   useState,
   type CSSProperties,
 } from 'react';
-import {
-  ButtonBase,
-  IconButton,
-  Tooltip,
-  Paper,
-  ToggleButton,
-  ToggleButtonGroup,
-  Dialog,
-  DialogTitle,
-  DialogContent,
-} from '@mui/material';
+import { ButtonBase, IconButton, Tooltip, Paper } from '@mui/material';
 import {
   ArrowDown,
   ArrowRight,
@@ -28,7 +18,6 @@ import {
   RotateCcw,
   Clock3,
   Info,
-  X,
 } from 'lucide-react';
 import type { Content } from '@/lib/content-types';
 import type { Messages } from '@/lib/i18n';
@@ -58,6 +47,7 @@ import { relationLabels } from '@/lib/relation-labels';
 type Props = {
   data: Content;
   view: string;
+  expanded: boolean;
   today: string;
   messages: Messages;
   selected: string | null;
@@ -65,6 +55,7 @@ type Props = {
   onEdge: (id: string) => void;
   onRoute: (id: string) => void;
   onTerm: (id: string) => void;
+  onGuide: () => void;
   focusRequest?: { id: string; serial: number } | null;
   tourFocus?: {
     key: string;
@@ -76,6 +67,7 @@ type Props = {
 export default function TreeMap({
   data,
   view,
+  expanded,
   today,
   messages: m,
   selected,
@@ -83,14 +75,12 @@ export default function TreeMap({
   onEdge,
   onRoute,
   onTerm,
+  onGuide,
   focusRequest,
   tourFocus,
 }: Props) {
-  const [expanded, setExpanded] = useState(false);
   const [tracedEdge, setTracedEdge] = useState<string | null>(null);
-  const [scopeVersion, setScopeVersion] = useState(0);
   const cameraContext = useRef('');
-  const [showGuide, setShowGuide] = useState(false);
   const [size, setSize] = useState({ width: 1200, height: 900 });
   const compact = size.width < 760;
   const isTour = Boolean(tourFocus);
@@ -112,9 +102,6 @@ export default function TreeMap({
       ),
     [data, view, expanded, compact, phoneWidth, isTour],
   );
-  const nodeCount = new Set(
-    layout.tiles.flatMap((tile) => (tile.node ? [tile.node] : [])),
-  ).size;
   const viewport = useRef<HTMLDivElement>(null);
   useLayoutEffect(() => {
     const element = viewport.current;
@@ -174,7 +161,7 @@ export default function TreeMap({
   const scaleContext =
     view +
     ':' +
-    scopeVersion +
+    expanded +
     ':' +
     size.width +
     ':' +
@@ -308,11 +295,7 @@ export default function TreeMap({
   return (
     <>
       <div
-        className={
-          'tree-viewport' +
-          (view === 'overview' ? ' with-scope' : '') +
-          (phoneOverview ? ' phone-overview' : '')
-        }
+        className={'tree-viewport' + (phoneOverview ? ' phone-overview' : '')}
         ref={viewport}
         aria-label={m.graphLabel}
       >
@@ -522,7 +505,7 @@ export default function TreeMap({
                       color: label.color,
                     }}
                     onClick={() =>
-                      label.edge ? onEdge(label.edge) : setShowGuide(true)
+                      label.edge ? onEdge(label.edge) : onGuide()
                     }
                     aria-label={
                       label.mode === 'all'
@@ -709,40 +692,6 @@ export default function TreeMap({
           </div>
         </div>
       </div>
-      {view === 'overview' && !isTour && (
-        <Paper className="map-scope glass" elevation={0}>
-          <ToggleButtonGroup
-            size="small"
-            exclusive
-            value={expanded ? 'all' : 'summary'}
-            onChange={(_, value: string | null) => {
-              if (value) {
-                setExpanded(value === 'all');
-
-                setScopeVersion((n) => n + 1);
-              }
-            }}
-            aria-label={m.displayScope}
-          >
-            <ToggleButton value="summary">{m.summaryView}</ToggleButton>
-            <ToggleButton value="all">{m.allElements}</ToggleButton>
-          </ToggleButtonGroup>
-          <span className="scope-count">
-            {phoneOverview
-              ? data.routes.filter((r) => r.role !== 'factor').length
-              : nodeCount}{' '}
-            {phoneOverview ? m.pathwayCount : m.elements}
-          </span>
-          <Tooltip title={m.parallelGuide}>
-            <IconButton
-              aria-label={m.parallelGuide}
-              onClick={() => setShowGuide(true)}
-            >
-              <Info size={18} />
-            </IconButton>
-          </Tooltip>
-        </Paper>
-      )}
       {isTour && (
         <MapMinimap
           layout={layout}
@@ -798,37 +747,6 @@ export default function TreeMap({
           </Tooltip>
         </Paper>
       </div>
-      <Dialog
-        open={showGuide}
-        onClose={() => setShowGuide(false)}
-        fullWidth
-        maxWidth="sm"
-      >
-        <DialogTitle className="modal-heading">
-          <span>{m.parallelGuide}</span>
-          <IconButton aria-label={m.close} onClick={() => setShowGuide(false)}>
-            <X size={20} />
-          </IconButton>
-        </DialogTitle>
-        <DialogContent className="parallel-guide">
-          <p>
-            <strong>AND · {m.joint}</strong>
-            {m.jointHelp}
-          </p>
-          <p>
-            <strong>OR · {m.alternative}</strong>
-            {m.alternativeHelp}
-          </p>
-          <p>{m.parallelHelp}</p>
-          <p>
-            <strong>
-              {m.influence} / {m.mitigation}
-            </strong>
-            {m.influenceHelp}
-          </p>
-          <p>{m.fullMapHelp}</p>
-        </DialogContent>
-      </Dialog>
     </>
   );
 }

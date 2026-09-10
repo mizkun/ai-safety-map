@@ -29,6 +29,8 @@ import {
   Paper,
   Tab,
   Tabs,
+  ToggleButton,
+  ToggleButtonGroup,
   Tooltip,
   Typography,
 } from '@mui/material';
@@ -39,7 +41,6 @@ import {
   ChevronDown,
   Clock3,
   GitBranch,
-  Info,
   Layers3,
   Menu as MenuIcon,
   Play,
@@ -78,7 +79,12 @@ export default function MapClient({ site }: { site: SiteContent }) {
   const contents = { ...site.content, ...detailContent };
   const data = contents[locale] || contents.ja;
   const m = messages[locale];
+  const alternateLocale = site.locales.find(
+    (option) => option.enabled && option.code !== locale,
+  );
   const [view, setView] = useState('overview');
+  const [expanded, setExpanded] = useState(false);
+  const [showGuide, setShowGuide] = useState(false);
   const [selected, setSelected] = useState<string | null>(null);
   const [mode, setMode] = useState<'node' | 'edge'>('node');
   const [detailReading, setDetailReading] = useState<{
@@ -141,6 +147,8 @@ export default function MapClient({ site }: { site: SiteContent }) {
   useEffect(() => {
     const read = () => {
       setTour(null);
+      setExpanded(false);
+      setShowGuide(false);
       setDetailReading(null);
       const q = new URLSearchParams(location.hash.slice(1));
       const requested = q.get('lang');
@@ -182,6 +190,7 @@ export default function MapClient({ site }: { site: SiteContent }) {
     replace = false,
   ) {
     const isPanel = panels.includes(map as Panel);
+    if (!isPanel && map !== view) setExpanded(false);
     if (!isPanel) setView(data.graphs[map] ? map : 'overview');
     setPanel(isPanel && !id ? (map as Panel) : null);
     setSelected(id || null);
@@ -226,6 +235,7 @@ export default function MapClient({ site }: { site: SiteContent }) {
     navigate(target.view, undefined, 'node', true);
   }
   function startTour() {
+    setExpanded(false);
     setTour({ index: 0, focus: null });
     navigate('overview');
   }
@@ -696,6 +706,7 @@ export default function MapClient({ site }: { site: SiteContent }) {
             aria-label={m.overview}
             onClick={() => {
               setTour(null);
+              setExpanded(false);
               navigate('overview');
             }}
           >
@@ -704,34 +715,42 @@ export default function MapClient({ site }: { site: SiteContent }) {
           </ButtonBase>
         </Paper>
         <Paper elevation={0} className="header-tools glass">
-          <Tooltip title={m.about}>
-            <IconButton
-              className="header-map-help"
-              aria-label={m.about}
-              onClick={() => navigate('about')}
-            >
-              <Info size={18} />
-            </IconButton>
-          </Tooltip>
-          <div className="language-switch" aria-label={m.language}>
-            {site.locales.map((option) => (
-              <ButtonBase
-                key={option.code}
-                aria-label={option.name}
-                aria-pressed={locale === option.code}
-                disabled={!option.enabled}
-                className={locale === option.code ? 'language-active' : ''}
-                onClick={() => changeLocale(option.code)}
+          {view === 'overview' && !tour && (
+            <>
+              <ToggleButtonGroup
+                className="header-scope"
+                size="small"
+                exclusive
+                value={expanded ? 'all' : 'summary'}
+                onChange={(_, value: string | null) => {
+                  if (value) setExpanded(value === 'all');
+                }}
+                aria-label={m.displayScope}
               >
-                {option.code === 'ja' ? 'JP' : 'EN'}
+                <ToggleButton value="summary">{m.summaryView}</ToggleButton>
+                <ToggleButton value="all">{m.allElements}</ToggleButton>
+              </ToggleButtonGroup>
+              <span className="header-divider" aria-hidden="true" />
+            </>
+          )}
+          {alternateLocale && (
+            <Tooltip title={alternateLocale.name}>
+              <ButtonBase
+                className="language-switch"
+                aria-label={alternateLocale.name}
+                lang={alternateLocale.code}
+                onClick={() => changeLocale(alternateLocale.code)}
+              >
+                {alternateLocale.code === 'ja' ? 'JP' : 'EN'}
               </ButtonBase>
-            ))}
-          </div>
+            </Tooltip>
+          )}
           <Tooltip title={m.library}>
             <IconButton
               aria-label={m.library}
               aria-controls={menuAnchor ? 'library-menu' : undefined}
               aria-haspopup="menu"
+              aria-expanded={Boolean(menuAnchor)}
               onClick={(e) => setMenuAnchor(e.currentTarget)}
             >
               <Badge color="warning" variant="dot" invisible={!dueCount}>
@@ -773,6 +792,7 @@ export default function MapClient({ site }: { site: SiteContent }) {
         }
         data={site.content[locale] || site.content.ja}
         view={view}
+        expanded={expanded}
         today={today}
         messages={m}
         selected={selected}
@@ -783,6 +803,7 @@ export default function MapClient({ site }: { site: SiteContent }) {
           else selectRoute(id);
         }}
         onTerm={setTermId}
+        onGuide={() => setShowGuide(true)}
       />
       {tour && (
         <MapTour
@@ -791,7 +812,9 @@ export default function MapClient({ site }: { site: SiteContent }) {
           stops={stops}
           index={tour.index}
           ready={detailsReady}
-          keyboardEnabled={!selected && !panel && !termId && !menuAnchor}
+          keyboardEnabled={
+            !selected && !panel && !termId && !menuAnchor && !showGuide
+          }
           loading={loadingBody()}
           focus={tour.focus}
           onMove={moveTour}
@@ -812,6 +835,14 @@ export default function MapClient({ site }: { site: SiteContent }) {
         anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
         transformOrigin={{ vertical: 'top', horizontal: 'right' }}
       >
+        <MenuItem
+          onClick={() => {
+            setMenuAnchor(null);
+            setShowGuide(true);
+          }}
+        >
+          {m.parallelGuide}
+        </MenuItem>
         {panels.map((p) => (
           <MenuItem key={p} onClick={() => navigate(p)}>
             <span>{m[p]}</span>
@@ -832,6 +863,37 @@ export default function MapClient({ site }: { site: SiteContent }) {
           <ArrowUpRight size={13} />
         </MenuItem>
       </Menu>
+      <Dialog
+        open={showGuide}
+        onClose={() => setShowGuide(false)}
+        fullWidth
+        maxWidth="sm"
+      >
+        <DialogTitle className="modal-heading">
+          <span>{m.parallelGuide}</span>
+          <IconButton aria-label={m.close} onClick={() => setShowGuide(false)}>
+            <X size={20} />
+          </IconButton>
+        </DialogTitle>
+        <DialogContent className="parallel-guide">
+          <p>
+            <strong>AND · {m.joint}</strong>
+            {m.jointHelp}
+          </p>
+          <p>
+            <strong>OR · {m.alternative}</strong>
+            {m.alternativeHelp}
+          </p>
+          <p>{m.parallelHelp}</p>
+          <p>
+            <strong>
+              {m.influence} / {m.mitigation}
+            </strong>
+            {m.influenceHelp}
+          </p>
+          <p>{m.fullMapHelp}</p>
+        </DialogContent>
+      </Dialog>
       <Dialog
         open={Boolean(panel)}
         onClose={() => navigate(view)}

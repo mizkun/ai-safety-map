@@ -103,6 +103,8 @@ a:focus-visible {
 }
 .MuiPaper-root.header-tools {
   display: flex;
+  align-items: center;
+  flex-shrink: 0;
   padding: 4px;
   gap: 2px;
   border-radius: 999px;
@@ -1215,36 +1217,6 @@ a:focus-visible {
   font-size: 15px;
   letter-spacing: 0.05em;
 }
-.map-scope.MuiPaper-root {
-  position: absolute;
-  top: 86px;
-  right: 26px;
-  z-index: 5;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 4px 6px;
-  border-radius: 16px;
-}
-.map-scope .MuiToggleButton-root {
-  min-height: 34px;
-  border: 0;
-  border-radius: 10px;
-  padding: 6px 13px;
-  font-size: 13px;
-  color: #706884;
-}
-.map-scope .MuiToggleButton-root.Mui-selected {
-  background: #8271a81a;
-  color: #5a477d;
-}
-.scope-count {
-  font-size: 12px;
-  color: #7a7589;
-}
-.tree-viewport.with-scope {
-  top: 149px;
-}
 .parallel-guide p {
   font-size: 16px;
   line-height: 1.9;
@@ -1271,23 +1243,6 @@ a:focus-visible {
   }
 }
 @media (max-width: 760px) {
-  .map-scope.MuiPaper-root {
-    top: 116px;
-    left: 14px;
-    right: auto;
-    height: 44px;
-    gap: 5px;
-  }
-  .map-scope .MuiToggleButton-root {
-    padding: 5px 10px;
-  }
-  .map-scope .MuiIconButton-root {
-    width: 32px;
-    height: 34px;
-  }
-  .tree-viewport.with-scope {
-    top: 170px;
-  }
   .tile-topic.MuiButtonBase-root {
     min-height: 28px;
   }
@@ -1564,29 +1519,6 @@ a:focus-visible {
   font-weight: 750;
   box-shadow: 0 1px 3px #26374d0a;
 }
-.map-scope .factor-toggle {
-  font-size: 11px;
-  min-width: 0;
-  line-height: 1.2;
-  letter-spacing: 0;
-}
-.map-scope:has(.factor-toggle) .scope-count {
-  display: none;
-}
-@media (max-width: 760px) {
-  .map-scope:has(.factor-toggle) {
-    max-width: calc(100vw - 24px);
-    gap: 3px;
-  }
-  .map-scope:has(.factor-toggle) .MuiToggleButton-root {
-    font-size: 11px;
-    padding: 5px 7px;
-  }
-  .map-scope .factor-toggle {
-    padding: 4px;
-    font-size: 10px;
-  }
-}
 .route-picker-note {
   margin: 18px 0 8px;
   font-size: 12px;
@@ -1650,15 +1582,6 @@ a:focus-visible {
   top: 62px;
   left: 20px;
 }
-.map-scope.MuiPaper-root {
-  top: 61px;
-  right: 20px;
-  padding: 2px 4px;
-}
-.tree-viewport.with-scope {
-  top: 106px;
-  bottom: 68px;
-}
 @media (max-width: 760px) {
   .app-header {
     top: 10px;
@@ -1671,15 +1594,6 @@ a:focus-visible {
   .MuiPaper-root.breadcrumb-bar {
     top: 59px;
     left: 12px;
-  }
-  .map-scope.MuiPaper-root {
-    top: 99px;
-    left: 12px;
-    height: 38px;
-  }
-  .tree-viewport.with-scope {
-    top: 145px;
-    bottom: 72px;
   }
   .tree-content .wire-button {
     width: 36px;
@@ -1811,12 +1725,6 @@ a:focus-visible {
     grid-column: 2 / 4;
     justify-self: end;
   }
-  .filtered-bar ~ .map-scope.MuiPaper-root {
-    top: 133px;
-  }
-  .filtered-bar ~ .tree-viewport.with-scope {
-    top: 179px;
-  }
   .MuiDialog-paper,
   .MuiMenu-paper {
     backdrop-filter: none !important;
@@ -1824,30 +1732,56 @@ a:focus-visible {
     background: #f7f9fc !important;
   }
 }
-.language-switch {
-  display: inline-flex;
-  align-items: center;
-  padding: 3px;
-  gap: 2px;
-  background: #e4ebf3;
-  border-radius: 7px;
-}
-.language-switch .MuiButtonBase-root {
-  min-width: 30px;
-  min-height: 28px;
-  font-size: 11px;
+.language-switch.MuiButtonBase-root {
+  min-width: 38px;
+  height: 36px;
+  font-size: 12px;
   font-weight: 700;
   color: #5b6c80;
-  border-radius: 5px;
+  border-radius: 999px;
 }
-.language-switch .language-active {
-  background: #254e73;
-  color: white;
+.language-switch.MuiButtonBase-root:hover {
+  background: #6b81a110;
 }
-@media (max-width: 760px) {
-  .language-switch .MuiButtonBase-root {
-    min-height: 32px;
-  }
+.header-scope.MuiToggleButtonGroup-root {
+  gap: 2px;
+}
+.header-scope.MuiToggleButtonGroup-root .MuiToggleButton-root {
+  margin: 0;
+  border-radius: 999px;
+}
+.header-scope .MuiToggleButton-root {
+  min-height: 36px;
+  padding: 6px 12px;
+  border: 0;
+  border-radius: 999px;
+  font-size: 12px;
+  line-height: 1.2;
+  font-weight: 600;
+  letter-spacing: 0;
+  text-transform: none;
+  white-space: nowrap;
+  color: #6b6e84;
+}
+.header-scope .MuiToggleButton-root.Mui-selected {
+  background: #7b70a61a;
+  color: #5a477d;
+}
+.header-scope .MuiToggleButton-root.Mui-selected:hover {
+  background: #7b70a624;
+}
+.header-divider {
+  width: 1px;
+  height: 18px;
+  margin: 0 6px;
+  background: #77829b26;
+}
+.map-app:not(.has-tour) .tree-viewport {
+  top: 72px;
+  bottom: 68px;
+}
+.map-app:not(.has-tour) .map-breadcrumb + .tree-viewport {
+  top: 104px;
 }
 
 .MuiFab-root.tour-launch {
@@ -2519,29 +2453,30 @@ a:focus-visible {
     min-width: 40px;
     height: 40px;
   }
-  .language-switch .MuiButtonBase-root {
+  .language-switch.MuiButtonBase-root {
     min-width: 36px;
-    min-height: 40px;
+    height: 40px;
     font-size: 12px;
+  }
+  .header-scope .MuiToggleButton-root {
+    min-width: 40px;
+    min-height: 40px;
+    padding: 6px 4px;
+    font-size: 11px;
+  }
+  .header-divider {
+    margin: 0 3px;
+  }
+  .map-app:not(.has-tour) .tree-viewport {
+    top: calc(72px + env(safe-area-inset-top));
+    bottom: 72px;
+  }
+  .map-app:not(.has-tour) .map-breadcrumb + .tree-viewport {
+    top: calc(102px + env(safe-area-inset-top));
   }
   .map-breadcrumb {
     top: calc(64px + env(safe-area-inset-top));
     font-size: 12px;
-  }
-  .map-scope.MuiPaper-root {
-    top: calc(68px + env(safe-area-inset-top));
-    right: 12px;
-    height: 42px;
-  }
-  .map-scope .MuiToggleButton-root {
-    min-height: 40px;
-    font-size: 13px;
-  }
-  .tree-viewport.with-scope {
-    top: calc(118px + env(safe-area-inset-top));
-  }
-  .map-breadcrumb + .tree-viewport:not(.with-scope) {
-    top: calc(102px + env(safe-area-inset-top));
   }
   .map-controls {
     bottom: max(12px, env(safe-area-inset-bottom));
@@ -2577,11 +2512,6 @@ a:focus-visible {
     min-width: 0;
     padding: 10px 4px;
     line-height: 1.4;
-  }
-}
-@media (max-width: 370px) {
-  .header-tools .header-map-help {
-    display: none;
   }
 }
 @media (max-width: 900px) and (orientation: portrait) {
