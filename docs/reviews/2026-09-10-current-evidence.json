@@ -11,8 +11,8 @@
       "counterexample": "AI may assist a harmful action while access restrictions, monitoring, or recovery stop it from becoming a widespread loss of control. Productive AI use can also yield beneficial outcomes.",
       "evidence": "The short summaries retain the original observation periods and distinguish incident reports, selected abuse records, experiments, surveys, and theoretical analyses.",
       "limits": "The selected focus is an editorial question rather than a proved unique bottleneck. Unknown and definition nodes remain gray, never green; red describes an example, not risk severity.",
-      "mitigation": "A green shield is separate from the main node status and is used only for an explicitly recorded evaluation. The scope and trusted-monitor assumptions accompany the result.",
-      "readerContext": "The legend names what each color means and uses different symbols. Each selected condition links to its map and each evidence marker opens the supporting details. The first-visit heading uses the same English product name in both editions; its non-breaking spaces preserve the name on narrow screens. No evidence claim changes.",
+      "mitigation": "A green marker is separate from the main node status and is used only for an explicitly recorded evaluation. The scope and trusted-monitor assumptions accompany the result.",
+      "readerContext": "The legend names what each color means and uses different symbols. Each selected condition links to its map and each evidence marker opens the supporting details. The first-visit heading uses the same English product name in both editions; its non-breaking spaces preserve the name on narrow screens. No evidence claim changes. Card backgrounds now carry the evidence color, and all evidence symbols have a circular outline. Green remains a separate marker for a scoped mitigation result; condition states and claims are unchanged.",
       "whyHere": "The added view answers what evidence is available along a pathway and which connection to examine next, without presenting every unknown as a reassuring barrier.",
       "primary": [
         {
@@ -28,7 +28,7 @@
       "counterexample": "AI may assist a harmful action while access restrictions, monitoring, or recovery stop it from becoming a widespread loss of control. Productive AI use can also yield beneficial outcomes.",
       "evidence": "The July 2026 incident included coordinated unauthorized actions. The investigation did not establish an irreversible society-wide loss of control. Motivates testing whether monitoring can prevent harmful actions, with explicit setting limitations.",
       "limits": "The selected focus is an editorial question rather than a proved unique bottleneck. Unknown and definition nodes remain gray, never green; red describes an example, not risk severity.",
-      "mitigation": "A green shield is separate from the main node status and is used only for an explicitly recorded evaluation. The scope and trusted-monitor assumptions accompany the result.",
+      "mitigation": "A green marker is separate from the main node status and is used only for an explicitly recorded evaluation. The scope and trusted-monitor assumptions accompany the result.",
       "readerContext": "The legend names what each color means and uses different symbols. Each selected condition links to its map and each evidence marker opens the supporting details.",
       "whyHere": "The added view answers what evidence is available along a pathway and which connection to examine next, without presenting every unknown as a reassuring barrier.",
       "primary": [
@@ -50,7 +50,7 @@
       "counterexample": "AI may assist a harmful action while access restrictions, monitoring, or recovery stop it from becoming a widespread loss of control. Productive AI use can also yield beneficial outcomes.",
       "evidence": "Selected suspended accounts from March 2025 to March 2026 document misuse attempts; the sample is not a global abuse or success rate.",
       "limits": "The selected focus is an editorial question rather than a proved unique bottleneck. Unknown and definition nodes remain gray, never green; red describes an example, not risk severity.",
-      "mitigation": "A green shield is separate from the main node status and is used only for an explicitly recorded evaluation. The scope and trusted-monitor assumptions accompany the result.",
+      "mitigation": "A green marker is separate from the main node status and is used only for an explicitly recorded evaluation. The scope and trusted-monitor assumptions accompany the result.",
       "readerContext": "The legend names what each color means and uses different symbols. Each selected condition links to its map and each evidence marker opens the supporting details.",
       "whyHere": "The added view answers what evidence is available along a pathway and which connection to examine next, without presenting every unknown as a reassuring barrier.",
       "primary": [
@@ -67,7 +67,7 @@
       "counterexample": "AI may assist a harmful action while access restrictions, monitoring, or recovery stop it from becoming a widespread loss of control. Productive AI use can also yield beneficial outcomes.",
       "evidence": "Escalation was observed in simulation, not in a real-world nuclear war.",
       "limits": "The selected focus is an editorial question rather than a proved unique bottleneck. Unknown and definition nodes remain gray, never green; red describes an example, not risk severity.",
-      "mitigation": "A green shield is separate from the main node status and is used only for an explicitly recorded evaluation. The scope and trusted-monitor assumptions accompany the result.",
+      "mitigation": "A green marker is separate from the main node status and is used only for an explicitly recorded evaluation. The scope and trusted-monitor assumptions accompany the result.",
       "readerContext": "The legend names what each color means and uses different symbols. Each selected condition links to its map and each evidence marker opens the supporting details.",
       "whyHere": "The added view answers what evidence is available along a pathway and which connection to examine next, without presenting every unknown as a reassuring barrier.",
       "primary": [
@@ -84,7 +84,7 @@
       "counterexample": "AI may assist a harmful action while access restrictions, monitoring, or recovery stop it from becoming a widespread loss of control. Productive AI use can also yield beneficial outcomes.",
       "evidence": "Provider concentration is a potential financial vulnerability, not evidence of global irreversible collapse.",
       "limits": "The selected focus is an editorial question rather than a proved unique bottleneck. Unknown and definition nodes remain gray, never green; red describes an example, not risk severity.",
-      "mitigation": "A green shield is separate from the main node status and is used only for an explicitly recorded evaluation. The scope and trusted-monitor assumptions accompany the result.",
+      "mitigation": "A green marker is separate from the main node status and is used only for an explicitly recorded evaluation. The scope and trusted-monitor assumptions accompany the result.",
       "readerContext": "The legend names what each color means and uses different symbols. Each selected condition links to its map and each evidence marker opens the supporting details.",
       "whyHere": "The added view answers what evidence is available along a pathway and which connection to examine next, without presenting every unknown as a reassuring barrier.",
       "primary": [
@@ -101,7 +101,7 @@
       "counterexample": "AI may assist a harmful action while access restrictions, monitoring, or recovery stop it from becoming a widespread loss of control. Productive AI use can also yield beneficial outcomes.",
       "evidence": "Reports firm AI adoption, not a loss of human decision authority. A conceptual argument informs the question about preserving alternatives; it is not an observed completed pathway.",
       "limits": "The selected focus is an editorial question rather than a proved unique bottleneck. Unknown and definition nodes remain gray, never green; red describes an example, not risk severity.",
-      "mitigation": "A green shield is separate from the main node status and is used only for an explicitly recorded evaluation. The scope and trusted-monitor assumptions accompany the result.",
+      "mitigation": "A green marker is separate from the main node status and is used only for an explicitly recorded evaluation. The scope and trusted-monitor assumptions accompany the result.",
       "readerContext": "The legend names what each color means and uses different symbols. Each selected condition links to its map and each evidence marker opens the supporting details.",
       "whyHere": "The added view answers what evidence is available along a pathway and which connection to examine next, without presenting every unknown as a reassuring barrier.",
       "primary": [
@@ -123,7 +123,7 @@
       "counterexample": "AI may assist a harmful action while access restrictions, monitoring, or recovery stop it from becoming a widespread loss of control. Productive AI use can also yield beneficial outcomes.",
       "evidence": "Software-task results cannot establish replacement of all occupations. Income and capital-ownership effects are distinct; distribution is an appropriate question rather than an observed future outcome.",
       "limits": "The selected focus is an editorial question rather than a proved unique bottleneck. Unknown and definition nodes remain gray, never green; red describes an example, not risk severity.",
-      "mitigation": "A green shield is separate from the main node status and is used only for an explicitly recorded evaluation. The scope and trusted-monitor assumptions accompany the result.",
+      "mitigation": "A green marker is separate from the main node status and is used only for an explicitly recorded evaluation. The scope and trusted-monitor assumptions accompany the result.",
       "readerContext": "The legend names what each color means and uses different symbols. Each selected condition links to its map and each evidence marker opens the supporting details.",
       "whyHere": "The added view answers what evidence is available along a pathway and which connection to examine next, without presenting every unknown as a reassuring barrier.",
       "primary": [
@@ -145,7 +145,7 @@
       "counterexample": "AI may assist a harmful action while access restrictions, monitoring, or recovery stop it from becoming a widespread loss of control. Productive AI use can also yield beneficial outcomes.",
       "evidence": "AI uses and conditional vulnerabilities support examining containment; the report does not establish a realized system-wide crisis.",
       "limits": "The selected focus is an editorial question rather than a proved unique bottleneck. Unknown and definition nodes remain gray, never green; red describes an example, not risk severity.",
-      "mitigation": "A green shield is separate from the main node status and is used only for an explicitly recorded evaluation. The scope and trusted-monitor assumptions accompany the result.",
+      "mitigation": "A green marker is separate from the main node status and is used only for an explicitly recorded evaluation. The scope and trusted-monitor assumptions accompany the result.",
       "readerContext": "The legend names what each color means and uses different symbols. Each selected condition links to its map and each evidence marker opens the supporting details.",
       "whyHere": "The added view answers what evidence is available along a pathway and which connection to examine next, without presenting every unknown as a reassuring barrier.",
       "primary": [
@@ -191,11 +191,11 @@
       "assessment": "interface"
     },
     "history:changes": {
-      "hash": "e8396d6824df78c220882c7cb6b774075141a27395120d69d870083fd92be3e6",
+      "hash": "da289cce802d299f3b7d0b95e36e7171dee4e13c6f26fecac486081d6d3f1d19",
       "assessment": "interface"
     },
     "ui:ja": {
-      "hash": "1647980a4c43a7022eed72a7a5f1aaff27bacd2dcedaa696fd11c2b5e61c5d79",
+      "hash": "5ef3cd4c4807f8a3ffbe0f140b17cc75ea2da12e189adf8e7f3f579d2e2836ae",
       "assessment": "interface"
     },
     "inventory:current": {

@@ -14,7 +14,7 @@ export function addHarmTransitions(layout: TreeLayout, data: Content) {
   );
   if (!incoming.length) return;
   const cut = harm.y;
-  const gap = 460;
+  const gap = harm.height + 180;
   for (const tile of layout.tiles) if (tile.y >= cut) tile.y += gap;
   for (const rect of [
     ...(layout.areas || []),
@@ -52,10 +52,10 @@ export function addHarmTransitions(layout: TreeLayout, data: Content) {
       key: 'transition-' + edge.id,
       edge: edge.id,
       kind: 'transition',
-      x: center - 280,
+      x: center - harm.width / 2,
       y: cut + 40,
-      width: 560,
-      height: 280,
+      width: harm.width,
+      height: harm.height,
       color,
     };
     layout.tiles.push(bridge);

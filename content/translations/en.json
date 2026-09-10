@@ -1,6 +1,6 @@
 {
   "locale": "en",
-  "sourceHash": "e85aa704cf686d45a7c8de59295deb63cb1ce8d48f3c06202d41e0618fc3e19d",
+  "sourceHash": "5a4c4b7d94a490197e5e01d4aaac196f6f84f777d1cf3fc191815834db04b4f3",
   "reference": {
     "current.routes.accidents.finding": "FSBの2024年の分析は、同じ提供者への集中依存などを金融の弱点として挙げています。社会全体の復旧不能を観測した報告ではありません。",
     "current.routes.accidents.next": "障害が広がっても、独立した予備系統や人の対応で復旧できるか。",
@@ -675,7 +675,7 @@
     "history.0.before": "根拠の種類はカードの詳細を開かないと分かりにくく、経路の中で何を確かめたいかが見えませんでした。",
     "history.0.kind": "現在地の表示",
     "history.0.reason": "個々の条件の成立状況と、経路全体の危険度や確率を混同せずに現在地を見渡すため。",
-    "history.0.summary": "各条件を、事例あり・限定的に確認・未確認に分け、効果を測った対策には緑の盾を付けました。7つのシナリオに注目点を添えています。",
+    "history.0.summary": "各条件を、事例あり・限定的に確認・未確認に分け、効果を測った対策には緑の印を付けました。7つのシナリオに注目点を添えています。",
     "history.0.title": "条件の確認状況と、いま注目したい接続を表示",
     "history.1.after": "現実の被害への接点、監督、開発工程、分配、金融の波及を本文で説明し、R2・R4の参照を現行図に合わせました。日本語と英語を一緒に更新しました。",
     "history.1.before": "ASIの例外や矢印の追加条件を、なぜ必要な話題なのか説明せずに述べる箇所がありました。研究の接続には旧版のノード参照も残っていました。",
@@ -2839,7 +2839,7 @@
     "history.0.before": "Evidence types were mostly hidden in card details, making it hard to see which connections needed examination.",
     "history.0.kind": "Evidence view",
     "history.0.reason": "Help readers locate the evidence without turning condition status into a risk score or probability for an entire scenario.",
-    "history.0.summary": "Conditions are marked as reported, limited, or not established. Green shields identify tested mitigations. Seven scenarios have selected conditions to watch.",
+    "history.0.summary": "Conditions are marked as reported, limited, or not established. Green markers identify tested mitigations. Seven scenarios have selected conditions to watch.",
     "history.0.title": "Show evidence for conditions and connections to examine",
     "history.1.after": "Explain channels to real harm, oversight, development stages, distribution, and financial propagation in the text. Update the R2 and R4 references to match the graph, in Japanese and English.",
     "history.1.before": "Some passages described exceptions concerning ASI or additional conditions on arrows without explaining why those questions mattered. Research connections also retained references from an earlier graph.",
@@ -4332,6 +4332,6 @@
   "review": {
     "reviewer": "Codex — Japanese and English evidence-view editorial review",
     "date": "2026-09-10",
-    "hash": "35877df3690fcfcf43baad59a5c88a0efbcd79074ef85848ea070d1d7a6453a2"
+    "hash": "995c3731424def788bf4448bde7f2955c788498c6035e50c14b583fbab87a47f"
   }
 }

@@ -35,7 +35,7 @@ import { useMapWindow } from './use-map-window';
 import { useMapCamera } from './use-map-camera';
 import MapMinimap from './map-minimap';
 import EvidenceMark, { evidenceLabel } from './evidence-mark';
-import { evidenceSignal } from '@/lib/current-evidence';
+import { evidenceSignal, evidenceBackgrounds } from '@/lib/current-evidence';
 import { intersectsWindow } from '@/lib/map-window.mjs';
 import {
   initialMapScale,
@@ -689,7 +689,8 @@ export default function TreeMap({
                     'tree-tile tile-' +
                     tile.kind +
                     (showId ? ' tile-identified' : '') +
-                    (signal ? ' tile-evidence' : '') +
+                    (signal ? ' tile-evidence-color' : '') +
+                    (signal && scale >= 0.5 ? ' tile-evidence' : '') +
                     (selected === tile.node ? ' tile-selected' : '') +
                     (tile.node === 'X' ? ' tile-terminal' : '') +
                     (tile.node === 'NOW' ? ' tile-present' : '') +
@@ -705,37 +706,43 @@ export default function TreeMap({
                       width: tile.width * scale,
                       height: tile.height * scale,
                       '--branch-color': tile.color,
+                      '--evidence-background': signal
+                        ? evidenceBackgrounds[signal]
+                        : undefined,
                     } as CSSProperties
                   }
                 >
                   {showId && <span className="node-id tile-id">{node.id}</span>}
                   {signal && node && scale >= 0.5 && (
-                    <Tooltip
-                      title={evidenceLabel(signal, m) + ' · ' + node.shortTitle}
-                    >
-                      <ButtonBase
-                        className="tile-evidence-button"
-                        onClick={() => onEvidence(node.id)}
-                        aria-label={node.id + ' · ' + evidenceLabel(signal, m)}
+                    <div className="tile-signals">
+                      <Tooltip
+                        title={
+                          evidenceLabel(signal, m) + ' · ' + node.shortTitle
+                        }
                       >
-                        <EvidenceMark signal={signal} size={15} />
-                      </ButtonBase>
-                    </Tooltip>
-                  )}
-                  {signal &&
-                    node &&
-                    scale >= 0.5 &&
-                    data.current.safeguards[node.id] && (
-                      <Tooltip title={m.signalMitigation}>
                         <ButtonBase
-                          className="tile-safeguard-button"
+                          className="tile-evidence-button"
                           onClick={() => onEvidence(node.id)}
-                          aria-label={node.id + ' · ' + m.signalMitigation}
+                          aria-label={
+                            node.id + ' · ' + evidenceLabel(signal, m)
+                          }
                         >
-                          <EvidenceMark signal="mitigation" size={15} />
+                          <EvidenceMark signal={signal} size={15} />
                         </ButtonBase>
                       </Tooltip>
-                    )}
+                      {data.current.safeguards[node.id] && (
+                        <Tooltip title={m.signalMitigation}>
+                          <ButtonBase
+                            className="tile-safeguard-button"
+                            onClick={() => onEvidence(node.id)}
+                            aria-label={node.id + ' · ' + m.signalMitigation}
+                          >
+                            <EvidenceMark signal="mitigation" size={15} />
+                          </ButtonBase>
+                        </Tooltip>
+                      )}
+                    </div>
+                  )}
                   <ButtonBase
                     className="tile-open"
                     aria-current={tourHighlight ? 'step' : undefined}
@@ -792,13 +799,6 @@ export default function TreeMap({
                           ? m[tile.label]
                           : node?.shortTitle || title}
                     </span>
-                    {edge && detailLevel !== 'atlas' && (
-                      <span className="transition-conditions">
-                        {edge.conditions.map((condition) => (
-                          <span key={condition}>{condition}</span>
-                        ))}
-                      </span>
-                    )}
                   </ButtonBase>
                   {detailLevel === 'reading' && !!node?.topics?.length && (
                     <div className="tile-topics">

@@ -209,6 +209,6 @@
   "signalObservedNote": "具体的な事例があります。すべての環境で成立するという意味ではありません。",
   "signalLimitedNote": "一部の実験や状況で確認。カードの条件全体が成立したとは言えません。",
   "signalUnknownNote": "仮説や定義を含みます。未確認であることは、安全を示しません。",
-  "signalMitigationNote": "緑の盾は、効果を測った対策に付きます。カード全体の安全判定ではありません。",
+  "signalMitigationNote": "緑の印は、効果を測った対策に付きます。カード全体の安全判定ではありません。",
   "currentSafeguards": "効果が確かめられた対策"
 }

@@ -16,3 +16,9 @@ export const evidenceColors: Record<EvidenceSignal, string> = {
   unknown: '#778294',
   mitigation: '#187b63',
 };
+export const evidenceBackgrounds: Record<EvidenceSignal, string> = {
+  observed: '#f9e0e5',
+  limited: '#fff2c6',
+  unknown: '#edf0f4',
+  mitigation: '#ddf0e7',
+};

@@ -209,6 +209,6 @@
   "signalObservedNote": "There are specific examples; this does not establish the condition in every setting.",
   "signalLimitedNote": "Support is limited to parts of the claim or particular settings.",
   "signalUnknownNote": "Includes hypotheses and definitions. A lack of confirmation is not evidence of safety.",
-  "signalMitigationNote": "A green shield identifies a tested mitigation, not a safety rating for the whole card.",
+  "signalMitigationNote": "A green marker identifies a tested mitigation, not a safety rating for the whole card.",
   "currentSafeguards": "Mitigations with test evidence"
 }
