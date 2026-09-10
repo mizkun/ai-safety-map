@@ -591,7 +591,9 @@ export function forkGeometry(
   if (
     merge &&
     (layout.wires.some((w) => w.from === merge.area) ||
-      layout.joins?.some((j) => j.inputs.includes(merge.area)))
+      layout.joins?.some((j) => j.inputs.includes(merge.area)) ||
+      // A nested OR returns into its parent's merge, without a separate wire.
+      layout.forks?.some((parent) => parent.merge?.inputs.includes(merge.area)))
   ) {
     const inputs = merge.inputs.map(
       (key) =>

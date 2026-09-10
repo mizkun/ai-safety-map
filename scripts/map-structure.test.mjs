@@ -36,6 +36,38 @@ import { cameraFrame, cameraAnimator } from '../lib/map-camera.mjs';
 import { connectionLabels } from '../lib/connection-labels.ts';
 const content = readCanonicalContent();
 
+test('nested OR branches reconnect their leaves to the enclosing OR merge', () => {
+  for (const view of ['overview', 'control'])
+    for (const compact of [false, true]) {
+      const layout = treeLayout(content, view, true, compact);
+      const inner = layout.forks.find((f) => f.from === 'C3a');
+      const outer = layout.forks.find((f) => f.from === 'C3');
+      assert.deepEqual(inner.targets, ['C3a1', 'C3a2', 'C3a3']);
+      assert.ok(outer.merge.inputs.includes(inner.merge.area));
+      const geometry = forkGeometry(inner, layout);
+      assert.ok(
+        geometry.mergePath,
+        view + ': the three alternatives have no return path',
+      );
+      const tile = (id) => layout.tiles.find((t) => t.node === id);
+      const incomingJunctions = geometry.junctions.filter(
+        (p) =>
+          inner.targets.some(
+            (id) => Math.abs(p.y - tile(id).y - tile(id).height / 2) < 1e-6,
+          ) &&
+          p.x >
+            Math.max(...inner.targets.map((id) => tile(id).x + tile(id).width)),
+      );
+      assert.equal(
+        incomingJunctions.length,
+        3,
+        view + ': a return branch is missing',
+      );
+      assert.equal(new Set(incomingJunctions.map((p) => p.x)).size, 1);
+      assert.ok(forkGeometry(outer, layout).mergePath);
+    }
+});
+
 test('individual scenarios have one connected present outside their causal conditions', () => {
   for (const route of content.routes)
     for (const compact of [false, true]) {
