@@ -1,0 +1,202 @@
+{
+  "id": "2026-09-10-integrated-progress-tour",
+  "date": "2026-09-10",
+  "reviewer": "Codex (primary-source comparison and editorial logic review; not independent peer review)",
+  "decision": "reviewed",
+  "assessments": {
+    "progress": {
+      "mechanism": "R0を能力向上のまとめ、R5を自己改善の循環によらない開発、R3を自己改善の循環とし、R0の分解をORにした。R0から実行能力C2a、職務W1へ直接つなぐため、ASIもRSIも通らずに進む道が残る。R0はすでに起きた進歩も含み、新しい進歩を局所的な失敗の必須条件にはしない。",
+      "conditions": "ORは排他的な選択や達成を保証する十分条件ではない。改良が特定の仕事へ転用できることは矢印の条件に残す。R3下位のR1→R2は加速に至る代表的な経路で、自己改善の定義に全工程の加速・無人化を追加しない。C2aとアクセスC2b、C1・C2・C3のANDは変更していない。",
+      "counterexample": "人間主導の学習方法の改善でも性能が上がる一方、研究のAI支援が増えても工程の別の制約が残れば開発全体は同じ倍率で速くならない。実行能力が増えても権限がなければ対象に作用できない。",
+      "evidence": "Chinchillaの原論文の学習比較を、RSIの循環がなくても能力が伸びる具体例として追加した。2022年の研究を現在のフロンティア水準と混同しない。R0は既存METRの課題能力の証拠を参照し、RSIの状態は仮説のまま。開発加速と安全性研究の議論はDeepMind §2.1と既存一次資料の範囲に照合した。",
+      "limits": "R0やR5から無制限の進歩、全職務の自律遂行、ASI到来、絶滅の確率は導かない。ORで示すのは編集上の経路整理であり、経済・技術発展を完全に列挙した定理ではない。R0-R4も安全性向上を保証せず、対策研究へ適用できる場合の接続にとどめる。",
+      "mitigation": "改善の前後で対象の仕事、資源、人間の支援をそろえて評価し、能力に応じた権限制限と対策の検証を続ける。図のANDと自己改善のフィードバックを機械検査する。",
+      "primary": [
+        {
+          "source": "chinchilla",
+          "locator": "Abstract; compute-optimal scaling experiments",
+          "support": "研究者が学習計算量の配分を改良して能力を伸ばした実験。ASIや現時点の最高能力を示す証拠には使わない。"
+        },
+        {
+          "source": "horizon",
+          "locator": "Methodological Details / FAQ",
+          "support": "特定の仕事で長い課題を実行する能力を比較する枠組み。全状況への一般化を保証しない。"
+        },
+        {
+          "source": "framework",
+          "locator": "§2.1 Recursive improvement; §3.1.1; §3.4",
+          "support": "能力向上の入力、再帰的改善が進歩を速め得ることと安全性研究にも使えることの整理。"
+        },
+        {
+          "source": "automated-alignment",
+          "locator": "Main experiments and §8.1–8.2 limitations",
+          "support": "AIを安全性研究へ用いる可能性。既知の評価の改善を一般的安全性へ外挿しない。"
+        }
+      ]
+    },
+    "oversight": {
+      "mechanism": "ASIからC3への影響を追加し、監督する側との能力差や機械の速度・規模が、確認と介入を難しくし得ることを明示した。新たな独立した絶滅ルートや、必須の前段階にはしていない。",
+      "conditions": "ASI-C3はinfluenceであり、「監督・対策が新しい能力に対応できない」「運用がその能力の行使を許す」という条件を持つ。能力と、害を選ぶ傾向・権限・監督失敗を分ける。RSIやASIをC3-LのANDへ加えていない。",
+      "counterexample": "能力の高いシステムでも、強い監督役、限定的な権限、封じ込め、検証可能な出力によって安全性を保つ可能性がある。ASIでなくても局所的なコントロール失敗は起こり得る。",
+      "evidence": "DeepMindの原論文のBackground assumptionsのNo human ceilingと§6.8.2–6.8.3に、能力差が監督を難しくする議論と、より強いシステム向けの安全性の保証の課題がある。oversight-gapカードをtype=argumentとして追加し、ASIの失敗を観測した評価とは表示しない。",
+      "limits": "同じ安全対策の下での能力差の議論と、対策も進歩する将来全体の比較は異なる。ASIなら必ず制御不能、という主張も、ASIの存在が確認済みという主張もしない。",
+      "mitigation": "対策の能力を上げ、能力差を前提とした評価と運用制限を検討する。ASI-C3を自動的な失敗へ変更したり、実行能力の経路にASIを必須として挿入したりすると検査が失敗する。",
+      "primary": [
+        {
+          "source": "framework",
+          "locator": "Background assumptions / No human ceiling; §6.8.2 Control; §6.8.3 Potential future safety cases",
+          "support": "監督する側との能力差と安全性の保証の課題。将来の分析であって、ASI制御失敗の観測値ではない。"
+        }
+      ]
+    },
+    "presentation": {
+      "mechanism": "ツアーの各章の後に既存ノードの解説を追加し、全76項目を対象にした。シナリオの読む順番を新たな因果線で結ばず、正式な全体図を小さなSVGで示す。章ごとの本文だけを描く。",
+      "conditions": "個別の条件を見る場面では、同じ分解の兄弟と親、表示している経路のAND共同入力をカメラ範囲に含める。Hを見たときに、別のシナリオのM1などを現在の経路の必要条件として追加しない。",
+      "counterexample": "ある章にC1とC2が並ぶことはC1の後にC2が必ず起きる証拠ではない。ASIや金融混乱を飛ばして読むことも、因果関係の否定にはならない。",
+      "evidence": "新しい数値やモデル評価はツアー用に生成せず、ノードの概要・関係・現在の状況を直接再利用。日本語と英語の対応、全項目の包含、各カメラの対象、OR/ANDと線の幾何を検査した。",
+      "limits": "図の位置は年や確率を表さない。ミニマップは全体のどの条件を読んでいるかを示し、異なるレイアウトのスクロール座標を同一だと偽装しない。実機の描画速度やフォントの実際のレンダリングを測った検査ではない。",
+      "mitigation": "常時表示の操作説明と本文のフォーカス枠を除き、ボタンのフォーカス表示と既存ショートカットを保持。促進の文字を外し、抑制はマイナスの記号を用いて方向だけで逆の意味に読ませない。パンくずの全体を操作可能にし、既存の一次資料への詳細導線は保持する。",
+      "primary": [
+        {
+          "source": "framework",
+          "locator": "Misalignment strategy; §2.1 Recursive improvement",
+          "support": "能力、意図、監督を別の条件として図示する背景。ツアーの読む順序で必須の因果関係を増やさない。"
+        }
+      ]
+    }
+  },
+  "entries": {
+    "source:chinchilla": {
+      "hash": "e7917ed6bd468e085ebba7fc99b730d9616201f61500326846578b7480f1ecb6",
+      "assessment": "progress"
+    },
+    "research:ordinary-progress": {
+      "hash": "de0c188f832e8375a80d50ec2c896d951c4bd5bb277e772d45298858acf768b9",
+      "assessment": "progress"
+    },
+    "research:oversight-gap": {
+      "hash": "fc4f03271fbe0610924473db73ab44350a1fabb038fb492a819d264164f1e89c",
+      "assessment": "oversight"
+    },
+    "node:ASI": {
+      "hash": "ca9ce8bea39e61d5f67e2697b0a708c951026cdb3acd20e618dbdf25d4693771",
+      "assessment": "oversight"
+    },
+    "node:C2a": {
+      "hash": "19d586b47e6e233944bdb2752cc9b715d5ac8e5e39a9c1b0385cde6f4a952b66",
+      "assessment": "progress"
+    },
+    "node:C3": {
+      "hash": "f4db7a775cdc40c6a0b1a7624ec38ec9f492b8df2257cf662f2baac8880bfd83",
+      "assessment": "oversight"
+    },
+    "node:R0": {
+      "hash": "14164a90254172be1843d3443a5359860b520f59284824725d4dc94ff5c84267",
+      "assessment": "progress"
+    },
+    "node:R3": {
+      "hash": "99fbb1c6e3b7ee67c862e66a40f40afccd8c0f7c1a275929e028ad32cf36c4c6",
+      "assessment": "progress"
+    },
+    "node:R5": {
+      "hash": "27b5b12e5b4a5d2e5dd9df6cdf69455c664ec94f93a94f3ce42f373a90aa794e",
+      "assessment": "progress"
+    },
+    "edge:R2-R3": {
+      "hash": "ba6872098e772d032f28b1c5aaabc0763fc0f734b4bc2eda85f8fd51b3834758",
+      "assessment": "progress"
+    },
+    "edge:R3-R2": {
+      "hash": "1ccca0db4208a875c89da6094585166d414e61d7e55b0b1b38a6de074f66ac91",
+      "assessment": "progress"
+    },
+    "edge:C3-L": {
+      "hash": "667ef61ec2e41410d58706c860110606b7fae967ad929b8a60f06b9936b5210e",
+      "assessment": "oversight"
+    },
+    "edge:R0-C2a": {
+      "hash": "356963c22e66474ba3ffa36ea8a7825ae12391cd0283aba3018d59f123d55ca5",
+      "assessment": "progress"
+    },
+    "edge:R0-W1": {
+      "hash": "05446ecc3553b20b21a5d2825b84c79fa21482ae92e6808bebef5a6f2192b6a7",
+      "assessment": "progress"
+    },
+    "edge:R0-ASI": {
+      "hash": "2826430ab1f8b30f198c7ab3d234238fff055cfbd46f6fb505c1cdfad167170d",
+      "assessment": "progress"
+    },
+    "edge:ASI-C3": {
+      "hash": "e692644f7e55ec2d88ff658e1f467a4141fcd2aca70254b28fc4e5e1710f47e3",
+      "assessment": "oversight"
+    },
+    "edge:R0-R4": {
+      "hash": "6b15c25ff91b24054d159fb08d86dd2021f3912d37cbc25928908520aece2449",
+      "assessment": "progress"
+    },
+    "graph:control": {
+      "hash": "453a86e4508b920f67db2c1b8ff4d9bac2d6f9b021841f998f74cd358d2abef3",
+      "assessment": "progress"
+    },
+    "graph:acceleration": {
+      "hash": "631caaec08ac7360323bfb8a0e3201a13b126aa54337f8f00e0ef648efb41ade",
+      "assessment": "progress"
+    },
+    "graph:ability-access": {
+      "hash": "4f99e83f7d7543ee9e3f6597677ec5306dcf4b289166e415c377d8efb5238959",
+      "assessment": "progress"
+    },
+    "graph:work": {
+      "hash": "c87ffd4fc861bb91e8b73deafbcd1b8d293e090aca39cd8762b9f56b49b4bbdd",
+      "assessment": "progress"
+    },
+    "graph:development-paths": {
+      "hash": "ea9fc2603d680ae33c2175e4270d4b525546203db4a5ba898fc19cddb1b4b71b",
+      "assessment": "progress"
+    },
+    "graph:research-cycle": {
+      "hash": "6d26cc6ae7e6560e27162803f5eb80dce0eb417346f72f357556315885f9bf5e",
+      "assessment": "progress"
+    },
+    "route:control": {
+      "hash": "afbc8842d6147268e9837fdc7db2b06feb5cdefb11f045a0165130553bb25e72",
+      "assessment": "progress"
+    },
+    "route:acceleration": {
+      "hash": "76f9effc69381cbfae3e9535e869a59a2f41d3541f547ebbd86eba62be1d472e",
+      "assessment": "progress"
+    },
+    "route:work": {
+      "hash": "90bebccbc8f2f428a177e67b0909057a4c638a277d80d72843dcf9529ac505fd",
+      "assessment": "progress"
+    },
+    "news:research-contribution": {
+      "hash": "3f6d48638dbe604935fe86cbbe6ed3ce59121eeac06d18bf6050cf68819cb3ad",
+      "assessment": "progress"
+    },
+    "news:time-horizons": {
+      "hash": "041d8eebf744acbaa58cecfd11730cb85596d17cac0052abf16984febe5db439",
+      "assessment": "progress"
+    },
+    "story:control": {
+      "hash": "bcbd3b8bd7fe008824829a74dea4d3e2d1aa27d2cc4e238d9619fdfe5ede69f2",
+      "assessment": "presentation"
+    },
+    "story:acceleration": {
+      "hash": "3a25d6663915a9568418ff8338c98a63c44d3e4331033eb1f59b3419f288b746",
+      "assessment": "presentation"
+    },
+    "history:changes": {
+      "hash": "3d99f6ee28f97b4f082408baab6fd1f9df033c91724eab6c7d0ad3780d421a11",
+      "assessment": "presentation"
+    },
+    "ui:ja": {
+      "hash": "ba84c8715b11197d7c931b6cc30435733523784e0428a820effb8567d2188932",
+      "assessment": "presentation"
+    },
+    "inventory:current": {
+      "hash": "d5df3e8e42488182df7f39efe741ed0e3d27f774e174efdfa0d487b4b66cc0db",
+      "assessment": "presentation"
+    }
+  }
+}

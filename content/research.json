@@ -502,5 +502,29 @@
     "method": "開発にAIを使うときのリスクと対策を分析する。",
     "result": "開発が速まると対策が追いつかない恐れがある。一方、安全性研究もAIで速め得ると論じる。",
     "limitation": "将来の可能性を論じた分析。危険度の大きさや、自己改善が必ず起きることを実証していない。"
+  },
+  "ordinary-progress": {
+    "title": "自己改善の循環によらない、学習方法の改善",
+    "kind": "モデルの学習・比較実験",
+    "type": "evaluation",
+    "source": "chinchilla",
+    "locator": "Abstract; compute-optimal scaling experiments",
+    "evaluator": "Jordan Hoffmannら、DeepMindの研究者",
+    "setting": "計算量、モデル規模、学習データ量を変えた言語モデルの学習。",
+    "method": "計算量の配分を比較し、その結果を使ってChinchillaを学習した。",
+    "result": "モデルとデータへの配分を変えることで、同程度の学習計算量でも比較対象を上回る結果を得た。",
+    "limitation": "2022年の特定の言語モデルの実験。現在の能力の上限やASIの成立を示すものではない。"
+  },
+  "oversight-gap": {
+    "title": "監督する側との能力差が、制御の課題になる",
+    "kind": "安全性の研究方針を定める分析",
+    "type": "argument",
+    "source": "framework",
+    "locator": "Background assumptions, No human ceiling; §6.8.2–6.8.3",
+    "evaluator": "Google DeepMindの論文著者",
+    "setting": "監督する人間やAIより高い能力を持つシステムを想定した分析。",
+    "method": "能力差、動作の速さ、監督と安全性の保証の限界を検討する。",
+    "result": "能力差が大きいほど監督は難しくなり、人間だけに頼らない監督や別の安全性の保証が必要になると論じる。",
+    "limitation": "ASIを実験して制御不能を観測した結果ではない。対策の進歩によっても難しさは変わる。"
   }
 }

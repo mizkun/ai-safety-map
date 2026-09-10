@@ -28,8 +28,8 @@ export function expandedTreeLayout(
   const expanded = expansion === true;
   const routeOpen = (id: string) =>
     !selection || view !== 'overview' || selection.routes.includes(id);
-  const researchOpen = expanded || selection?.factors?.includes('acceleration');
-  const researchWidth = 1450;
+  const progressWidth = () =>
+    Math.max(760, measure('R0', 332, true).width) + 200;
   const layout: TreeLayout = {
     width: 1200,
     height: 0,
@@ -50,7 +50,9 @@ export function expandedTreeLayout(
       enabled && data.nodes[id].subgraph
         ? data.graphs[data.nodes[id].subgraph!]
         : undefined;
-    return graph && ['all', 'any'].includes(graph.mode) ? graph : undefined;
+    return graph && ['all', 'any', 'sequence'].includes(graph.mode)
+      ? graph
+      : undefined;
   };
   function measure(
     id: string,
@@ -60,6 +62,14 @@ export function expandedTreeLayout(
     const graph = children(id, descend);
     if (!graph) return { width, height: CARD };
     const sizes = graph.nodes.map((child) => measure(child, width));
+    if (graph.mode === 'sequence')
+      return {
+        width:
+          sizes.reduce((sum, s) => sum + s.width, 0) +
+          GAP * (sizes.length - 1) +
+          160,
+        height: CARD + 112 + Math.max(...sizes.map((s) => s.height)) + 60,
+      };
     return {
       width:
         sizes.reduce((sum, size) => sum + size.width, 0) +
@@ -94,6 +104,31 @@ export function expandedTreeLayout(
     };
     layout.tiles.push(card);
     if (!graph) return card;
+    if (graph.mode === 'sequence') {
+      let cursor = x + 80;
+      const descendants = graph.nodes.map((id) => {
+        const child = node(id, cursor, y + CARD + 112, width, route);
+        cursor += child.width + GAP;
+        return child;
+      });
+      for (const edge of graph.edges) {
+        const e = data.edges[edge];
+        wire(e.from, e.to, route, edge);
+      }
+      wire(id, descendants[0].key, route, undefined, true);
+      if (id === 'R3') {
+        sideWire('R2', 'R3', 'R2-R3', x + size.width - 28, route);
+        layout.wires.at(-1)!.toFraction = 0.28;
+        wire('R3', 'R2', route, 'R3-R2');
+        layout.wires.at(-1)!.viaY = y + CARD + 64;
+        layout.wires.at(-1)!.fromFraction = 0.72;
+        layout.wires.at(-1)!.sourceSide = 'right';
+        layout.wires.at(-1)!.toFraction = 0.28;
+      }
+      const area: TreeArea = { key: 'area-' + id, node: id, x, y, ...size };
+      layout.areas!.push(area);
+      return area;
+    }
     const childY = y + CARD + 112 + (graph.mode === 'all' ? 26 : 0);
     let cursor = x + (graph.mode === 'all' ? PAD : 0);
     const descendants: Bounds[] = [];
@@ -255,26 +290,38 @@ export function expandedTreeLayout(
     );
     return node('C4', center - 166, localY + CARD + 168, 332, 'control', false);
   }
-  // This optional lane sits outside every AND frame. It is not a prerequisite.
+  // Development branches are ordinary map nodes. RSI and ASI are not AND inputs.
+  function progression(x: number, y: number) {
+    const root = node('R0', x, y, 332, 'acceleration', true);
+    const nextY = root.y + root.height + 120;
+    node('ASI', x, nextY, 332, 'acceleration', false);
+    node('R4', x + 428, nextY, 332, 'acceleration', false);
+    sideWire('R0', 'ASI', 'R0-ASI', x - 70, 'acceleration');
+    sideWire(
+      'R0',
+      'R4',
+      'R0-R4',
+      x + Math.max(root.width, 760) + 40,
+      'acceleration',
+    );
+    layout.wires.at(-1)!.fromFraction = 0.28;
+    layout.wires.at(-1)!.toFraction = 0.25;
+    return { root, nextY };
+  }
   function controlContext(x: number, y: number) {
-    if (!researchOpen) {
-      if (view === 'control')
-        layout.factors!.push({
-          key: 'acceleration',
-          expanded: false,
-          x: x - 400,
-          y,
-          width: 0,
-          height: 340,
-        });
-      return control(x, y);
-    }
-    acceleration(x, y, true);
-    const last = control(x + researchWidth, y + 464);
-    wire('R2', 'C2', 'acceleration', 'R2-C2');
-    layout.wires.at(-1)!.fromFraction = 0.88;
-    layout.wires.at(-1)!.busY = y + 400;
-    layout.wires.at(-1)!.toFraction = 0.28;
+    const progress = progression(x, y);
+    const last = control(x + progressWidth() + 120, progress.nextY);
+    const capability = layout.tiles.some((t) => t.node === 'C2a')
+      ? 'C2a'
+      : 'C2';
+    wire(progress.root.key, capability, 'acceleration', 'R0-C2a');
+    layout.wires.at(-1)!.busY = progress.nextY - 60;
+    layout.wires.at(-1)!.toFraction = 0.24;
+    wire('ASI', 'C3', 'acceleration', 'ASI-C3');
+    layout.wires.at(-1)!.viaY = progress.nextY - 34;
+    layout.wires.at(-1)!.sourceSide = 'left';
+    layout.wires.at(-1)!.fromFraction = 0.25;
+    layout.wires.at(-1)!.toFraction = 0.72;
     wire('R4', 'C1', 'acceleration', 'R4-C1');
     return last;
   }
@@ -431,59 +478,32 @@ export function expandedTreeLayout(
     }
     return finance;
   }
-  function acceleration(x: number, y: number, overview: boolean) {
-    if (overview) {
-      const r1 = node('R1', x + 440, y, 356, 'acceleration', false);
-      const r2 = node('R2', x + 440, y + 232, 356, 'acceleration', false);
-      node('R3', x, y + 464, 356, 'acceleration', false);
-      node('ASI', x + 440, y + 464, 356, 'acceleration', false);
-      const safety = node('R4', x + 880, y + 464, 356, 'acceleration', false);
-      layout.factors!.push({
-        key: 'acceleration',
-        expanded: true,
-        x: x - 108,
-        y: y - 24,
-        width: 1416,
-        height: 670,
-      });
-      wire(r1.key, r2.key, 'acceleration', 'R1-R2');
-      wire('R2', 'R3', 'acceleration', 'R2-R3');
-      layout.wires.at(-1)!.fromFraction = 0.18;
-      layout.wires.at(-1)!.busY = y + 416;
-      sideWire('R3', 'R2', 'R3-R2', x - 60, 'acceleration');
-      layout.wires.at(-1)!.toFraction = 0.28;
-      wire('R2', 'ASI', 'acceleration', 'R2-ASI');
-      wire('R2', 'R4', 'acceleration', 'R2-R4');
-      layout.wires.at(-1)!.fromFraction = 0.72;
-      layout.wires.at(-1)!.busY = y + 438;
-      return safety;
-    }
-    node('R1', x, y, 332, 'acceleration', false);
-    node('R2', x, y + 264, 332, 'acceleration', false);
-    node('R3', x + 408, y + 264, 332, 'acceleration', false);
-    node('ASI', x + 816, y + 264, 332, 'acceleration', false);
-    node('R4', x, y + 552, 332, 'acceleration', false);
-    node('C2', x + 408, y + 552, 332, 'control', false);
-    node('W1', x + 816, y + 552, 332, 'work', false);
-    const alignment = node('C1', x, y + 824, 332, 'control', false);
-    for (const id of data.graphs.acceleration.edges) {
-      const e = data.edges[id];
-      wire(e.from, e.to, 'acceleration', id);
-      if (id === 'R2-ASI') {
-        layout.wires.at(-1)!.viaY = y + 202;
-        layout.wires.at(-1)!.sourceSide = 'left';
-        layout.wires.at(-1)!.trackOffset = 20;
-      }
-      if (id === 'R3-R2') {
-        layout.wires.at(-1)!.viaY = y + 178;
-        layout.wires.at(-1)!.toFraction = 0.78;
-      }
-      if (['R2-R4', 'R2-C2', 'R2-W1'].includes(id)) {
-        const index = ['R2-R4', 'R2-C2', 'R2-W1'].indexOf(id);
-        layout.wires.at(-1)!.fromFraction = 0.2 + index * 0.3;
-        layout.wires.at(-1)!.busY = y + 512 - index * 32;
-      }
-    }
+  function acceleration(x: number, y: number) {
+    const progress = progression(x, y);
+    const start = x + progressWidth() + 120;
+    node('C2a', start, progress.nextY, 332, 'control', false);
+    node('W1', start + 428, progress.nextY, 332, 'work', false);
+    node('C3', start + 856, progress.nextY, 332, 'control', false);
+    const alignment = node(
+      'C1',
+      start,
+      progress.nextY + CARD + 110,
+      332,
+      'control',
+      false,
+    );
+    wire(progress.root.key, 'C2a', 'acceleration', 'R0-C2a');
+    layout.wires.at(-1)!.fromFraction = 0.4;
+    layout.wires.at(-1)!.busY = progress.nextY - 80;
+    wire(progress.root.key, 'W1', 'acceleration', 'R0-W1');
+    layout.wires.at(-1)!.fromFraction = 0.6;
+    layout.wires.at(-1)!.busY = progress.nextY - 58;
+    wire('ASI', 'C3', 'acceleration', 'ASI-C3');
+    layout.wires.at(-1)!.viaY = progress.nextY - 30;
+    layout.wires.at(-1)!.sourceSide = 'left';
+    layout.wires.at(-1)!.fromFraction = 0.25;
+    wire('R4', 'C1', 'acceleration', 'R4-C1');
+    layout.wires.at(-1)!.toFraction = 0.24;
     return alignment;
   }
   function chain(
@@ -558,7 +578,7 @@ export function expandedTreeLayout(
     return layout;
   }
   const graph = data.graphs[view];
-  if (graph?.parent && ['all', 'any'].includes(graph.mode)) {
+  if (graph?.parent && ['all', 'any', 'sequence'].includes(graph.mode)) {
     let ancestor = graph.parent;
     const visited = new Set<string>();
     while (!visited.has(ancestor)) {
@@ -592,27 +612,13 @@ export function expandedTreeLayout(
   }
   if (['work', 'money', 'acceleration'].includes(view)) {
     if (view === 'work') {
-      work(
-        100 + (researchOpen ? researchWidth : 0),
-        76 + (researchOpen ? 464 : 0),
-      );
-      if (researchOpen) {
-        acceleration(100, 76, true);
-        wire('R2', 'W1', 'acceleration', 'R2-W1');
-        layout.wires.at(-1)!.fromFraction = 0.88;
-        layout.wires.at(-1)!.busY = 476;
-        layout.wires.at(-1)!.toFraction = 0.24;
-      } else
-        layout.factors!.push({
-          key: 'acceleration',
-          expanded: false,
-          x: -300,
-          y: 76,
-          width: 0,
-          height: 340,
-        });
+      const progress = progression(100, 76);
+      work(100 + progressWidth() + 120, progress.nextY);
+      wire(progress.root.key, 'W1', 'acceleration', 'R0-W1');
+      layout.wires.at(-1)!.busY = progress.nextY - 60;
+      layout.wires.at(-1)!.toFraction = 0.24;
     } else if (view === 'money') money(100, 76, false);
-    else acceleration(100, 76, false);
+    else acceleration(100, 76);
     return finish();
   }
   if (graph?.mode === 'sequence') {
@@ -647,7 +653,7 @@ export function expandedTreeLayout(
     const width = !routeOpen(id)
       ? 332
       : id === 'control'
-        ? controlWidth() + (researchOpen ? researchWidth : 0)
+        ? controlWidth() + progressWidth() + 120
         : id === 'misuse'
           ? misuseWidth()
           : id === 'work'
@@ -660,7 +666,15 @@ export function expandedTreeLayout(
     return route;
   });
   layout.width = cursor;
-  node('NOW', 100, 32, 332, 'control', false);
+  const middleRoute = routes[Math.floor(routes.length / 2)];
+  node(
+    'NOW',
+    middleRoute.x + (middleRoute.width - 332) / 2,
+    32,
+    332,
+    'control',
+    false,
+  );
   const ends: { route: string; last: Bounds }[] = [];
   for (const route of routes) {
     const { id, x, width, nodes } = route;
@@ -752,17 +766,17 @@ export function expandedTreeLayout(
     return route ? 'route-' + route.id : id;
   };
   for (const [edge, viaY] of [
-    ['R2-W1', 404],
+    ['R0-W1', 404],
     ['W4-P1', 650],
   ] as const) {
-    if (edge === 'R2-W1' && !layout.tiles.some((t) => t.node === 'R2'))
+    if (edge === 'R0-W1' && !layout.tiles.some((t) => t.node === 'R0'))
       continue;
     if (edge === 'W4-P1' && (!routeOpen('work') || !routeOpen('money')))
       continue;
     const e = data.edges[edge];
     wire(visibleKey(e.from), visibleKey(e.to), 'acceleration', edge);
     layout.wires.at(-1)!.viaY = viaY;
-    if (edge === 'R2-W1') {
+    if (edge === 'R0-W1') {
       layout.wires.at(-1)!.trackOffset = 98;
       layout.wires.at(-1)!.toFraction = 0.24;
     }

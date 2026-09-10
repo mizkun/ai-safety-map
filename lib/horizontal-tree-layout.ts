@@ -47,7 +47,11 @@ export function horizontalPath(path: string, layout: TreeLayout) {
 export function horizontalTreeLayout(source: TreeLayout): TreeLayout {
   const present = source.tiles.find((t) => t.node === 'NOW');
   if (present) {
-    present.x = (source.width - present.width) / 2;
+    const branches = source.tiles.filter((t) => t.kind === 'route');
+    const middle = branches[Math.floor(branches.length / 2)];
+    present.x = middle
+      ? middle.x + (middle.width - present.width) / 2
+      : (source.width - present.width) / 2;
     present.label = 'present';
   }
   const projection = {

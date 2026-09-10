@@ -8,7 +8,7 @@ import {
   type CSSProperties,
 } from 'react';
 import { Button, ButtonBase, IconButton, Paper } from '@mui/material';
-import { ArrowDown, ArrowLeft, ArrowRight, Crosshair, X } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Crosshair, X } from 'lucide-react';
 import type { Content } from '@/lib/content-types';
 import { formatMessage, type Messages } from '@/lib/i18n';
 import {
@@ -18,6 +18,7 @@ import {
   type TourStop,
 } from '@/lib/map-tour';
 import { routeColors } from '@/lib/tree-layout';
+import TourLocator from './tour-locator';
 
 type Props = {
   data: Content;
@@ -84,6 +85,10 @@ export default function MapTour({
   }, [index, onMove, onClose, advance]);
   const stop = stops[index] || stops[0];
   const route = data.routes.find((r) => r.id === stop.view);
+  function choose(position: number) {
+    onMove(position);
+    body.current?.focus({ preventScroll: true });
+  }
   useEffect(() => {
     if (!ready || !keyboardEnabled) return;
     const focusFrame = requestAnimationFrame(() =>
@@ -119,11 +124,19 @@ export default function MapTour({
       document.removeEventListener('keydown', keydown);
     };
   }, [ready, keyboardEnabled, stops.length]);
+  const routePages = stops
+    .map((step, position) => ({ step, position }))
+    .filter(
+      ({ step }) =>
+        step.view === stop.view && ['chapter', 'node'].includes(step.kind),
+    );
   const pages = stops
     .map((step, position) => ({ step, position }))
     .filter(({ step }) =>
-      stop.kind === 'chapter'
-        ? step.kind === 'chapter' && step.view === stop.view
+      route
+        ? step.view === stop.view &&
+          step.chapter === stop.chapter &&
+          ['chapter', 'node'].includes(step.kind)
         : step.key === stop.key,
     );
   useEffect(() => {
@@ -181,54 +194,79 @@ export default function MapTour({
         }
       >
         <header className="tour-heading">
-          <label htmlFor="tour-route">{m.tourJump}</label>
+          <nav className="tour-breadcrumb" aria-label={m.breadcrumb}>
+            <ButtonBase onClick={() => choose(0)}>{m.overviewLabel}</ButtonBase>
+            {route && (
+              <>
+                <span aria-hidden="true">›</span>
+                <strong>{route.shortTitle}</strong>
+              </>
+            )}
+          </nav>
           <IconButton aria-label={m.tourExit} onClick={onClose}>
             <X size={18} />
           </IconButton>
         </header>
-        <div className="tour-route-picker">
-          <select
-            id="tour-route"
-            className="tour-route-select"
-            disabled={!ready}
-            value={stop.kind === 'chapter' ? stop.view : stop.kind}
-            onChange={(e) =>
-              onMove(
-                stops.findIndex(
-                  (s) => s.view === e.target.value || s.kind === e.target.value,
-                ),
-              )
-            }
-          >
-            <option value="start">{m.present}</option>
-            <optgroup label={m.scenarioGroup}>
-              {data.routes
-                .filter((r) => r.role !== 'factor')
-                .map((r) => (
-                  <option key={r.id} value={r.id}>
-                    {r.shortTitle}
-                  </option>
-                ))}
-            </optgroup>
-            <optgroup label={m.optionalFactor}>
-              {data.routes
-                .filter((r) => r.role === 'factor')
-                .map((r) => (
-                  <option key={r.id} value={r.id}>
-                    {r.shortTitle}
-                  </option>
-                ))}
-            </optgroup>
-            <option value="finish">{m.tourFinishTitle}</option>
-          </select>
-          <span className="tour-reading-hint">
-            <kbd>Enter</kbd>
-            <kbd>→</kbd>
-            {m.next}
-            <span>·</span>
-            <ArrowDown size={13} />
-            {m.tourScroll}
-          </span>
+        <div className="tour-location">
+          <TourLocator
+            data={data}
+            stop={focus ? { ...stop, nodes: [focus] } : stop}
+            label={m.overviewLabel}
+            onOverview={() => choose(0)}
+          />
+          <div className="tour-route-picker">
+            <select
+              id="tour-route"
+              aria-label={m.tourJump}
+              className="tour-route-select"
+              disabled={!ready}
+              value={route ? stop.view : stop.kind}
+              onChange={(e) =>
+                choose(
+                  stops.findIndex(
+                    (s) =>
+                      s.view === e.target.value || s.kind === e.target.value,
+                  ),
+                )
+              }
+            >
+              <option value="start">{m.present}</option>
+              <optgroup label={m.scenarioGroup}>
+                {data.routes
+                  .filter((r) => r.role !== 'factor')
+                  .map((r) => (
+                    <option key={r.id} value={r.id}>
+                      {r.shortTitle}
+                    </option>
+                  ))}
+              </optgroup>
+              <option value="finish">{m.tourFinishTitle}</option>
+            </select>
+            {route && (
+              <select
+                className="tour-step-select"
+                aria-label={m.tourChapters}
+                value={index}
+                onChange={(e) => choose(Number(e.target.value))}
+              >
+                {data.stories[route.id].chapters.map(
+                  (chapter, chapterIndex) => (
+                    <optgroup key={chapterIndex} label={chapter.title}>
+                      {routePages
+                        .filter(({ step }) => step.chapter === chapterIndex)
+                        .map(({ step, position }) => (
+                          <option key={step.key} value={position}>
+                            {step.node
+                              ? data.nodes[step.node].shortTitle
+                              : chapter.title}
+                          </option>
+                        ))}
+                    </optgroup>
+                  ),
+                )}
+              </select>
+            )}
+          </div>
         </div>
         {/* oxlint-disable jsx-a11y/no-noninteractive-tabindex -- This named scroll region needs keyboard focus for reading and chapter shortcuts. */}
         <section
@@ -242,18 +280,21 @@ export default function MapTour({
             ? loading
             : pages.map(({ step, position }) => {
                 const chapter = data.stories[step.view]?.chapters[step.chapter];
+                const node = step.node ? data.nodes[step.node] : null;
                 const title =
                   step.kind === 'start'
                     ? m.tourStartTitle
                     : step.kind === 'finish'
                       ? m.tourFinishTitle
-                      : chapter?.title;
+                      : node?.title || chapter?.title;
                 const prose =
                   step.kind === 'start'
                     ? m.tourStartText
                     : step.kind === 'finish'
                       ? m.tourFinishText
-                      : chapter?.text;
+                      : node
+                        ? node.body['概要']
+                        : chapter?.text;
                 const active = position === index;
                 return (
                   <article
@@ -268,8 +309,10 @@ export default function MapTour({
                     <div className="tour-chapter-heading">
                       <span className="tour-scene-number" aria-hidden="true">
                         {String(
-                          step.kind === 'chapter'
-                            ? step.chapter + 1
+                          route
+                            ? routePages.findIndex(
+                                (page) => page.position === position,
+                              ) + 1
                             : step.kind === 'start'
                               ? 0
                               : 8,
@@ -278,9 +321,11 @@ export default function MapTour({
                       <span>
                         {route?.role === 'factor'
                           ? m.optionalFactor
-                          : step.kind === 'chapter'
-                            ? m.tourScene
-                            : m.overview}
+                          : node
+                            ? node.id
+                            : step.kind === 'chapter'
+                              ? m.overviewLabel
+                              : m.overview}
                       </span>
                     </div>
                     <h2>{title}</h2>
@@ -289,13 +334,35 @@ export default function MapTour({
                         <p key={i}>{richText(paragraph)}</p>
                       ))}
                     </div>
-                    {!!step.nodes.length && (
+                    {node && (
+                      <div className="tour-node-context">
+                        <h3>{m.whyNext}</h3>
+                        <p>{richText(node.body['他の条件との関係'])}</p>
+                        <h3>{m.evidence}</h3>
+                        <p>{richText(node.body['現在の状況'])}</p>
+                        <Button
+                          className="tour-read"
+                          onClick={() => onRead(node.id)}
+                          endIcon={<ArrowRight size={14} />}
+                        >
+                          {m.read}
+                        </Button>
+                      </div>
+                    )}
+                    {!node && !!step.nodes.length && (
                       <div className="tour-node-list" aria-label={m.tourFocus}>
                         {step.nodes.map((id) => (
                           <ButtonBase
                             key={id}
                             aria-pressed={active && focus === id}
                             onClick={() => {
+                              const detail = stops.findIndex(
+                                (s) => s.view === step.view && s.node === id,
+                              );
+                              if (detail >= 0) {
+                                choose(detail);
+                                return;
+                              }
                               if (!active) onMove(position);
                               onFocus(active && focus === id ? null : id);
                             }}
@@ -306,7 +373,7 @@ export default function MapTour({
                         ))}
                       </div>
                     )}
-                    {active && focus && (
+                    {!node && active && focus && (
                       <Button
                         className="tour-read"
                         onClick={() => onRead(focus)}
@@ -331,22 +398,6 @@ export default function MapTour({
               })}
         </section>
         {/* oxlint-enable jsx-a11y/no-noninteractive-tabindex */}
-        <nav className="tour-chapter-track" aria-label={m.tourChapters}>
-          {pages.map(({ step, position }) => (
-            <ButtonBase
-              key={step.key}
-              aria-label={
-                step.kind === 'chapter'
-                  ? data.stories[step.view].chapters[step.chapter].title
-                  : m.present
-              }
-              aria-current={position === index ? 'step' : undefined}
-              onClick={() => onMove(position)}
-            >
-              <span />
-            </ButtonBase>
-          ))}
-        </nav>
         <footer className="tour-navigation">
           <Button
             disabled={!index}
@@ -357,9 +408,10 @@ export default function MapTour({
           </Button>
           <output aria-live="polite" aria-atomic="true">
             {route
-              ? formatMessage(m.tourChapter, {
-                  current: stop.chapter + 1,
-                  total: pages.length,
+              ? formatMessage(m.stepOf, {
+                  current:
+                    routePages.findIndex((page) => page.position === index) + 1,
+                  total: routePages.length,
                 })
               : m.tour}
           </output>
@@ -380,10 +432,6 @@ export default function MapTour({
           )}
         </footer>
       </Paper>
-      <div className="tour-figure-caption" aria-hidden="true">
-        <span className="tour-figure-dot" />
-        {m.tourFigure}
-      </div>
     </>
   );
 }

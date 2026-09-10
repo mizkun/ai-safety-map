@@ -36,5 +36,6 @@
     "gemini-safety",
     "recursive-improvement"
   ],
-  "shortTitle": "再帰的自己改善"
+  "shortTitle": "RSI（再帰的自己改善）",
+  "subgraph": "research-cycle"
 }

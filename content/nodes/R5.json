@@ -1,0 +1,27 @@
+{
+  "id": "R5",
+  "title": "自己改善の循環がなくても、研究・開発で能力が伸びる",
+  "shortTitle": "自己改善なしでも開発は進む",
+  "explanation": "R5.md",
+  "sources": [
+    "chinchilla"
+  ],
+  "questions": [],
+  "related": [],
+  "terms": [
+    "ai-rd"
+  ],
+  "topics": [
+    "ai-rd"
+  ],
+  "status": "observed",
+  "research": [
+    "ordinary-progress"
+  ],
+  "review": {
+    "checkedAt": "2026-09-10",
+    "intervalDays": 7,
+    "reason": "能力や対策の変化を一次資料で確認するため。"
+  },
+  "watch": []
+}

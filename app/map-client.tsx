@@ -757,7 +757,9 @@ export default function MapClient({ site }: { site: SiteContent }) {
       </header>
       {view !== 'overview' && !tour && (
         <nav className="map-breadcrumb" aria-label={m.breadcrumb}>
-          <span>{m.overviewLabel}</span>
+          <ButtonBase onClick={() => selectRoute('overview')}>
+            {m.overviewLabel}
+          </ButtonBase>
           <span aria-hidden="true">›</span>
           <strong aria-current="page">
             {data.routes.find((r) => r.id === view)?.shortTitle || graph?.title}
@@ -772,6 +774,7 @@ export default function MapClient({ site }: { site: SiteContent }) {
             ? {
                 key: stop.key + ':' + (tour?.focus || ''),
                 nodes: stop.nodes,
+                detail: stop.kind === 'node',
                 focus: tour?.focus || null,
               }
             : null
@@ -860,25 +863,6 @@ export default function MapClient({ site }: { site: SiteContent }) {
           <div className="route-picker">
             {data.routes
               .filter((r) => r.role !== 'factor')
-              .map((r) => (
-                <ButtonBase
-                  className="route-option"
-                  key={r.id}
-                  onClick={() => selectRoute(r.id)}
-                >
-                  <span
-                    className="route-option-dot"
-                    style={{ background: routeColors[r.id] }}
-                  />
-                  <span>{r.shortTitle}</span>
-                  <ArrowRight size={17} />
-                </ButtonBase>
-              ))}
-          </div>
-          <p className="route-picker-note">{m.factorPickerHelp}</p>
-          <div className="route-picker">
-            {data.routes
-              .filter((r) => r.role === 'factor')
               .map((r) => (
                 <ButtonBase
                   className="route-option"

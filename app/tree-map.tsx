@@ -70,7 +70,12 @@ type Props = {
   onChoose: () => void;
   onTerm: (id: string) => void;
   expansionRequest?: { id: string; serial: number } | null;
-  tourFocus?: { key: string; nodes: string[]; focus: string | null } | null;
+  tourFocus?: {
+    key: string;
+    nodes: string[];
+    focus: string | null;
+    detail?: boolean;
+  } | null;
 };
 export default function TreeMap({
   data,
@@ -87,8 +92,7 @@ export default function TreeMap({
   tourFocus,
 }: Props) {
   const [expanded, setExpanded] = useState(false);
-  const [openNodes, setOpenNodes] = useState<string[]>([]);
-  const [showResearch, setShowResearch] = useState(true);
+  const [openNodes, setOpenNodes] = useState<string[]>(['R0']);
   const [tracedEdge, setTracedEdge] = useState<string | null>(null);
   const [scopeVersion, setScopeVersion] = useState(0);
   const pendingAnchor = useRef<{
@@ -101,7 +105,7 @@ export default function TreeMap({
   const [showGuide, setShowGuide] = useState(false);
   const isTour = Boolean(tourFocus);
   const tourNodesKey = tourFocus
-    ? tourContext(data, tourFocus.nodes).join(',')
+    ? tourContext(data, tourFocus.nodes, tourFocus.detail, view).join(',')
     : '';
   const tourNodes = useMemo(
     () => tourExpansion(data, tourNodesKey ? tourNodesKey.split(',') : []),
@@ -118,10 +122,9 @@ export default function TreeMap({
             : {
                 routes: data.routes.map((r) => r.id),
                 nodes: isTour ? tourNodes : openNodes,
-                factors: !isTour && showResearch ? ['acceleration'] : [],
               }),
       ),
-    [data, view, expanded, openNodes, isTour, tourNodes, showResearch],
+    [data, view, expanded, openNodes, isTour, tourNodes],
   );
   const canExpand =
     view === 'overview' ||
@@ -290,8 +293,7 @@ export default function TreeMap({
         ? current.filter((key) => key !== id)
         : [...new Set([...current, id])],
     );
-    if (expanded) setShowResearch(true);
-    setExpanded(false);
+    if (expanded) setExpanded(false);
   }
   const handledRequest = useRef<number | null>(null);
   useEffect(() => {
@@ -628,16 +630,10 @@ export default function TreeMap({
                   left: ArrowLeft,
                   right: ArrowRight,
                 }[label.direction];
-                const influenced =
-                  label.relation === 'influence' ||
-                  label.relation === 'mitigation';
                 return (
                   <Tooltip key={label.key} title={data.edges[label.edge].label}>
                     <ButtonBase
-                      className={
-                        'connection-control' +
-                        (influenced ? ' influence-control' : '')
-                      }
+                      className="connection-control"
                       style={{
                         ...screen(label.centerX / scale, label.centerY / scale),
                         width: label.width,
@@ -656,11 +652,9 @@ export default function TreeMap({
                       onFocus={() => setTracedEdge(label.edge)}
                       onBlur={() => setTracedEdge(null)}
                     >
-                      {!label.compact &&
-                        (label.relation === 'mitigation'
-                          ? m.mitigation
-                          : m.influence)}
-                      {label.relation === 'feedback' ? (
+                      {label.relation === 'mitigation' ? (
+                        <Minus size={Math.min(14, label.height - 4)} />
+                      ) : label.relation === 'feedback' ? (
                         <RotateCcw size={Math.min(14, label.height - 4)} />
                       ) : (
                         <DirectionIcon size={Math.min(14, label.height - 4)} />
@@ -687,7 +681,7 @@ export default function TreeMap({
                 view !== 'overview' &&
                 view !== 'acceleration' &&
                 childGraph &&
-                ['all', 'any'].includes(childGraph.mode) &&
+                ['all', 'any', 'sequence'].includes(childGraph.mode) &&
                 (!unfolded ||
                   openNodes.includes(node!.id) ||
                   (expanded && node!.id !== 'C4'));
@@ -752,8 +746,6 @@ export default function TreeMap({
                         ) : (
                           data.asOf
                         )
-                      ) : tile.node === 'R1' && view !== 'acceleration' ? (
-                        m.optionalFactor
                       ) : (
                         route?.number || node?.id
                       )}
@@ -767,7 +759,7 @@ export default function TreeMap({
                       {tile.label ? m[tile.label] : node?.shortTitle || title}
                     </span>
                   </ButtonBase>
-                  {canUnfold && !isTour && scale >= 0.7 && (
+                  {canUnfold && !isTour && scale >= 0.85 && (
                     <ButtonBase
                       className="tile-expand"
                       onClick={() => expandNode(node!.id)}
@@ -802,51 +794,6 @@ export default function TreeMap({
                 </Paper>
               );
             })}
-            {!isTour &&
-              ['control', 'work'].includes(view) &&
-              layout.factors?.map((factor) => (
-                <ButtonBase
-                  key={factor.key}
-                  className={
-                    'map-factor-control' +
-                    (factor.expanded ? ' is-expanded' : '') +
-                    (detailLevel === 'atlas' ? ' factor-compact' : '')
-                  }
-                  style={{
-                    ...screen(factor.x, factor.y),
-                    maxWidth: Math.max(220, factor.width * scale),
-                  }}
-                  aria-expanded={factor.expanded}
-                  aria-label={
-                    m.optionalResearch +
-                    ' · ' +
-                    (factor.expanded ? m.foldFactor : m.showFactor)
-                  }
-                  title={m.optionalFactorHelp}
-                  onClick={() => {
-                    if (expanded) {
-                      setOpenNodes(
-                        Object.values(data.nodes)
-                          .filter((n) => n.subgraph)
-                          .map((n) => n.id),
-                      );
-                      setExpanded(false);
-                      setShowResearch(false);
-                    } else setShowResearch(!showResearch);
-                    setScopeVersion((n) => n + 1);
-                  }}
-                >
-                  {factor.expanded ? <Minus size={15} /> : <Plus size={15} />}
-                  <span>
-                    {detailLevel === 'atlas' ? 'RSI' : m.optionalResearch}
-                  </span>
-                  {detailLevel !== 'atlas' && (
-                    <small>
-                      {factor.expanded ? m.foldFactor : m.showFactor}
-                    </small>
-                  )}
-                </ButtonBase>
-              ))}
           </div>
         </div>
       </div>
@@ -881,8 +828,8 @@ export default function TreeMap({
             onChange={(_, value: string | null) => {
               if (value) {
                 setExpanded(value === 'all');
-                setShowResearch(true);
-                setOpenNodes([]);
+
+                setOpenNodes(['R0']);
                 setScopeVersion((n) => n + 1);
               }
             }}

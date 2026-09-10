@@ -2,10 +2,11 @@ import type { Content } from './content-types';
 
 export type TourStop = {
   key: string;
-  kind: 'start' | 'chapter' | 'finish';
+  kind: 'start' | 'chapter' | 'node' | 'finish';
   view: string;
   nodes: string[];
   chapter: number;
+  node?: string;
 };
 
 // The reader's place is determined by the prose, not by an invented timeline.
@@ -23,14 +24,37 @@ export function readingChapter(
 }
 
 // If a scene shows an AND transition, keep every co-input in the picture.
-export function tourContext(data: Content, targets: string[]) {
+export function tourContext(
+  data: Content,
+  targets: string[],
+  detail = false,
+  view?: string,
+) {
   const context = new Set(targets);
+  if (detail)
+    for (const id of targets) {
+      const graph = data.graphs[data.nodes[id]?.subgraph || ''];
+      if (graph && ['all', 'any', 'sequence'].includes(graph.mode))
+        for (const child of graph.nodes) context.add(child);
+      for (const parent of Object.values(data.nodes)) {
+        const siblings = data.graphs[parent.subgraph || ''];
+        if (
+          siblings &&
+          ['all', 'any', 'sequence'].includes(siblings.mode) &&
+          siblings.nodes.includes(id)
+        ) {
+          context.add(parent.id);
+          for (const sibling of siblings.nodes) context.add(sibling);
+        }
+      }
+    }
   for (const edge of Object.values(data.edges))
     if (
       targets.includes(edge.to) &&
-      edge.requires?.some((id) => targets.includes(id))
+      (!detail || !view || data.graphs[view]?.edges.includes(edge.id)) &&
+      (detail || edge.requires?.some((id) => targets.includes(id)))
     )
-      for (const id of edge.requires) context.add(id);
+      for (const id of edge.requires || []) context.add(id);
   return [...context];
 }
 
@@ -71,15 +95,41 @@ export function tourStops(data: Content): TourStop[] {
       nodes: ['NOW'],
       chapter: 0,
     },
-    ...data.routes.flatMap((route) =>
-      (data.stories[route.id]?.chapters || []).map((chapter, index) => ({
-        key: route.id + ':' + index,
-        kind: 'chapter' as const,
-        view: route.id,
-        nodes: chapter.nodes,
-        chapter: index,
-      })),
-    ),
+    ...data.routes
+      .filter((route) => route.role !== 'factor')
+      .flatMap((route) => {
+        const seen = new Set<string>();
+        function visit(id: string): string[] {
+          if (seen.has(id)) return [];
+          seen.add(id);
+          const graph = data.graphs[data.nodes[id]?.subgraph || ''];
+          return [
+            id,
+            ...(graph && ['all', 'any', 'sequence'].includes(graph.mode)
+              ? graph.nodes.flatMap(visit)
+              : []),
+          ];
+        }
+        return (data.stories[route.id]?.chapters || []).flatMap(
+          (chapter, index) => [
+            {
+              key: route.id + ':' + index,
+              kind: 'chapter' as const,
+              view: route.id,
+              nodes: chapter.nodes,
+              chapter: index,
+            },
+            ...chapter.nodes.flatMap(visit).map((id) => ({
+              key: route.id + ':' + index + ':' + id,
+              kind: 'node' as const,
+              view: route.id,
+              nodes: [id],
+              node: id,
+              chapter: index,
+            })),
+          ],
+        );
+      }),
     { key: 'finish', kind: 'finish', view: 'overview', nodes: [], chapter: 0 },
   ];
 }
@@ -89,7 +139,7 @@ export function tourExpansion(data: Content, targets: string[]): string[] {
   const parents = new Map<string, string>();
   for (const node of Object.values(data.nodes)) {
     const graph = node.subgraph && data.graphs[node.subgraph];
-    if (graph && ['all', 'any'].includes(graph.mode))
+    if (graph && ['all', 'any', 'sequence'].includes(graph.mode))
       for (const child of graph.nodes) parents.set(child, node.id);
   }
   const expanded = new Set<string>();

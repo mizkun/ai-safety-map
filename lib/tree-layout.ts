@@ -163,7 +163,7 @@ function verticalTreeLayout(
     dashed = false,
   ) => wires.push({ key: from + '-' + to, from, to, color, edge, dashed });
   if (view === 'overview') {
-    tile('present', 'NOW', undefined, 646, 32, 248, 104, '#696596', 'present');
+    tile('present', 'NOW', undefined, 754, 32, 248, 104, '#696596', 'present');
     const routeIds = [
       'control',
       'misuse',

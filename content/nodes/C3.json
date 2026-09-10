@@ -5,7 +5,8 @@
   "sources": [
     "control-paper",
     "control",
-    "aisi-incident"
+    "aisi-incident",
+    "framework"
   ],
   "questions": [],
   "related": [],
@@ -28,7 +29,8 @@
   "research": [
     "control-protocol",
     "control-roadmap",
-    "aisi-incident"
+    "aisi-incident",
+    "oversight-gap"
   ],
   "shortTitle": "コントロールの失敗"
 }

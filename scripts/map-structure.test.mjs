@@ -131,24 +131,16 @@ test('illustrated scenes retain the co-inputs of every depicted AND transition',
   );
 });
 
-test('research context branches from development without long serial detours and its outer ink fits', () => {
+test('capability progress has ordinary OR branches, an ASI bypass, and bounded outer ink', () => {
   for (const view of ['control', 'work'])
-    for (const expanded of [
-      true,
-      { routes: [], nodes: [], factors: ['acceleration'] },
-    ]) {
+    for (const expanded of [true, { routes: [], nodes: ['R0'] }]) {
       const layout = treeLayout(content, view, expanded);
-      assert.equal(layout.factors?.[0].expanded, true);
-      const alternatives = ['R3', 'ASI', 'R4'].map((id) =>
-        layout.tiles.find((t) => t.node === id),
-      );
-      assert.ok(
-        alternatives.every((t) => t.x === alternatives[0].x),
-        'related developments appear as a fan, not a serial chain',
-      );
-      for (const wire of layout.wires) {
-        const ink = wireGeometry(wire, layout);
-        for (const point of [...(ink.points || []), ink]) {
+      assert.equal(layout.factors?.length || 0, 0);
+      assert.ok(layout.forks.some((f) => f.from === 'R0' && f.alternative));
+      for (const id of ['R0', 'R5', 'R3', 'ASI', 'R4'])
+        assert.ok(layout.tiles.some((t) => t.node === id));
+      for (const wire of layout.wires)
+        for (const point of wireGeometry(wire, layout).points || []) {
           assert.ok(
             point.x >= 20 && point.y >= 20,
             wire.key + ': leading ink clipped',
@@ -158,27 +150,12 @@ test('research context branches from development without long serial detours and
             wire.key + ': trailing ink clipped',
           );
         }
-      }
-      for (const scale of [0.25, 0.4, 0.7, 1]) {
-        const factor = layout.factors[0],
-          button = {
-            x: factor.x * scale,
-            y: factor.y * scale,
-            width: 192,
-            height: 32,
-          };
-        for (const tile of layout.tiles)
-          assert.ok(
-            !overlaps(button, {
-              x: tile.x * scale,
-              y: tile.y * scale,
-              width: tile.width * scale,
-              height: tile.height * scale,
-            }),
-            'research control covers ' + tile.node,
-          );
-      }
     }
+  assert.deepEqual(content.graphs['development-paths'].nodes, ['R5', 'R3']);
+  assert.equal(content.graphs['development-paths'].mode, 'any');
+  assert.equal(content.edges['ASI-C3'].relation, 'influence');
+  assert.equal(content.edges['R0-C2a'].from, 'R0');
+  assert.ok(!content.edges['R0-C2a'].requires?.includes('ASI'));
 });
 
 test('the tour starts now and covers every audited story without inventing a causal chain', () => {
@@ -186,8 +163,10 @@ test('the tour starts now and covers every audited story without inventing a cau
   assert.deepEqual(stops[0].nodes, ['NOW']);
   assert.equal(stops.at(-1).kind, 'finish');
   assert.equal(new Set(stops.map((s) => s.key)).size, stops.length);
-  for (const route of content.routes) {
-    const chapters = stops.filter((s) => s.view === route.id);
+  for (const route of content.routes.filter((r) => r.role !== 'factor')) {
+    const chapters = stops.filter(
+      (s) => s.view === route.id && s.kind === 'chapter',
+    );
     assert.equal(chapters.length, content.stories[route.id].chapters.length);
     for (const stop of chapters) {
       assert.deepEqual(
@@ -205,7 +184,7 @@ test('the tour starts now and covers every audited story without inventing a cau
         );
     }
   }
-  assert.deepEqual(stops.find((s) => s.key === 'control:0').nodes, [
+  assert.deepEqual(stops.find((s) => s.key === 'control:1').nodes, [
     'C1',
     'C2',
     'C3',
@@ -425,7 +404,7 @@ test('every fixed tree has valid connections, bounded tiles, and no overlapping 
       false,
       true,
       ...(['control', 'work'].includes(view)
-        ? [{ routes: [], nodes: [], factors: ['acceleration'] }]
+        ? [{ routes: [], nodes: ['R0', 'R3'] }]
         : []),
     ]) {
       const layout = treeLayout(content, view, expanded);
@@ -537,7 +516,7 @@ test('independent routed edges do not share segments or pass through unrelated c
       false,
       true,
       ...(['control', 'work'].includes(view)
-        ? [{ routes: [], nodes: [], factors: ['acceleration'] }]
+        ? [{ routes: [], nodes: ['R0', 'R3'] }]
         : []),
     ]) {
       const layout = treeLayout(content, view, expanded);
@@ -596,31 +575,23 @@ test('the present is the single left-hand origin and causal progression runs to 
   }
 });
 
-test('research is optional context, never a peer scenario or a required control input', () => {
-  const layout = treeLayout(content, 'overview', false);
-  const routes = layout.tiles.filter((t) => t.graph);
-  assert.deepEqual(
-    new Set(routes.map((t) => t.graph)),
-    new Set(content.routes.filter((r) => r.role !== 'factor').map((r) => r.id)),
-  );
-  assert.equal(new Set(routes.map((t) => t.x)).size, 1);
-  assert.ok(!routes.some((t) => t.graph === 'acceleration'));
-  assert.ok(content.graphs.acceleration, 'Legacy URLs still resolve');
+test('development uses ordinary node expansion and never becomes a required control input', () => {
+  const overview = treeLayout(content, 'overview', false);
+  assert.equal(overview.tiles.filter((t) => t.kind === 'route').length, 7);
   for (const view of ['control', 'work']) {
-    const closed = treeLayout(content, view, { routes: [], nodes: [] });
-    const opened = treeLayout(content, view, {
+    const summary = treeLayout(content, view, false);
+    const detailed = treeLayout(content, view, {
       routes: [],
-      nodes: [],
-      factors: ['acceleration'],
+      nodes: ['R0', 'R3'],
     });
-    assert.ok(!closed.tiles.some((t) => t.node === 'R3'));
-    assert.ok(opened.tiles.some((t) => t.node === 'R3'));
-    for (const tile of closed.tiles)
-      assert.ok(opened.tiles.some((t) => t.key === tile.key));
-    assert.ok(!opened.regions.some((r) => r.members?.includes('R3')));
+    for (const id of ['R0', 'R3', 'ASI'])
+      assert.ok(summary.tiles.some((t) => t.node === id));
+    for (const id of ['R1', 'R2'])
+      assert.ok(detailed.tiles.some((t) => t.node === id));
+    assert.ok(!detailed.regions.some((r) => r.members?.includes('R3')));
     assert.ok(
-      opened.wires.some(
-        (w) => w.edge === (view === 'control' ? 'R2-C2' : 'R2-W1'),
+      detailed.wires.some(
+        (w) => w.edge === (view === 'control' ? 'R0-C2a' : 'R0-W1'),
       ),
     );
   }
@@ -725,7 +696,7 @@ test('alignment, execution, and control are joint inputs rather than a causal ch
 
 test('research has enabling and mitigating links, and social outcomes do not imply extinction', () => {
   const layout = treeLayout(content, 'overview', true);
-  for (const id of ['R2-C2', 'R2-W1', 'R4-C1', 'R2-ASI', 'W4-P1'])
+  for (const id of ['R0-C2a', 'R0-W1', 'R4-C1', 'R0-ASI', 'ASI-C3', 'W4-P1'])
     assert.ok(layout.wires.some((w) => w.edge === id));
   assert.equal(content.edges['R4-C1'].relation, 'mitigation');
   assert.deepEqual(content.edges['W3-W5'].requires, ['W3', 'W6']);
@@ -897,4 +868,46 @@ test('social consequences remain conditional and do not create extinction shortc
     ),
   );
   assert.ok(!content.edges['F3-P3']);
+});
+
+test('the detailed tour covers every node and retains parallel and sequence context', () => {
+  const stops = tourStops(content);
+  const covered = new Set(stops.flatMap((s) => s.nodes));
+  for (const id of Object.keys(content.nodes))
+    assert.ok(covered.has(id), 'Missing tour condition ' + id);
+  for (const stop of stops.filter((s) => s.kind === 'node')) {
+    const context = tourContext(content, stop.nodes, true, stop.view);
+    const layout = treeLayout(content, stop.view, {
+      routes: [stop.view],
+      nodes: tourExpansion(content, context),
+    });
+    for (const id of context)
+      assert.ok(
+        layout.tiles.some((t) => t.node === id),
+        stop.key + ': missing context ' + id,
+      );
+  }
+  for (const id of ['C1', 'C2', 'C3'])
+    assert.ok(tourContext(content, ['L'], true).includes(id));
+  for (const id of ['R0', 'R5', 'R1', 'R2'])
+    assert.ok(tourContext(content, ['R3'], true).includes(id));
+});
+
+test('the present meets the middle scenario at a single junction', () => {
+  for (const expanded of [false, true]) {
+    const layout = treeLayout(content, 'overview', expanded);
+    const fork = layout.forks.find((f) => f.key === 'present-routes');
+    const points = forkGeometry(fork, layout).junctions;
+    const origin = layout.tiles.find((t) => t.node === 'NOW');
+    assert.equal(
+      points.filter((p) => Math.abs(p.y - origin.y - origin.height / 2) < 0.01)
+        .length,
+      1,
+    );
+    for (let i = 0; i < points.length; i++)
+      for (const other of points.slice(i + 1))
+        assert.ok(
+          Math.hypot(points[i].x - other.x, points[i].y - other.y) > 10,
+        );
+  }
 });

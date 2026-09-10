@@ -1,0 +1,30 @@
+{
+  "id": "R0",
+  "title": "AIが、より難しい作業をできるようになる",
+  "shortTitle": "AIの能力が伸びる",
+  "explanation": "R0.md",
+  "sources": [
+    "horizon",
+    "chinchilla"
+  ],
+  "questions": [],
+  "related": [],
+  "terms": [
+    "capability"
+  ],
+  "topics": [
+    "capability"
+  ],
+  "status": "limited",
+  "research": [
+    "horizon",
+    "ordinary-progress"
+  ],
+  "review": {
+    "checkedAt": "2026-09-10",
+    "intervalDays": 7,
+    "reason": "能力や対策の変化を一次資料で確認するため。"
+  },
+  "subgraph": "development-paths",
+  "watch": []
+}

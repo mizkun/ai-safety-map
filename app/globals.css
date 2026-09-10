@@ -1463,16 +1463,18 @@ a:focus-visible {
 
 /* Compact flowchart: light glass cards, readable labels, bounded paint surface. */
 .tree-content .tile-title {
-  font-size: clamp(13px, calc(17px * var(--map-scale)), 21px);
+  font-size: calc(16px * var(--map-scale));
   font-weight: 650;
   line-height: 1.4;
   letter-spacing: 0;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 3;
-  overflow: hidden;
+  display: block;
+  overflow: visible;
+  flex-shrink: 0;
+  width: 100%;
+  hyphens: auto;
 }
 .tree-content .tile-eyebrow {
+  display: none;
   font-size: clamp(10px, calc(11px * var(--map-scale)), 13px);
   min-height: 12px;
 }
@@ -1481,15 +1483,15 @@ a:focus-visible {
   min-height: 0;
 }
 .tree-content .tile-topics {
-  flex-wrap: nowrap;
-  overflow: hidden;
+  flex-wrap: wrap;
+  overflow: visible;
   flex-shrink: 0;
-  gap: 8px;
+  gap: 0 8px;
 }
 .tree-content .tile-topic {
   font-size: clamp(10px, calc(11px * var(--map-scale)), 13px);
-  min-height: 20px;
-  white-space: nowrap;
+  min-height: 16px;
+  white-space: normal;
 }
 .tree-content .tile-topic svg {
   width: 11px;
@@ -1586,8 +1588,12 @@ a:focus-visible {
   display: none;
 }
 .detail-compact .tile-title {
-  font-size: 12px;
-  -webkit-line-clamp: 3;
+  font-size: clamp(8px, calc(22px * var(--map-scale)), 13px);
+  line-height: 1.3;
+}
+.MuiPaper-root.tree-tile {
+  padding-top: max(4px, calc(10px * var(--map-scale)));
+  padding-bottom: max(4px, calc(10px * var(--map-scale)));
 }
 .detail-compact .region-relation span,
 .detail-compact .fork-label span {
@@ -1608,6 +1614,7 @@ a:focus-visible {
   display: none;
 }
 .detail-atlas .tile-eyebrow {
+  display: flex;
   font-size: 9px;
   line-height: 1;
   min-height: 0;
@@ -1857,9 +1864,6 @@ a:focus-visible {
   font-size: 10px;
   line-height: 1.5;
 }
-.tree-tile:has(.tile-expand) .tile-title {
-  -webkit-line-clamp: 2;
-}
 @media (max-width: 1000px) {
   .filter-status {
     display: inline-block;
@@ -2001,14 +2005,6 @@ a:focus-visible {
   border-radius: 0;
   min-height: 38px;
 }
-.tour-reading-hint {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 11px;
-  color: #647285;
-  margin-top: 10px;
-}
 .tour-body {
   position: relative;
   flex: 1;
@@ -2019,9 +2015,8 @@ a:focus-visible {
   scrollbar-width: thin;
   scrollbar-color: #c6cbd6 transparent;
 }
-.tour-body:focus-visible {
-  outline: 2px solid #838aaa;
-  outline-offset: -3px;
+.tour-body:focus {
+  outline: none;
 }
 .tour-chapter {
   box-sizing: border-box;
@@ -2160,23 +2155,6 @@ a:focus-visible {
   color: #6f7887;
   text-align: center;
 }
-.tour-figure-caption {
-  position: absolute;
-  left: calc(var(--tour-width) + 58px);
-  top: 96px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  color: #687389;
-  font-size: 12px;
-  pointer-events: none;
-}
-.tour-figure-dot {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: #6977ae;
-}
 .has-tour .tree-viewport {
   left: calc(var(--tour-width) + 36px);
   right: 10px;
@@ -2244,14 +2222,6 @@ a:focus-visible {
   font-size: 10px;
   padding: 2px 6px;
   gap: 3px;
-}
-.tour-reading-hint kbd {
-  font-family: inherit;
-  font-size: 10px;
-  padding: 1px 4px;
-  border: 1px solid #dce2ea;
-  border-radius: 4px;
-  background: #fff;
 }
 .MuiButtonBase-root.compact-influence {
   width: 26px;
@@ -2389,10 +2359,6 @@ a:focus-visible {
   border-radius: 99px;
   font-size: 11px;
 }
-.connection-control.influence-control {
-  color: #368174;
-  border-style: dashed;
-}
 .connection-control::after {
   content: '';
   position: absolute;
@@ -2428,5 +2394,109 @@ a:focus-visible {
   }
   .map-breadcrumb + .tree-viewport {
     top: 145px;
+  }
+}
+
+/* Position is visible in the map thumbnail and breadcrumb, with no instruction strip. */
+.tour-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+  font-size: 12px;
+}
+.tour-breadcrumb strong {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-weight: 600;
+}
+.tour-breadcrumb .MuiButtonBase-root,
+.map-breadcrumb .MuiButtonBase-root {
+  border-radius: 5px;
+  padding: 2px 4px;
+  color: #6554a3;
+  flex-shrink: 0;
+}
+.tour-location {
+  display: grid;
+  grid-template-columns: 100px minmax(0, 1fr);
+  gap: 12px;
+  padding: 2px 20px 12px;
+  align-items: center;
+}
+.tour-location .tour-route-picker {
+  min-width: 0;
+  padding: 0;
+}
+.tour-location select {
+  max-width: 100%;
+  text-overflow: ellipsis;
+}
+.tour-step-select {
+  width: 100%;
+  font: inherit;
+  font-size: 12px;
+  min-height: 34px;
+  color: #5e6c80;
+  background: transparent;
+  border: 0;
+  padding: 4px 20px 4px 0;
+}
+.MuiButtonBase-root.tour-locator {
+  width: 100px;
+  height: 70px;
+  padding: 5px;
+  border: 1px solid #dae0ec;
+  border-radius: 10px;
+  background: #f1f4fa80;
+}
+.tour-locator svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.tour-node-context {
+  font-size: 15px;
+  line-height: 1.9;
+}
+.tour-node-context h3 {
+  font-size: 14px;
+  margin: 24px 0 8px;
+  color: #52647e;
+  font-weight: 600;
+}
+.tour-node-context p {
+  margin: 0 0 12px;
+}
+.tour-navigation output {
+  font-size: 12px;
+}
+.has-tour .tree-viewport {
+  top: 88px;
+}
+@media (max-width: 900px) {
+  .tour-location {
+    grid-template-columns: 82px minmax(0, 1fr);
+    gap: 10px;
+    padding: 0 16px 6px;
+  }
+  .MuiButtonBase-root.tour-locator {
+    width: 82px;
+    height: 52px;
+  }
+  .tour-step-select {
+    min-height: 30px;
+  }
+  .tour-breadcrumb {
+    font-size: 12px;
+  }
+  .has-tour .tree-viewport {
+    top: 78px;
+  }
+}
+@media (max-height: 540px) and (min-width: 640px) {
+  .has-tour .tree-viewport {
+    top: 76px;
   }
 }

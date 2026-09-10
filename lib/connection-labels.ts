@@ -17,7 +17,6 @@ type ConnectionLabel = {
   direction: 'up' | 'down' | 'left' | 'right';
   centerX: number;
   centerY: number;
-  compact: boolean;
 };
 
 // Keep an arrow's control on its own line, but out of card text and other controls.
@@ -76,10 +75,7 @@ export function connectionLabels(
         });
     }
     const relation = data.edges[wire.edge].relation;
-    const sizes =
-      scale >= 0.85 && ['influence', 'mitigation'].includes(relation)
-        ? [116, 26, 18]
-        : [26, 18];
+    const sizes = [26, 18];
     let chosen: ConnectionLabel | undefined;
     for (const width of sizes) {
       for (const c of candidates) {
@@ -101,7 +97,6 @@ export function connectionLabels(
           direction: c.direction,
           centerX: c.x,
           centerY: c.y,
-          compact: width < 100,
         };
         break;
       }

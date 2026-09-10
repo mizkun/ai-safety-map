@@ -5,7 +5,8 @@
   "sources": [
     "power",
     "openai-rd",
-    "navier"
+    "navier",
+    "framework"
   ],
   "questions": [],
   "related": [],
@@ -25,7 +26,8 @@
   "research": [
     "power-seeking",
     "rd-use",
-    "navier"
+    "navier",
+    "oversight-gap"
   ],
-  "shortTitle": "人間を大きく超える能力"
+  "shortTitle": "ASI：人間を大きく超える能力"
 }
