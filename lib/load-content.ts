@@ -8,6 +8,8 @@ export function loadContent(): Content { return readCanonicalContent() as Conten
 export function loadSiteContent(): SiteContent { return readSiteContent() as SiteContent; }
 export function loadSiteShell(): SiteContent {
   const pkg = JSON.parse(fs.readFileSync('package.json', 'utf8'));
-  const base = new URL(pkg.homepage).pathname.replace(/\/$/, '');
+  const base = process.env.NODE_ENV === 'production'
+    ? new URL(pkg.homepage).pathname.replace(/\/$/, '')
+    : '/ai-safety-map';
   return contentPackage(readSiteContent(), base).shell as SiteContent;
 }

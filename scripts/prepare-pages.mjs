@@ -5,6 +5,7 @@ import { contentPackage } from '../lib/content-package.mjs';
 
 const pkg = JSON.parse(fs.readFileSync('package.json', 'utf8'));
 const base = new URL(pkg.homepage).pathname.replace(/^\/+|\/+$/g, '');
+const prefix = base ? '/' + base : '';
 const exported = path.resolve('dist/client', base);
 const target = path.resolve('dist/pages');
 if (!fs.existsSync(path.join(exported, 'index.html'))) {
@@ -20,7 +21,7 @@ for (const file of ['404.html', 'vinext-client-entry-manifest.json']) {
   if (fs.existsSync(source)) fs.copyFileSync(source, path.join(target, file));
 }
 fs.writeFileSync(path.join(target, '.nojekyll'), '');
-const packed = contentPackage(readSiteContent(), '/' + base);
+const packed = contentPackage(readSiteContent(), prefix);
 fs.mkdirSync(path.join(target, 'content'), { recursive: true });
 for (const [filename, details] of Object.entries(packed.files))
   fs.writeFileSync(path.join(target, 'content', filename), details);
@@ -31,15 +32,20 @@ const assets = [...html.matchAll(/(?:src|href)="([^"#]+)"/g)]
   .map((m) => m[1])
   .filter(
     (url) =>
-      url.startsWith('/' + base + '/') && /\.(js|css|svg)(\?|$)/.test(url),
+      url.startsWith(prefix + '/') && /\.(js|css|svg)(\?|$)/.test(url),
   );
 for (const url of assets) {
-  const relative = url.slice(base.length + 2).split('?')[0];
+  const relative = url.slice(prefix.length + 1).split('?')[0];
   if (!fs.existsSync(path.join(target, relative)))
     throw new Error('Missing public asset: ' + url);
 }
 if (!assets.length)
   throw new Error('No static assets found in exported entry point');
+// Preserve old bookmarks that include the former project path and a reading hash.
+if (!base) {
+  fs.mkdirSync(path.join(target, 'ai-safety-map'), { recursive: true });
+  fs.writeFileSync(path.join(target, 'ai-safety-map', 'index.html'), '<!doctype html><meta charset="utf-8"><title>AI Safety Map</title><script>location.replace("/"+location.search+location.hash)</script><a href="/">AI Safety Map</a>');
+}
 console.log(
   'GitHub Pages artifact ready; checked ' +
     new Set(assets).size +

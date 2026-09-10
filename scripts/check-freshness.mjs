@@ -40,7 +40,7 @@ const due = entries
   .filter((e) => e.state === 'due')
   .sort((a, b) => a.dueAt.localeCompare(b.dueAt) || a.id.localeCompare(b.id));
 const soon = entries.filter((e) => e.state === 'soon');
-const site = 'https://mizkun.github.io/ai-safety-map/';
+const site = 'https://ai-safety-map.org/';
 const marker = '<!-- ai-safety-map:freshness -->';
 const safeCell = (text) => text.replaceAll('|', ' / ').replaceAll('\n', ' ');
 const report = [

@@ -1,6 +1,6 @@
 # AI Safety Map
 
-**[日本語](https://mizkun.github.io/ai-safety-map/#lang=ja&map=overview) · [English](https://mizkun.github.io/ai-safety-map/#lang=en&map=overview)**
+**[日本語](https://ai-safety-map.org/#lang=ja&map=overview) · [English](https://ai-safety-map.org/#lang=en&map=overview)**
 
 現在のAIに関する証拠から、将来の条件付きシナリオをたどる、日本語・英語の学習用マップです。各段階と矢印を選ぶと、概要、他の条件との関係、現在の状況、成立条件、根拠の限界、対策を読めます。「ツアー」では、図と文章を一緒にたどれます。
 
