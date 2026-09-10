@@ -1464,11 +1464,15 @@ a:focus-visible {
   min-height: 12px;
 }
 .tree-content .tile-open {
+  position: absolute;
+  inset: 0;
+  padding: calc(14px * var(--map-scale));
   gap: 4px;
   min-height: 0;
   align-items: center;
   text-align: center;
 }
+.tree-tile .MuiButtonBase-root { font-family: inherit; }
 .tree-content .tile-id {
   position: absolute;
   top: calc(5px * var(--map-scale));
@@ -1493,6 +1497,11 @@ a:focus-visible {
   padding-bottom: calc(14px * var(--map-scale));
 }
 .tree-content .tile-topics {
+  position: absolute;
+  bottom: calc(8px * var(--map-scale));
+  left: calc(14px * var(--map-scale));
+  right: calc(14px * var(--map-scale));
+  width: auto;
   flex-wrap: wrap;
   overflow: visible;
   flex-shrink: 0;
@@ -1500,12 +1509,14 @@ a:focus-visible {
   justify-content: center;
 }
 .tree-content .tile-topic {
-  font-size: clamp(10px, calc(11px * var(--map-scale)), 13px);
-  min-height: 16px;
+  font-size: calc(10px * var(--map-scale));
+  line-height: 1.2;
+  min-height: calc(12px * var(--map-scale));
   white-space: normal;
 }
 .tree-content .tile-topic svg {
-  width: 11px;
+  width: calc(10px * var(--map-scale));
+  height: calc(10px * var(--map-scale));
 }
 .MuiPaper-root.tree-tile.tile-route,
 .MuiPaper-root.tree-tile.tile-research {
@@ -1659,9 +1670,6 @@ a:focus-visible {
   .tree-content .wire-button {
     width: 36px;
     height: 36px;
-  }
-  .tree-content .tile-topic {
-    min-height: 24px;
   }
   .tree-content .region-relation {
     min-height: 28px;
@@ -2739,10 +2747,10 @@ a:focus-visible {
 .evidence-heading { display: flex; align-items: center; flex-wrap: wrap; gap: 10px; font-size: 14px; }
 .evidence-heading small { margin-left: auto; color: #69778b; font-size: 12px; }
 .MuiPaper-root.tree-tile.tile-evidence-color { background: var(--evidence-background); }
-.tree-content .tree-tile.tile-evidence { padding-top: calc(5px * var(--map-scale)); }
-.tile-signals { display: flex; align-items: center; flex-shrink: 0; gap: calc(4px * var(--map-scale)); width: 100%; }
+.tile-signals { position: absolute; top: calc(4px * var(--map-scale)); left: calc(8px * var(--map-scale)); z-index: 3; display: flex; align-items: center; gap: calc(4px * var(--map-scale)); }
 .tile-evidence-button.MuiButtonBase-root, .tile-safeguard-button.MuiButtonBase-root { width: calc(20px * var(--map-scale)); height: calc(20px * var(--map-scale)); border-radius: 50%; padding: 0; }
 .tile-evidence-button .evidence-mark, .tile-safeguard-button .evidence-mark { width: calc(15px * var(--map-scale)); height: calc(15px * var(--map-scale)); }
+.tree-content .MuiButtonBase-root.connection-tour-focus { background: var(--tour-edge-color, #5653aa); border-color: var(--tour-edge-color, #5653aa); box-shadow: 0 0 0 4px color-mix(in srgb, var(--tour-edge-color, #5653aa) 20%, transparent); }
 .current-launch.MuiButton-root { position: fixed; right: 26px; bottom: 90px; z-index: 7; border: 1px solid #d3daea; border-radius: 30px; padding: 9px 17px; color: #475774; font-size: 13px; background: rgba(251,253,255,.92); }
 .has-current .current-launch { display: none; }
 .current-map-key.MuiPaper-root { position: fixed; z-index: 7; left: 26px; bottom: 78px; display: flex; align-items: center; padding: 4px; border-radius: 24px; }

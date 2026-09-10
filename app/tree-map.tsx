@@ -155,23 +155,25 @@ export default function TreeMap({
       (size.height - 40) / layout.height,
     ),
   );
-  const tourTargets = tourFocus?.focus
-    ? [tourFocus.focus]
-    : size.width < 760 && tourFocus?.detail
-      ? tourFocus.nodes
-      : tourNodesKey
-        ? tourNodesKey.split(',')
-        : [];
+  const tourEdge = tourFocus?.edge ? data.edges[tourFocus.edge] : undefined;
+  const tourTargets = tourEdge
+    ? [...new Set([tourEdge.from, ...(tourEdge.requires || []), tourEdge.to])]
+    : tourFocus?.focus
+      ? [tourFocus.focus]
+      : size.width < 760 && tourFocus?.detail
+        ? tourFocus.nodes
+        : tourNodesKey
+          ? tourNodesKey.split(',')
+          : [];
+  const tourEdgeColor =
+    layout.wires.find((w) => w.edge === tourFocus?.edge)?.color ||
+    layout.joins?.find((j) => j.edge === tourFocus?.edge)?.color;
   const tourDefaultCamera = tourFocus
     ? tourCamera(
-        tourTargets?.length || tourFocus.edge
+        tourTargets.length
           ? layout.tiles.filter(
               (tile) =>
                 (tile.node && tourTargets.includes(tile.node)) ||
-                (tile.edge &&
-                  (tile.edge === tourFocus.edge ||
-                    (tourTargets.includes('H') &&
-                      data.edges[tile.edge].to === 'H'))) ||
                 (!compact &&
                   tourFocus.key.startsWith('start:') &&
                   tile.kind === 'route'),
@@ -179,11 +181,9 @@ export default function TreeMap({
           : layout.tiles,
         size,
         layout,
-        compact
-          ? layout.tiles.find((tile) =>
-              tourFocus.edge
-                ? tile.edge === tourFocus.edge
-                : tile.node === (tourFocus.focus || tourFocus.nodes[0]),
+        compact && !tourEdge
+          ? layout.tiles.find(
+              (tile) => tile.node === (tourFocus.focus || tourFocus.nodes[0]),
             )
           : undefined,
       )
@@ -390,6 +390,7 @@ export default function TreeMap({
                   Math.max(0, (size.width - layout.width * scale) / 2),
                 top: paint.y * scale,
                 '--map-scale': scale,
+                '--tour-edge-color': tourEdgeColor,
               } as CSSProperties
             }
           >
@@ -474,7 +475,7 @@ export default function TreeMap({
                     d={geometry.joins.get(join.edge)!.path}
                     fill="none"
                     stroke={join.color}
-                    strokeWidth={2}
+                    strokeWidth={join.edge === tourFocus?.edge ? 4 : 2}
                     strokeOpacity={0.9}
                     strokeLinejoin="round"
                     strokeLinecap="round"
@@ -518,7 +519,13 @@ export default function TreeMap({
                         d={g.path}
                         fill="none"
                         stroke={relation === 'mitigation' ? '#348773' : w.color}
-                        strokeWidth={w.reference ? 1.5 : 2}
+                        strokeWidth={
+                          w.edge && w.edge === tourFocus?.edge
+                            ? 4
+                            : w.reference
+                              ? 1.5
+                              : 2
+                        }
                         strokeOpacity={w.reference ? 0.8 : 1}
                         strokeLinecap="round"
                         strokeLinejoin="round"
@@ -595,8 +602,19 @@ export default function TreeMap({
             {visibleJoins?.map((join) => (
               <Tooltip key={join.edge} title={data.edges[join.edge].label}>
                 <IconButton
-                  className="wire-button"
-                  style={{ ...screen(join.x, join.y), color: join.color }}
+                  className={
+                    'wire-button' +
+                    (join.edge === tourFocus?.edge
+                      ? ' connection-tour-focus'
+                      : '')
+                  }
+                  style={{
+                    ...screen(join.x, join.y),
+                    color: join.edge === tourFocus?.edge ? '#fff' : join.color,
+                  }}
+                  aria-current={
+                    join.edge === tourFocus?.edge ? 'step' : undefined
+                  }
                   onClick={() => onEdge(join.edge)}
                   aria-label={
                     m.connection + ' · ' + data.edges[join.edge].label
@@ -628,15 +646,25 @@ export default function TreeMap({
                 return (
                   <Tooltip key={label.key} title={data.edges[label.edge].label}>
                     <ButtonBase
-                      className="connection-control"
+                      className={
+                        'connection-control' +
+                        (label.edge === tourFocus?.edge
+                          ? ' connection-tour-focus'
+                          : '')
+                      }
+                      aria-current={
+                        label.edge === tourFocus?.edge ? 'step' : undefined
+                      }
                       style={{
                         ...screen(label.centerX / scale, label.centerY / scale),
                         width: label.width,
                         height: label.height,
                         color:
-                          label.relation === 'mitigation'
-                            ? '#348773'
-                            : undefined,
+                          label.edge === tourFocus?.edge
+                            ? '#fff'
+                            : label.relation === 'mitigation'
+                              ? '#348773'
+                              : undefined,
                       }}
                       onClick={() => onEdge(label.edge)}
                       aria-label={
@@ -660,16 +688,15 @@ export default function TreeMap({
               })}
             {visibleTiles.map((tile) => {
               const node = tile.node ? data.nodes[tile.node] : undefined;
-              const edge = tile.edge ? data.edges[tile.edge] : undefined;
-              const tourHighlight =
-                highlightedTourNodes.includes(tile.node || '') ||
-                Boolean(tile.edge && tile.edge === tourFocus?.edge);
+              const tourHighlight = highlightedTourNodes.includes(
+                tile.node || '',
+              );
               const route = tile.graph
                 ? data.routes.find((r) => r.id === tile.graph)
                 : undefined;
               const title = tile.label
                 ? m[tile.label]
-                : node?.title || edge?.label || route?.shortTitle || '';
+                : node?.title || route?.shortTitle || '';
               const due =
                 node && reviewStatus(node.review, today).state === 'due';
               const showId =
@@ -690,7 +717,6 @@ export default function TreeMap({
                     tile.kind +
                     (showId ? ' tile-identified' : '') +
                     (signal ? ' tile-evidence-color' : '') +
-                    (signal && scale >= 0.5 ? ' tile-evidence' : '') +
                     (selected === tile.node ? ' tile-selected' : '') +
                     (tile.node === 'X' ? ' tile-terminal' : '') +
                     (tile.node === 'NOW' ? ' tile-present' : '') +
@@ -713,7 +739,7 @@ export default function TreeMap({
                   }
                 >
                   {showId && <span className="node-id tile-id">{node.id}</span>}
-                  {signal && node && scale >= 0.5 && (
+                  {signal && node && detailLevel === 'reading' && (
                     <div className="tile-signals">
                       <Tooltip
                         title={
@@ -765,8 +791,7 @@ export default function TreeMap({
                           top:
                             (tile.y + tile.height / 2) * next - size.height / 2,
                         });
-                      } else if (tile.edge) onEdge(tile.edge);
-                      else if (tile.graph) onRoute(tile.graph);
+                      } else if (tile.graph) onRoute(tile.graph);
                       else onNode(tile.node!);
                     }}
                     aria-label={
@@ -784,7 +809,7 @@ export default function TreeMap({
                           data.asOf
                         )
                       ) : (
-                        route?.number || node?.id || tile.edge
+                        route?.number || node?.id
                       )}
                       {due && (
                         <span className="tile-review" title={m.due}>
@@ -844,7 +869,9 @@ export default function TreeMap({
         <MapMinimap
           layout={layout}
           path={minimapPath}
-          highlighted={highlightedTourNodes.join(',')}
+          highlighted={(tourEdge ? tourTargets : highlightedTourNodes).join(
+            ',',
+          )}
           viewport={viewport}
           scale={scale}
           messages={m}

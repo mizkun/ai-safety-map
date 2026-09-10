@@ -2,7 +2,6 @@ import type { Content } from './content-types';
 import { expandedTreeLayout } from './expanded-tree-layout.ts';
 import { phoneOverviewLayout } from './phone-overview-layout.ts';
 import { roundedBus } from './rounded-bus.ts';
-import { addHarmTransitions } from './harm-transition-layout.ts';
 import {
   horizontalTreeLayout,
   horizontalPoint,
@@ -21,7 +20,6 @@ export const routeColors: Record<string, string> = {
 export type TreeTile = {
   key: string;
   node?: string;
-  edge?: string;
   graph?: string;
   x: number;
   y: number;
@@ -48,7 +46,7 @@ export type TreeTile = {
     | 'extinction'
     | 'lossOfControl'
     | 'research';
-  kind: 'node' | 'route' | 'research' | 'transition';
+  kind: 'node' | 'route' | 'research';
 };
 export type TreeWire = {
   key: string;
@@ -150,7 +148,6 @@ export function treeLayout(
   phoneSummary = true,
 ): TreeLayout {
   const layout = verticalTreeLayout(data, view, expanded);
-  if (view !== 'overview' || expanded) addHarmTransitions(layout, data);
   if (
     phoneSummary &&
     view === 'overview' &&

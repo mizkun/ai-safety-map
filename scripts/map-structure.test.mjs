@@ -871,10 +871,7 @@ test('the paint surface stays bounded by the viewport even on the full map', () 
       assert.ok(paint.height * scale <= viewport.height + 360 + 400 * scale);
     }
   assert.ok(
-    layout.width <
-      6500 +
-        Math.max(...layout.tiles.filter((t) => t.edge).map((t) => t.width)) &&
-      layout.height < 6500,
+    layout.width < 6500 && layout.height < 6500,
     'routing channels may add space, but large empty bands must not return',
   );
 });
@@ -1012,19 +1009,7 @@ test('every fixed tree has valid connections, bounded tiles, and no overlapping 
           new Set(ids),
           new Set(content.edges[join.edge].requires),
         );
-        const transition = layout.tiles.find(
-          (t) => t.key === join.output && t.edge === join.edge,
-        );
-        if (transition) {
-          assert.ok(
-            layout.wires.some(
-              (w) =>
-                w.from === transition.key &&
-                w.to === content.edges[join.edge].to &&
-                w.edge === join.edge,
-            ),
-          );
-        } else assert.equal(join.output, content.edges[join.edge].to);
+        assert.equal(join.output, content.edges[join.edge].to);
         assert.ok(!joinGeometry(join, layout).includes('NaN'));
       }
       for (const fork of layout.forks || []) {
@@ -1502,34 +1487,30 @@ test('each catastrophe route exposes its existing scale-up conditions before the
         phone,
         phone ? 390 : undefined,
       );
-      const bridge = layout.tiles.find((t) => t.edge === edge.id);
-      const harm = layout.tiles.find((t) => t.node === 'H');
-      assert.ok(bridge);
-      assert.equal(layout.tiles.filter((t) => t.edge === edge.id).length, 1);
+      const connections = [
+        ...layout.wires.filter((w) => w.edge === edge.id),
+        ...(layout.joins || []).filter((j) => j.edge === edge.id),
+      ];
+      assert.equal(
+        connections.length,
+        1,
+        'a condition is a single connection, not another event',
+      );
+      assert.equal(connections[0].to || connections[0].output, 'H');
       assert.ok(
-        layout.wires.some(
-          (w) =>
-            w.from === bridge.key && w.to === harm.key && w.edge === edge.id,
+        layout.tiles.every((tile) => !tile.key.startsWith('transition-')),
+      );
+      const arrows = [
+        ...connectionLabels(layout, content, 1).filter(
+          (l) => l.edge === edge.id,
         ),
+        ...(layout.joins || []).filter((j) => j.edge === edge.id),
+      ];
+      assert.equal(
+        arrows.length,
+        1,
+        'the condition has one visible arrow to open',
       );
-      assert.ok(
-        layout.wires.some((w) => w.to === bridge.key && w.edge === edge.id) ||
-          layout.joins.some(
-            (j) => j.output === bridge.key && j.edge === edge.id,
-          ),
-      );
-      assert.ok(
-        phone
-          ? bridge.y + bridge.height < harm.y
-          : bridge.x + bridge.width < harm.x,
-      );
-      const camera = tourCamera(
-        [bridge],
-        { width: 390, height: 250 },
-        layout,
-        bridge,
-      );
-      assert.ok(camera.scale >= 0.65);
       assert.ok(edge.conditions.length >= 2);
     }
   }
