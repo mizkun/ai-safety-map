@@ -59,9 +59,10 @@ test('English is complete and preserves shared scientific identifiers and eviden
   for (const fact of ['100%', '9 of 10', '59%', '6 of 10'])
     assert.ok(cyber.result.includes(fact));
   assert.match(cyber.method, /41.*5 attempts/);
-  assert.match(cyber.limitation, /not a real-attack success rate/);
+  assert.match(cyber.limitation, /not a real(?:-world)?[ -]attack success rate/);
   assert.match(en.nodes.W5.body['他の条件との関係'], /not required/);
-  assert.match(en.nodes.P3.body['他の条件との関係'], /no direct arrow/);
+  // Income generation alone must not lead directly to money becoming unnecessary.
+  assert.equal(Object.values(en.edges).some(e => e.from === 'I1' && e.to === 'P3'), false);
 });
 test('translation review becomes stale after changing either language or a UI label', () => {
   const hash = translationReviewHash(translation, jaUi, enUi);

@@ -280,9 +280,17 @@ export default function MapTour({
               {node && (
                 <div className="tour-node-context">
                   <h3>{m.whyNext}</h3>
-                  <p>{richText(node.body['他の条件との関係'])}</p>
+                  {node.body['他の条件との関係']
+                    .split(/\n\n+/)
+                    .map((paragraph, i) => (
+                      <p key={i}>{richText(paragraph)}</p>
+                    ))}
                   <h3>{m.evidence}</h3>
-                  <p>{richText(node.body['現在の状況'])}</p>
+                  {node.body['現在の状況']
+                    .split(/\n\n+/)
+                    .map((paragraph, i) => (
+                      <p key={i}>{richText(paragraph)}</p>
+                    ))}
                   <Button
                     className="tour-read"
                     onClick={() => onRead(node.id)}

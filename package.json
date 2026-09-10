@@ -20,6 +20,7 @@
     "check:logic": "node scripts/check-logic.mjs",
     "test:logic": "node --test scripts/logic.test.mjs",
     "review:draft": "node scripts/draft-review.mjs",
+    "review:reading": "node --experimental-strip-types scripts/export-reading-review.mjs",
     "test:content-package": "node --test scripts/content-package.test.mjs",
     "test:locales": "node --test scripts/translation.test.mjs"
   },

@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import { readCanonicalContent } from '../lib/content-reader.mjs';
 import { legacyEdgeLinks } from '../lib/legacy-links.mjs';
 import { logicIssues } from '../lib/logic-validation.mjs';
-import { reviewUnits, reviewIssues } from '../lib/review-fingerprints.mjs';
+import { reviewUnits, reviewIssues, reviewFields, readerFields } from '../lib/review-fingerprints.mjs';
 const original = readCanonicalContent();
 function change(fn) {
   const data = structuredClone(original);
@@ -173,6 +173,27 @@ test('a generated draft cannot count as an approved review', () =>
 test('old shared arrow URLs resolve to current conditions', () => {
   for (const id of Object.values(legacyEdgeLinks))
     assert.ok(original.edges[id]);
+});
+
+test('new review drafts cannot pass without reader context and an explanatory bridge', () => {
+  const assessment = {
+    ...Object.fromEntries([...reviewFields, ...readerFields].map(field => [field, 'A specific reviewed explanation of the relevant condition.'])),
+    primary: [{ source: 'framework', locator: 'Risk areas', support: 'Distinguishes capability, deployment, and harm.' }],
+  };
+  const record = { version: 2, decision: 'reviewed', reviewer: 'test', date: '2026-09-10',
+    assessments: { checked: assessment }, entries: { 'node:C2': { hash: 'current', assessment: 'checked' } } };
+  const check = value => reviewIssues({ 'node:C2': 'current' }, [value], original.sources);
+  assert.deepEqual(check(record), []);
+  for (const field of readerFields) {
+    const incomplete = structuredClone(record);
+    delete incomplete.assessments.checked[field];
+    assert.match(check(incomplete).join('\n'), /missing or stale content review/);
+  }
+  // A historic review still covers unchanged text, without rewriting history.
+  const historic = structuredClone(record);
+  delete historic.version;
+  for (const field of readerFields) delete historic.assessments.checked[field];
+  assert.deepEqual(check(historic), []);
 });
 
 test('observed claims need a direct study and resolvable primary evidence', () => {

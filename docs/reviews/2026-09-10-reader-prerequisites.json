@@ -1,0 +1,789 @@
+{
+  "id": "2026-09-10-reader-prerequisites",
+  "version": 2,
+  "date": "2026-09-10",
+  "reviewer": "Codex — Japanese and English first-time reader and causal bridge review",
+  "decision": "reviewed",
+  "assessments": {
+    "orientation": {
+      "mechanism": "現在から各経路の条件をたどる案内であり、発生年や一本道の予言ではない。最初に誰が何を任せるかを説明してから分岐へ入る。",
+      "conditions": "ANDは条件の組み合わせ、ORは重なり得る別の仕組みとし、ツアーの読む順番を因果順序と同一視しない。グラフの条件とノード集合は変更していない。",
+      "counterexample": "高度なAIでも、重要な操作へ届かず、対策が機能していれば破局の経路は進まない。安全性研究や生活改善の分岐も保持した。",
+      "evidence": "枠組みの著者が区別する能力・運用・被害を、初めて読む人向けに導入へ明記した。一次資料が図全体を実証したという意味にはしない。",
+      "limits": "全76項目・41矢印・28章・44研究カード・46用語を対象にした編集上の点検である。専門家の独立査読や、新規読者による理解度実験は実施していない。",
+      "mitigation": "実際の表示順を出力する review:reading と、前提知識・話題のつながりを記入する version 2 の手順を追加した。記入の有無と内容の妥当性は別である。",
+      "readerContext": "AI安全性の既習や、用語集の事前閲覧を仮定しない。出力が道具や人の行動へ届くことと、その条件を順に確かめる目的を冒頭に書く。",
+      "whyHere": "以前のASIの例外説明は、なぜ現実への影響を確認するかが抜けていた。経路の目的を先に示し、能力・接点・監督の話につなぐ。未使用の story.intro だけの修正にしない。",
+      "primary": [
+        {
+          "source": "framework",
+          "locator": "Background assumptions; Risk areas; Misalignment",
+          "support": "能力の進展、運用上の条件、複数のリスク領域を分ける原枠組み。入門者向けの順序は編集上の構成。"
+        }
+      ]
+    },
+    "development": {
+      "mechanism": "人間主導の開発と自己改善の循環から能力が伸び、その能力が作業遂行・労働自動化・安全性研究に使われる道を説明した。R2/R4に残っていた古い接続先を現在のR0起点へ訂正した。",
+      "conditions": "RSIもASIも制御喪失の必須条件とはしない。個別作業の高速化には工程全体への寄与が、ASIから制御失敗への接続には監督や権限制限が追いつかない条件が必要。",
+      "counterexample": "コード作成だけが速くても実験・検証の待ち時間が残れば開発全体は同率で速くならない。高能力を監督や安全性研究に使えばリスクが低下する道も残る。",
+      "evidence": "DeepMindの原論考の能力差・AI開発の加速・AIを安全性研究へ使う議論、METRの測定定義、Anthropicの自動安全性研究の限定評価を参照した。",
+      "limits": "能力差が監督を難しくし得るという議論を、必ず制御不能になる事実や発生確率へ変えない。数学や研究の実績、日付、試験数を更新せず、全般的ASIを確立したとも記述しない。",
+      "mitigation": "未知の課題への一般化、独立した検証、能力開発と危険低減の別々の測定、権限と人員・計算資源の配分を具体化した。候補対策を実効性の保証にしない。",
+      "readerContext": "RSIは改良したAIが次の開発を助ける循環、ASIは幅広い重要な仕事で優れた人間を大きく上回るAIと、その場で説明する。研究工程は資料・コード・実験・確認で例示した。",
+      "whyHere": "ASIを置く理由は監督する側との能力差を確認するためである。先に理由を説明してから、ASI以外でも現実の操作に届く場合と、安全性研究に役立つ場合へ進む。",
+      "primary": [
+        {
+          "source": "framework",
+          "locator": "Background assumptions: No human ceiling; AI development may accelerate; Safety research",
+          "support": "能力差・開発速度と監督の難しさ、安全性研究への活用の条件付き議論。"
+        },
+        {
+          "source": "horizon",
+          "locator": "What does time horizon measure?; real-world task limitations",
+          "support": "人間の所要時間は課題の尺度でありAIの無人稼働時間ではない。主にソフトウェア課題の評価。"
+        },
+        {
+          "source": "automated-alignment",
+          "locator": "Summary; held-out evaluation and transfer limitations",
+          "support": "安全性研究の限定された課題での成果。実運用全般や破局確率の低下を直接測った結果ではない。"
+        }
+      ]
+    },
+    "alignment": {
+      "mechanism": "評価基準と目的の食い違い、環境変化で表れる別の目標、実行する能力と接点、監督失敗を区別する。AIの判断が道具や人の行動に届く仕組みをC2/C2bへ補足した。",
+      "conditions": "C1・C2・C3の組み合わせ、C2aとC2bのAND、意図や監督失敗のOR分岐を保持した。試験を認識する能力だけでは隠す行動や制御喪失を導かない。",
+      "counterexample": "意図と異なる行動を選んでも、道具への接点がない、実行能力が足りない、あるいは監督が止めれば、その操作は実現しない。局所失敗後に権限を取り消せる場合は回復できる。",
+      "evidence": "Specification gamingとgoal misgeneralizationは研究者自身の例を確認。AI Controlの監督・編集・人間監査と、Astraの評価認識・運用事例を混同しない。",
+      "limits": "苦情の件数評価と業務データ削除は仕組みを伝える仮定であり、観測されたAI事故として加えていない。限定実験から現実全般の安全・危険を断定しない。",
+      "mitigation": "何の記録を誰が点検し、発見後に止められるかを説明する。実行前の阻止と失敗後の回復を別に評価する点を保持した。",
+      "readerContext": "報酬は学習に使う評価点、監督は作業するAIの行動や記録を人や別のAIが確かめること、と読んだ場面で理解できるようにした。",
+      "whyHere": "能力が伸びる話から、何をするか・実行できるか・止められるかへ橋をかける。最初の失敗の後に持続・組織をまたぐ広がりを置く理由は、制御を取り戻せるかを別に確かめるため。",
+      "primary": [
+        {
+          "source": "specification",
+          "locator": "Specification gaming: definition and examples",
+          "support": "評価点の最大化と意図した結果の差。苦情の例は独自の説明用仮定。"
+        },
+        {
+          "source": "generalization",
+          "locator": "Goal misgeneralization; expert/anti-expert example",
+          "support": "適切な報酬でも別の目標を学び、環境変化後に追求する例。"
+        },
+        {
+          "source": "control-paper",
+          "locator": "Abstract; trusted monitoring and trusted editing protocols",
+          "support": "信頼しないモデルを監督・編集・監査する限定的な運用評価。"
+        }
+      ]
+    },
+    "misuse": {
+      "mechanism": "危険な目的を持つ利用者への支援が、難しかった作業を助け、実際の対象へ届き、防御で止まらない経路として説明した。知識回答・能力・アクセス・被害を分ける。",
+      "conditions": "サイバーと生物等の物理的危害は代表的なORであり両方必須ではない。能力と接点、設備や技能、防御などの追加条件を変更していない。",
+      "counterexample": "既知の試験で高得点でも、対象へ届く接点がない、十分な防御がある、物理的な作業ができない場合は実害を意味しない。",
+      "evidence": "Astra System Card §10.1.2 とGemini 3.7 FlashのFrontier Safety Assessmentを再確認した。41課題・5試行・100%、CyScenario 9/10と59%、Sol 6/10、最難関7課題の未成功という区別を保持。",
+      "limits": "過去の脆弱性情報への学習時の接触で得点が高くなった可能性と、新しい課題での評価を説明した。実攻撃100%や会社間の警戒水準の同一性は主張しない。",
+      "mitigation": "M3の旧説明が実行後だけに偏っていたため、実行前の防御・検知・封じ込め・復旧に広げて項目の意味と合わせた。具体的な危害の実行手順は追加しない。",
+      "readerContext": "サイバーはコンピューターやネットワークに対する不正操作、現実に近い評価は複雑さ・防御・情報・道具・人の支援の条件、と明記した。",
+      "whyHere": "悪意の主体がAI自身でなく利用者であることから始める。能力試験の次に接点と防御を確かめる理由を示し、試験結果から被害への飛躍を防いだ。",
+      "primary": [
+        {
+          "source": "astra-card",
+          "locator": "§10.1.2.1 ExploitBench; §10.1.2.2 Internal Port; Irregular evaluations",
+          "support": "既知課題の採点、学習時の接触による過大評価の懸念、新規課題と外部評価の限定結果。"
+        },
+        {
+          "source": "gemini-safety",
+          "locator": "Frontier Safety Assessment: CBRN, Cybersecurity, ML R&D and Misalignment",
+          "support": "CCL警戒水準とCCL本体の区別、専門家誘導、評価認識と回避の差。"
+        },
+        {
+          "source": "framework",
+          "locator": "Misuse: capability, access, and mitigation",
+          "support": "能力の評価と現場での実行・防御を区別する原枠組み。"
+        }
+      ]
+    },
+    "military": {
+      "mechanism": "複数の当事者がAIの助言を採用し、誤認にもとづく対応を互いに脅威と受け取ることで反応が循環する道を明記した。",
+      "conditions": "AIを重要判断に使うこと、独立確認や訂正時間が足りないこと、抑制や連絡が機能しないことを分ける。助言の使用だけでエスカレーションを必然化しない。",
+      "counterexample": "別の情報による確認、相手との連絡、判断を止める権限が働けば、AIの誤った助言があっても対立の増幅を抑えられる。",
+      "evidence": "既存のSIPRI原分析と戦争ゲーム原研究の設定・限界を研究カードで確認した。今回の改訂は仕組みの説明で、試験の数値や現実の危機の発生確率は変更していない。",
+      "limits": "戦争ゲームは現実の国家行動を予測する実績とは異なる。モデルやゲーム設定の観測を現実の自律兵器や人類規模被害の実証にしない。",
+      "mitigation": "誰が最終判断するか、反対意見を行動に反映できるか、確認する時間と連絡路が残るかを対策の対象として読めるようにした。",
+      "readerContext": "AI同士の反乱を想定するのではなく、AIを使う人間・組織の判断が互いにどう作用するかという場面を章の最初に示す。",
+      "whyHere": "助言を使うことから訂正できないこと、相互反応、実害への広がりへ段階をつなぐ。高速な出力と、人間が確認できる時間を区別した。",
+      "primary": [
+        {
+          "source": "framework",
+          "locator": "Structural risks; multiple actors and systems",
+          "support": "相互作用が関わるリスクの分類。軍事シナリオの確率を示すものではない。"
+        },
+        {
+          "source": "sipri",
+          "locator": "AI integration; nuclear risk and human decision-making",
+          "support": "既存カードで参照するAI利用と危機判断の原分析。今回、全文の新規再調査は行っていない。"
+        }
+      ]
+    },
+    "societal": {
+      "mechanism": "事故では共通原因による同時障害と、出力から別の業務へ伝わる連鎖を分けた。依存では委任から代替の喪失、異議が決定に届かない状態へ進む仕組みを補った。",
+      "conditions": "事故の連鎖には実際の相互接続と復旧の不足が必要。社会的依存には退出と変更の手段が失われる条件が必要。広域被害・回復困難・絶滅の追加条件を維持した。",
+      "counterexample": "独立した予備設備や応援組織が残れば復旧できる。便利なAIへ委任しても、人々が代替へ移ったり制度を変えたりできるなら主導権喪失とは言えない。",
+      "evidence": "Gradual Disempowermentの原論考とFSBの共通依存・市場相関の議論を確認した。原論考・制度分析と、観測された被害を区別する構成を保った。",
+      "limits": "在庫・発注・配送の例は仮定であって新しい事故報告ではない。社会全体の固定化や人類絶滅を現在のAI利用率から推測しない。",
+      "mitigation": "独立した復旧資源と外部支援、退出や異議申し立てを実行できる制度に対応させた。対策候補を効果が保証された措置として書かない。",
+      "readerContext": "バックアップも同じ電力・通信に頼れば止まり得ること、サービスを離れられないことと決定を変えられないことを具体的に説明する。",
+      "whyHere": "日常的な利便性や局所障害から大きな結果へ飛ばず、代替・復旧・変更の手段が残るかを次の問いとして置いた。",
+      "primary": [
+        {
+          "source": "gradual",
+          "locator": "Abstract; executive summary; loss of human influence across systems",
+          "support": "経済・政治・文化にまたがる人間の影響力の低下という条件付き議論。"
+        },
+        {
+          "source": "fsb-ai",
+          "locator": "Key vulnerabilities: dependencies and market correlations",
+          "support": "共通依存や相関が既存の脆弱性を強め得るという分析。"
+        }
+      ]
+    },
+    "labor": {
+      "mechanism": "作業を実行する能力、実際の導入、人の仕事への補完と代替、誰が所得や必需品を得るかを分けた。能力があれば家計が豊かになるという飛躍を避ける。",
+      "conditions": "知的労働と実物を扱う労働、十分な生産と非就労者への分配を区別する。全労働の技術的代替は、働かず暮らせる社会や価格低下の唯一の前提ではない。",
+      "counterexample": "生産性が高くても失職者が新しい仕事や給付にアクセスできなければ生活が悪化し得る。逆に部分的自動化でも補完や供給改善が起きる場合がある。",
+      "evidence": "ILOの曝露の定義、Censusの企業18%・雇用加重32%・補助66%・雇用減少2%、Anthropic経済シナリオTable 3の条件付き数値を再確認。数値・母数・観測時期は維持した。",
+      "limits": "曝露は失業率ではない。過去の利用率を2026年9月の比率に更新しない。GDP32.4%・知的職賃金-11.5%・全体失業率11.9%は米国モデルの仮定付き結果で発生確率ではない。",
+      "mitigation": "職種別の残る作業、引き継ぎ、再就職の技能・機会・生活費、就労していない人の所得と必需品へのアクセスを点検対象へ具体化した。",
+      "readerContext": "曝露と補完はその場で意味を示し、賃金と事業利益・配当の違い、GDPが国内の付加価値の合計であることを補足した。",
+      "whyHere": "できる仕事の範囲を見た後で、実際の導入とその利益の届き方を問う理由を明示する。生産が増えることと特定の人が暮らせることは別だからである。",
+      "primary": [
+        {
+          "source": "ilo-index",
+          "locator": "Occupational exposure; job transformation rather than replacement",
+          "support": "作業の影響可能性と職業の代替・失業を分ける。"
+        },
+        {
+          "source": "census-adoption",
+          "locator": "Abstract; BTOS Nov 2025–Jan 2026",
+          "support": "利用率の母数と補助利用・雇用減少の回答割合。"
+        },
+        {
+          "source": "econ-scenarios",
+          "locator": "§1 assumptions; §2.3 unemployment; Table 3, printed p.31",
+          "support": "仮定した能力・採用・移行条件のもとで生産と賃金・失業が異なる動きをする計算。"
+        }
+      ]
+    },
+    "money": {
+      "mechanism": "AIの出力から対価、売上から費用を引いた利益、その利益の所有者への分配を分けた。生産費と価格が下がる道、貨幣の配分機能が小さくなる道、決済危機の道を混同しない。",
+      "conditions": "取引相手の需要と納品・契約・決済の実行が収入に必要。配分機能の縮小には供給の豊かさだけでなく所得に依存しないアクセスも必要。",
+      "counterexample": "無料の成果や決済量が増えても純利益とは限らない。AIが多くを生産しても土地やエネルギーや分配が制約されれば、お金が不要になるとは言えない。",
+      "evidence": "ECBの貨幣の三機能の原解説と、Visa/Artemisの機械決済の原分析を確認した。MPP等全体をブロックチェーン限定とせず、その資料で扱う記録された取引へ範囲を限定した。",
+      "limits": "貨幣の配分機能縮小は編集上の条件付き仮説でECBのAI予測ではない。決済額は売上・純利益・AIの法的所有を測るものではない。",
+      "mitigation": "取引需要・総費用と支出上限、分配の選択肢、非価格配分での不足・不公平の確認を、それぞれの条件に対応させた。",
+      "readerContext": "誰がお金を受け取るのか、価格と支払能力が限られた物の利用者を決める役割を先に説明する。ブロックチェーン上の決済という評価対象も言い換えた。",
+      "whyHere": "仕事の自動化からお金の話に進むのは、成果への対価と暮らしへの配分が別の条件だからである。豊かさで依存が減る道と信用を失う道は異なる問いとして導入した。",
+      "primary": [
+        {
+          "source": "ecb-money",
+          "locator": "The functions of money",
+          "support": "支払いの手段、価値を測る単位、価値の保存。AIによる機能縮小自体はこの資料の主張ではない。"
+        },
+        {
+          "source": "visa-agents",
+          "locator": "On-chain activity; Trust; April 21, 2026 data scope",
+          "support": "決済記録と認可・支出管理の説明。利益やAIの自律的所有を実証する資料ではない。"
+        }
+      ]
+    },
+    "finance": {
+      "mechanism": "似た判断による売りと価格下落の循環、損失と資金不足の伝播、支払いの不履行から信用低下、長期の決済不全から必需品への影響までの橋を補った。",
+      "conditions": "重要な金融操作への接点、損失吸収や流動性・停止復旧の不足が必要。金融危機から貨幣経済の崩壊には通貨への信頼と代替・回復の広い失敗も必要。",
+      "counterexample": "同じAIでも買い手や市場の余裕が売りを吸収すれば暴落とは限らない。金融機関に障害があっても現金や独立した決済で取引を継続できる場合がある。",
+      "evidence": "FSB原報告、BoE/FCAの2024年原調査の75%と2%の母数、ECB決済戦略の代替手段とオフライン計画の位置付けを確認した。",
+      "limits": "2024年の118社調査を現在の市場シェアに換算しない。デジタルユーロを導入済みとしない。危機と貨幣崩壊は将来の条件付き仮説で実測されたAI起因の出来事ではない。",
+      "mitigation": "操作権限・上限、相関した取引への備え、独立した決済と復旧、非常時の供給へ対策の作用先を対応させた。",
+      "readerContext": "金融が事業資金や支払いを支える役割、信用収縮、すぐ支払うための流動性と損失に耐える余力の差、組織数と用途数の母数の差を補った。",
+      "whyHere": "単なる株価下落から生活の崩壊へ飛ばず、貸し出しや決済の障害、信用と代替の失敗、仕入れ・輸送・供給の停止を確認する理由を順につないだ。",
+      "primary": [
+        {
+          "source": "fsb-ai",
+          "locator": "Third-party dependencies; market correlations; financial stability vulnerabilities",
+          "support": "AIが既存の金融上の脆弱性を強める仕組みの原分析。"
+        },
+        {
+          "source": "finance-survey",
+          "locator": "Key findings; §2.5 automated decision-making",
+          "support": "組織の利用率75%と全AI用途中の完全自律2%は母数が異なる。"
+        },
+        {
+          "source": "payment-resilience",
+          "locator": "§2 settlement assets; §5 retail payments, printed pp.16–17",
+          "support": "代替決済、アクセス、オフライン機能の計画。対策が必ず機能する実験結果ではない。"
+        }
+      ]
+    }
+  },
+  "entries": {
+    "research:astra-cyber": {
+      "hash": "6378afc7d97916bafe492c1b1cef4dc01e71dc153252c406f5a9839e104d8176",
+      "assessment": "misuse"
+    },
+    "research:gemini-safety": {
+      "hash": "8aaa200336cd1377b5055c614297e05f10568cacb6445fbb4c29c1bed7622c70",
+      "assessment": "misuse"
+    },
+    "research:adoption": {
+      "hash": "f5a6461854e14fca80970bf3be0279bd069bfa31cf7caaae0b988860b08dc80e",
+      "assessment": "labor"
+    },
+    "research:payments": {
+      "hash": "30b37bffc0a3b296d498c0604376600a22e7a2d881ee35f82e00dd74e3c9395d",
+      "assessment": "money"
+    },
+    "research:finance-use": {
+      "hash": "c217bd57e8db89ef38cd0dc68f8147626540a300ed9ca3cee7521f2f247d2c8e",
+      "assessment": "finance"
+    },
+    "research:payment-resilience": {
+      "hash": "0a70eb059d88808dced135c6e5bb155524587a9b5d5f0a0c36617f528757e5e5",
+      "assessment": "finance"
+    },
+    "research:econ-scenarios": {
+      "hash": "f0b26187f655a73270c8fc9fe8c79392235be4c702aa24730d810711d079b26d",
+      "assessment": "labor"
+    },
+    "node:A1": {
+      "hash": "12c5b4f0509dcf27ada9aa197327c3dcb7946fa1ab2ca7a34f70941359238fa8",
+      "assessment": "societal"
+    },
+    "node:A2": {
+      "hash": "d411b76267bc7085bc3bccb4133230f3013d9913bd00c20936d26f07c965abf7",
+      "assessment": "societal"
+    },
+    "node:A3": {
+      "hash": "cfee0dd956d46e214782acaddb64c5ba0742cfe769102596e457fa7d2fe4b6db",
+      "assessment": "societal"
+    },
+    "node:ASI": {
+      "hash": "bb1d0271a274c75d869b9657e5ee355781b6cfad1306b0931c259405b1f74169",
+      "assessment": "development"
+    },
+    "node:C1a": {
+      "hash": "2ff7e88f60bc4623aba19f03566d5cdf5e123badd99ba6296301120dc6cee4c7",
+      "assessment": "alignment"
+    },
+    "node:C1b": {
+      "hash": "4694a97fb9c7a1fd06cf10029099a0d4c6477af591f70b3e42982991688a43b2",
+      "assessment": "alignment"
+    },
+    "node:C2": {
+      "hash": "018e9b816021f51e0d6d65054c0256fd3eef6bc5b60730c125801375fc190a88",
+      "assessment": "alignment"
+    },
+    "node:C2a": {
+      "hash": "4b3607a09dfd4209e60fc9b2fe2d905f10333693ae5cf44c35fee0db7c91c14f",
+      "assessment": "alignment"
+    },
+    "node:C2b": {
+      "hash": "9c80a3e6b3b6112ac06180644c07621b9ba5f90376e303fc4af8018f0df63c58",
+      "assessment": "alignment"
+    },
+    "node:C3": {
+      "hash": "a1f39fbd598af75d926152a87ec5c209d22c11bd9f0773f42aaf7f38a3d6709a",
+      "assessment": "alignment"
+    },
+    "node:C3a1": {
+      "hash": "ee353b496a5ec644d3df93a5a793d1243c02f13fa5334ee60d1a72ac9969fe0e",
+      "assessment": "alignment"
+    },
+    "node:C3a2": {
+      "hash": "f0f19706540be928bfb7f2d98dd3c6a325e7bb98430a19e99c931e836afb67dc",
+      "assessment": "alignment"
+    },
+    "node:C3a3": {
+      "hash": "9d8b4164cd8d7bb0a454c8b11988f02b5a58153b01bc9e9a0cebf95718990aa5",
+      "assessment": "alignment"
+    },
+    "node:D1": {
+      "hash": "dbd5ce1dfb1cd7716d49300f7e9ae21b73ecca59d511185ef8001b0dba174269",
+      "assessment": "societal"
+    },
+    "node:D2": {
+      "hash": "7e4670d14798e2cee81419f2ff94fc5bf54d29ea12c58a2ebcd10326f7146e60",
+      "assessment": "societal"
+    },
+    "node:D3": {
+      "hash": "2e190e73f1dd894ead8c3e7a3803f3b955a0632a2cc662713675daea954146ad",
+      "assessment": "societal"
+    },
+    "node:F1": {
+      "hash": "1885622e072152ed8d85b396b08567e7fe67ddbfd266a26edfdea9bcb5806486",
+      "assessment": "finance"
+    },
+    "node:F2": {
+      "hash": "dde0689fd3e487bcee5d67160fd5876821c15a5741d4ef2ff463ba9e69e38829",
+      "assessment": "finance"
+    },
+    "node:F2a": {
+      "hash": "23deb81e61103429527fd12c8bdd4a634d4c0cd6dcbd69295752c4c870ab08e8",
+      "assessment": "finance"
+    },
+    "node:F2b": {
+      "hash": "583e82aece5b8d111d1ca8e60c9ba3b086fb8ad5a94f0ba0c50f90ca0132b6c3",
+      "assessment": "finance"
+    },
+    "node:F3": {
+      "hash": "03a87feddc365e067873ec0297a21c68c4e41508837834a275c68644189cb492",
+      "assessment": "finance"
+    },
+    "node:F4": {
+      "hash": "d9602ed10caa9c24eb7059e9bea89d89071ce02342ad10d1de27f42a572dc544",
+      "assessment": "finance"
+    },
+    "node:F6": {
+      "hash": "2ba2c92c735e2bdf2c0ac811cd9474f6207f2dae1f76780b6c9c6622e508e4e1",
+      "assessment": "finance"
+    },
+    "node:F7": {
+      "hash": "077e16000df5498c3dc88dfb3e5cb8e54a6bc39aae0e6063c805bb2badf59249",
+      "assessment": "finance"
+    },
+    "node:I1": {
+      "hash": "eaa26e09660a26f55389094acbac9719c74725a076a1faa509a9b974720ec6d6",
+      "assessment": "money"
+    },
+    "node:I1a": {
+      "hash": "785b337edc75fef02d8ba2dd7ac66139c2ce9bdaa497fb1c8331fc59a2d275c1",
+      "assessment": "money"
+    },
+    "node:I1b": {
+      "hash": "0a3b7c25c76610a71844e408cf4c2d1159aaab2c385b84103c54423f3c25af8f",
+      "assessment": "money"
+    },
+    "node:I2": {
+      "hash": "034858057f8500660b4150101d18be543b3063a0579ea5d3435b22017432b5ef",
+      "assessment": "money"
+    },
+    "node:M2": {
+      "hash": "fcb281fa22379bcf87eba562b4a9ff36fc29a2b5685ee72f458966a688e653c3",
+      "assessment": "misuse"
+    },
+    "node:M2b": {
+      "hash": "e7d1755949584bc1cb73dd99523a2d2ea8bedd99615477cb3e164eaa725c7c76",
+      "assessment": "misuse"
+    },
+    "node:M2b1": {
+      "hash": "df36d0c4a1a6d02353242bcb2cca4956e94f55068dd35e845adfae8287c77d44",
+      "assessment": "misuse"
+    },
+    "node:M2b2": {
+      "hash": "003999178fc69c27c1fff7c2b613ce144a23ac85dbb4407476f76240630bd64e",
+      "assessment": "misuse"
+    },
+    "node:M2c": {
+      "hash": "7d219aa7130bab49e425f5891592b3d1ac22d96aba6b8dd3020aed8b6ddb3e41",
+      "assessment": "misuse"
+    },
+    "node:M2c1": {
+      "hash": "e0786f6af9d8087ffe631186775e650faaf93a81aac45d659a64571d148248a2",
+      "assessment": "misuse"
+    },
+    "node:M3": {
+      "hash": "b8a235cfc413313e2bab3287b18db3c3451498e1af6d0bf95c2b4090b857ae1f",
+      "assessment": "misuse"
+    },
+    "node:NOW": {
+      "hash": "a75d7af85ccd05acd21df1817c2ffc58f6c989fb096c996f1f267c661c311edd",
+      "assessment": "orientation"
+    },
+    "node:P3": {
+      "hash": "1e6360e8c5d67623c634f388bba84e0ce5cd2153fe70f8afd083c9229f6571e5",
+      "assessment": "money"
+    },
+    "node:R0": {
+      "hash": "5ebba169d92219f798b575b20d2259c9bb24230583446832e1a8a62a53a5b42a",
+      "assessment": "development"
+    },
+    "node:R1": {
+      "hash": "ee6ab91fe7b5a446f64c88c6088d962a6c2ddfe4f98492fa6b3877472e73c2af",
+      "assessment": "development"
+    },
+    "node:R2": {
+      "hash": "b89d8c754bb9323cadb26c90030e21d571ec68ed8eab9f2d0593b57c2e20f258",
+      "assessment": "development"
+    },
+    "node:R3": {
+      "hash": "7a878e49e1498ffcf3874f00a8191076057fc72b3eb2c72bef162b8322b0c665",
+      "assessment": "development"
+    },
+    "node:R4": {
+      "hash": "8639ef825b08387b05b88567940a1f72439bdd5dee08016ac16eb86177237fd2",
+      "assessment": "development"
+    },
+    "node:S2": {
+      "hash": "67e0f1a7043a25869e77cf6965b598935678de92474d6846eddd48c84fc20d99",
+      "assessment": "military"
+    },
+    "node:W1": {
+      "hash": "d78d90beda19a6cf2a60f5755c0f721b5a9f686a7bb9c9d35ac041e1fb62ebc6",
+      "assessment": "labor"
+    },
+    "node:W3": {
+      "hash": "f8d475c051e65cfba86f1a0f160df283c49c53dbe62628c1e9336b5cd8a5f2af",
+      "assessment": "labor"
+    },
+    "node:W5": {
+      "hash": "9994febb177a47172b0bc05bbea7920567eed938d30f80bdf3df42d3b129c6a7",
+      "assessment": "labor"
+    },
+    "node:W6": {
+      "hash": "1bcb1e2c79c3ed935386a565abca7c4e365a9d69446fb21d2c08d702e6403725",
+      "assessment": "labor"
+    },
+    "node:W7": {
+      "hash": "9becaf8eee5334c2fa023a6b983dae63bfb76d412f0a4c60e7b8c42d329bcda3",
+      "assessment": "labor"
+    },
+    "node:W9": {
+      "hash": "90dae1f109f3bbf005520849d4ecbe3257297ada57c1f746ec45d77cc584a9d8",
+      "assessment": "labor"
+    },
+    "edge:C4-H": {
+      "hash": "b950d10dcc2fc0377f2e84ceea376f21ae5de4cf2358703500be5f4149ea8190",
+      "assessment": "alignment"
+    },
+    "edge:M3-H": {
+      "hash": "f1cd20f6e7d75443a823ee38d75c284642e9a95506646669c9c46cc6ace78583",
+      "assessment": "misuse"
+    },
+    "edge:S1-S2": {
+      "hash": "2c20af4debf4a4482d96e3a202feb2ad9591bd019a3e86f42fde5905bb7aab2e",
+      "assessment": "military"
+    },
+    "edge:S2-S3": {
+      "hash": "d6da8a04347a45daedca23aa96e008e5c73d335b28eb6c872eddc6ad371539b0",
+      "assessment": "military"
+    },
+    "edge:S3-H": {
+      "hash": "50383c6efd0b53898227846733b4aa99648bd548d18fef9a5bca5a2bfd21117d",
+      "assessment": "military"
+    },
+    "edge:R1-R2": {
+      "hash": "29c6904bf03b13007387ae8978371f62467dd61e4036f5d5f05f31abf7fba8ce",
+      "assessment": "development"
+    },
+    "edge:R2-R3": {
+      "hash": "91ae7936b9fc6dfce30733d6517fb1702292024ea044a86fc35e57cb9b128004",
+      "assessment": "development"
+    },
+    "edge:R3-R2": {
+      "hash": "e2c6b0b12dc19d3d99073560efb2a90839fb9861a7285776cea0d3e7ce8d1717",
+      "assessment": "development"
+    },
+    "edge:C3-L": {
+      "hash": "4671ee26718e019c2f54ba70167abceab6682c824ff20f562f1185a1f066caaa",
+      "assessment": "alignment"
+    },
+    "edge:D1-D2": {
+      "hash": "270ff34ed063e750c7643bc163194bc65c0cd0f42785eb3082e8cf01ca7b90e1",
+      "assessment": "societal"
+    },
+    "edge:D2-D3": {
+      "hash": "9352e1f2372fe8817805ee5d7dbc0e5f03b56a9e5ef49b268a586b61dd99a0f8",
+      "assessment": "societal"
+    },
+    "edge:D3-E1": {
+      "hash": "206cbbeb0df285cf9c8455a64b8a9f5a0e1decbf9cd91f5fba142e28a31298c9",
+      "assessment": "societal"
+    },
+    "edge:A1-A2": {
+      "hash": "c86f2bab1ba60a8fa4e41867766084afcf2ee2c8c8e547a72cebd7eb3c281ac7",
+      "assessment": "societal"
+    },
+    "edge:A2-A3": {
+      "hash": "2cf500cf9990914b0059effda9d293fb6d2c0f4077a94b0b9e717fe68c0a16fe",
+      "assessment": "societal"
+    },
+    "edge:A3-H": {
+      "hash": "a5356462aca14a69404a91695a9ddae029924827a1e71da9424ed23b4321177d",
+      "assessment": "societal"
+    },
+    "edge:W1-W4": {
+      "hash": "7893cf78b4a1100d7c13dfd4e4ddfad2072ade0fec0011045775bc2936c48bf3",
+      "assessment": "labor"
+    },
+    "edge:I1a-I1": {
+      "hash": "4120a0fb9b58cd41cb3b1119707d9542206dd147ff357fea8ab232adb963c3ac",
+      "assessment": "money"
+    },
+    "edge:I1-I2": {
+      "hash": "18c67fbd13fb46035cb34dfcea08a6c5d4cc5140c25da2d2beb5033283041492",
+      "assessment": "money"
+    },
+    "edge:W4-P1": {
+      "hash": "544ec100f4728b0cb4f44edfc0918499f1c5860b67cad5166d2f0055aff6378e",
+      "assessment": "money"
+    },
+    "edge:P1-P3": {
+      "hash": "49c4690fbdbbff078d14a1bf8b551a96de0928ef99d0c0abf20acd0d366bc047",
+      "assessment": "money"
+    },
+    "edge:F1-F3": {
+      "hash": "7e79e60427d0b69e5927f4183b5ed0d06c87f531d435f3cf09db4d6b5d6de33d",
+      "assessment": "finance"
+    },
+    "edge:R4-C1": {
+      "hash": "131a7e23cfe2bb0039521b872c7c9e3189396fd55bb1290f3389e437b5cc8f29",
+      "assessment": "development"
+    },
+    "edge:H-G1": {
+      "hash": "4086062c925a67195d6e8f884391f6661d920f924c6876d7bfe3181f59dfc0c5",
+      "assessment": "societal"
+    },
+    "edge:W3-W5": {
+      "hash": "73862a1eda1dd9f3c1bc33ea2ac379f178e91e13844feaa718de3d0951815f58",
+      "assessment": "labor"
+    },
+    "edge:W4-W3": {
+      "hash": "d2eca7ac177f4425b4a3e6a4ab098404a2ed7a1b49a5ab8dbe944be60661faf3",
+      "assessment": "labor"
+    },
+    "edge:W3-W7": {
+      "hash": "d4f14277df109b3a906fce0e50593e61e615bf934f5dc903e98cb6db39109433",
+      "assessment": "labor"
+    },
+    "edge:W5-W8": {
+      "hash": "040f13a36f8cf5e86e398bc88fc9019b33f014fe76676a567645d38e78df7e13",
+      "assessment": "labor"
+    },
+    "edge:P3-P4": {
+      "hash": "4ad8fadc87f365308f6ff2615e6875ab40e126a66d4053c21428217711647792",
+      "assessment": "money"
+    },
+    "edge:F3-F5": {
+      "hash": "2b5339d37de324b065f0d0dc33f3a390cfb98303d58926f5c189f7fb94837e7f",
+      "assessment": "finance"
+    },
+    "edge:F5-F6": {
+      "hash": "644b0c8bbb06715fd40c2de22ff237ceb1557a95324149c80604cec46fe5ae10",
+      "assessment": "finance"
+    },
+    "edge:F5-F7": {
+      "hash": "59293e4c225abea83993615134cfc6c243902dce5cfbff7bb055752240bfcae4",
+      "assessment": "finance"
+    },
+    "edge:W3-W9": {
+      "hash": "108e6d837a59a36c9c9a9923f4e6ffeeef669b7e1d6eef71f417024e53738bb5",
+      "assessment": "labor"
+    },
+    "edge:R0-C2a": {
+      "hash": "67d101c0381b0f06c46d3d3623742699c11827514e1e2a69309f8f47dc461a7b",
+      "assessment": "development"
+    },
+    "edge:R0-W1": {
+      "hash": "444aeec25c9c4d87d8f766d88aa279333cf754e9b0ddf934415ec0a025c2cc64",
+      "assessment": "development"
+    },
+    "edge:R0-ASI": {
+      "hash": "25a46da4f5fddbe1d1fe3bb84f02baefcc4c037ea155ed43f92c285ca3be15b6",
+      "assessment": "development"
+    },
+    "edge:ASI-C3": {
+      "hash": "58ee63aba274a008f1d6bdec63c04dd1d70283e965fa6b560974dec557359841",
+      "assessment": "development"
+    },
+    "edge:R0-R4": {
+      "hash": "8bc47309c421ee946a33a9439b418c41e8b1712bd1c3ba338fe95b8fa18cffec",
+      "assessment": "development"
+    },
+    "graph:control": {
+      "hash": "53032ea3b84e17b8f39aab58fd3b271eb6a191117f1a37148aec858152692248",
+      "assessment": "alignment"
+    },
+    "graph:misuse": {
+      "hash": "fbf9b6380086156891ba7b72c00ad32a17edd3c6937f2e2943f4210b681397a7",
+      "assessment": "misuse"
+    },
+    "graph:interaction": {
+      "hash": "b61ba88013f86107acf0c37609264c0b77f1777e0f226afe158b5828aa6d9fbb",
+      "assessment": "military"
+    },
+    "graph:acceleration": {
+      "hash": "3f8addc8dc0076cf906d5713f21aa0aba0bf010109fa20a63c49fc11ee301614",
+      "assessment": "development"
+    },
+    "graph:intent": {
+      "hash": "b512eaa2c9acdd928ff211a2bdaa846699fa27d1d8a61e33dc5563865d24e1e2",
+      "assessment": "alignment"
+    },
+    "graph:ability-access": {
+      "hash": "b933d2ab8b6ae30233ff5a53b8ee336fc2911e3b8b61c2ae8f73d6edef0302b2",
+      "assessment": "alignment"
+    },
+    "graph:evaluation": {
+      "hash": "d4b065eb3c8c1e239ef32b4e53ab12b5c8c907fa4ce0471c8c28cbccb38689e4",
+      "assessment": "alignment"
+    },
+    "graph:dependence": {
+      "hash": "c92be4f1992ce499b550f57d808fec666a9b3207b6e92f635dd0c4681e80841d",
+      "assessment": "societal"
+    },
+    "graph:accidents": {
+      "hash": "1bd5e30fe221f3ee9a580dc128349ef235f936d26e60a6e281a8e130f9a81fcb",
+      "assessment": "societal"
+    },
+    "graph:misuse-mechanisms": {
+      "hash": "93c48d0686d76bcc1b0cd703e8067333bc1a7f12e27ffb32829cced81fc66043",
+      "assessment": "misuse"
+    },
+    "graph:cyber-conditions": {
+      "hash": "d8d6f89a8ef5734b9821fdb40dcfd3722da35bcb2182a9687d307424111c85a4",
+      "assessment": "misuse"
+    },
+    "graph:bio-conditions": {
+      "hash": "1eb7a771dc9504e428ff41aaeefd2c10b3edc7691442292a248fb20779131684",
+      "assessment": "misuse"
+    },
+    "graph:work": {
+      "hash": "10d7df77b803c4e21492608829b2421f2dff4fb1b9382e18254f99ab5b94dcc0",
+      "assessment": "labor"
+    },
+    "graph:money": {
+      "hash": "7bd103fe4c0bdf86a509a6273293042093f246dedb9281a956d3299293aa30f7",
+      "assessment": "money"
+    },
+    "graph:finance-mechanisms": {
+      "hash": "9faad822b0014a9666d35ac450a9d5ce46a8cb5fc1ceca80a4961ec7ceabb862",
+      "assessment": "finance"
+    },
+    "graph:income-conditions": {
+      "hash": "125e2b1bc60a994450e82ee8e8f91e4188a09c2d3004c12f9ac25b310ffc16c7",
+      "assessment": "money"
+    },
+    "graph:finance-conditions": {
+      "hash": "37689b0ac00f8af9f8caadfb72a4acab7b1d553b70396aead4151e077bda4ca5",
+      "assessment": "finance"
+    },
+    "graph:development-paths": {
+      "hash": "7c28170a5459c387bc5c9139a0dc8846d095172f03c59203e33cd76d58afe162",
+      "assessment": "development"
+    },
+    "graph:research-cycle": {
+      "hash": "7b6cc37f30befeae6a6b7d9c9c51ab6ab2d5548a2e730acb3e792741a8b029fa",
+      "assessment": "development"
+    },
+    "route:control": {
+      "hash": "2d008b272e5692eacd5a4c9c428663f12d501d186b1a12bbdd0b4e59319ac858",
+      "assessment": "alignment"
+    },
+    "route:misuse": {
+      "hash": "9fc454b993220dec037335f66138c002b334d49935eed455334f6d340aefbd6f",
+      "assessment": "misuse"
+    },
+    "route:interaction": {
+      "hash": "9be2dbae8adf1064cb915818f42f6ea5834a235ade7c4cc6c8dc3102ad1e910c",
+      "assessment": "military"
+    },
+    "route:accidents": {
+      "hash": "0fd4e1268a1463942fde2ceea537631c539ae206bdf992f5c7596ce044e82d29",
+      "assessment": "societal"
+    },
+    "route:dependence": {
+      "hash": "67fb2ac88da46b656ab69bcd6d4140b7e8381f62e70166ef05320ec6cd81230c",
+      "assessment": "societal"
+    },
+    "route:acceleration": {
+      "hash": "85d72a8343adcb476b01ee9eb59fcf648b4e411e2d502848cb16ee3976042e91",
+      "assessment": "development"
+    },
+    "route:work": {
+      "hash": "3b66f9edfbe6d5cf14ef54cc9bce1d3b8c35a0d60a5043e48a42fb6e942fa746",
+      "assessment": "labor"
+    },
+    "route:money": {
+      "hash": "4ef37128490523d9af5bd44800db6b98de006a1549d8cf4ac54df44f26318f67",
+      "assessment": "money"
+    },
+    "glossary:ai-safety-research": {
+      "hash": "fac04057ed312247987b501e80fc17597f7e7d73e066054404345d144512c118",
+      "assessment": "development"
+    },
+    "news:work-survey": {
+      "hash": "6f8de835b39070807e40db1fa9be576b4b0b18963b119d314f737adb3c5642ad",
+      "assessment": "labor"
+    },
+    "news:agent-income": {
+      "hash": "77ec8b8a38c8b94844c55f99ddd8c84c86e2523f86350dc2a8ec5fdbc162b4ab",
+      "assessment": "money"
+    },
+    "news:recent-math": {
+      "hash": "c90ae682fca34f424c6e804bc661cef30fa82ec3f028cf7c93d26cacf18be23e",
+      "assessment": "development"
+    },
+    "news:research-lab-september": {
+      "hash": "725e00018a62676a4d1b2bac39c3d5e8635ad6df8c262f78a73891ad7bcd092a",
+      "assessment": "development"
+    },
+    "news:automated-safety": {
+      "hash": "b2843988e0b3a64da766218905b1f33f1dd32a24ef194235b63ec205d65f684b",
+      "assessment": "development"
+    },
+    "news:astra-threshold": {
+      "hash": "6a1bd80fb74d5ae1cb49a035fa69470fdf714807b5141734247100eb1b2c1a5f",
+      "assessment": "misuse"
+    },
+    "news:research-contribution": {
+      "hash": "a1dfa427035c0b784c675fa15d2a3385f7996a7fdbd2d8b16edc5fe71600348a",
+      "assessment": "development"
+    },
+    "news:agent-behavior": {
+      "hash": "66f089a25db106c4924cd4545fdbc95b9e7e238a069f0dcd7ffc81ee249dee33",
+      "assessment": "alignment"
+    },
+    "news:time-horizons": {
+      "hash": "9a73acd92cbe7e8dc2bb5aa907d4854018d88eada9d1b1e81f9c6b05b93ebabf",
+      "assessment": "development"
+    },
+    "story:control": {
+      "hash": "b69069dc80e710a1f33ec8422c2387fd5d2c5b71d331ab56617282967e4f70c6",
+      "assessment": "alignment"
+    },
+    "story:misuse": {
+      "hash": "dcb616b7b5cf8c6c4d8a7b1bbb8d9a91c72c45f3c4bbb6224d7e4a4e7a1bc22d",
+      "assessment": "misuse"
+    },
+    "story:interaction": {
+      "hash": "fb5a1896bfd9490b6ea4bfe1f41efe994d85b55afb9fdf449f35057ad70e3502",
+      "assessment": "military"
+    },
+    "story:accidents": {
+      "hash": "d0a82f46b059b183a95b7335da0092fe58e930f9f29c4bfcadca7ffcae19165d",
+      "assessment": "societal"
+    },
+    "story:dependence": {
+      "hash": "3edbbe17a6d354329ab094076755e7a61602dbb397381e5d91d46d2adf7960cc",
+      "assessment": "societal"
+    },
+    "story:acceleration": {
+      "hash": "d551aa379ac767501acfcf456bdad9b075c9750d576bfc8b8c11a28042e5fa28",
+      "assessment": "development"
+    },
+    "story:work": {
+      "hash": "26481dbf174c38b4a8666b5fea96bb3553782d35d61730b27607371ff6ed08a9",
+      "assessment": "labor"
+    },
+    "story:money": {
+      "hash": "8e4dbd6556408a2beecdb6108a95909ed954864f8dc6091d084bf0dd7d0bb61b",
+      "assessment": "money"
+    },
+    "history:changes": {
+      "hash": "af68c1c22eb49ccbd4d30abc4599314798842c8d067424a817bd0024284a184b",
+      "assessment": "orientation"
+    },
+    "ui:ja": {
+      "hash": "da1c2a696d9542e80f6775dc750820a7f39d915d03a2bab3a6a0dd7dafb73e17",
+      "assessment": "orientation"
+    }
+  }
+}
