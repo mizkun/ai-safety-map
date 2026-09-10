@@ -8,12 +8,17 @@ import {
   type CSSProperties,
 } from 'react';
 import { Button, ButtonBase, IconButton, Paper } from '@mui/material';
-import { ArrowLeft, ArrowRight, Crosshair, X } from 'lucide-react';
+import {
+  ArrowLeft,
+  ArrowRight,
+  CornerDownRight,
+  Crosshair,
+  X,
+} from 'lucide-react';
 import type { Content } from '@/lib/content-types';
 import { formatMessage, type Messages } from '@/lib/i18n';
 import {
-  readingChapter,
-  readingContinuation,
+  tourNavigation,
   tourKeyDirection,
   type TourStop,
 } from '@/lib/map-tour';
@@ -54,24 +59,8 @@ export default function MapTour({
 }: Props) {
   const panel = useRef<HTMLElement>(null);
   const body = useRef<HTMLElement>(null);
-  const chapters = useRef(new Map<number, HTMLElement>());
-  const reading = useRef<number | null>(null);
-  const frame = useRef(0);
   const advance = useCallback(
     (direction: number) => {
-      const element = body.current,
-        chapter = chapters.current.get(index);
-      if (direction > 0 && element && chapter) {
-        const continuation = readingContinuation(
-          element.scrollTop,
-          element.clientHeight,
-          chapter.offsetTop + chapter.offsetHeight,
-        );
-        if (continuation !== null) {
-          element.scrollTo({ top: continuation, behavior: 'instant' });
-          return;
-        }
-      }
       const next = index + direction;
       if (next >= stops.length) onClose();
       else if (next >= 0) onMove(next);
@@ -84,6 +73,31 @@ export default function MapTour({
   }, [index, onMove, onClose, advance]);
   const stop = stops[index] || stops[0];
   const route = data.routes.find((r) => r.id === stop.view);
+  const navigation = tourNavigation(stops, index);
+  const routePages = navigation.steps;
+  const chapter = data.stories[stop.view]?.chapters[stop.chapter];
+  const node = stop.node ? data.nodes[stop.node] : null;
+  const title =
+    stop.kind === 'start'
+      ? m.tourStartTitle
+      : stop.kind === 'finish'
+        ? m.tourFinishTitle
+        : node?.title || chapter?.title;
+  const prose =
+    stop.kind === 'start'
+      ? m.tourStartText
+      : stop.kind === 'finish'
+        ? m.tourFinishText
+        : node
+          ? node.body['概要']
+          : chapter?.text;
+  const nextLabel = {
+    begin: m.tourBegin,
+    step: m.tourNextStep,
+    scenario: m.tourNextScenario,
+    finish: m.tourWrapUp,
+    exit: m.tourFinish,
+  }[navigation.nextKind];
   function choose(position: number) {
     onMove(position);
     body.current?.focus({ preventScroll: true });
@@ -123,21 +137,6 @@ export default function MapTour({
       document.removeEventListener('keydown', keydown);
     };
   }, [ready, keyboardEnabled, stops.length]);
-  const routePages = stops
-    .map((step, position) => ({ step, position }))
-    .filter(
-      ({ step }) =>
-        step.view === stop.view && ['chapter', 'node'].includes(step.kind),
-    );
-  const pages = stops
-    .map((step, position) => ({ step, position }))
-    .filter(({ step }) =>
-      route
-        ? step.view === stop.view &&
-          step.chapter === stop.chapter &&
-          ['chapter', 'node'].includes(step.kind)
-        : step.key === stop.key,
-    );
   useEffect(() => {
     if (!panel.current) return;
     const observer = new ResizeObserver(([entry]) =>
@@ -146,38 +145,12 @@ export default function MapTour({
     observer.observe(panel.current);
     return () => {
       observer.disconnect();
-      cancelAnimationFrame(frame.current);
     };
   }, [onHeight]);
   useLayoutEffect(() => {
-    // Scrolling the prose moves the diagram; button navigation starts at the chapter heading.
-    if (reading.current !== index)
-      body.current?.scrollTo({
-        top: chapters.current.get(index)?.offsetTop || 0,
-        behavior: 'instant',
-      });
-    reading.current = null;
-  }, [index, stop.view, ready]);
-  function onScroll() {
-    cancelAnimationFrame(frame.current);
-    frame.current = requestAnimationFrame(() => {
-      const el = body.current;
-      if (!el || !ready) return;
-      const next = readingChapter(
-        el.scrollTop,
-        el.clientHeight,
-        [...chapters.current].map(([position, section]) => ({
-          index: position,
-          top: section.offsetTop,
-          height: section.offsetHeight,
-        })),
-      );
-      if (next !== current.current.index) {
-        reading.current = next;
-        current.current.onMove(next);
-      }
-    });
-  }
+    // Replace the step before paint. Scrolling only reads the current step.
+    body.current?.scrollTo({ top: 0, behavior: 'instant' });
+  }, [stop.key, ready]);
   return (
     <>
       <Paper
@@ -195,12 +168,8 @@ export default function MapTour({
         <header className="tour-heading">
           <nav className="tour-breadcrumb" aria-label={m.breadcrumb}>
             <ButtonBase onClick={() => choose(0)}>{m.overviewLabel}</ButtonBase>
-            {route && (
-              <>
-                <span aria-hidden="true">›</span>
-                <strong>{route.shortTitle}</strong>
-              </>
-            )}
+            <span aria-hidden="true">›</span>
+            <strong>{m.tour}</strong>
           </nav>
           <IconButton aria-label={m.tourExit} onClick={onClose}>
             <X size={18} />
@@ -208,6 +177,17 @@ export default function MapTour({
         </header>
         <div className="tour-location">
           <div className="tour-route-picker">
+            <div className="tour-level-caption">
+              <label htmlFor="tour-route">{m.tourScenario}</label>
+              {route && (
+                <span>
+                  {formatMessage(m.tourChapter, {
+                    current: navigation.scenarioIndex + 1,
+                    total: navigation.scenarioCount,
+                  })}
+                </span>
+              )}
+            </div>
             <select
               id="tour-route"
               aria-label={m.tourJump}
@@ -236,28 +216,54 @@ export default function MapTour({
               <option value="finish">{m.tourFinishTitle}</option>
             </select>
             {route && (
-              <select
-                className="tour-step-select"
-                aria-label={m.tourChapters}
-                value={index}
-                onChange={(e) => choose(Number(e.target.value))}
-              >
-                {data.stories[route.id].chapters.map(
-                  (chapter, chapterIndex) => (
-                    <optgroup key={chapterIndex} label={chapter.title}>
-                      {routePages
-                        .filter(({ step }) => step.chapter === chapterIndex)
-                        .map(({ step, position }) => (
-                          <option key={step.key} value={position}>
-                            {step.node
-                              ? data.nodes[step.node].shortTitle
-                              : chapter.title}
-                          </option>
-                        ))}
-                    </optgroup>
-                  ),
-                )}
-              </select>
+              <div className="tour-step-picker">
+                <CornerDownRight
+                  className="tour-nesting"
+                  size={18}
+                  aria-hidden="true"
+                />
+                <div className="tour-step-group">
+                  <div className="tour-level-caption">
+                    <label htmlFor="tour-step">{m.tourStepGroup}</label>
+                    <output
+                      aria-live="polite"
+                      aria-atomic="true"
+                      aria-label={formatMessage(m.stepOf, {
+                        current: navigation.stepIndex + 1,
+                        total: routePages.length,
+                      })}
+                    >
+                      {formatMessage(m.tourChapter, {
+                        current: navigation.stepIndex + 1,
+                        total: routePages.length,
+                      })}
+                    </output>
+                  </div>
+                  <select
+                    id="tour-step"
+                    className="tour-step-select"
+                    aria-label={m.tourChapters}
+                    value={index}
+                    onChange={(e) => choose(Number(e.target.value))}
+                  >
+                    {data.stories[route.id].chapters.map(
+                      (chapter, chapterIndex) => (
+                        <optgroup key={chapterIndex} label={chapter.title}>
+                          {routePages
+                            .filter(({ step }) => step.chapter === chapterIndex)
+                            .map(({ step, position }) => (
+                              <option key={step.key} value={position}>
+                                {step.node
+                                  ? data.nodes[step.node].shortTitle
+                                  : chapter.title}
+                              </option>
+                            ))}
+                        </optgroup>
+                      ),
+                    )}
+                  </select>
+                </div>
+              </div>
             )}
           </div>
         </div>
@@ -265,130 +271,95 @@ export default function MapTour({
         <section
           className="tour-body"
           ref={body}
-          onScroll={onScroll}
           tabIndex={0}
           aria-label={m.tourReading}
         >
-          {!ready
-            ? loading
-            : pages.map(({ step, position }) => {
-                const chapter = data.stories[step.view]?.chapters[step.chapter];
-                const node = step.node ? data.nodes[step.node] : null;
-                const title =
-                  step.kind === 'start'
-                    ? m.tourStartTitle
-                    : step.kind === 'finish'
-                      ? m.tourFinishTitle
-                      : node?.title || chapter?.title;
-                const prose =
-                  step.kind === 'start'
-                    ? m.tourStartText
-                    : step.kind === 'finish'
-                      ? m.tourFinishText
-                      : node
-                        ? node.body['概要']
-                        : chapter?.text;
-                const active = position === index;
-                return (
-                  <article
-                    key={step.key}
-                    className={'tour-chapter' + (active ? ' is-reading' : '')}
-                    ref={(el) => {
-                      if (el) chapters.current.set(position, el);
-                      else chapters.current.delete(position);
-                    }}
-                    aria-current={active ? 'step' : undefined}
+          {!ready ? (
+            loading
+          ) : (
+            <article
+              key={stop.key}
+              className="tour-chapter is-reading"
+              aria-current="step"
+              aria-labelledby="tour-step-title"
+            >
+              <div className="tour-chapter-heading">
+                <span>
+                  {route?.role === 'factor'
+                    ? m.optionalFactor
+                    : node
+                      ? node.id
+                      : stop.kind === 'chapter'
+                        ? m.overviewLabel
+                        : m.overview}
+                </span>
+              </div>
+              <h2 id="tour-step-title">{title}</h2>
+              <div className="tour-prose">
+                {(prose || '').split(/\n\n+/).map((paragraph, i) => (
+                  <p key={i}>{richText(paragraph)}</p>
+                ))}
+              </div>
+              {node && (
+                <div className="tour-node-context">
+                  <h3>{m.whyNext}</h3>
+                  <p>{richText(node.body['他の条件との関係'])}</p>
+                  <h3>{m.evidence}</h3>
+                  <p>{richText(node.body['現在の状況'])}</p>
+                  <Button
+                    className="tour-read"
+                    onClick={() => onRead(node.id)}
+                    endIcon={<ArrowRight size={14} />}
                   >
-                    <div className="tour-chapter-heading">
-                      <span className="tour-scene-number" aria-hidden="true">
-                        {String(
-                          route
-                            ? routePages.findIndex(
-                                (page) => page.position === position,
-                              ) + 1
-                            : step.kind === 'start'
-                              ? 0
-                              : 8,
-                        ).padStart(2, '0')}
-                      </span>
-                      <span>
-                        {route?.role === 'factor'
-                          ? m.optionalFactor
-                          : node
-                            ? node.id
-                            : step.kind === 'chapter'
-                              ? m.overviewLabel
-                              : m.overview}
-                      </span>
-                    </div>
-                    <h2>{title}</h2>
-                    <div className="tour-prose">
-                      {(prose || '').split(/\n\n+/).map((paragraph, i) => (
-                        <p key={i}>{richText(paragraph)}</p>
-                      ))}
-                    </div>
-                    {node && (
-                      <div className="tour-node-context">
-                        <h3>{m.whyNext}</h3>
-                        <p>{richText(node.body['他の条件との関係'])}</p>
-                        <h3>{m.evidence}</h3>
-                        <p>{richText(node.body['現在の状況'])}</p>
-                        <Button
-                          className="tour-read"
-                          onClick={() => onRead(node.id)}
-                          endIcon={<ArrowRight size={14} />}
-                        >
-                          {m.read}
-                        </Button>
-                      </div>
-                    )}
-                    {!node && !!step.nodes.length && (
-                      <div className="tour-node-list" aria-label={m.tourFocus}>
-                        {step.nodes.map((id) => (
-                          <ButtonBase
-                            key={id}
-                            aria-pressed={active && focus === id}
-                            onClick={() => {
-                              const detail = stops.findIndex(
-                                (s) => s.view === step.view && s.node === id,
-                              );
-                              if (detail >= 0) {
-                                choose(detail);
-                                return;
-                              }
-                              if (!active) onMove(position);
-                              onFocus(active && focus === id ? null : id);
-                            }}
-                          >
-                            <Crosshair size={13} />
-                            <span>{data.nodes[id].shortTitle}</span>
-                          </ButtonBase>
-                        ))}
-                      </div>
-                    )}
-                    {!node && active && focus && (
-                      <Button
-                        className="tour-read"
-                        onClick={() => onRead(focus)}
-                        endIcon={<ArrowRight size={14} />}
-                      >
-                        {m.tourRead}
-                      </Button>
-                    )}
-                    {step.kind === 'start' && (
-                      <small className="tour-note">{m.tourOrderNote}</small>
-                    )}
-                    {step.kind === 'chapter' &&
-                      step.chapter ===
-                        data.stories[step.view].chapters.length - 1 && (
-                        <div className="tour-outlook">
-                          <strong>{m.tourNews}</strong>
-                          <p>{richText(data.stories[step.view].outlook)}</p>
-                        </div>
-                      )}
-                  </article>
-                );
-              })}
+                    {m.read}
+                  </Button>
+                </div>
+              )}
+              {!node && !!stop.nodes.length && (
+                <div className="tour-node-list" aria-label={m.tourFocus}>
+                  {stop.nodes.map((id) => (
+                    <ButtonBase
+                      key={id}
+                      aria-pressed={focus === id}
+                      onClick={() => {
+                        const detail = stops.findIndex(
+                          (s) => s.view === stop.view && s.node === id,
+                        );
+                        if (detail >= 0) {
+                          choose(detail);
+                          return;
+                        }
+                        onFocus(focus === id ? null : id);
+                      }}
+                    >
+                      <Crosshair size={13} />
+                      <span>{data.nodes[id].shortTitle}</span>
+                    </ButtonBase>
+                  ))}
+                </div>
+              )}
+              {!node && focus && (
+                <Button
+                  className="tour-read"
+                  onClick={() => onRead(focus)}
+                  endIcon={<ArrowRight size={14} />}
+                >
+                  {m.tourRead}
+                </Button>
+              )}
+              {stop.kind === 'start' && (
+                <small className="tour-note">{m.tourOrderNote}</small>
+              )}
+              {stop.kind === 'chapter' &&
+                stop.chapter ===
+                  data.stories[stop.view].chapters.length - 1 && (
+                  <div className="tour-outlook">
+                    <strong>{m.tourNews}</strong>
+                    <p>{richText(data.stories[stop.view].outlook)}</p>
+                  </div>
+                )}
+            </article>
+          )}
         </section>
         {/* oxlint-enable jsx-a11y/no-noninteractive-tabindex */}
         <footer className="tour-navigation">
@@ -399,15 +370,6 @@ export default function MapTour({
           >
             {m.previous}
           </Button>
-          <output aria-live="polite" aria-atomic="true">
-            {route
-              ? formatMessage(m.stepOf, {
-                  current:
-                    routePages.findIndex((page) => page.position === index) + 1,
-                  total: routePages.length,
-                })
-              : m.tour}
-          </output>
           {index < stops.length - 1 ? (
             <Button
               variant="contained"
@@ -416,7 +378,7 @@ export default function MapTour({
               endIcon={<ArrowRight size={16} />}
               onClick={() => advance(1)}
             >
-              {m.next}
+              {nextLabel}
             </Button>
           ) : (
             <Button variant="contained" disableElevation onClick={onClose}>

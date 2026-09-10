@@ -1788,68 +1788,6 @@ a:focus-visible {
     padding: 5px 8px;
   }
 }
-.mobile-overview-hidden .tree-stage {
-  visibility: hidden;
-}
-.mobile-branch-picker {
-  position: absolute;
-  inset: 142px 18px 74px;
-  overflow: auto;
-  overscroll-behavior: contain;
-}
-.mobile-present {
-  font-size: 12px;
-  color: #2d384d;
-  background: linear-gradient(145deg, #fffffff0, #d7e4f7c7);
-  border: 1px solid #fffffff5;
-  box-shadow: 0 3px 9px #38445d17;
-  border-radius: 9px;
-  padding: 5px 10px;
-  width: max-content;
-  margin-bottom: 8px;
-}
-.mobile-branches {
-  border-left: 2px solid #8b9bb0;
-  padding-left: 18px;
-  margin-left: 12px;
-  display: grid;
-  gap: 8px;
-}
-.mobile-branch.MuiButtonBase-root {
-  position: relative;
-  display: flex;
-  align-items: flex-start;
-  flex-direction: column;
-  border: 1px solid #fffffff5;
-  background: linear-gradient(145deg, #ffffffeb, #ffffffad);
-  border-radius: 12px;
-  box-shadow:
-    0 4px 11px #38445d17,
-    0 1px 3px #38445d12,
-    inset 0 1px 0 #fff;
-  padding: 9px 12px;
-  min-height: 54px;
-  text-align: left;
-  gap: 3px;
-  overflow: visible;
-}
-.mobile-branch::before {
-  content: '';
-  position: absolute;
-  left: -22px;
-  top: 50%;
-  width: 20px;
-  border-top: 2px solid #8b9bb0;
-}
-.mobile-branch strong {
-  color: #203b56;
-  font-size: 14px;
-}
-.mobile-branch span {
-  color: #5c6f81;
-  font-size: 12px;
-  line-height: 1.5;
-}
 @media (max-width: 1000px) {
   .filter-status {
     display: inline-block;
@@ -2001,7 +1939,6 @@ a:focus-visible {
   padding: 5px 24px 6px 0;
   background: transparent;
   border: 0;
-  border-bottom: 1px solid #dce2ea;
   border-radius: 0;
   min-height: 38px;
 }
@@ -2023,9 +1960,6 @@ a:focus-visible {
   min-height: 100%;
   padding: 24px 26px 48px;
   scroll-margin-top: 0;
-}
-.tour-chapter + .tour-chapter {
-  border-top: 1px solid #e2e5ed;
 }
 .tour-chapter-heading {
   display: flex;
@@ -2417,6 +2351,7 @@ a:focus-visible {
 }
 .tour-location {
   padding: 2px 20px 12px;
+  flex-shrink: 0;
 }
 .tour-location .tour-route-picker {
   min-width: 0;
@@ -2429,12 +2364,64 @@ a:focus-visible {
 .tour-step-select {
   width: 100%;
   font: inherit;
-  font-size: 12px;
+  font-size: 14px;
   min-height: 34px;
-  color: #5e6c80;
+  color: #344761;
   background: transparent;
   border: 0;
   padding: 4px 20px 4px 0;
+}
+.tour-level-caption {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  color: #5b6d83;
+  font-size: 12px;
+  line-height: 1.4;
+}
+.tour-level-caption > span,
+.tour-level-caption > output {
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.tour-step-picker {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin: 4px 0 0 3px;
+}
+.tour-nesting {
+  flex-shrink: 0;
+  margin-top: 13px;
+  color: #8b9ab0;
+}
+.tour-step-group {
+  min-width: 0;
+  flex: 1;
+  padding: 8px 10px 4px;
+  border: 1px solid #fff;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #e9eff780, #f3f5fb);
+  box-shadow: inset 0 1px 0 #fff;
+}
+.tour-chapter.is-reading {
+  animation: tour-step-in 180ms ease-out;
+}
+@keyframes tour-step-in {
+  from {
+    opacity: 0.35;
+    transform: translateX(7px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .tour-chapter.is-reading {
+    animation: none;
+  }
 }
 .tour-node-context {
   font-size: 15px;
@@ -2479,6 +2466,21 @@ a:focus-visible {
 .compact-layout.detail-reading .tile-title {
   font-size: calc(15px * var(--map-scale));
 }
+.phone-overview .tree-tile {
+  padding: max(4px, calc(8px * var(--map-scale)))
+    max(4px, calc(10px * var(--map-scale)));
+}
+.phone-overview .tile-topics {
+  display: none;
+}
+.phone-overview .tile-title {
+  line-height: 1.35;
+}
+.phone-overview .tile-present .tile-title {
+  font-size: calc(14px * var(--map-scale));
+  padding-right: 0;
+  white-space: nowrap;
+}
 @media (max-width: 760px) {
   .app-header {
     top: max(10px, env(safe-area-inset-top));
@@ -2503,7 +2505,7 @@ a:focus-visible {
     font-size: 12px;
   }
   .map-scope.MuiPaper-root {
-    top: calc(99px + env(safe-area-inset-top));
+    top: calc(68px + env(safe-area-inset-top));
     right: 12px;
     height: 42px;
   }
@@ -2512,20 +2514,10 @@ a:focus-visible {
     font-size: 13px;
   }
   .tree-viewport.with-scope {
-    top: calc(149px + env(safe-area-inset-top));
+    top: calc(118px + env(safe-area-inset-top));
   }
   .map-breadcrumb + .tree-viewport:not(.with-scope) {
     top: calc(102px + env(safe-area-inset-top));
-  }
-  .mobile-branch-picker {
-    top: calc(150px + env(safe-area-inset-top));
-    bottom: calc(74px + env(safe-area-inset-bottom));
-  }
-  .mobile-branch.MuiButtonBase-root {
-    padding: 11px 12px;
-  }
-  .mobile-branch strong {
-    font-size: 15px;
   }
   .map-controls {
     bottom: max(12px, env(safe-area-inset-bottom));
@@ -2591,7 +2583,18 @@ a:focus-visible {
     height: 40px;
   }
   .tour-location {
-    padding: 10px 52px 6px 14px;
+    padding: 10px 14px 6px;
+  }
+  .tour-route-picker > .tour-level-caption,
+  .tour-route-picker > .tour-route-select {
+    width: calc(100% - 36px);
+  }
+  .tour-step-picker {
+    gap: 6px;
+    margin-top: 1px;
+  }
+  .tour-step-group {
+    padding: 5px 8px 2px;
   }
   .tour-route-select,
   .tour-step-select {

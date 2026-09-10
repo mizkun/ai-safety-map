@@ -1,5 +1,6 @@
 import type { Content } from './content-types';
 import { expandedTreeLayout } from './expanded-tree-layout.ts';
+import { phoneOverviewLayout } from './phone-overview-layout.ts';
 import {
   horizontalTreeLayout,
   horizontalPoint,
@@ -96,6 +97,7 @@ export type TreePoint = { x: number; y: number };
 export type TreeLayout = {
   width: number;
   height: number;
+  entryView?: 'phone-overview';
   tiles: TreeTile[];
   wires: TreeWire[];
   regions?: TreeRegion[];
@@ -129,8 +131,11 @@ export function treeLayout(
   view: string,
   expanded: boolean | TreeExpansion = false,
   compact = false,
+  phoneWidth?: number,
 ): TreeLayout {
   const layout = verticalTreeLayout(data, view, expanded);
+  if (view === 'overview' && expanded === false && phoneWidth !== undefined)
+    return phoneOverviewLayout(layout, phoneWidth);
   if (view !== 'overview' && data.routes.some((route) => route.id === view))
     addScenarioPresent(layout, data, view);
   return horizontalTreeLayout(layout, compact);

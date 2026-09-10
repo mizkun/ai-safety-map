@@ -9,18 +9,36 @@ export type TourStop = {
   node?: string;
 };
 
-// The reader's place is determined by the prose, not by an invented timeline.
-export function readingChapter(
-  top: number,
-  height: number,
-  chapters: { index: number; top: number; height: number }[],
-) {
-  const anchor = top + Math.min(120, height * 0.3);
-  return (
-    chapters.find((c) => anchor >= c.top && anchor < c.top + c.height)?.index ??
-    chapters[0]?.index ??
-    0
-  );
+// The tour has two navigation levels. Chapter introductions are steps too;
+// moving between chapters inside a scenario is not a new scenario.
+export function tourNavigation(stops: TourStop[], index: number) {
+  const stop = stops[index];
+  const scenarios = [
+    ...new Set(stops.filter((s) => s.kind === 'chapter').map((s) => s.view)),
+  ];
+  const steps = stops
+    .map((step, position) => ({ step, position }))
+    .filter(
+      ({ step }) =>
+        step.view === stop.view && ['chapter', 'node'].includes(step.kind),
+    );
+  const next = stops[index + 1];
+  const nextKind = !next
+    ? 'exit'
+    : stop.kind === 'start'
+      ? 'begin'
+      : next.kind === 'finish'
+        ? 'finish'
+        : next.view !== stop.view
+          ? 'scenario'
+          : 'step';
+  return {
+    steps,
+    stepIndex: steps.findIndex((s) => s.position === index),
+    scenarioIndex: scenarios.indexOf(stop.view),
+    scenarioCount: scenarios.length,
+    nextKind,
+  };
 }
 
 // If a scene shows an AND transition, keep every co-input in the picture.
@@ -69,20 +87,6 @@ export function tourKeyDirection(
     : key === 'ArrowLeft'
       ? -1
       : 0;
-}
-
-// A small screen must not skip the bottom of a scene when the reader presses Next.
-export function readingContinuation(
-  scrollTop: number,
-  viewportHeight: number,
-  chapterBottom: number,
-) {
-  if (viewportHeight <= 0 || scrollTop + viewportHeight >= chapterBottom - 3)
-    return null;
-  return Math.min(
-    chapterBottom - viewportHeight,
-    scrollTop + viewportHeight * 0.85,
-  );
 }
 
 // Reading order is not a new causal path. Chapter node sets preserve joint conditions.

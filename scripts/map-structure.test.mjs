@@ -27,8 +27,7 @@ import {
   tourExpansion,
   tourCamera,
   tourContext,
-  readingChapter,
-  readingContinuation,
+  tourNavigation,
   tourKeyDirection,
 } from '../lib/map-tour.ts';
 import { relationLabels, overlaps } from '../lib/relation-labels.ts';
@@ -36,6 +35,50 @@ import { cameraFrame, cameraAnimator } from '../lib/map-camera.mjs';
 import { connectionLabels } from '../lib/connection-labels.ts';
 import { minimapViewport, minimapCamera } from '../lib/map-minimap.ts';
 const content = readCanonicalContent();
+
+test('phones open on a connected tree while preserving every overview node and edge', () => {
+  const original = treeLayout(content, 'overview', false);
+  for (const width of [320, 390, 430]) {
+    const layout = treeLayout(content, 'overview', false, true, width);
+    const present = layout.tiles.find((t) => t.node === 'NOW');
+    const routes = layout.tiles.filter((t) => t.kind === 'route');
+    assert.deepEqual(
+      layout.tiles.map((t) => t.key),
+      original.tiles.map((t) => t.key),
+    );
+    assert.deepEqual(
+      layout.wires.map((w) => [w.from, w.to, w.edge]),
+      original.wires.map((w) => [w.from, w.to, w.edge]),
+    );
+    const fork = layout.forks.find((f) => f.key === 'present-routes');
+    assert.deepEqual(
+      fork.targets,
+      routes.map((t) => t.key),
+    );
+    assert.ok(forkGeometry(fork, layout).trunk);
+    assert.equal(forkGeometry(fork, layout).branches.length, 7);
+    for (const [index, tile] of routes.entries()) {
+      assert.ok(tile.x > present.x + present.width);
+      assert.ok(tile.width >= 160 && tile.height >= 64);
+      assert.ok(tile.x + tile.width <= width - 16);
+      if (index)
+        assert.ok(
+          tile.y - routes[index - 1].y - routes[index - 1].height >= 12,
+        );
+    }
+    for (const tile of layout.tiles) {
+      assert.ok(tile.x >= 0 && tile.y >= 0);
+      assert.ok(tile.x + tile.width <= layout.width);
+      assert.ok(tile.y + tile.height <= layout.height);
+    }
+    for (const wire of layout.wires)
+      assert.ok(!wireGeometry(wire, layout).path.includes('NaN'));
+    assert.deepEqual(
+      initialMapCamera({ width, height: 500 }, layout, present),
+      { scale: 1, left: 0, top: 0 },
+    );
+  }
+});
 
 test('minimap uses the actual viewport when zoomed, panned, or horizontally centered', () => {
   const map = { width: 2000, height: 1000 };
@@ -331,19 +374,7 @@ test('connection controls remain on their own paths without covering text, AND/O
   }
 });
 
-test('tour navigation follows reading position and leaves typing, dialogs, and native controls alone', () => {
-  const pages = [
-    { index: 7, top: 0, height: 600 },
-    { index: 8, top: 600, height: 900 },
-    { index: 9, top: 1500, height: 400 },
-  ];
-  assert.equal(readingContinuation(0, 300, 900), 255);
-  assert.equal(readingContinuation(500, 300, 900), 600);
-  assert.equal(readingContinuation(600, 300, 900), null);
-  assert.equal(readingChapter(0, 500, pages), 7);
-  assert.equal(readingChapter(550, 500, pages), 8);
-  assert.equal(readingChapter(1000, 500, pages), 8);
-  assert.equal(readingChapter(1450, 400, pages), 9);
+test('tour keys advance steps and leave typing, dialogs, and native controls alone', () => {
   for (const key of ['Enter', 'ArrowRight'])
     assert.equal(tourKeyDirection(key, false, false), 1);
   assert.equal(tourKeyDirection('ArrowLeft', false, false), -1);
@@ -352,6 +383,37 @@ test('tour navigation follows reading position and leaves typing, dialogs, and n
     assert.equal(tourKeyDirection(key, true, false), 0);
     assert.equal(tourKeyDirection(key, false, true), 0);
   }
+});
+
+test('tour navigation separates the scenario from its steps and marks scenario boundaries', () => {
+  const stops = tourStops(content);
+  const scenarios = content.routes.filter((route) => route.role !== 'factor');
+  assert.equal(tourNavigation(stops, 0).nextKind, 'begin');
+  assert.equal(tourNavigation(stops, stops.length - 1).nextKind, 'exit');
+  scenarios.forEach((scenario, scenarioIndex) => {
+    const positions = stops.flatMap((s, index) =>
+      s.view === scenario.id ? [index] : [],
+    );
+    positions.forEach((index, stepIndex) => {
+      const n = tourNavigation(stops, index);
+      assert.equal(n.scenarioIndex, scenarioIndex);
+      assert.equal(n.scenarioCount, scenarios.length);
+      assert.equal(n.stepIndex, stepIndex);
+      assert.deepEqual(
+        n.steps.map((s) => s.position),
+        positions,
+      );
+      assert.ok(n.steps.every((s) => s.step.view === scenario.id));
+      assert.equal(
+        n.nextKind,
+        stepIndex < positions.length - 1
+          ? 'step'
+          : scenarioIndex < scenarios.length - 1
+            ? 'scenario'
+            : 'finish',
+      );
+    });
+  });
 });
 
 test('illustrated scenes retain the co-inputs of every depicted AND transition', () => {
