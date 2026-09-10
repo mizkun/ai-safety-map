@@ -29,7 +29,7 @@ export function expandedTreeLayout(
   const routeOpen = (id: string) =>
     !selection || view !== 'overview' || selection.routes.includes(id);
   const researchOpen = expanded || selection?.factors?.includes('acceleration');
-  const researchWidth = 620;
+  const researchWidth = 1450;
   const layout: TreeLayout = {
     width: 1200,
     height: 0,
@@ -39,6 +39,7 @@ export function expandedTreeLayout(
     areas: [],
     joins: [],
     forks: [],
+    factors: [],
   };
   const color = (route: string) => colors[route] || '#7963aa';
   const children = (id: string, descend?: boolean) => {
@@ -256,18 +257,25 @@ export function expandedTreeLayout(
   }
   // This optional lane sits outside every AND frame. It is not a prerequisite.
   function controlContext(x: number, y: number) {
-    if (!researchOpen) return control(x, y);
+    if (!researchOpen) {
+      if (view === 'control')
+        layout.factors!.push({
+          key: 'acceleration',
+          expanded: false,
+          x: x - 400,
+          y,
+          width: 0,
+          height: 340,
+        });
+      return control(x, y);
+    }
     acceleration(x, y, true);
     const last = control(x + researchWidth, y + 464);
     wire('R2', 'C2', 'acceleration', 'R2-C2');
-    layout.wires.at(-1)!.fromFraction = 0.15;
-    layout.wires.at(-1)!.busY = y + 420;
+    layout.wires.at(-1)!.fromFraction = 0.88;
+    layout.wires.at(-1)!.busY = y + 400;
     layout.wires.at(-1)!.toFraction = 0.28;
     wire('R4', 'C1', 'acceleration', 'R4-C1');
-    layout.wires.at(-1)!.viaY = y + 388;
-    layout.wires.at(-1)!.sourceSide = 'left';
-    layout.wires.at(-1)!.trackOffset = 106;
-    layout.wires.at(-1)!.toFraction = 0.28;
     return last;
   }
   function work(x: number, y: number) {
@@ -425,20 +433,29 @@ export function expandedTreeLayout(
   }
   function acceleration(x: number, y: number, overview: boolean) {
     if (overview) {
-      const r1 = node('R1', x, y, 356, 'acceleration', false);
-      const r2 = node('R2', x, y + 232, 356, 'acceleration', false);
+      const r1 = node('R1', x + 440, y, 356, 'acceleration', false);
+      const r2 = node('R2', x + 440, y + 232, 356, 'acceleration', false);
       node('R3', x, y + 464, 356, 'acceleration', false);
-      node('ASI', x, y + 696, 356, 'acceleration', false);
-      const safety = node('R4', x, y + 928, 356, 'acceleration', false);
+      node('ASI', x + 440, y + 464, 356, 'acceleration', false);
+      const safety = node('R4', x + 880, y + 464, 356, 'acceleration', false);
+      layout.factors!.push({
+        key: 'acceleration',
+        expanded: true,
+        x: x - 108,
+        y: y - 24,
+        width: 1416,
+        height: 670,
+      });
       wire(r1.key, r2.key, 'acceleration', 'R1-R2');
       wire('R2', 'R3', 'acceleration', 'R2-R3');
-      sideWire('R3', 'R2', 'R3-R2', x + 390, 'acceleration');
+      layout.wires.at(-1)!.fromFraction = 0.18;
+      layout.wires.at(-1)!.busY = y + 416;
+      sideWire('R3', 'R2', 'R3-R2', x - 60, 'acceleration');
       layout.wires.at(-1)!.toFraction = 0.28;
-      sideWire('R2', 'ASI', 'R2-ASI', x - 42, 'acceleration');
+      wire('R2', 'ASI', 'acceleration', 'R2-ASI');
+      wire('R2', 'R4', 'acceleration', 'R2-R4');
       layout.wires.at(-1)!.fromFraction = 0.72;
-      sideWire('R2', 'R4', 'R2-R4', x + 413, 'acceleration');
-      layout.wires.at(-1)!.fromFraction = 0.72;
-      layout.wires.at(-1)!.toFraction = 0.72;
+      layout.wires.at(-1)!.busY = y + 438;
       return safety;
     }
     node('R1', x, y, 332, 'acceleration', false);
@@ -527,7 +544,12 @@ export function expandedTreeLayout(
     return { harm, terminal };
   }
   function finish() {
-    const bounds = [...layout.tiles, ...layout.regions!, ...layout.areas!];
+    const bounds = [
+      ...layout.tiles,
+      ...layout.regions!,
+      ...layout.areas!,
+      ...layout.factors!,
+    ];
     layout.width = Math.max(
       layout.width,
       ...bounds.map((r) => r.x + r.width + 100),
@@ -577,10 +599,18 @@ export function expandedTreeLayout(
       if (researchOpen) {
         acceleration(100, 76, true);
         wire('R2', 'W1', 'acceleration', 'R2-W1');
-        layout.wires.at(-1)!.fromFraction = 0.15;
-        layout.wires.at(-1)!.busY = 496;
+        layout.wires.at(-1)!.fromFraction = 0.88;
+        layout.wires.at(-1)!.busY = 476;
         layout.wires.at(-1)!.toFraction = 0.24;
-      }
+      } else
+        layout.factors!.push({
+          key: 'acceleration',
+          expanded: false,
+          x: -300,
+          y: 76,
+          width: 0,
+          height: 340,
+        });
     } else if (view === 'money') money(100, 76, false);
     else acceleration(100, 76, false);
     return finish();

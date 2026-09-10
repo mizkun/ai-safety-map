@@ -20,10 +20,166 @@ import {
   isReleasedPointer,
 } from '../lib/map-gestures.mjs';
 import { mapWindow, intersectsWindow } from '../lib/map-window.mjs';
-import { tourStops, tourExpansion, tourCamera } from '../lib/map-tour.ts';
+import {
+  tourStops,
+  tourExpansion,
+  tourCamera,
+  tourContext,
+  readingChapter,
+  readingContinuation,
+  tourKeyDirection,
+} from '../lib/map-tour.ts';
 import { relationLabels, overlaps } from '../lib/relation-labels.ts';
 import { cameraFrame, cameraAnimator } from '../lib/map-camera.mjs';
+import { connectionLabels } from '../lib/connection-labels.ts';
 const content = readCanonicalContent();
+
+test('connection controls remain on their own paths without covering text, AND/OR labels, or each other', () => {
+  for (const view of ['overview', ...content.routes.map((r) => r.id)]) {
+    const layout = treeLayout(content, view, true);
+    for (const scale of [0.24, 0.3, 0.5, 0.85, 1]) {
+      const labels = connectionLabels(layout, content, scale);
+      for (const [i, label] of labels.entries()) {
+        for (const tile of layout.tiles)
+          assert.ok(
+            !overlaps(label, {
+              x: tile.x * scale,
+              y: tile.y * scale,
+              width: tile.width * scale,
+              height: tile.height * scale,
+            }),
+            view + ': ' + label.edge + ' covers ' + tile.node,
+          );
+        for (const other of [
+          ...labels.slice(i + 1),
+          ...relationLabels(layout, scale),
+        ])
+          assert.ok(
+            !overlaps(label, other),
+            view + ': crowded connection ' + label.edge,
+          );
+        const wire = layout.wires.find((w) => w.key === label.key),
+          path = wireGeometry(wire, layout);
+        const onSegment = (path.points || []).slice(1).some((b, i) => {
+          const a = path.points[i],
+            x = label.centerX / scale,
+            y = label.centerY / scale;
+          return (
+            Math.abs((b.x - a.x) * (y - a.y) - (b.y - a.y) * (x - a.x)) <
+              0.001 &&
+            x >= Math.min(a.x, b.x) - 0.001 &&
+            x <= Math.max(a.x, b.x) + 0.001 &&
+            y >= Math.min(a.y, b.y) - 0.001 &&
+            y <= Math.max(a.y, b.y) + 0.001
+          );
+        });
+        assert.ok(
+          onSegment ||
+            (Math.abs(label.centerX - path.x * scale) < 0.001 &&
+              Math.abs(label.centerY - path.y * scale) < 0.001),
+          label.edge + ': detached arrow label',
+        );
+      }
+      if (scale === 1)
+        for (const wire of layout.wires.filter((w) => w.edge))
+          assert.ok(
+            labels.some((l) => l.key === wire.key),
+            view + ': missing readable connection control ' + wire.edge,
+          );
+    }
+  }
+});
+
+test('tour navigation follows reading position and leaves typing, dialogs, and native controls alone', () => {
+  const pages = [
+    { index: 7, top: 0, height: 600 },
+    { index: 8, top: 600, height: 900 },
+    { index: 9, top: 1500, height: 400 },
+  ];
+  assert.equal(readingContinuation(0, 300, 900), 255);
+  assert.equal(readingContinuation(500, 300, 900), 600);
+  assert.equal(readingContinuation(600, 300, 900), null);
+  assert.equal(readingChapter(0, 500, pages), 7);
+  assert.equal(readingChapter(550, 500, pages), 8);
+  assert.equal(readingChapter(1000, 500, pages), 8);
+  assert.equal(readingChapter(1450, 400, pages), 9);
+  for (const key of ['Enter', 'ArrowRight'])
+    assert.equal(tourKeyDirection(key, false, false), 1);
+  assert.equal(tourKeyDirection('ArrowLeft', false, false), -1);
+  assert.equal(tourKeyDirection('Escape', false, false), 0);
+  for (const key of ['Enter', 'ArrowRight', 'ArrowLeft']) {
+    assert.equal(tourKeyDirection(key, true, false), 0);
+    assert.equal(tourKeyDirection(key, false, true), 0);
+  }
+});
+
+test('illustrated scenes retain the co-inputs of every depicted AND transition', () => {
+  for (const stop of tourStops(content)) {
+    const scene = tourContext(content, stop.nodes);
+    for (const edge of Object.values(content.edges))
+      if (
+        stop.nodes.includes(edge.to) &&
+        edge.requires?.some((id) => stop.nodes.includes(id))
+      )
+        for (const id of edge.requires)
+          assert.ok(scene.includes(id), stop.key + ': missing co-input ' + id);
+  }
+  assert.ok(tourContext(content, ['W6', 'W5']).includes('W3'));
+  assert.ok(
+    !tourContext(content, ['C1', 'C2', 'C3', 'L']).includes('R3'),
+    'RSI is not a new required input',
+  );
+});
+
+test('research context branches from development without long serial detours and its outer ink fits', () => {
+  for (const view of ['control', 'work'])
+    for (const expanded of [
+      true,
+      { routes: [], nodes: [], factors: ['acceleration'] },
+    ]) {
+      const layout = treeLayout(content, view, expanded);
+      assert.equal(layout.factors?.[0].expanded, true);
+      const alternatives = ['R3', 'ASI', 'R4'].map((id) =>
+        layout.tiles.find((t) => t.node === id),
+      );
+      assert.ok(
+        alternatives.every((t) => t.x === alternatives[0].x),
+        'related developments appear as a fan, not a serial chain',
+      );
+      for (const wire of layout.wires) {
+        const ink = wireGeometry(wire, layout);
+        for (const point of [...(ink.points || []), ink]) {
+          assert.ok(
+            point.x >= 20 && point.y >= 20,
+            wire.key + ': leading ink clipped',
+          );
+          assert.ok(
+            point.x <= layout.width - 20 && point.y <= layout.height - 20,
+            wire.key + ': trailing ink clipped',
+          );
+        }
+      }
+      for (const scale of [0.25, 0.4, 0.7, 1]) {
+        const factor = layout.factors[0],
+          button = {
+            x: factor.x * scale,
+            y: factor.y * scale,
+            width: 192,
+            height: 32,
+          };
+        for (const tile of layout.tiles)
+          assert.ok(
+            !overlaps(button, {
+              x: tile.x * scale,
+              y: tile.y * scale,
+              width: tile.width * scale,
+              height: tile.height * scale,
+            }),
+            'research control covers ' + tile.node,
+          );
+      }
+    }
+});
 
 test('the tour starts now and covers every audited story without inventing a causal chain', () => {
   const stops = tourStops(content);

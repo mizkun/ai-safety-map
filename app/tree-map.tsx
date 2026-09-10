@@ -54,7 +54,8 @@ import {
   zoomAnchor,
   scrollAtAnchor,
 } from '@/lib/map-gestures.mjs';
-import { tourCamera, tourExpansion } from '@/lib/map-tour';
+import { tourCamera, tourExpansion, tourContext } from '@/lib/map-tour';
+import { connectionLabels } from '@/lib/connection-labels';
 import { relationLabels } from '@/lib/relation-labels';
 
 type Props = {
@@ -87,7 +88,8 @@ export default function TreeMap({
 }: Props) {
   const [expanded, setExpanded] = useState(false);
   const [openNodes, setOpenNodes] = useState<string[]>([]);
-  const [showResearch, setShowResearch] = useState(false);
+  const [showResearch, setShowResearch] = useState(true);
+  const [tracedEdge, setTracedEdge] = useState<string | null>(null);
   const [scopeVersion, setScopeVersion] = useState(0);
   const pendingAnchor = useRef<{
     id: string;
@@ -98,7 +100,9 @@ export default function TreeMap({
   const cameraContext = useRef('');
   const [showGuide, setShowGuide] = useState(false);
   const isTour = Boolean(tourFocus);
-  const tourNodesKey = tourFocus?.nodes.join(',') || '';
+  const tourNodesKey = tourFocus
+    ? tourContext(data, tourFocus.nodes).join(',')
+    : '';
   const tourNodes = useMemo(
     () => tourExpansion(data, tourNodesKey ? tourNodesKey.split(',') : []),
     [data, tourNodesKey],
@@ -149,12 +153,18 @@ export default function TreeMap({
       (size.height - 40) / layout.height,
     ),
   );
-  const tourTargets = tourFocus?.focus ? [tourFocus.focus] : tourFocus?.nodes;
+  const tourTargets = tourFocus?.focus
+    ? [tourFocus.focus]
+    : tourNodesKey
+      ? tourNodesKey.split(',')
+      : [];
   const tourDefaultCamera = tourFocus
     ? tourCamera(
         tourTargets?.length
           ? layout.tiles.filter(
-              (tile) => tile.node && tourTargets.includes(tile.node),
+              (tile) =>
+                (tile.node && tourTargets.includes(tile.node)) ||
+                (tourFocus.key.startsWith('start:') && tile.kind === 'route'),
             )
           : layout.tiles,
         size,
@@ -356,6 +366,13 @@ export default function TreeMap({
     }),
     [layout],
   );
+  const annotations = useMemo(() => {
+    const relations = relationLabels(layout, scale);
+    return {
+      relations,
+      connections: connectionLabels(layout, data, scale, relations),
+    };
+  }, [layout, data, scale]);
   return (
     <>
       <div
@@ -497,7 +514,10 @@ export default function TreeMap({
                     ? data.edges[w.edge].relation
                     : undefined;
                   return (
-                    <g key={w.key}>
+                    <g
+                      key={w.key}
+                      opacity={tracedEdge && w.edge !== tracedEdge ? 0.2 : 1}
+                    >
                       {!w.reference && (
                         <path
                           d={g.path}
@@ -520,11 +540,24 @@ export default function TreeMap({
                         strokeLinejoin="round"
                         vectorEffect="non-scaling-stroke"
                       />
+                      {w.edge && (
+                        <path
+                          d={g.path}
+                          fill="none"
+                          stroke="transparent"
+                          strokeWidth={18}
+                          vectorEffect="non-scaling-stroke"
+                          style={{ cursor: 'pointer', pointerEvents: 'stroke' }}
+                          onClick={() => onEdge(w.edge!)}
+                          onPointerEnter={() => setTracedEdge(w.edge!)}
+                          onPointerLeave={() => setTracedEdge(null)}
+                        />
+                      )}
                     </g>
                   );
                 })}
             </svg>
-            {relationLabels(layout, scale)
+            {annotations.relations
               .filter((label) =>
                 intersectsWindow(
                   {
@@ -576,56 +609,63 @@ export default function TreeMap({
                 </IconButton>
               </Tooltip>
             ))}
-            {layout.wires
-              .filter((w) => {
-                const g = geometry.wires.get(w.key)!;
-                return (
-                  w.edge &&
-                  intersectsWindow(
-                    { x: g.x - 90, y: g.y - 30, width: 180, height: 60 },
-                    visible,
-                  )
-                );
-              })
-              .map((w) => {
-                const g = geometry.wires.get(w.key)!;
-                const relation = data.edges[w.edge!].relation;
+            {annotations.connections
+              .filter((label) =>
+                intersectsWindow(
+                  {
+                    x: label.x / scale,
+                    y: label.y / scale,
+                    width: label.width / scale,
+                    height: label.height / scale,
+                  },
+                  visible,
+                ),
+              )
+              .map((label) => {
                 const DirectionIcon = {
                   up: ArrowUp,
                   down: ArrowDown,
                   left: ArrowLeft,
                   right: ArrowRight,
-                }[g.direction];
-                if (relation === 'influence' || relation === 'mitigation')
-                  return (
-                    <Tooltip title={data.edges[w.edge!].label} key={w.key}>
-                      <ButtonBase
-                        className={'influence-button ' + relation}
-                        style={screen(g.x, g.y)}
-                        onClick={() => onEdge(w.edge!)}
-                        aria-label={data.edges[w.edge!].label}
-                      >
-                        {relation === 'mitigation' ? m.mitigation : m.influence}
-                        <DirectionIcon size={14} />
-                      </ButtonBase>
-                    </Tooltip>
-                  );
+                }[label.direction];
+                const influenced =
+                  label.relation === 'influence' ||
+                  label.relation === 'mitigation';
                 return (
-                  <Tooltip title={data.edges[w.edge!].label} key={w.key}>
-                    <IconButton
-                      aria-label={
-                        m.connection + ' · ' + data.edges[w.edge!].label
+                  <Tooltip key={label.key} title={data.edges[label.edge].label}>
+                    <ButtonBase
+                      className={
+                        'connection-control' +
+                        (influenced ? ' influence-control' : '')
                       }
-                      className="wire-button"
-                      style={{ ...screen(g.x, g.y), color: w.color }}
-                      onClick={() => onEdge(w.edge!)}
+                      style={{
+                        ...screen(label.centerX / scale, label.centerY / scale),
+                        width: label.width,
+                        height: label.height,
+                        color:
+                          label.relation === 'mitigation'
+                            ? '#348773'
+                            : undefined,
+                      }}
+                      onClick={() => onEdge(label.edge)}
+                      aria-label={
+                        m.connection + ' · ' + data.edges[label.edge].label
+                      }
+                      onPointerEnter={() => setTracedEdge(label.edge)}
+                      onPointerLeave={() => setTracedEdge(null)}
+                      onFocus={() => setTracedEdge(label.edge)}
+                      onBlur={() => setTracedEdge(null)}
                     >
-                      {data.edges[w.edge!].relation === 'feedback' ? (
-                        <RotateCcw size={16} />
+                      {!label.compact &&
+                        (label.relation === 'mitigation'
+                          ? m.mitigation
+                          : m.influence)}
+                      {label.relation === 'feedback' ? (
+                        <RotateCcw size={Math.min(14, label.height - 4)} />
                       ) : (
-                        <DirectionIcon size={16} />
+                        <DirectionIcon size={Math.min(14, label.height - 4)} />
                       )}
-                    </IconButton>
+                    </ButtonBase>
                   </Tooltip>
                 );
               })}
@@ -665,7 +705,9 @@ export default function TreeMap({
                     (tile.node === 'NOW' ? ' tile-present' : '') +
                     (tourFocus?.nodes.includes(tile.node || '')
                       ? ' tile-tour-focus'
-                      : '')
+                      : isTour && tile.kind !== 'route' && tile.node !== 'NOW'
+                        ? ' tile-tour-context'
+                        : '')
                   }
                   style={
                     {
@@ -760,6 +802,51 @@ export default function TreeMap({
                 </Paper>
               );
             })}
+            {!isTour &&
+              ['control', 'work'].includes(view) &&
+              layout.factors?.map((factor) => (
+                <ButtonBase
+                  key={factor.key}
+                  className={
+                    'map-factor-control' +
+                    (factor.expanded ? ' is-expanded' : '') +
+                    (detailLevel === 'atlas' ? ' factor-compact' : '')
+                  }
+                  style={{
+                    ...screen(factor.x, factor.y),
+                    maxWidth: Math.max(220, factor.width * scale),
+                  }}
+                  aria-expanded={factor.expanded}
+                  aria-label={
+                    m.optionalResearch +
+                    ' · ' +
+                    (factor.expanded ? m.foldFactor : m.showFactor)
+                  }
+                  title={m.optionalFactorHelp}
+                  onClick={() => {
+                    if (expanded) {
+                      setOpenNodes(
+                        Object.values(data.nodes)
+                          .filter((n) => n.subgraph)
+                          .map((n) => n.id),
+                      );
+                      setExpanded(false);
+                      setShowResearch(false);
+                    } else setShowResearch(!showResearch);
+                    setScopeVersion((n) => n + 1);
+                  }}
+                >
+                  {factor.expanded ? <Minus size={15} /> : <Plus size={15} />}
+                  <span>
+                    {detailLevel === 'atlas' ? 'RSI' : m.optionalResearch}
+                  </span>
+                  {detailLevel !== 'atlas' && (
+                    <small>
+                      {factor.expanded ? m.foldFactor : m.showFactor}
+                    </small>
+                  )}
+                </ButtonBase>
+              ))}
           </div>
         </div>
       </div>
@@ -794,7 +881,7 @@ export default function TreeMap({
             onChange={(_, value: string | null) => {
               if (value) {
                 setExpanded(value === 'all');
-                setShowResearch(false);
+                setShowResearch(true);
                 setOpenNodes([]);
                 setScopeVersion((n) => n + 1);
               }
@@ -807,38 +894,6 @@ export default function TreeMap({
           <span className="scope-count">
             {nodeCount} {m.elements}
           </span>
-          {data.routes
-            .find((r) => r.id === 'acceleration')
-            ?.contexts?.includes(view) && (
-            <Tooltip title={m.optionalFactorHelp}>
-              <Button
-                className="factor-toggle"
-                size="small"
-                aria-expanded={expanded || showResearch}
-                startIcon={
-                  expanded || showResearch ? (
-                    <Minus size={14} />
-                  ) : (
-                    <Plus size={14} />
-                  )
-                }
-                onClick={() => {
-                  if (expanded) {
-                    setOpenNodes(
-                      Object.values(data.nodes)
-                        .filter((n) => n.subgraph)
-                        .map((n) => n.id),
-                    );
-                    setExpanded(false);
-                    setShowResearch(false);
-                  } else setShowResearch(!showResearch);
-                  setScopeVersion((n) => n + 1);
-                }}
-              >
-                {m.optionalResearch}
-              </Button>
-            </Tooltip>
-          )}
           <Tooltip title={m.parallelGuide}>
             <IconButton
               aria-label={m.parallelGuide}

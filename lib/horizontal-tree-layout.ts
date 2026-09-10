@@ -1,4 +1,8 @@
-import type { TreeLayout, TreePoint } from './tree-layout';
+import {
+  wireGeometry,
+  type TreeLayout,
+  type TreePoint,
+} from './tree-layout.ts';
 import { compactAxis, projectAxis } from './axis-compaction.mjs';
 
 const FLOW_SCALE = 1.8;
@@ -6,8 +10,12 @@ const BRANCH_SCALE = 0.36;
 
 export function horizontalPoint(p: TreePoint, layout: TreeLayout): TreePoint {
   return {
-    x: projectAxis(layout.projection!.flow, p.y),
-    y: projectAxis(layout.projection!.branch, p.x),
+    x:
+      projectAxis(layout.projection!.flow, p.y) +
+      (layout.projection!.offsetX || 0),
+    y:
+      projectAxis(layout.projection!.branch, p.x) +
+      (layout.projection!.offsetY || 0),
   };
 }
 
@@ -18,9 +26,9 @@ export function horizontalPath(path: string, layout: TreeLayout) {
   while (i < tokens.length) {
     const command = tokens[i++];
     if (command === 'H')
-      result += ` V ${projectAxis(layout.projection!.branch, Number(tokens[i++]))}`;
+      result += ` V ${projectAxis(layout.projection!.branch, Number(tokens[i++])) + (layout.projection!.offsetY || 0)}`;
     else if (command === 'V')
-      result += ` H ${projectAxis(layout.projection!.flow, Number(tokens[i++]))}`;
+      result += ` H ${projectAxis(layout.projection!.flow, Number(tokens[i++])) + (layout.projection!.offsetX || 0)}`;
     else {
       const pairs = command === 'C' ? 3 : command === 'Q' ? 2 : 1;
       result += ' ' + command;
@@ -43,6 +51,8 @@ export function horizontalTreeLayout(source: TreeLayout): TreeLayout {
     present.label = 'present';
   }
   const projection = {
+    offsetX: 0,
+    offsetY: 0,
     flow: compactAxis(
       source.tiles.map((r) => [r.y, r.y + r.height]),
       source.height,
@@ -65,12 +75,43 @@ export function horizontalTreeLayout(source: TreeLayout): TreeLayout {
       end = point({ x: r.x + r.width, y: r.y + r.height });
     return { ...r, ...start, width: end.x - start.x, height: end.y - start.y };
   };
+  // Fit the ink as well as the cards. Feedback paths may lie outside the original canvas.
+  const bounds = [
+    ...source.tiles,
+    ...(source.regions || []),
+    ...(source.factors || []),
+  ];
+  const ink = bounds.flatMap((r) => [
+    point(r),
+    point({ x: r.x + r.width, y: r.y + r.height }),
+  ]);
+  for (const wire of source.wires) {
+    const geometry = wireGeometry(wire, source);
+    ink.push(
+      point({ x: geometry.x - 40, y: geometry.y - 30 }),
+      point({ x: geometry.x + 40, y: geometry.y + 30 }),
+    );
+    if (geometry.points) ink.push(...geometry.points.map(point));
+    else {
+      const coordinates =
+        geometry.path.match(/-?\d+(?:\.\d+)?/g)?.map(Number) || [];
+      for (let i = 0; i + 1 < coordinates.length; i += 2)
+        ink.push(point({ x: coordinates[i], y: coordinates[i + 1] }));
+    }
+  }
+  const left = Math.min(0, ...ink.map((p) => p.x));
+  const top = Math.min(0, ...ink.map((p) => p.y));
+  const right = Math.max(projection.flow.size, ...ink.map((p) => p.x));
+  const bottom = Math.max(projection.branch.size, ...ink.map((p) => p.y));
+  projection.offsetX = 54 - left;
+  projection.offsetY = 70 - top;
   return {
     ...source,
-    width: projection.flow.size,
-    height: projection.branch.size,
+    width: right - left + 108,
+    height: bottom - top + 140,
     tiles: source.tiles.map(rect),
     areas: source.areas?.map(rect),
+    factors: source.factors?.map(rect),
     regions: source.regions?.map((r) => ({
       ...rect(r),
       labelX: point({ x: 0, y: r.labelY }).x,

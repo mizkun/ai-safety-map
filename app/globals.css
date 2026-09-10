@@ -1932,181 +1932,6 @@ a:focus-visible {
 .tour-launch[aria-pressed='true'] {
   background: #dae8f5;
 }
-.MuiPaper-root.tour-panel {
-  position: absolute;
-  z-index: 4;
-  right: 20px;
-  top: 116px;
-  width: 376px;
-  max-height: calc(100dvh - 194px);
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-  background: #f9fbfd;
-  border: 1px solid #9db6cf;
-  border-radius: 14px;
-  box-shadow: 0 8px 28px #254e7314;
-  color: #20374e;
-}
-.tour-heading {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 7px 12px;
-}
-.tour-heading strong {
-  font-size: 13px;
-}
-.tour-heading > span {
-  margin-left: auto;
-  font-size: 12px;
-  font-variant-numeric: tabular-nums;
-}
-.tour-heading .MuiIconButton-root {
-  width: 32px;
-  height: 32px;
-}
-.tour-panel .MuiLinearProgress-root {
-  height: 3px;
-  flex-shrink: 0;
-}
-.tour-body {
-  padding: 15px 18px 10px;
-  min-height: 0;
-  overflow: auto;
-  overscroll-behavior: contain;
-  overflow-anchor: none;
-}
-.tour-route-label {
-  display: block;
-  font-size: 11px;
-  color: #566d84;
-  margin-bottom: 4px;
-}
-.tour-route-select {
-  width: 100%;
-  min-height: 34px;
-  padding: 4px 8px;
-  border: 1px solid #b6c7d8;
-  background: white;
-  border-radius: 6px;
-  color: inherit;
-  font: inherit;
-  font-size: 13px;
-}
-.tour-panel h2 {
-  font-size: 19px;
-  line-height: 1.5;
-  margin: 14px 0 10px;
-}
-.tour-prose {
-  font-size: 14px;
-  line-height: 1.9;
-  margin: 0 0 12px;
-}
-.tour-chapter-count {
-  color: #64788b;
-  font-size: 11px;
-  margin: 12px 0 -7px;
-}
-.tour-node-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-}
-.tour-node-list .MuiButtonBase-root {
-  display: inline-flex;
-  text-align: left;
-  gap: 6px;
-  min-height: 34px;
-  border: 1px solid #b2c5d7;
-  padding: 6px 9px;
-  border-radius: 7px;
-  color: #2c4e71;
-  font-size: 11px;
-  line-height: 1.5;
-}
-.tour-node-list .MuiButtonBase-root svg {
-  flex-shrink: 0;
-}
-.tour-node-list [aria-pressed='true'] {
-  background: #dcebf9;
-  border-color: #2875bb;
-}
-.tour-note {
-  display: block;
-  margin-top: 14px;
-  color: #526c84;
-  font-size: 11px;
-  line-height: 1.8;
-}
-.tour-panel .tour-read {
-  font-size: 12px;
-  margin-top: 6px;
-}
-.tour-navigation {
-  display: flex;
-  justify-content: space-between;
-  flex-shrink: 0;
-  padding: 10px 14px;
-  gap: 12px;
-  border-top: 1px solid #d5e0eb;
-}
-.tour-navigation .MuiButton-root {
-  min-height: 38px;
-  font-size: 13px;
-}
-.tree-tile.tile-tour-focus {
-  outline: 3px solid #1574c7;
-  outline-offset: 3px;
-  box-shadow: 0 0 0 7px #1574c718;
-}
-.has-tour .tree-viewport {
-  right: 416px;
-}
-.has-tour .map-controls > :last-child {
-  visibility: hidden;
-}
-.has-tour .filtered-bar {
-  max-width: calc(100vw - 48px);
-}
-@media (max-width: 900px) {
-  .MuiPaper-root.tour-panel {
-    top: auto;
-    bottom: 12px;
-    left: 12px;
-    right: 12px;
-    width: auto;
-    max-height: min(48dvh, 420px);
-  }
-  .has-tour .tree-viewport {
-    right: 0;
-    bottom: calc(var(--tour-panel-height) + 68px);
-  }
-  .has-tour .map-controls {
-    bottom: calc(var(--tour-panel-height) + 24px);
-  }
-  .tour-body {
-    padding: 10px 14px;
-  }
-  .tour-panel h2 {
-    font-size: 17px;
-    margin: 10px 0 8px;
-  }
-  .tour-prose {
-    font-size: 13px;
-    line-height: 1.8;
-  }
-  .tour-heading {
-    padding: 3px 10px;
-  }
-  .tour-navigation {
-    padding: 6px 10px;
-  }
-  .tour-node-list .MuiButtonBase-root {
-    min-height: 38px;
-  }
-}
 @media (max-width: 760px) {
   .brand-pill span {
     display: none;
@@ -2121,24 +1946,487 @@ a:focus-visible {
   .header-tools .tour-launch .MuiButton-startIcon {
     margin-right: 3px;
   }
-  .has-tour .filtered-bar ~ .tree-viewport {
-    top: 135px;
+}
+
+/* The reading rail and the diagram form one illustrated tour. Only the current route mounts. */
+.has-tour {
+  --tour-width: clamp(330px, 31vw, 440px);
+}
+.MuiPaper-root.tour-panel {
+  position: absolute;
+  left: 20px;
+  top: 86px;
+  bottom: 18px;
+  width: var(--tour-width);
+  z-index: 4;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  color: #29384c;
+  border: 1px solid #fff;
+  border-radius: 24px;
+  background: linear-gradient(145deg, #ffffffef, #f8f9fbe8);
+  box-shadow:
+    0 12px 40px #35436712,
+    inset 0 1px 0 #fff;
+}
+.tour-heading {
+  display: flex;
+  align-items: center;
+  padding: 10px 18px 0;
+}
+.tour-heading label {
+  font-size: 11px;
+  color: #637084;
+  letter-spacing: 0.04em;
+}
+.tour-heading .MuiIconButton-root {
+  margin-left: auto;
+  width: 32px;
+  height: 32px;
+}
+.tour-route-picker {
+  padding: 0 24px 14px;
+}
+.tour-route-select {
+  width: 100%;
+  font: inherit;
+  font-weight: 650;
+  font-size: 15px;
+  color: #29384c;
+  padding: 5px 24px 6px 0;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid #dce2ea;
+  border-radius: 0;
+  min-height: 38px;
+}
+.tour-reading-hint {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  color: #647285;
+  margin-top: 10px;
+}
+.tour-body {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
+  overscroll-behavior: contain;
+  overflow-anchor: none;
+  scrollbar-width: thin;
+  scrollbar-color: #c6cbd6 transparent;
+}
+.tour-body:focus-visible {
+  outline: 2px solid #838aaa;
+  outline-offset: -3px;
+}
+.tour-chapter {
+  box-sizing: border-box;
+  min-height: 100%;
+  padding: 24px 26px 48px;
+  scroll-margin-top: 0;
+}
+.tour-chapter + .tour-chapter {
+  border-top: 1px solid #e2e5ed;
+}
+.tour-chapter-heading {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--tour-color);
+  font-size: 11px;
+}
+.tour-scene-number {
+  font-size: 38px;
+  line-height: 1;
+  font-weight: 400;
+  letter-spacing: -0.06em;
+  opacity: 0.65;
+}
+.tour-panel h2 {
+  font-size: clamp(23px, 2vw, 29px);
+  line-height: 1.5;
+  letter-spacing: -0.025em;
+  font-weight: 650;
+  margin: 18px 0 22px;
+  text-wrap: pretty;
+}
+.tour-prose {
+  font-size: 16px;
+  line-height: 1.95;
+}
+.tour-prose p {
+  margin: 0 0 1.1em;
+}
+.tour-prose p:first-child {
+  color: #273647;
+}
+.tour-node-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 20px;
+}
+.tour-node-list .MuiButtonBase-root {
+  gap: 6px;
+  padding: 7px 9px;
+  min-height: 36px;
+  border: 1px solid #d9e0e9;
+  border-radius: 10px;
+  color: #475773;
+  text-align: left;
+  font-size: 11px;
+  line-height: 1.5;
+  background: #ffffff8a;
+}
+.tour-node-list .MuiButtonBase-root svg {
+  flex-shrink: 0;
+}
+.tour-node-list [aria-pressed='true'] {
+  box-shadow: 0 0 0 1px var(--tour-color);
+  background: #f0f3fa;
+}
+.tour-note {
+  display: block;
+  font-size: 12px;
+  line-height: 1.8;
+  color: #697385;
+  margin-top: 20px;
+}
+.tour-outlook {
+  padding: 16px;
+  margin-top: 28px;
+  border: 1px solid #fff;
+  border-radius: 16px;
+  background: #eef2f78c;
+  box-shadow: 0 4px 16px #26395507;
+}
+.tour-outlook strong {
+  font-size: 12px;
+  font-weight: 600;
+}
+.tour-outlook p {
+  font-size: 13px;
+  line-height: 1.9;
+  margin: 8px 0 0;
+}
+.tour-panel .tour-read {
+  margin-top: 10px;
+  font-size: 12px;
+}
+.tour-chapter-track {
+  display: flex;
+  flex-shrink: 0;
+  padding: 0 22px;
+  gap: 6px;
+}
+.tour-chapter-track .MuiButtonBase-root {
+  flex: 1;
+  height: 22px;
+  border-radius: 6px;
+}
+.tour-chapter-track span {
+  display: block;
+  width: 100%;
+  height: 3px;
+  background: #dce2ea;
+  border-radius: 99px;
+}
+.tour-chapter-track [aria-current='step'] span {
+  background: var(--tour-color);
+}
+.tour-navigation {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4px;
+  padding: 4px 16px 14px;
+  flex-shrink: 0;
+}
+.tour-navigation .MuiButton-root {
+  min-height: 38px;
+  border-radius: 12px;
+  font-size: 12px;
+  white-space: nowrap;
+}
+.tour-navigation .MuiButton-contained {
+  background: var(--tour-color);
+}
+.tour-navigation output {
+  font-size: 10px;
+  color: #6f7887;
+  text-align: center;
+}
+.tour-figure-caption {
+  position: absolute;
+  left: calc(var(--tour-width) + 58px);
+  top: 96px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #687389;
+  font-size: 12px;
+  pointer-events: none;
+}
+.tour-figure-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #6977ae;
+}
+.has-tour .tree-viewport {
+  left: calc(var(--tour-width) + 36px);
+  right: 10px;
+  top: 130px;
+  bottom: 82px;
+}
+.has-tour .map-controls {
+  left: calc(var(--tour-width) + 56px);
+}
+.has-tour .map-controls > :last-child {
+  visibility: hidden;
+}
+.tree-tile.tile-tour-focus {
+  border-color: #fff;
+  box-shadow:
+    0 8px 22px #42547928,
+    0 0 0 2px #7f90b033;
+}
+.tree-tile.tile-tour-context {
+  opacity: 0.78;
+}
+.map-breadcrumb {
+  position: absolute;
+  z-index: 4;
+  top: 68px;
+  left: 32px;
+  max-width: calc(100% - 280px);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 12px;
+  line-height: 24px;
+  color: #70778b;
+}
+.map-breadcrumb strong {
+  font-weight: 600;
+  color: #35425d;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.map-breadcrumb + .tree-viewport {
+  top: 112px;
+}
+.MuiButtonBase-root.map-factor-control {
+  position: absolute;
+  display: flex;
+  gap: 8px;
+  min-height: 32px;
+  padding: 5px 10px;
+  white-space: nowrap;
+  color: #286957;
+  background: #f7fbfbea;
+  border: 1px solid #cfded9;
+  border-radius: 11px;
+  box-shadow: 0 3px 12px #244b4210;
+  font-size: 12px;
+}
+.map-factor-control small {
+  font-size: 10px;
+  color: #697d76;
+}
+.MuiButtonBase-root.map-factor-control.factor-compact {
+  min-height: 24px;
+  font-size: 10px;
+  padding: 2px 6px;
+  gap: 3px;
+}
+.tour-reading-hint kbd {
+  font-family: inherit;
+  font-size: 10px;
+  padding: 1px 4px;
+  border: 1px solid #dce2ea;
+  border-radius: 4px;
+  background: #fff;
+}
+.MuiButtonBase-root.compact-influence {
+  width: 26px;
+  height: 26px;
+  min-width: 0;
+  padding: 0;
+  border-radius: 50%;
+}
+@media (max-width: 900px) {
+  .MuiPaper-root.tour-panel {
+    top: auto;
+    left: 8px;
+    right: 8px;
+    bottom: 8px;
+    width: auto;
+    height: 51dvh;
+    border-radius: 20px;
+  }
+  .tour-heading {
+    padding: 4px 12px 0;
+  }
+  .tour-heading label {
+    font-size: 10px;
+  }
+  .tour-heading .MuiIconButton-root {
+    width: 28px;
+    height: 28px;
+  }
+  .tour-route-picker {
+    padding: 0 18px 4px;
+  }
+  .tour-route-select {
+    min-height: 32px;
+    font-size: 14px;
+  }
+  .tour-reading-hint {
+    display: none;
+  }
+  .tour-chapter {
+    padding: 14px 20px 32px;
+  }
+  .tour-chapter-heading {
+    gap: 8px;
+    font-size: 10px;
+  }
+  .tour-scene-number {
+    font-size: 24px;
+  }
+  .tour-panel h2 {
+    font-size: 22px;
+    line-height: 1.5;
+    margin: 10px 0 14px;
+  }
+  .tour-prose {
+    font-size: 15px;
+    line-height: 1.85;
+  }
+  .tour-node-list .MuiButtonBase-root {
+    min-height: 44px;
+  }
+  .tour-chapter-track {
+    padding: 0 18px;
+  }
+  .tour-navigation {
+    padding: 0 12px 8px;
+  }
+  .tour-navigation .MuiButton-root {
+    min-height: 38px;
+  }
+  .has-tour .tree-viewport {
+    left: 0;
+    right: 0;
+    top: 82px;
+    bottom: calc(var(--tour-panel-height) + 50px);
+  }
+  .has-tour .map-controls {
+    left: 12px;
+    bottom: calc(var(--tour-panel-height) + 16px);
+  }
+  .has-tour .zoom-controls .MuiIconButton-root {
+    width: 30px;
+    height: 30px;
+  }
+  .has-tour .tour-figure-caption {
+    display: none;
+  }
+  .map-breadcrumb {
+    left: 18px;
+    top: 68px;
+    max-width: calc(100% - 280px);
+    font-size: 11px;
+  }
+  .map-breadcrumb + .tree-viewport {
+    top: 112px;
   }
 }
 @media (max-height: 540px) and (min-width: 640px) {
+  .has-tour {
+    --tour-width: 300px;
+  }
   .MuiPaper-root.tour-panel {
-    top: 108px;
-    bottom: 12px;
-    left: auto;
-    right: 12px;
-    width: 310px;
-    max-height: none;
+    left: 12px;
+    top: 76px;
+    bottom: 8px;
+    right: auto;
+    width: var(--tour-width);
+    height: auto;
   }
   .has-tour .tree-viewport {
-    right: 334px;
-    bottom: 64px;
+    left: 324px;
+    right: 0;
+    top: 76px;
+    bottom: 66px;
   }
   .has-tour .map-controls {
-    bottom: 16px;
+    left: 334px;
+    bottom: 12px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .tour-body {
+    scroll-behavior: auto;
+  }
+}
+.MuiButtonBase-root.connection-control {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  display: inline-flex;
+  gap: 5px;
+  padding: 0;
+  white-space: nowrap;
+  color: #617595;
+  background: #f8fbfef5;
+  border: 1px solid #b7c6d6;
+  border-radius: 99px;
+  font-size: 11px;
+}
+.connection-control.influence-control {
+  color: #368174;
+  border-style: dashed;
+}
+.connection-control::after {
+  content: '';
+  position: absolute;
+  min-width: 36px;
+  min-height: 36px;
+  inset: -3px;
+}
+.connection-control:focus-visible {
+  outline: 2px solid #5578a8;
+  outline-offset: 2px;
+}
+@keyframes tour-scene-in {
+  from {
+    opacity: 0.35;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.has-tour .tree-viewport {
+  animation: tour-scene-in 280ms ease-out;
+}
+@media (prefers-reduced-motion: reduce) {
+  .has-tour .tree-viewport {
+    animation: none;
+  }
+}
+
+@media (max-width: 760px) {
+  .map-breadcrumb {
+    top: 64px;
+    max-width: calc(100% - 35px);
+  }
+  .map-breadcrumb + .tree-viewport {
+    top: 145px;
   }
 }

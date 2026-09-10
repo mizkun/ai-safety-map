@@ -8,6 +8,59 @@ export type TourStop = {
   chapter: number;
 };
 
+// The reader's place is determined by the prose, not by an invented timeline.
+export function readingChapter(
+  top: number,
+  height: number,
+  chapters: { index: number; top: number; height: number }[],
+) {
+  const anchor = top + Math.min(120, height * 0.3);
+  return (
+    chapters.find((c) => anchor >= c.top && anchor < c.top + c.height)?.index ??
+    chapters[0]?.index ??
+    0
+  );
+}
+
+// If a scene shows an AND transition, keep every co-input in the picture.
+export function tourContext(data: Content, targets: string[]) {
+  const context = new Set(targets);
+  for (const edge of Object.values(data.edges))
+    if (
+      targets.includes(edge.to) &&
+      edge.requires?.some((id) => targets.includes(id))
+    )
+      for (const id of edge.requires) context.add(id);
+  return [...context];
+}
+
+export function tourKeyDirection(
+  key: string,
+  blocked: boolean,
+  interactive: boolean,
+) {
+  if (blocked || interactive) return 0;
+  return key === 'Enter' || key === 'ArrowRight'
+    ? 1
+    : key === 'ArrowLeft'
+      ? -1
+      : 0;
+}
+
+// A small screen must not skip the bottom of a scene when the reader presses Next.
+export function readingContinuation(
+  scrollTop: number,
+  viewportHeight: number,
+  chapterBottom: number,
+) {
+  if (viewportHeight <= 0 || scrollTop + viewportHeight >= chapterBottom - 3)
+    return null;
+  return Math.min(
+    chapterBottom - viewportHeight,
+    scrollTop + viewportHeight * 0.85,
+  );
+}
+
 // Reading order is not a new causal path. Chapter node sets preserve joint conditions.
 export function tourStops(data: Content): TourStop[] {
   return [

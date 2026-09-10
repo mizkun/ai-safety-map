@@ -100,11 +100,21 @@ export type TreeLayout = {
   areas?: TreeArea[];
   joins?: TreeJoin[];
   forks?: TreeFork[];
+  factors?: {
+    key: string;
+    expanded: boolean;
+    x: number;
+    y: number;
+    width: number;
+    height: number;
+  }[];
   flow?: 'horizontal';
   source?: TreeLayout;
   projection?: {
     flow: ReturnType<typeof import('./axis-compaction.mjs').compactAxis>;
     branch: ReturnType<typeof import('./axis-compaction.mjs').compactAxis>;
+    offsetX?: number;
+    offsetY?: number;
   };
 };
 export type TreeExpansion = {

@@ -35,7 +35,6 @@ import {
   ArrowLeft,
   ArrowRight,
   ArrowUpRight,
-  BookOpen,
   ChevronDown,
   Clock3,
   GitBranch,
@@ -90,7 +89,6 @@ export default function MapClient({ site }: { site: SiteContent }) {
     detailReading?.key === detailKey ? detailReading.tab : 'summary';
   const [panel, setPanel] = useState<Panel | null>(null);
   const [termId, setTermId] = useState<string | null>(null);
-  const [storyId, setStoryId] = useState<string | null>(null);
   const [tour, setTour] = useState<{
     index: number;
     focus: string | null;
@@ -102,7 +100,7 @@ export default function MapClient({ site }: { site: SiteContent }) {
   const [loadAttempt, setLoadAttempt] = useState(0);
   const detailsUrl = site.detailsUrls?.[locale];
   const detailsReady = !detailsUrl || Boolean(detailContent[locale]);
-  const needsDetails = Boolean(selected || panel || termId || storyId || tour);
+  const needsDetails = Boolean(selected || panel || termId || tour);
   useEffect(() => {
     if (!needsDetails || detailsReady || !detailsUrl || loadError) return;
     const controller = new AbortController();
@@ -144,7 +142,6 @@ export default function MapClient({ site }: { site: SiteContent }) {
     const read = () => {
       setTour(null);
       setDetailReading(null);
-      setStoryId(null);
       const q = new URLSearchParams(location.hash.slice(1));
       const requested = q.get('lang');
       const language = requested === 'en' && site.content.en ? 'en' : 'ja';
@@ -189,7 +186,6 @@ export default function MapClient({ site }: { site: SiteContent }) {
     setPanel(isPanel && !id ? (map as Panel) : null);
     setSelected(id || null);
     setMode(nextMode);
-    setStoryId(null);
     setDetailReading(null);
     setMenuAnchor(null);
     const q = new URLSearchParams({
@@ -759,49 +755,14 @@ export default function MapClient({ site }: { site: SiteContent }) {
           </Tooltip>
         </Paper>
       </header>
-      {view !== 'overview' && (
-        <Paper elevation={0} className="breadcrumb-bar glass filtered-bar">
-          <Button
-            startIcon={<ArrowLeft size={15} />}
-            onClick={() => {
-              setTour(null);
-              navigate('overview');
-            }}
-          >
-            {m.clearFilter}
-          </Button>
-          <span className="filter-path">
-            <span>{m.overviewLabel}</span>
-            <ArrowRight size={13} />
-            <strong>
-              {data.routes.find((r) => r.id === view)?.shortTitle ||
-                graph?.title}
-            </strong>
-          </span>
-          <output
-            className="filter-status"
-            data-compact={
-              data.routes.find((r) => r.id === view)?.role === 'factor'
-                ? m.optionalFactor
-                : '1 / ' + data.routes.filter((r) => r.role !== 'factor').length
-            }
-          >
-            {data.routes.find((r) => r.id === view)?.role === 'factor'
-              ? m.optionalFactor
-              : formatMessage(m.filteredRoutes, {
-                  total: data.routes.filter((r) => r.role !== 'factor').length,
-                })}
-          </output>
-          {data.stories[view] && (
-            <Button
-              className="story-open"
-              startIcon={<BookOpen size={16} />}
-              onClick={() => setStoryId(view)}
-            >
-              {m.story}
-            </Button>
-          )}
-        </Paper>
+      {view !== 'overview' && !tour && (
+        <nav className="map-breadcrumb" aria-label={m.breadcrumb}>
+          <span>{m.overviewLabel}</span>
+          <span aria-hidden="true">›</span>
+          <strong aria-current="page">
+            {data.routes.find((r) => r.id === view)?.shortTitle || graph?.title}
+          </strong>
+        </nav>
       )}
       <TreeMap
         key={view}
@@ -822,7 +783,10 @@ export default function MapClient({ site }: { site: SiteContent }) {
         selected={selected}
         onNode={openNode}
         onEdge={openEdge}
-        onRoute={selectRoute}
+        onRoute={(id) => {
+          if (tour) moveTour(stops.findIndex((s) => s.view === id));
+          else selectRoute(id);
+        }}
         onChoose={() => setRoutePicker(true)}
         onTerm={setTermId}
       />
@@ -833,6 +797,9 @@ export default function MapClient({ site }: { site: SiteContent }) {
           stops={stops}
           index={tour.index}
           ready={detailsReady}
+          keyboardEnabled={
+            !selected && !panel && !termId && !routePicker && !menuAnchor
+          }
           loading={loadingBody()}
           focus={tour.focus}
           onMove={moveTour}
@@ -1094,55 +1061,6 @@ export default function MapClient({ site }: { site: SiteContent }) {
                   {term.sources.map((id) => (
                     <div key={id}>{source(id)}</div>
                   ))}
-                </div>
-              )}
-        </DialogContent>
-      </Dialog>
-      <Dialog
-        open={Boolean(storyId)}
-        onClose={() => setStoryId(null)}
-        fullWidth
-        maxWidth="md"
-        className="story-dialog"
-        aria-labelledby="story-title"
-      >
-        <DialogTitle className="modal-heading" id="story-title">
-          <span>{storyId ? data.stories[storyId]?.title : m.story}</span>
-          <IconButton aria-label={m.close} onClick={() => setStoryId(null)}>
-            <X size={20} />
-          </IconButton>
-        </DialogTitle>
-        <DialogContent dividers>
-          {!detailsReady
-            ? loadingBody()
-            : storyId && (
-                <div className="story-body">
-                  <p className="story-note">{m.storyNote}</p>
-                  <p className="lead-copy">
-                    {richText(data.stories[storyId].intro)}
-                  </p>
-                  {data.stories[storyId].chapters.map((chapter, i) => (
-                    <section key={chapter.title}>
-                      <h3>
-                        <span>{i + 1}</span>
-                        {chapter.title}
-                      </h3>
-                      <p>{richText(chapter.text)}</p>
-                      <div className="story-links">
-                        {chapter.nodes.map((id) => (
-                          <Button
-                            key={id}
-                            onClick={() => openNode(id, storyId)}
-                          >
-                            {data.nodes[id].title}
-                          </Button>
-                        ))}
-                      </div>
-                    </section>
-                  ))}
-                  <p className="limit-block">
-                    {richText(data.stories[storyId].outlook)}
-                  </p>
                 </div>
               )}
         </DialogContent>
