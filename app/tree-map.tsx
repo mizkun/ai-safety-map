@@ -314,7 +314,10 @@ export default function TreeMap({
                 : 'vertical-flow ') +
               'detail-' +
               detailLevel +
-              (compact ? ' compact-layout' : '')
+              (compact ? ' compact-layout' : '') +
+              (view === 'overview' && expanded && size.width >= 1000
+                ? ' named-overview'
+                : '')
             }
             style={
               {
@@ -389,7 +392,7 @@ export default function TreeMap({
                         vectorEffect="non-scaling-stroke"
                       />
                     ))}
-                    {g.junctions.map((p) => (
+                    {g.markers.map((p) => (
                       <circle
                         key={p.x + ':' + p.y}
                         cx={p.x}

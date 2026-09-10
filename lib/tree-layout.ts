@@ -1,6 +1,7 @@
 import type { Content } from './content-types';
 import { expandedTreeLayout } from './expanded-tree-layout.ts';
 import { phoneOverviewLayout } from './phone-overview-layout.ts';
+import { roundedBus } from './rounded-bus.ts';
 import {
   horizontalTreeLayout,
   horizontalPoint,
@@ -609,113 +610,127 @@ export function forkGeometry(
   trunk: string;
   branches: { key: string; x: number; color: string; path: string }[];
   junctions: TreePoint[];
+  markers: TreePoint[];
   mergePath?: string;
 } {
-  if (layout.source) {
-    const source = forkGeometry(fork, layout.source);
-    return {
-      ...source,
-      trunk: horizontalPath(source.trunk, layout),
-      mergePath: source.mergePath
-        ? horizontalPath(source.mergePath, layout)
-        : undefined,
-      branches: source.branches.map((b) => ({
-        ...b,
-        path: horizontalPath(b.path, layout),
-      })),
-      junctions: source.junctions.map((p) => horizontalPoint(p, layout)),
-    };
-  }
-  const from = layout.tiles.find((t) => t.key === fork.from);
+  const source = layout.source || layout;
+  const project = (p: TreePoint) =>
+    layout.source ? horizontalPoint(p, layout) : p;
+  const horizontal = layout.flow === 'horizontal';
+  const busPosition = (x: number, y: number) => {
+    const p = project({ x, y });
+    return horizontal ? p.x : p.y;
+  };
+  const from = source.tiles.find((t) => t.key === fork.from);
   const targets = fork.targets.map((key) =>
-    layout.tiles.find((t) => t.key === key),
+    source.tiles.find((t) => t.key === key),
   );
   if (!from || targets.some((t) => !t))
     throw new Error('Missing fork endpoint: ' + fork.key);
   const sourceX = from.x + from.width / 2;
-  const branches = targets.map((t) => ({
-    key: t!.key,
-    x: t!.x + t!.width / 2,
-    color: t!.color,
-    path: `M ${t!.x + t!.width / 2} ${fork.busY} V ${t!.y - 5}`,
-  }));
-  const junctionXs = [...new Set([sourceX, ...branches.map((b) => b.x)])];
+  const bus = roundedBus(
+    [
+      {
+        key: 'source:' + fork.key,
+        x: sourceX,
+        color: fork.color,
+        point: project({ x: sourceX, y: from.y + from.height + 3 }),
+        fromBus: false,
+      },
+      ...targets.map((t) => ({
+        key: t!.key,
+        x: t!.x + t!.width / 2,
+        color: t!.color,
+        point: project({ x: t!.x + t!.width / 2, y: t!.y - 5 }),
+        fromBus: true,
+      })),
+    ],
+    busPosition(sourceX, fork.busY),
+    horizontal,
+  );
   const merge = fork.merge;
   let mergePath: string | undefined;
   const mergeJunctions: TreePoint[] = [];
+  const mergeMarkers: TreePoint[] = [];
   if (
     merge &&
-    (layout.wires.some((w) => w.from === merge.area) ||
-      layout.joins?.some((j) => j.inputs.includes(merge.area)) ||
+    (source.wires.some((w) => w.from === merge.area) ||
+      source.joins?.some((j) => j.inputs.includes(merge.area)) ||
       // A nested OR returns into its parent's merge, without a separate wire.
-      layout.forks?.some((parent) => parent.merge?.inputs.includes(merge.area)))
+      source.forks?.some((parent) => parent.merge?.inputs.includes(merge.area)))
   ) {
     const inputs = merge.inputs.map((key) => {
-      const area = layout.areas?.find((a) => a.key === key);
+      const area = source.areas?.find((a) => a.key === key);
       return (
-        (area?.exit ? layout.tiles.find((t) => t.key === area.exit) : area) ||
-        layout.tiles.find((t) => t.key === key)!
+        (area?.exit ? source.tiles.find((t) => t.key === area.exit) : area) ||
+        source.tiles.find((t) => t.key === key)!
       );
     });
-    const centers = [
-      ...new Set([merge.x, ...inputs.map((a) => a.x + a.width / 2)]),
-    ];
-    const busY = merge.y - 40;
-    mergePath = [
-      ...inputs.map(
-        (a) => `M ${a.x + a.width / 2} ${a.y + a.height + 3} V ${busY}`,
-      ),
-      `M ${Math.min(...centers)} ${busY} H ${Math.max(...centers)}`,
-      `M ${merge.x} ${busY} V ${merge.y + 3}`,
-    ].join(' ');
-    mergeJunctions.push(...centers.map((x) => ({ x, y: busY })));
+    const merged = roundedBus(
+      [
+        ...inputs.map((a) => ({
+          key: a.key,
+          point: project({ x: a.x + a.width / 2, y: a.y + a.height + 3 }),
+          fromBus: false,
+        })),
+        {
+          key: 'output:' + fork.key,
+          point: project({ x: merge.x, y: merge.y + 3 }),
+          fromBus: true,
+        },
+      ],
+      busPosition(merge.x, merge.y - 40),
+      horizontal,
+    );
+    mergePath = [...merged.ports.map((p) => p.path), merged.trunk].join(' ');
+    mergeJunctions.push(...merged.anchors);
+    mergeMarkers.push(...merged.markers);
   }
   return {
-    trunk: `M ${sourceX} ${from.y + from.height + 3} V ${fork.busY} M ${Math.min(...junctionXs)} ${fork.busY} H ${Math.max(...junctionXs)}`,
-    branches,
-    junctions: [
-      ...junctionXs.map((x) => ({ x, y: fork.busY })),
-      ...mergeJunctions,
-    ],
+    trunk: [bus.ports[0].path, bus.trunk].join(' '),
+    branches: bus.ports.slice(1),
+    // Keep the logical anchors for labels and connection audits, even where a
+    // two-way elbow is now drawn as a curve instead of a junction marker.
+    junctions: [...bus.anchors, ...mergeJunctions],
+    markers: [...bus.markers, ...mergeMarkers],
     mergePath,
   };
 }
+function joinBus(join: TreeJoin, layout: TreeLayout) {
+  const source = layout.source || layout;
+  const definition = source.joins?.find((j) => j.edge === join.edge) || join;
+  const project = (p: TreePoint) =>
+    layout.source ? horizontalPoint(p, layout) : p;
+  const horizontal = layout.flow === 'horizontal';
+  const inputs = definition.inputs.map(
+    (key) =>
+      source.regions?.find((r) => r.key === key) ||
+      source.areas?.find((r) => r.key === key) ||
+      source.tiles.find((t) => t.key === key)!,
+  );
+  const output = source.tiles.find((t) => t.key === definition.output)!;
+  const bus = project({ x: definition.x, y: definition.y - 25 });
+  return roundedBus(
+    [
+      ...inputs.map((r) => ({
+        key: r.key,
+        point: project({ x: r.x + r.width / 2, y: r.y + r.height }),
+        fromBus: false,
+      })),
+      {
+        key: 'output:' + definition.edge,
+        point: project({ x: definition.x, y: output.y - 5 }),
+        fromBus: true,
+      },
+    ],
+    horizontal ? bus.x : bus.y,
+    horizontal,
+  );
+}
 export function joinJunctions(join: TreeJoin, layout: TreeLayout): TreePoint[] {
-  if (layout.source)
-    return joinJunctions(
-      layout.source.joins!.find((j) => j.edge === join.edge)!,
-      layout.source,
-    ).map((p) => horizontalPoint(p, layout));
-  const x = join.inputs.map((key) => {
-    const r =
-      layout.regions?.find((r) => r.key === key) ||
-      layout.areas?.find((r) => r.key === key) ||
-      layout.tiles.find((t) => t.key === key)!;
-    return r.x + r.width / 2;
-  });
-  return [...new Set([...x, join.x])].map((x) => ({ x, y: join.y - 25 }));
+  return joinBus(join, layout).markers;
 }
 export function joinGeometry(join: TreeJoin, layout: TreeLayout): string {
-  if (layout.source)
-    return horizontalPath(
-      joinGeometry(
-        layout.source.joins!.find((j) => j.edge === join.edge)!,
-        layout.source,
-      ),
-      layout,
-    );
-  const inputs = join.inputs.map(
-    (key) =>
-      layout.regions?.find((r) => r.key === key) ||
-      layout.areas?.find((r) => r.key === key) ||
-      layout.tiles.find((t) => t.key === key)!,
-  );
-  const output = layout.tiles.find((t) => t.key === join.output)!;
-  const centers = inputs.map((r) => r.x + r.width / 2);
-  const busY = join.y - 25;
-  return [
-    ...inputs.map((r) => `M ${r.x + r.width / 2} ${r.y + r.height} V ${busY}`),
-    `M ${Math.min(...centers)} ${busY} H ${Math.max(...centers)}`,
-    `M ${join.x} ${busY} V ${output.y - 5}`,
-  ].join(' ');
+  const bus = joinBus(join, layout);
+  return [...bus.ports.map((p) => p.path), bus.trunk].join(' ');
 }

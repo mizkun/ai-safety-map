@@ -165,29 +165,8 @@ export default function MapTour({
           } as CSSProperties
         }
       >
-        <header className="tour-heading">
-          <nav className="tour-breadcrumb" aria-label={m.breadcrumb}>
-            <ButtonBase onClick={() => choose(0)}>{m.overviewLabel}</ButtonBase>
-            <span aria-hidden="true">›</span>
-            <strong>{m.tour}</strong>
-          </nav>
-          <IconButton aria-label={m.tourExit} onClick={onClose}>
-            <X size={18} />
-          </IconButton>
-        </header>
-        <div className="tour-location">
-          <div className="tour-route-picker">
-            <div className="tour-level-caption">
-              <label htmlFor="tour-route">{m.tourScenario}</label>
-              {route && (
-                <span>
-                  {formatMessage(m.tourChapter, {
-                    current: navigation.scenarioIndex + 1,
-                    total: navigation.scenarioCount,
-                  })}
-                </span>
-              )}
-            </div>
+        <header className="tour-location">
+          <div className="tour-route-row">
             <select
               id="tour-route"
               aria-label={m.tourJump}
@@ -216,57 +195,66 @@ export default function MapTour({
               <option value="finish">{m.tourFinishTitle}</option>
             </select>
             {route && (
-              <div className="tour-step-picker">
-                <CornerDownRight
-                  className="tour-nesting"
-                  size={18}
-                  aria-hidden="true"
-                />
-                <div className="tour-step-group">
-                  <div className="tour-level-caption">
-                    <label htmlFor="tour-step">{m.tourStepGroup}</label>
-                    <output
-                      aria-live="polite"
-                      aria-atomic="true"
-                      aria-label={formatMessage(m.stepOf, {
-                        current: navigation.stepIndex + 1,
-                        total: routePages.length,
-                      })}
-                    >
-                      {formatMessage(m.tourChapter, {
-                        current: navigation.stepIndex + 1,
-                        total: routePages.length,
-                      })}
-                    </output>
-                  </div>
-                  <select
-                    id="tour-step"
-                    className="tour-step-select"
-                    aria-label={m.tourChapters}
-                    value={index}
-                    onChange={(e) => choose(Number(e.target.value))}
-                  >
-                    {data.stories[route.id].chapters.map(
-                      (chapter, chapterIndex) => (
-                        <optgroup key={chapterIndex} label={chapter.title}>
-                          {routePages
-                            .filter(({ step }) => step.chapter === chapterIndex)
-                            .map(({ step, position }) => (
-                              <option key={step.key} value={position}>
-                                {step.node
-                                  ? data.nodes[step.node].shortTitle
-                                  : chapter.title}
-                              </option>
-                            ))}
-                        </optgroup>
-                      ),
-                    )}
-                  </select>
-                </div>
-              </div>
+              <span className="tour-count" aria-label={m.tourScenario}>
+                {formatMessage(m.tourChapter, {
+                  current: navigation.scenarioIndex + 1,
+                  total: navigation.scenarioCount,
+                })}
+              </span>
             )}
+            <IconButton aria-label={m.tourExit} onClick={onClose}>
+              <X size={18} />
+            </IconButton>
           </div>
-        </div>
+          {route && (
+            <div className="tour-step-picker">
+              <CornerDownRight
+                className="tour-nesting"
+                size={18}
+                aria-hidden="true"
+              />
+              <div className="tour-step-group">
+                <select
+                  id="tour-step"
+                  className="tour-step-select"
+                  aria-label={m.tourChapters}
+                  value={index}
+                  onChange={(e) => choose(Number(e.target.value))}
+                >
+                  {data.stories[route.id].chapters.map(
+                    (chapter, chapterIndex) => (
+                      <optgroup key={chapterIndex} label={chapter.title}>
+                        {routePages
+                          .filter(({ step }) => step.chapter === chapterIndex)
+                          .map(({ step, position }) => (
+                            <option key={step.key} value={position}>
+                              {step.node
+                                ? data.nodes[step.node].shortTitle
+                                : chapter.title}
+                            </option>
+                          ))}
+                      </optgroup>
+                    ),
+                  )}
+                </select>
+                <output
+                  className="tour-count"
+                  aria-live="polite"
+                  aria-atomic="true"
+                  aria-label={formatMessage(m.stepOf, {
+                    current: navigation.stepIndex + 1,
+                    total: routePages.length,
+                  })}
+                >
+                  {formatMessage(m.tourChapter, {
+                    current: navigation.stepIndex + 1,
+                    total: routePages.length,
+                  })}
+                </output>
+              </div>
+            </div>
+          )}
+        </header>
         {/* oxlint-disable jsx-a11y/no-noninteractive-tabindex -- This named scroll region needs keyboard focus for reading and chapter shortcuts. */}
         <section
           className="tour-body"
@@ -283,17 +271,6 @@ export default function MapTour({
               aria-current="step"
               aria-labelledby="tour-step-title"
             >
-              <div className="tour-chapter-heading">
-                <span>
-                  {route?.role === 'factor'
-                    ? m.optionalFactor
-                    : node
-                      ? node.id
-                      : stop.kind === 'chapter'
-                        ? m.overviewLabel
-                        : m.overview}
-                </span>
-              </div>
               <h2 id="tour-step-title">{title}</h2>
               <div className="tour-prose">
                 {(prose || '').split(/\n\n+/).map((paragraph, i) => (

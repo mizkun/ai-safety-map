@@ -34,6 +34,7 @@ import { relationLabels, overlaps } from '../lib/relation-labels.ts';
 import { cameraFrame, cameraAnimator } from '../lib/map-camera.mjs';
 import { connectionLabels } from '../lib/connection-labels.ts';
 import { minimapViewport, minimapCamera } from '../lib/map-minimap.ts';
+import { horizontalPoint } from '../lib/horizontal-tree-layout.ts';
 const content = readCanonicalContent();
 
 test('phones open on a connected tree while preserving every overview node and edge', () => {
@@ -232,6 +233,45 @@ test('minimap uses the actual viewport when zoomed, panned, or horizontally cent
   });
 });
 
+test('fork elbows keep equal radii after projection and preserve every branch endpoint', () => {
+  for (const layout of [
+    treeLayout(content, 'overview', false),
+    treeLayout(content, 'overview', true),
+    treeLayout(content, 'overview', false, true, 320),
+    treeLayout(content, 'overview', true, true, 390),
+  ]) {
+    const fork = layout.forks.find((f) => f.key === 'present-routes');
+    const geometry = forkGeometry(fork, layout);
+    const source = layout.source || layout;
+    assert.deepEqual(
+      geometry.branches.map((b) => b.key),
+      fork.targets,
+    );
+    for (const branch of geometry.branches) {
+      const tile = source.tiles.find((t) => t.key === branch.key);
+      const point = { x: tile.x + tile.width / 2, y: tile.y - 5 };
+      const end = layout.source ? horizontalPoint(point, layout) : point;
+      assert.ok(branch.path.endsWith(`L ${end.x} ${end.y}`));
+    }
+    const sorted = [...geometry.branches].sort((a, b) => a.x - b.x);
+    for (const branch of [sorted[0], sorted.at(-1)]) {
+      assert.ok(branch.path.includes(' Q '), branch.key + ': square elbow');
+      const [sx, sy, cx, cy, ex, ey] = branch.path
+        .match(/-?\d+(?:\.\d+)?/g)
+        .map(Number);
+      const incoming = Math.hypot(sx - cx, sy - cy);
+      const outgoing = Math.hypot(ex - cx, ey - cy);
+      assert.ok(incoming > 0 && incoming <= 14);
+      assert.ok(Math.abs(incoming - outgoing) < 1e-6, 'stretched corner');
+      assert.ok(
+        !geometry.markers.some((p) => p.x === cx && p.y === cy),
+        'an elbow must not look like a junction',
+      );
+    }
+    assert.equal(geometry.markers.length, geometry.junctions.length - 2);
+  }
+});
+
 test('the RSI alternative returns from its visible card, not an invisible sequence boundary', () => {
   for (const view of ['overview', 'control', 'work', 'acceleration'])
     for (const compact of [false, true]) {
@@ -245,13 +285,13 @@ test('the RSI alternative returns from its visible card, not an invisible sequen
       const geometry = forkGeometry(fork, source);
       assert.ok(
         geometry.mergePath.includes(
-          `M ${rsi.x + rsi.width / 2} ${rsi.y + rsi.height + 3} V`,
+          `M ${rsi.x + rsi.width / 2} ${rsi.y + rsi.height + 3} `,
         ),
         view,
       );
       assert.ok(
         !geometry.mergePath.includes(
-          `M ${sequence.x + sequence.width / 2} ${sequence.y + sequence.height + 3} V`,
+          `M ${sequence.x + sequence.width / 2} ${sequence.y + sequence.height + 3} `,
         ),
         view,
       );
