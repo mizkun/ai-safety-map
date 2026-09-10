@@ -36,6 +36,39 @@ import { cameraFrame, cameraAnimator } from '../lib/map-camera.mjs';
 import { connectionLabels } from '../lib/connection-labels.ts';
 const content = readCanonicalContent();
 
+test('individual scenarios have one connected present outside their causal conditions', () => {
+  for (const route of content.routes)
+    for (const compact of [false, true]) {
+      const layout = treeLayout(content, route.id, true, compact);
+      const present = layout.tiles.filter((t) => t.node === 'NOW');
+      assert.equal(present.length, 1, route.id + ': one starting point');
+      const origin = present[0];
+      for (const tile of layout.tiles.filter((t) => t !== origin))
+        assert.ok(
+          origin.x + origin.width < tile.x,
+          route.id + ': present must come first',
+        );
+      for (const frame of layout.regions || [])
+        assert.ok(
+          origin.x + origin.width < frame.x,
+          route.id + ': present must stay outside AND',
+        );
+      const connection = layout.wires.find((w) => w.from === origin.key);
+      const fork = layout.forks?.find((f) => f.from === origin.key);
+      assert.ok(connection || fork, route.id + ': disconnected present');
+      if (connection) {
+        assert.equal(connection.reference, true);
+        assert.equal(connection.edge, undefined);
+      }
+      if (fork) assert.notEqual(fork.alternative, true);
+      for (const join of layout.joins || [])
+        assert.ok(
+          !join.inputs.includes(origin.key),
+          route.id + ': present is not a joint condition',
+        );
+    }
+});
+
 test('phone openings keep the first card inside the viewport for every pathway', () => {
   for (const viewport of [
     { width: 320, height: 347 },

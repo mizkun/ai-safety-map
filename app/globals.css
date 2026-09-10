@@ -1471,6 +1471,7 @@ a:focus-visible {
   overflow: visible;
   flex-shrink: 0;
   width: 100%;
+  text-align: center;
   hyphens: auto;
 }
 .tree-content .tile-eyebrow {
@@ -1481,12 +1482,15 @@ a:focus-visible {
 .tree-content .tile-open {
   gap: 4px;
   min-height: 0;
+  align-items: center;
+  text-align: center;
 }
 .tree-content .tile-topics {
   flex-wrap: wrap;
   overflow: visible;
   flex-shrink: 0;
   gap: 0 8px;
+  justify-content: center;
 }
 .tree-content .tile-topic {
   font-size: clamp(10px, calc(11px * var(--map-scale)), 13px);
@@ -1502,6 +1506,10 @@ a:focus-visible {
 }
 .MuiPaper-root.tree-tile.tile-present {
   --tile-tint: rgba(215, 228, 247, 0.78);
+  padding: max(2px, calc(6px * var(--map-scale)));
+}
+.tree-content .tile-present .tile-open {
+  padding: 0;
 }
 .MuiPaper-root.tree-tile.tile-terminal {
   --tile-tint: rgba(246, 229, 236, 0.76);

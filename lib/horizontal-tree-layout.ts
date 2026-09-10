@@ -52,9 +52,7 @@ export function horizontalTreeLayout(
   if (present) {
     const branches = source.tiles.filter((t) => t.kind === 'route');
     const middle = branches[Math.floor(branches.length / 2)];
-    present.x = middle
-      ? middle.x + (middle.width - present.width) / 2
-      : (source.width - present.width) / 2;
+    if (middle) present.x = middle.x + (middle.width - present.width) / 2;
     present.label = 'present';
   }
   // Routing channels are occupied space too. Compress only the empty bands

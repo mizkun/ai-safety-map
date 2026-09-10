@@ -128,10 +128,76 @@ export function treeLayout(
   expanded: boolean | TreeExpansion = false,
   compact = false,
 ): TreeLayout {
-  return horizontalTreeLayout(
-    verticalTreeLayout(data, view, expanded),
-    compact,
-  );
+  const layout = verticalTreeLayout(data, view, expanded);
+  if (view !== 'overview' && data.routes.some((route) => route.id === view))
+    addScenarioPresent(layout, data, view);
+  return horizontalTreeLayout(layout, compact);
+}
+
+// An orientation link from the present is not a new causal claim or an AND input.
+function addScenarioPresent(layout: TreeLayout, data: Content, view: string) {
+  const entries = ['control', 'work', 'acceleration'].includes(view)
+    ? ['R0']
+    : view === 'misuse'
+      ? ['M1', 'M2', 'M3']
+      : view === 'money'
+        ? ['I1', 'W4', 'F3']
+        : [data.graphs[view].nodes[0]];
+  const targets = entries.map((id) => layout.tiles.find((t) => t.node === id)!);
+  if (layout.tiles.some((t) => t.node === 'NOW') || targets.some((t) => !t))
+    return;
+  // Reserve a leading column without changing any existing relative positions.
+  const shift = 160;
+  const bounds = [
+    ...layout.tiles,
+    ...(layout.areas || []),
+    ...(layout.regions || []),
+    ...(layout.factors || []),
+  ];
+  for (const rect of bounds) rect.y += shift;
+  for (const region of layout.regions || []) region.labelY += shift;
+  for (const join of layout.joins || []) join.y += shift;
+  for (const fork of layout.forks || []) {
+    fork.busY += shift;
+    if (fork.merge) fork.merge.y += shift;
+  }
+  for (const wire of layout.wires) {
+    if (wire.busY !== undefined) wire.busY += shift;
+    if (wire.viaY !== undefined) wire.viaY += shift;
+  }
+  const middle = targets[Math.floor(targets.length / 2)];
+  const top = Math.min(...bounds.map((r) => r.y));
+  layout.tiles.unshift({
+    key: 'NOW',
+    node: 'NOW',
+    label: 'present',
+    kind: 'node',
+    x: middle.x + middle.width / 2 - 112,
+    y: top - 104,
+    width: 224,
+    height: 80,
+    color: '#696596',
+  });
+  if (targets.length === 1) {
+    layout.wires.unshift({
+      key: 'present-scenario',
+      from: 'NOW',
+      to: targets[0].key,
+      color: '#8b87a1',
+      dashed: true,
+      reference: true,
+    });
+  } else {
+    layout.forks ||= [];
+    layout.forks.unshift({
+      key: 'present-scenario',
+      from: 'NOW',
+      targets: targets.map((t) => t.key),
+      busY: top - 12,
+      color: '#8b87a1',
+    });
+  }
+  layout.height += shift;
 }
 function verticalTreeLayout(
   data: Content,
