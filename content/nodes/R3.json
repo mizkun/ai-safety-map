@@ -1,6 +1,6 @@
 {
   "id": "R3",
-  "title": "改良されたAIが、さらに次の開発を進める",
+  "title": "改良されたAIが次のAIを改良する循環（RSI）が始まる",
   "explanation": "R3.md",
   "sources": [
     "openai-rd",
@@ -36,6 +36,6 @@
     "gemini-safety",
     "recursive-improvement"
   ],
-  "shortTitle": "RSI（再帰的自己改善）",
+  "shortTitle": "RSI（再帰的自己改善）が始まる",
   "subgraph": "research-cycle"
 }

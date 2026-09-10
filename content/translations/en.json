@@ -1,6 +1,6 @@
 {
   "locale": "en",
-  "sourceHash": "d0b4211f51d2e21d5f5115da075f05485bf08cdbcc6d6ca62e71f5cbba02bdc0",
+  "sourceHash": "88ada5711c195b480e31d1178fe9c510555472d9239a92c234542fd84c4204bb",
   "reference": {
     "edges.A1-A2.basis": "編集上の条件付き仮説。下の一次資料は、個別の能力・行動・仕組みを支持します。矢印全体の成立を実証したものではありません。",
     "edges.A1-A2.conditions.0": "共通の失敗が起きる",
@@ -796,8 +796,8 @@
     "nodes.ASI.body.現在の状況": "高度な数学やサイバーの成果は公表されていますが、分野ごとに支援・評価・受理の状態が違います。これらを合わせて、幅広い仕事での大幅な優位が確立したとは扱いません。",
     "nodes.ASI.body.考えられる対策": "単一の試験に頼らず、能力の範囲と弱点を評価します。高い能力でも目的や制約に従わせる研究と、失敗を封じ込める設計を並行して進めます。",
     "nodes.ASI.review.reason": "主に概念や条件の定義。関連する新証拠があれば期限前でも見直す。",
-    "nodes.ASI.shortTitle": "ASI：人間を大きく超える能力",
-    "nodes.ASI.title": "幅広い重要な仕事で、人間を大きく上回る",
+    "nodes.ASI.shortTitle": "ASI（超知能）が誕生する",
+    "nodes.ASI.title": "幅広い重要な仕事で、人間を大きく上回るAI（ASI）が誕生する",
     "nodes.C1.body.他の条件との関係": "図では「評価の設定のズレ」と「学習後の目標のズレ」を別の経路として示します。両方が起きる必要はありません。害が実際に出るには、実行する能力・権限（C2）と、防止の失敗（C3）も関わります。",
     "nodes.C1.body.成立条件": "不適切な判断が、実際の依頼や環境でも現れ、重要な行動の選択に影響することです。モデルがその行動を選び得る能力と、選ぶ傾向を分けて確かめます。",
     "nodes.C1.body.根拠の限界": "危険な依頼を断ることや、人間同士の価値観の違いだけでアライメント失敗とは呼びません。意図的に葛藤を作った実験の頻度も、通常利用の頻度とは異なります。",
@@ -1328,8 +1328,8 @@
     "nodes.R3.body.考えられる対策": "各改良の出所と効果を追跡し、反復ごとに能力と対策を点検します。評価前に新しいAIへ権限を継承させない設計を検討します。",
     "nodes.R3.related.0.text": "ASIは、この循環と同じ意味？",
     "nodes.R3.review.reason": "能力・行動・対策の評価は短期間で変わり得るため。",
-    "nodes.R3.shortTitle": "RSI（再帰的自己改善）",
-    "nodes.R3.title": "改良されたAIが、さらに次の開発を進める",
+    "nodes.R3.shortTitle": "RSI（再帰的自己改善）が始まる",
+    "nodes.R3.title": "改良されたAIが次のAIを改良する循環（RSI）が始まる",
     "nodes.R3.watch.0": "次世代のAIが、その次の研究をさらに改善したか。",
     "nodes.R3.watch.1": "計算資源や検証を含めても循環が持続するか。",
     "nodes.R4.body.他の条件との関係": "能力向上（R0）からの線は、改良したAIを安全性の研究にも使える可能性を示します。意図のズレ（C1）へ向かう線は、研究で見つけた対策がその失敗を減らす関係です。対策を実際に導入し、未知の場面でも効果が続くかを確かめる必要があります。",
@@ -2923,8 +2923,8 @@
     "nodes.ASI.body.現在の状況": "Advanced mathematical and cyber achievements have been reported, but assistance, evaluation, and acceptance differ by field. Combining these results does not establish broad, substantial superiority across work.",
     "nodes.ASI.body.考えられる対策": "Evaluate capability breadth and weaknesses without relying on a single test. Pursue both methods for keeping highly capable systems aligned with goals and constraints, and designs that contain failures.",
     "nodes.ASI.review.reason": "Primarily a definition of concepts or conditions. Revisit before the deadline if relevant new evidence appears.",
-    "nodes.ASI.shortTitle": "ASI: superhuman capabilities",
-    "nodes.ASI.title": "AI greatly exceeds humans across broad, important work",
+    "nodes.ASI.shortTitle": "Artificial superintelligence (ASI) emerges",
+    "nodes.ASI.title": "ASI emerges, greatly exceeding humans across broad, important work",
     "nodes.C1.body.他の条件との関係": "The map separates mismatched evaluation design from goals diverging after training. Both need not occur. Actual harm also involves execution capabilities and permissions (C2), and failed prevention (C3).",
     "nodes.C1.body.成立条件": "Inappropriate judgments arise in real requests or environments and affect important action choices. Assess the ability to select such actions separately from the tendency to do so.",
     "nodes.C1.body.根拠の限界": "Refusing dangerous requests, or differences among human values, are not by themselves alignment failures. Frequencies in deliberately constructed conflict experiments also differ from normal-use frequencies.",
@@ -3455,8 +3455,8 @@
     "nodes.R3.body.考えられる対策": "Trace each improvement's origin and effects, and review capabilities and safeguards each cycle. Consider preventing new AIs from inheriting permissions before evaluation.",
     "nodes.R3.related.0.text": "Does ASI mean the same thing as this loop?",
     "nodes.R3.review.reason": "Capability, behavior, and intervention evaluations can change rapidly.",
-    "nodes.R3.shortTitle": "RSI: recursive self-improvement",
-    "nodes.R3.title": "Improved AI advances the next development cycle",
+    "nodes.R3.shortTitle": "Recursive self-improvement (RSI) begins",
+    "nodes.R3.title": "Recursive self-improvement begins: improved AI helps develop the next AI",
     "nodes.R3.watch.0": "Did the next-generation AI further improve subsequent research?",
     "nodes.R3.watch.1": "Does the loop persist after accounting for computing resources and verification?",
     "nodes.R4.body.他の条件との関係": "The connection from capability progress (R0) represents the possibility of using improved AI for safety research. The connection toward misalignment (C1) represents safeguards discovered through that research reducing such failures. Those safeguards must be deployed and checked for effectiveness in unfamiliar situations.",
@@ -4256,8 +4256,8 @@
     "watchlist.9.name": "Financial stability and agentic commerce"
   },
   "review": {
-    "reviewer": "Codex — bilingual prerequisite, mechanism, evidence scope, and tour reading-order review",
+    "reviewer": "Codex — bilingual prerequisite and evidence-scope review; RSI/ASI event-label review",
     "date": "2026-09-10",
-    "hash": "f6e8dfaeaf1cf5d0a5988aa88fbfb7aec73d4d012186b35101376b05c2b11419"
+    "hash": "1bf16c7d3ce0aa17a0e68be1d6ecc5ce613281c35d296929173adc31b2b70702"
   }
 }

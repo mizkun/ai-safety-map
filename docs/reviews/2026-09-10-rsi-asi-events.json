@@ -1,0 +1,92 @@
+{
+  "id": "2026-09-10-rsi-asi-events",
+  "version": 2,
+  "date": "2026-09-10",
+  "reviewer": "Codex (bilingual label and primary-source comparison; not independent peer review)",
+  "decision": "reviewed",
+  "assessments": {
+    "events": {
+      "mechanism": "R3とASIのカード名・詳細見出しを、用語の名前から、その条件が成立する場面の表現へ変更した。R3は改良されたAIが次の開発を助ける循環の開始、ASIは幅広い重要な仕事で人間を大きく上回るAIが生まれることを指す。本文・矢印・AND/ORは変更していない。",
+      "conditions": "始まるという表現でも、一度の改善だけでRSIとはしない。反復して次の開発へ役立つ条件を本文に残す。ASIもRSIも仮説の表示を維持し、自己改善を経ない開発とASIを経ない実行能力の経路を維持する。",
+      "counterexample": "一回だけコードが改善されても次世代の開発に役立たなければ、この循環は始まっていない。ある試験で人間を上回っても、それだけで幅広い仕事に優れるASIが誕生したとは言えない。",
+      "evidence": "DeepMind原論考のRecursive improvement、Superintelligence、No human ceilingの箇所と既存の本文を照合した。今回は見出しの表現を直しただけで、新たな能力評価、現在の到達状況、発生時期や確率を追加していない。",
+      "limits": "始まる・誕生するは仮説上の場面の命名であり、観測済みや必然という主張ではない。ASIに意識や人格が生じるという意味も加えない。二つの見出しの変更を、グラフにない時間順序やASIから制御失敗への必然的な接続にしない。",
+      "mitigation": "見出しの書き方を編集ガイドへ追加した。能力、行動、条件の成立を区別し、分類名と用語集の見出しを一律に出来事へ書き換えない。既存の因果関係・翻訳の検査を適用する。",
+      "readerContext": "短いカード名にもRSIの再帰的自己改善、ASIの超知能という日本語を添え、その語が何の場面を示すかを述語で示す。英語もbegins/emergesを使う。定義の詳しい範囲は詳細見出しと直下の概要で読める。",
+      "whyHere": "マップで追うのは、可能な状態や条件がどうつながるかである。用語名だけのカードは用語解説へのリンクと紛らわしいため、何が起きる場面かをカード・ツアー・詳細で一致させる。R3/ASIを参照する4本の矢印と関連図・章でも意味が変わらないことを確認した。",
+      "primary": [
+        {
+          "source": "framework",
+          "locator": "arXiv:2504.01849v1, §2.1 Recursive improvement / Superintelligence; §3.2 No human ceiling; §3.4 The potential for accelerating capability improvement",
+          "support": "自己改善の循環と超知能を区別するための原論考に照合した。仮説の用語を場面名へ直す編集上の判断であり、現在の実証や到来時期の根拠としては使わない。"
+        }
+      ]
+    }
+  },
+  "entries": {
+    "node:ASI": {
+      "hash": "052ee0639217b89c382dc92529db2adff9929bb1690a65dfb51d20116fbc5230",
+      "assessment": "events"
+    },
+    "node:R3": {
+      "hash": "df1c1673bf69b7c1d0a52e3d35c527ac7aafdf57678a83c01576b93d22604443",
+      "assessment": "events"
+    },
+    "edge:R2-R3": {
+      "hash": "a9b87c914e92e0dfb83c8c196af85e8e4916ff42ff9907db45c024e356a12d5a",
+      "assessment": "events"
+    },
+    "edge:R3-R2": {
+      "hash": "3f7aa1367c92da1111f9c78664599e5ce172e1f3e1d46e8da0acb44cac69d025",
+      "assessment": "events"
+    },
+    "edge:R0-ASI": {
+      "hash": "3bcce3f20a4079806469f3ce1b5752d429487b8380932bd873f28d852c59b9aa",
+      "assessment": "events"
+    },
+    "edge:ASI-C3": {
+      "hash": "dcc6e635270af9be054180f4bc0035419864055eba173e042473ba119dda9309",
+      "assessment": "events"
+    },
+    "graph:control": {
+      "hash": "fd87f76223d417727e62fb4fd6f9109d67f886256138b5ab206ba2ab99e426ac",
+      "assessment": "events"
+    },
+    "graph:acceleration": {
+      "hash": "e0a6987f363566b834b19a5841925a1bc1a362019d741be1212d7a820241b4bc",
+      "assessment": "events"
+    },
+    "graph:work": {
+      "hash": "3283638fa014e084901aa28ac9de3e75007431167ff2279fdd75eb285267d08b",
+      "assessment": "events"
+    },
+    "graph:development-paths": {
+      "hash": "7872ed9ca59805d0b6f5c7d18f4ba3dd39ef0688a3a9619846df338daf49a949",
+      "assessment": "events"
+    },
+    "route:control": {
+      "hash": "a033ad72755dd53066fd2cd005f43682fe3cf74cdfdfc072271e876b0fc58c9e",
+      "assessment": "events"
+    },
+    "route:acceleration": {
+      "hash": "d497b64b0ab82f485b190bebe10a3e621a6e2aa25cccc0e63f8a884d6ac34965",
+      "assessment": "events"
+    },
+    "route:work": {
+      "hash": "4d439fe08a5e550bf8d2bf39d4c3b8b2a369522419ac576c82e5d61a15bd3b91",
+      "assessment": "events"
+    },
+    "news:research-contribution": {
+      "hash": "d716b528cf8a69b82d1dd29add0382cfe00909c66a0fcc5b472c66a12f526240",
+      "assessment": "events"
+    },
+    "story:control": {
+      "hash": "0b79bbf4841f235f55a9c839c2deec168236f0c86f3da21442cb5e163ff057e4",
+      "assessment": "events"
+    },
+    "story:acceleration": {
+      "hash": "397c181c3ac86b210dc462e877571560818b2be5067341a1c697385fa316cc56",
+      "assessment": "events"
+    }
+  }
+}
