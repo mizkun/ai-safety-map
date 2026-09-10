@@ -202,6 +202,34 @@ for (const [id, n] of Object.entries(nodes)) {
   for (const term of n.topics || [])
     check(Boolean(glossary[term]), id + ': unknown topic ' + term);
 }
+for (const [id, item] of Object.entries(current.evidence || {})) {
+  check(
+    nodes[id]?.status === 'limited',
+    id + ': evidence level only applies to limited evidence',
+  );
+  check(
+    ['tested', 'indirect'].includes(item.level),
+    id + ': evidence level required',
+  );
+  required(item, ['summary'], 'evidence ' + id);
+  researchRefs(item.research, 'evidence ' + id);
+  check(
+    item.research?.length > 0,
+    id + ': evidence classification needs supporting research',
+  );
+  check(
+    item.research?.every((key) => nodes[id]?.research.includes(key)),
+    id + ': evidence classification must cite the node research',
+  );
+  review(item.review, 'evidence ' + id);
+}
+for (const node of Object.values(nodes)) {
+  if (node.status === 'limited')
+    check(
+      Boolean(current.evidence?.[node.id]),
+      node.id + ': limited evidence needs a reviewed level',
+    );
+}
 for (const route of map.routes.filter((r) => r.role !== 'factor')) {
   const item = current.routes[route.id];
   check(Boolean(item), route.id + ': current focus required');

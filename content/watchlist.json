@@ -62,7 +62,8 @@
     "cadence": "daily",
     "urls": [
       "https://alignment.anthropic.com/",
-      "https://www.anthropic.com/research"
+      "https://www.anthropic.com/research",
+      "https://www.anthropic.com/threat-intelligence"
     ],
     "focus": "目標のずれ、監督、エージェントの行動、研究支援、安全性の改善。模擬実験と実運用を分ける。",
     "nodes": [
@@ -70,7 +71,16 @@
       "C3",
       "L",
       "R1",
-      "R2"
+      "R2",
+      "M1",
+      "M2",
+      "M2c",
+      "M2c1",
+      "M2c2",
+      "M2b",
+      "M2b1",
+      "M2b2",
+      "M3"
     ]
   },
   {

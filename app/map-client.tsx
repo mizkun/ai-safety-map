@@ -22,11 +22,13 @@ import {
   DialogContent,
   DialogTitle,
   Fab,
+  FormControlLabel,
   IconButton,
   Link,
   Menu,
   MenuItem,
   Paper,
+  Switch,
   Tab,
   Tabs,
   ToggleButton,
@@ -42,12 +44,12 @@ import {
   Clock3,
   BookOpen,
   GitBranch,
+  Info,
   Layers3,
   Menu as MenuIcon,
   Play,
   ShieldCheck,
   Waypoints,
-  Radar,
   X,
 } from 'lucide-react';
 import type { Question, Review, SiteContent } from '@/lib/content-types';
@@ -192,7 +194,6 @@ export default function MapClient({ site }: { site: SiteContent }) {
     setMenuAnchor(null);
     navigation.go({
       current: true,
-      lens: 'current',
       guide: false,
       welcome: false,
     });
@@ -512,12 +513,22 @@ export default function MapClient({ site }: { site: SiteContent }) {
       <>
         {node && (
           <div className="evidence-heading">
-            <EvidenceMark signal={evidenceSignal(node.status)} size={20} />
-            <strong>{evidenceLabel(evidenceSignal(node.status), m)}</strong>
+            <EvidenceMark
+              signal={evidenceSignal(node, data.current)}
+              size={20}
+            />
+            <strong>
+              {evidenceLabel(evidenceSignal(node, data.current), m)}
+            </strong>
             <small>
               {m.currentDate} {node.review.checkedAt}
             </small>
           </div>
+        )}
+        {node && data.current.evidence[node.id] && (
+          <p className="evidence-scope">
+            {richText(data.current.evidence[node.id].summary)}
+          </p>
         )}
         <p className="lead-copy">
           {richText(node ? node.body['現在の状況'] : edge!.current)}
@@ -804,83 +815,79 @@ export default function MapClient({ site }: { site: SiteContent }) {
             <span>AI SAFETY MAP</span>
           </ButtonBase>
         </Paper>
-        <Paper elevation={0} className="header-tools glass">
-          {view === 'overview' && !tour && (
-            <>
-              <ToggleButtonGroup
-                className="header-scope"
-                size="small"
-                exclusive
-                value={expanded ? 'all' : 'summary'}
-                onChange={(_, value: string | null) => {
-                  if (value) navigation.go({ expanded: value === 'all' });
-                }}
-                aria-label={m.displayScope}
-              >
-                <ToggleButton value="summary">{m.summaryView}</ToggleButton>
-                <ToggleButton value="all">{m.allElements}</ToggleButton>
-              </ToggleButtonGroup>
-              <span className="header-divider" aria-hidden="true" />
-            </>
-          )}
-          {alternateLocale && (
-            <Tooltip title={alternateLocale.name}>
-              <ButtonBase
-                className="language-switch"
-                aria-label={alternateLocale.name}
-                lang={alternateLocale.code}
-                onClick={() => changeLocale(alternateLocale.code)}
-              >
-                {alternateLocale.code === 'ja' ? 'JP' : 'EN'}
-              </ButtonBase>
+        <div className="header-actions">
+          <Paper elevation={0} className="current-map-control glass">
+            <FormControlLabel
+              className="current-map-toggle"
+              label={m.currentToggle}
+              labelPlacement="start"
+              control={
+                <Switch
+                  size="small"
+                  checked={Boolean(navigation.state.lens)}
+                  onChange={(_, checked) =>
+                    navigation.go({ lens: checked ? 'current' : null })
+                  }
+                  slotProps={{ input: { role: 'switch' } }}
+                />
+              }
+            />
+            <Tooltip title={m.currentKey}>
+              <IconButton aria-label={m.currentKey} onClick={openCurrent}>
+                <Info size={17} />
+              </IconButton>
             </Tooltip>
-          )}
-          <Tooltip title={m.library}>
-            <IconButton
-              aria-label={m.library}
-              aria-controls={menuAnchor ? 'library-menu' : undefined}
-              aria-haspopup="menu"
-              aria-expanded={Boolean(menuAnchor)}
-              onClick={(e) => setMenuAnchor(e.currentTarget)}
-            >
-              <MenuIcon size={19} />
-            </IconButton>
-          </Tooltip>
-        </Paper>
+          </Paper>
+          <Paper elevation={0} className="header-tools glass">
+            {view === 'overview' && !tour && (
+              <>
+                <ToggleButtonGroup
+                  className="header-scope"
+                  size="small"
+                  exclusive
+                  value={expanded ? 'all' : 'summary'}
+                  onChange={(_, value: string | null) => {
+                    if (value) navigation.go({ expanded: value === 'all' });
+                  }}
+                  aria-label={m.displayScope}
+                >
+                  <ToggleButton value="summary">{m.summaryView}</ToggleButton>
+                  <ToggleButton value="all">{m.allElements}</ToggleButton>
+                </ToggleButtonGroup>
+                <span className="header-divider" aria-hidden="true" />
+              </>
+            )}
+            {alternateLocale && (
+              <Tooltip title={alternateLocale.name}>
+                <ButtonBase
+                  className="language-switch"
+                  aria-label={alternateLocale.name}
+                  lang={alternateLocale.code}
+                  onClick={() => changeLocale(alternateLocale.code)}
+                >
+                  {alternateLocale.code === 'ja' ? 'JP' : 'EN'}
+                </ButtonBase>
+              </Tooltip>
+            )}
+            <Tooltip title={m.library}>
+              <IconButton
+                aria-label={m.library}
+                aria-controls={menuAnchor ? 'library-menu' : undefined}
+                aria-haspopup="menu"
+                aria-expanded={Boolean(menuAnchor)}
+                onClick={(e) => setMenuAnchor(e.currentTarget)}
+              >
+                <MenuIcon size={19} />
+              </IconButton>
+            </Tooltip>
+          </Paper>
+        </div>
       </header>
       {!tour && (
         <Fab className="tour-launch" variant="extended" onClick={startTour}>
           <Play size={18} aria-hidden="true" />
           {m.tour}
         </Fab>
-      )}
-      {!tour && (
-        <Button
-          className="current-launch glass"
-          startIcon={<Radar size={18} />}
-          onClick={openCurrent}
-        >
-          {m.currentTitle}
-        </Button>
-      )}
-      {navigation.state.lens && (
-        <Paper elevation={0} className="current-map-key glass">
-          <ButtonBase onClick={openCurrent} aria-label={m.currentKey}>
-            <Radar size={16} />
-            <span>{m.currentTitle}</span>
-            <EvidenceMark signal="observed" />
-            <EvidenceMark signal="limited" />
-            <EvidenceMark signal="unknown" />
-            <EvidenceMark signal="mitigation" />
-          </ButtonBase>
-          <IconButton
-            size="small"
-            aria-label={m.currentOff}
-            onClick={() => navigation.go({ lens: null })}
-          >
-            <X size={16} />
-          </IconButton>
-        </Paper>
       )}
       {view !== 'overview' && !tour && (
         <nav className="map-breadcrumb" aria-label={m.breadcrumb}>

@@ -142,6 +142,15 @@ export type GlossaryTerm = {
 };
 export type Content = {
   current: {
+    evidence: Record<
+      string,
+      {
+        level: 'tested' | 'indirect';
+        summary: string;
+        research: string[];
+        review: Review;
+      }
+    >;
     routes: Record<
       string,
       {

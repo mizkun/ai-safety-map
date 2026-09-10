@@ -3,6 +3,7 @@
   "title": "AIが現実に近い環境でサイバー作業を遂行できる",
   "explanation": "M2c1.md",
   "sources": [
+    "anthropic-threat-202609",
     "astra-card",
     "aisi",
     "gemini-38"
@@ -18,12 +19,13 @@
     "既知の課題への成績と、未知の課題・強い防御への成績はどう違うか。"
   ],
   "review": {
-    "checkedAt": "2026-09-10",
+    "checkedAt": "2026-09-11",
     "intervalDays": 7,
     "reason": "能力・行動・対策の評価は短期間で変わり得るため。"
   },
-  "status": "limited",
+  "status": "observed",
   "research": [
+    "threat-cyber-sep26",
     "astra-cyber",
     "aisi-range",
     "gemini-38"

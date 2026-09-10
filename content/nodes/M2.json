@@ -3,6 +3,7 @@
   "title": "AIの支援で、危害の実行が容易になる",
   "explanation": "M2.md",
   "sources": [
+    "anthropic-threat-202609",
     "astra-card",
     "gemini-safety"
   ],
@@ -16,7 +17,7 @@
     "AIあり・なしの比較で、どの実行上の壁が変わったか。"
   ],
   "review": {
-    "checkedAt": "2026-09-10",
+    "checkedAt": "2026-09-11",
     "intervalDays": 7,
     "reason": "能力・行動・対策の評価は短期間で変わり得るため。"
   },
@@ -25,6 +26,9 @@
   ],
   "status": "limited",
   "research": [
+    "threat-cyber-sep26",
+    "threat-weapons-sep26",
+    "threat-bio-sep26",
     "astra-cyber",
     "gemini-safety"
   ],

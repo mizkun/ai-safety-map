@@ -1,0 +1,33 @@
+{
+  "id": "2026-09-11-current-evidence-toggle",
+  "version": 2,
+  "date": "2026-09-11",
+  "reviewer": "Codex",
+  "decision": "reviewed",
+  "assessments": {
+    "display": {
+      "mechanism": "The upper-right switch adds or removes evidence colors through the existing URL lens state. Its wording describes what appears on the map instead of an ambiguous current-location concept.",
+      "conditions": "The same switch remains available in overview, detailed maps, and tours. The adjacent information button opens the existing legend and selected conditions without changing the switch state.",
+      "counterexample": "Turning colors off does not remove evidence from the underlying cards, and opening the legend does not imply evidence that has not been established.",
+      "evidence": "The existing five evidence labels remain unchanged: reported cases, demonstrated in limited settings, indirect evidence, not established, and a separate tested mitigation marker.",
+      "limits": "Current information refers to the dated, reviewed source content, not a real-time feed, a danger rating, a scenario probability, or proof that the selected conditions are unique bottlenecks.",
+      "mitigation": "Readers can open the color legend and each card evidence tab for scope, limits, and sources. The information panel retains the note distinguishing confirmation status from likelihood and severity.",
+      "readerContext": "The label states the action directly in both languages. The visible switch communicates on and off; a separate information icon explains the colors and conditions to watch.",
+      "whyHere": "The former Where we are label did not explain that it enabled an evidence overlay. A persistent upper-right switch makes this display option discoverable while retaining the existing information panel.",
+      "primary": [
+        {
+          "source": "anthropic-threat-202609",
+          "locator": "Introduction and AI-augmented cyber operations: Prevailing trends",
+          "support": "Existing report-linked cases stay provider-attributed with limited scope. Relabeling the display control adds no claim about new incidents, general attack success, or global harm."
+        }
+      ]
+    }
+  },
+  "entries": {
+    "ui:ja": {
+      "hash": "828c159e45c60a6ebc65e5f42e7e650f394294bbff094a496fc102468460b3c1",
+      "assessment": "display"
+    }
+  },
+  "scope": "Review the Japanese and English evidence display labels and the distinction between changing the map display and opening explanatory information. Scientific content and evidence classifications are unchanged by this UI change."
+}

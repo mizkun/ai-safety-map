@@ -16,15 +16,16 @@
       }
     },
     "misuse": {
-      "node": "M2c2",
-      "observed": "M1",
-      "finding": "提供者が停止したアカウントの2025〜26年の記録には、AIを使ったサイバー悪用の試みがあります。",
-      "next": "支援が実際の攻撃対象に届く前に、権限や防御で止められるか。",
+      "node": "M3",
+      "observed": "M2c",
+      "finding": "Anthropicの2026年9月報告には、AIを使った実際の侵入やデータ窃取の事例があります。人間は対象の選択や結果の確認などに関与していました。",
+      "next": "侵入や情報窃取が起きても、重要な機能への波及を止め、復旧できるか。",
       "sources": [
+        "anthropic-threat-202609",
         "cyber-misuse"
       ],
       "review": {
-        "checkedAt": "2026-09-10",
+        "checkedAt": "2026-09-11",
         "intervalDays": 7,
         "reason": "注目点は編集上の整理です。新しい観測や反例が出ていないか点検します。"
       }
@@ -117,6 +118,368 @@
         "checkedAt": "2026-09-10",
         "intervalDays": 30,
         "reason": "対策の効果を、実験した設定の範囲に限定して確認するため。"
+      }
+    }
+  },
+  "evidence": {
+    "A1": {
+      "level": "indirect",
+      "summary": "金融でのAI利用や集中依存が手がかりです。社会の重要な仕組みが同じAIに依存する範囲までは測れていません。",
+      "research": [
+        "finance-use",
+        "finance-risk"
+      ],
+      "review": {
+        "checkedAt": "2026-09-11",
+        "intervalDays": 7,
+        "reason": "既存の根拠がカードの条件をどこまで直接確かめているかを分類しています。根拠の更新時に見直します。"
+      }
+    },
+    "C1": {
+      "level": "tested",
+      "summary": "模擬環境で、人の意図と違う目標を追う行動が報告されています。通常利用でどのくらい起きるかは別の問題です。",
+      "research": [
+        "generalization",
+        "summer"
+      ],
+      "review": {
+        "checkedAt": "2026-09-11",
+        "intervalDays": 7,
+        "reason": "既存の根拠がカードの条件をどこまで直接確かめているかを分類しています。根拠の更新時に見直します。"
+      }
+    },
+    "C1a": {
+      "level": "tested",
+      "summary": "ゲームやロボットの課題で、評価の点数を上げても本来の目的を達成しない例があります。すべてのAIで起きるという確認ではありません。",
+      "research": [
+        "specification"
+      ],
+      "review": {
+        "checkedAt": "2026-09-11",
+        "intervalDays": 7,
+        "reason": "既存の根拠がカードの条件をどこまで直接確かめているかを分類しています。根拠の更新時に見直します。"
+      }
+    },
+    "C1b": {
+      "level": "tested",
+      "summary": "環境を変えた実験で、作業能力が残っていても誤った目標を追う例があります。別の環境変化にも同じように当てはまるとは限りません。",
+      "research": [
+        "generalization"
+      ],
+      "review": {
+        "checkedAt": "2026-09-11",
+        "intervalDays": 7,
+        "reason": "既存の根拠がカードの条件をどこまで直接確かめているかを分類しています。根拠の更新時に見直します。"
+      }
+    },
+    "C2": {
+      "level": "tested",
+      "summary": "外部通信を許した試験では、許可外の行動が実際に起きています。権限を制限した環境でも実行できるという意味ではありません。",
+      "research": [
+        "aisi-incident",
+        "astra-cyber"
+      ],
+      "review": {
+        "checkedAt": "2026-09-11",
+        "intervalDays": 7,
+        "reason": "既存の根拠がカードの条件をどこまで直接確かめているかを分類しています。根拠の更新時に見直します。"
+      }
+    },
+    "C2a": {
+      "level": "tested",
+      "summary": "明確な成功条件を持つソフトウェア課題などで、一連の作業を終える能力が測られています。曖昧な依頼や対人調整を含む仕事全体の確認ではありません。",
+      "research": [
+        "horizon"
+      ],
+      "review": {
+        "checkedAt": "2026-09-11",
+        "intervalDays": 7,
+        "reason": "既存の根拠がカードの条件をどこまで直接確かめているかを分類しています。根拠の更新時に見直します。"
+      }
+    },
+    "C3": {
+      "level": "indirect",
+      "summary": "監督の見逃しや許可外行動は、この条件を考える手がかりです。人間が封じ込めた事例もあり、検出・阻止・復旧がすべて間に合わない状況を一括して確認したものではありません。",
+      "research": [
+        "control-protocol",
+        "aisi-incident"
+      ],
+      "review": {
+        "checkedAt": "2026-09-11",
+        "intervalDays": 7,
+        "reason": "既存の根拠がカードの条件をどこまで直接確かめているかを分類しています。根拠の更新時に見直します。"
+      }
+    },
+    "C3a": {
+      "level": "tested",
+      "summary": "模擬環境で、不正な判定や監督を欺く行動が報告されています。監督方法を変えると結果も変わります。",
+      "research": [
+        "summer",
+        "scheming",
+        "control-protocol"
+      ],
+      "review": {
+        "checkedAt": "2026-09-11",
+        "intervalDays": 7,
+        "reason": "既存の根拠がカードの条件をどこまで直接確かめているかを分類しています。根拠の更新時に見直します。"
+      }
+    },
+    "C3a1": {
+      "level": "indirect",
+      "summary": "試験の設定や測定範囲に限界があることは分かっています。それだけでは、実際の仕事でどの失敗をどのくらい見逃すかまでは確かめられません。",
+      "research": [
+        "horizon",
+        "astra-cyber"
+      ],
+      "review": {
+        "checkedAt": "2026-09-11",
+        "intervalDays": 7,
+        "reason": "既存の根拠がカードの条件をどこまで直接確かめているかを分類しています。根拠の更新時に見直します。"
+      }
+    },
+    "C3a2": {
+      "level": "tested",
+      "summary": "評価や監督を意識して問題を隠す行動が、条件を作った実験で報告されています。通常利用で自発的に行う頻度は示していません。",
+      "research": [
+        "scheming",
+        "summer"
+      ],
+      "review": {
+        "checkedAt": "2026-09-11",
+        "intervalDays": 7,
+        "reason": "既存の根拠がカードの条件をどこまで直接確かめているかを分類しています。根拠の更新時に見直します。"
+      }
+    },
+    "C3a3": {
+      "level": "tested",
+      "summary": "限られた監督をすり抜けたり、評価を不正に変えたりする例があります。より強い監督にも通用するとは限りません。",
+      "research": [
+        "control-protocol",
+        "hf-incident"
+      ],
+      "review": {
+        "checkedAt": "2026-09-11",
+        "intervalDays": 7,
+        "reason": "既存の根拠がカードの条件をどこまで直接確かめているかを分類しています。根拠の更新時に見直します。"
+      }
+    },
+    "C3b": {
+      "level": "indirect",
+      "summary": "実際の事例には、検知後に封じ込められたものがあります。対応に必要な時間は手がかりになりますが、被害を防ぐのに間に合わなかったことの確認ではありません。",
+      "research": [
+        "aisi-incident",
+        "control-roadmap"
+      ],
+      "review": {
+        "checkedAt": "2026-09-11",
+        "intervalDays": 7,
+        "reason": "既存の根拠がカードの条件をどこまで直接確かめているかを分類しています。根拠の更新時に見直します。"
+      }
+    },
+    "D1": {
+      "level": "indirect",
+      "summary": "企業でのAI利用は観測されています。ただし、補助的な利用から、重要な最終判断をAIに委ねたとは言えません。",
+      "research": [
+        "adoption",
+        "gradual"
+      ],
+      "review": {
+        "checkedAt": "2026-09-11",
+        "intervalDays": 7,
+        "reason": "既存の根拠がカードの条件をどこまで直接確かめているかを分類しています。根拠の更新時に見直します。"
+      }
+    },
+    "F1": {
+      "level": "indirect",
+      "summary": "金融機関のAI利用や一部の自律的な用途は報告されています。市場に影響する判断と操作を、広くAIに委ねたことまでは示しません。",
+      "research": [
+        "finance-use",
+        "finance-monitor"
+      ],
+      "review": {
+        "checkedAt": "2026-09-11",
+        "intervalDays": 7,
+        "reason": "既存の根拠がカードの条件をどこまで直接確かめているかを分類しています。根拠の更新時に見直します。"
+      }
+    },
+    "I1": {
+      "level": "tested",
+      "summary": "人が承認や補充を担う店舗実験で、AIによる販売と収支改善が報告されています。人件費や計算費まで含む無人企業の持続的な利益の確認ではありません。",
+      "research": [
+        "vend"
+      ],
+      "review": {
+        "checkedAt": "2026-09-11",
+        "intervalDays": 7,
+        "reason": "既存の根拠がカードの条件をどこまで直接確かめているかを分類しています。根拠の更新時に見直します。"
+      }
+    },
+    "I1a": {
+      "level": "tested",
+      "summary": "店舗実験で、AIが提案・販売した商品に代金を払う需要がありました。他のAIの成果物にも需要があるとは限りません。",
+      "research": [
+        "vend"
+      ],
+      "review": {
+        "checkedAt": "2026-09-11",
+        "intervalDays": 7,
+        "reason": "既存の根拠がカードの条件をどこまで直接確かめているかを分類しています。根拠の更新時に見直します。"
+      }
+    },
+    "I1b": {
+      "level": "indirect",
+      "summary": "機械による決済の利用例があります。契約・実行・決済を、必要な認可や紛争対応まで含めてAIに任せられるかは別途確かめる必要があります。",
+      "research": [
+        "payments",
+        "vend"
+      ],
+      "review": {
+        "checkedAt": "2026-09-11",
+        "intervalDays": 7,
+        "reason": "既存の根拠がカードの条件をどこまで直接確かめているかを分類しています。根拠の更新時に見直します。"
+      }
+    },
+    "M2": {
+      "level": "tested",
+      "summary": "サイバー分野では実際の攻撃への支援が報告されています。支援効果を測った実験もありますが、AIなしと比べた被害の増加率や、あらゆる危害への効果は確定していません。",
+      "research": [
+        "threat-cyber-sep26",
+        "threat-weapons-sep26",
+        "threat-bio-sep26"
+      ],
+      "review": {
+        "checkedAt": "2026-09-11",
+        "intervalDays": 7,
+        "reason": "報告された利用・試験と、カードの条件全体の成立を分けて見直すため。"
+      }
+    },
+    "M2b": {
+      "level": "indirect",
+      "summary": "情報支援や通常兵器の試験が手がかりです。情報による追加の効果と、物理的な危害に必要な条件がそろって成功したことまでは確認できません。",
+      "research": [
+        "threat-weapons-sep26",
+        "threat-bio-sep26"
+      ],
+      "review": {
+        "checkedAt": "2026-09-11",
+        "intervalDays": 7,
+        "reason": "報告された利用・試験と、カードの条件全体の成立を分けて見直すため。"
+      }
+    },
+    "M2b1": {
+      "level": "tested",
+      "summary": "情報支援の効果を、検索との比較や専門家の試験で測っています。一部では専門家による誘導が必要でした。",
+      "research": [
+        "gemini-safety"
+      ],
+      "review": {
+        "checkedAt": "2026-09-11",
+        "intervalDays": 7,
+        "reason": "既存の根拠がカードの条件をどこまで直接確かめているかを分類しています。根拠の更新時に見直します。"
+      }
+    },
+    "R0": {
+      "level": "tested",
+      "summary": "条件をそろえた課題で、以前より難しい作業をこなす能力の伸びが測られています。あらゆる仕事での能力向上を示すものではありません。",
+      "research": [
+        "horizon",
+        "ordinary-progress"
+      ],
+      "review": {
+        "checkedAt": "2026-09-11",
+        "intervalDays": 7,
+        "reason": "既存の根拠がカードの条件をどこまで直接確かめているかを分類しています。根拠の更新時に見直します。"
+      }
+    },
+    "R2": {
+      "level": "indirect",
+      "summary": "研究業務でのAI利用や個別作業の成功は増えています。ただし、人の介入や計算資源の変化も含むため、開発工程全体の加速率は確かめられていません。",
+      "research": [
+        "rd-use",
+        "horizon"
+      ],
+      "review": {
+        "checkedAt": "2026-09-11",
+        "intervalDays": 7,
+        "reason": "既存の根拠がカードの条件をどこまで直接確かめているかを分類しています。根拠の更新時に見直します。"
+      }
+    },
+    "R4": {
+      "level": "tested",
+      "summary": "限られた安全性の課題で、AIを使った研究や監督方法による改善が測られています。現実の運用全体の安全性を保証する結果ではありません。",
+      "research": [
+        "alignment-research",
+        "control-protocol"
+      ],
+      "review": {
+        "checkedAt": "2026-09-11",
+        "intervalDays": 7,
+        "reason": "既存の根拠がカードの条件をどこまで直接確かめているかを分類しています。根拠の更新時に見直します。"
+      }
+    },
+    "S1": {
+      "level": "indirect",
+      "summary": "模擬外交でAIに判断を任せた実験や、軍事利用の分析があります。現実の重要判断がどこまでAIに委ねられているかを測った結果ではありません。",
+      "research": [
+        "military",
+        "wargames"
+      ],
+      "review": {
+        "checkedAt": "2026-09-11",
+        "intervalDays": 7,
+        "reason": "既存の根拠がカードの条件をどこまで直接確かめているかを分類しています。根拠の更新時に見直します。"
+      }
+    },
+    "W1": {
+      "level": "indirect",
+      "summary": "個別作業の成功や、仕事がAIの影響を受け得るという推計があります。例外処理や人との調整まで含む職務全体の自動化は、まだ別の確認が必要です。",
+      "research": [
+        "horizon",
+        "formalization",
+        "jobs-exposure"
+      ],
+      "review": {
+        "checkedAt": "2026-09-11",
+        "intervalDays": 7,
+        "reason": "既存の根拠がカードの条件をどこまで直接確かめているかを分類しています。根拠の更新時に見直します。"
+      }
+    },
+    "W2": {
+      "level": "indirect",
+      "summary": "移動と物の操作をつなぐ実演があります。現場での安全性、耐久性、失敗からの復帰まで満たすことの確認ではありません。",
+      "research": [
+        "robotics"
+      ],
+      "review": {
+        "checkedAt": "2026-09-11",
+        "intervalDays": 7,
+        "reason": "既存の根拠がカードの条件をどこまで直接確かめているかを分類しています。根拠の更新時に見直します。"
+      }
+    },
+    "W3": {
+      "level": "indirect",
+      "summary": "企業によるAI利用やロボットの実演があります。生活を支える生産全体に、実際に広く導入されたことまでは示しません。",
+      "research": [
+        "adoption",
+        "robotics"
+      ],
+      "review": {
+        "checkedAt": "2026-09-11",
+        "intervalDays": 7,
+        "reason": "既存の根拠がカードの条件をどこまで直接確かめているかを分類しています。根拠の更新時に見直します。"
+      }
+    },
+    "M2b2": {
+      "level": "indirect",
+      "summary": "通常兵器の一例で、実物を使った試験の記録があります。ただし試験は失敗したとみられ、運用可能な兵器や生物被害の実現を確認したものではありません。",
+      "research": [
+        "threat-weapons-sep26",
+        "threat-bio-sep26"
+      ],
+      "review": {
+        "checkedAt": "2026-09-11",
+        "intervalDays": 7,
+        "reason": "報告された利用・試験と、カードの条件全体の成立を分けて見直すため。"
       }
     }
   }

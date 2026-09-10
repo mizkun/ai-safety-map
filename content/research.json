@@ -526,5 +526,53 @@
     "method": "能力差、動作の速さ、監督と安全性の保証の限界を検討する。",
     "result": "能力差が大きいほど監督は難しくなり、人間だけに頼らない監督や別の安全性の保証が必要になると論じる。",
     "limitation": "ASIを実験して制御不能を観測した結果ではない。対策の進歩によっても難しさは変わる。"
+  },
+  "threat-cyber-sep26": {
+    "source": "anthropic-threat-202609",
+    "type": "observation",
+    "kind": "提供者による実利用の調査",
+    "evaluator": "Anthropic Threat Intelligence",
+    "title": "AIを使った侵入・情報窃取の実例",
+    "locator": "AI-augmented cyber operations / GTG-20006 / GTG-50014 / Prevailing trends",
+    "setting": "2025年12月〜2026年8月に検知・停止した、複数の攻撃者による活動。主に一般提供のHaiku・Sonnet・Opusを使用。",
+    "method": "サービスの利用記録と調査から、AIが実行した作業、実際の侵害、人間が担った判断を区別して整理。",
+    "result": "実際の組織への侵入やデータ窃取で、AIが作業の実行・連携を担った事例を報告。人間は攻撃対象の選択や結果の確認などに関与していました。",
+    "limitation": "提供者が選んだ事例で、独立した全件検証や悪用の発生率ではありません。AIなしとの厳密な比較ではなく、自律性の高さから被害の大きさも決まりません。アカウント停止は盗まれた情報の回復を意味しません。"
+  },
+  "threat-social-sep26": {
+    "source": "anthropic-threat-202609",
+    "type": "observation",
+    "kind": "提供者による実利用の調査",
+    "evaluator": "Anthropic Threat Intelligence",
+    "title": "監視・世論操作・詐欺への利用",
+    "locator": "Influence operations / Surveillance operations / GTG-15001",
+    "setting": "監視や世論操作の活動と、AIを人間と偽った出会い系アプリの事例。",
+    "method": "利用記録に加え、公開情報や他社との連携から、作られた仕組みと外部への到達を調査。",
+    "result": "監視用の仕組み、偽の人物やニュース媒体、利用者を欺く対話へのAI利用を報告。影響工作の多くでは、実際の一般利用者からの反応は小さいか確認できませんでした。",
+    "limitation": "仕組みを作ったことと、人の行動を変えたことは別です。サービス外での観測には限界があり、社会全体への影響の大きさを一括して測っていません。"
+  },
+  "threat-weapons-sep26": {
+    "source": "anthropic-threat-202609",
+    "type": "observation",
+    "kind": "提供者による実利用の調査",
+    "evaluator": "Anthropic Threat Intelligence",
+    "title": "通常兵器の開発支援と、実地試験の限界",
+    "locator": "Conventional weapons activity / Part I / GTG-87001: Summary",
+    "setting": "通常兵器のソフトウェア開発や調達などにClaudeを使った6事例。",
+    "method": "利用記録から開発・試験の進み方を調査。運用可能な兵器の確認と、計画・試験の記録を区別。",
+    "result": "一部で実地試験に進んだ記録がありますが、その試験は失敗したとみられ、運用可能な兵器を完成させた証拠はないと報告しています。",
+    "limitation": "実地試験は、実戦での使用や被害の発生と同じではありません。この事例から生物分野の実行条件がそろったとも言えません。"
+  },
+  "threat-bio-sep26": {
+    "source": "anthropic-threat-202609",
+    "type": "observation",
+    "kind": "提供者による実利用の調査",
+    "evaluator": "Anthropic Threat Intelligence",
+    "title": "生物研究への懸念と、断定できないこと",
+    "locator": "Biological misuse / A note on dual use / Conclusions",
+    "setting": "生物研究でClaudeを利用した5事例。機関・個人を特定しない形で公表。",
+    "method": "複数の利用記録を研究の文脈と合わせて調査。正当な研究にも有害な研究にも使える性質を考慮。",
+    "result": "研究支援と利用制限の回避を報告。Anthropicは研究者に加害意図があったとは断定せず、差し迫った生物脅威の証拠ともしていません。",
+    "limitation": "研究計画やAIの回答から、物理的な実行、被害、世界的な拡大を推定できません。安全対策が機能した例と、検知の課題の両方を含みます。"
   }
 }

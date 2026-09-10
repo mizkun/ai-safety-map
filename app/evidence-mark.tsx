@@ -1,6 +1,7 @@
 import {
   CircleDot,
   CircleEllipsis,
+  CircleDashed,
   CircleHelp,
   CircleCheck,
 } from 'lucide-react';
@@ -9,7 +10,8 @@ import type { EvidenceSignal } from '@/lib/current-evidence';
 export function evidenceLabel(signal: EvidenceSignal, m: Messages) {
   return {
     observed: m.signalObserved,
-    limited: m.signalLimited,
+    tested: m.signalTested,
+    indirect: m.signalIndirect,
     unknown: m.signalUnknown,
     mitigation: m.signalMitigation,
   }[signal];
@@ -23,7 +25,8 @@ export default function EvidenceMark({
 }) {
   const Icon = {
     observed: CircleDot,
-    limited: CircleEllipsis,
+    tested: CircleEllipsis,
+    indirect: CircleDashed,
     unknown: CircleHelp,
     mitigation: CircleCheck,
   }[signal];

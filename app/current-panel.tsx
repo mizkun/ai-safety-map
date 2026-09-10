@@ -2,7 +2,11 @@ import { Button, ButtonBase } from '@mui/material';
 import { ArrowRight } from 'lucide-react';
 import type { Content } from '@/lib/content-types';
 import type { Messages } from '@/lib/i18n';
-import { evidenceSignal, type EvidenceSignal } from '@/lib/current-evidence';
+import {
+  evidenceSignal,
+  evidenceBackgrounds,
+  type EvidenceSignal,
+} from '@/lib/current-evidence';
 import EvidenceMark, { evidenceLabel } from './evidence-mark';
 
 export default function CurrentPanel({
@@ -18,7 +22,8 @@ export default function CurrentPanel({
 }) {
   const notes = {
     observed: m.signalObservedNote,
-    limited: m.signalLimitedNote,
+    tested: m.signalTestedNote,
+    indirect: m.signalIndirectNote,
     unknown: m.signalUnknownNote,
     mitigation: m.signalMitigationNote,
   };
@@ -27,10 +32,21 @@ export default function CurrentPanel({
       <p className="current-intro">{m.currentIntro}</p>
       <div className="current-legend">
         {(
-          ['observed', 'limited', 'unknown', 'mitigation'] as EvidenceSignal[]
+          [
+            'observed',
+            'tested',
+            'indirect',
+            'unknown',
+            'mitigation',
+          ] as EvidenceSignal[]
         ).map((signal) => (
           <div key={signal}>
-            <EvidenceMark signal={signal} size={19} />
+            <span
+              className="current-swatch"
+              style={{ background: evidenceBackgrounds[signal] }}
+            >
+              <EvidenceMark signal={signal} size={19} />
+            </span>
             <span>
               <strong>{evidenceLabel(signal, m)}</strong>
               <small>{notes[signal]}</small>
@@ -52,7 +68,10 @@ export default function CurrentPanel({
                   onClick={() => onEvidence(item.observed)}
                 >
                   <EvidenceMark
-                    signal={evidenceSignal(data.nodes[item.observed].status)}
+                    signal={evidenceSignal(
+                      data.nodes[item.observed],
+                      data.current,
+                    )}
                   />
                   <span>{data.nodes[item.observed].shortTitle}</span>
                   <ArrowRight size={14} />
@@ -63,7 +82,7 @@ export default function CurrentPanel({
                   onClick={() => onMap(route.id, item.node)}
                 >
                   <EvidenceMark
-                    signal={evidenceSignal(data.nodes[item.node].status)}
+                    signal={evidenceSignal(data.nodes[item.node], data.current)}
                     size={18}
                   />
                   <span>

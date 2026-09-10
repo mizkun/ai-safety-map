@@ -3,6 +3,7 @@
   "title": "防止・封じ込めが、被害に追いつかない",
   "explanation": "M3.md",
   "sources": [
+    "anthropic-threat-202609",
     "astra-card",
     "control",
     "rand-extinction"
@@ -14,12 +15,13 @@
     "実害だけでなく、防御と封じ込めが働いた例も報告されたか。"
   ],
   "review": {
-    "checkedAt": "2026-09-10",
+    "checkedAt": "2026-09-11",
     "intervalDays": 30,
     "reason": "経路を支える前提、反論、防壁の有効性に変化がないか確認するため。"
   },
   "status": "hypothesis",
   "research": [
+    "threat-cyber-sep26",
     "astra-cyber",
     "control-roadmap",
     "extinction"

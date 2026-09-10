@@ -1,0 +1,306 @@
+{
+  "id": "2026-09-11-anthropic-threat-report",
+  "version": 2,
+  "date": "2026-09-11",
+  "reviewer": "Codex",
+  "decision": "reviewed",
+  "assessments": {
+    "report": {
+      "mechanism": "Human-directed misuse can involve real AI-executed operations. That supports observed cyber execution and target access, while bounded evaluations, broad uplift, physical completion, and global consequences remain separate claims.",
+      "conditions": "An observed campaign still depends on human targeting, access, target weaknesses, and unblocked execution. The AND/OR topology and conditions for containment failure and global harm remain unchanged.",
+      "counterexample": "Anthropic disrupted accounts; many influence campaigns had little authentic reach; the identified weapons field test appears to have failed. The biological section explicitly does not assert harmful intent or an imminent threat.",
+      "evidence": "The report documents selected actual intrusions and theft, including AI-executed activity. This supports the cyber execution and access nodes as cases reported, not universal capability or a measured population rate.",
+      "limits": "Attribution and findings are Anthropic claims. There is no independent census, randomized no-AI comparison, or inference that autonomous behavior means AI chose its own harmful objective. Publication is recorded at month precision because the page presents September 2026; activity dates remain December 2025 through August 2026.",
+      "mitigation": "Account disruption reduces continued access but cannot be equated with recovery of stolen information. M3 and the global-harm endpoint remain unconfirmed. A failed weapons field test gives indirect evidence of physical access, not completed weapon capability.",
+      "readerContext": "The misuse tour and current-focus view now distinguish actual attack cases from capability evaluations. Evidence cards preserve report section locators, activity period, provider provenance, and clear caveats in Japanese and English.",
+      "whyHere": "The supplied September report adds real-use evidence where the map previously relied mainly on benchmarks. It shifts the next question to containment and recovery without treating local compromise as global catastrophe.",
+      "primary": [
+        {
+          "source": "anthropic-threat-202609",
+          "locator": "Introduction; AI-augmented cyber operations, GTG-20006, GTG-50014, Prevailing trends; conventional weapons GTG-87001; biological misuse Conclusions",
+          "support": "Provider-selected real cyber campaigns with continuing human direction; one apparently failed weapons field test; explicit non-assertion of biological harmful intent and imminence; disruption does not demonstrate recovery."
+        }
+      ]
+    },
+    "M1": {
+      "mechanism": "人間が危険な目的のために、AIを使おうとする場面です。AIが利用者の意図を正しく理解していても、その目的自体が有害なら問題になります。",
+      "conditions": "有害な目的を持つ人がAIを利用でき、必要な能力・実行手段にアクセスすることです。動機が存在することと、攻撃が成功することは別です。",
+      "counterexample": "Anthropic disrupted accounts; many influence campaigns had little authentic reach; the identified weapons field test appears to have failed. The biological section explicitly does not assert harmful intent or an imminent threat.",
+      "evidence": "Anthropicの2026年9月報告は、2025年12月〜2026年8月に停止した活動から、サイバー侵入、監視、世論操作、詐欺などの事例を示しています。AIを人間と偽った対話への利用も報告されています。これは選ばれた事例で、世界の悪用率を示すものではありません。",
+      "limits": "停止されたアカウントの分析には選択の偏りがあります。M1の「観測例あり」は危険用途の試行を指し、広範な被害の成立を指しません。 Attribution and findings are Anthropic claims. There is no independent census, randomized no-AI comparison, or inference that autonomous behavior means AI chose its own harmful objective. Publication is recorded at month precision because the page presents September 2026; activity dates remain December 2025 through August 2026.",
+      "mitigation": "危険用途への提供制限、異常な利用の検知、利用者の認証などを組み合わせます。正当な防御や研究への利用も考慮して設計します。",
+      "readerContext": "The misuse tour and current-focus view now distinguish actual attack cases from capability evaluations. Evidence cards preserve report section locators, activity period, provider provenance, and clear caveats in Japanese and English.",
+      "whyHere": "The supplied September report adds real-use evidence where the map previously relied mainly on benchmarks. It shifts the next question to containment and recovery without treating local compromise as global catastrophe.",
+      "primary": [
+        {
+          "source": "anthropic-threat-202609",
+          "locator": "Introduction; AI-augmented cyber operations, GTG-20006, GTG-50014, Prevailing trends; conventional weapons GTG-87001; biological misuse Conclusions",
+          "support": "Provider-selected real cyber campaigns with continuing human direction; one apparently failed weapons field test; explicit non-assertion of biological harmful intent and imminence; disruption does not demonstrate recovery."
+        }
+      ]
+    },
+    "M2": {
+      "mechanism": "AIの手助けで、危害を実行するうえで難しかった作業が楽になることです。AIがいる場合といない場合を比べて、どれだけ実行しやすくなったかを見ます。",
+      "conditions": "利用者にとって実際の難所がAIで軽減され、残りの作業や実行手段もそろうことです。モデルの得点だけでなく、利用者への追加の効果を測ります。",
+      "counterexample": "Anthropic disrupted accounts; many influence campaigns had little authentic reach; the identified weapons field test appears to have failed. The biological section explicitly does not assert harmful intent or an imminent threat.",
+      "evidence": "サイバー分野では、AnthropicがAIを使った実際の侵入やデータ窃取を報告しています。通常兵器では開発や試験の支援、生物分野では懸念のある研究支援の記録があります。ただし、支援の記録だけでAIが被害をどれだけ増やしたかや、生物研究者の加害意図までは決まりません。",
+      "limits": "専門知識を答えられること、単発の課題に成功すること、現実の被害を起こすことは別です。能力向上を被害増加率へ直接換算しません。 Attribution and findings are Anthropic claims. There is no independent census, randomized no-AI comparison, or inference that autonomous behavior means AI chose its own harmful objective. Publication is recorded at month precision because the page presents September 2026; activity dates remain December 2025 through August 2026.",
+      "mitigation": "危険な支援を制限し、防御側にもAIの能力を使います。情報の提供、対象への接続、物理的な実行を別の防壁で管理します。",
+      "readerContext": "The misuse tour and current-focus view now distinguish actual attack cases from capability evaluations. Evidence cards preserve report section locators, activity period, provider provenance, and clear caveats in Japanese and English.",
+      "whyHere": "The supplied September report adds real-use evidence where the map previously relied mainly on benchmarks. It shifts the next question to containment and recovery without treating local compromise as global catastrophe.",
+      "primary": [
+        {
+          "source": "anthropic-threat-202609",
+          "locator": "Introduction; AI-augmented cyber operations, GTG-20006, GTG-50014, Prevailing trends; conventional weapons GTG-87001; biological misuse Conclusions",
+          "support": "Provider-selected real cyber campaigns with continuing human direction; one apparently failed weapons field test; explicit non-assertion of biological harmful intent and imminence; disruption does not demonstrate recovery."
+        }
+      ]
+    },
+    "M2b": {
+      "mechanism": "AIの情報面の手助けが、危害を実行しようとする人に実際に役立ち、物理的な作業につながることです。生物学の知識を正確に答えられるだけでは、この条件は判断できません。",
+      "conditions": "AIが利用者の本当の難所を軽減し、その支援が設備、技能、物理的な作業に結び付くことです。情報と実行の間の隔たりを残したまま成立とは扱いません。",
+      "counterexample": "Anthropic disrupted accounts; many influence campaigns had little authentic reach; the identified weapons field test appears to have failed. The biological section explicitly does not assert harmful intent or an imminent threat.",
+      "evidence": "Anthropicは通常兵器の開発支援と、生物分野の懸念のある研究支援を報告しています。通常兵器の一例は実地試験に進みましたが、失敗したとみられています。生物分野では、研究者の加害意図や差し迫った脅威を断定していません。情報支援から実際の危害までを分けて見ます。",
+      "limits": "情報問題の点数を、現実の生物被害や世界的な拡大の確率に換算できません。ここでは危害の具体的な実行手順を示さず、条件の種類を比較します。 Attribution and findings are Anthropic claims. There is no independent census, randomized no-AI comparison, or inference that autonomous behavior means AI chose its own harmful objective. Publication is recorded at month precision because the page presents September 2026; activity dates remain December 2025 through August 2026.",
+      "mitigation": "危険な支援の制限と、実物へのアクセス管理を併用します。公衆衛生、早期検知、研究施設の安全管理を強化します。",
+      "readerContext": "The misuse tour and current-focus view now distinguish actual attack cases from capability evaluations. Evidence cards preserve report section locators, activity period, provider provenance, and clear caveats in Japanese and English.",
+      "whyHere": "The supplied September report adds real-use evidence where the map previously relied mainly on benchmarks. It shifts the next question to containment and recovery without treating local compromise as global catastrophe.",
+      "primary": [
+        {
+          "source": "anthropic-threat-202609",
+          "locator": "Introduction; AI-augmented cyber operations, GTG-20006, GTG-50014, Prevailing trends; conventional weapons GTG-87001; biological misuse Conclusions",
+          "support": "Provider-selected real cyber campaigns with continuing human direction; one apparently failed weapons field test; explicit non-assertion of biological harmful intent and imminence; disruption does not demonstrate recovery."
+        }
+      ]
+    },
+    "M2b1": {
+      "mechanism": "AIの回答によって、利用者が情報や判断の難所を越えやすくなることです。以前は越えられなかった難所かどうかを見ます。情報を読めることと、実行できることは別です。",
+      "conditions": "利用者の技能に応じた比較で、既存の情報源だけの場合より、重要な判断や作業の成功が増えることです。熟練者と未熟練者を同じ母集団として扱いません。",
+      "counterexample": "Anthropic disrupted accounts; many influence campaigns had little authentic reach; the identified weapons field test appears to have failed. The biological section explicitly does not assert harmful intent or an imminent threat.",
+      "evidence": "Geminiの評価では、検索との比較や専門家の試験で一部の情報支援効果が測られています。Anthropicの2026年9月報告には、実際の開発や研究でAIの支援を得た記録もあります。ただし、利用記録はAIなしとの厳密な比較ではなく、物理的な成功の確認とも異なります。",
+      "limits": "正解率が上がっても、その差が実際の難所に関係しないことがあります。評価上の平均と、特定の利用者に対する支援効果も異なります。 Attribution and findings are Anthropic claims. There is no independent census, randomized no-AI comparison, or inference that autonomous behavior means AI chose its own harmful objective. Publication is recorded at month precision because the page presents September 2026; activity dates remain December 2025 through August 2026.",
+      "mitigation": "能力の評価と、危険な依頼への提供制限を別々に検証します。正当な研究に必要な支援と危険な支援の境界を、専門家の評価で改善します。",
+      "readerContext": "The misuse tour and current-focus view now distinguish actual attack cases from capability evaluations. Evidence cards preserve report section locators, activity period, provider provenance, and clear caveats in Japanese and English.",
+      "whyHere": "The supplied September report adds real-use evidence where the map previously relied mainly on benchmarks. It shifts the next question to containment and recovery without treating local compromise as global catastrophe.",
+      "primary": [
+        {
+          "source": "anthropic-threat-202609",
+          "locator": "Introduction; AI-augmented cyber operations, GTG-20006, GTG-50014, Prevailing trends; conventional weapons GTG-87001; biological misuse Conclusions",
+          "support": "Provider-selected real cyber campaigns with continuing human direction; one apparently failed weapons field test; explicit non-assertion of biological harmful intent and imminence; disruption does not demonstrate recovery."
+        }
+      ]
+    },
+    "M2b2": {
+      "mechanism": "情報を実際の作業に移すための技能や設備、実物への接点がそろうことです。AIが文章で助言できても、これらがなければ物理的な作業は進みません。",
+      "conditions": "対象の場面に必要な実物と環境を扱え、情報上の計画を物理的に再現できることです。情報の正しさとは別の証拠が必要です。",
+      "counterexample": "The report says the live field test appears to have failed and that there is no evidence of an operational device. Physical access alone therefore receives pale yellow, not observed completed execution.",
+      "evidence": "Anthropicの通常兵器の事例には、実地試験を行った記録があります。ただし、試験は失敗したとみられ、運用可能な兵器を完成させた証拠はないとしています。設備や実物への接点の手がかりにはなりますが、実行に必要な条件がすべて満たされたとは言えません。生物分野の実害を確認した報告でもありません。",
+      "limits": "難しい条件があることは、永久に実現不能という意味ではありません。公開資料で確認できないことと、条件が存在しないことも区別します。 Attribution and findings are Anthropic claims. There is no independent census, randomized no-AI comparison, or inference that autonomous behavior means AI chose its own harmful objective. Publication is recorded at month precision because the page presents September 2026; activity dates remain December 2025 through August 2026.",
+      "mitigation": "施設・実物へのアクセス管理、研究の安全審査、実行現場での監督を維持します。現場の異常を早く捉える体制も整えます。",
+      "readerContext": "The misuse tour and current-focus view now distinguish actual attack cases from capability evaluations. Evidence cards preserve report section locators, activity period, provider provenance, and clear caveats in Japanese and English.",
+      "whyHere": "The supplied September report adds real-use evidence where the map previously relied mainly on benchmarks. It shifts the next question to containment and recovery without treating local compromise as global catastrophe.",
+      "primary": [
+        {
+          "source": "anthropic-threat-202609",
+          "locator": "Introduction; AI-augmented cyber operations, GTG-20006, GTG-50014, Prevailing trends; conventional weapons GTG-87001; biological misuse Conclusions",
+          "support": "Provider-selected real cyber campaigns with continuing human direction; one apparently failed weapons field test; explicit non-assertion of biological harmful intent and imminence; disruption does not demonstrate recovery."
+        }
+      ]
+    },
+    "M2c": {
+      "mechanism": "コンピューターやネットワークを不正に操作するサイバー攻撃で、AIの支援が実行に役立つ道です。知識を答えるだけでなく、必要な作業をこなし、その結果が実際の対象に届くかを見ます。同じ技術は弱点を修正する防御にも使えるため、能力の高さだけで被害は決まりません。",
+      "conditions": "対象に合った一連の作業をAIがこなし、利用者がその支援を使って対象に作用できることです。提供時の制限や人間の介入も含めて確認します。",
+      "counterexample": "Anthropic disrupted accounts; many influence campaigns had little authentic reach; the identified weapons field test appears to have failed. The biological section explicitly does not assert harmful intent or an imminent threat.",
+      "evidence": "Anthropicの2026年9月報告には、AIが実際の侵入やデータ窃取の作業を実行・連携した事例があります。攻撃対象の選択や結果の確認には人間が関与しています。これはサイバー悪用の実例であり、どんな防御でも破れるという確認ではありません。",
+      "limits": "サイバー能力の評価には多様な課題があります。既知の問題に対する高得点を、新しい対象への万能な攻撃能力とは読めません。 Attribution and findings are Anthropic claims. There is no independent census, randomized no-AI comparison, or inference that autonomous behavior means AI chose its own harmful objective. Publication is recorded at month precision because the page presents September 2026; activity dates remain December 2025 through August 2026.",
+      "mitigation": "提供側の利用制限と対象側の防御を併用します。自動修正、権限の分離、復旧能力など、防御側の改善も同時に追います。",
+      "readerContext": "The misuse tour and current-focus view now distinguish actual attack cases from capability evaluations. Evidence cards preserve report section locators, activity period, provider provenance, and clear caveats in Japanese and English.",
+      "whyHere": "The supplied September report adds real-use evidence where the map previously relied mainly on benchmarks. It shifts the next question to containment and recovery without treating local compromise as global catastrophe.",
+      "primary": [
+        {
+          "source": "anthropic-threat-202609",
+          "locator": "Introduction; AI-augmented cyber operations, GTG-20006, GTG-50014, Prevailing trends; conventional weapons GTG-87001; biological misuse Conclusions",
+          "support": "Provider-selected real cyber campaigns with continuing human direction; one apparently failed weapons field test; explicit non-assertion of biological harmful intent and imminence; disruption does not demonstrate recovery."
+        }
+      ]
+    },
+    "M2c1": {
+      "mechanism": "コンピューターに関する知識問題に答えるだけでなく、試験用に用意したシステムで、AIが調査・作業・結果の確認まで進められることです。「現実に近い」は、対象の複雑さ、防御、与える情報や道具、人間の支援などが実際の仕事をどれだけ再現しているかを指します。試験だから単純、実務に近いから万能、とは限りません。",
+      "conditions": "対象の複雑さ、防御、人間の支援、試行回数、制限時間を明らかにした上で、一連の作業が安定して成功することです。新しい課題でも、特別に助けられた成功だけに依存しないかを確認します。",
+      "counterexample": "Anthropic disrupted accounts; many influence campaigns had little authentic reach; the identified weapons field test appears to have failed. The biological section explicitly does not assert harmful intent or an imminent threat.",
+      "evidence": "Anthropicは、実際の組織への侵入でAIが作業を実行した事例を報告しています。実例は能力試験とは別の根拠として読めますが、人の指示、与えられた権限、対象の弱点に依存します。Astraなどの評価結果は、下の研究カードで試験条件と合わせて確認できます。",
+      "limits": "Astraの100%という指標は、現実の攻撃が必ず成功するという意味ではありません。GoogleとOpenAIの危険水準の基準も異なるため、会社ごとの判定名でモデルを順位付けできません。 Attribution and findings are Anthropic claims. There is no independent census, randomized no-AI comparison, or inference that autonomous behavior means AI chose its own harmful objective. Publication is recorded at month precision because the page presents September 2026; activity dates remain December 2025 through August 2026.",
+      "mitigation": "未知の課題と実務に近い複数段階の課題を評価し、成功条件と支援量を公開します。評価で確認した弱点は防御の改善に回し、能力だけでなく防御後の結果も測ります。",
+      "readerContext": "The misuse tour and current-focus view now distinguish actual attack cases from capability evaluations. Evidence cards preserve report section locators, activity period, provider provenance, and clear caveats in Japanese and English.",
+      "whyHere": "The supplied September report adds real-use evidence where the map previously relied mainly on benchmarks. It shifts the next question to containment and recovery without treating local compromise as global catastrophe.",
+      "primary": [
+        {
+          "source": "anthropic-threat-202609",
+          "locator": "Introduction; AI-augmented cyber operations, GTG-20006, GTG-50014, Prevailing trends; conventional weapons GTG-87001; biological misuse Conclusions",
+          "support": "Provider-selected real cyber campaigns with continuing human direction; one apparently failed weapons field test; explicit non-assertion of biological harmful intent and imminence; disruption does not demonstrate recovery."
+        }
+      ]
+    },
+    "M2c2": {
+      "mechanism": "危険な目的を持つ人がAIの支援を使え、その結果を攻撃対象に届けられることです。AIに能力があるかどうかと、その能力を使える・届かせられるかどうかを分けて考えます。",
+      "conditions": "利用者が必要な支援を引き出せ、対象へ作用する経路を持つことです。モデルの拒否、認証、利用限度、対象への接続制限がこの条件を変えます。",
+      "counterexample": "Anthropic disrupted accounts; many influence campaigns had little authentic reach; the identified weapons field test appears to have failed. The biological section explicitly does not assert harmful intent or an imminent threat.",
+      "evidence": "Anthropicの報告では、AIを利用した攻撃が実際の対象へ届き、侵入や情報窃取に至った事例があります。支援を引き出す段階と、対象への接点の両方がそろった例です。すべての利用者や防御環境で同じことができるわけではありません。",
+      "limits": "能力評価で安全制限を外した結果から、通常提供でも同じ支援を引き出せるとは言えません。接触できるだけで侵害や被害が成立するわけでもありません。 Attribution and findings are Anthropic claims. There is no independent census, randomized no-AI comparison, or inference that autonomous behavior means AI chose its own harmful objective. Publication is recorded at month precision because the page presents September 2026; activity dates remain December 2025 through August 2026.",
+      "mitigation": "利用者と用途に応じたアクセス制御、支援の制限、外部通信の管理を組み合わせます。提供後に危険な利用が判明した場合の権限取り消しも整えます。",
+      "readerContext": "The misuse tour and current-focus view now distinguish actual attack cases from capability evaluations. Evidence cards preserve report section locators, activity period, provider provenance, and clear caveats in Japanese and English.",
+      "whyHere": "The supplied September report adds real-use evidence where the map previously relied mainly on benchmarks. It shifts the next question to containment and recovery without treating local compromise as global catastrophe.",
+      "primary": [
+        {
+          "source": "anthropic-threat-202609",
+          "locator": "Introduction; AI-augmented cyber operations, GTG-20006, GTG-50014, Prevailing trends; conventional weapons GTG-87001; biological misuse Conclusions",
+          "support": "Provider-selected real cyber campaigns with continuing human direction; one apparently failed weapons field test; explicit non-assertion of biological harmful intent and imminence; disruption does not demonstrate recovery."
+        }
+      ]
+    },
+    "M3": {
+      "mechanism": "危険な行動を防いだり、被害を小さくしたりする仕組みが、十分に働かない場面です。実行前の防御に加えて、異常に気づく検知、被害の範囲を区切る封じ込め、失った機能を戻す復旧を含みます。AIが何をできるかとともに、守る側がどこで止められるかを見る条件です。",
+      "conditions": "問題の対象で被害が起き、それを検知・局所化・取り消す能力が追いつかず、被害が重要な機能へ広がることです。",
+      "counterexample": "Anthropic disrupted accounts; many influence campaigns had little authentic reach; the identified weapons field test appears to have failed. The biological section explicitly does not assert harmful intent or an imminent threat.",
+      "evidence": "Anthropicは、実際に侵入や情報窃取が起きた活動を検知し、関連アカウントを停止したと報告しています。侵入前の防御が破られたことと、停止後も被害を局所化・復旧できないことは別です。盗まれた情報が戻ったことや、世界規模の被害を防げなくなったことまでを、この報告は示していません。",
+      "limits": "全ての防御が必要なわけではありません。一つの十分に有効な防壁で経路が止まる場合もあります。能力試験の高得点だけで防御の敗北を判定しません。 Attribution and findings are Anthropic claims. There is no independent census, randomized no-AI comparison, or inference that autonomous behavior means AI chose its own harmful objective. Publication is recorded at month precision because the page presents September 2026; activity dates remain December 2025 through August 2026.",
+      "mitigation": "攻撃前の制限、早期検知、被害範囲の分離、バックアップと復旧を組み合わせます。攻撃側の能力が上がるときは、防御側の改善も同じ条件で測ります。",
+      "readerContext": "The misuse tour and current-focus view now distinguish actual attack cases from capability evaluations. Evidence cards preserve report section locators, activity period, provider provenance, and clear caveats in Japanese and English.",
+      "whyHere": "The supplied September report adds real-use evidence where the map previously relied mainly on benchmarks. It shifts the next question to containment and recovery without treating local compromise as global catastrophe.",
+      "primary": [
+        {
+          "source": "anthropic-threat-202609",
+          "locator": "Introduction; AI-augmented cyber operations, GTG-20006, GTG-50014, Prevailing trends; conventional weapons GTG-87001; biological misuse Conclusions",
+          "support": "Provider-selected real cyber campaigns with continuing human direction; one apparently failed weapons field test; explicit non-assertion of biological harmful intent and imminence; disruption does not demonstrate recovery."
+        }
+      ]
+    }
+  },
+  "entries": {
+    "source:anthropic-threat-202609": {
+      "hash": "f12da4b3d83f95327f2035cdc49afb527a5599742cafb6cfe0cba93b1b7cba42",
+      "assessment": "report"
+    },
+    "research:threat-cyber-sep26": {
+      "hash": "429528be2ae0b48c9e21bc9a5820e46bb4591e637b7eb814109eb85259087dc5",
+      "assessment": "report"
+    },
+    "research:threat-social-sep26": {
+      "hash": "dccc53abb7ad2f931584165cf50a1de8ccca076986ff75c181e896924ef819cc",
+      "assessment": "report"
+    },
+    "research:threat-weapons-sep26": {
+      "hash": "ab8a5397ed1e5109609a3658d134c85b9900521650f7dc3c1c4d48075b721034",
+      "assessment": "report"
+    },
+    "research:threat-bio-sep26": {
+      "hash": "8a715cb75029494e972a66513e1a7c7d30f1303223890ba58b6c62a9aa2d5623",
+      "assessment": "report"
+    },
+    "node:M1": {
+      "hash": "d040433dbc971b1897cb35b440702ab2e00aeac38786b1a95c8ab6741e128621",
+      "assessment": "M1"
+    },
+    "node:M2": {
+      "hash": "7f4b38abc3ef2fe40ae58404e7489122e227b514ecc5ff19bd9a277fa04ffbaa",
+      "assessment": "M2"
+    },
+    "node:M2b": {
+      "hash": "55f1c13c29986ca82d27e5f7b69ccab290f6ea6b93e9f5e6fb2fc226a8737be3",
+      "assessment": "M2b"
+    },
+    "node:M2b1": {
+      "hash": "bed6723a9f2cf4ab542e84c153ab756b92e2ae83ac9464add70496248f06b594",
+      "assessment": "M2b1"
+    },
+    "node:M2b2": {
+      "hash": "53bf6e17fc23c06ddac1361566dddfd6edb9e50482e774379a979423749d9ea5",
+      "assessment": "M2b2"
+    },
+    "node:M2c": {
+      "hash": "55f5b80fe3c743c621824050af6e662cc655103a08749e5d4e87ffde57870af0",
+      "assessment": "M2c"
+    },
+    "node:M2c1": {
+      "hash": "6428b8e0b5bfca16f1786d700ffe0a7fddb34e3bdd8bd8845aea9e499b705073",
+      "assessment": "M2c1"
+    },
+    "node:M2c2": {
+      "hash": "1137e5a80f9091dcb9342f709d7c106c0a56c7f8d517ee24ac9f0ff4a09c3d2a",
+      "assessment": "M2c2"
+    },
+    "node:M3": {
+      "hash": "e165b40124aec744baf2c8187005ff632691aa7cbd07098f323c4c24870989cb",
+      "assessment": "M3"
+    },
+    "edge:M3-H": {
+      "hash": "affcc8edfb76dde9133cd430a37d8bb94ef9fe3e409d91d895a98815e0a862fe",
+      "assessment": "report"
+    },
+    "graph:misuse": {
+      "hash": "f5b582e1798eaab8f1aca922f85af99152018f878aef85fa267e9bbcb02dabd1",
+      "assessment": "report"
+    },
+    "graph:misuse-mechanisms": {
+      "hash": "44a569cac9bc6c146125e8558cdf63a6e8efa83077a06ab794a9343d0e7f2203",
+      "assessment": "report"
+    },
+    "graph:cyber-conditions": {
+      "hash": "8c540c1f964c6e41975c296a371e396d01a043cd74243fc489e82d3a8bdb03cc",
+      "assessment": "report"
+    },
+    "graph:bio-conditions": {
+      "hash": "0ea88e1a32642f2ce5a045f3c143f994310948c8eb369c76f3fa17b5e562ba4e",
+      "assessment": "report"
+    },
+    "route:misuse": {
+      "hash": "675f4c83928335f4f65edef7875ac01b822cfa1c7d987c8b2e44510b1a69ebff",
+      "assessment": "report"
+    },
+    "current:misuse": {
+      "hash": "1142bad121d86c432afcdc031c4b95c23312b81383379e4b01be375bad71a5fd",
+      "assessment": "report"
+    },
+    "evidence:M2": {
+      "hash": "429f9ddeec439725eb147f101f9cf1a385f47cf831569c31dff5fc29e2b68f28",
+      "assessment": "M2"
+    },
+    "evidence:M2b": {
+      "hash": "39e27bf730166a17a4fd895b2b4bd9030cccd28c6f997c7c899f9605f76b3036",
+      "assessment": "M2b"
+    },
+    "evidence:M2b1": {
+      "hash": "92aecf03390d00d0675962769b76bfaa4d773cbfdcd06905b2c43f92dc4e95a5",
+      "assessment": "M2b1"
+    },
+    "evidence:M2b2": {
+      "hash": "4ca42bb64a57ec66eb2a4fed1a836eb37788e02a8b924960d3fbe8c6a4742556",
+      "assessment": "M2b2"
+    },
+    "news:aisi-contained": {
+      "hash": "c892c2676e124a375cf7b0174b09794cc4ee9d21f51c852b747f6e8e722e5a81",
+      "assessment": "report"
+    },
+    "news:astra-threshold": {
+      "hash": "7198946d15c904a951002c434fb820509d42b7bdbfc5424fe31acac696ef5cad",
+      "assessment": "report"
+    },
+    "story:misuse": {
+      "hash": "ac2f37a072daa849e61ba5c264026c35cd97fb94bb5042ad1c581765b026e6a0",
+      "assessment": "report"
+    },
+    "watch:anthropic": {
+      "hash": "229f5925d5f302611793e917ced3373f3c4c341433df014105eb66d94e24d0dd",
+      "assessment": "report"
+    },
+    "history:changes": {
+      "hash": "810a53dc8e914111a67ff1167d5b33274f0fad345d84db824358a992169e3daa",
+      "assessment": "report"
+    },
+    "inventory:current": {
+      "hash": "7adf790d1988b9e67a8709478c0ff0a22e8602b27054134dc6a6fd2fcd3614b6",
+      "assessment": "report"
+    }
+  },
+  "scope": "Read the user-supplied primary report introduction, cyber cases and concluding trends, influence and surveillance introductions, conventional-weapons introduction and GTG-87001 test limitation, biological introduction and conclusions, fraud findings, and distillation overview. Added high-level evidence without attack instructions. The report is provider-selected and not independently revalidated. The public page was retrieved successfully on 2026-09-11."
+}

@@ -621,9 +621,9 @@ export default function TreeMap({
                   }
                 >
                   {layout.flow === 'horizontal' ? (
-                    <ArrowRight size={16} />
+                    <ArrowRight size={14} />
                   ) : (
-                    <ArrowDown size={16} />
+                    <ArrowDown size={14} />
                   )}
                 </IconButton>
               </Tooltip>
@@ -676,11 +676,11 @@ export default function TreeMap({
                       onBlur={() => setTracedEdge(null)}
                     >
                       {label.relation === 'mitigation' ? (
-                        <Minus size={Math.min(14, label.height - 4)} />
+                        <Minus size={14} />
                       ) : label.relation === 'feedback' ? (
-                        <RotateCcw size={Math.min(14, label.height - 4)} />
+                        <RotateCcw size={14} />
                       ) : (
-                        <DirectionIcon size={Math.min(14, label.height - 4)} />
+                        <DirectionIcon size={14} />
                       )}
                     </ButtonBase>
                   </Tooltip>
@@ -706,7 +706,7 @@ export default function TreeMap({
                 !tile.graph;
               const signal =
                 navigationState.lens && node && node.id !== 'NOW' && !tile.graph
-                  ? evidenceSignal(node.status)
+                  ? evidenceSignal(node, data.current)
                   : null;
               return (
                 <Paper

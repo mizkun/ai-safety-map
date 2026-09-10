@@ -3,6 +3,7 @@
   "title": "人間が、危険な目的でAIを使おうとする",
   "explanation": "M1.md",
   "sources": [
+    "anthropic-threat-202609",
     "cyber-misuse",
     "framework"
   ],
@@ -12,7 +13,7 @@
     "misuse"
   ],
   "review": {
-    "checkedAt": "2026-09-10",
+    "checkedAt": "2026-09-11",
     "intervalDays": 7,
     "reason": "能力・行動・対策の評価は短期間で変わり得るため。"
   },
@@ -21,6 +22,8 @@
   ],
   "status": "observed",
   "research": [
+    "threat-cyber-sep26",
+    "threat-social-sep26",
     "cyber-misuse",
     "risk-framework"
   ],

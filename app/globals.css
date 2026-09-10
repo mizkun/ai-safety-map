@@ -1535,14 +1535,17 @@ a:focus-visible {
 .tree-content .wire-button {
   width: 30px;
   height: 30px;
+  padding: 0;
   transform: translate(-50%, -50%);
   border: 1px solid #b5c4d2;
   background: #f8fbfd;
   box-shadow: none;
 }
-.tree-content .wire-button svg {
+.tree-content .wire-button svg,
+.tree-content .connection-control svg {
   width: 14px;
   height: 14px;
+  flex: 0 0 14px;
 }
 .tree-content .region-relation {
   right: auto;
@@ -2740,28 +2743,69 @@ a:focus-visible {
 .tour-transition-conditions { padding: 0; list-style: none; }
 .tour-transition-conditions li { margin: 14px 0; padding: 12px 16px; border-radius: 12px; background: #f0f3f8; font-size: 14px; line-height: 1.7; }
 .signal-observed { color: #bd4057; }
-.signal-limited { color: #b0780e; }
+.signal-tested { color: #986408; }
+.signal-indirect { color: #a38a43; }
 .signal-unknown { color: #778294; }
 .signal-mitigation { color: #187b63; }
 .evidence-mark { flex: 0 0 auto; }
 .evidence-heading { display: flex; align-items: center; flex-wrap: wrap; gap: 10px; font-size: 14px; }
 .evidence-heading small { margin-left: auto; color: #69778b; font-size: 12px; }
+.evidence-scope { margin: 12px 0 20px; color: #59667c; font-size: 14px; line-height: 1.8; }
 .MuiPaper-root.tree-tile.tile-evidence-color { background: var(--evidence-background); }
 .tile-signals { position: absolute; top: calc(4px * var(--map-scale)); left: calc(8px * var(--map-scale)); z-index: 3; display: flex; align-items: center; gap: calc(4px * var(--map-scale)); }
 .tile-evidence-button.MuiButtonBase-root, .tile-safeguard-button.MuiButtonBase-root { width: calc(20px * var(--map-scale)); height: calc(20px * var(--map-scale)); border-radius: 50%; padding: 0; }
 .tile-evidence-button .evidence-mark, .tile-safeguard-button .evidence-mark { width: calc(15px * var(--map-scale)); height: calc(15px * var(--map-scale)); }
 .tree-content .MuiButtonBase-root.connection-tour-focus { background: var(--tour-edge-color, #5653aa); border-color: var(--tour-edge-color, #5653aa); box-shadow: 0 0 0 4px color-mix(in srgb, var(--tour-edge-color, #5653aa) 20%, transparent); }
-.current-launch.MuiButton-root { position: fixed; right: 26px; bottom: 90px; z-index: 7; border: 1px solid #d3daea; border-radius: 30px; padding: 9px 17px; color: #475774; font-size: 13px; background: rgba(251,253,255,.92); }
-.has-current .current-launch { display: none; }
-.current-map-key.MuiPaper-root { position: fixed; z-index: 7; left: 26px; bottom: 78px; display: flex; align-items: center; padding: 4px; border-radius: 24px; }
-.current-map-key > .MuiButtonBase-root { gap: 10px; font-size: 12px; padding: 6px 10px; color: #536079; border-radius: 20px; }
-.has-tour .current-map-key { left: auto; right: 22px; top: 75px; bottom: auto; }
+.app-header .header-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  pointer-events: none;
+}
+.header-actions > * { pointer-events: auto; }
+.current-map-control.MuiPaper-root {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  padding: 3px 4px 3px 14px;
+  border-radius: 999px;
+}
+.current-map-toggle.MuiFormControlLabel-root {
+  margin: 0;
+  gap: 9px;
+  min-height: 36px;
+}
+.current-map-toggle .MuiFormControlLabel-label {
+  color: #536079;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.4;
+  white-space: nowrap;
+}
+.current-map-toggle .MuiSwitch-root { width: 36px; height: 22px; padding: 0; }
+.current-map-toggle .MuiSwitch-switchBase { padding: 3px; color: #fff; }
+.current-map-toggle .MuiSwitch-switchBase.Mui-checked { transform: translateX(14px); color: #fff; }
+.current-map-toggle .MuiSwitch-thumb { width: 16px; height: 16px; box-shadow: 0 1px 3px #33415530; }
+.current-map-toggle .MuiSwitch-track { border-radius: 11px; background: #aeb8c7; opacity: 1; }
+.current-map-toggle .MuiSwitch-switchBase.Mui-checked + .MuiSwitch-track { background: #42688e; opacity: 1; }
+.current-map-toggle:has(.Mui-focusVisible) { outline: 2px solid #6a5aad; outline-offset: 3px; border-radius: 5px; }
+.current-map-control > .MuiIconButton-root { width: 34px; height: 36px; margin-left: 2px; color: #738098; }
+@media (max-width: 1000px) {
+  .header-actions .current-map-control { position: absolute; top: calc(100% + 8px); right: 0; }
+  .map-app:not(.has-tour) .tree-viewport { top: calc(116px + env(safe-area-inset-top)); }
+  .map-breadcrumb { top: calc(112px + env(safe-area-inset-top)); max-width: calc(100% - 36px); }
+  .map-app:not(.has-tour) .map-breadcrumb + .tree-viewport { top: calc(144px + env(safe-area-inset-top)); }
+}
+@media (max-width: 900px) {
+  .has-tour .tree-viewport { top: calc(116px + env(safe-area-inset-top)); }
+}
 .current-dialog .MuiDialogTitle-root { padding: 20px 24px 8px; font-size: 22px; }
 .current-dialog .MuiDialogContent-root { padding: 0 24px 22px; }
 .current-dialog .MuiDialogActions-root { padding: 12px 24px 20px; }
 .current-intro { margin: 2px 0 20px; color: #536079; font-size: 15px; }
 .current-legend { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 16px 24px; padding: 18px; background: #f1f4f9; border-radius: 16px; }
 .current-legend > div { display: flex; align-items: flex-start; gap: 10px; }
+.current-swatch { display: flex; align-items: center; justify-content: center; flex: 0 0 34px; height: 34px; border: 1px solid #ffffff; border-radius: 9px; }
 .current-legend strong { display: block; font-size: 13px; margin-bottom: 4px; }
 .current-legend small { display: block; color: #67748a; font-size: 12px; line-height: 1.6; }
 .current-note { color: #657188; font-size: 12px; margin: 12px 0 24px; }
@@ -2782,10 +2826,8 @@ a:focus-visible {
 .current-tested p { font-size: 13px; line-height: 1.8; margin: 8px 0; }
 .current-tested small { display: block; font-size: 12px; line-height: 1.7; color: #5a6f65; }
 @media(max-width:760px) {
-  .current-launch.MuiButton-root { right: 12px; bottom: max(82px,calc(env(safe-area-inset-bottom) + 72px)); font-size: 12px; }
-  .current-map-key.MuiPaper-root { left: 12px; bottom: max(77px,calc(env(safe-area-inset-bottom) + 69px)); }
-  .current-map-key > .MuiButtonBase-root { gap: 7px; }
-  .has-tour .current-map-key.MuiPaper-root { left: 12px; right: auto; top: 62px; bottom: auto; }
+  .current-map-toggle.MuiFormControlLabel-root { min-height: 38px; }
+  .current-map-control > .MuiIconButton-root { width: 36px; height: 38px; }
   .current-dialog .MuiPaper-root { margin: 12px; width: calc(100% - 24px); max-height: calc(100dvh - 24px); }
   .current-dialog .MuiDialogContent-root { padding: 0 16px 16px; }
   .current-dialog .MuiDialogTitle-root { font-size: 20px; padding: 14px 16px 8px; }

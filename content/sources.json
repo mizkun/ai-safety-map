@@ -412,5 +412,14 @@
     "period": "言語と証明支援システムの概要",
     "checked": "2026-09-10",
     "primary": "Lean開発元による公式の言語・機能の説明"
+  },
+  "anthropic-threat-202609": {
+    "title": "Anthropic — Detecting and countering misuse of AI: September 2026",
+    "url": "https://www.anthropic.com/threat-intelligence-report-september-2026",
+    "published": "2026-09",
+    "date": "2026年9月 公表",
+    "period": "2025年12月〜2026年8月に停止した活動のうち、注目すべき事例を選んだ報告。分野ごとに観測期間は異なる。",
+    "checked": "2026-09-11",
+    "primary": "Anthropicの脅威調査チームによる、自社サービスで検知した活動の原報告"
   }
 }

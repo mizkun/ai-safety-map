@@ -19,29 +19,79 @@ const site = readSiteContent();
 const shell = contentPackage(site).shell;
 
 test('evidence colors do not turn unconfirmed conditions into safety claims', () => {
-  assert.equal(evidenceSignal('observed'), 'observed');
-  assert.equal(evidenceSignal('limited'), 'limited');
-  for (const state of ['hypothesis','definition']) assert.equal(evidenceSignal(state),'unknown');
+  const current = { evidence: { example: { level: 'tested' } } };
+  assert.equal(
+    evidenceSignal({ id: 'example', status: 'observed' }, current),
+    'observed',
+  );
+  assert.equal(
+    evidenceSignal({ id: 'missing', status: 'limited' }, current),
+    'indirect',
+  );
+  for (const status of ['hypothesis', 'definition'])
+    assert.equal(evidenceSignal({ id: 'example', status }, current), 'unknown');
   for (const data of Object.values(site.content)) {
     assert.equal(Object.keys(data.current.routes).length, 7);
-    for (const [id,item] of Object.entries(data.current.safeguards)) {
+    for (const [id, item] of Object.entries(data.current.safeguards)) {
       assert.ok(data.nodes[id]);
-      assert.ok(item.research.some((key) => data.research[key].type === 'evaluation'));
+      assert.ok(
+        item.research.some((key) => data.research[key].type === 'evaluation'),
+      );
       assert.ok(item.limit.length > 40);
     }
   }
 });
 
+test('yellow levels distinguish measured task progress from broader extrapolation in both editions and the initial map', () => {
+  for (const data of [
+    ...Object.values(site.content),
+    ...Object.values(shell.content),
+  ]) {
+    assert.equal(evidenceSignal(data.nodes.R0, data.current), 'tested');
+    assert.equal(evidenceSignal(data.nodes.R2, data.current), 'indirect');
+    assert.equal(evidenceSignal(data.nodes.C3b, data.current), 'indirect');
+    assert.equal(evidenceSignal(data.nodes.R4, data.current), 'tested');
+    for (const id of ['M2c', 'M2c1', 'M2c2'])
+      assert.equal(evidenceSignal(data.nodes[id], data.current), 'observed');
+    assert.equal(evidenceSignal(data.nodes.M2b, data.current), 'indirect');
+    assert.equal(evidenceSignal(data.nodes.M2b2, data.current), 'indirect');
+    assert.equal(evidenceSignal(data.nodes.M3, data.current), 'unknown');
+    assert.equal(evidenceSignal(data.nodes.H, data.current), 'unknown');
+    const limited = Object.values(data.nodes).filter(
+      (node) => node.status === 'limited',
+    );
+    assert.equal(Object.keys(data.current.evidence).length, limited.length);
+    for (const node of limited) {
+      const item = data.current.evidence[node.id];
+      assert.ok(item.summary.length > 30);
+      assert.ok(
+        item.research.length &&
+          item.research.every((id) => node.research.includes(id)),
+      );
+      assert.equal(item.level, site.content.ja.current.evidence[node.id].level);
+    }
+  }
+});
+
 test('evidence view, reading detours and direct links retain their history', () => {
-  const state = {...initialNavigation(), view:'control',lens:'current',current:true};
-  assert.deepEqual(readNavigation(navigationHash(state),shell),state);
-  assert.ok(!shouldWelcome({...state,view:'overview'},false));
-  const from=rootEntry(navigationHash(state),'current');
-  const detail={...state,current:false,detail:{kind:'node',id:'L',tab:'evidence'}};
-  const next=nextEntry(from,state,detail,'detail');
-  assert.equal(closeDistance(next,'detail'),-1);
-  assert.equal(readNavigation(from.hash,shell).current,true);
-  assert.equal(closeNavigation(state,'current').lens,'current');
+  const state = {
+    ...initialNavigation(),
+    view: 'control',
+    lens: 'current',
+    current: true,
+  };
+  assert.deepEqual(readNavigation(navigationHash(state), shell), state);
+  assert.ok(!shouldWelcome({ ...state, view: 'overview' }, false));
+  const from = rootEntry(navigationHash(state), 'current');
+  const detail = {
+    ...state,
+    current: false,
+    detail: { kind: 'node', id: 'L', tab: 'evidence' },
+  };
+  const next = nextEntry(from, state, detail, 'detail');
+  assert.equal(closeDistance(next, 'detail'), -1);
+  assert.equal(readNavigation(from.hash, shell).current, true);
+  assert.equal(closeNavigation(state, 'current').lens, 'current');
 });
 
 test('first-visit onboarding leaves shared reading links and returning visitors alone', () => {
