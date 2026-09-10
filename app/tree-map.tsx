@@ -35,7 +35,7 @@ import { useMapWindow } from './use-map-window';
 import { useMapCamera } from './use-map-camera';
 import MapMinimap from './map-minimap';
 import EvidenceMark, { evidenceLabel } from './evidence-mark';
-import { evidenceSignal, evidenceColors } from '@/lib/current-evidence';
+import { evidenceSignal } from '@/lib/current-evidence';
 import { intersectsWindow } from '@/lib/map-window.mjs';
 import {
   initialMapScale,
@@ -253,6 +253,7 @@ export default function TreeMap({
     const element = viewport.current;
     if (
       !focusRequest ||
+      isTour ||
       focusRequest.serial === handledRequest.current ||
       !element ||
       element.clientWidth !== size.width ||
@@ -264,7 +265,7 @@ export default function TreeMap({
     handledRequest.current = focusRequest.serial;
     const target = tourCamera([tile], size, layout);
     if (target) moveCamera(target);
-  }, [focusRequest, layout, size, moveCamera]);
+  }, [focusRequest, isTour, layout, size, moveCamera]);
   function zoom(value: number) {
     const next = Math.max(0.02, Math.min(1.6, value));
     const el = viewport.current;
@@ -704,9 +705,6 @@ export default function TreeMap({
                       width: tile.width * scale,
                       height: tile.height * scale,
                       '--branch-color': tile.color,
-                      '--evidence-color': signal
-                        ? evidenceColors[signal]
-                        : undefined,
                     } as CSSProperties
                   }
                 >

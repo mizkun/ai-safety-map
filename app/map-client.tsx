@@ -228,6 +228,7 @@ export default function MapClient({ site }: { site: SiteContent }) {
   function moveTour(index: number) {
     const target = stops[index];
     if (!target) return;
+    setFocusRequest(null);
     navigation.go({
       view: target.view,
       tour: { step: target.key, focus: null },
