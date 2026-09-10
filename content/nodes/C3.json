@@ -5,7 +5,8 @@
   "sources": [
     "control-paper",
     "control",
-    "aisi-incident"
+    "aisi-incident",
+    "claude-cyber-assessment"
   ],
   "questions": [],
   "related": [],
@@ -28,7 +29,8 @@
   "research": [
     "control-protocol",
     "control-roadmap",
-    "aisi-incident"
+    "aisi-incident",
+    "claude-cyber-monitors"
   ],
   "shortTitle": "コントロールの失敗"
 }

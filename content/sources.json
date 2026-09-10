@@ -394,5 +394,14 @@
     "date": "2026-09",
     "period": "2026〜2030年の米国を対象とする条件付きモデル。Working Paper No. 2026-02、2026年9月版。公表日は月まで確認。",
     "primary": "Korinek・Jones・Sacher・Cotter・McCroryによる原研究。著者のモデル分析であり、将来の観測やAnthropicの確定予測ではない。"
+  },
+  "claude-cyber-assessment": {
+    "title": "Anthropic — An alignment assessment of recent cybersecurity incidents",
+    "url": "https://www.anthropic.com/research/alignment-assessment-cybersecurity-incidents",
+    "published": "2026-09-09",
+    "date": "2026-09-09",
+    "checked": "2026-09-10",
+    "period": "2026年1月の事例を含む公開前評価の再分析。AISIが別途報告したMythos 5の事例は対象外。",
+    "primary": "開発元によるインシデント調査と再評価。METRの独立調査は契約締結が公表された段階であり、完了した結果ではない。"
   }
 }
