@@ -340,6 +340,9 @@ export default function TreeMap({
               detailLevel +
               (compact ? ' compact-layout' : '') +
               (isTour ? ' tour-map' : '') +
+              (view === 'overview' && !expanded && !isTour
+                ? ' summary-map'
+                : '') +
               (view === 'overview' && expanded && size.width >= 1000
                 ? ' named-overview'
                 : '')
@@ -384,7 +387,7 @@ export default function TreeMap({
                 highlightedTourNodes={highlightedTourNodes}
                 isTour={isTour}
                 navigationState={navigationState}
-                detailLevel={detailLevel}
+                detailLevel={phoneOverview ? 'compact' : detailLevel}
                 scale={scale}
                 screen={screen}
                 onEvidence={onEvidence}
