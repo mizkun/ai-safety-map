@@ -2,7 +2,7 @@
 import { memo, useLayoutEffect, useRef, useState, type RefObject } from 'react';
 import { ButtonBase, IconButton, Paper, Tooltip } from '@mui/material';
 import { Map as MapIcon, ChevronDown } from 'lucide-react';
-import type { TreeLayout } from '@/lib/tree-layout';
+import type { TreeLayout } from '@/lib/tree-types';
 import type { Messages } from '@/lib/i18n';
 import {
   minimapCamera,

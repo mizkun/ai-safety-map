@@ -1,0 +1,108 @@
+/* Detail prose is loaded only when requested; research records share a quiet reading layout. */
+.content-loading {
+  min-height: 180px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+.research-card.MuiAccordion-root {
+  margin: 18px 0;
+  border: 1px solid rgba(104, 94, 135, 0.16);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.5);
+  box-shadow: none;
+  overflow: hidden;
+}
+.research-card.MuiAccordion-root::before {
+  display: none;
+}
+.research-card .MuiAccordionSummary-content {
+  display: block;
+  margin: 18px 0;
+}
+.research-card .MuiAccordionSummary-content small {
+  display: block;
+  color: var(--muted);
+  margin-bottom: 6px;
+  font-size: 12px;
+}
+.research-card .MuiAccordionSummary-content strong {
+  font-size: 16px;
+  line-height: 1.6;
+  font-weight: 650;
+}
+.research-card .MuiAccordionDetails-root {
+  padding: 0 22px 20px;
+}
+.research-facts {
+  margin: 0;
+}
+.research-facts > div {
+  margin: 18px 0;
+}
+.research-facts dt {
+  font-size: 12px;
+  font-weight: 650;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+.research-facts dd {
+  margin: 0;
+  line-height: 1.85;
+  overflow-wrap: anywhere;
+}
+.source-locator {
+  font-size: 12px;
+  color: var(--muted);
+  overflow-wrap: anywhere;
+}
+.story-body {
+  max-width: 660px;
+  margin: 12px auto 28px;
+  line-height: 1.95;
+}
+.story-note {
+  color: var(--muted);
+  font-size: 13px;
+}
+.story-body section {
+  margin: 34px 0;
+}
+.story-body h3 {
+  font-size: 19px;
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+}
+.story-body h3 > span {
+  color: var(--muted);
+  font-size: 13px;
+}
+.story-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 8px;
+}
+.story-links .MuiButton-root {
+  text-align: left;
+  justify-content: flex-start;
+  font-size: 12px;
+  background: rgba(113, 99, 157, 0.05);
+  border-radius: 10px;
+}
+@media (max-width: 640px) {
+  .research-card .MuiAccordionDetails-root {
+    padding: 0 16px 16px;
+  }
+  .research-facts dd {
+    font-size: 14px;
+  }
+  .story-body {
+    font-size: 15px;
+  }
+  .story-body h3 {
+    font-size: 17px;
+  }
+}

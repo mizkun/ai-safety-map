@@ -22,7 +22,7 @@ import {
   tourKeyDirection,
   type TourStop,
 } from '@/lib/map-tour';
-import { routeColors } from '@/lib/tree-layout';
+import { routeColors } from '@/lib/map-palette';
 
 type Props = {
   data: Content;

@@ -1,4 +1,4 @@
-import type { TreeLayout, TreeTile } from './tree-layout';
+import type { TreeLayout, TreeTile } from './tree-types';
 
 const phoneLabels: Record<string, TreeTile['shortLabel']> = {
   control: 'phoneControl',

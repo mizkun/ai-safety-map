@@ -4,7 +4,7 @@ import type {
   TreeTile,
   TreeArea,
   TreeExpansion,
-} from './tree-layout';
+} from './tree-types';
 
 type Bounds = {
   key: string;

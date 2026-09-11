@@ -1,4 +1,4 @@
-import type { TreePoint } from './tree-layout';
+import type { TreePoint } from './tree-types';
 
 type BusPort = {
   key: string;

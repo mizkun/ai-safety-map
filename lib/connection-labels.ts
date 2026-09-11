@@ -1,10 +1,5 @@
-import {
-  wireGeometry,
-  forkGeometry,
-  joinGeometry,
-  type TreeLayout,
-  type TreePoint,
-} from './tree-layout.ts';
+import { wireGeometry, forkGeometry, joinGeometry } from './tree-geometry.ts';
+import type { TreeLayout, TreePoint } from './tree-types';
 import type { Content, Edge } from './content-types';
 import { overlaps, relationLabels } from './relation-labels.ts';
 

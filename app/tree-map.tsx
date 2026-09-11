@@ -1,4 +1,26 @@
 'use client';
+import { connectionLabels } from '@/lib/connection-labels';
+import type { Content } from '@/lib/content-types';
+import type { Messages } from '@/lib/i18n';
+import {
+  initialMapCamera,
+  initialMapScale,
+  scrollAtAnchor,
+  zoomAnchor,
+} from '@/lib/map-gestures.mjs';
+import {
+  mapContext,
+  type NavigationEntry,
+  type NavigationState,
+} from '@/lib/map-navigation';
+import { tourCamera, tourContext } from '@/lib/map-tour';
+import { intersectsWindow } from '@/lib/map-window.mjs';
+import { relationLabels } from '@/lib/relation-labels';
+import { treeLayout } from '@/lib/tree-layout';
+import { minimapPaths, treeGeometry } from '@/lib/tree-rendering';
+import type { TreeTile } from '@/lib/tree-types';
+import { IconButton, Paper, Tooltip } from '@mui/material';
+import { Maximize2, Minus, Plus, Scan } from 'lucide-react';
 import {
   useEffect,
   useLayoutEffect,
@@ -7,50 +29,12 @@ import {
   useState,
   type CSSProperties,
 } from 'react';
-import { ButtonBase, IconButton, Tooltip, Paper } from '@mui/material';
-import {
-  ArrowDown,
-  ArrowRight,
-  Plus,
-  Minus,
-  Maximize2,
-  Scan,
-  RotateCcw,
-  Clock3,
-  Info,
-} from 'lucide-react';
-import type { Content } from '@/lib/content-types';
-import type { Messages } from '@/lib/i18n';
-import {
-  treeLayout,
-  wireGeometry,
-  joinGeometry,
-  forkGeometry,
-  joinJunctions,
-  cardPorts,
-} from '@/lib/tree-layout';
-import { reviewStatus } from '@/lib/freshness.mjs';
+import MapCard from './diagram/map-card';
+import MapConnections from './diagram/map-connections';
+import MapMinimap from './map-minimap';
+import { useMapCamera } from './use-map-camera';
 import { useMapGestures } from './use-map-gestures';
 import { useMapWindow } from './use-map-window';
-import { useMapCamera } from './use-map-camera';
-import MapMinimap from './map-minimap';
-import EvidenceMark, { evidenceLabel } from './evidence-mark';
-import { evidenceSignal, evidenceBackgrounds } from '@/lib/current-evidence';
-import { intersectsWindow } from '@/lib/map-window.mjs';
-import {
-  initialMapScale,
-  initialMapCamera,
-  zoomAnchor,
-  scrollAtAnchor,
-} from '@/lib/map-gestures.mjs';
-import { tourCamera, tourContext } from '@/lib/map-tour';
-import { connectionLabels } from '@/lib/connection-labels';
-import { relationLabels } from '@/lib/relation-labels';
-import {
-  mapContext,
-  type NavigationEntry,
-  type NavigationState,
-} from '@/lib/map-navigation';
 
 type Props = {
   navigationState: NavigationState;
@@ -300,36 +284,7 @@ export default function TreeMap({
   const visibleTiles = layout.tiles.filter((tile) =>
     intersectsWindow(tile, visible),
   );
-  const visibleRegions = layout.regions?.filter((region) =>
-    intersectsWindow(region, visible),
-  );
-  const visibleJoins = layout.joins?.filter((join) =>
-    intersectsWindow(
-      { x: join.x - 100, y: join.y - 30, width: 200, height: 60 },
-      visible,
-    ),
-  );
-  const geometry = useMemo(
-    () => ({
-      ports: cardPorts(layout),
-      wires: new Map(
-        layout.wires.map((wire) => [wire.key, wireGeometry(wire, layout)]),
-      ),
-      forks: new Map(
-        layout.forks?.map((fork) => [fork.key, forkGeometry(fork, layout)]),
-      ),
-      joins: new Map(
-        layout.joins?.map((join) => [
-          join.edge,
-          {
-            path: joinGeometry(join, layout),
-            junctions: joinJunctions(join, layout),
-          },
-        ]),
-      ),
-    }),
-    [layout],
-  );
+  const geometry = useMemo(() => treeGeometry(layout), [layout]);
   const annotations = useMemo(() => {
     const relations = relationLabels(layout, scale);
     return {
@@ -337,19 +292,27 @@ export default function TreeMap({
       connections: connectionLabels(layout, data, scale, relations),
     };
   }, [layout, data, scale]);
-  const minimapPath = useMemo(
-    () =>
-      [
-        ...[...geometry.wires.values()].map((wire) => wire.path),
-        ...[...geometry.forks.values()].flatMap((fork) => [
-          fork.trunk,
-          ...fork.branches.map((branch) => branch.path),
-          fork.mergePath || '',
-        ]),
-        ...[...geometry.joins.values()].map((join) => join.path),
-      ].join(' '),
-    [geometry],
-  );
+  const minimapPath = useMemo(() => minimapPaths(geometry), [geometry]);
+  function activateTile(tile: TreeTile) {
+    const node = tile.node ? data.nodes[tile.node] : undefined;
+
+    if (navigationState.lens && node?.id === 'NOW') {
+      onCurrent();
+      return;
+    }
+    if (scale < 0.7 && !tile.graph) {
+      const next = Math.max(0.85, readableScale);
+      moveCamera({
+        scale: next,
+        left:
+          (tile.x + tile.width / 2) * next +
+          Math.max(0, (size.width - layout.width * next) / 2) -
+          size.width / 2,
+        top: (tile.y + tile.height / 2) * next - size.height / 2,
+      });
+    } else if (tile.graph) onRoute(tile.graph);
+    else onNode(tile.node!);
+  }
   return (
     <>
       <div
@@ -394,457 +357,41 @@ export default function TreeMap({
               } as CSSProperties
             }
           >
-            <svg
-              className="tree-wires"
-              width={paint.width * scale}
-              height={paint.height * scale}
-              viewBox={
-                visible
-                  ? `${visible.x} ${visible.y} ${visible.width} ${visible.height}`
-                  : '0 0 1 1'
-              }
-              style={{ left: 0, top: 0 }}
-              aria-hidden="true"
-            >
-              {visibleRegions?.map((region) => (
-                <rect
-                  key={region.key}
-                  x={region.x}
-                  y={region.y}
-                  width={region.width}
-                  height={region.height}
-                  rx={10 / scale}
-                  fill={region.color}
-                  fillOpacity={0.035}
-                  stroke={region.color}
-                  strokeOpacity={0.85}
-                  strokeWidth={1.5}
-                  vectorEffect="non-scaling-stroke"
-                />
-              ))}
-              {layout.forks?.map((fork) => {
-                const g = geometry.forks.get(fork.key)!;
-                return (
-                  <g
-                    key={fork.key}
-                    fill="none"
-                    strokeWidth={1.6}
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  >
-                    <path
-                      d={g.trunk}
-                      stroke={fork.color}
-                      strokeOpacity={0.85}
-                      vectorEffect="non-scaling-stroke"
-                    />
-                    {g.mergePath && (
-                      <path
-                        d={g.mergePath}
-                        stroke={fork.color}
-                        strokeOpacity={0.85}
-                        vectorEffect="non-scaling-stroke"
-                      />
-                    )}
-                    {g.branches.map((branch) => (
-                      <path
-                        key={branch.key}
-                        d={branch.path}
-                        stroke={branch.color}
-                        strokeOpacity={0.85}
-                        vectorEffect="non-scaling-stroke"
-                      />
-                    ))}
-                    {g.markers.map((p) => (
-                      <circle
-                        key={p.x + ':' + p.y}
-                        cx={p.x}
-                        cy={p.y}
-                        r={2.5 / scale}
-                        fill="#f1f3fa"
-                        stroke={fork.color}
-                        vectorEffect="non-scaling-stroke"
-                      />
-                    ))}
-                  </g>
-                );
-              })}
-              {layout.joins?.map((join) => (
-                <g key={join.edge}>
-                  <path
-                    d={geometry.joins.get(join.edge)!.path}
-                    fill="none"
-                    stroke={join.color}
-                    strokeWidth={join.edge === tourFocus?.edge ? 4 : 2}
-                    strokeOpacity={0.9}
-                    strokeLinejoin="round"
-                    strokeLinecap="round"
-                    vectorEffect="non-scaling-stroke"
-                  />
-                  {geometry.joins.get(join.edge)!.junctions.map((p) => (
-                    <circle
-                      key={p.x + ':' + p.y}
-                      cx={p.x}
-                      cy={p.y}
-                      r={2.5 / scale}
-                      fill={join.color}
-                    />
-                  ))}
-                </g>
-              ))}
-              {[...layout.wires]
-                .sort((a, b) => Number(!!b.reference) - Number(!!a.reference))
-                .map((w) => {
-                  const g = geometry.wires.get(w.key)!;
-                  const relation = w.edge
-                    ? data.edges[w.edge].relation
-                    : undefined;
-                  return (
-                    <g
-                      key={w.key}
-                      opacity={tracedEdge && w.edge !== tracedEdge ? 0.2 : 1}
-                    >
-                      {!w.reference && (
-                        <path
-                          d={g.path}
-                          fill="none"
-                          stroke="#f1f3fa"
-                          strokeWidth={5}
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          vectorEffect="non-scaling-stroke"
-                        />
-                      )}
-                      <path
-                        d={g.path}
-                        fill="none"
-                        stroke={relation === 'mitigation' ? '#348773' : w.color}
-                        strokeWidth={
-                          w.edge && w.edge === tourFocus?.edge
-                            ? 4
-                            : w.reference
-                              ? 1.5
-                              : 2
-                        }
-                        strokeOpacity={w.reference ? 0.8 : 1}
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        vectorEffect="non-scaling-stroke"
-                      />
-                      {w.edge && (
-                        <path
-                          d={g.path}
-                          fill="none"
-                          stroke="transparent"
-                          strokeWidth={18}
-                          vectorEffect="non-scaling-stroke"
-                          style={{
-                            cursor: 'pointer',
-                            pointerEvents: 'stroke',
-                          }}
-                          onClick={() => onEdge(w.edge!)}
-                          onPointerEnter={() => setTracedEdge(w.edge!)}
-                          onPointerLeave={() => setTracedEdge(null)}
-                        />
-                      )}
-                    </g>
-                  );
-                })}
-              {geometry.ports.map((port) => (
-                <path
-                  key={port.key}
-                  d={`M ${port.line.x} ${port.line.y} L ${port.x} ${port.y}`}
-                  fill="none"
-                  stroke={port.color}
-                  strokeWidth={1.6}
-                  vectorEffect="non-scaling-stroke"
-                />
-              ))}
-            </svg>
-            {annotations.relations
-              .filter((label) =>
-                intersectsWindow(
-                  {
-                    x: label.x / scale,
-                    y: label.y / scale,
-                    width: label.width / scale,
-                    height: label.height / scale,
-                  },
-                  visible,
-                ),
-              )
-              .map((label) => (
-                <Tooltip
-                  key={label.key}
-                  title={label.mode === 'all' ? m.jointHelp : m.alternativeHelp}
-                >
-                  <ButtonBase
-                    className="relation-label"
-                    style={{
-                      ...screen(label.x / scale, label.y / scale),
-                      width: label.width,
-                      height: label.height,
-                      color: label.color,
-                    }}
-                    onClick={() =>
-                      label.edge ? onEdge(label.edge) : onGuide()
-                    }
-                    aria-label={
-                      label.mode === 'all'
-                        ? 'AND · ' + m.joint
-                        : 'OR · ' + m.alternative
-                    }
-                  >
-                    {label.mode === 'all' ? 'AND' : 'OR'}
-                  </ButtonBase>
-                </Tooltip>
-              ))}
-            {visibleJoins?.map((join) => (
-              <Tooltip key={join.edge} title={data.edges[join.edge].label}>
-                <IconButton
-                  className={
-                    'wire-button' +
-                    (join.edge === tourFocus?.edge
-                      ? ' connection-tour-focus'
-                      : '')
-                  }
-                  style={{
-                    ...screen(join.x, join.y),
-                    color: join.edge === tourFocus?.edge ? '#fff' : join.color,
-                  }}
-                  aria-current={
-                    join.edge === tourFocus?.edge ? 'step' : undefined
-                  }
-                  onClick={() => onEdge(join.edge)}
-                  aria-label={
-                    m.connection + ' · ' + data.edges[join.edge].label
-                  }
-                >
-                  {layout.flow === 'horizontal' ? (
-                    <ArrowRight size={14} />
-                  ) : (
-                    <ArrowDown size={14} />
-                  )}
-                </IconButton>
-              </Tooltip>
+            <MapConnections
+              layout={layout}
+              data={data}
+              m={m}
+              scale={scale}
+              screen={screen}
+              geometry={geometry}
+              visible={visible}
+              paint={paint}
+              annotations={annotations}
+              tourFocus={tourFocus}
+              tracedEdge={tracedEdge}
+              onTrace={setTracedEdge}
+              onEdge={onEdge}
+              onGuide={onGuide}
+            />
+            {visibleTiles.map((tile) => (
+              <MapCard
+                key={tile.key}
+                tile={tile}
+                data={data}
+                m={m}
+                today={today}
+                selected={selected}
+                highlightedTourNodes={highlightedTourNodes}
+                isTour={isTour}
+                navigationState={navigationState}
+                detailLevel={detailLevel}
+                scale={scale}
+                screen={screen}
+                onEvidence={onEvidence}
+                onTerm={onTerm}
+                onActivate={() => activateTile(tile)}
+              />
             ))}
-            {annotations.connections
-              .filter((label) =>
-                intersectsWindow(
-                  {
-                    x: label.x / scale,
-                    y: label.y / scale,
-                    width: label.width / scale,
-                    height: label.height / scale,
-                  },
-                  visible,
-                ),
-              )
-              .map((label) => {
-                const DirectionIcon =
-                  layout.flow === 'horizontal' ? ArrowRight : ArrowDown;
-                return (
-                  <Tooltip key={label.key} title={data.edges[label.edge].label}>
-                    <ButtonBase
-                      className={
-                        'connection-control' +
-                        (label.edge === tourFocus?.edge
-                          ? ' connection-tour-focus'
-                          : '')
-                      }
-                      aria-current={
-                        label.edge === tourFocus?.edge ? 'step' : undefined
-                      }
-                      style={{
-                        ...screen(label.centerX / scale, label.centerY / scale),
-                        width: label.width,
-                        height: label.height,
-                        color:
-                          label.edge === tourFocus?.edge
-                            ? '#fff'
-                            : label.relation === 'mitigation'
-                              ? '#348773'
-                              : undefined,
-                      }}
-                      onClick={() => onEdge(label.edge)}
-                      aria-label={
-                        m.connection + ' · ' + data.edges[label.edge].label
-                      }
-                      onPointerEnter={() => setTracedEdge(label.edge)}
-                      onPointerLeave={() => setTracedEdge(null)}
-                      onFocus={() => setTracedEdge(label.edge)}
-                      onBlur={() => setTracedEdge(null)}
-                    >
-                      {label.relation === 'mitigation' ? (
-                        <Minus size={14} />
-                      ) : label.relation === 'feedback' ? (
-                        <RotateCcw size={14} />
-                      ) : (
-                        <DirectionIcon size={14} />
-                      )}
-                    </ButtonBase>
-                  </Tooltip>
-                );
-              })}
-            {visibleTiles.map((tile) => {
-              const node = tile.node ? data.nodes[tile.node] : undefined;
-              const tourHighlight = highlightedTourNodes.includes(
-                tile.node || '',
-              );
-              const route = tile.graph
-                ? data.routes.find((r) => r.id === tile.graph)
-                : undefined;
-              const title = tile.label
-                ? m[tile.label]
-                : node?.title || route?.shortTitle || '';
-              const due =
-                node && reviewStatus(node.review, today).state === 'due';
-              const showId =
-                detailLevel === 'reading' &&
-                node &&
-                node.id !== 'NOW' &&
-                !tile.graph;
-              const signal =
-                navigationState.lens && node && node.id !== 'NOW' && !tile.graph
-                  ? evidenceSignal(node, data.current)
-                  : null;
-              return (
-                <Paper
-                  elevation={0}
-                  key={tile.key}
-                  className={
-                    'tree-tile tile-' +
-                    tile.kind +
-                    (showId ? ' tile-identified' : '') +
-                    (signal ? ' tile-evidence-color' : '') +
-                    (selected === tile.node ? ' tile-selected' : '') +
-                    (tile.node === 'X' ? ' tile-terminal' : '') +
-                    (tile.node === 'NOW' ? ' tile-present' : '') +
-                    (tourHighlight
-                      ? ' tile-tour-focus'
-                      : isTour && tile.kind !== 'route' && tile.node !== 'NOW'
-                        ? ' tile-tour-context'
-                        : '')
-                  }
-                  style={
-                    {
-                      ...screen(tile.x, tile.y),
-                      width: tile.width * scale,
-                      height: tile.height * scale,
-                      '--branch-color': tile.color,
-                      '--evidence-background': signal
-                        ? evidenceBackgrounds[signal]
-                        : undefined,
-                    } as CSSProperties
-                  }
-                >
-                  {showId && <span className="node-id tile-id">{node.id}</span>}
-                  {signal && node && detailLevel === 'reading' && (
-                    <div className="tile-signals">
-                      <Tooltip
-                        title={
-                          evidenceLabel(signal, m) + ' · ' + node.shortTitle
-                        }
-                      >
-                        <ButtonBase
-                          className="tile-evidence-button"
-                          onClick={() => onEvidence(node.id)}
-                          aria-label={
-                            node.id + ' · ' + evidenceLabel(signal, m)
-                          }
-                        >
-                          <EvidenceMark signal={signal} size={15} />
-                        </ButtonBase>
-                      </Tooltip>
-                      {data.current.safeguards[node.id] && (
-                        <Tooltip title={m.signalMitigation}>
-                          <ButtonBase
-                            className="tile-safeguard-button"
-                            onClick={() => onEvidence(node.id)}
-                            aria-label={node.id + ' · ' + m.signalMitigation}
-                          >
-                            <EvidenceMark signal="mitigation" size={15} />
-                          </ButtonBase>
-                        </Tooltip>
-                      )}
-                    </div>
-                  )}
-                  <ButtonBase
-                    className="tile-open"
-                    aria-current={tourHighlight ? 'step' : undefined}
-                    onClick={() => {
-                      if (navigationState.lens && node?.id === 'NOW') {
-                        onCurrent();
-                        return;
-                      }
-                      if (scale < 0.7 && !tile.graph) {
-                        const next = Math.max(0.85, readableScale);
-                        moveCamera({
-                          scale: next,
-                          left:
-                            (tile.x + tile.width / 2) * next +
-                            Math.max(
-                              0,
-                              (size.width - layout.width * next) / 2,
-                            ) -
-                            size.width / 2,
-                          top:
-                            (tile.y + tile.height / 2) * next - size.height / 2,
-                        });
-                      } else if (tile.graph) onRoute(tile.graph);
-                      else onNode(tile.node!);
-                    }}
-                    aria-label={
-                      title + ' · ' + (tile.graph ? m.branch : m.read)
-                    }
-                  >
-                    <span className="tile-eyebrow">
-                      <span className="tile-dot" />
-                      {tile.kind === 'research' ? (
-                        <RotateCcw size={15} />
-                      ) : tile.node === 'NOW' ? (
-                        detailLevel === 'atlas' ? (
-                          m.present
-                        ) : (
-                          data.asOf
-                        )
-                      ) : (
-                        route?.number || node?.id
-                      )}
-                      {due && (
-                        <span className="tile-review" title={m.due}>
-                          <Clock3 size={14} />
-                        </span>
-                      )}
-                    </span>
-                    <span className="tile-title">
-                      {tile.shortLabel
-                        ? m[tile.shortLabel]
-                        : tile.label
-                          ? m[tile.label]
-                          : node?.shortTitle || title}
-                    </span>
-                  </ButtonBase>
-                  {detailLevel === 'reading' && !!node?.topics?.length && (
-                    <div className="tile-topics">
-                      {node.topics.map((id) => (
-                        <ButtonBase
-                          key={id}
-                          className="tile-topic"
-                          onClick={() => onTerm(id)}
-                          aria-label={
-                            data.glossary[id].name + ' · ' + m.definition
-                          }
-                        >
-                          {data.glossary[id].name.split('（')[0]}
-                          <Info size={12} />
-                        </ButtonBase>
-                      ))}
-                    </div>
-                  )}
-                </Paper>
-              );
-            })}
             {scale >= 0.5 &&
               geometry.ports
                 .filter((port) =>

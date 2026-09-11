@@ -1,63 +1,10 @@
-import {
-  wireGeometry,
-  type TreeLayout,
-  type TreePoint,
-} from './tree-layout.ts';
-import { compactAxis, projectAxis } from './axis-compaction.mjs';
+import type { TreeLayout, TreePoint } from './tree-types';
+import { wireGeometry } from './tree-geometry.ts';
+import { compactAxis } from './axis-compaction.mjs';
+import { projectTreePoint } from './tree-projection.ts';
 
 const FLOW_SCALE = 1.8;
 const BRANCH_SCALE = 0.36;
-
-export function horizontalPoint(p: TreePoint, layout: TreeLayout): TreePoint {
-  if (layout.flow === 'vertical')
-    return {
-      x:
-        projectAxis(layout.projection!.branch, p.x) +
-        (layout.projection!.offsetX || 0),
-      y:
-        projectAxis(layout.projection!.flow, p.y) +
-        (layout.projection!.offsetY || 0),
-    };
-  return {
-    x:
-      projectAxis(layout.projection!.flow, p.y) +
-      (layout.projection!.offsetX || 0),
-    y:
-      projectAxis(layout.projection!.branch, p.x) +
-      (layout.projection!.offsetY || 0),
-  };
-}
-
-export function horizontalPath(path: string, layout: TreeLayout) {
-  const tokens = path.match(/[MLHVQC]|-?\d+(?:\.\d+)?(?:e[+-]?\d+)?/gi) || [];
-  let i = 0,
-    result = '';
-  while (i < tokens.length) {
-    const command = tokens[i++];
-    if (command === 'H')
-      result +=
-        layout.flow === 'vertical'
-          ? ` H ${projectAxis(layout.projection!.branch, Number(tokens[i++])) + (layout.projection!.offsetX || 0)}`
-          : ` V ${projectAxis(layout.projection!.branch, Number(tokens[i++])) + (layout.projection!.offsetY || 0)}`;
-    else if (command === 'V')
-      result +=
-        layout.flow === 'vertical'
-          ? ` V ${projectAxis(layout.projection!.flow, Number(tokens[i++])) + (layout.projection!.offsetY || 0)}`
-          : ` H ${projectAxis(layout.projection!.flow, Number(tokens[i++])) + (layout.projection!.offsetX || 0)}`;
-    else {
-      const pairs = command === 'C' ? 3 : command === 'Q' ? 2 : 1;
-      result += ' ' + command;
-      for (let pair = 0; pair < pairs; pair++) {
-        const p = horizontalPoint(
-          { x: Number(tokens[i++]), y: Number(tokens[i++]) },
-          layout,
-        );
-        result += ` ${p.x} ${p.y}`;
-      }
-    }
-  }
-  return result.trim();
-}
 
 export function horizontalTreeLayout(
   source: TreeLayout,
@@ -108,7 +55,7 @@ export function horizontalTreeLayout(
   };
   const flow = vertical ? ('vertical' as const) : ('horizontal' as const);
   const projected = { ...source, projection, flow };
-  const point = (p: TreePoint) => horizontalPoint(p, projected);
+  const point = (p: TreePoint) => projectTreePoint(p, projected);
   const rect = <
     T extends { x: number; y: number; width: number; height: number },
   >(

@@ -2,7 +2,30 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { contentPackage } from '../lib/content-package.mjs';
 import { readSiteContent } from '../lib/read-site-content.mjs';
+import { readDetailPackage } from '../lib/detail-package.mjs';
 const full = readSiteContent();
+test('detail loading rejects a preview, a wrong edition, and an incomplete node package', () => {
+  const packed = contentPackage(full);
+  for (const locale of ['ja', 'en']) {
+    const nodeIds = Object.keys(packed.shell.content[locale].nodes);
+    assert.equal(
+      readDetailPackage(full.content, locale, nodeIds),
+      full.content[locale],
+    );
+    assert.throws(() =>
+      readDetailPackage(packed.shell.content, locale, nodeIds),
+    );
+    assert.throws(() => readDetailPackage({}, locale, nodeIds));
+    const incomplete = structuredClone(full.content);
+    delete incomplete[locale].nodes.R0;
+    assert.throws(() => readDetailPackage(incomplete, locale, nodeIds));
+  }
+  const renamedMap = {
+    ja: { nodes: { ENTRY: { body: { 概要: 'A valid explanation.' } } } },
+  };
+  assert.equal(readDetailPackage(renamedMap, 'ja', ['ENTRY']), renamedMap.ja);
+  assert.throws(() => readDetailPackage(renamedMap, 'en', ['ENTRY']));
+});
 test('initial map excludes detailed prose and preserves causal relationships', () => {
   const packed = contentPackage(full),
     shell = packed.shell.content.ja;

@@ -1,11 +1,12 @@
 'use client';
-import type { ReactNode } from 'react';
-import { Button, ButtonBase, Chip, TextField, Typography } from '@mui/material';
-import { ArrowRight, ArrowUpRight, Search } from 'lucide-react';
 import type { Content } from '@/lib/content-types';
 import type { Messages } from '@/lib/i18n';
-const REPO = 'https://github.com/mizkun/ai-safety-map';
-export type Panel = 'about' | 'glossary' | 'history' | 'sources';
+import type { LibraryPanel } from '@/lib/map-navigation';
+import { repositoryUrl as REPO } from '@/lib/site-config';
+import { Button, ButtonBase, Chip, TextField, Typography } from '@mui/material';
+import { ArrowRight, ArrowUpRight, Search } from 'lucide-react';
+import type { ReactNode } from 'react';
+export type Panel = LibraryPanel;
 type Props = {
   panel: Panel;
   data: Content;

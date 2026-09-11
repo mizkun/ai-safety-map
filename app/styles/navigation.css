@@ -1,0 +1,107 @@
+/* Keep disclosure headings stable when their content grows. */
+.detail-scroll,
+.MuiDialogContent-root {
+  overflow-anchor: none;
+}
+.research-card,
+.question {
+  scroll-margin-top: 12px;
+}
+@media (max-width: 760px) {
+  .MuiDialog-paper,
+  .MuiMenu-paper {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    background: #f7f9fc !important;
+  }
+}
+.language-switch.MuiButtonBase-root {
+  min-width: 38px;
+  height: 36px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #5b6c80;
+  border-radius: 999px;
+}
+.language-switch.MuiButtonBase-root:hover {
+  background: #6b81a110;
+}
+.header-scope.MuiToggleButtonGroup-root {
+  gap: 2px;
+}
+.header-scope.MuiToggleButtonGroup-root .MuiToggleButton-root {
+  margin: 0;
+  border-radius: 999px;
+}
+.header-scope .MuiToggleButton-root {
+  min-height: 36px;
+  padding: 6px 12px;
+  border: 0;
+  border-radius: 999px;
+  font-size: 12px;
+  line-height: 1.2;
+  font-weight: 600;
+  letter-spacing: 0;
+  text-transform: none;
+  white-space: nowrap;
+  color: #6b6e84;
+}
+.header-scope .MuiToggleButton-root.Mui-selected {
+  background: #7b70a61a;
+  color: #5a477d;
+}
+.header-scope .MuiToggleButton-root.Mui-selected:hover {
+  background: #7b70a624;
+}
+.header-divider {
+  width: 1px;
+  height: 18px;
+  margin: 0 6px;
+  background: #77829b26;
+}
+.map-app:not(.has-tour) .tree-viewport {
+  top: 72px;
+  bottom: 68px;
+}
+.map-app:not(.has-tour) .map-breadcrumb + .tree-viewport {
+  top: 104px;
+}
+.MuiFab-root.tour-launch {
+  position: absolute;
+  right: 26px;
+  bottom: max(22px, env(safe-area-inset-bottom));
+  z-index: 6;
+  height: 52px;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 700;
+  padding: 8px 17px;
+  min-width: 104px;
+  min-height: 40px;
+  color: #fff;
+  border: 1px solid #ffffffad;
+  border-radius: 999px;
+  background: linear-gradient(145deg, #4879a5, #375f8c);
+  box-shadow:
+    0 4px 12px #345c8428,
+    inset 0 1px 0 #ffffff35;
+  white-space: nowrap;
+}
+.MuiFab-root.tour-launch:hover {
+  background: #315a84;
+}
+@media (max-width: 760px) {
+  .brand-pill span {
+    display: none;
+  }
+  .brand-pill .MuiButtonBase-root {
+    padding: 10px;
+  }
+  .MuiFab-root.tour-launch {
+    right: 12px;
+    bottom: max(12px, env(safe-area-inset-bottom));
+    height: 52px;
+    min-width: 100px;
+    padding: 0 16px;
+  }
+}

@@ -1,0 +1,144 @@
+/* A corner navigator with a live viewport, separate from the reading panel. */
+.MuiPaper-root.map-minimap {
+  position: absolute;
+  z-index: 5;
+  right: 20px;
+  bottom: max(18px, env(safe-area-inset-bottom));
+  width: 276px;
+  border-radius: 18px;
+  border: 1px solid #fff;
+  background: linear-gradient(145deg, #fffffffa, #edf2fafa);
+  box-shadow:
+    0 8px 30px #34466c20,
+    inset 0 1px 0 #fff;
+  overflow: hidden;
+}
+.minimap-heading {
+  display: flex;
+  align-items: center;
+  min-height: 36px;
+  padding: 2px 6px 0 14px;
+  gap: 6px;
+}
+.minimap-heading > span {
+  flex: 1;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-size: 12px;
+  font-weight: 600;
+  color: #445671;
+}
+.minimap-heading .MuiIconButton-root {
+  width: 32px;
+  height: 32px;
+}
+.MuiButtonBase-root.minimap-surface {
+  display: block;
+  width: 100%;
+  height: 144px;
+  padding: 4px 12px 12px;
+  cursor: crosshair;
+}
+.minimap-surface svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.minimap-surface:focus-visible {
+  outline: 2px solid #386eb3;
+  outline-offset: -4px;
+}
+.MuiPaper-root.map-minimap.minimap-closed {
+  width: 44px;
+  border-radius: 50%;
+}
+.minimap-closed > .MuiIconButton-root {
+  width: 42px;
+  height: 42px;
+  color: #42648b;
+}
+@media (max-width: 900px) {
+  .MuiPaper-root.map-minimap {
+    right: 12px;
+    bottom: calc(var(--tour-panel-height) + 16px);
+    width: 244px;
+  }
+  .MuiButtonBase-root.minimap-surface {
+    height: 128px;
+  }
+}
+@media (max-height: 540px) and (min-width: 640px) {
+  .MuiPaper-root.map-minimap {
+    right: 12px;
+    bottom: 12px;
+  }
+}
+@media (max-width: 900px) and (orientation: portrait) {
+  .MuiPaper-root.map-minimap {
+    right: 8px;
+    bottom: calc(var(--tour-panel-height) + var(--tour-bottom) + 8px);
+    width: min(244px, calc(100vw - 72px));
+  }
+  .has-tour .map-controls {
+    bottom: calc(var(--tour-panel-height) + var(--tour-bottom) + 58px);
+  }
+  .minimap-open {
+    max-height: calc(100dvh - var(--tour-panel-height) - 88px);
+  }
+  .map-minimap.minimap-open + .map-controls {
+    visibility: hidden;
+  }
+  .minimap-open .minimap-surface {
+    height: min(128px, calc(100dvh - var(--tour-panel-height) - 130px));
+  }
+}
+.welcome-dialog .MuiDialogTitle-root {
+  padding: 22px 22px 8px;
+  font-size: 20px;
+}
+.welcome-dialog .MuiDialogContent-root {
+  padding: 10px 26px;
+}
+.welcome-feature {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  margin: 18px 0;
+}
+.welcome-feature > svg {
+  flex-shrink: 0;
+  color: #625aad;
+  margin-top: 3px;
+}
+.welcome-feature h3 {
+  font-size: 15px;
+  line-height: 1.5;
+  margin: 0 0 4px;
+}
+.welcome-feature p {
+  font-size: 14px;
+  line-height: 1.7;
+  margin: 0;
+  color: #657086;
+}
+.welcome-dialog .MuiDialogActions-root {
+  padding: 8px 22px 24px;
+  gap: 6px;
+}
+.welcome-dialog .MuiDialogActions-root .MuiButton-root {
+  font-size: 13px;
+  padding: 9px 12px;
+}
+@media (max-width: 420px) {
+  .welcome-dialog.MuiPaper-root {
+    margin: 16px;
+    width: calc(100% - 32px);
+  }
+  .welcome-dialog .MuiDialogTitle-root {
+    font-size: 18px;
+  }
+  .welcome-dialog .MuiDialogActions-root {
+    flex-wrap: wrap;
+  }
+}

@@ -1,0 +1,532 @@
+/* The reading rail and the diagram form one illustrated tour. Only the current route mounts. */
+.has-tour {
+  --tour-width: clamp(330px, 31vw, 440px);
+}
+.MuiPaper-root.tour-panel {
+  position: absolute;
+  left: 20px;
+  top: 72px;
+  bottom: 18px;
+  width: var(--tour-width);
+  z-index: 4;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  color: #29384c;
+  border: 1px solid #fff;
+  border-radius: 24px;
+  background: linear-gradient(145deg, #ffffffef, #f8f9fbe8);
+  box-shadow:
+    0 12px 40px #35436712,
+    inset 0 1px 0 #fff;
+}
+.tour-route-select {
+  width: 100%;
+  font: inherit;
+  font-weight: 650;
+  font-size: 15px;
+  color: #29384c;
+  padding: 5px 24px 6px 0;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  min-height: 38px;
+}
+.tour-body {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
+  overscroll-behavior: contain;
+  overflow-anchor: none;
+  scrollbar-width: thin;
+  scrollbar-color: #c6cbd6 transparent;
+}
+.tour-body:focus {
+  outline: none;
+}
+.tour-chapter {
+  box-sizing: border-box;
+  min-height: 100%;
+  padding: 16px 22px 28px;
+  scroll-margin-top: 0;
+}
+.tour-scene-number {
+  font-size: 38px;
+  line-height: 1;
+  font-weight: 400;
+  letter-spacing: -0.06em;
+  opacity: 0.65;
+}
+.tour-panel h2 {
+  font-size: 20px;
+  line-height: 1.5;
+  letter-spacing: -0.025em;
+  font-weight: 650;
+  margin: 0 0 12px;
+  text-wrap: pretty;
+}
+.tour-node-heading {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+}
+.tour-node-heading h2 {
+  flex: 1;
+  min-width: 0;
+}
+.tour-prose {
+  font-size: 16px;
+  line-height: 1.95;
+}
+.tour-prose p {
+  margin: 0 0 1.1em;
+}
+.tour-prose p:first-child {
+  color: #273647;
+}
+.tour-node-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 20px;
+}
+.tour-node-list .MuiButtonBase-root {
+  gap: 6px;
+  padding: 7px 9px;
+  min-height: 36px;
+  border: 1px solid #d9e0e9;
+  border-radius: 10px;
+  color: #475773;
+  text-align: left;
+  font-size: 11px;
+  line-height: 1.5;
+  background: #ffffff8a;
+}
+.tour-node-list .MuiButtonBase-root svg {
+  flex-shrink: 0;
+}
+.tour-node-list [aria-pressed='true'] {
+  box-shadow: 0 0 0 1px var(--tour-color);
+  background: #f0f3fa;
+}
+.tour-note {
+  display: block;
+  font-size: 12px;
+  line-height: 1.8;
+  color: #697385;
+  margin-top: 20px;
+}
+.tour-outlook {
+  padding: 16px;
+  margin-top: 28px;
+  border: 1px solid #fff;
+  border-radius: 16px;
+  background: #eef2f78c;
+  box-shadow: 0 4px 16px #26395507;
+}
+.tour-outlook strong {
+  font-size: 12px;
+  font-weight: 600;
+}
+.tour-outlook p {
+  font-size: 13px;
+  line-height: 1.9;
+  margin: 8px 0 0;
+}
+.tour-panel .tour-read {
+  margin-top: 10px;
+  font-size: 12px;
+}
+.tour-chapter-track {
+  display: flex;
+  flex-shrink: 0;
+  padding: 0 22px;
+  gap: 6px;
+}
+.tour-chapter-track .MuiButtonBase-root {
+  flex: 1;
+  height: 22px;
+  border-radius: 6px;
+}
+.tour-chapter-track span {
+  display: block;
+  width: 100%;
+  height: 3px;
+  background: #dce2ea;
+  border-radius: 99px;
+}
+.tour-chapter-track [aria-current='step'] span {
+  background: var(--tour-color);
+}
+.tour-navigation {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4px;
+  padding: 4px 16px 14px;
+  flex-shrink: 0;
+}
+.tour-navigation .MuiButton-root {
+  min-height: 38px;
+  border-radius: 12px;
+  font-size: 12px;
+  white-space: nowrap;
+}
+.tour-navigation .MuiButton-contained {
+  background: var(--tour-color);
+}
+.tour-navigation output {
+  font-size: 10px;
+  color: #6f7887;
+  text-align: center;
+}
+.has-tour .tree-viewport {
+  left: calc(var(--tour-width) + 36px);
+  right: 10px;
+  top: 130px;
+  bottom: 82px;
+}
+.has-tour .map-controls {
+  left: calc(var(--tour-width) + 56px);
+}
+.MuiPaper-root.tree-tile.tile-tour-focus {
+  border-color: var(--branch-color);
+  background: linear-gradient(
+    145deg,
+    #fff,
+    color-mix(in srgb, var(--branch-color) 12%, #f8fbff)
+  );
+  box-shadow:
+    0 0 0 2px var(--branch-color),
+    0 0 0 6px color-mix(in srgb, var(--branch-color) 12%, transparent),
+    0 8px 22px #42547928,
+    inset 0 1px 0 #fff;
+}
+.MuiPaper-root.tree-tile.tile-tour-context {
+  opacity: 0.72;
+  box-shadow: 0 2px 6px #3543670d;
+}
+.map-breadcrumb {
+  position: absolute;
+  z-index: 4;
+  top: 68px;
+  left: 32px;
+  max-width: calc(100% - 280px);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 12px;
+  line-height: 24px;
+  color: #70778b;
+}
+.map-breadcrumb strong {
+  font-weight: 600;
+  color: #35425d;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.map-breadcrumb + .tree-viewport {
+  top: 112px;
+}
+.MuiButtonBase-root.map-factor-control {
+  position: absolute;
+  display: flex;
+  gap: 8px;
+  min-height: 32px;
+  padding: 5px 10px;
+  white-space: nowrap;
+  color: #286957;
+  background: #f7fbfbea;
+  border: 1px solid #cfded9;
+  border-radius: 11px;
+  box-shadow: 0 3px 12px #244b4210;
+  font-size: 12px;
+}
+.map-factor-control small {
+  font-size: 10px;
+  color: #697d76;
+}
+.MuiButtonBase-root.map-factor-control.factor-compact {
+  min-height: 24px;
+  font-size: 10px;
+  padding: 2px 6px;
+  gap: 3px;
+}
+.MuiButtonBase-root.compact-influence {
+  width: 26px;
+  height: 26px;
+  min-width: 0;
+  padding: 0;
+  border-radius: 50%;
+}
+@media (max-width: 900px) {
+  .MuiPaper-root.tour-panel {
+    top: auto;
+    left: 8px;
+    right: 8px;
+    bottom: 8px;
+    width: auto;
+    height: 51dvh;
+    border-radius: 20px;
+  }
+  .tour-route-select {
+    min-height: 32px;
+    font-size: 14px;
+  }
+  .tour-reading-hint {
+    display: none;
+  }
+  .tour-chapter {
+    padding: 14px 20px 32px;
+  }
+  .tour-scene-number {
+    font-size: 24px;
+  }
+  .tour-panel h2 {
+    font-size: 22px;
+    line-height: 1.5;
+    margin: 10px 0 14px;
+  }
+  .tour-prose {
+    font-size: 15px;
+    line-height: 1.85;
+  }
+  .tour-node-list .MuiButtonBase-root {
+    min-height: 44px;
+  }
+  .tour-chapter-track {
+    padding: 0 18px;
+  }
+  .tour-navigation {
+    padding: 0 12px 8px;
+  }
+  .tour-navigation .MuiButton-root {
+    min-height: 38px;
+  }
+  .has-tour .tree-viewport {
+    left: 0;
+    right: 0;
+    top: 82px;
+    bottom: calc(var(--tour-panel-height) + 50px);
+  }
+  .has-tour .map-controls {
+    left: 12px;
+    bottom: calc(var(--tour-panel-height) + 16px);
+  }
+  .has-tour .zoom-controls .MuiIconButton-root {
+    width: 30px;
+    height: 30px;
+  }
+  .has-tour .tour-figure-caption {
+    display: none;
+  }
+  .map-breadcrumb {
+    left: 18px;
+    top: 68px;
+    max-width: calc(100% - 280px);
+    font-size: 11px;
+  }
+  .map-breadcrumb + .tree-viewport {
+    top: 112px;
+  }
+}
+@media (max-height: 540px) and (min-width: 640px) {
+  .has-tour {
+    --tour-width: 300px;
+  }
+  .MuiPaper-root.tour-panel {
+    left: 12px;
+    top: 76px;
+    bottom: 8px;
+    right: auto;
+    width: var(--tour-width);
+    height: auto;
+  }
+  .has-tour .tree-viewport {
+    left: 324px;
+    right: 0;
+    top: 76px;
+    bottom: 66px;
+  }
+  .has-tour .map-controls {
+    left: 334px;
+    bottom: 12px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .tour-body {
+    scroll-behavior: auto;
+  }
+}
+.MuiButtonBase-root.connection-control {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  display: inline-flex;
+  gap: 5px;
+  padding: 0;
+  white-space: nowrap;
+  color: #617595;
+  background: #f8fbfef5;
+  border: 1px solid #b7c6d6;
+  border-radius: 99px;
+  font-size: 11px;
+}
+.connection-control::after {
+  content: '';
+  position: absolute;
+  min-width: 36px;
+  min-height: 36px;
+  inset: -3px;
+}
+.connection-control:focus-visible {
+  outline: 2px solid #5578a8;
+  outline-offset: 2px;
+}
+@keyframes tour-scene-in {
+  from {
+    opacity: 0.35;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.has-tour .tree-viewport {
+  animation: tour-scene-in 280ms ease-out;
+}
+@media (prefers-reduced-motion: reduce) {
+  .has-tour .tree-viewport {
+    animation: none;
+  }
+}
+@media (max-width: 760px) {
+  .map-breadcrumb {
+    top: 64px;
+    max-width: calc(100% - 35px);
+  }
+  .map-breadcrumb + .tree-viewport {
+    top: 145px;
+  }
+}
+.map-breadcrumb .MuiButtonBase-root {
+  border-radius: 5px;
+  padding: 2px 4px;
+  color: #6554a3;
+  flex-shrink: 0;
+}
+.tour-location {
+  padding: 10px 16px 6px;
+  flex-shrink: 0;
+}
+.tour-route-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.tour-route-row .MuiIconButton-root {
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+}
+.tour-location select {
+  min-width: 0;
+  flex: 1;
+  max-width: 100%;
+  text-overflow: ellipsis;
+}
+.tour-route-select {
+  font-size: 14px;
+}
+.tour-step-select {
+  width: 100%;
+  font: inherit;
+  font-size: 13px;
+  min-height: 34px;
+  color: #344761;
+  background: transparent;
+  border: 0;
+  padding: 4px 20px 4px 0;
+}
+.tour-step-picker {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 2px 0 0 3px;
+}
+.tour-nesting {
+  flex-shrink: 0;
+  color: #8b9ab0;
+}
+.tour-step-group {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+  flex: 1;
+  padding: 0 8px;
+  border: 1px solid #fff;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #e9eff780, #f3f5fb);
+  box-shadow: inset 0 1px 0 #fff;
+}
+.tour-count {
+  flex-shrink: 0;
+  font-size: 11px;
+  font-variant-numeric: tabular-nums;
+  color: #6c7890;
+  white-space: nowrap;
+}
+.tour-chapter.is-reading {
+  animation: tour-step-in 180ms ease-out;
+}
+@keyframes tour-step-in {
+  from {
+    opacity: 0.35;
+    transform: translateX(7px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .tour-chapter.is-reading {
+    animation: none;
+  }
+}
+.tour-node-context {
+  font-size: 15px;
+  line-height: 1.9;
+}
+.tour-node-context h3 {
+  font-size: 14px;
+  margin: 24px 0 8px;
+  color: #52647e;
+  font-weight: 600;
+}
+.tour-node-context p {
+  margin: 0 0 12px;
+}
+.tour-navigation output {
+  font-size: 12px;
+}
+.has-tour .tree-viewport {
+  top: 88px;
+}
+@media (max-width: 900px) {
+  .tour-location {
+    padding: 0 16px 6px;
+  }
+  .tour-step-select {
+    min-height: 30px;
+  }
+  .has-tour .tree-viewport {
+    top: 78px;
+  }
+}
+@media (max-height: 540px) and (min-width: 640px) {
+  .has-tour .tree-viewport {
+    top: 76px;
+  }
+}

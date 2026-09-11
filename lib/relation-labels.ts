@@ -1,4 +1,5 @@
-import { forkGeometry, type TreeLayout } from './tree-layout.ts';
+import { forkGeometry } from './tree-geometry.ts';
+import type { TreeLayout } from './tree-types';
 
 type Rect = { x: number; y: number; width: number; height: number };
 export type RelationLabel = Rect & {

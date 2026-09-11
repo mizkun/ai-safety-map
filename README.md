@@ -46,6 +46,12 @@ Meaningful corrections are recorded in `content/history.json` and shown in the s
 
 The map is a static site hosted on GitHub Pages at **https://ai-safety-map.org/**. No account or database is needed to read it. Content is versioned in Git and reviewed through pull requests.
 
+See [Architecture](ARCHITECTURE.md) for the application modules, layout pipeline,
+style organization, and verification boundaries. UI composition lives in `app/`,
+pure layout and content logic in `lib/`, and validation and regression tests in
+`scripts/`. Reading dialogs and diagram components are grouped by responsibility;
+the app uses Material UI and Emotion throughout.
+
 | Path | Purpose |
 | --- | --- |
 | `content/map.json` | Scenarios, connections, and condition groups |

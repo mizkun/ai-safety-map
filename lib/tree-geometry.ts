@@ -1,0 +1,408 @@
+import type {
+  TreePoint,
+  TreeWire,
+  TreeLayout,
+  TreeFork,
+  TreeJoin,
+} from './tree-types';
+import { roundedBus } from './rounded-bus.ts';
+import { projectTreePoint, projectTreePath } from './tree-projection.ts';
+
+// Rounding stays inside the routed segments, preserving the clearances around cards.
+export function roundedPath(points: TreePoint[], radius = 14) {
+  const clean = points.filter(
+    (p, i) => i === 0 || p.x !== points[i - 1].x || p.y !== points[i - 1].y,
+  );
+  if (!clean.length) return '';
+  let path = `M ${clean[0].x} ${clean[0].y}`;
+  for (let i = 1; i < clean.length - 1; i++) {
+    const a = clean[i - 1],
+      b = clean[i],
+      c = clean[i + 1];
+    const before = Math.hypot(b.x - a.x, b.y - a.y),
+      after = Math.hypot(c.x - b.x, c.y - b.y);
+    const r = Math.min(radius, before / 2, after / 2);
+    if ((b.x - a.x) * (c.y - b.y) === (b.y - a.y) * (c.x - b.x)) {
+      path += ` L ${b.x} ${b.y}`;
+      continue;
+    }
+    path += ` L ${b.x + ((a.x - b.x) * r) / before} ${b.y + ((a.y - b.y) * r) / before}`;
+    path += ` Q ${b.x} ${b.y} ${b.x + ((c.x - b.x) * r) / after} ${b.y + ((c.y - b.y) * r) / after}`;
+  }
+  if (clean.length > 1) path += ` L ${clean.at(-1)!.x} ${clean.at(-1)!.y}`;
+  return path;
+}
+export function wireGeometry(
+  wire: TreeWire,
+  layout: TreeLayout,
+): {
+  path: string;
+  x: number;
+  y: number;
+  direction: 'up' | 'down' | 'left' | 'right';
+  points?: TreePoint[];
+} {
+  if (layout.source) {
+    const source = wireGeometry(wire, layout.source);
+    const points = source.points?.map((p) => projectTreePoint(p, layout));
+    const direction = {
+      up: 'left',
+      down: 'right',
+      left: 'up',
+      right: 'down',
+    } as const;
+    return {
+      ...source,
+      ...projectTreePoint(source, layout),
+      points,
+      path: points ? roundedPath(points) : projectTreePath(source.path, layout),
+      direction:
+        layout.flow === 'vertical'
+          ? source.direction
+          : direction[source.direction],
+    };
+  }
+  const from =
+      layout.tiles.find((n) => n.key === wire.from) ||
+      layout.regions?.find((n) => n.key === wire.from) ||
+      layout.areas?.find((n) => n.key === wire.from),
+    to =
+      layout.tiles.find((n) => n.key === wire.to) ||
+      layout.regions?.find((n) => n.key === wire.to) ||
+      layout.areas?.find((n) => n.key === wire.to);
+  if (!from || !to) throw new Error('Missing wire endpoint: ' + wire.key);
+  const fromFraction = wire.fromFraction ?? 0.5,
+    toFraction = wire.toFraction ?? 0.5;
+  const x1 = from.x + from.width * fromFraction,
+    y1 = from.y + from.height + 3,
+    x2 = to.x + to.width * toFraction,
+    y2 = to.y - 5;
+  function routed(
+    points: TreePoint[],
+    x: number,
+    y: number,
+    direction: 'up' | 'down' | 'left' | 'right',
+  ) {
+    return { points, path: roundedPath(points), x, y, direction };
+  }
+  if (wire.viaY !== undefined) {
+    const startX = wire.sourceSide === 'left' ? from.x : from.x + from.width;
+    const outsideX =
+      startX + (wire.sourceSide === 'left' ? -1 : 1) * (wire.trackOffset ?? 35);
+    const startY = from.y + from.height * fromFraction;
+    if (wire.targetSide) {
+      const targetX = to.x - 38;
+      const endY = to.y + to.height * toFraction;
+      return routed(
+        [
+          { x: startX, y: startY },
+          { x: outsideX, y: startY },
+          { x: outsideX, y: wire.viaY },
+          { x: targetX, y: wire.viaY },
+          { x: targetX, y: endY },
+          { x: to.x - 5, y: endY },
+        ],
+        (outsideX + targetX) / 2,
+        wire.viaY,
+        targetX < outsideX ? 'left' : 'right',
+      );
+    }
+    // When the detour lane nearly meets the destination, one clear vertical
+    // lane is enough. Do not turn twice just to move sideways a few pixels.
+    const clear = (a: TreePoint, b: TreePoint) =>
+      !layout.tiles.some(
+        (tile) =>
+          tile.key !== wire.from &&
+          tile.key !== wire.to &&
+          Math.min(a.x, b.x) < tile.x + tile.width &&
+          Math.max(a.x, b.x) > tile.x &&
+          Math.min(a.y, b.y) < tile.y + tile.height &&
+          Math.max(a.y, b.y) > tile.y,
+      );
+    const corner = { x: x2, y: startY };
+    if (
+      Math.abs(outsideX - x2) <= 32 &&
+      y2 > startY &&
+      (wire.sourceSide === 'left' ? x2 < startX : x2 > startX) &&
+      clear({ x: startX, y: startY }, corner) &&
+      clear(corner, { x: x2, y: y2 })
+    ) {
+      return routed(
+        [{ x: startX, y: startY }, corner, { x: x2, y: y2 }],
+        x2,
+        (startY + y2) / 2,
+        'down',
+      );
+    }
+    return routed(
+      [
+        { x: startX, y: startY },
+        { x: outsideX, y: startY },
+        { x: outsideX, y: wire.viaY },
+        { x: x2, y: wire.viaY },
+        { x: x2, y: y2 },
+      ],
+      (outsideX + x2) / 2,
+      wire.viaY,
+      x2 < outsideX ? 'left' : 'right',
+    );
+  }
+  if (wire.viaX !== undefined) {
+    const startY = from.y + from.height * fromFraction;
+    const endY = to.y + to.height * toFraction;
+    const startX = wire.viaX < from.x ? from.x : from.x + from.width;
+    const endX = wire.viaX < to.x ? to.x - 5 : to.x + to.width + 5;
+    return routed(
+      [
+        { x: startX, y: startY },
+        { x: wire.viaX, y: startY },
+        { x: wire.viaX, y: endY },
+        { x: endX, y: endY },
+      ],
+      wire.viaX,
+      (startY + endY) / 2,
+      endY < startY ? 'up' : 'down',
+    );
+  }
+  if (from.y === to.y) {
+    const leftward = from.x > to.x;
+    const start = leftward ? from.x : from.x + from.width;
+    const end = leftward ? to.x + to.width + 5 : to.x - 5;
+    return routed(
+      [
+        { x: start, y: from.y + from.height / 2 },
+        { x: end, y: to.y + to.height / 2 },
+      ],
+      (start + end) / 2,
+      from.y + from.height / 2,
+      leftward ? 'left' : 'right',
+    );
+  }
+  if (y2 < y1) {
+    const x = from.x + from.width + 78;
+    return {
+      path: `M ${from.x + from.width} ${from.y + from.height / 2} C ${x} ${from.y + from.height / 2}, ${x} ${to.y + to.height / 2}, ${to.x + to.width} ${to.y + to.height / 2}`,
+      x: x - 12,
+      y: (from.y + to.y + from.height) / 2,
+      direction: 'up',
+    };
+  }
+  const mid = wire.busY ?? (y1 + y2) / 2;
+  return routed(
+    [
+      { x: x1, y: y1 },
+      { x: x1, y: mid },
+      { x: x2, y: mid },
+      { x: x2, y: y2 },
+    ],
+    (x1 + x2) / 2,
+    mid,
+    x1 === x2 ? 'down' : x2 < x1 ? 'left' : 'right',
+  );
+}
+export function forkGeometry(
+  fork: TreeFork,
+  layout: TreeLayout,
+): {
+  trunk: string;
+  branches: { key: string; x: number; color: string; path: string }[];
+  junctions: TreePoint[];
+  markers: TreePoint[];
+  mergePath?: string;
+  ports: { key: string; point: TreePoint; color: string }[];
+} {
+  const source = layout.source || layout;
+  const project = (p: TreePoint) =>
+    layout.source ? projectTreePoint(p, layout) : p;
+  const horizontal = layout.flow === 'horizontal';
+  const busPosition = (x: number, y: number) => {
+    const p = project({ x, y });
+    return horizontal ? p.x : p.y;
+  };
+  const from = source.tiles.find((t) => t.key === fork.from);
+  const targets = fork.targets.map((key) =>
+    source.tiles.find((t) => t.key === key),
+  );
+  if (!from || targets.some((t) => !t))
+    throw new Error('Missing fork endpoint: ' + fork.key);
+  const sourceX = from.x + from.width / 2;
+  const bus = roundedBus(
+    [
+      {
+        key: 'source:' + fork.key,
+        x: sourceX,
+        color: fork.color,
+        point: project({ x: sourceX, y: from.y + from.height + 3 }),
+        fromBus: false,
+      },
+      ...targets.map((t) => ({
+        key: t!.key,
+        x: t!.x + t!.width / 2,
+        color: t!.color,
+        point: project({ x: t!.x + t!.width / 2, y: t!.y - 5 }),
+        fromBus: true,
+      })),
+    ],
+    busPosition(sourceX, fork.busY),
+    horizontal,
+  );
+  const merge = fork.merge;
+  let mergePath: string | undefined;
+  const mergeJunctions: TreePoint[] = [];
+  const mergeMarkers: TreePoint[] = [];
+  const ports = bus.ports.map((p, i) => ({
+    key: i === 0 ? fork.from : p.key,
+    point: p.point,
+    color: p.color,
+  }));
+  if (
+    merge &&
+    (source.wires.some((w) => w.from === merge.area) ||
+      source.joins?.some((j) => j.inputs.includes(merge.area)) ||
+      // A nested OR returns into its parent's merge, without a separate wire.
+      source.forks?.some((parent) => parent.merge?.inputs.includes(merge.area)))
+  ) {
+    const inputs = merge.inputs.map((key) => {
+      const area = source.areas?.find((a) => a.key === key);
+      return (
+        (area?.exit ? source.tiles.find((t) => t.key === area.exit) : area) ||
+        source.tiles.find((t) => t.key === key)!
+      );
+    });
+    const merged = roundedBus(
+      [
+        ...inputs.map((a) => ({
+          key: a.key,
+          point: project({ x: a.x + a.width / 2, y: a.y + a.height + 3 }),
+          fromBus: false,
+        })),
+        {
+          key: 'output:' + fork.key,
+          point: project({ x: merge.x, y: merge.y + 3 }),
+          fromBus: true,
+        },
+      ],
+      busPosition(merge.x, merge.y - 40),
+      horizontal,
+    );
+    mergePath = [...merged.ports.map((p) => p.path), merged.trunk].join(' ');
+    mergeJunctions.push(...merged.anchors);
+    mergeMarkers.push(...merged.markers);
+    ports.push(
+      ...merged.ports.map((p) => ({
+        key: p.key,
+        point: p.point,
+        color: fork.color,
+      })),
+    );
+  }
+  return {
+    trunk: [bus.ports[0].path, bus.trunk].join(' '),
+    branches: bus.ports.slice(1),
+    // Keep the logical anchors for labels and connection audits, even where a
+    // two-way elbow is now drawn as a curve instead of a junction marker.
+    junctions: [...bus.anchors, ...mergeJunctions],
+    markers: [...bus.markers, ...mergeMarkers],
+    mergePath,
+    ports,
+  };
+}
+function joinBus(join: TreeJoin, layout: TreeLayout) {
+  const source = layout.source || layout;
+  const definition = source.joins?.find((j) => j.edge === join.edge) || join;
+  const project = (p: TreePoint) =>
+    layout.source ? projectTreePoint(p, layout) : p;
+  const horizontal = layout.flow === 'horizontal';
+  const inputs = definition.inputs.map(
+    (key) =>
+      source.regions?.find((r) => r.key === key) ||
+      source.areas?.find((r) => r.key === key) ||
+      source.tiles.find((t) => t.key === key)!,
+  );
+  const output = source.tiles.find((t) => t.key === definition.output)!;
+  const bus = project({ x: definition.x, y: definition.y - 25 });
+  return roundedBus(
+    [
+      ...inputs.map((r) => ({
+        key: r.key,
+        point: project({ x: r.x + r.width / 2, y: r.y + r.height }),
+        fromBus: false,
+      })),
+      {
+        key: 'output:' + definition.edge,
+        point: project({ x: definition.x, y: output.y - 5 }),
+        fromBus: true,
+      },
+    ],
+    horizontal ? bus.x : bus.y,
+    horizontal,
+  );
+}
+export function joinJunctions(join: TreeJoin, layout: TreeLayout): TreePoint[] {
+  return joinBus(join, layout).markers;
+}
+export function joinGeometry(join: TreeJoin, layout: TreeLayout): string {
+  const bus = joinBus(join, layout);
+  return [...bus.ports.map((p) => p.path), bus.trunk].join(' ');
+}
+
+// Only real card endpoints receive ports. Lines terminating at an AND frame or
+// an OR merge remain group connections, without an invented card attachment.
+export function cardPorts(layout: TreeLayout) {
+  const ports = new Map<
+    string,
+    {
+      key: string;
+      node: string;
+      x: number;
+      y: number;
+      line: TreePoint;
+      color: string;
+    }
+  >();
+  const add = (key: string, p: TreePoint | undefined, color: string) => {
+    const tile = layout.tiles.find((t) => t.key === key);
+    if (!tile || !p) return;
+    const candidates = [
+      { x: tile.x, y: Math.max(tile.y, Math.min(tile.y + tile.height, p.y)) },
+      {
+        x: tile.x + tile.width,
+        y: Math.max(tile.y, Math.min(tile.y + tile.height, p.y)),
+      },
+      { y: tile.y, x: Math.max(tile.x, Math.min(tile.x + tile.width, p.x)) },
+      {
+        y: tile.y + tile.height,
+        x: Math.max(tile.x, Math.min(tile.x + tile.width, p.x)),
+      },
+    ].sort(
+      (a, b) =>
+        Math.hypot(a.x - p.x, a.y - p.y) - Math.hypot(b.x - p.x, b.y - p.y),
+    );
+    const at = candidates[0];
+    if (Math.hypot(at.x - p.x, at.y - p.y) > 12) return;
+    const id = key + ':' + at.x.toFixed(2) + ':' + at.y.toFixed(2);
+    ports.set(id, {
+      key: id,
+      node: tile.node || tile.key,
+      ...at,
+      line: p,
+      color,
+    });
+  };
+  for (const wire of layout.wires) {
+    const points = wireGeometry(wire, layout).points;
+    add(wire.from, points?.[0], wire.color);
+    add(wire.to, points?.at(-1), wire.color);
+  }
+  for (const fork of layout.forks || [])
+    for (const p of forkGeometry(fork, layout).ports)
+      add(p.key, p.point, p.color);
+  for (const join of layout.joins || [])
+    for (const p of joinBus(join, layout).ports)
+      add(
+        p.key === 'output:' + join.edge ? join.output : p.key,
+        p.point,
+        join.color,
+      );
+  return [...ports.values()];
+}

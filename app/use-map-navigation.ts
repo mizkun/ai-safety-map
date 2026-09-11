@@ -272,3 +272,5 @@ export function useMapNavigation(site: SiteContent) {
     canBack: Boolean(restoration?.parent),
   };
 }
+
+export type MapNavigation = ReturnType<typeof useMapNavigation>;

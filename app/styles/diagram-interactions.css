@@ -1,0 +1,146 @@
+/* Keep the taxonomy tappable without nesting buttons inside a card button. */
+.tree-tile .tile-open {
+  width: 100%;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 5px;
+  text-align: left;
+  border-radius: 8px;
+}
+.tile-topics {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3px 10px;
+  width: 100%;
+}
+.tile-topic.MuiButtonBase-root {
+  min-height: 26px;
+  max-width: 100%;
+  display: inline-flex;
+  gap: 5px;
+  font-size: 12px;
+  color: var(--branch-color);
+  border-bottom: 1px dotted currentColor;
+  line-height: 1.35;
+  text-align: left;
+  justify-content: flex-start;
+}
+.tile-topic svg {
+  flex-shrink: 0;
+}
+.MuiPaper-root.tree-tile {
+  padding: max(6px, calc(12px * var(--map-scale)))
+    max(8px, calc(14px * var(--map-scale)));
+  gap: 3px;
+}
+.condition-region {
+  position: absolute;
+  border: 2px solid;
+  border-radius: 26px;
+  background: rgba(224, 224, 243, 0.12);
+  pointer-events: none;
+}
+.region-relation.MuiButtonBase-root {
+  position: absolute;
+  left: 20px;
+  right: 20px;
+  min-height: 32px;
+  justify-content: flex-start;
+  gap: 10px;
+  color: #70658f;
+  font-size: 13px;
+  pointer-events: auto;
+  border-radius: 10px;
+}
+.region-relation b {
+  font-size: 13px;
+  letter-spacing: 0.05em;
+}
+.joint-button.MuiButtonBase-root {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  min-height: 42px;
+  padding: 9px 16px;
+  border-radius: 14px;
+  background: #f7f7fd;
+  border: 2px solid currentColor;
+  box-shadow: 0 5px 18px #49507710;
+  display: flex;
+  gap: 9px;
+  font-size: 13px;
+  white-space: nowrap;
+}
+.joint-button b {
+  font-size: 15px;
+  letter-spacing: 0.05em;
+}
+.parallel-guide p {
+  font-size: 16px;
+  line-height: 1.9;
+}
+.parallel-guide strong {
+  display: block;
+  margin: 8px 0;
+  color: #6f5d92;
+}
+.network-navigation {
+  display: grid;
+  gap: 4px;
+}
+.network-navigation .MuiButton-root {
+  font-size: 13px;
+  text-align: left;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-radius: 8px;
+}
+@media (max-width: 760px) {
+  .tile-topic.MuiButtonBase-root {
+    min-height: 28px;
+  }
+}
+.influence-button.MuiButtonBase-root {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  min-height: 32px;
+  padding: 5px 10px;
+  background: #f3f8f7;
+  color: #39776f;
+  border: 1px dashed #5d9a8c;
+  border-radius: 10px;
+  font-size: 12px;
+  display: flex;
+  gap: 6px;
+  white-space: nowrap;
+}
+.influence-button.mitigation {
+  background: #e5f3ec;
+  color: #2e7665;
+  border-style: solid;
+}
+.horizontal-flow .region-relation {
+  transform: none;
+  right: auto;
+  width: max-content;
+  min-height: 26px;
+  justify-content: flex-start;
+  font-size: 12px;
+}
+.fork-label.MuiButtonBase-root {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  display: flex;
+  gap: 8px;
+  padding: 7px 12px;
+  min-height: 32px;
+  border-radius: 12px;
+  background: #f0f2f8;
+  font-size: 12px;
+}
+.condition-region {
+  border-style: solid;
+  background: rgba(224, 224, 243, 0.1);
+}
