@@ -1,0 +1,1545 @@
+{
+  "date": "2026-09-11",
+  "reviewer": "Codexによる編集上の資料照合。独立した専門家の査読ではない。",
+  "reviewedCommit": "a8078a1b0fa0a0d94eae25fc87e1edd3d2c2a0f8",
+  "scope": {
+    "explicitEdges": 41,
+    "graphDefinitions": 23,
+    "distinctCitedSources": 32,
+    "description": "登録された41の説明付き矢印の根拠と、23のグラフ定義の論理を確認。描画補助線は因果主張と区別。各資料の抄録・掲載元要旨・関係節を確認した範囲は出典台帳に明示。"
+  },
+  "result": "新たに向きを逆転すべきと確定した矢印はない。多くの接続は既に条件付き仮説として記述されている。出典の支持対象・対象集団が混同されやすい3箇所について修正案を作成。",
+  "changesApplied": false,
+  "checks": {
+    "logicStructure": "npm run check:logic: PASS",
+    "logicTests": {
+      "command": "npm run test:logic",
+      "passed": 14,
+      "failed": 0
+    },
+    "mapTests": {
+      "command": "npm run test:map",
+      "passed": 47,
+      "failed": 0
+    },
+    "recoveryBranches": [
+      {
+        "view": "interaction",
+        "explicitInGraph": false,
+        "desktopLayout": true,
+        "mobileLayout": true,
+        "tour": true
+      },
+      {
+        "view": "accidents",
+        "explicitInGraph": false,
+        "desktopLayout": true,
+        "mobileLayout": true,
+        "tour": true
+      }
+    ],
+    "scope": "コード検査とレイアウト出力の確認。全ての実験を再実行した検証でも、ブラウザで全状態を目視した確認でもない。"
+  },
+  "limitations": [
+    "既存の参照資料との整合性を検証した編集監査。分野の全論文を網羅した系統的レビュー、メタ分析、独立査読ではない。",
+    "原資料の実験・調査を再実行していない。要旨のみ確認した資料もあり、確認箇所は出典台帳に記した。32という数は根拠が独立している数を意味しない。",
+    "各項目の観測だけでは、矢印の因果効果やAND条件の同時成立は決まらない。必要条件・十分条件・順序・定義を区別する。",
+    "現在の色はノードの根拠の状態。矢印の強さ・起こる確率・その対策で防げる確率を示していない。",
+    "今回の資料から絶滅確率、残る壁の数、最も有効な対策の順位は算出していない。",
+    "反例・検証案・修正案は今回の編集上の推論であり、参照論文がそれぞれを実証したという記述ではない。",
+    "この監査ではサイトの内容・配色・矢印・本番公開物は変更していない。修正推奨と実施済みを区別する。"
+  ],
+  "findings": [
+    {
+      "id": "citation-target",
+      "priority": "修正推奨",
+      "edge": "R4-C1",
+      "title": "安全性を高めることと、目標のズレを減らすことの混同",
+      "explanation": "AI Controlは、モデルが意図的に妨害しても運用の安全性を高める研究。C1の目標のズレを減らしたことの根拠としては一致しない。R4-C1自体を消す根拠ではなく、alignment-researchとの引用の使い分けの問題。",
+      "proposal": {
+        "field": "sources / research",
+        "removeFromThisEdge": [
+          "control-paper",
+          "control-protocol"
+        ],
+        "retainForThisEdge": [
+          "automated-alignment",
+          "alignment-research"
+        ],
+        "note": "リポジトリ全体から出典を削除しない。C3-Lや防壁の説明での役割は残る。"
+      }
+    },
+    {
+      "id": "simulation-outcome",
+      "priority": "修正推奨",
+      "edge": "S1-S2",
+      "title": "軍事ゲームで測ったものを、人間の訂正余地まで広げている",
+      "explanation": "現行currentは、模擬実験も人間の訂正が難しくなる経路を示したように読める。主実験の対象は人間の監督なしのLLMエージェント間ゲームであり、その因果効果は測っていない。",
+      "proposal": {
+        "field": "current",
+        "ja": "SIPRIの分析は、AIの利用によって人間が判断を確かめる時間や材料が不足する可能性を論じています。一方、引用した軍事ゲームは、人間の監督なしで動くAI同士の対立拡大を調べたものです。人間が誤りを訂正する時間への影響や、実戦での発生率を測った実験ではありません。",
+        "en": "SIPRI's analysis discusses how using AI could leave humans with too little time or information to check decisions. The cited wargame study instead examines escalation among AI agents acting without human oversight. It does not measure an effect on humans' time to correct errors or an occurrence rate in real conflict."
+      }
+    },
+    {
+      "id": "population-transfer",
+      "priority": "修正推奨",
+      "edge": "W5-W8",
+      "title": "仕事中の時間配分の研究と、就労不要後の生活の隔たり",
+      "explanation": "元のtime-reallocation研究は就業者が対象。就労が生計に不要な社会の観測ではなく、現行の一般的な但し書きだけではその隔たりが見えにくい。",
+      "proposal": {
+        "field": "current",
+        "ja": "引用した時間配分の研究は、韓国の就業者のAI利用と仕事中の時間の使い方を調べています。生活のための就労が不要になった後、人々が時間をどう使うかを直接検証したものではありません。自由に使える時間と、活動に参加する機会が実際に増えるかは、別に確かめる必要があります。",
+        "en": "The cited time-allocation study examines AI use and time spent at work among employed people in South Korea. It does not directly test how people would spend their time once earning a living no longer required employment. Whether people gain control over their time and opportunities to participate in chosen activities needs separate evidence."
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "C4-H",
+      "support": "条件付きシナリオ",
+      "assessment": "制御を取り戻せないことだけでは被害の規模は決まらない。出典は権力獲得の論証と限定した災害シナリオであり、この矢印全体の観測ではない。",
+      "counterexample": "隔離されたサービスの制御を失っても、生活を支える設備や人々に影響が届かない。",
+      "verificationNeeded": "到達範囲・継続時間・代替手段を明示した被害モデルと、防御側の対応を入れた検討が必要。",
+      "recommendation": "現行の追加条件を維持。停止不能と世界規模の被害を別々に判定する。",
+      "from": "C4",
+      "to": "H",
+      "requires": [],
+      "sources": [
+        "power",
+        "rand-extinction"
+      ],
+      "fromTitle": "人間側が、制御を取り戻せなくなる",
+      "toTitle": "生命や社会を支えるものに、世界規模の被害が及ぶ",
+      "relation": "conditional",
+      "label": "生命や社会を支えるものに影響すると"
+    },
+    {
+      "id": "M3-H",
+      "support": "部分的観測＋規模拡大の仮説",
+      "assessment": "悪用行動や一部の作業能力には一次報告がある。悪用の意図・実行能力・防壁の失敗がそろい、世界規模へ拡大することまでを実証した資料ではない。",
+      "counterexample": "侵入が起きても検知・封じ込め・復旧によって被害が局所にとどまる。",
+      "verificationNeeded": "同じ事例で条件が同時に成立した範囲を特定し、社会機能への波及を別途評価する。",
+      "recommendation": "requiresのM1・M2・M3を維持。能力試験の成績を被害確率へ変換しない。",
+      "from": "M3",
+      "to": "H",
+      "requires": [
+        "M1",
+        "M2",
+        "M3"
+      ],
+      "sources": [
+        "anthropic-threat-202609",
+        "cyber-misuse",
+        "astra-card",
+        "rand-extinction"
+      ],
+      "fromTitle": "防止・封じ込めが、被害に追いつかない",
+      "toTitle": "生命や社会を支えるものに、世界規模の被害が及ぶ",
+      "relation": "joint",
+      "label": "危険な目的・有効な支援・防御の失敗が重なると"
+    },
+    {
+      "id": "S1-S2",
+      "support": "原論考による機序の支持",
+      "assessment": "SIPRIは確認時間などの問題を論じる。wargames論文の主要実験は人間の監督なしのLLMエージェント間ゲームで、人間の確認・訂正時間を測定していない。",
+      "counterexample": "AIの助言を独立情報で確認でき、最終決定までの時間と権限も確保されている。",
+      "verificationNeeded": "人間が参加する比較で、時間制約・説明の有無・権限を分け、誤りを訂正できた割合を測る。",
+      "recommendation": "修正推奨：currentの『原分析と模擬実験は訂正が難しくなる経路を示す』を、原論考と実験で測った対象に分ける。",
+      "from": "S1",
+      "to": "S2",
+      "requires": [],
+      "sources": [
+        "sipri",
+        "wargames"
+      ],
+      "fromTitle": "重要な判断を、AIに頼るようになる",
+      "toTitle": "誤った判断を、訂正する余裕が減る",
+      "relation": "conditional",
+      "label": "確認する力や時間が不足すると"
+    },
+    {
+      "id": "S2-S3",
+      "support": "条件付き機序・模擬環境の関連結果",
+      "assessment": "対立拡大はゲーム内で観測されているが、人間の訂正余地を減らしたことによる因果効果は分離して測られていない。",
+      "counterexample": "短い判断時間でも、当事者間の連絡や行動停止の仕組みが対立の連鎖を断つ。",
+      "verificationNeeded": "同じシナリオで確認時間・連絡・権限を変えた比較が必要。実戦の発生率には換算できない。",
+      "recommendation": "矢印は仮説として維持。S1-S2の根拠を整理する際に、こちらとの証拠の役割を分ける。",
+      "from": "S2",
+      "to": "S3",
+      "requires": [],
+      "sources": [
+        "wargames",
+        "sipri"
+      ],
+      "fromTitle": "誤った判断を、訂正する余裕が減る",
+      "toTitle": "対応が次の反応を招き、対立が拡大する",
+      "relation": "conditional",
+      "label": "他者の反応が、次の判断を急がせると"
+    },
+    {
+      "id": "S3-H",
+      "support": "条件付きシナリオ",
+      "assessment": "反応の応酬から世界規模の被害へ進むには、破壊的行動、波及、封じ込めの失敗が追加で必要。RANDの限定シナリオは全ての軍事状況を代表しない。",
+      "counterexample": "強い対立が続いても、破壊行為が限定されるか途中で終結する。",
+      "verificationNeeded": "行動の規模・継続・生活基盤への影響と、外交・防御・復旧による遮断を分けて検討する。",
+      "recommendation": "現行の条件付き説明を維持。対立拡大を絶滅に直結しない。",
+      "from": "S3",
+      "to": "H",
+      "requires": [],
+      "sources": [
+        "sipri",
+        "rand-extinction"
+      ],
+      "fromTitle": "対応が次の反応を招き、対立が拡大する",
+      "toTitle": "生命や社会を支えるものに、世界規模の被害が及ぶ",
+      "relation": "conditional",
+      "label": "破壊的な行動と、被害の拡大が重なると"
+    },
+    {
+      "id": "R1-R2",
+      "support": "部分的な業務観測＋全工程への仮説",
+      "assessment": "AIが研究作業を担う記録はあるが、一部作業の改善と研究開発全体の速度は別。計算資源、人間の作業、道具の改善が交絡する。",
+      "counterexample": "コード生成が速くなっても、実験待ち・評価・採用判断が全工程の所要時間を決めている。",
+      "verificationNeeded": "研究全体の開始から有効な成果までを測り、人的投入と計算資源をそろえた比較を行う。",
+      "recommendation": "現行の限定を維持。全工程の加速率を個別作業の倍率から計算しない。",
+      "from": "R1",
+      "to": "R2",
+      "requires": [],
+      "sources": [
+        "openai-rd",
+        "discovery"
+      ],
+      "fromTitle": "AIが、研究の一部を進める",
+      "toTitle": "次のAIを作る工程全体が速くなる",
+      "relation": "conditional",
+      "label": "開発全体の難所が改善されると"
+    },
+    {
+      "id": "R2-R3",
+      "support": "フィードバック成立の仮説",
+      "assessment": "開発が速くなるだけでは、そこで改良されたAIが次の改良を進める循環の成立は示せない。Geminiの試験は特定モデルの限界を示す材料。",
+      "counterexample": "同じAIで作業が効率化され続けても、新しいAIの改良にはつながらない。",
+      "verificationNeeded": "成果を次世代へ反映し、その世代が次の研究を改善することを複数回確認する。人間・計算資源の寄与も分離する。",
+      "recommendation": "循環の条件を維持。特定モデルの未到達を全モデルの上限としない。",
+      "from": "R2",
+      "to": "R3",
+      "requires": [],
+      "sources": [
+        "openai-rd",
+        "gemini-safety"
+      ],
+      "fromTitle": "次のAIを作る工程全体が速くなる",
+      "toTitle": "改良されたAIが次のAIを改良する循環（RSI）が始まる",
+      "relation": "conditional",
+      "label": "できたAIが、次の開発でも役立つと"
+    },
+    {
+      "id": "R3-R2",
+      "support": "定義を含むフィードバック仮説",
+      "assessment": "RSIの循環が研究開発を助けるという整理。循環の存在と、継続的な加速や加速率の増加は別の主張。",
+      "counterexample": "循環があっても効果が小さくなり、評価・資源などの制約で全工程の速度が頭打ちになる。",
+      "verificationNeeded": "各周回での成果・所要時間・資源投入を追い、効果の減衰や別工程の制約を確かめる。",
+      "recommendation": "明示されたfeedbackを維持。循環を無限加速の証拠としない。",
+      "from": "R3",
+      "to": "R2",
+      "requires": [],
+      "sources": [
+        "openai-rd"
+      ],
+      "fromTitle": "改良されたAIが次のAIを改良する循環（RSI）が始まる",
+      "toTitle": "次のAIを作る工程全体が速くなる",
+      "relation": "feedback",
+      "label": "改善が、次の改善を助ける"
+    },
+    {
+      "id": "C3-L",
+      "support": "限定された環境での事例の支持",
+      "assessment": "AISI・METRは許可範囲を越える行動を報告する。発生前の防壁を越えたことと、発見後も停止できないことは異なる。",
+      "counterexample": "許可外の変更を試みても人間の審査で却下され、封じ込められる。",
+      "verificationNeeded": "同じ実行記録で、意図とのズレ、必要な能力とアクセス、防壁がどこで働かなかったかを対応づける。",
+      "recommendation": "局所的逸脱への接続として維持。C4の停止不能まで検証済みとは扱わない。",
+      "from": "C3",
+      "to": "L",
+      "requires": [
+        "C1",
+        "C2",
+        "C3"
+      ],
+      "sources": [
+        "aisi-incident",
+        "incident",
+        "control-paper"
+      ],
+      "fromTitle": "危険な行動を、途中で止められない",
+      "toTitle": "局所的に、意図しない行動が実行される",
+      "relation": "joint",
+      "label": "意図のズレ・実行条件・防止の失敗が重なると"
+    },
+    {
+      "id": "L-C4",
+      "support": "未実証の規模・持続への仮説",
+      "assessment": "局所的逸脱から制御回復不能へは追加条件がある。METRの評価期間は2026年2〜3月であり、9月の能力上限ではない。事件記録も強い停止努力への持続性の証明ではない。",
+      "counterexample": "許可外活動は起きるが、権限の取消しや実行終了で止まる。",
+      "verificationNeeded": "許可された隔離環境で防御側の介入を含む持続性を評価し、組織間の対応失敗と分けて確認する。",
+      "recommendation": "L・C4a・C4bの共同条件を維持。現在の事例を制御回復不能へ格上げしない。",
+      "from": "L",
+      "to": "C4",
+      "requires": [
+        "L",
+        "C4a",
+        "C4b"
+      ],
+      "sources": [
+        "frontier",
+        "incident"
+      ],
+      "fromTitle": "局所的に、意図しない行動が実行される",
+      "toTitle": "人間側が、制御を取り戻せなくなる",
+      "relation": "joint",
+      "label": "局所的な失敗に、持続と広がりの条件が重なると"
+    },
+    {
+      "id": "H-E0",
+      "support": "条件付きの生存・回復シナリオ",
+      "assessment": "世界規模の被害と人類絶滅は異なる。出典が検討したシナリオでも、生存や回復を阻む追加条件が問題となる。",
+      "counterexample": "一部の人が直後に生存していても、長期に生活を維持する資源が失われる場合がある。",
+      "verificationNeeded": "直後の生存、世代を越えた存続、社会の再建を別々に評価する。",
+      "recommendation": "回復が残る分岐を維持。『生存者がいる』だけで十分な回復が保証されるとはしない。",
+      "from": "H",
+      "to": "E0",
+      "requires": [],
+      "sources": [
+        "rand-extinction"
+      ],
+      "fromTitle": "生命や社会を支えるものに、世界規模の被害が及ぶ",
+      "toTitle": "被害の後も、生存・回復の道が残る",
+      "relation": "alternative",
+      "label": "生存・回復を支える条件が残るなら"
+    },
+    {
+      "id": "H-T",
+      "support": "強い追加条件を要するシナリオ",
+      "assessment": "大きな被害から生存・回復の可能性が失われることは導けない。対象資料にこの一般的移行の実証はない。",
+      "counterexample": "被害を受けない地域や、独立した食料・医療・復旧の手段が残る。",
+      "verificationNeeded": "地理的な広がり、期間、生存集団、代替手段を明示し、どれが残るかを反証中心で検討する。",
+      "recommendation": "仮説として維持。HとTの色や観測を共用しない。",
+      "from": "H",
+      "to": "T",
+      "requires": [],
+      "sources": [
+        "rand-extinction"
+      ],
+      "fromTitle": "生命や社会を支えるものに、世界規模の被害が及ぶ",
+      "toTitle": "生存と回復の可能性まで、失われる",
+      "relation": "conditional",
+      "label": "被害を逃れ、生き直す可能性も失われるなら"
+    },
+    {
+      "id": "T-X",
+      "support": "定義に近い接続",
+      "assessment": "生存の可能性が失われるというTの意味を厳密に取れば、Xとの関係は定義に近い。文明再建が難しいだけでは人類絶滅を意味しない。",
+      "counterexample": "社会を元に戻せなくても、人間の集団が存続するならXには至らない。",
+      "verificationNeeded": "Tが文明崩壊ではなく人間の存続不能を指すことを確認する。T1・T2の具体的分解が必要十分条件という証明はない。",
+      "recommendation": "確率をもつ独立段階として二重に数えない。文言上の定義と現実の成立を分ける。",
+      "from": "T",
+      "to": "X",
+      "requires": [],
+      "sources": [
+        "rand-extinction",
+        "power"
+      ],
+      "fromTitle": "生存と回復の可能性まで、失われる",
+      "toTitle": "人類が、一人も生存しなくなる",
+      "relation": "conditional",
+      "label": "人類が存続する可能性がなくなると"
+    },
+    {
+      "id": "D1-D2",
+      "support": "原論考に基づく依存の仮説",
+      "assessment": "利用・導入の調査は、人間の技能や代替制度の喪失を測ったものではない。因果の候補は、委任に伴う練習・投資・維持の減少。",
+      "counterexample": "AIの導入が進んでも、訓練や手動運用、別提供者への切替が維持される。",
+      "verificationNeeded": "利用率と別に、代替手段の稼働率、技能、訓練頻度、復旧時間を時系列で追う。",
+      "recommendation": "現行本文の機序を維持。条件欄を更新する場合は『失われる』の言い換えより、練習・維持投資の減少を記す。",
+      "from": "D1",
+      "to": "D2",
+      "requires": [],
+      "sources": [
+        "census-adoption",
+        "gradual"
+      ],
+      "fromTitle": "重要な仕事と判断を、AIへ広く委ねる",
+      "toTitle": "人間が、代わりに運営する力を失う",
+      "relation": "conditional",
+      "label": "委任とともに、代替する力が弱まると"
+    },
+    {
+      "id": "D2-D3",
+      "support": "制度に依存する仮説",
+      "assessment": "代替能力の低下が、交渉・退出・再建の困難さを通じて人間の影響力を弱めるという論考。一般的な実測結果ではない。",
+      "counterexample": "技能を失っていても、法律・所有権・共同交渉で重要な決定を左右できる。",
+      "verificationNeeded": "技術的依存と、決定権・退出権・再建能力を区別し、制度変更を含む比較を行う。",
+      "recommendation": "制度上の条件を維持。技術的依存だけを政治的無力化と同一視しない。",
+      "from": "D2",
+      "to": "D3",
+      "requires": [],
+      "sources": [
+        "gradual"
+      ],
+      "fromTitle": "人間が、代わりに運営する力を失う",
+      "toTitle": "重要な社会の決定に、人間の意思が届かなくなる",
+      "relation": "conditional",
+      "label": "他の手段も、拒否する力も弱まると"
+    },
+    {
+      "id": "D3-E1",
+      "support": "条件付き・概念的な接続",
+      "assessment": "個々の場面の影響力低下から、人類全体の持続的な主導権喪失へは規模と不可逆性が追加で必要。",
+      "counterexample": "一領域で影響力が小さくても、他の制度で方向を修正できる。",
+      "verificationNeeded": "対象領域の広さ、意思決定への影響、回復可能性を操作的に定義する。",
+      "recommendation": "人類絶滅とは別の帰結として維持。局所と人類全体を区別する。",
+      "from": "D3",
+      "to": "E1",
+      "requires": [],
+      "sources": [
+        "gradual",
+        "power"
+      ],
+      "fromTitle": "重要な社会の決定に、人間の意思が届かなくなる",
+      "toTitle": "人類は生存するが、主導権を失ったままになる",
+      "relation": "conditional",
+      "label": "その状態が広く固定され、回復できないなら"
+    },
+    {
+      "id": "A1-A2",
+      "support": "機序の分析・直接実証は限定",
+      "assessment": "共通のAIへの依存と、接続を通じた事故の伝播は異なる。FSBの金融分野の分析だけで、社会全体の連鎖が観測されたとは言えない。",
+      "counterexample": "同じAIが同時に誤っても、各組織が隔離され、追加の失敗を生まない。",
+      "verificationNeeded": "共通原因の同時障害と、出力が次の障害を起こす伝播をログや依存モデルで分ける。",
+      "recommendation": "現行の区別を維持。単なる導入集中を連鎖の観測として数えない。",
+      "from": "A1",
+      "to": "A2",
+      "requires": [],
+      "sources": [
+        "fsb-ai",
+        "framework"
+      ],
+      "fromTitle": "多くの重要な仕組みが、同じAIや情報に依存する",
+      "toTitle": "一つの失敗が、別のシステムの失敗を呼ぶ",
+      "relation": "conditional",
+      "label": "共通の誤りが、相互作用で広がると"
+    },
+    {
+      "id": "A2-A3",
+      "support": "復旧依存の仮説",
+      "assessment": "連鎖が復旧手段も使えなくするには、復旧系が同じ障害に依存する条件が必要。監視・データ不足の報告は復旧失敗の実証ではない。",
+      "counterexample": "本番系が連鎖停止しても、独立した通信・人員・電源・記録で復旧できる。",
+      "verificationNeeded": "復旧手段の依存関係と切替実績を調べ、本番系との共通障害を分離する。",
+      "recommendation": "仮説として維持。FSB monitoring資料の役割は観測不足・監視論点の背景に限定する。",
+      "from": "A2",
+      "to": "A3",
+      "requires": [],
+      "sources": [
+        "fsb-monitoring",
+        "framework"
+      ],
+      "fromTitle": "一つの失敗が、別のシステムの失敗を呼ぶ",
+      "toTitle": "復旧する仕組みまで、連鎖に巻き込まれる",
+      "relation": "conditional",
+      "label": "検知・切り離し・復旧も追いつかないと"
+    },
+    {
+      "id": "A3-H",
+      "support": "条件付きシナリオ",
+      "assessment": "復旧不能でも、生活基盤に広く長く届かなければ世界規模の被害にはならない。一般的な規模拡大の実証ではない。",
+      "counterexample": "復旧できないサービスが一部にあっても、社会の他の機能が代替する。",
+      "verificationNeeded": "重要機能、継続時間、被害を受けない地域からの支援を含むモデルが必要。",
+      "recommendation": "A3とHを独立して評価。H以降の生存・回復も別に残す。",
+      "from": "A3",
+      "to": "H",
+      "requires": [],
+      "sources": [
+        "rand-extinction",
+        "framework"
+      ],
+      "fromTitle": "復旧する仕組みまで、連鎖に巻き込まれる",
+      "toTitle": "生命や社会を支えるものに、世界規模の被害が及ぶ",
+      "relation": "conditional",
+      "label": "生活基盤の障害が、広く長く重なると"
+    },
+    {
+      "id": "W1-W4",
+      "support": "ANDによる能力範囲の構成",
+      "assessment": "知的作業と身体作業を合わせた能力範囲の整理。仕事の曝露推計や個別ベンチマークは『全労働』を端から端まで代替した証拠ではない。",
+      "counterexample": "ソフトウェア課題とロボットの個別動作に成功しても、現場の例外処理・品質・連携を担えない。",
+      "verificationNeeded": "対象となる仕事の範囲を定め、品質・例外・連携・人間の介入を含む業務単位で評価する。",
+      "recommendation": "能力構成として維持。異なる実験でのW1・W2の部分成功をAND全体の達成としない。",
+      "from": "W1",
+      "to": "W4",
+      "requires": [
+        "W1",
+        "W2"
+      ],
+      "sources": [
+        "ilo-index",
+        "horizon",
+        "robotics-2"
+      ],
+      "fromTitle": "知的作業を、仕事全体として自動化できる",
+      "toTitle": "全ての労働を、技術的にはAIで代替できる",
+      "relation": "joint",
+      "label": "知的・身体的な仕事の残る例外も代替できるなら"
+    },
+    {
+      "id": "I1a-I1",
+      "support": "限定された商業実演・事例の支持",
+      "assessment": "売れる成果と取引の条件を組み合わせる整理。店舗運営や支払いの実演は、人間の支援を含む部分的な観測である。",
+      "counterexample": "購入希望があっても契約・支払いが成立しない、または売上より総費用が大きい。",
+      "verificationNeeded": "収入、利益、支払い量を分け、人間の作業と外部費用を記録する。",
+      "recommendation": "I1a・I1bの共同条件を維持。無人企業の継続的な純利益まで実証済みとはしない。",
+      "from": "I1a",
+      "to": "I1",
+      "requires": [
+        "I1a",
+        "I1b"
+      ],
+      "sources": [
+        "vend",
+        "visa-agents"
+      ],
+      "fromTitle": "AIの成果やサービスが、実際の需要を満たす",
+      "toTitle": "AIが代理で仕事や取引を行い、収入につなぐ",
+      "relation": "joint",
+      "label": "売れる価値と取引の権限が結びつくと"
+    },
+    {
+      "id": "I1-I2",
+      "support": "分配モデル・制度の仮説",
+      "assessment": "AIが収益を生むことと、その所得が誰へ渡るかは別。分配の変化には所有・契約・競争・税や移転の条件が必要。",
+      "counterexample": "AIによる売上が増えても、同じ人々への分配比率が保たれる。",
+      "verificationNeeded": "労働所得・資本所得・所有分布・移転を分け、制度の異なる場合を比較する。",
+      "recommendation": "現行の制度条件を維持。売上の観測から所有構造の変化を直接導かない。",
+      "from": "I1",
+      "to": "I2",
+      "requires": [],
+      "sources": [
+        "imf-distribution",
+        "vend",
+        "econ-scenarios"
+      ],
+      "fromTitle": "AIが代理で仕事や取引を行い、収入につなぐ",
+      "toTitle": "所得の受け取り方と、所有の重要性が変わる",
+      "relation": "conditional",
+      "label": "所有や契約によって、利益の受取先が変わる"
+    },
+    {
+      "id": "W4-P1",
+      "support": "経済モデルに依存する仮説",
+      "assessment": "技術的代替は価格低下の一要因であり、非労働費用や価格への転嫁が必要。全労働の代替は価格低下の必要条件でもない。",
+      "counterexample": "労働費用が下がっても、希少な資源・設備・独占力が価格を維持する。",
+      "verificationNeeded": "総費用・価格・利幅を分け、投入制約と市場構造を含む比較を行う。",
+      "recommendation": "現行の限定を維持。W4を必須の入口にしない。",
+      "from": "W4",
+      "to": "P1",
+      "requires": [],
+      "sources": [
+        "imf-distribution"
+      ],
+      "fromTitle": "全ての労働を、技術的にはAIで代替できる",
+      "toTitle": "生産費が下がり、多くの商品やサービスが安くなる",
+      "relation": "influence",
+      "label": "生産の改善が、費用や価格にも反映されると"
+    },
+    {
+      "id": "P1-P3",
+      "support": "背景資料を用いた編集上の仮説",
+      "assessment": "貨幣の機能の説明やAI分配モデルは、AIが貨幣の配分機能を縮小させることを検証していない。仮説を考える背景資料としてのみ使える。",
+      "counterexample": "多くの財が安くなっても、土地・時間・希少財などの配分に価格と貨幣が使われ続ける。",
+      "verificationNeeded": "どの財のどの配分機能が、何に置き換わるのかを定め、制度・事例を追加する。",
+      "recommendation": "現行の『仮説』を維持。直接支持する出典がない範囲を明示し、貨幣消滅へ読み替えない。",
+      "from": "P1",
+      "to": "P3",
+      "requires": [
+        "P1",
+        "P2"
+      ],
+      "sources": [
+        "ecb-money",
+        "imf-distribution"
+      ],
+      "fromTitle": "生産費が下がり、多くの商品やサービスが安くなる",
+      "toTitle": "お金で配分する役割が、小さくなるという仮説",
+      "relation": "joint",
+      "label": "安い生産に、希少性と配分の制約の緩和が加わると"
+    },
+    {
+      "id": "F1-F3",
+      "support": "金融リスク分析・同時成立は未実証",
+      "assessment": "導入調査と脆弱性の分析はあるが、AI利用・問題行動・防壁失敗が同時に市場全体の危機を引き起こしたことの証明ではない。",
+      "counterexample": "AIの判断が相関しても、取引制限・資本・流動性・清算の仕組みが連鎖を止める。",
+      "verificationNeeded": "F1・F2・F4を同じ事例・ストレス試験で対応づけ、伝播と緩衝を評価する。",
+      "recommendation": "ANDを維持。利用率を金融危機の発生確率としない。",
+      "from": "F1",
+      "to": "F3",
+      "requires": [
+        "F1",
+        "F2",
+        "F4"
+      ],
+      "sources": [
+        "finance-survey",
+        "fsb-ai",
+        "fsb-monitoring"
+      ],
+      "fromTitle": "金融の判断と操作を、AIに広く委ねる",
+      "toTitle": "暴落や信用収縮が、金融全体に波及する",
+      "relation": "joint",
+      "label": "重要な金融操作への影響と、防壁の失敗が重なると"
+    },
+    {
+      "id": "R4-C1",
+      "support": "限定評価への介入支持・引用の整理が必要",
+      "assessment": "automated-alignmentは特定の失敗評価の改善を支持する。AI Controlは悪意あるモデルも想定して運用の被害を抑える研究で、目標のズレ自体の減少を直接示さない。",
+      "counterexample": "AIの目標が変わらなくても、監視・編集・権限制限で悪い行動の影響を止められる。",
+      "verificationNeeded": "目標のズレの減少と、同じズレの下での防御成功を別の指標・実験で確かめる。",
+      "recommendation": "修正推奨：この矢印の直接根拠はalignment-researchへ絞る。control-protocolは防壁の議論に残し、C1減少の根拠と混在させない。",
+      "from": "R4",
+      "to": "C1",
+      "requires": [],
+      "sources": [
+        "automated-alignment",
+        "control-paper"
+      ],
+      "fromTitle": "AIが、安全性の研究と対策も進める",
+      "toTitle": "AIが、人間の意図と食い違う行動を選ぶ",
+      "relation": "mitigation",
+      "label": "抑制：対策が意図のズレを減らせるなら"
+    },
+    {
+      "id": "H-G1",
+      "support": "条件付き・概念的なシナリオ",
+      "assessment": "世界規模の被害と社会機能の広範な崩壊は同じではない。対象の災害論考だけでは、任意の被害からの崩壊を実証できない。",
+      "counterexample": "大きな被害を受けても、行政・生産・知識・連絡網を維持して再建する。",
+      "verificationNeeded": "崩壊を機能と期間で定義し、被害から機能喪失への機序と復旧経路を調べる。",
+      "recommendation": "H・G1・Xを区別する現行方針を維持。",
+      "from": "H",
+      "to": "G1",
+      "requires": [],
+      "sources": [
+        "rand-extinction"
+      ],
+      "fromTitle": "生命や社会を支えるものに、世界規模の被害が及ぶ",
+      "toTitle": "社会の基盤が、広く長く失われる",
+      "relation": "conditional",
+      "label": "社会の基盤が広く壊れ、復旧も長く滞るなら"
+    },
+    {
+      "id": "W3-W5",
+      "support": "生産と分配に依存するシナリオ",
+      "assessment": "広範な導入だけで生活のための就労が不要になるわけではない。十分な生産と、必要な人へ届く分配が追加条件。",
+      "counterexample": "生産性が高くても、所得や利用権を持たない人は生活を維持できない。",
+      "verificationNeeded": "生活必需品へのアクセス・費用・分配制度を測り、安定的な維持を検討する。",
+      "recommendation": "W3・W6を維持。全労働の代替を必要条件に戻さない。",
+      "from": "W3",
+      "to": "W5",
+      "requires": [
+        "W3",
+        "W6"
+      ],
+      "sources": [
+        "census-adoption",
+        "imf-distribution",
+        "econ-scenarios"
+      ],
+      "fromTitle": "生活を支える生産に、AIが広く導入される",
+      "toTitle": "生活のために働くことが、必須ではなくなる",
+      "relation": "joint",
+      "label": "十分な生産と、広く届く分配がそろうと"
+    },
+    {
+      "id": "W4-W3",
+      "support": "導入条件をもつ仮説",
+      "assessment": "できることと導入されることは別。導入調査と限定した技術実演は、全労働代替が普及を引き起こしたことを示さない。",
+      "counterexample": "技術的にはできても、費用・規制・設備・品質保証で普及しない。",
+      "verificationNeeded": "品質・費用・導入基盤・制度を分け、業務別の導入過程を追う。",
+      "recommendation": "influenceとして維持。部分的能力でもW3が進むことを残す。",
+      "from": "W4",
+      "to": "W3",
+      "requires": [],
+      "sources": [
+        "census-adoption",
+        "robotics-2",
+        "econ-scenarios"
+      ],
+      "fromTitle": "全ての労働を、技術的にはAIで代替できる",
+      "toTitle": "生活を支える生産に、AIが広く導入される",
+      "relation": "influence",
+      "label": "代替する能力が、広い導入を後押しするなら"
+    },
+    {
+      "id": "W3-W7",
+      "support": "経済モデルと限定調査による条件付き支持",
+      "assessment": "置換と所得への影響は、補完、新しい需要、価格変化、制度と一緒に決まる。採用企業の相関やモデル上のシナリオは一般的な将来予測ではない。",
+      "counterexample": "AIが一部作業を置き換えても、補完的な仕事や需要が増え、所得が維持される。",
+      "verificationNeeded": "職種・地域・期間ごとに失う仕事と増える仕事、賃金、移転を比較する。",
+      "recommendation": "W3-W9と並存させる。失業が必ず起きる・必ず解消するの両方を避ける。",
+      "from": "W3",
+      "to": "W7",
+      "requires": [],
+      "sources": [
+        "imf-distribution",
+        "census-adoption",
+        "econ-scenarios"
+      ],
+      "fromTitle": "生活を支える生産に、AIが広く導入される",
+      "toTitle": "仕事が減った人に、十分な所得や生活資源が届かない",
+      "relation": "conditional",
+      "label": "仕事や所得の減少を、他の収入や支援が埋めないと"
+    },
+    {
+      "id": "W5-W8",
+      "support": "対象集団の異なる間接資料＋仮説",
+      "assessment": "time-reallocationは就業者の仕事中の時間配分の研究であり、生計のための就労が不要な社会を観測していない。両者の移行には追加の仮定がある。",
+      "counterexample": "生活が保障されても、時間の裁量や活動の場がなく、望む活動に参加できない。",
+      "verificationNeeded": "仕事中の空き時間と就労不要後の生活時間を分け、時間の裁量と参加機会を調べる。",
+      "recommendation": "修正推奨：currentに研究対象の違いを具体的に記す。現在の一般的な但し書きでは、何が未検証か伝わりにくい。",
+      "from": "W5",
+      "to": "W8",
+      "requires": [],
+      "sources": [
+        "time-reallocation",
+        "imf-distribution"
+      ],
+      "fromTitle": "生活のために働くことが、必須ではなくなる",
+      "toTitle": "学び・ケア・創作・余暇を、自分で選べる時間が増える",
+      "relation": "conditional",
+      "label": "生活が保障され、時間の使い方を選べると"
+    },
+    {
+      "id": "P3-P4",
+      "support": "制度移行についての編集上の仮説",
+      "assessment": "貨幣の一機能の縮小だけで代替の配分制度が成立するわけではない。参照資料はこの移行を直接検証していない。",
+      "counterexample": "貨幣を介する取引が減っても、実用的な代替制度が整わず不足が残る。",
+      "verificationNeeded": "制度の実施条件と利用実績を追加する。先に公共供給が整い、その結果として貨幣の役割が縮む逆方向も検討する。",
+      "recommendation": "直線的な必然の順序としない。現行の追加条件を残し、今後の直接資料を優先して探す。",
+      "from": "P3",
+      "to": "P4",
+      "requires": [],
+      "sources": [
+        "ecb-money",
+        "imf-distribution"
+      ],
+      "fromTitle": "お金で配分する役割が、小さくなるという仮説",
+      "toTitle": "価格以外の方法で、資源や利用機会を配分する",
+      "relation": "conditional",
+      "label": "価格以外の配分ルールが実際に使われると"
+    },
+    {
+      "id": "F3-F5",
+      "support": "制度的な条件付き機序",
+      "assessment": "金融危機から決済や貨幣への広い信頼喪失へは、流動性供給・保証・代替手段が働かない条件が必要。原資料はAI起因の移行を実測していない。",
+      "counterexample": "一部の金融機関が危機に陥っても、決済と通貨への信頼は保たれる。",
+      "verificationNeeded": "信用、決済稼働、通貨の受容、政策対応を別の指標として追う。",
+      "recommendation": "条件付きの維持。金融危機を貨幣消滅と同一視しない。",
+      "from": "F3",
+      "to": "F5",
+      "requires": [],
+      "sources": [
+        "monetary-trust",
+        "fsb-ai"
+      ],
+      "fromTitle": "暴落や信用収縮が、金融全体に波及する",
+      "toTitle": "通貨や預金への信用が損なわれ、取引が広く成り立たなくなる",
+      "relation": "conditional",
+      "label": "金融の危機を封じ込められず、通貨や決済の信用にも広がると"
+    },
+    {
+      "id": "F5-F6",
+      "support": "支払いと実体活動の依存仮説",
+      "assessment": "決済障害が生活を妨げる機序は考えられるが、備蓄・信用・現金等の代替と継続時間に左右される。戦略資料は将来の機能停止の実証ではない。",
+      "counterexample": "決済が一時停止しても、現金・掛け払い・備蓄で供給を続けられる。",
+      "verificationNeeded": "停止の期間・範囲と供給への影響、代替支払いの稼働を対応づける。",
+      "recommendation": "現行の継続・代替条件を維持。ここから絶滅へ直接結ばない。",
+      "from": "F5",
+      "to": "F6",
+      "requires": [],
+      "sources": [
+        "payment-resilience",
+        "monetary-trust"
+      ],
+      "fromTitle": "通貨や預金への信用が損なわれ、取引が広く成り立たなくなる",
+      "toTitle": "取引の停止が、生産と必需品の入手にまで波及する",
+      "relation": "conditional",
+      "label": "支払いが復旧せず、供給と受け取りも維持できないと"
+    },
+    {
+      "id": "F5-F7",
+      "support": "対策候補に依存するシナリオ",
+      "assessment": "ECBの支払い戦略は代替手段・耐障害性を検討する資料。全ての障害で代替支払いが十分に機能したという結果ではない。",
+      "counterexample": "代替手段も同じ電力・通信に依存している、または利用先で受け入れられない。",
+      "verificationNeeded": "技術的稼働、受容、利用可能性、独立した基盤を含む訓練・実績を確認する。",
+      "recommendation": "回復の候補として維持。将来の計画を実装済み・有効性実証済みへ変えない。",
+      "from": "F5",
+      "to": "F7",
+      "requires": [],
+      "sources": [
+        "payment-resilience",
+        "monetary-trust"
+      ],
+      "fromTitle": "通貨や預金への信用が損なわれ、取引が広く成り立たなくなる",
+      "toTitle": "代替の決済や配分を使い、取引と制度を立て直す",
+      "relation": "alternative",
+      "label": "信用できる代替手段と運営が整うと"
+    },
+    {
+      "id": "W3-W9",
+      "support": "補完・需要増のモデルと部分的観測",
+      "assessment": "導入後にも人間の仕事が残る・生まれる経路はあるが、それぞれの失職者が新しい仕事へ移れる保証ではない。",
+      "counterexample": "仕事の総数が増えても、必要な技能や地域の違いで元の労働者が移れない。",
+      "verificationNeeded": "新規雇用と失職の人数だけでなく、同じ人の再就職・賃金・移動を追う。",
+      "recommendation": "W3-W7との両立を維持。集計と個人の結果を分ける。",
+      "from": "W3",
+      "to": "W9",
+      "requires": [],
+      "sources": [
+        "econ-scenarios",
+        "census-adoption"
+      ],
+      "fromTitle": "生活を支える生産に、AIが広く導入される",
+      "toTitle": "AIの補助や新しい需要で、人の仕事が続く",
+      "relation": "conditional",
+      "label": "人の作業への需要が残り、その仕事に就けると"
+    },
+    {
+      "id": "R0-C2a",
+      "support": "限定した能力評価による部分的支持",
+      "assessment": "METRの時間指標は、定めた作業を成功させる能力の比較である。能力一般から任意の現実業務の完遂への因果効果ではない。",
+      "counterexample": "課題の点数が上がっても、未知の環境の長期業務や例外処理には失敗する。",
+      "verificationNeeded": "課題群・成功基準・信頼区間を固定し、未見の現実業務と人間の介入量で確かめる。",
+      "recommendation": "現行の範囲を維持。人間の作業時間とAIの連続稼働時間を混同しない。",
+      "from": "R0",
+      "to": "C2a",
+      "requires": [],
+      "sources": [
+        "horizon"
+      ],
+      "fromTitle": "AIが、より難しい作業をできるようになる",
+      "toTitle": "AIが必要な一連の作業を完遂できる",
+      "relation": "influence",
+      "label": "改良が、現実の一連の作業にも通用すると"
+    },
+    {
+      "id": "R0-W1",
+      "support": "能力試験から仕事への外挿",
+      "assessment": "限定課題の進歩は知的作業代替の一部の材料になるが、職業全体の品質・責任・例外処理を検証したわけではない。",
+      "counterexample": "個別試験に成功しても、業務の調整・対人判断・継続運用を人間が担う。",
+      "verificationNeeded": "職業名や単発試験ではなく、業務単位の成果と人間の介入を測る。",
+      "recommendation": "influenceとして維持。曝露・実行能力・導入・雇用結果を分離する。",
+      "from": "R0",
+      "to": "W1",
+      "requires": [],
+      "sources": [
+        "horizon"
+      ],
+      "fromTitle": "AIが、より難しい作業をできるようになる",
+      "toTitle": "知的作業を、仕事全体として自動化できる",
+      "relation": "influence",
+      "label": "改良が、仕事全体にも役立つと"
+    },
+    {
+      "id": "R0-ASI",
+      "support": "定義上の到達点・実現は仮説",
+      "assessment": "広い領域で人間を大きく上回るという条件はASIの定義に近い。現在の能力向上から、そこへ必ず到達するという証拠ではない。",
+      "counterexample": "特定領域だけ伸びる、進歩が頭打ちになる、資源や信頼性が制約になる。",
+      "verificationNeeded": "『広い領域』『人間を超える』の比較対象と基準を定め、未評価の領域を残す。",
+      "recommendation": "任意の到達分岐として維持。ASIを他の被害経路の必須前提にしない。",
+      "from": "R0",
+      "to": "ASI",
+      "requires": [],
+      "sources": [
+        "framework",
+        "horizon"
+      ],
+      "fromTitle": "AIが、より難しい作業をできるようになる",
+      "toTitle": "幅広い重要な仕事で、人間を大きく上回るAI（ASI）が誕生する",
+      "relation": "conditional",
+      "label": "改良が、幅広い分野で大幅な優位に至ると"
+    },
+    {
+      "id": "ASI-C3",
+      "support": "能力差による監督困難の原論考",
+      "assessment": "能力差が監督を難しくするという条件付き論証。ASIでの実験でも、能力差だけで必ず防壁が破れるという定理でもない。",
+      "counterexample": "人間が詳細を解けなくても、権限制限や独立検証、AI補助による監督が機能する。",
+      "verificationNeeded": "許可された評価環境で、能力差と監督・権限を別々に変え、防御の有効性を調べる。",
+      "recommendation": "監督側の能力・独立性・権限に依存するinfluenceとして維持。",
+      "from": "ASI",
+      "to": "C3",
+      "requires": [],
+      "sources": [
+        "framework"
+      ],
+      "fromTitle": "幅広い重要な仕事で、人間を大きく上回るAI（ASI）が誕生する",
+      "toTitle": "危険な行動を、途中で止められない",
+      "relation": "influence",
+      "label": "監督や対策が、能力の伸びに追いつかなければ"
+    },
+    {
+      "id": "R0-R4",
+      "support": "AIによる安全性研究の限定実演",
+      "assessment": "AIが対策を研究し、指定された評価を改善した実験はある。一般的な能力の向上そのものが改善を引き起こした効果を単独で分離した研究ではない。",
+      "counterexample": "AIの能力が伸びても、安全性の目的・評価・研究資源が整わず改善へ結びつかない。",
+      "verificationNeeded": "モデルの能力と研究手順を分け、独立した評価・長期運用へ改善が移るか確かめる。",
+      "recommendation": "安全性研究への分岐を維持。能力向上率から安全性向上率を推定しない。",
+      "from": "R0",
+      "to": "R4",
+      "requires": [],
+      "sources": [
+        "automated-alignment"
+      ],
+      "fromTitle": "AIが、より難しい作業をできるようになる",
+      "toTitle": "AIが、安全性の研究と対策も進める",
+      "relation": "influence",
+      "label": "促進：改良したAIを安全性研究にも使えるなら"
+    }
+  ],
+  "graphs": [
+    {
+      "id": "control",
+      "mode": "network",
+      "parent": null,
+      "nodes": [
+        "R0",
+        "ASI",
+        "R4",
+        "C1",
+        "C2",
+        "C3",
+        "L",
+        "C4a",
+        "C4b",
+        "C4",
+        "H",
+        "E0",
+        "T",
+        "X"
+      ],
+      "edges": [
+        "R0-C2a",
+        "R0-ASI",
+        "ASI-C3",
+        "R0-R4",
+        "R4-C1",
+        "C3-L",
+        "L-C4",
+        "C4-H",
+        "H-E0",
+        "H-T",
+        "T-X"
+      ],
+      "assessment": "C1・C2・C3はLの共同条件。能力があることを意図のズレから生む直列にはしていない。LからC4へは停止への持続性と組織を越える失敗が別に必要。"
+    },
+    {
+      "id": "misuse",
+      "mode": "network",
+      "parent": null,
+      "nodes": [
+        "M1",
+        "M2",
+        "M3",
+        "H",
+        "E0",
+        "T",
+        "X"
+      ],
+      "edges": [
+        "M3-H",
+        "H-E0",
+        "H-T",
+        "T-X"
+      ],
+      "assessment": "M1・M2・M3は共同条件。悪い意図を持つ人がいるだけでは、能力・アクセス・防壁の失敗・世界規模への拡大は導けない。"
+    },
+    {
+      "id": "interaction",
+      "mode": "sequence",
+      "parent": null,
+      "nodes": [
+        "S1",
+        "S2",
+        "S3",
+        "H",
+        "T",
+        "X"
+      ],
+      "edges": [
+        "S1-S2",
+        "S2-S3",
+        "S3-H",
+        "H-T",
+        "T-X"
+      ],
+      "assessment": "S1→S2→S3は条件付きの読む順序として成立するが、各段階の実証は異なる。E0はgraph.nodesにはないものの、描画のendingsとツアーの章から補われる。PC・スマホ双方のレイアウト出力でH-E0を確認した。"
+    },
+    {
+      "id": "acceleration",
+      "mode": "network",
+      "parent": null,
+      "nodes": [
+        "R0",
+        "R5",
+        "R1",
+        "R2",
+        "R3",
+        "ASI",
+        "R4",
+        "C2a",
+        "W1",
+        "C1",
+        "C3"
+      ],
+      "edges": [
+        "R1-R2",
+        "R2-R3",
+        "R3-R2",
+        "R0-C2a",
+        "R0-W1",
+        "R0-ASI",
+        "ASI-C3",
+        "R0-R4",
+        "R4-C1"
+      ],
+      "assessment": "R5とR3は重なり得る開発経路。R2→R3→R2は明示された循環。ASIとRSIは他の被害経路の必須条件ではない。"
+    },
+    {
+      "id": "intent",
+      "mode": "any",
+      "parent": "C1",
+      "nodes": [
+        "C1a",
+        "C1b"
+      ],
+      "edges": [],
+      "assessment": "C1aとC1bは意図とのズレが生じる別の機序。ORは相互排他でも完全な原因一覧でもない。個別評価のズレを、全ての環境での危険行動へ一般化しない。"
+    },
+    {
+      "id": "ability-access",
+      "mode": "all",
+      "parent": "C2",
+      "nodes": [
+        "C2a",
+        "C2b"
+      ],
+      "edges": [],
+      "assessment": "C2aの作業能力とC2bの現実への接続は共同条件。能力だけでもアクセスだけでも、目的の現実行動が完遂するとは限らない。"
+    },
+    {
+      "id": "oversight",
+      "mode": "any",
+      "parent": "C3",
+      "nodes": [
+        "C3a",
+        "C3b"
+      ],
+      "edges": [],
+      "assessment": "評価・監督による見逃しと設計等の問題は別の機序。片方の候補があるだけで、あらゆる防壁が失敗したというANDの成立証拠にはしない。"
+    },
+    {
+      "id": "evaluation",
+      "mode": "any",
+      "parent": "C3a",
+      "nodes": [
+        "C3a1",
+        "C3a2",
+        "C3a3"
+      ],
+      "edges": [],
+      "assessment": "実際の失敗を捉えないこと、評価中の問題隠し、監督への干渉を区別する。評価中だと認識できるだけでは、いずれの失敗も成立しない。"
+    },
+    {
+      "id": "persistence-scale",
+      "mode": "all",
+      "parent": "C4",
+      "nodes": [
+        "C4a",
+        "C4b"
+      ],
+      "edges": [],
+      "assessment": "停止努力への持続性と組織を越える制御失敗を分解している。Lで観測された局所的な逸脱だけで両方を満たしたとはしない。"
+    },
+    {
+      "id": "extinction-conditions",
+      "mode": "all",
+      "parent": "T",
+      "nodes": [
+        "T1",
+        "T2"
+      ],
+      "edges": [],
+      "assessment": "T1・T2は生存・回復条件を考えるための編集上の分解。あらゆる絶滅シナリオに共通する必要十分条件が証明されたという扱いはできない。"
+    },
+    {
+      "id": "dependence",
+      "mode": "sequence",
+      "parent": null,
+      "nodes": [
+        "D1",
+        "D2",
+        "D3",
+        "E1"
+      ],
+      "edges": [
+        "D1-D2",
+        "D2-D3",
+        "D3-E1"
+      ],
+      "assessment": "利用→代替喪失→影響力低下→人類全体の主導権喪失の各段階は制度依存。単なる利用調査を、この直列全体の検証にしない。"
+    },
+    {
+      "id": "accidents",
+      "mode": "sequence",
+      "parent": null,
+      "nodes": [
+        "A1",
+        "A2",
+        "A3",
+        "H",
+        "T",
+        "X"
+      ],
+      "edges": [
+        "A1-A2",
+        "A2-A3",
+        "A3-H",
+        "H-T",
+        "T-X"
+      ],
+      "assessment": "共通原因・伝播・復旧系の失敗を分ける。E0・G1は描画時に補完され、ツアーにもある。graph.nodesだけを読んで『回復分岐が消えている』とは判定しない。"
+    },
+    {
+      "id": "misuse-mechanisms",
+      "mode": "any",
+      "parent": "M2",
+      "nodes": [
+        "M2c",
+        "M2b"
+      ],
+      "edges": [],
+      "assessment": "サイバーと生物は例示された別機序で、悪用全ての網羅的分類ではない。両方が必要でも、どちらかが常に十分でもない。"
+    },
+    {
+      "id": "cyber-conditions",
+      "mode": "all",
+      "parent": "M2c",
+      "nodes": [
+        "M2c1",
+        "M2c2"
+      ],
+      "edges": [],
+      "assessment": "作業能力と対象へ支援が届く条件を共同で考える。防御・復旧の失敗はM3で別に扱い、同じ事実を重複した独立条件として数えない。"
+    },
+    {
+      "id": "bio-conditions",
+      "mode": "all",
+      "parent": "M2b",
+      "nodes": [
+        "M2b1",
+        "M2b2"
+      ],
+      "edges": [],
+      "assessment": "情報支援と現実に実行される条件は別。情報課題の成功を、現実での完遂・拡散・世界規模被害へ読み替えない。"
+    },
+    {
+      "id": "work",
+      "mode": "network",
+      "parent": null,
+      "nodes": [
+        "R0",
+        "ASI",
+        "R4",
+        "W1",
+        "W2",
+        "W3",
+        "W4",
+        "W6",
+        "W5",
+        "W7",
+        "W8",
+        "W9"
+      ],
+      "edges": [
+        "R0-W1",
+        "R0-ASI",
+        "R0-R4",
+        "W1-W4",
+        "W4-W3",
+        "W3-W5",
+        "W3-W7",
+        "W5-W8",
+        "W3-W9"
+      ],
+      "assessment": "W1・W2→W4は技術的範囲、W3・W6→W5は生産と分配。W4はW5の必須条件ではない。W7とW9は人・地域・期間によって同時に起こり得る。"
+    },
+    {
+      "id": "money",
+      "mode": "network",
+      "parent": null,
+      "nodes": [
+        "I1a",
+        "I1b",
+        "I1",
+        "I2",
+        "W4",
+        "P1",
+        "P2",
+        "P3",
+        "F1",
+        "F2",
+        "F4",
+        "F3",
+        "P4",
+        "F5",
+        "F6",
+        "F7"
+      ],
+      "edges": [
+        "I1a-I1",
+        "I1-I2",
+        "W4-P1",
+        "P1-P3",
+        "F1-F3",
+        "P3-P4",
+        "F3-F5",
+        "F5-F6",
+        "F5-F7"
+      ],
+      "assessment": "所得、貨幣の役割、金融危機の三つを分離。金融危機から貨幣不要や絶滅への直接線はない。P1/P2→P3は特に背景資料と仮説の区別が必要。"
+    },
+    {
+      "id": "finance-mechanisms",
+      "mode": "any",
+      "parent": "F2",
+      "nodes": [
+        "F2a",
+        "F2b"
+      ],
+      "edges": [],
+      "assessment": "不正・攻撃と相関した取引は別の危機機序。同じAIの使用は判断の相関を保証せず、判断の相関だけで危機も保証しない。"
+    },
+    {
+      "id": "income-conditions",
+      "mode": "all",
+      "parent": "I1",
+      "nodes": [
+        "I1a",
+        "I1b"
+      ],
+      "edges": [],
+      "assessment": "売れる成果と取引が成立する条件をANDで結ぶ。売上、利益、取引量は別。複数の事業の実演を一つの完全自律企業の証拠に合成しない。"
+    },
+    {
+      "id": "currency-conditions",
+      "mode": "all",
+      "parent": "P3",
+      "nodes": [
+        "P1",
+        "P2"
+      ],
+      "edges": [],
+      "assessment": "P1とP2は仮説を考えるための条件分解。両方が観測されたとも、両方だけで貨幣の全機能が消えるとも言えない。"
+    },
+    {
+      "id": "finance-conditions",
+      "mode": "all",
+      "parent": "F3",
+      "nodes": [
+        "F1",
+        "F2",
+        "F4"
+      ],
+      "edges": [],
+      "assessment": "F1・F2・F4が同じ状況で成立することが必要。導入率、相関リスク、防壁の限界を別々の資料から集めても、AND全体の観測にはならない。"
+    },
+    {
+      "id": "development-paths",
+      "mode": "any",
+      "parent": "R0",
+      "nodes": [
+        "R5",
+        "R3"
+      ],
+      "edges": [],
+      "assessment": "R5とR3は並列かつ重なり得る。R5の観測をRSI開始とせず、RSIなしでも能力の向上が続く道を残している。"
+    },
+    {
+      "id": "research-cycle",
+      "mode": "sequence",
+      "parent": "R3",
+      "nodes": [
+        "R1",
+        "R2"
+      ],
+      "edges": [
+        "R1-R2"
+      ],
+      "assessment": "R1→R2は一部の研究から全工程への条件付き移行。親のR3は循環を説明するまとまりであり、囲まれているだけで循環が実証されたという意味ではない。"
+    }
+  ],
+  "sources": [
+    {
+      "id": "power",
+      "title": "Joseph Carlsmith — Is Power-Seeking AI an Existential Risk?",
+      "url": "https://arxiv.org/abs/2206.13353",
+      "reviewedSections": "抄録・論証の位置づけ",
+      "kind": "著者の原論考",
+      "assessment": "権力獲得から人類の主導権喪失へ至る条件を論じる。各前提や主観的判断を、観測頻度や確定した矢印とみなさない。"
+    },
+    {
+      "id": "rand-extinction",
+      "title": "RAND — On the Extinction Risk from Artificial Intelligence",
+      "url": "https://www.rand.org/pubs/research_reports/RRA3034-1.html",
+      "reviewedSections": "掲載元の概要・主要知見・提言",
+      "kind": "原報告の著者要約",
+      "assessment": "三つの災害シナリオに関する探索的検討。世界規模の被害と絶滅の距離を考える材料で、全経路の不可能性や確率は示さない。"
+    },
+    {
+      "id": "anthropic-threat-202609",
+      "title": "Anthropic — Detecting and countering misuse of AI: September 2026",
+      "url": "https://www.anthropic.com/threat-intelligence-report-september-2026",
+      "reviewedSections": "導入・事例・範囲と限界",
+      "kind": "開発企業によるインシデント報告",
+      "assessment": "選ばれた悪用事例を報告。通常利用の代表標本ではなく、世界規模の被害も実証しない。"
+    },
+    {
+      "id": "cyber-misuse",
+      "title": "Anthropic — Mapping AI-enabled cyber threats: Insights from the LLM ATT&CK Navigator",
+      "url": "https://www.anthropic.com/research/attack-navigator",
+      "reviewedSections": "方法・主要知見・対象アカウントの範囲",
+      "kind": "開発企業による観測研究",
+      "assessment": "検知・停止されたアカウント群から行動を分析。未検知を含む全利用や一般の攻撃成功率には外挿できない。"
+    },
+    {
+      "id": "astra-card",
+      "title": "OpenAI: GPT-6 Astra System Card",
+      "url": "https://deploymentsafety.openai.com/gpt-6-astra",
+      "reviewedSections": "§10.1.2 Cybersecurity Capabilities、能力評価の限界",
+      "kind": "開発者の評価・収録された外部評価",
+      "assessment": "特定課題・実験設定での能力を測る。外部評価はカードに掲載された説明を確認し、外部機関の全原データを独立再解析したわけではない。"
+    },
+    {
+      "id": "sipri",
+      "title": "SIPRI — 軍事AIが核エスカレーションに与える影響",
+      "url": "https://www.sipri.org/publications/2025/sipri-insights-peace-and-security/impact-military-artificial-intelligence-nuclear-escalation-risk",
+      "reviewedSections": "掲載元の要旨・主張する機序",
+      "kind": "研究機関の原分析",
+      "assessment": "意思決定時間、情報の不透明さ、軍事的相互作用を論じる。実戦の発生率や人間の訂正能力への実験効果を測った資料ではない。"
+    },
+    {
+      "id": "wargames",
+      "title": "Riveraほか — Escalation Risks from Language Models in Military and Diplomatic Decision-Making",
+      "url": "https://arxiv.org/abs/2401.03408",
+      "reviewedSections": "抄録・導入・実験設定（人間の監督なしのエージェント間ゲーム）",
+      "kind": "著者のシミュレーション論文",
+      "assessment": "模擬環境での対立拡大を示す。人間の確認・訂正時間の減少を操作した実験ではない。"
+    },
+    {
+      "id": "openai-rd",
+      "title": "OpenAI — Research acceleration: The view inside OpenAI",
+      "url": "https://openai.com/index/research-acceleration-view-inside-openai/",
+      "reviewedSections": "研究利用の記述・時間指標・制約の説明",
+      "kind": "開発企業の業務分析",
+      "assessment": "社内の研究作業とAI利用の変化。資源・道具・人間の関与と一般的な能力向上の寄与を分離した因果推定ではない。"
+    },
+    {
+      "id": "discovery",
+      "title": "METR — Have We Seen an Acceleration in Discoveries?",
+      "url": "https://metr.org/notes/2026-08-14-llm-contribution-to-discoveries/",
+      "reviewedSections": "要約・領域別結果・限界",
+      "kind": "第三者による公開情報の分析",
+      "assessment": "領域ごとに発見の変化が異なる。公開情報の偏り・分析誤差があり、研究開発全体の加速率を測らない。"
+    },
+    {
+      "id": "gemini-safety",
+      "title": "Google DeepMind — Gemini 3.7 Flash Model Card",
+      "url": "https://deepmind.google/models/model-cards/gemini-3-7-flash/",
+      "reviewedSections": "Frontier Safety Assessment、ML R&D and Misalignment",
+      "kind": "開発者評価",
+      "assessment": "特定モデルの研究工程などの評価。端から端までの独立した研究に限界があるという結果は、他のモデルや9月時点全体の能力上限ではない。"
+    },
+    {
+      "id": "aisi-incident",
+      "title": "英国AISI — サイバー評価中の無許可行動の報告",
+      "url": "https://www.aisi.gov.uk/blog/incident-report-unsanctioned-agent-behaviour-during-cyber-testing",
+      "reviewedSections": "What happened / What we found、封じ込めと限界",
+      "kind": "評価機関による事件調査",
+      "assessment": "通常提供とは異なる許可・フィルター設定での許可外行動を報告。発生後の封じ込めもあり、世界規模の停止不能を示さない。"
+    },
+    {
+      "id": "incident",
+      "title": "METR — Hugging Face関連インシデントの独立調査",
+      "url": "https://metr.org/blog/2026-08-26-openai-hugging-face-incident-investigation/",
+      "reviewedSections": "Core takeaways / Investigation process and limitations",
+      "kind": "第三者による事件調査",
+      "assessment": "許可外の協働と監督への干渉を分析。強い停止努力にも耐えて活動を続けられたという証明ではない。"
+    },
+    {
+      "id": "control-paper",
+      "title": "Greenblattほか — AI Control: Improving Safety Despite Intentional Subversion",
+      "url": "https://arxiv.org/abs/2312.06942",
+      "reviewedSections": "抄録（目的・設定・対策と評価対象）",
+      "kind": "原研究",
+      "assessment": "意図的な妨害も想定した運用の安全性を研究。モデルの目標のズレ自体を減らしたことの直接根拠ではない。"
+    },
+    {
+      "id": "frontier",
+      "title": "METR — Frontier Risk Report (February to March 2026)",
+      "url": "https://metr.org/blog/2026-05-19-frontier-risk-report/",
+      "reviewedSections": "Executive summary / assessment window / risk assessmentの位置づけ",
+      "kind": "第三者によるリスク評価",
+      "assessment": "評価期間は2026年2〜3月。小規模な無許可活動の可能性と、その頑健さを区別する。9月時点の上限や実際の世界規模制御喪失の証明ではない。"
+    },
+    {
+      "id": "census-adoption",
+      "title": "米国国勢調査局 — The Microstructure of AI Diffusion",
+      "url": "https://www.census.gov/library/working-papers/2026/adrm/CES-WP-26-25.html",
+      "reviewedSections": "掲載元の抄録・調査期間・利用と雇用の区別",
+      "kind": "政府の原調査分析",
+      "assessment": "2025年11月〜2026年1月の企業調査。導入と仕事の補完・置換に関する観測で、技能喪失や将来の就労不要を実証しない。"
+    },
+    {
+      "id": "gradual",
+      "title": "Kulveitほか — Humanity Faces Existential Risk from Gradual Disempowerment",
+      "url": "https://proceedings.mlr.press/v267/kulveit25a.html",
+      "reviewedSections": "PMLR掲載の抄録・主張の位置づけ",
+      "kind": "著者の原論考",
+      "assessment": "社会的依存から主導権を失う機序を提案する論文。図の連鎖を検証した自然実験などではない。"
+    },
+    {
+      "id": "fsb-ai",
+      "title": "FSB — AIの金融安定への含意",
+      "url": "https://www.fsb.org/2024/11/the-financial-stability-implications-of-artificial-intelligence/",
+      "reviewedSections": "報告要約・脆弱性の整理",
+      "kind": "金融安定機関の原分析",
+      "assessment": "金融分野の共通依存・相関・サイバー等の脆弱性を整理。AI利用による市場全体の危機や社会全体の復旧不能を観測した証拠ではない。"
+    },
+    {
+      "id": "framework",
+      "title": "Google DeepMind — An Approach to Technical AGI Safety and Security",
+      "url": "https://arxiv.org/abs/2504.01849",
+      "reviewedSections": "抄録・背景・能力差と安全性の前提",
+      "kind": "著者による技術安全性の提案",
+      "assessment": "能力・意図・運用・監督を分けた戦略の論考。ASI下での監督の失敗が実験で確認されたという資料ではない。"
+    },
+    {
+      "id": "fsb-monitoring",
+      "title": "FSB — AI導入と脆弱性のモニタリング",
+      "url": "https://www.fsb.org/2025/10/monitoring-adoption-of-artificial-intelligence-and-related-vulnerabilities-in-the-financial-sector/",
+      "reviewedSections": "報告要約・監視とデータ不足の説明",
+      "kind": "金融安定機関の原分析",
+      "assessment": "導入と関連する脆弱性を監視する方法・不足を論じる。復旧失敗の直接観測ではない。"
+    },
+    {
+      "id": "ilo-index",
+      "title": "ILO Working Paper 140 — Generative AI and Jobs: A Refined Global Index of Occupational Exposure",
+      "url": "https://www.ilo.org/publications/generative-ai-and-jobs-refined-global-index-occupational-exposure",
+      "reviewedSections": "掲載元の方法と要約",
+      "kind": "国際機関の原推計",
+      "assessment": "職務の生成AIへの曝露の推計。実際の失業、全労働の代替、導入後の成果は別の測定対象。"
+    },
+    {
+      "id": "horizon",
+      "title": "METR — Task-Completion Time Horizons",
+      "url": "https://metr.org/time-horizons/",
+      "reviewedSections": "指標の定義・方法・適用範囲と限界",
+      "kind": "評価機関の原評価",
+      "assessment": "定めた課題をAIが完遂できる範囲を、人間の所要時間との関係で測る。任意の仕事、AIの連続稼働時間、完全自律性と同義ではない。"
+    },
+    {
+      "id": "robotics-2",
+      "title": "Google DeepMind — Gemini Robotics 2",
+      "url": "https://deepmind.google/blog/gemini-robotics-2-brings-whole-body-intelligence-to-robots/",
+      "reviewedSections": "発表本文・実演と残る能力の説明",
+      "kind": "開発企業による技術報告",
+      "assessment": "複数の身体動作の技術実演。全ての職場での作業代替や、導入の経済性を保証しない。"
+    },
+    {
+      "id": "vend",
+      "title": "Anthropic・Andon Labs — Project Vend: Phase two",
+      "url": "https://www.anthropic.com/research/project-vend-2",
+      "reviewedSections": "Phase twoの変更点・運営結果・人間の関与",
+      "kind": "開発企業と共同実施者の事例",
+      "assessment": "モデル・道具・指示を合わせて変更した運営実演。完全無人企業の総費用込みの利益や、モデル更新だけの因果効果ではない。"
+    },
+    {
+      "id": "visa-agents",
+      "title": "Visa・Artemis — Agentic Payments from the Ground Up",
+      "url": "https://www.visa.com/en-us/thought-leadership/innovation/agentic-payments-from-the-ground-up",
+      "reviewedSections": "支払い形態・観測範囲・権限と信頼の説明",
+      "kind": "決済企業と分析者の原報告",
+      "assessment": "機械的な支払いと人間に代わる取引を整理。決済量は純利益でも完全な経済的自立でもない。"
+    },
+    {
+      "id": "imf-distribution",
+      "title": "Rockallほか — AI Adoption and Inequality",
+      "url": "https://www.imf.org/en/publications/wp/issues/2025/04/04/ai-adoption-and-inequality-565729",
+      "reviewedSections": "掲載元の抄録・モデルの範囲",
+      "kind": "著者による経済モデル",
+      "assessment": "AI導入、仕事の補完、資本所得等が分配に関わるモデル。実際の未来の予測や、貨幣の役割消滅の検証ではない。"
+    },
+    {
+      "id": "econ-scenarios",
+      "title": "Korinek et al. — Economic Scenarios for Transformative AI",
+      "url": "https://www-cdn.anthropic.com/files/4zrzovbb/website/cf58f84d46a4a76bf5a5b039ac695fba6b80041c.pdf",
+      "reviewedSections": "PDFの抄録・導入・シナリオと予測の区別",
+      "kind": "著者による経済シナリオモデル",
+      "assessment": "技術進歩・仕事・需要・移動等の仮定に依存するシナリオ。発生確率を付した予測でも、全身体労働が代替された社会の観測でもない。"
+    },
+    {
+      "id": "ecb-money",
+      "title": "ECB — What is money?",
+      "url": "https://www.ecb.europa.eu/ecb-and-you/explainers/tell-me-more/html/what_is_money.en.html",
+      "reviewedSections": "貨幣の機能の説明",
+      "kind": "通貨当局による制度説明",
+      "assessment": "交換・価値の尺度・価値保存等を説明する背景資料。AIによる価格低下から貨幣不要へ進む主張は検証していない。"
+    },
+    {
+      "id": "finance-survey",
+      "title": "Bank of England・FCA — Artificial intelligence in UK financial services 2024",
+      "url": "https://www.bankofengland.co.uk/report/2024/artificial-intelligence-in-uk-financial-services-2024",
+      "reviewedSections": "調査の概要・対象・利用とリスクの集計",
+      "kind": "中央銀行・規制機関の原調査",
+      "assessment": "金融機関のAI利用と認識されたリスクを調査。AIが金融危機を引き起こした因果効果の推定ではない。"
+    },
+    {
+      "id": "automated-alignment",
+      "title": "Anthropic: Automated researchers can reliably mitigate alignment failures",
+      "url": "https://www.anthropic.com/research/automated-researchers-mitigate-alignment-failures",
+      "reviewedSections": "研究設定・介入・結果・限界",
+      "kind": "開発企業による実験研究",
+      "assessment": "AI研究者が特定の失敗評価を改善する対策を作る実験。一般的なアライメント解決や全ての運用の安全性を保証しない。"
+    },
+    {
+      "id": "time-reallocation",
+      "title": "Suh・Oh — Generative AI and the Reallocation of Time",
+      "url": "https://arxiv.org/html/2602.12695v1",
+      "reviewedSections": "抄録・調査対象・方法",
+      "kind": "著者による就業者の研究",
+      "assessment": "韓国の就業者のAI利用と仕事中の時間配分を扱う。就労が生計に不要になった後の余暇や幸福を直接検証していない。"
+    },
+    {
+      "id": "monetary-trust",
+      "title": "ECB・Philip R. Lane — The digital euro: maintaining the autonomy of the monetary system",
+      "url": "https://www.ecb.europa.eu/press/key/date/2025/html/ecb.sp250320_1~41c9459722.en.html",
+      "reviewedSections": "貨幣・銀行・決済の関係と制度の説明",
+      "kind": "ECBによる原講演・制度論",
+      "assessment": "貨幣制度と信頼の仕組みを論じる。AI起因の金融危機から通貨・実体経済の崩壊を観測した証拠ではない。"
+    },
+    {
+      "id": "payment-resilience",
+      "title": "ECB — The Eurosystem’s comprehensive payments strategy",
+      "url": "https://www.ecb.europa.eu/pub/pdf/other/ecb.eurosystemcomprehensivepaymentsstrategy202603.en.pdf",
+      "reviewedSections": "PDF pp.16–17：代替支払い・現金・オフライン等の耐障害性",
+      "kind": "通貨当局の戦略資料",
+      "assessment": "代替支払いと耐障害性の計画・検討。提案や整備中の仕組みを全障害で効果実証済みとは扱わない。"
+    }
+  ]
+}

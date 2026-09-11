@@ -1,0 +1,167 @@
+{
+  "id": "2026-09-11-arrow-evidence-corrections",
+  "version": 2,
+  "date": "2026-09-11",
+  "reviewer": "Codex — editorial review; not independent expert peer review",
+  "decision": "reviewed",
+  "assessments": {
+    "alignment": {
+      "mechanism": "R4-C1 is a mitigation edge: a method found by safety research may reduce behavior that departs from the intended goal. The change limits its supporting evidence to research on alignment-evaluation improvements.",
+      "conditions": "The intervention must reduce the targeted failure and continue to work in deployment or after further training. Both conditions and the existing mitigation relation remain unchanged.",
+      "counterexample": "A monitor or editor can prevent harmful output from an intentionally subversive model while the model still tries to subvert oversight. That is a control success without evidence that the underlying misalignment was reduced.",
+      "evidence": "The automated-alignment study supports intervention improvements on specified failure evaluations. AI Control instead evaluates deployment protocols despite intentional subversion; it remains cited for operational safeguards elsewhere, including C3-L.",
+      "limits": "Held-out evaluation improvements do not establish a general alignment solution or durable effects in arbitrary deployments. The citation correction does not demonstrate a new safety capability or change any node evidence level.",
+      "mitigation": "Keep alignment interventions and deployment defenses as complementary measures with separate outcomes. Preserve independent evaluation and tests after further training as the existing edge recommends.",
+      "readerContext": "Read the Japanese and English R4-C1 connection text, the R4 and C1 node explanations, and the associated research cards. The detail now lists only the relevant alignment study, while the control study is still available in the safeguard context.",
+      "whyHere": "The audit found that evidence for reducing the cause of failure was mixed with evidence for blocking its consequences. Correcting the reference set preserves the map while making the explanatory claim traceable.",
+      "primary": [
+        {
+          "source": "automated-alignment",
+          "locator": "Research setup, results, held-out evaluations and limitations",
+          "support": "An AI researcher found methods that improved specific alignment failure evaluations, with tests of transfer and explicit limitations."
+        },
+        {
+          "source": "control-paper",
+          "locator": "Abstract: intentional subversion, control protocols, monitoring and editing",
+          "support": "Supports deployment safety despite an untrusted model; does not directly establish reduction of the underlying misalignment."
+        }
+      ]
+    },
+    "military": {
+      "mechanism": "S1-S2 remains a conditional hypothesis: erroneous AI advice can escape correction when humans lack sufficient time or independent information. The change distinguishes this mechanism from the outcome measured in the cited simulation.",
+      "conditions": "Important errors or biases and insufficient human checking time or evidence are still required. Using AI alone is not treated as sufficient, and the sequence and recovery branches are unchanged.",
+      "counterexample": "Humans can independently check advice and interrupt a decision even when AI plays an important role. Escalation among AI-only agents does not establish that humans would lose correction time.",
+      "evidence": "SIPRI discusses conditional mechanisms involving military AI and compressed decisions. Rivera and colleagues study interacting LLM agents without human oversight, not a treatment effect on human verification time.",
+      "limits": "The wargame is neither a human decision-time experiment nor a measurement of occurrence rates in real conflict. The corrected Japanese and English text state both boundaries explicitly.",
+      "mitigation": "Preserve independent information, uncertainty communication and time to review high-stakes decisions. These are candidate protections against the stated mechanism, not universally demonstrated guarantees.",
+      "readerContext": "Read the updated connection together with S1, S2, the military tour chapter and both research cards in the generated reading exports. The text first names the analysis and then says who acted in the simulation.",
+      "whyHere": "Readers should not infer that the experimental source measured the human-correction bottleneck just because the source appears under that arrow. The revision makes the division of evidential roles explicit.",
+      "primary": [
+        {
+          "source": "sipri",
+          "locator": "Publication abstract: decision time, opaque decision support and nuclear-escalation context",
+          "support": "Original analysis of conditional pathways; not a randomized human correction-time experiment."
+        },
+        {
+          "source": "wargames",
+          "locator": "Abstract and Introduction; experimental setup describing LLM agents acting without human oversight",
+          "support": "Escalation behavior in simulated agent interactions, not the effect of AI advice on human correction time."
+        }
+      ]
+    },
+    "time": {
+      "mechanism": "W5-W8 describes the possibility that living without employment income frees time for chosen activities when people have control of that time and access to opportunities. The change names the population studied by the existing source.",
+      "conditions": "Sustained provision for living needs, discretion over time and opportunities or resources for activities remain required. The source study is not used to claim these conditions have all been met.",
+      "counterexample": "Even when living needs are met, people may lack control over their time or access to desired activities. More slack while employed does not establish a society where earning a living no longer requires work.",
+      "evidence": "The time-reallocation study surveys employed people in South Korea about AI use and work-related time allocation. This supports a limited observation about people who are working, not a measured transition into post-work life.",
+      "limits": "No experimental random assignment or direct post-work population is added by the revision. More free time is still distinguished from automatic increases in happiness or purpose.",
+      "mitigation": "Preserve the existing focus on discretion over time, learning and social opportunities, care support and participation. Assess these conditions separately from reported productivity or time savings.",
+      "readerContext": "Read W5-W8 with W5, W8, the work-tour ending and the research card in Japanese and English. The revised sentence identifies employed people and work time before distinguishing the future scenario.",
+      "whyHere": "The previous generic caveat did not explain the population mismatch. Specifying what the study examined lets readers see exactly which part of the arrow remains hypothetical.",
+      "primary": [
+        {
+          "source": "time-reallocation",
+          "locator": "Abstract and survey design: employed South Korean respondents and work-related time allocation",
+          "support": "AI use and time allocation among employed people; not a direct study of life after employment becomes optional."
+        },
+        {
+          "source": "imf-distribution",
+          "locator": "Working-paper abstract: task-based model, AI adoption, wages, capital income and inequality",
+          "support": "Conditional distribution mechanisms; no demonstration of the post-work time-allocation transition."
+        }
+      ]
+    },
+    "history": {
+      "mechanism": "The history entry records the three evidence-scope corrections as editorial changes, without asserting a new capability, observed transition or causal direction.",
+      "conditions": "The correction is limited to R4-C1 references and S1-S2 / W5-W8 current explanations, their check dates, and the paired translations and change history.",
+      "counterexample": "A newer editorial check date does not mean the underlying model or population was measured again, and a clearer explanation does not turn a conditional arrow into an observed causal effect.",
+      "evidence": "The preceding audit compared all 41 documented edges with 32 cited sources. Its three proposed corrections match the actual changes, which are also described in Japanese and English history entries.",
+      "limits": "This is an editorial review by Codex, not independent expert peer review. All prior history entries and translations are preserved; the historical audit snapshot remains distinct from this implementation record.",
+      "mitigation": "Retain mechanism-specific counterexamples and existing safeguards. Continue to distinguish node evidence status, arrow support and outcome severity in later updates.",
+      "readerContext": "The new history item names the three kinds of correction and their reason. Existing translated history entries were moved by index while keeping their content attached to the same history IDs.",
+      "whyHere": "The reader needs to understand why the evidence shown under these arrows changed. The history makes the correction explicit instead of silently removing a source or making a stronger claim.",
+      "primary": [
+        {
+          "source": "automated-alignment",
+          "locator": "Research setup, results, held-out evaluations and limitations",
+          "support": "An AI researcher found methods that improved specific alignment failure evaluations, with tests of transfer and explicit limitations."
+        },
+        {
+          "source": "control-paper",
+          "locator": "Abstract: intentional subversion, control protocols, monitoring and editing",
+          "support": "Supports deployment safety despite an untrusted model; does not directly establish reduction of the underlying misalignment."
+        },
+        {
+          "source": "sipri",
+          "locator": "Publication abstract: decision time, opaque decision support and nuclear-escalation context",
+          "support": "Original analysis of conditional pathways; not a randomized human correction-time experiment."
+        },
+        {
+          "source": "wargames",
+          "locator": "Abstract and Introduction; experimental setup describing LLM agents acting without human oversight",
+          "support": "Escalation behavior in simulated agent interactions, not the effect of AI advice on human correction time."
+        },
+        {
+          "source": "time-reallocation",
+          "locator": "Abstract and survey design: employed South Korean respondents and work-related time allocation",
+          "support": "AI use and time allocation among employed people; not a direct study of life after employment becomes optional."
+        },
+        {
+          "source": "imf-distribution",
+          "locator": "Working-paper abstract: task-based model, AI adoption, wages, capital income and inequality",
+          "support": "Conditional distribution mechanisms; no demonstration of the post-work time-allocation transition."
+        }
+      ]
+    }
+  },
+  "entries": {
+    "edge:S1-S2": {
+      "hash": "7c6d38b293d2c2d06fd35c98a4f838f65ab1d58ea02675e25d87addc821efcb6",
+      "assessment": "military"
+    },
+    "edge:R4-C1": {
+      "hash": "6ee925b247983aaef412ef071cd2eefccec2975e95c24ef83eab9abc50b6b279",
+      "assessment": "alignment"
+    },
+    "edge:W5-W8": {
+      "hash": "388114ee2050d03125336b11cb44ff53e5fbf33996999ef05477aeecc94141b2",
+      "assessment": "time"
+    },
+    "graph:control": {
+      "hash": "729ca6c50738964cfcdaf64c7556e396256553f9ec33b8ac8cdd771868afbd35",
+      "assessment": "alignment"
+    },
+    "graph:interaction": {
+      "hash": "d8f5d980f306a4321c78cf06b99021ff10ba419df04ec1e09485964e4f3da65c",
+      "assessment": "military"
+    },
+    "graph:acceleration": {
+      "hash": "c56ac224a92b8a7df9878999a9640278a111a2efbb5abb3978268be8d7c79579",
+      "assessment": "alignment"
+    },
+    "graph:work": {
+      "hash": "eb41a56d697f9e37484fd28c858a58b9bf92e4e1ab9b3aa6c9d44a38141081e2",
+      "assessment": "time"
+    },
+    "route:control": {
+      "hash": "f1af66aeaa14832579833025a18945ff3710ea8ec217a41d936d82d909598140",
+      "assessment": "alignment"
+    },
+    "route:interaction": {
+      "hash": "1dcdaea3f73afe2809d394fd0b5f7ed2563484f93604dabdd69785ef1644840c",
+      "assessment": "military"
+    },
+    "route:acceleration": {
+      "hash": "669b2a602d1885454abe5a7aa66bff47c8d0a1e7cb15994d8b3b05b79e0e04a3",
+      "assessment": "alignment"
+    },
+    "route:work": {
+      "hash": "ebdc6df73019be345493634b228c3fb0236f076044bd4321dca0361dc84cad9c",
+      "assessment": "time"
+    },
+    "history:changes": {
+      "hash": "f3ade5d514feb16a81fd73d7b9be7c37c551a8e21b77c0b1fe6d42f8ca93d0bc",
+      "assessment": "history"
+    }
+  }
+}
