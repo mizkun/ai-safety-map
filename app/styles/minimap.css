@@ -100,6 +100,12 @@
 .welcome-dialog .MuiDialogContent-root {
   padding: 10px 26px;
 }
+.welcome-intro {
+  margin: 4px 0 24px;
+  color: #33425b;
+  font-size: 15px;
+  line-height: 1.8;
+}
 .welcome-feature {
   display: flex;
   align-items: flex-start;

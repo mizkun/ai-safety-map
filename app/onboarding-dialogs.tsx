@@ -20,6 +20,7 @@ export default function OnboardingDialogs({ m, navigation, startTour }: Props) {
         fullWidth
         maxWidth="xs"
         aria-labelledby="welcome-title"
+        aria-describedby="welcome-intro"
         slotProps={{ paper: { className: 'welcome-dialog' } }}
       >
         <DialogTitle className="modal-heading" id="welcome-title">
@@ -34,6 +35,9 @@ export default function OnboardingDialogs({ m, navigation, startTour }: Props) {
           </IconButton>
         </DialogTitle>
         <DialogContent>
+          <p className="welcome-intro" id="welcome-intro">
+            {m.welcomeIntro}
+          </p>
           {[
             {
               Icon: Waypoints,

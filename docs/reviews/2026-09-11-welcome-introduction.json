@@ -1,0 +1,33 @@
+{
+  "id": "2026-09-11-welcome-introduction",
+  "version": 2,
+  "date": "2026-09-11",
+  "reviewer": "Codex — bilingual interface and first-time reader review",
+  "decision": "reviewed",
+  "assessments": {
+    "introduction": {
+      "mechanism": "The introductory paragraph explains that the site connects possible AI-related changes and risks to their conditions and available research. Concrete topic examples follow before the tour and reference-reading controls.",
+      "conditions": "The described topic routes, card explanations, research references, glossary, and tour already exist. The text describes exploring conditional paths rather than forecasting when they will occur.",
+      "counterexample": "Being able to inspect a pathway or open a research source does not establish that every link in the pathway is demonstrated, that every possible future is covered, or that the future will follow the tour order.",
+      "evidence": "Checked the Japanese and English welcome text against the implemented map routes, evidence descriptions, card dialogs, glossary links, and tour actions. The added claims concern the existing service, not new AI research results.",
+      "limits": "Known and unknown refer to the scope and dates of reviewed sources. The introduction does not promise live monitoring, validated scenario probabilities, universal causal proof, or an exhaustive list of risks.",
+      "mitigation": "Keep the purpose before feature names, give examples instead of unexplained scenario counts, and preserve accessible navigation to the underlying explanations and their limits.",
+      "readerContext": "The reader need not know what an AI scenario is. The first paragraph identifies work, society and risk; the following feature names AI misuse, loss of control, work and money as recognizable examples.",
+      "whyHere": "The user found that the previous welcome began with seven scenarios without explaining what the website was about. The addition answers that question before asking the reader to choose a map or tour.",
+      "primary": [
+        {
+          "source": "framework",
+          "locator": "Existing framework context; service claims checked against content/map.json, app/onboarding-dialogs.tsx, app/map-tour.tsx and app/reading/",
+          "support": "The existing source remains background for conditional pathways. Available site topics and controls were checked against the implementation; their availability is not attributed to an experimental finding."
+        }
+      ]
+    }
+  },
+  "entries": {
+    "ui:ja": {
+      "hash": "12af416dbe0c620fc1017f2981befc228957c57f8c6818b60857fc69842530f6",
+      "assessment": "introduction"
+    }
+  },
+  "scope": "Welcome introduction and concrete topic examples in Japanese and English. No scientific content or causal structure changed."
+}
