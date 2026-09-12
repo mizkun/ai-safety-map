@@ -355,25 +355,27 @@
     },
     "M2b": {
       "level": "indirect",
-      "summary": "情報支援や通常兵器の試験が手がかりです。情報による追加の効果と、物理的な危害に必要な条件がそろって成功したことまでは確認できません。",
+      "summary": "利用記録と模擬評価が手がかりです。情報支援と実物を使う条件の両方がそろい、実際の危害に至ったという確認ではありません。",
       "research": [
         "threat-weapons-sep26",
-        "threat-bio-sep26"
+        "threat-bio-sep26",
+        "physical-software-eval-sep26"
       ],
       "review": {
-        "checkedAt": "2026-09-11",
+        "checkedAt": "2026-09-12",
         "intervalDays": 7,
         "reason": "報告された利用・試験と、カードの条件全体の成立を分けて見直すため。"
       }
     },
     "M2b1": {
       "level": "tested",
-      "summary": "情報支援の効果を、検索との比較や専門家の試験で測っています。一部では専門家による誘導が必要でした。",
+      "summary": "既存のGemini評価では検索との比較や専門家による試験があり、一部では専門家の誘導が必要でした。通常兵器の新しい模擬評価は、利用者への追加の効果を直接測っていません。",
       "research": [
-        "gemini-safety"
+        "gemini-safety",
+        "physical-software-eval-sep26"
       ],
       "review": {
-        "checkedAt": "2026-09-11",
+        "checkedAt": "2026-09-12",
         "intervalDays": 7,
         "reason": "既存の根拠がカードの条件をどこまで直接確かめているかを分類しています。根拠の更新時に見直します。"
       }

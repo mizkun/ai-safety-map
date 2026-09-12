@@ -574,5 +574,17 @@
     "method": "複数の利用記録を研究の文脈と合わせて調査。正当な研究にも有害な研究にも使える性質を考慮。",
     "result": "研究支援と利用制限の回避を報告。Anthropicは研究者に加害意図があったとは断定せず、差し迫った生物脅威の証拠ともしていません。",
     "limitation": "研究計画やAIの回答から、物理的な実行、被害、世界的な拡大を推定できません。安全対策が機能した例と、検知の課題の両方を含みます。"
+  },
+  "physical-software-eval-sep26": {
+    "source": "anthropic-physical-eval-202609",
+    "type": "evaluation",
+    "kind": "開発者による模擬評価",
+    "evaluator": "Anthropic Frontier Red Team",
+    "title": "通常兵器に関わるソフトウェア能力の模擬評価",
+    "locator": "Models as weapons developers / Conclusion",
+    "setting": "Opus 5、Mythos 5、Mythos Preview、Sonnet 5、Kimi K3を評価。推論量を高くした設定で、インターネット接続のない模擬環境を使用。実物は使っていません。",
+    "method": "人が用意した課題と模擬環境で、モデルがコードを作成・修正。固定の試行予算で性能を比較。",
+    "result": "一部の条件で課題を達成したと報告。性能はモデルと条件で異なり、難しい条件には安定して成功できないものもありました。",
+    "limitation": "人のAI利用による追加の効果や、実機での成功は測っていません。設備などの制約は別に残ります。危険な依頼を防ぐ対策の有効性を測った試験でもありません。"
   }
 }

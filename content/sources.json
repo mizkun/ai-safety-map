@@ -421,5 +421,14 @@
     "period": "2025年12月〜2026年8月に停止した活動のうち、注目すべき事例を選んだ報告。分野ごとに観測期間は異なる。",
     "checked": "2026-09-11",
     "primary": "Anthropicの脅威調査チームによる、自社サービスで検知した活動の原報告"
+  },
+  "anthropic-physical-eval-202609": {
+    "title": "Anthropic — Measuring tactical intelligence targeting and conventional weapons capabilities of AI models",
+    "url": "https://www.anthropic.com/research/intelligence-targeting-conventional-weapons-capabilities",
+    "published": "2026-09-10",
+    "date": "2026年9月10日 公表",
+    "period": "公表までに行われた模擬評価。実施日の記載はない。",
+    "checked": "2026-09-12",
+    "primary": "評価を実施したAnthropic Frontier Red Teamによる原報告"
   }
 }

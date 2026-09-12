@@ -3,6 +3,7 @@
   "title": "AIの情報支援が、物理的な危害の実行に役立つ",
   "explanation": "M2b.md",
   "sources": [
+    "anthropic-physical-eval-202609",
     "anthropic-threat-202609",
     "gemini-safety",
     "framework"
@@ -17,7 +18,7 @@
   "watch": [],
   "subgraph": "bio-conditions",
   "review": {
-    "checkedAt": "2026-09-11",
+    "checkedAt": "2026-09-12",
     "intervalDays": 7,
     "reason": "能力・行動・対策の評価は短期間で変わり得るため。"
   },
@@ -26,6 +27,7 @@
   ],
   "status": "limited",
   "research": [
+    "physical-software-eval-sep26",
     "threat-weapons-sep26",
     "threat-bio-sep26",
     "gemini-safety",
