@@ -1,5 +1,5 @@
 {
-  "asOf": "2026-09-11",
+  "asOf": "2026-09-12",
   "routes": [
     {
       "id": "control",
@@ -312,7 +312,7 @@
     "misuse-mechanisms": {
       "id": "misuse-mechanisms",
       "title": "悪用が実害に変わる、異なる経路",
-      "description": "サイバーと生物では、必要な能力・接点・物理的な壁が違います。",
+      "description": "サイバーと物理的な危害では、必要な能力・接点・実物を扱う条件が違います。",
       "nodes": [
         "M2c",
         "M2b"
