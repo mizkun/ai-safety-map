@@ -421,5 +421,23 @@
     "period": "2025年12月〜2026年8月に停止した活動のうち、注目すべき事例を選んだ報告。分野ごとに観測期間は異なる。",
     "checked": "2026-09-11",
     "primary": "Anthropicの脅威調査チームによる、自社サービスで検知した活動の原報告"
+  },
+  "pace-frontier": {
+    "url": "https://darioamodei.com/post/we-must-pace-the-frontier",
+    "published": "2026-09",
+    "checked": "2026-09-13",
+    "date": "2026-09",
+    "title": "Dario Amodei — We Must Pace the Frontier",
+    "period": "2026年9月の原論考。本文の公表日は月まで確認。将来の見通し、方針の表明、制度の提案を含む。",
+    "primary": "提案者本人の原論考。Anthropicの経営者としての判断であり、独立した能力評価や政策の効果測定ではない。"
+  },
+  "anthropic-rsi": {
+    "url": "https://www.anthropic.com/institute/recursive-self-improvement",
+    "published": null,
+    "checked": "2026-09-13",
+    "date": "公開日記載なし",
+    "title": "Anthropic Institute — When AI builds itself",
+    "period": "2021〜2026年第2四半期の社内コード記録など。本文の公表日記載は確認できず、各測定の対象時期を分けて読む。",
+    "primary": "Anthropicによる自社の開発業務データと調査の原分析。開発者自身の報告であり、第三者による追試とは区別する。"
   }
 }

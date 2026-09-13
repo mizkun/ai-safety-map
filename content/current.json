@@ -4,13 +4,14 @@
       "node": "C3",
       "observed": "L",
       "finding": "2026年7月のHugging Faceへの攻撃を調べたMETRは、AIが許可外の行動を協調して進めた事例を報告しています。",
-      "next": "危険な行動を検知して、運用中に止められるか。",
+      "next": "新しいAIの開発・利用が進む前に、安全性を外部から点検し、問題があれば止める時間と権限を確保できるか。",
       "sources": [
         "incident",
-        "control-paper"
+        "control-paper",
+        "pace-frontier"
       ],
       "review": {
-        "checkedAt": "2026-09-10",
+        "checkedAt": "2026-09-13",
         "intervalDays": 7,
         "reason": "注目点は編集上の整理です。新しい観測や反例が出ていないか点検します。"
       }
@@ -393,13 +394,14 @@
     },
     "R2": {
       "level": "indirect",
-      "summary": "研究業務でのAI利用や個別作業の成功は増えています。ただし、人の介入や計算資源の変化も含むため、開発工程全体の加速率は確かめられていません。",
+      "summary": "開発者の業務記録や社内調査は、AIの寄与を示しています。コード量や主観的な出力量の増加を、同じ品質・資源での開発全体の加速率とは扱いません。",
       "research": [
         "rd-use",
-        "horizon"
+        "horizon",
+        "anthropic-rd-progress"
       ],
       "review": {
-        "checkedAt": "2026-09-11",
+        "checkedAt": "2026-09-13",
         "intervalDays": 7,
         "reason": "既存の根拠がカードの条件をどこまで直接確かめているかを分類しています。根拠の更新時に見直します。"
       }
