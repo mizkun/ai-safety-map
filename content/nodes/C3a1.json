@@ -5,13 +5,14 @@
   "sources": [
     "horizon",
     "gemini-safety",
-    "astra-card"
+    "astra-card",
+    "pace-frontier"
   ],
   "questions": [],
   "related": [],
   "terms": [],
   "review": {
-    "checkedAt": "2026-09-10",
+    "checkedAt": "2026-09-13",
     "intervalDays": 7,
     "reason": "能力・行動・対策の評価は短期間で変わり得るため。"
   },
@@ -22,7 +23,8 @@
   "research": [
     "horizon",
     "gemini-safety",
-    "astra-cyber"
+    "astra-cyber",
+    "embedded-evaluators"
   ],
   "shortTitle": "試験が実際の失敗を捉えない"
 }

@@ -5,7 +5,9 @@
   "sources": [
     "openai-rd",
     "gemini-safety",
-    "horizon"
+    "horizon",
+    "anthropic-rsi",
+    "pace-frontier"
   ],
   "questions": [],
   "related": [],
@@ -14,7 +16,7 @@
     "検証や統合も含めた開発全体の時間が短縮したか。"
   ],
   "review": {
-    "checkedAt": "2026-09-10",
+    "checkedAt": "2026-09-13",
     "intervalDays": 7,
     "reason": "能力・行動・対策の評価は短期間で変わり得るため。"
   },
@@ -25,7 +27,9 @@
   "research": [
     "rd-use",
     "gemini-safety",
-    "horizon"
+    "horizon",
+    "anthropic-rd-progress",
+    "frontier-pacing"
   ],
   "shortTitle": "AI開発の工程全体が加速"
 }

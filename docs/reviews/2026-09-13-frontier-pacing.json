@@ -1,0 +1,287 @@
+{
+  "id": "2026-09-13-frontier-pacing",
+  "version": 2,
+  "date": "2026-09-13",
+  "reviewer": "Codex",
+  "decision": "reviewed",
+  "assessments": {
+    "development": {
+      "mechanism": "AIの研究支援が工程全体の難所を短縮し、改良したAIが次の開発でも役立つ場合に循環が続く。社内での利用増加と持続する因果効果は別である。",
+      "conditions": "人間の判断やレビュー、計算資源、ほかの工程の待ち時間を含めた改善が必要。人が関わる循環もRSIに含め、完全自律性を定義の必須条件にしない。",
+      "counterexample": "コード量が8倍になっても、レビューや実験が同じだけ増えて詰まれば開発全体の期間は縮まらない。AIが一度貢献しても次世代に効果が続かない場合もある。",
+      "evidence": "Anthropicの業務記録とMarch 2026の130人の調査を追加。8倍はコード行数、4倍はMythos PreviewありとAIなしの出力量の自己推定の中央値であり、著者のRSI開始の判断とは別に記録する。",
+      "limits": "開発者の社内報告であり、品質、AIだけの因果効果、世代ごとの加速の持続を独立検証していない。本文と脚注3〜6の過大評価の注意を残し、R2の間接的根拠とR3の状態は維持する。",
+      "mitigation": "世代ごとの寄与を追跡し、能力と安全性を確認してから権限を渡す。速度調整で得た時間の使い道と効果は別途確かめる。",
+      "readerContext": "RSIを改良したAIが次のAIを改良する循環としてその場で説明する。開発への関与、工程全体の改善、完全自律での後継開発を分ける。",
+      "whyHere": "能力が伸びる速さが、次のAIに合わせて試験や防御を更新できる時間にも関わるため、この段階で新しい業務分析とその限界を示す。",
+      "primary": [
+        {
+          "source": "anthropic-rsi",
+          "locator": "Evidence from within Anthropic; research judgment discussion; Possible futures; footnotes 3–6",
+          "support": "開発業務への寄与、社内指標の単位と限界、人間の判断の役割を支持する。"
+        },
+        {
+          "source": "pace-frontier",
+          "locator": "Introduction and Why Pace?",
+          "support": "RSIが始まりつつあるという著者の判断と速度調整の提案の根拠。独立した能力評価ではない。"
+        }
+      ]
+    },
+    "oversight": {
+      "mechanism": "新しい能力に評価と停止手順が追いつかず、または警告後の判断が遅れると防止の時間を失い得る。外部評価と共通基準はその条件に作用する提案である。",
+      "conditions": "問題となる行動が選ばれ、実行能力と権限があり、防止も間に合わないというANDを維持する。監査には必要な工程へのアクセス、公表権、所見を行動へ移す権限が必要。",
+      "counterexample": "開発が速くても実行前に止められれば被害は防げる。警告後に封じ込められた既存事例も残す。評価者を招く方針だけでは対策が機能したことにならない。",
+      "evidence": "AmodeiのEmbedded Evaluatorsは今後の招請と契約の方針である。Why Pace?と企業間・国際協調の節から、時間確保と競争圧力に対する提案を記録する。",
+      "limits": "提案者の原論考であり、政策や監査の事故削減効果を測った研究ではない。競争による判断遅れは条件付きの編集上の整理で、既存事故の原因認定ではない。ASIも失敗の必須条件にしない。",
+      "mitigation": "完成モデルの試験に加え、工程と事故記録を外部から点検する案を追加。法令等によるアクセス例外と限定的な公表削除を示し、合意だけでなく履行確認と停止判断を求める。",
+      "readerContext": "完成モデルを調べることと開発の途中を調べること、問題を知ることと止めることを分ける。外部評価者は今後の体制として記述し、現在の保証に見せない。",
+      "whyHere": "能力向上だけでは危険な操作の防止が説明できないため、監督と警告後の対応で、準備の時間と意思決定の権限が必要な理由を補う。",
+      "primary": [
+        {
+          "source": "pace-frontier",
+          "locator": "Why Pace?; Embedded Evaluators; Pacing Within Democracies; Global Pacing",
+          "support": "能力と対策の速度差、外部評価者の受け入れ方針、公表とアクセスの条件、共通基準と検証可能な協調の提案を支持する。"
+        }
+      ]
+    },
+    "safety": {
+      "mechanism": "進んだAIを安全研究にも使い、そこで見つかった対策を実装して対象の失敗を減らす。速度調整はこの作業に時間を確保する提案であり、追加の実験結果ではない。",
+      "conditions": "安全性の問題へ能力が移り、独立した評価でも改善が続き、実運用や追加学習後も効く必要がある。人員や計算資源と実装の意思決定も必要。",
+      "counterexample": "時間が増えても対策を実装しなければ改善しない。限られた試験の指標が改善しても、別の失敗や運用条件に転用できるとは限らない。",
+      "evidence": "Why Pace?の運用上の改善、アライメント、モデル内部の理解、評価という時間の使い道を追加。従来のR4の研究結果やコントロール実験の数値は変更しない。",
+      "limits": "能力の伸びと安全性の伸びは同じではない。今回の政策提案を実証済みの対策へ昇格させず、R4の色は既存の限定された実験を支持する範囲に保つ。",
+      "mitigation": "研究者と評価者の役割を分け、未知の設定で検証する。速度調整の時間が試験の拡充や学習環境の修正へ実際に使われたかも確かめる。",
+      "readerContext": "安全性研究を危険な振る舞いの発見と防止方法の試験として説明する。モデル内部の理解など、時間を使う対象を具体的に示す。",
+      "whyHere": "能力向上の先には危険な操作だけでなく防止への応用もある。両方を示しながら、防止の効果には追加条件があることを維持する。",
+      "primary": [
+        {
+          "source": "pace-frontier",
+          "locator": "Why Pace?",
+          "support": "確保した時間を運用上の改善、アライメント、解釈可能性、評価へ使うという提案を支持する。既存の安全性実験の代わりにはしない。"
+        }
+      ]
+    },
+    "structure": {
+      "mechanism": "既存の能力開発、制御喪失、労働の経路に、進歩と安全確認の速度差という説明を接続する。新しい必須条件や因果矢印は追加しない。",
+      "conditions": "制御のAND、見逃しと対応遅れのOR、人が関わる研究の循環、能力の社会への移転に必要な接点と制度を維持する。",
+      "counterexample": "自己改善がなくても研究は進み、ASIがなくても制御の問題は起こり得る。研究工程が速くなっても全労働の代替や所得配分の変化が自動で起きるわけではない。",
+      "evidence": "Amodeiの速度差の議論とAnthropicの社内分析を、制御と能力開発の実際に表示される3章へ反映した。依存する7図と3経路を読み、接続関係は変更していない。",
+      "limits": "論考は網羅的な破局シナリオの証明ではない。ANDの個別条件の観測を同一場面での成立へ合成しない。既存の研究例の出典と限界も保持する。",
+      "mitigation": "安全確認に必要な時間、停止権限、外部からの点検を、該当する説明から読めるようにする。労働の分配など別の問題へ政策効果を推定しない。",
+      "readerContext": "日英のreading-reviewを生成し、能力向上から実際の操作へ進む目的を先に示すことを確認した。開発の速さの後に、試験と停止の準備の話を置く。",
+      "whyHere": "個別記事を孤立したニュースとして追加するのでなく、能力の進歩に対策が追いつくかという経路上の問いに位置づけるため。",
+      "primary": [
+        {
+          "source": "pace-frontier",
+          "locator": "Introduction; Why Pace?; Pacing Within Democracies; Global Pacing",
+          "support": "能力開発と安全対策の時間差、条件付きの速度調整・協調の提案。"
+        },
+        {
+          "source": "anthropic-rsi",
+          "locator": "Possible futures",
+          "support": "部分的な自動化から完全自律化への飛躍と、人や資源のボトルネックについての限界。"
+        }
+      ]
+    },
+    "recordkeeping": {
+      "mechanism": "2つの原資料と3つの研究カードを追加した変更を履歴・資料一覧へ反映し、確認日と出版日と観測期間を分ける。",
+      "conditions": "本文の月表記しか確認できない日付を日単位に補わず、関連分析に表示がない公表日はnullとする。英訳は同じ主張と制約を対応させる。",
+      "counterexample": "著者の判断を公表日に確認しても能力の独立実証にはならない。URLを登録しただけで記事全体の予測を確認済みにはしない。",
+      "evidence": "主論考のSeptember 2026表示、関連分析の観測期間、原資料の節と脚注を照合した。履歴は今回の説明追加と色を維持した理由を記す。",
+      "limits": "今回確認した2つの資料の解釈に範囲を限る。既存の全資料を9月13日に再評価したとはせず、既存の確認日と過去の履歴を残す。",
+      "mitigation": "日英の差分と既存履歴のID対応を点検し、内容・論理・翻訳・ビルドの検査で参照切れや未点検の依存関係を検出する。",
+      "readerContext": "履歴では変更前・変更後・理由が読めるようにし、提案・業務観測・将来判断の違いを本文と同じ言葉で示す。",
+      "whyHere": "読者が何を新しく取り込んだのかと、何がまだ実証されていないのかをたどれるようにするため。",
+      "primary": [
+        {
+          "source": "pace-frontier",
+          "locator": "Displayed month and whole essay",
+          "support": "記事の時期と著者の判断・提案の区分。"
+        },
+        {
+          "source": "anthropic-rsi",
+          "locator": "Evidence from within Anthropic; footnotes 3–6",
+          "support": "観測時期と測定単位、原分析の限界。"
+        }
+      ]
+    }
+  },
+  "entries": {
+    "source:pace-frontier": {
+      "hash": "4bd432a8b77df2c489f8f1d25d30bbe3be48ee8dd787328e4b29a4c4390dcca2",
+      "assessment": "oversight"
+    },
+    "source:anthropic-rsi": {
+      "hash": "fc84f9d141d8b454d700e4ca3e41b6b7810483f2d93d9a47ea26499fc87895cc",
+      "assessment": "development"
+    },
+    "research:frontier-pacing": {
+      "hash": "16358ed99c78c919465b02ffebaffbe1073408de092426cab777b871ac711903",
+      "assessment": "oversight"
+    },
+    "research:embedded-evaluators": {
+      "hash": "4a9cb501e43d97d581453004c66ab840a9526611a11e5255ce97595b6ef7ef86",
+      "assessment": "oversight"
+    },
+    "research:anthropic-rd-progress": {
+      "hash": "bac00cc2cd50c56a082dda2741b6051fa5fa90f5a204b07d5691f77a37f35e2b",
+      "assessment": "development"
+    },
+    "node:C3": {
+      "hash": "95f1f20a35702b5a1df5a00c6293e4ea3d2f43a9cb0de91d8b2a5f0d9800f280",
+      "assessment": "oversight"
+    },
+    "node:C3a1": {
+      "hash": "ecb0fb27c33ebb9a0ca626496fd8b3542e11450769e26ab94eca727febb0a3c8",
+      "assessment": "oversight"
+    },
+    "node:C3b": {
+      "hash": "33367a22d880ab325d27e52b711b4102101f1ace32d341c2f484889e2970172f",
+      "assessment": "oversight"
+    },
+    "node:R2": {
+      "hash": "d5f120887218a00db5901c3091b645b47ae19adea87c52d58d4dca96cd7e61f1",
+      "assessment": "development"
+    },
+    "node:R3": {
+      "hash": "7b9c91f32cd566bedeeeb2dd70e4412c9fa8f2a0558f9bc7769bf02070da92e1",
+      "assessment": "development"
+    },
+    "node:R4": {
+      "hash": "30ce8a19cf8b2f7d260ed138330f20697edd979b817357692afec60eaa2ccc24",
+      "assessment": "safety"
+    },
+    "edge:R1-R2": {
+      "hash": "aa52b8adde0f74d7023b356b88e2953c114b0dd40656cebeb68bbfe58e7d21fa",
+      "assessment": "development"
+    },
+    "edge:R2-R3": {
+      "hash": "7462bed0d8c1ce9326a106016f0cfdb1f3a0db7e0f8146cd90ecda4cc81982f9",
+      "assessment": "development"
+    },
+    "edge:R3-R2": {
+      "hash": "c13a7b570da674b53bd40e4f51e60fd356f1e19c2dfd39549bd56752799c1643",
+      "assessment": "development"
+    },
+    "edge:C3-L": {
+      "hash": "adcf4223bee4bb67b1fd99865263debe5809ef656efcbd47b61df1233be96a1a",
+      "assessment": "oversight"
+    },
+    "edge:R4-C1": {
+      "hash": "2b5c712364d47716632e5ced6e617fa25409b0bceee4f4736450cedfc76a1e83",
+      "assessment": "safety"
+    },
+    "edge:ASI-C3": {
+      "hash": "8c75297818f7944e7aa7d17b1b79e362b32fe0755b6e065d76b84193a4e080e4",
+      "assessment": "oversight"
+    },
+    "edge:R0-R4": {
+      "hash": "c9c9b2fb71340e99fc82686d5f4ba0073b13e585c116ef0924a24676d4bf2781",
+      "assessment": "safety"
+    },
+    "graph:control": {
+      "hash": "8aab1ed23a856377a5c93d41063989260ef9b11e1bfcad3fd8bea0c8442778d1",
+      "assessment": "structure"
+    },
+    "graph:acceleration": {
+      "hash": "249b8d0ed2ab8e6df71edddb9227e50f05e73bc24cc31fb21cf7613c014304ed",
+      "assessment": "structure"
+    },
+    "graph:oversight": {
+      "hash": "bf07196c17685ed69bd00c8babe595d750fa3a87ca2ee790dbf21f72e0dd3a08",
+      "assessment": "structure"
+    },
+    "graph:evaluation": {
+      "hash": "e6c749e86b58a67869caf27a06d86d80142f8a9a71c729df548457ce2334f6ac",
+      "assessment": "structure"
+    },
+    "graph:work": {
+      "hash": "b6e4cd0e37623fa90274a6cb535f669d6546b3fedbd340c0d5b01c23d2772fd5",
+      "assessment": "structure"
+    },
+    "graph:development-paths": {
+      "hash": "4d5d546171c0d59476cc41e55ab61c9991ff1a2dc6b21808d52461fcad83c618",
+      "assessment": "structure"
+    },
+    "graph:research-cycle": {
+      "hash": "227840dde046d7e61d77f9cf0068d7a7d95426f3f7578a6d16daef912cad96ff",
+      "assessment": "structure"
+    },
+    "route:control": {
+      "hash": "363be4410702b5744fe759672b92e24515e512063213558fb969d396f6f153ad",
+      "assessment": "structure"
+    },
+    "route:acceleration": {
+      "hash": "df104bf6d386bb568fe286460177381eb5bee3263720a3221df2eceedce31163",
+      "assessment": "structure"
+    },
+    "route:work": {
+      "hash": "9103e10ed420b33aafd11a4c87ab9141985ffc7f76659f77c1a27e326c19ea85",
+      "assessment": "structure"
+    },
+    "current:control": {
+      "hash": "699a1b02bb7c21047543ecfa9d130cc3f2279855ec861531586bfc802f3bf54e",
+      "assessment": "oversight"
+    },
+    "safeguard:R4": {
+      "hash": "8e7cafbf861263717e515a0b605cf3179ffe07fc35ccb1b7a242c0692d9f5f25",
+      "assessment": "safety"
+    },
+    "evidence:C3": {
+      "hash": "c488de891d1770b0ed3184b1dd7bbf828971f7ef5ade6de4ff85810134d43006",
+      "assessment": "oversight"
+    },
+    "evidence:C3a1": {
+      "hash": "03aa5cd9d34b57b3aef40af0c72415839bdd3ff65c430dcc9de9f0321d72d8e1",
+      "assessment": "oversight"
+    },
+    "evidence:C3b": {
+      "hash": "b11e694df9e9c11b99cf5e7bd54b1a3fcd209a5d726e0768ccf22fd66c488380",
+      "assessment": "oversight"
+    },
+    "evidence:R2": {
+      "hash": "050de01ae4b96c8aaf525660fb56e1da305e473bf9fe3a8a2aa222d5c6309617",
+      "assessment": "development"
+    },
+    "evidence:R4": {
+      "hash": "5b84a98f7024bbf631a1a0e3ebfeff283c139eddf896176e48cefd7f7c0edc9d",
+      "assessment": "safety"
+    },
+    "news:recent-math": {
+      "hash": "7e81b483c8f11c06ffb45ba11f98794ae0ec3f8b9db62ee1a7879b603349616e",
+      "assessment": "development"
+    },
+    "news:research-lab-september": {
+      "hash": "fd05fc94361e9e6c60b884f5a9e36994ce9750bc9d88398bb997f1a985980cb9",
+      "assessment": "development"
+    },
+    "news:automated-safety": {
+      "hash": "382056f02957f1ac8d15ff837739c63828e53e05a09c3a0600163e7db20ce3b9",
+      "assessment": "safety"
+    },
+    "news:research-contribution": {
+      "hash": "ba30312d74589a3860845517373b799297996cc92727fbc326b4b93947a056d0",
+      "assessment": "development"
+    },
+    "story:control": {
+      "hash": "d24e421425edf6cc3263d26e7aa8070a2c16991c1c9d66afc46fc826d6f945d1",
+      "assessment": "structure"
+    },
+    "story:acceleration": {
+      "hash": "928be487e69a64d243ae9ea65b561669e1f49ab5d1436f28519c5192ea322127",
+      "assessment": "structure"
+    },
+    "metadata:map": {
+      "hash": "d63234a09272e0f6542ab6bdaaf23a8000968c69163fba2c6d60acc6c364f5c6",
+      "assessment": "recordkeeping"
+    },
+    "history:changes": {
+      "hash": "16ef3798460bd516c4293e4bae2b94734f9d7ca483af965b6c107a7e3d60aec3",
+      "assessment": "recordkeeping"
+    },
+    "inventory:current": {
+      "hash": "e0ef8111bd1d0da25598e102ed4396abbac6f4f81ffa39f6ef8ae42795a1a8a2",
+      "assessment": "recordkeeping"
+    }
+  }
+}

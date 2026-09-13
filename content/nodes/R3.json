@@ -5,7 +5,9 @@
   "sources": [
     "openai-rd",
     "gemini-safety",
-    "framework"
+    "framework",
+    "anthropic-rsi",
+    "pace-frontier"
   ],
   "questions": [],
   "related": [
@@ -23,7 +25,7 @@
     "計算資源や検証を含めても循環が持続するか。"
   ],
   "review": {
-    "checkedAt": "2026-09-10",
+    "checkedAt": "2026-09-13",
     "intervalDays": 7,
     "reason": "能力・行動・対策の評価は短期間で変わり得るため。"
   },
@@ -34,7 +36,9 @@
   "research": [
     "rd-use",
     "gemini-safety",
-    "recursive-improvement"
+    "recursive-improvement",
+    "anthropic-rd-progress",
+    "frontier-pacing"
   ],
   "shortTitle": "RSI（再帰的自己改善）が始まる",
   "subgraph": "research-cycle"

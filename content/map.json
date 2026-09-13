@@ -1,5 +1,5 @@
 {
-  "asOf": "2026-09-11",
+  "asOf": "2026-09-13",
   "routes": [
     {
       "id": "control",
@@ -658,19 +658,21 @@
       "safeguards": "有用性と検証の質を確かめます。",
       "sources": [
         "openai-rd",
-        "discovery"
+        "discovery",
+        "anthropic-rsi"
       ],
       "basis": "編集上の条件付き仮説。下の一次資料は、個別の能力・行動・仕組みを支持します。矢印全体の成立を実証したものではありません。",
       "review": {
-        "checkedAt": "2026-09-10",
+        "checkedAt": "2026-09-13",
         "intervalDays": 7,
         "reason": "接続を支える能力・権限・防壁について、新しい証拠や反論を確認するため。"
       },
       "research": [
         "rd-use",
-        "discoveries"
+        "discoveries",
+        "anthropic-rd-progress"
       ],
-      "current": "研究作業への関与は増えています。開発全体の加速率は、人間の介入や計算資源の変化を分けて検証する必要があります。"
+      "current": "OpenAIとAnthropicは開発へのAIの関与の増加を報告しています。コード量や自己推定の出力量を、開発全体の加速率へ読み替えることはできません。"
     },
     "R2-R3": {
       "id": "R2-R3",
@@ -684,22 +686,26 @@
         "繰り返し改善できる余地がある"
       ],
       "limitation": "一度の改善で、長期的な加速やASIの到来が証明されるわけではありません。",
-      "safeguards": "各世代での能力と安全性の評価を維持します。",
+      "safeguards": "各世代で能力と安全性を評価し、確認できていない権限を次のAIへ渡さないようにします。速度調整で確保した時間を、試験や対策の実装に使う案があります。",
       "sources": [
         "openai-rd",
-        "gemini-safety"
+        "gemini-safety",
+        "anthropic-rsi",
+        "pace-frontier"
       ],
       "basis": "編集上の条件付き仮説。下の一次資料は、個別の能力・行動・仕組みを支持します。矢印全体の成立を実証したものではありません。",
       "review": {
-        "checkedAt": "2026-09-10",
+        "checkedAt": "2026-09-13",
         "intervalDays": 7,
         "reason": "接続を支える能力・権限・防壁について、新しい証拠や反論を確認するため。"
       },
       "research": [
         "rd-use",
-        "gemini-safety"
+        "gemini-safety",
+        "anthropic-rd-progress",
+        "frontier-pacing"
       ],
-      "current": "部分的な研究支援の証拠はありますが、全工程の自律改善が繰り返し続いた実証ではありません。"
+      "current": "AmodeiはRSIが始まりつつあると述べています。Anthropicの業務分析は部分的な寄与を報告していますが、後継AIの完全自律開発や反復で強まる加速の実証ではありません。"
     },
     "R3-R2": {
       "id": "R3-R2",
@@ -715,18 +721,22 @@
       "limitation": "加速の強さ、持続、公開されていない進歩には不確実性があります。",
       "safeguards": "研究を加速する力を、安全性の検証にも向けることを検討します。",
       "sources": [
-        "openai-rd"
+        "openai-rd",
+        "pace-frontier",
+        "anthropic-rsi"
       ],
       "basis": "自己改善という仮説のフィードバックを示す整理。反復する効果の実測は別に必要です。",
       "review": {
-        "checkedAt": "2026-09-10",
+        "checkedAt": "2026-09-13",
         "intervalDays": 7,
         "reason": "接続を支える能力・権限・防壁について、新しい証拠や反論を確認するため。"
       },
       "research": [
-        "rd-use"
+        "rd-use",
+        "frontier-pacing",
+        "anthropic-rd-progress"
       ],
-      "current": "反復による改善の強さが持続するかは未確定です。利用量の増加だけでは、この戻りの効果は測れません。"
+      "current": "開発者から循環が始まりつつあるという判断は示されています。世代ごとの改善幅、持続、人間や計算資源の寄与を分けた公開の検証は、今回の資料では確認できません。"
     },
     "C3-L": {
       "id": "C3-L",
@@ -1666,20 +1676,22 @@
       "explanation": "監督する側よりAIの判断がはるかに高度だったり速かったりすると、行動の妥当性を確かめて止めることが難しくなり得ます。そのためASIは制御の課題を大きくする要因ですが、実際に危険な行動を実行できることと、監督・権限制限などが追いつかないことも確認します。",
       "current": "これは将来の能力差についての分析であり、ASIの制御失敗を観測した実験ではありません。",
       "limitation": "高い能力だけで制御不能になるとは限りません。監督するAI、権限の制限、封じ込めも改善できます。",
-      "safeguards": "能力差を含む条件で対策を試し、監督や安全性の保証を強めます。",
+      "safeguards": "能力差を含む条件で対策を試します。Amodeiの提案はASI到達を待たず、能力に応じた安全確認を求め、対策が追いつくよう開発の速度を調整するものです。",
       "conditions": [
         "監督・対策が新しい能力に対応できない",
         "その能力を使える運用や権限がある"
       ],
       "basis": "一次資料を踏まえた、編集上の条件付き接続。矢印全体の成立を実証した結果ではありません。",
       "sources": [
-        "framework"
+        "framework",
+        "pace-frontier"
       ],
       "research": [
-        "oversight-gap"
+        "oversight-gap",
+        "frontier-pacing"
       ],
       "review": {
-        "checkedAt": "2026-09-10",
+        "checkedAt": "2026-09-13",
         "intervalDays": 7,
         "reason": "能力や対策の変化を一次資料で確認するため。"
       }
@@ -1696,18 +1708,20 @@
         "対策の結果を独立に検証できる"
       ],
       "limitation": "能力の進歩だけで安全性も同じ速さで進むとは限りません。",
-      "safeguards": "安全性の研究にも計算資源と検証する人員を割り当て、開発を速める成果と危険を減らす成果を別々に測ります。",
+      "safeguards": "安全性の研究に人員と計算資源を割り当て、開発の速さと危険を減らす成果を別々に測ります。速度調整で得た時間を、評価の改善や対策の実装に使えているかも確認します。",
       "sources": [
-        "automated-alignment"
+        "automated-alignment",
+        "pace-frontier"
       ],
       "basis": "編集上の条件付き仮説。下の一次資料は、個別の能力・行動・仕組みを支持します。矢印全体の成立を実証したものではありません。",
       "review": {
-        "checkedAt": "2026-09-10",
+        "checkedAt": "2026-09-13",
         "intervalDays": 30,
         "reason": "能力の変化と、現実の導入・制度の追加証拠を確認するため。"
       },
       "research": [
-        "alignment-research"
+        "alignment-research",
+        "frontier-pacing"
       ],
       "current": "AIに安全性の研究をさせて改善した実験があります。能力の開発と同じ速度で安全性が進む保証はありません。"
     }

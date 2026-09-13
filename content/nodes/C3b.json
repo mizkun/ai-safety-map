@@ -4,13 +4,14 @@
   "explanation": "C3b.md",
   "sources": [
     "aisi-incident",
-    "control"
+    "control",
+    "pace-frontier"
   ],
   "questions": [],
   "related": [],
   "terms": [],
   "review": {
-    "checkedAt": "2026-09-10",
+    "checkedAt": "2026-09-13",
     "intervalDays": 7,
     "reason": "能力・行動・対策の評価は短期間で変わり得るため。"
   },
@@ -20,7 +21,8 @@
   "status": "limited",
   "research": [
     "aisi-incident",
-    "control-roadmap"
+    "control-roadmap",
+    "frontier-pacing"
   ],
   "shortTitle": "警告への対処が間に合わない"
 }
