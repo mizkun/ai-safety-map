@@ -1,0 +1,156 @@
+{
+  "id": "2026-09-14-safeguards",
+  "version": 2,
+  "date": "2026-09-14",
+  "reviewer": "Codex — source and reading review; not independent peer review or PR approval",
+  "decision": "reviewed",
+  "assessments": {
+    "monitor_transfer": {
+      "mechanism": "A detector can learn cues specific to its training categories while missing unfamiliar forms. This supports a concrete example of evaluation coverage limits at C3a1, not an estimate of deployment failures.",
+      "conditions": "The important distinction is trained versus held-out categories under controlled prompts. A resulting oversight failure would also need an operationally relevant missed problem and no compensating check or intervention.",
+      "counterexample": "A stronger prompted detector performed well in some controlled settings. A different detector or human check can catch a problem that the fine-tuned model misses; unfamiliar inputs do not force control failure.",
+      "evidence": "The original August 21 report compares controlled Gemma 3 fine-tuning with held-out categories and prompted Qwen models. The research record names the models, labels and metric and preserves the positive comparison.",
+      "limits": "AUROC is not accuracy or an incident rate. Labels remain ambiguous, training and architectures are limited, and strategic deception in actual use was not tested. The source is not independent replication or a Claude deployment evaluation.",
+      "mitigation": "Evaluate the monitor itself on excluded failure types and compare with prompting and other checks. These are testing proposals, not an asserted operational guarantee. Existing external-evaluator commitments remain explicitly prospective.",
+      "readerContext": "Japanese and English explain that the AI doing the checking is being evaluated. The tour current-situation paragraph now explicitly says researcher-designed settings did not measure missed failures in actual work; standalone details retain further limits.",
+      "whyHere": "This material follows the parent explanation of missed oversight and precedes concealment during evaluation. It explains coverage limitations without reclassifying contradiction as intentional concealment or claiming that other OR branches happened in sequence.",
+      "primary": [
+        {
+          "source": "lie-detectors",
+          "locator": "Dataset; Do models report their own lies?; Fine-tuning produces lie detectors that don’t generalize; Limitations; Appendix A1",
+          "support": "Controlled transfer experiment and stronger prompted comparison, with labels and deployment limits."
+        }
+      ]
+    },
+    "financial_recovery": {
+      "mechanism": "F4 concerns buffers or recovery failing to contain a cascade. The added policy analysis distinguishes preventive cyber controls from keeping critical services available and restoring them when dependencies fail.",
+      "conditions": "A financial cascade still requires consequential AI use and propagation alongside inadequate buffers or response. Faster cyber operations alone do not establish that a provider outage, payment interruption or capital/liquidity shortfall defeats containment.",
+      "counterexample": "A breach can occur while limited permissions, continuity arrangements and timely restoration keep essential payments working. AI-assisted defence can help; the proposal does not classify all financial safeguards as broken.",
+      "evidence": "Section 3 of FSI Occasional Papers 28 is the authors’ original comparison of policy responses. Its recovery and human-control arguments are adopted as proposals; secondary capability scores and incident accounts are not imported as independent observations.",
+      "limits": "No model trial, recovery success-rate measurement or AI-caused systemic-crisis observation is established here. Author views are distinct from formal BIS policy. Operational response and capital/liquidity capacity remain separate.",
+      "mitigation": "The added preparations target response time, critical-service continuity, shared-provider recovery and return to human control. Their relevance does not establish that every institution has implemented them or that they work under any attack.",
+      "readerContext": "F4 begins with loss absorption and cash available for immediate payments. The current-situation text identifies a policy analysis, and the safeguards explain concrete actions without requiring the reader to know operational-resilience terminology.",
+      "whyHere": "Recovery belongs at the additional containment condition, after considering how disruption spreads and before claiming system-wide financial dysfunction. It is not another step that automatically follows an intrusion.",
+      "primary": [
+        {
+          "source": "fsi-cyber-resilience",
+          "locator": "Section 3 — Financial authorities’ policy responses, printed pages 8–12",
+          "support": "Policy analysis of timely response, recovery, common dependencies, approval and return to human control; not an effectiveness trial."
+        }
+      ]
+    },
+    "finance_flow": {
+      "mechanism": "The F1-F3 edge and finance-conditions graph continue to combine consequential AI operations, propagation and failed containment. Adding recovery evidence to F4 changes neither the combination nor the distinct income, abundance and financial-crisis branches.",
+      "conditions": "The requires array remains F1, F2 and F4, with an all-mode decomposition. Shared providers and high-speed actions are conditional vulnerabilities, not sufficient causes or proof that the joint conditions co-occur today.",
+      "counterexample": "An isolated loss contained by buffers and continuity arrangements does not establish F3. Likewise a financial crisis need not remove money’s role or block every alternative payment route.",
+      "evidence": "The new FSI policy analysis supports asking whether recovery can keep up. The unchanged edge and route retain their original evidence boundary: combining sources on individual mechanisms is not an observation of an AI-caused financial-system crisis.",
+      "limits": "The unchanged money current-view finding identifies the 2024 FSB analysis by year. This proposal does not relabel it as a September measurement, refresh its source date, or infer a probability for global harm or extinction.",
+      "mitigation": "The retained edge combines operating limits, independent settlement/recovery and buffers. F4 now adds specific response-time and continuity considerations, while admitting that proposals do not demonstrate effectiveness.",
+      "readerContext": "Read the Japanese and English money tour around F2a, F2b, F4 and F3, plus the F4 details and F1-F3 connection. The sequence identifies why restoration matters before discussing widespread lending/payment failure.",
+      "whyHere": "The same F4 addition is available through the all-conditions diagram, money route and expanded tour. Their dependency fingerprints were reviewed because the node changed, without altering unrelated routes or implying new causal arrows.",
+      "primary": [
+        {
+          "source": "fsi-cyber-resilience",
+          "locator": "Section 3, response/recovery and third-party-dependency discussion",
+          "support": "Recovery is a relevant containment mechanism; the analysis does not demonstrate failure of the whole financial system."
+        }
+      ]
+    },
+    "scope_and_history": {
+      "mechanism": "Two distinct primary sources add an experimental limitation and a policy response argument. Their corresponding research records, node references, bilingual prose and history make the change inspectable without modifying the graph structure.",
+      "conditions": "Only C3a1, its evidence summary and F4 were substantively re-reviewed. The source check dates identify the two newly read sources; map.asOf identifies the latest included review rather than full-map freshness.",
+      "counterexample": "A routine index scan or a successful build would not justify resetting review dates. No overdue entries required a date-only refresh, and unrelated nodes, edges and sources retain their dates.",
+      "evidence": "Source URLs were checked against main and open draft proposals. PR #1 had deferred the August experiment; PR #2 covers a different physical-harm study; merged PR #3 already covers frontier pacing and is preserved.",
+      "limits": "The weekly search is not exhaustive. Some candidates were screened only at abstract level and ILO required a limited fallback. Formal independent review and deployment validation of the experimental result remain unestablished.",
+      "mitigation": "The proposal is isolated on a draft branch and keeps the existing evidence colours. Human source/content review and merging remain separate actions; automated editorial review and CI do not authorize or perform publication.",
+      "readerContext": "History names the affected topics and states the before/after boundary in Japanese and English. The updated research cards define the experimental metric and distinguish policy analysis from performance measurements.",
+      "whyHere": "The registry and map metadata must track newly adopted material so future reviews can identify its provenance and dependent explanations. The change record also records why the existing colours and conditions were retained.",
+      "primary": [
+        {
+          "source": "lie-detectors",
+          "locator": "Publication metadata and Limitations",
+          "support": "Identifies the experiment and what it does not establish."
+        },
+        {
+          "source": "fsi-cyber-resilience",
+          "locator": "Publication metadata, author disclaimer and Section 3",
+          "support": "Identifies the policy analysis and its scope."
+        }
+      ]
+    }
+  },
+  "entries": {
+    "source:lie-detectors": {
+      "hash": "cf0710268e3bd286f1eafe3eea7cc11103598fc74b4758f616ffdf3077810451",
+      "assessment": "monitor_transfer"
+    },
+    "source:fsi-cyber-resilience": {
+      "hash": "1f9746e50082ced7f6be91061b35978cefd97f0edc6103fc210b1978c072eb6d",
+      "assessment": "financial_recovery"
+    },
+    "research:lie-detector-transfer": {
+      "hash": "907cf0a76c2f2e8d2951c51298f1c7e3386afbaf95c03b8a1ca75d5daeafc56d",
+      "assessment": "monitor_transfer"
+    },
+    "research:financial-cyber-recovery": {
+      "hash": "db479c548f41f7526d2d1ff9016e9f198f4d64ee2ff5795410358246494411c7",
+      "assessment": "financial_recovery"
+    },
+    "node:C3a1": {
+      "hash": "1ecf306e8e0a05d62e034e2c3d5032fe18f3e0f4aa95262d6a464e1380ce8192",
+      "assessment": "monitor_transfer"
+    },
+    "node:F4": {
+      "hash": "1937d7d81e517733d9f9f12baf93225ce297d63af5970bf424c15453e0eb1221",
+      "assessment": "financial_recovery"
+    },
+    "edge:F1-F3": {
+      "hash": "890a0888169346cdb0635ff45ccac8ac3a81065aa951187bb22a8b6fae78eabd",
+      "assessment": "finance_flow"
+    },
+    "graph:evaluation": {
+      "hash": "d7e870333a064c9f7d11e22105e08de0fd3d3a84f4183817db60c33c5fc45497",
+      "assessment": "monitor_transfer"
+    },
+    "graph:money": {
+      "hash": "cce1799e94ecdc0302bc33d0e30314ef75c274bd9281ec0be26ef6479d2f5255",
+      "assessment": "finance_flow"
+    },
+    "graph:finance-conditions": {
+      "hash": "e728b85169fedf5903f87494af0c31b9baef28b8e134f95cd8f8f737dcfb4de5",
+      "assessment": "finance_flow"
+    },
+    "route:money": {
+      "hash": "eec6c8110bb39b00228140cb558bad45ce04e1867b9fb458faeca4fb3d5204ee",
+      "assessment": "finance_flow"
+    },
+    "current:money": {
+      "hash": "66a23f512d887da0e2950bb60e5b35591a318914d4198b290f09e62d4b24bf6e",
+      "assessment": "finance_flow"
+    },
+    "evidence:C3a1": {
+      "hash": "61e464a87cd8b6498da5dfa8e201470929705f32ba8d7a7df245fa6df89c8a94",
+      "assessment": "monitor_transfer"
+    },
+    "story:money": {
+      "hash": "0afacb12a5a927574b2d38a92dc48148d1ea766c49a580ba82d73f17c300a081",
+      "assessment": "finance_flow"
+    },
+    "metadata:map": {
+      "hash": "1cdbd8a7544b3e600470ace99897760c561f29d939847122cceb37c20fd9ed71",
+      "assessment": "scope_and_history"
+    },
+    "history:changes": {
+      "hash": "37b8f35f723a8a855d539a1f5940b066acaa76794c40d1899e584ec480631b88",
+      "assessment": "scope_and_history"
+    },
+    "inventory:current": {
+      "hash": "382e4dae38d1f8fd854066d8050c9a9ead85fcd5877da1a9fc9b81775378eaa6",
+      "assessment": "scope_and_history"
+    },
+    "story:control": {
+      "hash": "d24e421425edf6cc3263d26e7aa8070a2c16991c1c9d66afc46fc826d6f945d1",
+      "assessment": "monitor_transfer"
+    }
+  }
+}

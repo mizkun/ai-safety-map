@@ -610,5 +610,29 @@
     "method": "エンジニア当たりのマージされたコード行数を時期別に比較。社内調査では、もともと取り組む予定の仕事について、Mythos Previewを使う場合とAIを全く使わない場合の出力量の違いを従業員に尋ねた。",
     "result": "本文は2026年第2四半期の一人・一日当たりコード行数を2024年の約8倍、調査の出力量の自己推定を中央値約4倍と報告。目標や研究の方向を選ぶ判断には人間の優位が残り、後継モデルを完全自律で開発する段階には未到達と明記する。",
     "limitation": "コード量は品質や有用性を測らず、調査は主観的な反実仮想。著者も倍率の過大評価を認める。開発全体の加速率、AIだけの因果効果、自己改善が反復して強まる効果の測定ではない。"
+  },
+  "lie-detector-transfer": {
+    "title": "学習した種類を見分ける力と、未知の種類を見分ける力は異なる",
+    "kind": "研究者による制御された実験",
+    "source": "lie-detectors",
+    "locator": "Dataset / Do models report their own lies? / Fine-tuning produces lie detectors that don’t generalize / Limitations / Appendix A1",
+    "evaluator": "Jack Hopkins・Dipika Khullar（MATS・Anthropic Fellows Program）、Rowan Wang・Fabien Roger（Anthropic）",
+    "setting": "Gemma 3系モデルに、AIの発言に虚偽や矛盾があるかを分類させる。人間が設定した12種類の場面で発言を集め、Qwen系モデルの追加学習なしの判定とも比較した。",
+    "method": "虚偽の種類の半分で追加学習し、残りで評価。虚偽と真実を半数ずつに揃え、順位づけの識別力を測るAUROCで比較した。正答率ではない。判定ラベルはGPT-5などと人手の標本点検を使って見直した。",
+    "result": "学習した種類ではAUROCが0.60から0.95へ改善した一方、学習していない種類では約0.70〜0.75にとどまった。Qwen3-235Bは指示だけで0.98〜0.99を示す条件もあり、追加学習が常に優れるわけではなかった。",
+    "limitation": "少数のモデルと追加学習法に限る。判定ラベルには曖昧さが残り、意図的な欺きと発言の不一致は同じではない。実運用で戦略的に監督を欺く行動への対応は未評価で、監督全般の失敗率には換算できない。",
+    "type": "evaluation"
+  },
+  "financial-cyber-recovery": {
+    "title": "金融の防壁では、侵入を防ぐ力と復旧の速さを分ける",
+    "kind": "金融当局の対応に関する原分析・提言",
+    "source": "fsi-cyber-resilience",
+    "locator": "Section 3 — Financial authorities’ policy responses, 本文8〜12ページ（PDF 12〜16ページ）、特に復旧・共通依存・人の承認に関する記述",
+    "evaluator": "Juan Carlos Crisanto・Adrien Currat・Jeffery Yong（BIS金融安定研究所の著者）",
+    "setting": "金融当局のサイバー対策と重要業務の継続・復旧に関する政策対応を比較する。AIモデルを金融市場で動かした試験ではない。",
+    "method": "既存の方針を、意思決定、予防、検知、対応、復旧、外部提供者への依存などの観点で整理する。",
+    "result": "脆弱性の修正、重要業務の維持、共通の提供者が停止する場合の復旧を、より短い時間で行う必要を論じる。AIによる防御支援に加え、重要操作での人の承認や、AIを止めて人へ戻す手段も挙げている。",
+    "limitation": "政策対応の分析であり、提案の有効性を測った結果でも、現在の金融の防壁が破られたという観測でもない。サイバー対応の速さと、資本・流動性の余力は別に確認する。",
+    "type": "argument"
   }
 }
