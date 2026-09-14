@@ -439,5 +439,23 @@
     "title": "Anthropic Institute — When AI builds itself",
     "period": "2021〜2026年第2四半期の社内コード記録など。本文の公表日記載は確認できず、各測定の対象時期を分けて読む。",
     "primary": "Anthropicによる自社の開発業務データと調査の原分析。開発者自身の報告であり、第三者による追試とは区別する。"
+  },
+  "lie-detectors": {
+    "url": "https://alignment.anthropic.com/2026/lie-detectors/",
+    "published": "2026-08-21",
+    "checked": "2026-09-14",
+    "date": "2026-08-21",
+    "title": "Fine-Tuned Lie Detectors Failed to Generalize",
+    "period": "公表前に行われたGemma 3・Qwen系モデルを使った制御された実験。実験実施日の記載は確認できず、実運用での追跡調査ではない。",
+    "primary": "MATS・Anthropic Fellows Programの研究者とAnthropicの著者による原実験。Claudeの運用評価や独立した追試ではない。"
+  },
+  "fsi-cyber-resilience": {
+    "url": "https://www.bis.org/publications/fsi-paper-28-when-machines-attack-frontier-ai-cyber-threats-and-policy-responses-financial-sector",
+    "published": "2026-09-09",
+    "checked": "2026-09-14",
+    "date": "2026-09-09",
+    "title": "FSI — When machines attack: frontier AI cyber threats and policy responses in the financial sector",
+    "period": "FSI Occasional Papers No 28（2026年9月）。公表時点の金融当局の政策対応を比較した分析で、金融機関の防御成功率を測った実験ではない。",
+    "primary": "Juan Carlos Crisanto・Adrien Currat・Jeffery Yongによる政策対応の原分析。見解は著者のもので、BIS等の公式見解とは限らない。能力や事件の数値は原評価に遡って扱う。"
   }
 }

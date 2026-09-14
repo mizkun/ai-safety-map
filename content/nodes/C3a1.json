@@ -6,13 +6,14 @@
     "horizon",
     "gemini-safety",
     "astra-card",
-    "pace-frontier"
+    "pace-frontier",
+    "lie-detectors"
   ],
   "questions": [],
   "related": [],
   "terms": [],
   "review": {
-    "checkedAt": "2026-09-13",
+    "checkedAt": "2026-09-14",
     "intervalDays": 7,
     "reason": "能力・行動・対策の評価は短期間で変わり得るため。"
   },
@@ -24,7 +25,8 @@
     "horizon",
     "gemini-safety",
     "astra-cyber",
-    "embedded-evaluators"
+    "embedded-evaluators",
+    "lie-detector-transfer"
   ],
   "shortTitle": "試験が実際の失敗を捉えない"
 }
