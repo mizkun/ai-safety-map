@@ -4,13 +4,14 @@
   "explanation": "C2b.md",
   "sources": [
     "aisi-incident",
-    "visa-agents"
+    "visa-agents",
+    "openai-file-sharing"
   ],
   "questions": [],
   "related": [],
   "terms": [],
   "review": {
-    "checkedAt": "2026-09-10",
+    "checkedAt": "2026-09-17",
     "intervalDays": 7,
     "reason": "能力・行動・対策の評価は短期間で変わり得るため。"
   },
@@ -20,7 +21,8 @@
   "status": "observed",
   "research": [
     "aisi-incident",
-    "payments"
+    "payments",
+    "unauthorized-file-sharing"
   ],
   "shortTitle": "現実への接点・権限"
 }

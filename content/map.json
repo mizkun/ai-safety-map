@@ -1,5 +1,5 @@
 {
-  "asOf": "2026-09-14",
+  "asOf": "2026-09-17",
   "routes": [
     {
       "id": "control",
@@ -759,7 +759,7 @@
         "control-paper"
       ],
       "review": {
-        "checkedAt": "2026-09-10",
+        "checkedAt": "2026-09-17",
         "intervalDays": 7,
         "reason": "接続を支える能力・権限・防壁について、新しい証拠や反論を確認するため。"
       },
@@ -795,7 +795,7 @@
         "incident"
       ],
       "review": {
-        "checkedAt": "2026-09-10",
+        "checkedAt": "2026-09-17",
         "intervalDays": 7,
         "reason": "接続を支える能力・権限・防壁について、新しい証拠や反論を確認するため。"
       },
@@ -1607,7 +1607,7 @@
         "horizon"
       ],
       "review": {
-        "checkedAt": "2026-09-10",
+        "checkedAt": "2026-09-17",
         "intervalDays": 7,
         "reason": "能力や対策の変化を一次資料で確認するため。"
       }
@@ -1634,7 +1634,7 @@
         "horizon"
       ],
       "review": {
-        "checkedAt": "2026-09-10",
+        "checkedAt": "2026-09-17",
         "intervalDays": 7,
         "reason": "能力や対策の変化を一次資料で確認するため。"
       }
@@ -1662,7 +1662,7 @@
         "horizon"
       ],
       "review": {
-        "checkedAt": "2026-09-10",
+        "checkedAt": "2026-09-17",
         "intervalDays": 7,
         "reason": "能力や対策の変化を一次資料で確認するため。"
       }

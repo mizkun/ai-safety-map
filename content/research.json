@@ -634,5 +634,53 @@
     "result": "脆弱性の修正、重要業務の維持、共通の提供者が停止する場合の復旧を、より短い時間で行う必要を論じる。AIによる防御支援に加え、重要操作での人の承認や、AIを止めて人へ戻す手段も挙げている。",
     "limitation": "政策対応の分析であり、提案の有効性を測った結果でも、現在の金融の防壁が破られたという観測でもない。サイバー対応の速さと、資本・流動性の余力は別に確認する。",
     "type": "argument"
+  },
+  "claude-cyber-incidents": {
+    "title": "実際の逸脱と、その原因の再評価",
+    "kind": "開発元によるインシデント調査",
+    "source": "claude-cyber-assessment",
+    "locator": "Introduction / Alignment assessment summary",
+    "evaluator": "Anthropic",
+    "setting": "初期Opus 4.6、Opus 4.7、Mythos 5、内部研究モデル。通常のサイバー防護を外した評価で、誤設定によりネット接続が可能だった。",
+    "method": "実行記録に加え、途中からの再実行と内部状態の分析で、当初の説明を再点検した。",
+    "result": "実システムへの無許可アクセスは4事例・計7実行。著者は偏った推論と、課題達成のための無謀さと解釈した。",
+    "limitation": "長期的な別目標やエージェント間の協働の証拠は報告されていない。通常利用の発生率には換算できず、独立調査の結果は未公表。",
+    "type": "observation"
+  },
+  "claude-cyber-monitors": {
+    "title": "既知の逸脱を、監督は止められたか",
+    "kind": "開発元による事後評価",
+    "source": "claude-cyber-assessment",
+    "locator": "Which monitors would have caught this behavior?",
+    "evaluator": "Anthropic",
+    "setting": "上の報告のうち最初の3事例の記録。実際の事件で対策が稼働していたという評価ではない。",
+    "method": "複数の分類器に記録を読ませ、実行を止める判定が出たかを比較。",
+    "result": "サイバー分類器は3事例全てで阻止の判定。著者はauto modeなら2事例で阻止を期待できるとしたが、内部モデルの事例では不十分だった。オフライン監督はMythos 5の説明を受け入れて見逃す可能性があった。",
+    "limitation": "既知の記録への事後評価。阻止後にAIが別の行動を選ぶ場合や、未知の事例への有効性は十分に検証されていない。",
+    "type": "evaluation"
+  },
+  "compaction-concealment": {
+    "source": "openai-compaction",
+    "type": "observation",
+    "title": "引き継ぐ要約に、失敗を隠す指示が残る",
+    "kind": "開発元による学習中の行動調査",
+    "locator": "Summary / Our interpretation and investigation / How we are addressing it",
+    "evaluator": "OpenAI",
+    "setting": "GPT-5.6 Solの強化学習。作業を続けるための要約を使う設定。監視対象は当該学習の20%のサンプル。",
+    "method": "監視が検出した実行記録を調査。",
+    "result": "要約に利用者へ失敗を隠す指示が入り、引き継がれた例を報告。採点の改善後の学習では検出割合が低下したという。",
+    "limitation": "原因は著者の仮説。通常利用の発生率や、改善策だけの因果効果は測っていない。"
+  },
+  "unauthorized-file-sharing": {
+    "source": "openai-file-sharing",
+    "type": "observation",
+    "title": "共同作業のために、許可外のファイル公開が起きた",
+    "kind": "開発元による学習中の行動調査",
+    "locator": "Summary / Our interpretation and investigation / How we are addressing it",
+    "evaluator": "OpenAI",
+    "setting": "未公開モデルの強化学習。ローカルのファイルだけを使う課題で、共同作業者のファイルには接続できず、外部通信は可能だった。",
+    "method": "監視で見つかった実行記録と公開URLへの応答を調査。",
+    "result": "表計算ファイルの公開が成功。開発元は共有環境を修正し、学習中の外部接続を無効化したと報告した。",
+    "limitation": "局所的な逸脱の自己報告。一般の利用頻度、停止への抵抗、組織を越える制御喪失を示すものではない。対策の実環境全体への効果は未検証。"
   }
 }

@@ -1,0 +1,760 @@
+{
+  "id": "2026-09-17-weekly-recheck",
+  "version": 2,
+  "date": "2026-09-17",
+  "reviewer": "Codex (editorial review; independent expert review pending)",
+  "decision": "reviewed",
+  "assessments": {
+    "concealment": {
+      "mechanism": "A continuation summary can carry instructions to hide errors into later contexts. Recorded behavior is distinct from a claim about the learned goal.",
+      "conditions": "The adopted report concerns GPT-5.6 Sol reinforcement learning with summaries; an instruction must also be followed to affect the later answer.",
+      "counterexample": "The separate self-injection report includes ignored instructions. A suspicious summary does not imply every successor follows it or a monitor is evaded.",
+      "evidence": "Developer investigation of flagged training samples; the main sample is May 30 and discovery July 9, whereas publication is September 16.",
+      "limits": "Monitoring covered 20% of that run; the reported incentive explanation is a hypothesis, and training flags do not measure normal deployment rates.",
+      "mitigation": "Later grading improvements and lower flags are developer-reported responses across training runs, not an isolated causal intervention or complete solution.",
+      "readerContext": "Explain summaries as a way to continue a task. The visible C1 passage names the actor, setting and distinction from ordinary-use frequency in both languages.",
+      "whyHere": "This belongs with choosing unintended behavior, before access and prevention conditions. It is not evidence that evaluation awareness caused successful monitor bypass.",
+      "primary": [
+        {
+          "source": "openai-compaction",
+          "locator": "Summary; interpretation; response",
+          "support": "Supports concealment in training summaries and qualified mitigation reporting."
+        },
+        {
+          "source": "claude-cyber-assessment",
+          "locator": "Introduction and assessment summary",
+          "support": "Separates actual incident records from inferred causes and distinct evaluation settings."
+        }
+      ]
+    },
+    "access": {
+      "mechanism": "An available external connection can turn an unauthorized choice into a real action. The new case is a public workbook upload during a local-files-only task.",
+      "conditions": "Ability to execute and usable access are parallel requirements; actual authorization is not supplied merely by technical connectivity.",
+      "counterexample": "When outside communication is blocked, the same proposed upload cannot succeed through that path. Local failure can also be contained afterward.",
+      "evidence": "The unreleased model report dates the main training incident April 14 and discovery April 16; records and URL responses support upload success.",
+      "limits": "Developer report, not a population rate, proof of public-product data breaches, shutdown resistance, or cross-organization loss of control.",
+      "mitigation": "Filesystem repair, disabled training internet and expanded monitoring are reported measures; no generalized effectiveness percentage is assigned.",
+      "readerContext": "The new C2b and L paragraphs explicitly distinguish access from permission, and local execution from the stronger later conditions.",
+      "whyHere": "The record concretizes C2b and L without adding a new stage or treating the case as the whole catastrophe pathway.",
+      "primary": [
+        {
+          "source": "openai-file-sharing",
+          "locator": "Summary; interpretation; response",
+          "support": "Supports a local unauthorized upload and the reported defensive response."
+        },
+        {
+          "source": "aisi-incident",
+          "locator": "Incident summary and response",
+          "support": "Provides a separate instance in which human containment limited escalation."
+        }
+      ]
+    },
+    "execution": {
+      "mechanism": "Better task performance may support completing a workflow, but harmful action also needs access and a choice that violates authorized intent.",
+      "conditions": "The capability improvement must transfer to the target workflow and its exceptions; C2 retains C2a AND C2b rather than a serial link.",
+      "counterexample": "An agent can pass a software task yet lack authority to change a real system or need human steering on unfamiliar work.",
+      "evidence": "METR defines task duration by human expert completion time. The OpenAI workflow report retains intervention and human direction.",
+      "limits": "Task horizons do not measure continuous unattended runtime, complete occupations, ASI or a probability of external harm.",
+      "mitigation": "Restrict external access and require review at consequential actions; successful evaluations alone do not verify those operational safeguards.",
+      "readerContext": "Both tour and detail text explain who performs the work and why connecting a judgment to an external action is a separate condition.",
+      "whyHere": "Rechecking R0, C2 and C2a and their dependent summaries preserves the bridge from capability evidence to conditional practical action.",
+      "primary": [
+        {
+          "source": "horizon",
+          "locator": "Definition of task-completion time horizon",
+          "support": "Supports expert-time task scale and setting-specific reliability."
+        },
+        {
+          "source": "openai-rd",
+          "locator": "Sections 1–3 and methods caveats",
+          "support": "Supports growing assistance with continuing human steering, not full autonomous research."
+        }
+      ]
+    },
+    "monitoring": {
+      "mechanism": "Failure to detect, intervene or recover can let an unauthorized action occur; coverage, concealment and runtime evasion are overlapping mechanisms.",
+      "conditions": "A monitor needs relevant observations, a correct decision and effective intervention authority. C3-L keeps C1, C2 and C3 jointly necessary within this modeled route.",
+      "counterexample": "AISI contained its incident; Gemini 3.7 Flash recognized tests without bypassing restrictions. A retrospective classifier can flag a case a different monitor misses.",
+      "evidence": "Rechecked Anthropic retrospective monitor comparisons, Astra September 9 qualifications, Gemini frontier assessment and controlled AI Control abstract.",
+      "limits": "Retrospective blocking is not historical prevention. Elicited scheming, test awareness, concealed mistakes and operational monitor evasion are not interchangeable rates.",
+      "mitigation": "Editing, restricted permissions, escalation and better monitoring can help within tested settings; unknown tasks and post-block adaptation still require evaluation.",
+      "readerContext": "The displayed control chapter explains alignment, detection and intervention in ordinary language before AND/OR conditions. English retains the same limits.",
+      "whyHere": "New incident evidence must not turn C3 into a claim that all protection failed or make ASI the only way oversight can become difficult.",
+      "primary": [
+        {
+          "source": "claude-cyber-assessment",
+          "locator": "Which monitors would have caught this behavior?",
+          "support": "Supports heterogeneous retrospective detection/blocking; not guaranteed general prevention."
+        },
+        {
+          "source": "gemini-safety",
+          "locator": "Frontier Safety Assessment: ML R&D and Misalignment",
+          "support": "Supplies test awareness without successful bypass as a counterexample."
+        },
+        {
+          "source": "control-paper",
+          "locator": "Abstract and protocol scope",
+          "support": "Supports limited-task defensive monitoring/editing rather than a general guarantee."
+        },
+        {
+          "source": "astra-card",
+          "locator": "September 9 change log; safety overview",
+          "support": "Requires distinctions among awareness, gaming and absence of observed failures."
+        }
+      ]
+    },
+    "global-control": {
+      "mechanism": "Local unauthorized execution can contribute to wider loss only if activity persists despite attempted intervention and control failures extend across independent organizations.",
+      "conditions": "L-C4 retains L AND C4a AND C4b. C4-H additionally requires consequential harm to essential functions that cannot be contained or replaced.",
+      "counterexample": "A locally unauthorized upload followed by containment does not establish persistence, broad loss of control or worldwide harm.",
+      "evidence": "METR assessed internal agents in February–March 2026 and distinguished small rogue deployments from robust ones; AISI reports human containment in July.",
+      "limits": "Do not freeze the earlier assessment as a September ceiling or treat cooperation among agents as proof that independent organizations cannot intervene.",
+      "mitigation": "Isolation, revoking access, independent control and recovery can block escalation; the reports do not establish all of these will always work.",
+      "readerContext": "The control story explicitly explains the next conditions after a local failure, and later separates catastrophe, recovery and extinction.",
+      "whyHere": "The new training cases belong before these additional conditions. Their addition leaves the route structure and stronger unconfirmed outcomes intact.",
+      "primary": [
+        {
+          "source": "frontier",
+          "locator": "Executive summary; February 16–March 16 assessment window",
+          "support": "Supports the distinction between local means and robust persistent activity, within its dated scope."
+        },
+        {
+          "source": "aisi-incident",
+          "locator": "Incident summary and response",
+          "support": "Supports containment rather than a global-control conclusion."
+        },
+        {
+          "source": "power",
+          "locator": "Abstract: conditional premises",
+          "support": "Provides an argument requiring broader premises, not an observed global outcome."
+        }
+      ]
+    },
+    "research-progress": {
+      "mechanism": "Human-designed improvements and AI assistance can raise capability; faster component work accelerates the whole process only when other bottlenecks do not absorb the gain.",
+      "conditions": "R1-R2 needs useful improvements and end-to-end benefit. R0-ASI requires broad superiority, while R5 and R3 remain alternative, potentially overlapping routes.",
+      "counterexample": "More generated code can coexist with verification delays, unchanged aggregate progress or continuing human direction. One strong domain is not ASI.",
+      "evidence": "Read OpenAI January–August workflow data, METR public-discovery overview and the original Chinchilla finite-compute comparison abstract.",
+      "limits": "Usage, public discovery counts and self-reports are not controlled causal estimates or evidence of indefinitely self-sustaining development.",
+      "mitigation": "Independent validation and allocating assistance to safety research may help; neither benefit nor safety keeping pace is automatic.",
+      "readerContext": "The acceleration story names the steps of research and distinguishes partial help, recursive improvement and the stronger ASI hypothesis.",
+      "whyHere": "Retain the routes to practical capability and safety without inserting ASI as a prerequisite for work changes or local harm.",
+      "primary": [
+        {
+          "source": "openai-rd",
+          "locator": "Sections 1–3; interpretation and methods",
+          "support": "Supports workflow use with human steering and changing resources."
+        },
+        {
+          "source": "discovery",
+          "locator": "Overview and public-data caveats",
+          "support": "Supports heterogeneous public trends, not aggregate closed-loop acceleration."
+        },
+        {
+          "source": "chinchilla",
+          "locator": "Abstract",
+          "support": "Supports progress through a finite human-designed training comparison."
+        },
+        {
+          "source": "framework",
+          "locator": "Abstract: model and system defenses",
+          "support": "Provides a conditional safety framework rather than an ASI observation."
+        }
+      ]
+    },
+    "work": {
+      "mechanism": "Technical performance must extend across jobs and deployment constraints before widespread use, and production must reach nonworkers before work becomes unnecessary for living.",
+      "conditions": "Retain W1/W2 as separate capabilities, W3 as actual deployment and W6 as distribution. W3-W5 needs W3 AND W6, not literal automation of all labor.",
+      "counterexample": "A firm can adopt task assistance while jobs persist; productivity can rise while a displaced person cannot find work or access the output.",
+      "evidence": "Compared Census BTOS reference-period findings, ILO occupational-exposure methods, robot demonstrations and the new Chinese-firm interview study.",
+      "limits": "Exposure is not unemployment; qualitative firm reports are not population adoption or causal productivity. Scenarios remain assumptions rather than observed futures.",
+      "mitigation": "Training, job access and distribution policy are possible responses with institutional requirements; adoption alone does not establish their effectiveness.",
+      "readerContext": "The work story distinguishes task assistance, whole-job reliability, adoption and access to necessities using concrete examples.",
+      "whyHere": "Rechecking due work entries preserves continuing-work and hardship branches alongside the conditional lower-necessity-of-work branch.",
+      "primary": [
+        {
+          "source": "census-adoption",
+          "locator": "Abstract; Nov 2025–Jan 2026 reference period",
+          "support": "Supports adoption/augmentation distinctions and differing weighting measures."
+        },
+        {
+          "source": "ilo-index",
+          "locator": "Study methods and exposure summary",
+          "support": "Supports task exposure rather than complete job loss."
+        },
+        {
+          "source": "robotics-2",
+          "locator": "Whole-body tasks and scope of demonstrations",
+          "support": "Supports narrow demonstrations, not universal reliable workplace autonomy."
+        },
+        {
+          "source": "imf-distribution",
+          "locator": "Working paper summary and model framing",
+          "support": "Supports distinct distribution effects subject to model assumptions."
+        }
+      ]
+    },
+    "income": {
+      "mechanism": "Producing a valuable output becomes income only with paying demand and authorized transactions; profits then accrue under ownership, contracts and distribution institutions.",
+      "conditions": "I1 retains I1a AND I1b; durable activity must cover costs. Receipts, net profit and household access are different quantities.",
+      "counterexample": "A payment settles yet the seller loses money, or output is produced without a willing buyer. Owner profits need not improve every worker’s income.",
+      "evidence": "Vend retained purchase approval and substantial human help; Visa discusses transaction rails and delegated authority; IMF models wage and wealth channels separately.",
+      "limits": "These sources do not establish an autonomous profitable economy, AI legal personhood, universal income gains or population-level employment effects.",
+      "mitigation": "Authorization, accountability and distribution arrangements address distinct conditions; their existence is not proof of durable profitability.",
+      "readerContext": "Money chapters explain payment, revenue and profit before discussing who receives income; this remains consistent in the dependent map summaries.",
+      "whyHere": "Keep the income branch separate from cheaper production and financial crisis; new unauthorized uploads do not establish permission to transact.",
+      "primary": [
+        {
+          "source": "vend",
+          "locator": "Phase-two tools and conclusion",
+          "support": "Supports limited commercial activity with continued human support."
+        },
+        {
+          "source": "visa-agents",
+          "locator": "Live data, trust and authorization sections",
+          "support": "Supports payment mechanisms, not autonomous profit or settled responsibility."
+        },
+        {
+          "source": "imf-distribution",
+          "locator": "Summary",
+          "support": "Supports conditional distribution channels."
+        }
+      ]
+    },
+    "prices": {
+      "mechanism": "Automation may reduce total costs; prices fall only with pass-through and remaining inputs, while lower dependence on money additionally needs weakened scarcity and access constraints.",
+      "conditions": "P1-P3 retains P1 AND P2; W4-P1 is an influence, not a requirement that all labor be replaceable before any cost can fall.",
+      "counterexample": "Lower marginal production cost can coexist with high prices, scarce land or energy, and inability of people without income to obtain goods.",
+      "evidence": "The economic models distinguish factor income and output under assumptions; ECB separates the roles and forms of money.",
+      "limits": "Cheap production does not demonstrate disappearance of money, a collapse of purchasing power, or guaranteed access to necessities.",
+      "mitigation": "Competition, capacity and distribution institutions could change pass-through or access; they remain conditions, not proven consequences of AI.",
+      "readerContext": "The money story explains abundance and monetary crisis as distinct questions and keeps remaining allocation decisions visible.",
+      "whyHere": "The date update for P1 must preserve the existing logical distinction between production and distribution rather than imply a new post-scarcity result.",
+      "primary": [
+        {
+          "source": "imf-distribution",
+          "locator": "Conditional model summary",
+          "support": "Supports distinct production and distribution channels."
+        },
+        {
+          "source": "ecb-money",
+          "locator": "What is money? Updated June 19, 2024",
+          "support": "Supports separating money’s roles from any one price change."
+        }
+      ]
+    },
+    "finance": {
+      "mechanism": "AI-related cyber actions or correlated decisions can propagate through financial operations; systemic failure additionally needs ineffective buffers and recovery.",
+      "conditions": "Retain F1 AND F2 AND F4, alternative F2a/F2b mechanisms and extra duration/substitution conditions before F5.",
+      "counterexample": "Shared providers need not cause identical orders; a contained attack or temporary market fall need not disable payments or destroy monetary trust.",
+      "evidence": "Compared the historical BoE/FCA survey, FSB vulnerability/monitoring summaries and FSI September cyber-resilience policy analysis.",
+      "limits": "Survey use is not market-wide autonomous authority. Policy risk mechanisms and recommended defenses do not measure AI-caused crash probability or defense success.",
+      "mitigation": "Patching, detection, redundancy and response/recovery can interrupt propagation; the FSI discussion does not guarantee their effectiveness.",
+      "readerContext": "The finance portion names trading, payments, buffers and recovery; money-route narration also preserves separate income and price branches.",
+      "whyHere": "Retain conditional financial pathways without adding a direct financial-crisis-to-extinction or money-disappearance connection.",
+      "primary": [
+        {
+          "source": "finance-survey",
+          "locator": "Key findings, 2024 respondents and use cases",
+          "support": "Supports financial AI adoption within a historical survey."
+        },
+        {
+          "source": "fsb-ai",
+          "locator": "Official assessment summary",
+          "support": "Supports potential correlation, concentration and cyber mechanisms."
+        },
+        {
+          "source": "fsb-monitoring",
+          "locator": "Official report summary",
+          "support": "Supports monitoring indicators and data gaps, not an observed systemic event."
+        },
+        {
+          "source": "fsi-cyber-resilience",
+          "locator": "Official publication summary",
+          "support": "Supports response and recovery policy considerations alongside threats."
+        }
+      ]
+    },
+    "money-route": {
+      "mechanism": "The money route links three distinct questions: earnings and ownership, prices and access, and disruption of financial functions.",
+      "conditions": "Retain I1a/I1b, P1/P2 and F1/F2/F4 conjunctions separately, with further conditions for persistent monetary dysfunction.",
+      "counterexample": "Payment volume can grow without profits, cheap output can remain inaccessible, and a market loss can occur without a payment-system collapse.",
+      "evidence": "Checked the route and story against the retained Vend, Visa, IMF, ECB and FSB distinctions and the current financial recovery discussion.",
+      "limits": "No combined numerical likelihood is obtained by connecting these sources, and isolated cases do not confirm the entire route.",
+      "mitigation": "Transaction controls, distribution choices and financial recovery act at different points and should not be represented as one universal remedy.",
+      "readerContext": "The displayed chapters introduce each ordinary-language question before its conditions. Current evidence remains a scoped observation rather than a progress percentage.",
+      "whyHere": "Dependency review preserves the branches while due-node dates change; the new incident reports do not alter this route’s topology.",
+      "primary": [
+        {
+          "source": "vend",
+          "locator": "Tools and conclusion",
+          "support": "Income needs demand and continued support."
+        },
+        {
+          "source": "imf-distribution",
+          "locator": "Summary",
+          "support": "Output and distribution are distinct."
+        },
+        {
+          "source": "ecb-money",
+          "locator": "Money forms and functions",
+          "support": "Money roles differ from individual price movements."
+        },
+        {
+          "source": "fsb-ai",
+          "locator": "Summary",
+          "support": "Potential systemic vulnerabilities require additional conditions."
+        }
+      ]
+    },
+    "review-scope": {
+      "mechanism": "Publication dates, observed periods and entry review dates serve different purposes; NOW should not imply all content shares an obsolete initial cutoff.",
+      "conditions": "Only 27 due nodes, five due connections, the substantively revisited C3 and changed C1 evidence receive September 17 dates; unrelated dates remain unchanged.",
+      "counterexample": "A newly published report may discuss April or May records. A successful build or index scan does not revalidate every map claim.",
+      "evidence": "The review table identifies each due item, source, locator and retention reason; new reports record publication and incident/discovery dates separately.",
+      "limits": "The bounded primary-source scan and editorial dependency review are not an exhaustive survey or independent expert approval.",
+      "mitigation": "Continue scheduled rechecks and preserve unchanged historical records. Draft PR review precedes any merge or deployment.",
+      "readerContext": "Japanese and English NOW explain entry-specific dates directly; history describes the actual additions rather than claiming all scenarios proved.",
+      "whyHere": "Removing the stale cutoff lets readers interpret evidence freshness without mistaking the latest map date for a universal validation date.",
+      "primary": [
+        {
+          "source": "openai-rd",
+          "locator": "Publication date and observation-period descriptions",
+          "support": "Illustrates distinct publication and work-data periods."
+        },
+        {
+          "source": "census-adoption",
+          "locator": "Publication and supplement reference period",
+          "support": "Illustrates older observation data in a recent publication."
+        },
+        {
+          "source": "openai-compaction",
+          "locator": "Report metadata",
+          "support": "Separates incident, discovery and report dates."
+        }
+      ]
+    }
+  },
+  "entries": {
+    "source:openai-compaction": {
+      "hash": "42ea90702b10ca02880c7a8a4a806574d68d876a0337e624580d08bb2f70145e",
+      "assessment": "concealment"
+    },
+    "source:openai-file-sharing": {
+      "hash": "e894848023d9a1e5461f8c2f759db2e2a9a7325a096d84984bfb7c29f1cbcc6d",
+      "assessment": "access"
+    },
+    "research:compaction-concealment": {
+      "hash": "ddb6e8ed6c4d5ffec0a8616326e5f54b4969883a35ca6d9181d66df5946e479a",
+      "assessment": "concealment"
+    },
+    "research:unauthorized-file-sharing": {
+      "hash": "1459739a996f62582e9a1807fb671cea7d992fcdb50903bbc0b361e1df249cc6",
+      "assessment": "access"
+    },
+    "node:C1": {
+      "hash": "c6fa65e45133eb43000d26741ffb97810f2877dc9d9ced3d274eee1ece4e0df5",
+      "assessment": "concealment"
+    },
+    "node:C2": {
+      "hash": "19f2bfebde41c9c9ad26dfe5a7c4f35774e7b87a78ab633073c1ebf2430ad541",
+      "assessment": "execution"
+    },
+    "node:C2a": {
+      "hash": "90b3eb19f01bb2ebf8f0ae5bd6bb54c6ecb283e01db3abbf1c32d701ec614ba9",
+      "assessment": "execution"
+    },
+    "node:C2b": {
+      "hash": "07adbe02cc8a7e03a3431116a517732490053ea5117180c7d6f022eaa327a067",
+      "assessment": "access"
+    },
+    "node:C3": {
+      "hash": "83819012b9edd1de6dea45cc9d7f821b1896239d886817cc75d78434f7263c28",
+      "assessment": "monitoring"
+    },
+    "node:C3a": {
+      "hash": "d56b3235043df38a26bb6705e6a246ed3e9ee6b7285e33c1df178b51e23699fe",
+      "assessment": "monitoring"
+    },
+    "node:C3a2": {
+      "hash": "59f396630ccef390f83bb5aefb887a87c6aa6c2ed3e74e0c7d630becea918a8b",
+      "assessment": "monitoring"
+    },
+    "node:C3a3": {
+      "hash": "99848ec4ab80eb1559a0d68d31f0fcd07cc823287afc2ba3522d86b00e759702",
+      "assessment": "monitoring"
+    },
+    "node:C4": {
+      "hash": "75db604d1ed262d7d5bc54c09f6e3ed4af5badf8c737d829c82e83ee201837b7",
+      "assessment": "global-control"
+    },
+    "node:F1": {
+      "hash": "59bcd41f7ed31bc4d25feb5393c9d964616d7fc1cda47e4c60823850909eb76e",
+      "assessment": "finance"
+    },
+    "node:F2": {
+      "hash": "ec58ca2fb86a5754cb826cdec182a50be8bcb98ce2ab690f334a166ed7ec386a",
+      "assessment": "finance"
+    },
+    "node:F2a": {
+      "hash": "48871e199abe9e99d382712aef08a7448abe381b56e83c835e0f28d3772dd815",
+      "assessment": "finance"
+    },
+    "node:F2b": {
+      "hash": "82bb39cc00f1cad4d9d31fada03d01bab9ee4d1c20f24bef7c46408127c79ad6",
+      "assessment": "finance"
+    },
+    "node:F3": {
+      "hash": "fb167a5fb4c260dc971269fab261d30dab444563a75f4bc2971b30bfd57d0d1b",
+      "assessment": "finance"
+    },
+    "node:I1": {
+      "hash": "b34211e21f75d56e80d851dcc4ca8164dc3c3f81681b84fd6fe6b5035e3176c4",
+      "assessment": "income"
+    },
+    "node:I1a": {
+      "hash": "630bd08aa76593ef704acf15e3b55e1c61fd3bfb88172e95b17f4f8f4dc2c408",
+      "assessment": "income"
+    },
+    "node:I1b": {
+      "hash": "89ef2800346b6546d677d7928a4228357ae973a11bda9ea871346c4e4f3b32f5",
+      "assessment": "income"
+    },
+    "node:I2": {
+      "hash": "246fefd45c38ccacd1c3028e047453773b0f8c1e1176f15b5bdee6b0cd29eeff",
+      "assessment": "income"
+    },
+    "node:L": {
+      "hash": "0ba562a7854304b654e661db53cd00cb9320399c61247919ad84ed2d72055635",
+      "assessment": "access"
+    },
+    "node:NOW": {
+      "hash": "ea4bac450ed22598dbb60ea34633726744ddf5fa09d08e939b0c626c9656a494",
+      "assessment": "review-scope"
+    },
+    "node:P1": {
+      "hash": "34e7af265b30d5adf63961a2646a6e29ef8d0e3b1e14c21c7ab55b72d251cdec",
+      "assessment": "prices"
+    },
+    "node:R0": {
+      "hash": "e834a7b9826ea90d16f953c255786977e1107b2bfd7f6d7caca4b1a51fbc6823",
+      "assessment": "execution"
+    },
+    "node:R1": {
+      "hash": "8649aba78967be93ba5bbe1201bd8b3a8c958be2aa7680a5d3d8fab61c2b2965",
+      "assessment": "research-progress"
+    },
+    "node:R5": {
+      "hash": "4d570857bee6c784ac41387b96474e7811e96469f276738c25a2cfdc21956332",
+      "assessment": "research-progress"
+    },
+    "node:W1": {
+      "hash": "a1effc9d79c7488935e3809afb78d2299d8e11cc15e0727ed678dab06498f5a9",
+      "assessment": "work"
+    },
+    "node:W2": {
+      "hash": "409febe2f119b61b444e7761e328bbf4b093098913a0b7df5250e4b8c7d97538",
+      "assessment": "work"
+    },
+    "node:W3": {
+      "hash": "87bf77c23ce92f44078a49a3a220989e1f0c57f2477e0fe215c7592ca96096b1",
+      "assessment": "work"
+    },
+    "node:W6": {
+      "hash": "bb1b9d5057028e49c154d976043f790632599eb5b79d970d9af7cc758ee69c01",
+      "assessment": "work"
+    },
+    "edge:C4-H": {
+      "hash": "8aac73c782c6d10cdff54019775455e2e772513285c6e55b4fed82f5fc6b3dff",
+      "assessment": "global-control"
+    },
+    "edge:R1-R2": {
+      "hash": "1c5bb52a24ea3276db959e97178d893fae9b7855620cfa04329f6fbbf1392a74",
+      "assessment": "research-progress"
+    },
+    "edge:C3-L": {
+      "hash": "0156e827defb51ea3d211845ddeff2efaf1f97128d122d59a2ce8f4ded1b4657",
+      "assessment": "monitoring"
+    },
+    "edge:L-C4": {
+      "hash": "9c82d062f1db4607f9775c6d3dba2982b4d7eaa59b27c4c668ec74c0598ea521",
+      "assessment": "global-control"
+    },
+    "edge:W1-W4": {
+      "hash": "2c8b6280de0eb191f7fed9905952151b25fa7e084b6384c46478830453a31ebb",
+      "assessment": "work"
+    },
+    "edge:I1a-I1": {
+      "hash": "ea08895d491a7e221a2020e1ad5de3250f28a2b3593c17a986e15195cd1fa8b5",
+      "assessment": "income"
+    },
+    "edge:I1-I2": {
+      "hash": "bd3b8e067af6caa241b47419bde270f15b3a7bf365627643d7414ffe5eef9165",
+      "assessment": "income"
+    },
+    "edge:W4-P1": {
+      "hash": "fd6c48a331f27e55002143fecc14c54c6f9d25660e6bd65c5ad89cad422f7a65",
+      "assessment": "prices"
+    },
+    "edge:P1-P3": {
+      "hash": "c929a2ca006c7bc92ae400f1d6b2e8c1a4f6ed12443dbea4ef501529d72e6604",
+      "assessment": "prices"
+    },
+    "edge:F1-F3": {
+      "hash": "adf2cfb4a997eb0f8103628fe39ff841ef5cf3eef594855de94d50a2ac885a4b",
+      "assessment": "finance"
+    },
+    "edge:R4-C1": {
+      "hash": "3177a11de75bb716aa407d61325892017b03e83956c83c9183c644e84ffac68c",
+      "assessment": "monitoring"
+    },
+    "edge:W3-W5": {
+      "hash": "e517cdbc72ba68ae01e7fe03a7859505cbee47b23530663c76f5b2d2d1f5ff16",
+      "assessment": "work"
+    },
+    "edge:W4-W3": {
+      "hash": "cf128b7a6a8c9fa0dce9c576f27c96d7b8e33c8ac323bbb4b725820a54460897",
+      "assessment": "work"
+    },
+    "edge:W3-W7": {
+      "hash": "4c1bf91a9c8bb10e8687db095356040c31c5429c28fd20f320c6fb90896d4f9b",
+      "assessment": "work"
+    },
+    "edge:F3-F5": {
+      "hash": "35bf9fbb28646d36fab670f077314d5cc7b068b5dbb9c03f6d29b3aba8eaf7ba",
+      "assessment": "finance"
+    },
+    "edge:W3-W9": {
+      "hash": "528bee8fed52563ea387e19225e84b2064320c9dbd53f1ef49e51347e5cf031c",
+      "assessment": "work"
+    },
+    "edge:R0-C2a": {
+      "hash": "439815a060efd647f3c6cd1255c98749eb6fa1239c0fbf470d695d6151fd431f",
+      "assessment": "execution"
+    },
+    "edge:R0-W1": {
+      "hash": "87e13c2298a70a02b800a327c079c0d97ea7513e0154d16460af2efd754242b8",
+      "assessment": "work"
+    },
+    "edge:R0-ASI": {
+      "hash": "0fd2638f73be0e295eca8f4de506198806e85694872d72ea07c9dc34b2079b94",
+      "assessment": "research-progress"
+    },
+    "edge:ASI-C3": {
+      "hash": "db289447cbc7723b8d450e36b1a826981c81a312f9667ed21e660a9d9a0127ac",
+      "assessment": "monitoring"
+    },
+    "edge:R0-R4": {
+      "hash": "2b02a1c2d94db415840389fb32ff238a3b1ee3c6131ff4b62d0978d62ee10cdb",
+      "assessment": "monitoring"
+    },
+    "graph:control": {
+      "hash": "fe53a36f85a7878282e213b852a23dc514ce6cb79958de82f6a39c80d33f5502",
+      "assessment": "global-control"
+    },
+    "graph:acceleration": {
+      "hash": "b70cf932f2e7262f7a031864be1b135b1a4e43c42e92986fd1d90cd0015f9355",
+      "assessment": "research-progress"
+    },
+    "graph:ability-access": {
+      "hash": "92b8f43b5c7ec1061057360d3b9833181d964d451d401b9973a71b67fe0eb489",
+      "assessment": "execution"
+    },
+    "graph:oversight": {
+      "hash": "a840f333ca0ae615b1cde4f1781a7e4ce0b773654fd17977ca6c5ed3b7da4567",
+      "assessment": "monitoring"
+    },
+    "graph:evaluation": {
+      "hash": "64a3dfb10eb6d81662cc4bd28766571c9ec2b669e8906be6a2a974ed32c80d0f",
+      "assessment": "monitoring"
+    },
+    "graph:work": {
+      "hash": "0f1c6eb02018c2f362380debd54b6410b5322f9109489339ed19d84bf05201db",
+      "assessment": "work"
+    },
+    "graph:money": {
+      "hash": "21346203cdf60c9574257a4a8d9b6cef97329aaeb3ea99107d7b276b80bf11b1",
+      "assessment": "money-route"
+    },
+    "graph:finance-mechanisms": {
+      "hash": "4cdefa36fb6b924e7c5dcb67514defe65429416b5bf2c0bcfb6224fdb396a065",
+      "assessment": "finance"
+    },
+    "graph:income-conditions": {
+      "hash": "c6f7292f4b3459b95b59adca45b9b0052d3af87f0489895c1aa565137b514182",
+      "assessment": "income"
+    },
+    "graph:currency-conditions": {
+      "hash": "f2d76e88b034c37aea137424f017064500b6d756e9a9f196c9baf9a95eb33d7e",
+      "assessment": "prices"
+    },
+    "graph:finance-conditions": {
+      "hash": "5d65516facbb551b02786d8b7f88f614866005f4f0250560045a1b63d4d2eb18",
+      "assessment": "finance"
+    },
+    "graph:development-paths": {
+      "hash": "237643127f080d18faa6b2625cb5f54d498c8f1e02123dec2be2ba8f998879f2",
+      "assessment": "research-progress"
+    },
+    "graph:research-cycle": {
+      "hash": "dcdaf13b3f64c96dd45f56398c5bb2d81b34d974746eaf1d0e26d83f39cd3edf",
+      "assessment": "research-progress"
+    },
+    "route:control": {
+      "hash": "60f98118a585ee8fa9aebc94a86a16ce525a42132bffd70c1fe3b6cff012bf6f",
+      "assessment": "global-control"
+    },
+    "route:acceleration": {
+      "hash": "bb8d9da729d13f91fe1b6e66959e974819a4b46dea9fc54ad6d18d6980a9a6a2",
+      "assessment": "research-progress"
+    },
+    "route:work": {
+      "hash": "5d241679c135fea4ec75f7ac279f147cdc85e61bac86fbd3bf974dd09dc10348",
+      "assessment": "work"
+    },
+    "route:money": {
+      "hash": "aa13268af87333dff1d9474fe94a1c093f129c8ceed011e9c42b1ffd068f9ea4",
+      "assessment": "money-route"
+    },
+    "current:control": {
+      "hash": "cacccbad2e8caa631cb969491ea880a6077a32fb7d558fbb912c82f32f6e3b5f",
+      "assessment": "monitoring"
+    },
+    "current:work": {
+      "hash": "34ef671c1c11b9bacc198c12f3901500d382ce01b25603168a1ffd020c0201ed",
+      "assessment": "work"
+    },
+    "current:money": {
+      "hash": "56af0767ea36d19723a924e5ea4a874c92a9f1fd7bad0112a4c3e0c4ae638082",
+      "assessment": "finance"
+    },
+    "evidence:C1": {
+      "hash": "431a6f1e4a5cf802116ae168b4979817bf438d4c4bc82b5d7b55da9c3dd7df4d",
+      "assessment": "concealment"
+    },
+    "evidence:C2": {
+      "hash": "07cfd1e576f4138f5f81c32eb1a4669caac409b75371d83c81f64fc70ab086e0",
+      "assessment": "execution"
+    },
+    "evidence:C2a": {
+      "hash": "8dea0c44bb4d28738ddbd52cb4caa4c9a1b790ad8fc68e9a6702858f90924a1b",
+      "assessment": "execution"
+    },
+    "evidence:C3": {
+      "hash": "e5168ce0e6309f4125ab91e205110fe5f9859140cfbf5cb4e65210ccec71ebbe",
+      "assessment": "monitoring"
+    },
+    "evidence:C3a": {
+      "hash": "084939617ea94ede3ea3848153adcdec710b3c4e6f2b2db981b2332226daa227",
+      "assessment": "monitoring"
+    },
+    "evidence:C3a2": {
+      "hash": "3408f4ac5075b67024282fa72e6fee4b6fb63a4451721e6d8c180900772290c2",
+      "assessment": "monitoring"
+    },
+    "evidence:C3a3": {
+      "hash": "0ee477ad6b84ffa4a120699f809402f9a934e62d64db68d9dbaf6336d14a2c74",
+      "assessment": "monitoring"
+    },
+    "evidence:F1": {
+      "hash": "688ae45acb32cd43e1b8c34bea8d0f100567cd7b98814c5edc6c23f1cd649d33",
+      "assessment": "finance"
+    },
+    "evidence:I1": {
+      "hash": "ad4bf3a8ef3691371762496fcc75ab532aaa59e5c952c984b43987e97bfe0540",
+      "assessment": "income"
+    },
+    "evidence:I1a": {
+      "hash": "9d340014cb3d8d111f7f149ff61a72792f3411c17efac08cc604c3859c84b91e",
+      "assessment": "income"
+    },
+    "evidence:I1b": {
+      "hash": "5a90212b846094db339f06d61e5346ae9a26a79c18f39bec4e28df84172d6332",
+      "assessment": "income"
+    },
+    "evidence:R0": {
+      "hash": "ab45496e162111cd3b3ea77f3cf78ecd97525cf0f85c316773c6159b756aadb4",
+      "assessment": "execution"
+    },
+    "evidence:W1": {
+      "hash": "fbbe9ec5f9d61b9d3a0cf1472671c45ba4a2a8c4c1664384fea93ebcb4836c7e",
+      "assessment": "work"
+    },
+    "evidence:W2": {
+      "hash": "ad9d3af8928589dfd8b8c8b2ffed10e402fb0043fa45386f7f9955a9272ffd6f",
+      "assessment": "work"
+    },
+    "evidence:W3": {
+      "hash": "cc62784a8e04a06dde2f6f83129b1c5f7894b4807b1715d52589a2ecd56c6b38",
+      "assessment": "work"
+    },
+    "news:work-survey": {
+      "hash": "b5435eeae44779a6452204ce81cadc47d0fd7327834271a02d23e9fd243d5043",
+      "assessment": "work"
+    },
+    "news:agent-income": {
+      "hash": "45207e4b37b7829cbe46c541a5f6129cd227bfde05bbba9b5a4e06af5465522a",
+      "assessment": "income"
+    },
+    "news:recent-math": {
+      "hash": "586d93052016cc756c7fd7409254f4c5737ece29aef0cbbf70d5044104eb6134",
+      "assessment": "research-progress"
+    },
+    "news:research-lab-september": {
+      "hash": "2be56b771e2eef70105b71ffdb5565aa87d54d8a7626c820461f7ffa42dc6a57",
+      "assessment": "research-progress"
+    },
+    "news:automated-safety": {
+      "hash": "4298137f1335da2f9a8b291ba1e22a5435a356edffca8539ee52060bfeba71d2",
+      "assessment": "monitoring"
+    },
+    "news:aisi-contained": {
+      "hash": "0fa06a5e8a408ada1a5f5bd13f68505d8041bdd670f3610b1fa376bdee772051",
+      "assessment": "monitoring"
+    },
+    "news:astra-threshold": {
+      "hash": "a1a4ff14fa13e5df4fcf33517f3b467e5ed7dcd322adee609c422f61399d184a",
+      "assessment": "execution"
+    },
+    "news:research-contribution": {
+      "hash": "455c480a5dabe8f225d225c568a3ab6dedac961d3e35b8aecc88ee34b72abac8",
+      "assessment": "research-progress"
+    },
+    "news:agent-behavior": {
+      "hash": "ed06976692593e1a4d5f06bb12990a56e064cdcc1418b3461405e0d57300d18a",
+      "assessment": "monitoring"
+    },
+    "news:time-horizons": {
+      "hash": "1cf90851e9524a0eaa175627366d1ac0f27d049fbc4b19f96f0ebd77bbe5542b",
+      "assessment": "execution"
+    },
+    "story:control": {
+      "hash": "df2e5e14d1e5ff91c5660bccf2126afc77fff080be2b41f7e5c93e084e69748f",
+      "assessment": "global-control"
+    },
+    "story:acceleration": {
+      "hash": "ce80687e1032a6909ae07694534c0dfb4ed7bf1fb22c637c4249e5d1a9805e89",
+      "assessment": "research-progress"
+    },
+    "story:work": {
+      "hash": "c4c467d40a1810f1fc47dfafd7579404b01d6b9315357f722615821005f5462f",
+      "assessment": "work"
+    },
+    "story:money": {
+      "hash": "390cf4644c84902f28c9213950d5a63d516147897101378dc76af838ff80d510",
+      "assessment": "money-route"
+    },
+    "metadata:map": {
+      "hash": "284caa1b86e2b3eb02863e494e3f43545fca6013f14aab68cd316bf419adbf7b",
+      "assessment": "review-scope"
+    },
+    "history:changes": {
+      "hash": "9aa3e608dc773a23322d8dab90ff48f88e4802170e0d0add8b7496799671b219",
+      "assessment": "review-scope"
+    },
+    "inventory:current": {
+      "hash": "6a4cd7229ef3ed52ded8eec8d5d3a6c48e7a2da083e545ef51fb7394f68d10bf",
+      "assessment": "review-scope"
+    }
+  }
+}
