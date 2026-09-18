@@ -493,5 +493,14 @@
     "date": "2026-09-17",
     "period": "公表前の4週間弱に行った研究用ソフトウェアの改善。正確な実施日は記載なし。非公開の汎用研究モデルを使用。",
     "primary": "Anthropicなどの著者による原実験。技術報告を併読。開発元の報告であり、独立した追試とは区別。"
+  },
+  "anthropic-physical-eval-202609": {
+    "title": "Anthropic — Measuring tactical intelligence targeting and conventional weapons capabilities of AI models",
+    "url": "https://www.anthropic.com/research/intelligence-targeting-conventional-weapons-capabilities",
+    "published": "2026-09-10",
+    "date": "2026年9月10日 公表",
+    "period": "公表までに行われた模擬評価。実施日の記載はない。",
+    "checked": "2026-09-12",
+    "primary": "評価を実施したAnthropic Frontier Red Teamによる原報告"
   }
 }
