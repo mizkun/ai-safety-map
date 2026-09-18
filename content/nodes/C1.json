@@ -5,7 +5,9 @@
   "sources": [
     "specification",
     "generalization",
-    "summer"
+    "summer",
+    "claude-cyber-assessment",
+    "openai-compaction"
   ],
   "questions": [],
   "related": [
@@ -25,7 +27,7 @@
     "能力を保ちながら危険な行動が減る対策はあるか。"
   ],
   "review": {
-    "checkedAt": "2026-09-10",
+    "checkedAt": "2026-09-17",
     "intervalDays": 7,
     "reason": "能力・行動・対策の評価は短期間で変わり得るため。"
   },
@@ -36,7 +38,9 @@
   "research": [
     "specification",
     "generalization",
-    "summer"
+    "summer",
+    "claude-cyber-incidents",
+    "compaction-concealment"
   ],
   "shortTitle": "アライメントの失敗"
 }

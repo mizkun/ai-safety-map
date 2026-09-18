@@ -1,0 +1,74 @@
+{
+  "id": "2026-09-18-release-integration",
+  "version": 2,
+  "date": "2026-09-18",
+  "reviewer": "Codex (editorial integration review; release explicitly requested by the user)",
+  "decision": "reviewed",
+  "assessments": {
+    "combined": {
+      "mechanism": "The merged M2 branch separates malicious human purposes, useful cyber or physical assistance, and failed defenses. Model-only software simulation remains distinct from added help to a user and from physical execution.",
+      "conditions": "M2c1 and M2c2 remain an AND; M2b1 and M2b2 remain an AND. M3-H still requires M1, M2 and M3 plus broad effects on essential functions and inadequate substitution or recovery.",
+      "counterexample": "Software-task success can coexist with no additional benefit to a person or no physical prerequisites. Reported local intrusions or a failed field test do not establish global harm or lost recovery.",
+      "evidence": "The September 12 physical-simulation source adds bounded model capability evidence. The September 18 recheck retains separate actual-misuse evidence and the no-AI-comparison limitation in M2. Both records are preserved in the combined release.",
+      "limits": "No evidence color or topology changes. Simulation results do not establish human uplift, physical harm, general safeguard failure or extinction. The graph description changes only from biology to physical harm to match existing conventional-weapons coverage.",
+      "mitigation": "The tour still discusses provider restrictions, target defenses, containment and recovery after capabilities and access. A classifier announcement without measured effectiveness is not evidence that every relevant safeguard works.",
+      "readerContext": "Read the merged Japanese and English M2, M2b, M2b1, M2b2 and M3 sequence and the two physical evidence summaries. The text names the actor and comparison, explains physical prerequisites and preserves expert-guidance limitations.",
+      "whyHere": "Integration changes dependent fingerprints even where surrounding prose is unchanged. The merged history retains every entry and translation by stable ID, the latest map date stays September 18, and individual September 12, 17 and 18 review dates are not flattened.",
+      "primary": [
+        {
+          "source": "anthropic-physical-eval-202609",
+          "locator": "Models as weapons developers; Conclusion",
+          "support": "Bounded model-only simulations and the distinction from human uplift or physical execution."
+        },
+        {
+          "source": "anthropic-threat-202609",
+          "locator": "Introduction; Prevailing trends; conventional-weapons case summary and biological-misuse conclusions",
+          "support": "Observed but selected misuse, human involvement, intervention and limits of claims about physical or widespread harm."
+        },
+        {
+          "source": "anthropic-biomolecular",
+          "locator": "Technical report abstract, Figure 3 and Discussion",
+          "support": "The merged inventory and history also preserve the scoped research-software addition without changing whole-process or physical-harm claims."
+        }
+      ]
+    }
+  },
+  "entries": {
+    "node:M2": {
+      "hash": "f277313175f8a451d84ee14e2fd2c107ba1d12f178c3d6789eb4d05255e43f88",
+      "assessment": "combined"
+    },
+    "edge:M3-H": {
+      "hash": "b3169b2f8478ceb830d2383d6f43e4baee05ef3574d2fbf61cc8b7b2a99eefa5",
+      "assessment": "combined"
+    },
+    "graph:misuse": {
+      "hash": "522477f09b31e4cf4f292dea19affcc7bc1871ebed28234053cdbd5f9cbddc58",
+      "assessment": "combined"
+    },
+    "graph:misuse-mechanisms": {
+      "hash": "2cc7e033620a6486346a505a60474b58167e2df96ca245985acba46ffc9e0920",
+      "assessment": "combined"
+    },
+    "route:misuse": {
+      "hash": "d185a86d7035e348702e401fe979434dc6e3f090c945ee07d480d067e7dd153b",
+      "assessment": "combined"
+    },
+    "evidence:M2": {
+      "hash": "f1a1cb6525fb196f18fbc6cbd14d321f2d9da6a555ced56e229e6efdd3189306",
+      "assessment": "combined"
+    },
+    "story:misuse": {
+      "hash": "bf4843f2286a46bcaf2104f01d847f556735aaff01297298667bdbd6fcb54b09",
+      "assessment": "combined"
+    },
+    "history:changes": {
+      "hash": "085f5c2f7448a129950e323b9ce29ef57c75c13dc8d24208e6af83432628743f",
+      "assessment": "combined"
+    },
+    "inventory:current": {
+      "hash": "cb66d6e754c8bbd92003dc91295e2c0b4770def3d5404b27e70e5a0fb8a2324f",
+      "assessment": "combined"
+    }
+  }
+}

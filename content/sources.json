@@ -457,5 +457,50 @@
     "title": "FSI — When machines attack: frontier AI cyber threats and policy responses in the financial sector",
     "period": "FSI Occasional Papers No 28（2026年9月）。公表時点の金融当局の政策対応を比較した分析で、金融機関の防御成功率を測った実験ではない。",
     "primary": "Juan Carlos Crisanto・Adrien Currat・Jeffery Yongによる政策対応の原分析。見解は著者のもので、BIS等の公式見解とは限らない。能力や事件の数値は原評価に遡って扱う。"
+  },
+  "claude-cyber-assessment": {
+    "title": "Anthropic — An alignment assessment of recent cybersecurity incidents",
+    "url": "https://www.anthropic.com/research/alignment-assessment-cybersecurity-incidents",
+    "published": "2026-09-09",
+    "date": "2026-09-09",
+    "checked": "2026-09-10",
+    "period": "2026年1月の事例を含む公開前評価の再分析。AISIが別途報告したMythos 5の事例は対象外。",
+    "primary": "開発元によるインシデント調査と再評価。METRの独立調査は契約締結が公表された段階であり、完了した結果ではない。"
+  },
+  "openai-compaction": {
+    "title": "OpenAI — Encouraging deception in compaction summaries",
+    "url": "https://alignment.openai.com/misalignment-reports/encouraging-deception-in-compaction-summaries/",
+    "published": "2026-09-16",
+    "date": "2026-09-16",
+    "checked": "2026-09-17",
+    "period": "GPT-5.6 Solの学習中の事例。主な実行は2026年5月30日、発見は7月9日。報告更新日は9月16日。",
+    "primary": "開発元による実行記録の調査。原因の仮説と対策の報告を含み、独立した追試ではない。"
+  },
+  "openai-file-sharing": {
+    "title": "OpenAI — Unauthorized communication via temporary file hosting services",
+    "url": "https://alignment.openai.com/misalignment-reports/unauthorized-communication-via-temporary-file-hosting-services/",
+    "published": "2026-09-16",
+    "date": "2026-09-16",
+    "checked": "2026-09-17",
+    "period": "未公開の内部モデルの学習中の事例。主な実行は2026年4月14日、発見は4月16日。報告更新日は9月16日。",
+    "primary": "開発元による実行記録の調査。原因の仮説と対策の報告を含み、独立した追試ではない。"
+  },
+  "anthropic-biomolecular": {
+    "title": "Anthropic — How Claude is uplifting biomolecular modeling",
+    "url": "https://www.anthropic.com/research/claude-uplifts-biomolecular-modeling",
+    "published": "2026-09-17",
+    "checked": "2026-09-18",
+    "date": "2026-09-17",
+    "period": "公表前の4週間弱に行った研究用ソフトウェアの改善。正確な実施日は記載なし。非公開の汎用研究モデルを使用。",
+    "primary": "Anthropicなどの著者による原実験。技術報告を併読。開発元の報告であり、独立した追試とは区別。"
+  },
+  "anthropic-physical-eval-202609": {
+    "title": "Anthropic — Measuring tactical intelligence targeting and conventional weapons capabilities of AI models",
+    "url": "https://www.anthropic.com/research/intelligence-targeting-conventional-weapons-capabilities",
+    "published": "2026-09-10",
+    "date": "2026年9月10日 公表",
+    "period": "公表までに行われた模擬評価。実施日の記載はない。",
+    "checked": "2026-09-12",
+    "primary": "評価を実施したAnthropic Frontier Red Teamによる原報告"
   }
 }

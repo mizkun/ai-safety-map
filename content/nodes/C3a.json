@@ -5,7 +5,8 @@
   "sources": [
     "control-paper",
     "summer",
-    "scheming"
+    "scheming",
+    "claude-cyber-assessment"
   ],
   "questions": [],
   "related": [],
@@ -15,7 +16,7 @@
     "scheming"
   ],
   "review": {
-    "checkedAt": "2026-09-10",
+    "checkedAt": "2026-09-17",
     "intervalDays": 7,
     "reason": "能力・行動・対策の評価は短期間で変わり得るため。"
   },
@@ -26,7 +27,8 @@
   "research": [
     "control-protocol",
     "summer",
-    "scheming"
+    "scheming",
+    "claude-cyber-monitors"
   ],
   "shortTitle": "評価・監督が危険を見落とす"
 }

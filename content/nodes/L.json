@@ -4,7 +4,9 @@
   "explanation": "L.md",
   "sources": [
     "aisi-incident",
-    "incident"
+    "incident",
+    "claude-cyber-assessment",
+    "openai-file-sharing"
   ],
   "questions": [],
   "related": [],
@@ -17,7 +19,7 @@
     "発見後の対応で、何が止まり、何が続いたか。"
   ],
   "review": {
-    "checkedAt": "2026-09-10",
+    "checkedAt": "2026-09-17",
     "intervalDays": 7,
     "reason": "能力・行動・対策の評価は短期間で変わり得るため。"
   },
@@ -27,7 +29,9 @@
   "status": "observed",
   "research": [
     "aisi-incident",
-    "hf-incident"
+    "hf-incident",
+    "claude-cyber-incidents",
+    "unauthorized-file-sharing"
   ],
   "shortTitle": "局所的に意図しない行動"
 }

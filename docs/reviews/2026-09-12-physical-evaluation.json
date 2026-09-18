@@ -1,0 +1,119 @@
+{
+  "id": "2026-09-12-physical-evaluation",
+  "version": 2,
+  "date": "2026-09-12",
+  "reviewer": "Codex",
+  "decision": "reviewed",
+  "scope": "Automated editorial review for a draft PR, not owner approval. See the companion Markdown file for scan coverage, source scope, dependent-unit review and validation.",
+  "assessments": {
+    "simulation": {
+      "mechanism": "Distinguish model capability from help to a person and from physical execution; the new research occupies only the first of those claims.",
+      "conditions": "The research card records named models, offline simulations, high reasoning settings and bounded model trials. Human uplift would need a separate matched comparison.",
+      "counterexample": "A model can pass a software simulation while a user gains no useful help or lacks the prerequisites for physical execution.",
+      "evidence": "The primary evaluation supports adding a separate, provider-reported simulation record to M2b and M2b1. It does not replace the existing usage-investigation record.",
+      "limits": "No physical experiment, human-uplift comparison, biology result, incident rate or global-harm estimate is inferred. Performance variation is retained without reproducing tactical methods.",
+      "mitigation": "The classifier announcement in the conclusion has no measured effectiveness here. Retain separate checks of availability, material access, detection and containment.",
+      "readerContext": "M2b now names the reported simulated result before explaining its limit. M2b1 explains the missing human comparison; the research card supplies model and setting details in both languages.",
+      "whyHere": "A new primary evaluation adds capability evidence to the existing physical-harm branch. Readers need to distinguish it from actual-use reports when judging how far the branch is supported.",
+      "primary": [
+        {
+          "source": "anthropic-physical-eval-202609",
+          "locator": "Models as weapons developers; Conclusion",
+          "support": "Evaluation scope and the limits on interpreting model-only simulations."
+        }
+      ]
+    },
+    "structure": {
+      "mechanism": "M2 retains its user-relative uplift meaning. The cyber and physical branches remain representative alternatives, while M2b1 and M2b2 remain parallel requirements.",
+      "conditions": "M3-H still requires harmful intent, effective assistance, failed defenses and broad effects on essential functions. The new simulation is not evidence for that entire conjunction.",
+      "counterexample": "Useful model output does not establish physical execution; physical execution does not imply that containment and recovery fail or that damage becomes global.",
+      "evidence": "The newly added source is local to M2b and M2b1. Existing direct-assistance evaluations remain the basis for M2b1 tested; M2b remains indirect and no new edge citation is added.",
+      "limits": "Reviewed the dependent M2, M3-H, misuse graphs and route, M2 evidence and misuse story. The only structural-record prose edit broadens the description from biology to physical harm; membership and topology are unchanged.",
+      "mitigation": "The following tour chapter still explains prevention, containment and recovery. A new capability evaluation does not demonstrate defeat of those safeguards.",
+      "readerContext": "Read the exported Japanese and English tour and standalone details. The explanation introduces the software result before the separate physical and defense conditions, so readers need no extra inference from an unexplained benchmark.",
+      "whyHere": "This dependency review checks that a local source addition does not silently change what the surrounding arrows or evidence colors claim. The wider graph description now matches the existing conventional-weapons coverage.",
+      "primary": [
+        {
+          "source": "anthropic-physical-eval-202609",
+          "locator": "Conclusion",
+          "support": "Boundary between simulation evidence and human/physical prerequisites."
+        },
+        {
+          "source": "anthropic-threat-202609",
+          "locator": "Conventional weapons activity / GTG-87001: Summary; Biological misuse / Conclusions",
+          "support": "Preserved distinction between investigated use, an apparently failed field test and unproven biological harm."
+        }
+      ]
+    }
+  },
+  "entries": {
+    "source:anthropic-physical-eval-202609": {
+      "hash": "d1341a198db5dfffd8c42eccff90dc069051fa1534c47ea28d51f678502b525c",
+      "assessment": "simulation"
+    },
+    "research:physical-software-eval-sep26": {
+      "hash": "54d0129ecede79b3f2530817d8155d5e2f3e11eaef4a527804d28e4f702e528e",
+      "assessment": "simulation"
+    },
+    "node:M2": {
+      "hash": "60c4ca10d11251f67ab569baf2f33fd191a9b19d9dc65d0f019241345c30b1e6",
+      "assessment": "structure"
+    },
+    "node:M2b": {
+      "hash": "a145c16692b9a598a9c673aa2f6a0d32e51fb470e38406244cf1314b79e84881",
+      "assessment": "simulation"
+    },
+    "node:M2b1": {
+      "hash": "5e38173a7096226594bec818bcdc9fcca96750656c8bcbe7812ff3c934402aba",
+      "assessment": "simulation"
+    },
+    "edge:M3-H": {
+      "hash": "11feb9b043c589995cdef49c45c39c6002074e94cf4c624cd6a6864af2b12d40",
+      "assessment": "structure"
+    },
+    "graph:misuse": {
+      "hash": "f252531b5ef2f021101bca72176b8528b890df0d607ad9795e0720cfd5ae22ab",
+      "assessment": "structure"
+    },
+    "graph:misuse-mechanisms": {
+      "hash": "7bc6a69d38ad9375801c74c68fcc53ccac2ee4a7d47f70dcd38dd05102ae99ef",
+      "assessment": "structure"
+    },
+    "graph:bio-conditions": {
+      "hash": "39cdd2c1a4fb10d5ae54f200fc585fd20e315e5004b54d2e190ebc5ea610e060",
+      "assessment": "structure"
+    },
+    "route:misuse": {
+      "hash": "3bef0b383806f2e09e45090f7df6a95055cba39ff57b79d296f1130927f4e44f",
+      "assessment": "structure"
+    },
+    "evidence:M2": {
+      "hash": "94d786116675df8689f50cb4f613127a3b31a6ff72683efe3ea87dd43d2d3872",
+      "assessment": "structure"
+    },
+    "evidence:M2b": {
+      "hash": "9f21cd4219a15fb001c898aef76ccf3737647bd9cea5633b9f53af2904835f75",
+      "assessment": "simulation"
+    },
+    "evidence:M2b1": {
+      "hash": "5d27924d63ebd29c3ffa8799560162e0a02daf811002693496cc453ee3f5abce",
+      "assessment": "simulation"
+    },
+    "story:misuse": {
+      "hash": "b131b55db5088e0809aea0e2f13b2b68673d02a2318786204374b38111084b1e",
+      "assessment": "structure"
+    },
+    "metadata:map": {
+      "hash": "154a14173989be6de499278a3b4fc32e35f371564bef67eac2a7edb05d50f3f3",
+      "assessment": "structure"
+    },
+    "history:changes": {
+      "hash": "74e132cacc47fc178a0ea72ba7851347962c6731b136dda48e8260700e09154c",
+      "assessment": "structure"
+    },
+    "inventory:current": {
+      "hash": "a769c8a9a2030ebbf18581fc576a1ca5425a4f56d4fd4173f794a6aebd8ddf2c",
+      "assessment": "structure"
+    }
+  }
+}

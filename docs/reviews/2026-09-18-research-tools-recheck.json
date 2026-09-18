@@ -1,0 +1,222 @@
+{
+  "id": "2026-09-18-research-tools-recheck",
+  "version": 2,
+  "date": "2026-09-18",
+  "reviewer": "Codex (editorial review; independent expert review pending)",
+  "decision": "reviewed",
+  "assessments": {
+    "researchTools": {
+      "mechanism": "Human-supervised AI optimizes implementations of scientific models while retaining their trained weights. This supports assistance with a research task at R1; it does not measure acceleration of the entire AI-development process.",
+      "conditions": "The optimized computation must preserve useful output quality and shorten a real bottleneck. R1-R2 still requires that validation, other stages, compute and human work do not absorb the gain; a subsequent improvement loop remains a separate condition at R3.",
+      "counterexample": "A faster forward pass need not shorten a project waiting for experiments or human validation. Some output checks failed, and later ColabFold versions with their own optimizations were not benchmarked.",
+      "evidence": "Anthropic technical report dated September 17, abstract, Figure 3 and Discussion/Methods: over 30 models, 36 implementations, primarily two supervising scientists, under four weeks. Prediction forward passes averaged 1.6x for Exact across 14 models and 4.1x for Fast across 13 on H100 GPUs.",
+      "limits": "Developer-led experiments with an internal research model, selected software versions and input sizes. No human-only optimization comparison, independent replication verified in this scan, whole-process multiplier, sustained recursive self-improvement, or demonstrated physical harm.",
+      "mitigation": "Independent reproduction, output-quality checks and human validation remain necessary. Faster research tools can also support beneficial and safety work. No measured general prevention rate is inferred.",
+      "readerContext": "The R1 explanation first names literature, code, experiments and proofs, then distinguishes a task from the whole project. The added example says what was improved and preserves the human-supervision and scope qualifications in Japanese and English.",
+      "whyHere": "The new result belongs at research assistance, before the conditional move to faster development and a later feedback loop. Existing research news and the acceleration story still separate contributions, validation, aggregate progress and self-improvement.",
+      "primary": [
+        {
+          "source": "anthropic-biomolecular",
+          "locator": "Linked technical report pp. 1, 4-5 (Figure 3), 10-11 (Discussion and Methods)",
+          "support": "Supervised software optimization, separate Exact/Fast measurements and quality, hardware and baseline limitations; supports R1 only."
+        }
+      ]
+    },
+    "misuseIntent": {
+      "mechanism": "A person can seek harmful assistance even if the model follows that person accurately. Intent, useful assistance and failed defenses remain parallel conditions, rather than intent automatically producing capability or harm.",
+      "conditions": "AI assistance must be available, materially useful to a user, and reach a relevant target. Physical execution requires further equipment and skill; local incidents do not establish widespread disruption.",
+      "counterexample": "A harmful request can be refused, provide no useful help, or fail to reach a target. The threat report does not establish harmful intent or actual physical harm for every concerning biology-research interaction.",
+      "evidence": "Anthropic September threat report introduction and prevailing trends describe selected activities disrupted during December 2025-August 2026. Humans retain target selection and review roles, even in cases with substantial autonomous execution.",
+      "limits": "Selected provider investigations have no representative denominator or randomized no-AI counterfactual. They do not measure a global misuse rate, the fraction of harm caused by AI, or physical/global consequences.",
+      "mitigation": "Provider restrictions, monitoring, target defenses, containment and recovery act at different conditions. Disrupting accounts does not reverse previously completed theft, while observed incidents do not imply all defenses fail.",
+      "readerContext": "M1 identifies the human actor, M2 explains the comparison with and without assistance, and the misuse tour introduces why information alone differs from execution. These distinctions remain intact in both languages.",
+      "whyHere": "The five due misuse explanations were substantively compared with incident and evaluation evidence before retaining their text and advancing only their review dates. The M2 evidence summary retains its measured-support limits.",
+      "primary": [
+        {
+          "source": "anthropic-threat-202609",
+          "locator": "Introduction; Prevailing trends; limits of reported misuse cases",
+          "support": "Selected observed misuse, human involvement and bounded claims about assistance, access and harm."
+        }
+      ]
+    },
+    "cyberConditions": {
+      "mechanism": "Cyber tasks affect a target only when task capability and usable assistance/access coincide. M2c1 and M2c2 therefore remain an AND, with prevention, containment and recovery assessed separately at M3.",
+      "conditions": "Distinguish model, tools, permission, target defenses, attempt budget and evaluation setting. A sandbox capability score does not supply deployment access or establish successful end-to-end real-world harm.",
+      "counterexample": "Astra did not complete any fully hardened Irregular task, nor the seven Elite scenarios; AISI flags evaluated in isolation are not an end-to-end attack. Access to a system also does not imply defeating its defenses.",
+      "evidence": "Astra system card cyber sections distinguish five attempts on 41 historical vulnerabilities, 86/226 Frontier Cyber tasks, and at-least-once CyScenarioBench success from average success. AISI sections 3-4 provide historical task and safeguard evidence; the September threat report supplies separate observed incidents.",
+      "limits": "Reported scores have different denominators and scopes. Safety-disabled evaluations are not ordinary service access; historical benchmark results and inherited Gemini 3.7 judgments are not new universal September 2026 measurements.",
+      "mitigation": "Refusals, access controls, monitoring, patching and recovery can each change a condition. The Fairwind defensive announcement and reported safeguards are not controlled estimates of universal prevention.",
+      "readerContext": "M2c1 defines realistic tests in terms of target complexity, tools and assistance. M2c2 explains access separately. The linked incident and threshold news retain their conditions and do not equate Critical with global control loss.",
+      "whyHere": "These observations justify retaining the capability/access separation and existing evidence levels. They do not require drawing a new causal edge or raising a whole-route harm classification.",
+      "primary": [
+        {
+          "source": "astra-card",
+          "locator": "10.1.2 Cyber evaluations, including ExploitBench, Irregular and CyScenarioBench; 10.2 safeguards",
+          "support": "Capability measurements, denominators, residual failures and reported layered safeguards."
+        },
+        {
+          "source": "aisi",
+          "locator": "Frontier AI Trends Report sections 3 (Cyber) and 4 (Safeguards)",
+          "support": "Historical task and safeguard evidence, with isolated-task and evaluation-condition limitations."
+        },
+        {
+          "source": "gemini-38",
+          "locator": "Frontier Safety Assessment",
+          "support": "The card inherits earlier capability judgments rather than presenting a new comparable full cyber evaluation."
+        }
+      ]
+    },
+    "misuseRoute": {
+      "mechanism": "M1, M2 and M3 jointly support a conditional route to harm only when effects spread to essential functions and substitution or assistance cannot compensate. M3-H is an editorial conditional hypothesis, not an observed full transition.",
+      "conditions": "Harmful intent, useful assistance, failed defenses, broad propagation and inadequate recovery remain separate. M2 branches are examples of different mechanisms, not an exhaustive or sequential taxonomy.",
+      "counterexample": "An intrusion or theft can remain local, be contained or be repaired. A model may perform well in simulations without a user obtaining the required equipment, access or operational benefit.",
+      "evidence": "The September threat report supports actual local intrusions and theft together with provider intervention. Capability evaluations support specific task claims; neither demonstrates the complete M3-H transition.",
+      "limits": "No extinction probability, deployment frequency, worldwide loss of control or physical-harm completion is inferred. The pending physical-evaluation proposal must retain its simulation-versus-human-uplift limits when integrated.",
+      "mitigation": "Target hardening, segmentation, incident detection, substitution and recovery can prevent escalation. Failure of one prevention layer does not establish failure of all subsequent layers.",
+      "readerContext": "The misuse tour moves from a harmful human purpose to useful assistance, then explains defenses and broad effects before global harm. It explicitly distinguishes large-scale harm from losing survival and recovery.",
+      "whyHere": "Rechecking an underlying node changes dependent review fingerprints. The graph, current-route summary, news and story were read together to confirm that the unchanged explanation does not silently generalize new evidence.",
+      "primary": [
+        {
+          "source": "anthropic-threat-202609",
+          "locator": "Introduction and Prevailing trends; case conclusions and interventions",
+          "support": "Bounded actual misuse and reported intervention, not proof of global damage or failed recovery."
+        }
+      ]
+    },
+    "editorialScope": {
+      "mechanism": "Source and study additions flow into R1 details and the dated history, while substantive rechecks update only the inspected item dates. The map date is the latest incorporated review, not a claim of same-day coverage for all entries.",
+      "conditions": "Preserve publication dates, observation periods, source-checked dates and item review dates as distinct fields. Keep existing history translations associated with stable entry IDs when array positions shift.",
+      "counterexample": "A successful build or index scan alone would not justify advancing dates. Two due physical-branch entries already have a separate substantive September 12 proposal and are not re-dated by this September 18 review.",
+      "evidence": "The new technical report supports one scoped research example. Five due misuse nodes were read against selected incident and evaluation evidence; the September 17 review of 32 other entries remains dated September 17.",
+      "limits": "The daily scan covers the listed primary sources and visible corrections, not every publication or an independent scientific audit. Unchanged evidence levels and graph structure do not imply all uncertainties are resolved.",
+      "mitigation": "Keep the review trail and exact per-item dates, validate bilingual output and dependency fingerprints, and check the combined release before the user-authorized deployment.",
+      "readerContext": "History states both the added result and what it does not establish. Existing detail text explains why a faster computation is different from a faster research project; colors retain their evidence meaning.",
+      "whyHere": "Map metadata, history and inventory change because the source and review were incorporated. They document the update without turning review recency into a scientific outcome or risk score.",
+      "primary": [
+        {
+          "source": "anthropic-biomolecular",
+          "locator": "Technical report date, abstract, Figure 3 and Discussion",
+          "support": "Date and scope of the new addition, including computation-only speedups and stated limitations."
+        }
+      ]
+    }
+  },
+  "entries": {
+    "source:anthropic-biomolecular": {
+      "hash": "c5084437623ea0fda8b6ca1e482fcbfc17a288232042c7de0b5d6f97629aa994",
+      "assessment": "researchTools"
+    },
+    "research:biomolecular-tool-optimization": {
+      "hash": "58de1574ac00250b7fb86723469fa3a6359efa2950edb5d15d061074e0e25254",
+      "assessment": "researchTools"
+    },
+    "node:M1": {
+      "hash": "2bddf4cfa92954b6e48054e0609cdab4805cbe414971b5082ed262a7d49c3167",
+      "assessment": "misuseIntent"
+    },
+    "node:M2": {
+      "hash": "57eefed5d0faaf5e1676d4b69d6ae33744014d36715a4291696890d7a5a65015",
+      "assessment": "misuseIntent"
+    },
+    "node:M2c": {
+      "hash": "215000df47e44167a7b70e15586a4c7b755fc5b85c2400e7706c5bfeb4bd3ee4",
+      "assessment": "cyberConditions"
+    },
+    "node:M2c1": {
+      "hash": "084d5a4df5ea13b3ac8ce9e16bbd4f806d18961800c1f423ef3dd6c361abf423",
+      "assessment": "cyberConditions"
+    },
+    "node:M2c2": {
+      "hash": "18198ff082f4a7f0580d086c9b1a747282fcc68c3742481bd1f7e48de32e0223",
+      "assessment": "cyberConditions"
+    },
+    "node:R1": {
+      "hash": "3c9fc54518686fed00af7ce1c209cab245d58cefc49a2c13f6ff6264405ba7a5",
+      "assessment": "researchTools"
+    },
+    "edge:M3-H": {
+      "hash": "8081250df8d8c3c3a52baedc4876b7d129721191ab5afabc6c99b9363f008b8d",
+      "assessment": "misuseRoute"
+    },
+    "edge:R1-R2": {
+      "hash": "107c6be1c5f5ed982b8ca285ab402575d01998bdaae59a710da4cb8103f735d9",
+      "assessment": "researchTools"
+    },
+    "graph:misuse": {
+      "hash": "adcbd22575d38a049bbe31f37e5ee3ef260f8a02d71e3c5996b56522bd5dd6db",
+      "assessment": "misuseRoute"
+    },
+    "graph:acceleration": {
+      "hash": "ed26d5b345d18211bf450a91b96aeba080b62c74c2fdf22bc1606a34d19f8eb1",
+      "assessment": "researchTools"
+    },
+    "graph:misuse-mechanisms": {
+      "hash": "98f7cd6bba9c485382d67a153f8cdd90179eed7865402ff15e0958d80287d3b1",
+      "assessment": "misuseRoute"
+    },
+    "graph:cyber-conditions": {
+      "hash": "531e9e7c86a645cb30bb4168f4ae97948bcae7332b603a736d0f61ff255b8486",
+      "assessment": "cyberConditions"
+    },
+    "graph:research-cycle": {
+      "hash": "0bc852a0b36ed1267672323053675d3e58060a75077011724977707ef2e7fcd1",
+      "assessment": "researchTools"
+    },
+    "route:misuse": {
+      "hash": "3c486f91da0d86838735b00f051bcd2f03460a7687d48583c73498398c108993",
+      "assessment": "misuseRoute"
+    },
+    "route:acceleration": {
+      "hash": "9cf92074d9484859fee058b176355758ecb6f2dbe2d4e5f1b32a000c41d09bf7",
+      "assessment": "researchTools"
+    },
+    "current:misuse": {
+      "hash": "7fd8018dd10758b5875827addb575c5819d542138e0a5bcfdd70b86b1cfdc1b1",
+      "assessment": "misuseRoute"
+    },
+    "evidence:M2": {
+      "hash": "195584eeaf7c9f139a1f73604ba0e1dea21234b201e9b223416e5db0f09895f3",
+      "assessment": "misuseIntent"
+    },
+    "news:recent-math": {
+      "hash": "2106c9719025666bf003348e6127055521a31dd4cb9bfab263df11fffdbfb481",
+      "assessment": "researchTools"
+    },
+    "news:research-lab-september": {
+      "hash": "23092b472188431af6e66032cf822526e56345d24aa6ff924bc3e2cb13d8cf5b",
+      "assessment": "researchTools"
+    },
+    "news:aisi-contained": {
+      "hash": "ddbac6ff6dd1327afddfd4a3d9efe302b85afed092f9d75097e5331ba68073d8",
+      "assessment": "cyberConditions"
+    },
+    "news:astra-threshold": {
+      "hash": "178c9026bd28896dc8befd4008822e3ecf422d8c1ef6c2ab02d78ad2553ff4e0",
+      "assessment": "cyberConditions"
+    },
+    "news:research-contribution": {
+      "hash": "38149d7c4761ae3127e830b00f35aa5be13a78daef2de33f078a4cd8815dbf6c",
+      "assessment": "researchTools"
+    },
+    "story:misuse": {
+      "hash": "512e2de973529237ff24a24f6b589a967adc3251bf9e38c53cf09ddb42391295",
+      "assessment": "misuseRoute"
+    },
+    "story:acceleration": {
+      "hash": "28c390e5e4421b8145aa7a4710f0cc3aa9f7f5538c1489e630a52cbc61130e65",
+      "assessment": "researchTools"
+    },
+    "metadata:map": {
+      "hash": "2ce732550828f48168d93fc93af88ffbb2f8fa0a5547b4d00f9eb54723432923",
+      "assessment": "editorialScope"
+    },
+    "history:changes": {
+      "hash": "5678760e1d77bb6d020f91f12b9ccba1d18c131b516354e55e2e914a9905495f",
+      "assessment": "editorialScope"
+    },
+    "inventory:current": {
+      "hash": "c553aebf8f95adb62566004c7bbee9f837872fc1e49d48877984f73ccd734ecd",
+      "assessment": "editorialScope"
+    }
+  }
+}

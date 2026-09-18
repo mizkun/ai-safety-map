@@ -5,7 +5,8 @@
   "sources": [
     "openai-rd",
     "discovery",
-    "formalization"
+    "formalization",
+    "anthropic-biomolecular"
   ],
   "questions": [],
   "related": [],
@@ -16,7 +17,7 @@
     "仕事の量、質、人間の介入を分けて測れているか。"
   ],
   "review": {
-    "checkedAt": "2026-09-10",
+    "checkedAt": "2026-09-18",
     "intervalDays": 7,
     "reason": "能力・行動・対策の評価は短期間で変わり得るため。"
   },
@@ -27,7 +28,8 @@
   "research": [
     "rd-use",
     "discoveries",
-    "formalization"
+    "formalization",
+    "biomolecular-tool-optimization"
   ],
   "shortTitle": "AIが研究の一部を進める"
 }
