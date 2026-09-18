@@ -484,5 +484,14 @@
     "checked": "2026-09-17",
     "period": "未公開の内部モデルの学習中の事例。主な実行は2026年4月14日、発見は4月16日。報告更新日は9月16日。",
     "primary": "開発元による実行記録の調査。原因の仮説と対策の報告を含み、独立した追試ではない。"
+  },
+  "anthropic-biomolecular": {
+    "title": "Anthropic — How Claude is uplifting biomolecular modeling",
+    "url": "https://www.anthropic.com/research/claude-uplifts-biomolecular-modeling",
+    "published": "2026-09-17",
+    "checked": "2026-09-18",
+    "date": "2026-09-17",
+    "period": "公表前の4週間弱に行った研究用ソフトウェアの改善。正確な実施日は記載なし。非公開の汎用研究モデルを使用。",
+    "primary": "Anthropicなどの著者による原実験。技術報告を併読。開発元の報告であり、独立した追試とは区別。"
   }
 }

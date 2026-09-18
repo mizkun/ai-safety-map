@@ -352,7 +352,7 @@
         "threat-bio-sep26"
       ],
       "review": {
-        "checkedAt": "2026-09-11",
+        "checkedAt": "2026-09-18",
         "intervalDays": 7,
         "reason": "報告された利用・試験と、カードの条件全体の成立を分けて見直すため。"
       }
