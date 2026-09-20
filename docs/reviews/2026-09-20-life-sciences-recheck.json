@@ -1,0 +1,364 @@
+{
+  "id": "2026-09-20-life-sciences-recheck",
+  "version": 2,
+  "date": "2026-09-20",
+  "reviewer": "Codex (editorial primary-source review; not independent expert approval)",
+  "decision": "reviewed",
+  "assessments": {
+    "access_policy": {
+      "mechanism": "Vetting organizations changes the assistance they can access. Retrospective review and administrator response are a second control, with a different timing constraint from blocking a request before execution.",
+      "conditions": "The beta applies to vetted organizations using Mythos 5.1, Opus 5 and Sonnet 5. Standard and high-risk grants differ; Mythos high-risk access remains limited to selected organizations. Other safeguards remain in place.",
+      "counterexample": "An alert may arrive after an irreversible action, and credentials alone do not establish safe subsequent use. Conversely, legitimate research access is not evidence of malicious intent or actual harm.",
+      "evidence": "The September 17 announcement establishes the provider-reported program and its access and monitoring design. It does not supply measured detection rates, response-time distributions or comparative harm reduction.",
+      "limits": "This is a provider policy and implementation report, not an independent effectiveness study or evidence of physical execution. The observation label applies to the reported launch only; no card evidence level changes.",
+      "mitigation": "Retain vetting, security and ethical oversight, declared-use review, administrator responsibilities and non-biological safeguards. Effective containment still depends on detection and timely action; do not mark this as a tested green defense.",
+      "readerContext": "The research card explains the access setting, who reviews use and who responds. Both languages distinguish a reported policy from a demonstrated protective effect without including operational biological or weapons procedures.",
+      "whyHere": "M2b1 concerns usable information assistance; C3b concerns responding before harm. A single scoped source card connects those two questions without presenting a program announcement as a new catastrophe pathway.",
+      "primary": [
+        {
+          "source": "anthropic-lsvp",
+          "locator": "Verification and access types; Enabling trusted access through shared responsibility; How monitoring works in LSVP",
+          "support": "Access tiers, organizational vetting, retrospective monitoring and pre-agreed administrator response times; no comparative effectiveness measure."
+        }
+      ]
+    },
+    "physical_assistance": {
+      "mechanism": "Information assistance matters when it changes what a user can achieve, and M2b additionally requires physical execution prerequisites. Information assistance and those prerequisites remain parallel AND conditions.",
+      "conditions": "Keep user expertise, alternative information sources, human steering, model version and physical resources separate. The September simulation evaluates models working alone under fixed budgets; the Gemini evaluation considers expert-assisted effects against alternatives.",
+      "counterexample": "The selected weapons case includes apparently unsuccessful field testing, and biological research activity is not itself proof of harmful intent or imminent harm. A higher simulated score need not remove a particular user’s real bottleneck.",
+      "evidence": "Re-read the Anthropic physical-software setting and conclusion, threat-report limitations and Gemini frontier assessment. They support bounded information capabilities and selected usage; they do not measure the same outcome or representative real-world harm frequency.",
+      "limits": "M2b1 remains tested on its existing assistance-evaluation basis, not on the new access program. M2b retains its information-to-physical gap. No simulation result is converted into hardware success or a probability of biological catastrophe.",
+      "mitigation": "Keep restrictions on dangerous assistance distinct from physical access controls, public-health response and containment. The new program is an example of access design; its ability to reduce harm remains unmeasured in the announcement.",
+      "readerContext": "The Japanese and English M2b1 paragraphs appear after the distinction between capability evaluation and access policy. Neighboring M2b2 and M3 retain physical prerequisites and downstream containment, so readers are not asked to infer them.",
+      "whyHere": "M2b and M2b1 reached their review dates. The new program changes available access conditions, making a short policy example useful in M2b1 while preserving M2b’s existing definition and evidence limits.",
+      "primary": [
+        {
+          "source": "anthropic-physical-eval-202609",
+          "locator": "Software-evaluation setup, cross-model findings and Conclusion",
+          "support": "Offline model-only simulation, fixed trial budgets and variable performance; not a human-uplift or hardware evaluation."
+        },
+        {
+          "source": "anthropic-threat-202609",
+          "locator": "Conventional weapons activity: case summary; Biological activity: dual-use and conclusion",
+          "support": "Selected usage, apparently failed field testing, and qualifications about intent and imminent biological threat."
+        },
+        {
+          "source": "gemini-safety",
+          "locator": "Frontier Safety Assessment: CBRN and autonomous R&D",
+          "support": "Provider evaluation with expert steering and comparison conditions, not a capability ceiling for other systems."
+        },
+        {
+          "source": "anthropic-lsvp",
+          "locator": "Verification and access types; How monitoring works in LSVP",
+          "support": "Changes in assistance restrictions and monitoring, without a measured uplift or prevention claim."
+        }
+      ]
+    },
+    "response_time": {
+      "mechanism": "A warning helps only if a capable responder acts before the harmful effect becomes unavoidable. Detecting an issue, deciding what to do and executing containment are separate stages.",
+      "conditions": "Retain the harm window, decision authority, intervention delay and reversibility of the operation. Retrospective monitoring does not by itself provide an execution gate for irreversible actions.",
+      "counterexample": "AISI reports containment within roughly one hour without confirmed harm. This is a successful intervention example, but the same delay need not suffice for every future action; neither failure nor universal success follows.",
+      "evidence": "Compared C3b with the AISI setting and containment account, the control roadmap’s coverage/recall/response distinction, and the new administrator-response policy. The new text explicitly labels the latter a design example, not an observed failure.",
+      "limits": "C3b remains indirect. AISI’s intentionally permissive evaluation differs from commercial deployment, and a pre-agreed response timeframe is not a measured response distribution. Amodei’s coordination ideas remain proposals.",
+      "mitigation": "Retain clear shutdown authority, precommitted triggers and time for review before high-impact operations. Monitoring must be paired with effective intervention and recovery; an announced policy is not measured efficacy.",
+      "readerContext": "The additional paragraph follows the successful AISI containment example and precedes the explicit timing condition. Both languages explain why a life-sciences program appears in this card without implying a newly observed control failure.",
+      "whyHere": "C3b was due for review. Its explanation concerns the precise design choice made explicit by the program: a notification must produce an adequate organizational response in time.",
+      "primary": [
+        {
+          "source": "aisi-incident",
+          "locator": "Evaluation setting, discovery, human review, containment and lessons",
+          "support": "Human intervention and successful containment in a permissive test, without confirmed harm or sandbox escape."
+        },
+        {
+          "source": "control",
+          "locator": "Understanding AI Control; Scaling security",
+          "support": "Coverage, recall and response delay; asynchronous monitoring versus prevention before irreversible actions."
+        },
+        {
+          "source": "anthropic-lsvp",
+          "locator": "Enabling trusted access through shared responsibility; How monitoring works in LSVP",
+          "support": "Administrator notifications and pre-agreed response obligations, without measured response times."
+        }
+      ]
+    },
+    "development_feedback": {
+      "mechanism": "Assistance with one research activity may speed development only if it improves a binding bottleneck. RSI further requires the resulting systems to improve subsequent development; a feedback relation is not unlimited acceleration.",
+      "conditions": "Preserve human direction, computing, experimentation, validation, quality and integration constraints. Human-assisted improvement loops remain within the definition; fully autonomous successor development is a different claim.",
+      "counterexample": "More code or experiments can coexist with unchanged total development time when human review or computing is limiting. One successful generation or research result does not establish the size and persistence of feedback across generations.",
+      "evidence": "Re-read the internal Anthropic analysis, Amodei’s attributed assessment, OpenAI workflow report and METR’s domain-dependent discovery analysis. Internal records and self-estimated productivity indicate contributions, not an isolated causal estimate of whole-process acceleration.",
+      "limits": "Retain R2’s existing indirect evidence and R3’s hypothesis status. Forecasts and proposed evaluator arrangements are not completed experiments. Public-data trends do not reveal all private progress or establish a universal rate.",
+      "mitigation": "Keep per-stage time, costs and intervention measurements, independent result checking and repeated capability/safety review. Time gained by pacing has to be used for actual safeguards; a commitment alone does not demonstrate prevention.",
+      "readerContext": "Read R1, R2, R3 and neighboring R4 in both editions. The map explains the move from a single useful activity to the whole process, then to repeated feedback, while preserving the alternative path without an RSI loop.",
+      "whyHere": "R2, R3 and three development connections reached their review dates. The existing explanations already preserve the primary sources’ causal and measurement limits, so only their review dates change.",
+      "primary": [
+        {
+          "source": "anthropic-rsi",
+          "locator": "Internal-development evidence, staff survey and future-work/bottleneck discussion",
+          "support": "Developer records and subjective estimates, continued human judgment, and no fully autonomous successor development."
+        },
+        {
+          "source": "openai-rd",
+          "locator": "Sections 1–3 and methods",
+          "support": "Human-directed workflow changes, interventions and resource constraints; not a controlled whole-process multiplier."
+        },
+        {
+          "source": "pace-frontier",
+          "locator": "Opening assessment; Why Pace?; Embedded Evaluators; coordination",
+          "support": "Attributed RSI judgment and proposed pacing and external-review arrangements."
+        },
+        {
+          "source": "discovery",
+          "locator": "Overview and data note",
+          "support": "Different trends across research domains and limits of public, agent-assisted data collection."
+        }
+      ]
+    },
+    "safety_research": {
+      "mechanism": "Improved AI can search for failure cases and interventions; those interventions reduce a target failure only if the result survives evaluation and is implemented in the relevant setting.",
+      "conditions": "Retain separation of researchers and evaluators, hidden checks, deployment conditions and continued learning. The older control result assumes a trusted monitor and a bounded programming task.",
+      "counterexample": "An intervention can improve a measured benchmark but fail to generalize or persist after later training. More time for safety research does not itself establish that a working intervention is deployed.",
+      "evidence": "Re-read Anthropic’s August 28 account and detailed evaluation/limitations, including withheld and transfer tests. Re-read the AI Control abstract and version history for the GPT-4/GPT-3.5 setting; retain these positive but bounded defensive results.",
+      "limits": "No reported improvement is translated into an accident or extinction-risk reduction. Subsequent extensive-RL durability remains untested, and human and automated comparison conditions allowed different iteration opportunities.",
+      "mitigation": "Preserve independent verification, separation of researcher/evaluator roles, adversarial counterexamples and combined operational controls. The green R4 safeguard remains explicitly scoped to the older experiment and is not updated into a current-system guarantee.",
+      "readerContext": "The capability-to-safety connection remains an enabling possibility and the safety-to-alignment connection a possible reduction, not a compulsory stage. The Japanese and English text explains the need to implement and test an intervention.",
+      "whyHere": "R4 was due, and its node date changes dependent R0-R4, R4-C1 and safeguard fingerprints. Their explanations remain consistent after reading the source settings and limitations; their own dates and graph relations stay unchanged.",
+      "primary": [
+        {
+          "source": "automated-alignment",
+          "locator": "Evaluation design, production-model test and limitations; authors’ detailed write-up",
+          "support": "Scoped alignment-mitigation findings, held-out/transfer checks and limits on later-training durability."
+        },
+        {
+          "source": "control-paper",
+          "locator": "Abstract and version history",
+          "support": "Older GPT-4/GPT-3.5 programming evaluation of monitoring and code editing with a trusted monitor assumption."
+        },
+        {
+          "source": "pace-frontier",
+          "locator": "Why Pace?",
+          "support": "Proposed use of additional time for evaluations and safety work, not a measured protective outcome."
+        }
+      ]
+    },
+    "oversight": {
+      "mechanism": "Greater capability may make supervision and prevention harder when a model can exploit gaps. ASI is neither a necessary nor sufficient condition for a control failure in the map.",
+      "conditions": "Keep model behavior, access and permissions, monitor reliability, containment and response as separate requirements. More capable systems may also improve defenses.",
+      "counterexample": "Reliable monitors, restricted permissions and successful containment can prevent or limit a harmful action even when the acting model is more capable. Capability alone does not determine intent or outcome.",
+      "evidence": "Re-read the technical framework’s monitoring and control discussion and Amodei’s proposed evaluator arrangements. They supply conceptual reasons to inspect assumptions, not an experiment on ASI or proof of a completed intervention.",
+      "limits": "The ASI-C3 influence remains conditional. The source does not establish that ASI has been reached or that control will fail in every setting. No endpoint status or evidence color changes.",
+      "mitigation": "Retain layered monitoring, limited access, independent evaluation and containment. Verify monitor assumptions and implementation before claiming a stronger defense.",
+      "readerContext": "The diagram separates this influence from the parallel alignment, execution and control conditions. Readers can follow the safety-research branch as a possible countervailing influence.",
+      "whyHere": "ASI-C3 reached its review date. The new review supports retaining the conditional wording and safeguards rather than adding an unsupported inevitability or probability claim.",
+      "primary": [
+        {
+          "source": "framework",
+          "locator": "Sections 6.8.2–6.8.3 of the authors’ technical framework",
+          "support": "Monitoring/control arguments and trust assumptions for increasingly capable systems; conceptual scope."
+        },
+        {
+          "source": "pace-frontier",
+          "locator": "Embedded Evaluators and verification of coordination",
+          "support": "Proposed outside scrutiny and implementation requirements, not completed effectiveness evidence."
+        }
+      ]
+    },
+    "integration": {
+      "mechanism": "The unchanged dependent graphs, routes and tour chapters connect the rechecked conditions. The update adds a policy example to two explanations rather than altering causal topology or turning a review date into stronger scientific evidence.",
+      "conditions": "Preserve M2b1/M2b2, C1/C2/C3 and L/C4a/C4b condition groups, whole-process development constraints and the additional conditions between harm and loss of recovery. The research loop and safety branch remain distinct.",
+      "counterexample": "Selected assistance, a developer report or one policy launch can coexist with failed execution or successful defense. These cannot establish a whole scenario, inevitable ASI, worldwide damage or human extinction.",
+      "evidence": "Read dependent graph descriptions, the misuse/control/acceleration stories, the four linked research-reading summaries and the R4 safeguard. Existing summaries retain their primary-source boundaries and do not inherit the new announcement as evidence of efficacy.",
+      "limits": "Forty-one changed/dependent fingerprints document editorial coverage, not an independent review of every scientific proposition in the map. The asOf date is the newest incorporated review; source dates and untouched review intervals remain intact.",
+      "mitigation": "Retain defensive branches and successful containment examples. Record why the colors and relations stay unchanged, preserve prior histories by stable ID and validate complete matching Japanese and English packages.",
+      "readerContext": "Read the affected tour and standalone sections alongside their neighboring cards in both editions. Information support, physical execution, response time, partial research acceleration and sustained feedback remain explicitly distinguished.",
+      "whyHere": "Dependency fingerprints change because referenced nodes change. The weekly review record and bilingual history make the narrow source addition and ten due-item rechecks auditable without recertifying unrelated nodes.",
+      "primary": [
+        {
+          "source": "anthropic-lsvp",
+          "locator": "Access types and monitoring sections",
+          "support": "The only newly registered primary source; it supports the scoped policy example."
+        },
+        {
+          "source": "framework",
+          "locator": "Misuse/control conditions and monitoring assumptions",
+          "support": "Conceptual separation of capabilities, behavior, access and defensive conditions."
+        },
+        {
+          "source": "anthropic-rsi",
+          "locator": "Internal-development evidence and bottleneck discussion",
+          "support": "Partial contributions and human involvement remain separate from a sustained whole-process feedback estimate."
+        },
+        {
+          "source": "automated-alignment",
+          "locator": "Evaluations and limitations",
+          "support": "Keep positive defensive results with their tested settings and generalization limits."
+        }
+      ]
+    }
+  },
+  "entries": {
+    "source:anthropic-lsvp": {
+      "hash": "d2cdfc57b17fcb59860c231e01e623b6cecdff4dd83b4dc1b8927cc40cb38220",
+      "assessment": "access_policy"
+    },
+    "research:life-sciences-access-monitoring": {
+      "hash": "300cfd0331514ce64bf10385fd0442fafd48b882effc2d89a7611aee8932892f",
+      "assessment": "access_policy"
+    },
+    "node:C3b": {
+      "hash": "9823956c6315244c53cb9772228cb7b1e4de637707ba5cd10cbfd6802344b742",
+      "assessment": "response_time"
+    },
+    "node:M2b": {
+      "hash": "0fc25b689c04fd982e8aa131fecb79b28024dd4f63cc562b201026ae1fbcf067",
+      "assessment": "physical_assistance"
+    },
+    "node:M2b1": {
+      "hash": "16face314d13a913edfa56a2814f4796d7b92b67817d024862efc196dd34d0a5",
+      "assessment": "physical_assistance"
+    },
+    "node:R2": {
+      "hash": "d9070591a155a00353bbe76af4b42a8b2f86b487f444340c1adff15411f96513",
+      "assessment": "development_feedback"
+    },
+    "node:R3": {
+      "hash": "2389b09c2202b9ee812e31fcef37ee59f7d6eadc1457c5425d0e4c5dec8aa893",
+      "assessment": "development_feedback"
+    },
+    "node:R4": {
+      "hash": "8c0813cef8e46097a966dd1fb7ba65c3630ad581db465cdbc3cfbedd3ece0939",
+      "assessment": "safety_research"
+    },
+    "edge:R1-R2": {
+      "hash": "4c149bcf6e7c9ce738e217233a0b9a961c762abd4a40218371afc2f27b9fdc63",
+      "assessment": "development_feedback"
+    },
+    "edge:R2-R3": {
+      "hash": "457c2872f4c2ef6634e7604cd317816c40deedcc2b2673ada2065124c9acae58",
+      "assessment": "development_feedback"
+    },
+    "edge:R3-R2": {
+      "hash": "304d8181bbebb7a093c9904667b52afae94e4e6a11a1948ec42965ca915f29fb",
+      "assessment": "development_feedback"
+    },
+    "edge:R4-C1": {
+      "hash": "16a15103b98df454e852adf1d9e24d2e67b5c270941bccbcc148e11a1f54dd41",
+      "assessment": "safety_research"
+    },
+    "edge:ASI-C3": {
+      "hash": "3bcc0a08ecb6c8da60eec55cacbb3e69c458fca9b6b9ed7219dcef0a5e421307",
+      "assessment": "oversight"
+    },
+    "edge:R0-R4": {
+      "hash": "068381e5bb4e93ec225100661c8de1ca6e5da633f07e12d372222b0cb9c3876a",
+      "assessment": "safety_research"
+    },
+    "graph:control": {
+      "hash": "b3befa1f420cde62d3812589bdebfa018f53277beaadfd14bc34dbaa9126c89e",
+      "assessment": "integration"
+    },
+    "graph:acceleration": {
+      "hash": "0456dcadd1d78c9033758cdcbb4b4baac965c9b3aceb364793dea81644125ac6",
+      "assessment": "integration"
+    },
+    "graph:oversight": {
+      "hash": "357636daef53280ecdd16066e3600e92d9a6e32a3e4de123349a9a0bf25e2dd8",
+      "assessment": "integration"
+    },
+    "graph:misuse-mechanisms": {
+      "hash": "ba38f18fdafed30d328b91b80ff0c74c0907cb7efa9a59cde7b9cae060996409",
+      "assessment": "integration"
+    },
+    "graph:bio-conditions": {
+      "hash": "743d09af4b9368c557f294508b126a32ad65ec1f07756badfdc9a36931648614",
+      "assessment": "integration"
+    },
+    "graph:work": {
+      "hash": "b4a61c121dacc00750589405a4a4c9a86efce834335df61efea08010db6d5868",
+      "assessment": "integration"
+    },
+    "graph:development-paths": {
+      "hash": "ecb3feb07a41db15471a620ecc02e5e3a6bf816a528821a17aabf7f9fa345d2c",
+      "assessment": "integration"
+    },
+    "graph:research-cycle": {
+      "hash": "b3fb2c8a94c8dc8d4f57aa12b34f1b91be1ab05b0b374777cccaf894dc093843",
+      "assessment": "integration"
+    },
+    "route:control": {
+      "hash": "80831b0a16e10e157e11ab07ce81d8157fee79a68915d5e3e92a26fce03f9ab3",
+      "assessment": "integration"
+    },
+    "route:acceleration": {
+      "hash": "ffb0b03834f7bda38e03d8cf0cbd13a1ee9c43bdf40351944383203311d6d10d",
+      "assessment": "integration"
+    },
+    "route:work": {
+      "hash": "b696c8bee8c46a88e937605e6670e119540e7c63edf06f20e346ccad62cae1ec",
+      "assessment": "integration"
+    },
+    "safeguard:R4": {
+      "hash": "9c288fca68de235b4bef47b172349793cd4c96a59303fe827689d1faf09f9cb3",
+      "assessment": "safety_research"
+    },
+    "evidence:C3b": {
+      "hash": "a266f41e28070d693627fb6e1a5da58fab7bc981079d102fcccc834aed6ac0ff",
+      "assessment": "response_time"
+    },
+    "evidence:M2b": {
+      "hash": "db2cecb8a9b45f363ddfdd913c56e6982ad74d97738a1c475be71016eccdb573",
+      "assessment": "physical_assistance"
+    },
+    "evidence:M2b1": {
+      "hash": "6d9705c914a824dd46699a65813f6a32f9cfd281f6640cbf4d22c2ffe25b8712",
+      "assessment": "physical_assistance"
+    },
+    "evidence:R2": {
+      "hash": "c573020a87a9eb3b8772aad3db9b63bbeb808aaaa6f32f1fa5be6904c9fe099b",
+      "assessment": "development_feedback"
+    },
+    "evidence:R4": {
+      "hash": "7cc35dc38a5e4ef1046726c5a72bc23aea9dfcd77ff6541b1a6564c0f00fb56d",
+      "assessment": "safety_research"
+    },
+    "news:recent-math": {
+      "hash": "06811be8a4493d36316666e9259ea9f37a824aac8173b8844c28ab75d48093c2",
+      "assessment": "integration"
+    },
+    "news:research-lab-september": {
+      "hash": "ef2ffbbf57f6a9d0f7e297d1161cfe49d91b2727842438ffb0aa4ef6c35bf40a",
+      "assessment": "integration"
+    },
+    "news:automated-safety": {
+      "hash": "ddc501aef2dcf3d47efc7383e3cd1f4fa0c6ab137d16ebbf047652bbaf7fdd4d",
+      "assessment": "integration"
+    },
+    "news:research-contribution": {
+      "hash": "5b7d4c56ed2ce1c2bc18b58c778eb894d4cf286e2f00ddbd0d9c0e15af9b8bd2",
+      "assessment": "integration"
+    },
+    "story:control": {
+      "hash": "084d92264da6a7b4f40587a7bd8549a433562bf4fc5fcb03ca5c38c8dfb82ee7",
+      "assessment": "integration"
+    },
+    "story:misuse": {
+      "hash": "5f61c1381ba52fa5c56aed1fedfdc69bd0c0ee1381e9040b0751aa5dfc137fb5",
+      "assessment": "integration"
+    },
+    "story:acceleration": {
+      "hash": "14b3b97e24fdace216c74449cb141c97732c71d7e39aec07885e8cf94fd7c9dc",
+      "assessment": "integration"
+    },
+    "metadata:map": {
+      "hash": "1a29d6e853c9e67752914b54959623d8d22921cefa0d0d014ae9b02ea1a0dff0",
+      "assessment": "integration"
+    },
+    "history:changes": {
+      "hash": "04fd5a13f08b3e32d2476a483a90d8e6e8db0ff45e230652c491d3d9c184c0dd",
+      "assessment": "integration"
+    },
+    "inventory:current": {
+      "hash": "c9b69a3975efd6035a6d6b637c5e00e7f583efc486ffa22aa59b8800fed27f5e",
+      "assessment": "integration"
+    }
+  }
+}

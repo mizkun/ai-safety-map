@@ -706,5 +706,17 @@
     "method": "人が用意した課題と模擬環境で、モデルがコードを作成・修正。固定の試行予算で性能を比較。",
     "result": "一部の条件で課題を達成したと報告。性能はモデルと条件で異なり、難しい条件には安定して成功できないものもありました。",
     "limitation": "人のAI利用による追加の効果や、実機での成功は測っていません。設備などの制約は別に残ります。危険な依頼を防ぐ対策の有効性を測った試験でもありません。"
+  },
+  "life-sciences-access-monitoring": {
+    "source": "anthropic-lsvp",
+    "type": "observation",
+    "title": "生命科学向けの利用審査と事後監視",
+    "kind": "提供者による制度開始の報告",
+    "evaluator": "Anthropic",
+    "locator": "Verification and access types / Enabling trusted access through shared responsibility / How monitoring works in LSVP",
+    "setting": "審査した組織がMythos 5.1・Opus 5・Sonnet 5を利用する制度。追加審査を伴う高リスク許可では生物分野の遮断を外します。Mythosの高リスク許可は一部組織に限定。",
+    "method": "資格・安全基準・倫理面の監督を審査し、申告用途に照らして利用を監視。組織の管理者が通知を受けて対応します。",
+    "result": "ベータ制度を開始したと報告。生物以外の安全対策は残し、用途に応じたアクセスと利用後の監視を組み合わせる設計です。",
+    "limitation": "検知率、対応時間の実測、被害低減の比較は未掲載。利用後の検知は実行前の阻止とは異なり、物理的な実行条件の成立も示しません。"
   }
 }

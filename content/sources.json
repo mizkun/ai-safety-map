@@ -502,5 +502,14 @@
     "period": "公表までに行われた模擬評価。実施日の記載はない。",
     "checked": "2026-09-12",
     "primary": "評価を実施したAnthropic Frontier Red Teamによる原報告"
+  },
+  "anthropic-lsvp": {
+    "title": "Anthropic — Introducing the Life Sciences Verification Program",
+    "url": "https://www.anthropic.com/news/life-sciences-verification-program",
+    "published": "2026-09-17",
+    "date": "2026-09-17",
+    "period": "2026年9月17日のベータ制度開始の発表。初期提供の実績を含むが、効果を比べた実験の報告ではありません。",
+    "checked": "2026-09-20",
+    "primary": "提供者自身による利用条件と監視制度の説明。独立した効果検証ではありません。"
   }
 }

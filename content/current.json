@@ -275,7 +275,7 @@
         "control-roadmap"
       ],
       "review": {
-        "checkedAt": "2026-09-11",
+        "checkedAt": "2026-09-20",
         "intervalDays": 7,
         "reason": "既存の根拠がカードの条件をどこまで直接確かめているかを分類しています。根拠の更新時に見直します。"
       }
@@ -366,7 +366,7 @@
         "physical-software-eval-sep26"
       ],
       "review": {
-        "checkedAt": "2026-09-12",
+        "checkedAt": "2026-09-20",
         "intervalDays": 7,
         "reason": "報告された利用・試験と、カードの条件全体の成立を分けて見直すため。"
       }
@@ -379,7 +379,7 @@
         "physical-software-eval-sep26"
       ],
       "review": {
-        "checkedAt": "2026-09-12",
+        "checkedAt": "2026-09-20",
         "intervalDays": 7,
         "reason": "既存の根拠がカードの条件をどこまで直接確かめているかを分類しています。根拠の更新時に見直します。"
       }
@@ -406,7 +406,7 @@
         "anthropic-rd-progress"
       ],
       "review": {
-        "checkedAt": "2026-09-13",
+        "checkedAt": "2026-09-20",
         "intervalDays": 7,
         "reason": "既存の根拠がカードの条件をどこまで直接確かめているかを分類しています。根拠の更新時に見直します。"
       }
@@ -419,7 +419,7 @@
         "control-protocol"
       ],
       "review": {
-        "checkedAt": "2026-09-11",
+        "checkedAt": "2026-09-20",
         "intervalDays": 7,
         "reason": "既存の根拠がカードの条件をどこまで直接確かめているかを分類しています。根拠の更新時に見直します。"
       }
