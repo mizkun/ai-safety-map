@@ -5,13 +5,14 @@
   "sources": [
     "aisi-incident",
     "control",
-    "pace-frontier"
+    "pace-frontier",
+    "anthropic-lsvp"
   ],
   "questions": [],
   "related": [],
   "terms": [],
   "review": {
-    "checkedAt": "2026-09-13",
+    "checkedAt": "2026-09-20",
     "intervalDays": 7,
     "reason": "能力・行動・対策の評価は短期間で変わり得るため。"
   },
@@ -22,7 +23,8 @@
   "research": [
     "aisi-incident",
     "control-roadmap",
-    "frontier-pacing"
+    "frontier-pacing",
+    "life-sciences-access-monitoring"
   ],
   "shortTitle": "警告への対処が間に合わない"
 }
