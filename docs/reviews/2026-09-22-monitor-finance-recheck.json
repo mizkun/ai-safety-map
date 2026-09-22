@@ -1,0 +1,145 @@
+{
+  "id": "2026-09-22-monitor-finance-recheck",
+  "version": 2,
+  "date": "2026-09-22",
+  "reviewer": "Codex (editorial primary-source review; not independent expert approval)",
+  "decision": "reviewed",
+  "assessments": {
+    "evaluation": {
+      "mechanism": "A test can omit a behavior or fail to transfer to relevant work; difference alone is not evidence of dangerous failure.",
+      "conditions": "A consequential difference in tasks, context or permissions must remain unaddressed by other tests and operational safeguards.",
+      "counterexample": "The retained prompted-model comparison and successful detection in covered settings rule out treating every monitor as ineffective.",
+      "evidence": "Reread the controlled monitor study, evaluation-method qualifications, developer card corrections and external-evaluation proposal.",
+      "limits": "Preserve limited status and indirect evidence. Neither classification AUROC nor an unimplemented audit proposal establishes an operational miss rate.",
+      "mitigation": "Retain unfamiliar test categories, alternative monitors, realistic settings and scrutiny of external evaluators’ actual access.",
+      "readerContext": "Both editions identify the AI doing the checking and distinguish that role from the AI whose work is checked.",
+      "whyHere": "This remains one possible route to C3a, alongside other monitoring failures, rather than a compulsory temporal stage.",
+      "primary": [
+        {
+          "source": "lie-detectors",
+          "locator": "Dataset; prompted comparisons; fine-tuning results; Limitations; Appendix A1",
+          "support": "Controlled transfer experiment, stronger comparison and limited label validation; not an operational deception test."
+        },
+        {
+          "source": "horizon",
+          "locator": "FAQ: human baselines, job automation, running an evaluation; Updates",
+          "support": "Task coverage, elicitation and measurement qualifications prevent equating the benchmark with whole-job reliability."
+        },
+        {
+          "source": "astra-card",
+          "locator": "September 9 change log; 9.3 monitorability limitations; 10.1.2 benchmark interpretation",
+          "support": "Preserve evaluation/generalization caveats and distinguish evaluation awareness from evasion."
+        },
+        {
+          "source": "gemini-safety",
+          "locator": "Training and Development Evaluation Results; Frontier Safety Assessment",
+          "support": "Changed evaluation sets, human steering and developer threshold decisions have setting-specific interpretations."
+        },
+        {
+          "source": "pace-frontier",
+          "locator": "Embedded Evaluators",
+          "support": "External access and publication rights are proposed arrangements, not completed independent audits."
+        }
+      ]
+    },
+    "finance": {
+      "mechanism": "Losses, funding demand or operational failures spread only when relevant buffers and responses fail to contain them.",
+      "conditions": "Retain the conjunction of F1, F2 and F4 in F1-F3 and the finance-conditions group; financial exposure alone does not establish a crisis.",
+      "counterexample": "Effective limits, available liquidity or continuity and recovery can localize a disturbance despite AI involvement and faulty actions.",
+      "evidence": "Reread the FSI policy-response discussion and FSB publication summaries; reviewed newer proposals as proposals, not outcome measurements.",
+      "limits": "Keep F4 hypothetical. Price movements, policy statements and a shared provider do not by themselves prove system-wide barrier failure.",
+      "mitigation": "Keep operational recovery separate from capital and liquidity; retain human control, service continuity and provider contingencies.",
+      "readerContext": "Japanese and English explain available funds, losses and payment continuity without requiring prior knowledge of financial regulation.",
+      "whyHere": "The finance route concerns impaired financial services and has additional conditions; it is not a direct path to money disappearing or extinction.",
+      "primary": [
+        {
+          "source": "fsi-cyber-resilience",
+          "locator": "Section 3, printed pp. 8–12 (PDF pp. 12–16), Graph 1 and start of Table 3",
+          "support": "Original policy comparison of governance, protection, detection, recovery and shared dependencies; not measured defense effectiveness."
+        },
+        {
+          "source": "fsb-ai",
+          "locator": "Original publication summary: vulnerabilities and supervisory responses",
+          "support": "Conditional financial vulnerabilities and possible responses, including benefits and existing frameworks."
+        },
+        {
+          "source": "fsb-monitoring",
+          "locator": "Original publication summary: indicators, dependencies and information gaps",
+          "support": "Reasons to monitor adoption and common dependencies without claiming all financial barriers have failed."
+        }
+      ]
+    },
+    "scope": {
+      "mechanism": "A dated recheck records an editorial decision to retain the explanations; it does not create a new measured outcome.",
+      "conditions": "Advance only C3a1, F4 and the inspected C3a1 evidence-summary date after the documented source comparison.",
+      "counterexample": "Other entries remain unchanged even when their linked index was visited; the map date is not a whole-map certification.",
+      "evidence": "The accompanying Markdown records primary passages, unchanged interpretations, candidates not incorporated and the scan boundary.",
+      "limits": "No new evidence class, node explanation, source date or probability is introduced. This is an editorial review, not independent peer review.",
+      "mitigation": "Keep the work isolated and draft, retain previous history by stable ID, and validate both language packages before requesting review.",
+      "readerContext": "The bilingual history states which entries were reviewed and why their text and classification were retained.",
+      "whyHere": "History and map metadata disclose the scoped maintenance decision without implying that a new research result was found.",
+      "primary": [
+        {
+          "source": "lie-detectors",
+          "locator": "Limitations",
+          "support": "Supports retaining the distinction between controlled findings and deployment conclusions."
+        },
+        {
+          "source": "fsi-cyber-resilience",
+          "locator": "Section 3, policy-response discussion",
+          "support": "Supports retaining the distinction between recommendations and verified financial defenses."
+        }
+      ]
+    }
+  },
+  "entries": {
+    "node:C3a1": {
+      "hash": "14973a1af0b1146b63831766aac48f2d976767eb4490a358263331f0cbbcd9fb",
+      "assessment": "evaluation"
+    },
+    "node:F4": {
+      "hash": "afbd4b2fef1694b0a100f424802a2605df559981ba7a74feddc61eea059d6ffb",
+      "assessment": "finance"
+    },
+    "edge:F1-F3": {
+      "hash": "5c2a7b54ebafbbe439a3d0a41f3a7e5cbb51051d877e5c217c5d0c1749ae48eb",
+      "assessment": "finance"
+    },
+    "graph:evaluation": {
+      "hash": "eb61987b3f8e1637b6666cead8d69d3ab7028b84c30929f5b88af300ff78f937",
+      "assessment": "evaluation"
+    },
+    "graph:money": {
+      "hash": "57354010140bfdb84f0808a7a26e23d5ebf6eb8ff4b055e070cd74c5ff310d16",
+      "assessment": "finance"
+    },
+    "graph:finance-conditions": {
+      "hash": "c32c68ff06b25bbf05641cd8028045db4344522fbb8e6f7d5517f0c34e1754cb",
+      "assessment": "finance"
+    },
+    "route:money": {
+      "hash": "b45d72414abffef41ce80e93117e93d41b14663ade38ad436002e73d27b8a590",
+      "assessment": "finance"
+    },
+    "current:money": {
+      "hash": "2b2e49b42eb5f7dff603a677bdc730ce44aa22c28015214d850d42f5c10946ab",
+      "assessment": "finance"
+    },
+    "evidence:C3a1": {
+      "hash": "ea8818a15656246dabc72ef2d7f81f244ba1aef54d6e231d11ba8488e680a8d9",
+      "assessment": "evaluation"
+    },
+    "story:money": {
+      "hash": "0d753b720857c85dedfe404e9baefa7c14096e3bcb945c5091be6e0b73b98b0a",
+      "assessment": "finance"
+    },
+    "metadata:map": {
+      "hash": "7132b47cdc0ce4858f113157f8847f4f1889f67c19fe3e114e9a2b10a64b3b51",
+      "assessment": "scope"
+    },
+    "history:changes": {
+      "hash": "871dae2ca258a1bc9ab66c2a5f182aceb59ca4b577a8d517dc6b19d1091b8c31",
+      "assessment": "scope"
+    }
+  }
+}
