@@ -1,5 +1,29 @@
 [
   {
+    "id": "monitor-finance-recheck-20260922",
+    "date": "2026-09-22",
+    "nodes": [
+      "C3a1",
+      "F4"
+    ],
+    "sources": [
+      "lie-detectors",
+      "horizon",
+      "astra-card",
+      "gemini-safety",
+      "pace-frontier",
+      "fsi-cyber-resilience",
+      "fsb-ai",
+      "fsb-monitoring"
+    ],
+    "kind": "期限に達した説明の再点検",
+    "title": "試験と実運用の違い、金融の防壁を再点検",
+    "summary": "C3a1とF4を一次資料に照らして再点検。実験の範囲、防御策の提案と効果測定の違いを確認し、本文と根拠の分類を維持しました。",
+    "before": "両項目は9月14日の点検から再確認の目安に達していました。",
+    "after": "両項目とC3a1の根拠説明だけ点検日を更新。矢印、本文、分類と既存の出典情報は維持しました。",
+    "reason": "未知の問題での検出性能と、実運用での見逃しを区別し、金融の復旧策を実証済みの防御と誤解しないため。"
+  },
+  {
     "id": "life-sciences-recheck-20260920",
     "date": "2026-09-20",
     "nodes": [
