@@ -7,7 +7,8 @@
     "gemini-safety",
     "horizon",
     "anthropic-rsi",
-    "pace-frontier"
+    "pace-frontier",
+    "metr-opus55"
   ],
   "questions": [],
   "related": [],
@@ -16,7 +17,7 @@
     "検証や統合も含めた開発全体の時間が短縮したか。"
   ],
   "review": {
-    "checkedAt": "2026-09-20",
+    "checkedAt": "2026-09-23",
     "intervalDays": 7,
     "reason": "能力・行動・対策の評価は短期間で変わり得るため。"
   },
@@ -29,7 +30,8 @@
     "gemini-safety",
     "horizon",
     "anthropic-rd-progress",
-    "frontier-pacing"
+    "frontier-pacing",
+    "metr-opus55-rd"
   ],
   "shortTitle": "AI開発の工程全体が加速"
 }
