@@ -6,7 +6,9 @@
     "control-paper",
     "summer",
     "scheming",
-    "claude-cyber-assessment"
+    "claude-cyber-assessment",
+    "anthropic-pace-measurements",
+    "sol-luna-card"
   ],
   "questions": [],
   "related": [],
@@ -16,7 +18,7 @@
     "scheming"
   ],
   "review": {
-    "checkedAt": "2026-09-17",
+    "checkedAt": "2026-09-23",
     "intervalDays": 7,
     "reason": "能力・行動・対策の評価は短期間で変わり得るため。"
   },
@@ -28,7 +30,9 @@
     "control-protocol",
     "summer",
     "scheming",
-    "claude-cyber-monitors"
+    "claude-cyber-monitors",
+    "agent-oversight-coverage",
+    "sol-monitor-evasion"
   ],
   "shortTitle": "評価・監督が危険を見落とす"
 }

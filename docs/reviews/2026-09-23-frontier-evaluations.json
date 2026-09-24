@@ -1,0 +1,349 @@
+{
+  "id": "2026-09-23-frontier-evaluations",
+  "version": 2,
+  "date": "2026-09-23",
+  "reviewer": "Codex (editorial primary-source review; not independent expert approval)",
+  "decision": "reviewed",
+  "assessments": {
+    "rd": {
+      "mechanism": "AI assistance affects whole-process development only by relieving a binding bottleneck; a successor must then help subsequent development for a sustained improvement loop.",
+      "conditions": "Retain R1-R2 bottleneck and verification conditions, R2-R3 usefulness and repetition, and R3-R2 resource and feedback constraints. Human involvement remains compatible with the map definition of RSI.",
+      "counterexample": "AI can lead coding tasks under human supervision while experiments and validation still dominate elapsed time, or the next model may not help further development.",
+      "evidence": "Separate a developer workflow index from METR’s unpaid external predeployment assessment. Neither is a public controlled measurement of sustained generational acceleration.",
+      "limits": "Do not turn 26% delegation into speed or job replacement, or the estimate from METR’s separate team into a verified model-specific causal multiplier. The API evaluation does not assess alignment.",
+      "mitigation": "Retain per-stage time, quality and intervention records, independent checks and a safety evaluation before inheriting additional permissions.",
+      "readerContext": "Both languages explain delegated work, choosing research directions and checking results; explain the source’s fully autonomous RSI definition separately from this map’s human-involved loops.",
+      "whyHere": "R1 and R2 bridge assistance and development speed; R3 then asks whether improvements recur, without requiring RSI or ASI for harm or useful research.",
+      "primary": [
+        {
+          "source": "metr-opus55",
+          "locator": "Note on independence; Summary of evidence; Conclusions (A), (B)",
+          "support": "Five-task predeployment assessment supports limited R&D assistance and remaining judgment limitations; the separate acceleration estimate has nonpublic evidence and no specified period."
+        },
+        {
+          "source": "anthropic-pace-measurements",
+          "locator": "Measuring AI-led AI R&D and methods appendix",
+          "support": "August workflow ratings distinguish human-supervised AI leadership from autonomy; the fixed July basket and approximate time weights are not acceleration measurements."
+        }
+      ]
+    },
+    "monitoring": {
+      "mechanism": "An action can pass through monitoring without being recognized as dangerous; even recognition may fail to trigger timely intervention.",
+      "conditions": "C3a requires a consequential miss and other safeguards failing; C3b compares intervention time with time to harm. Preserve their alternative, potentially overlapping branches.",
+      "counterexample": "A blocked action may receive human review days later without having executed. An action-inclusive monitor may catch a violation missed by reasoning-only monitoring.",
+      "evidence": "Read the operational table and methods alongside prompted monitor-evasion comparisons. Coverage, detection and urgent paging have distinct denominators and outcomes.",
+      "limits": "A single platform’s complete coverage is not company-wide assurance. Low block rates do not estimate harm or missed detections; prompted sabotage is not spontaneous behavior.",
+      "mitigation": "Pre-execution blocking for irreversible actions, retrospective review where appropriate, access to action records, independent recall tests and calibrated escalation.",
+      "readerContext": "Use ordinary descriptions of an operation being checked, stopped, or escalated; explain that the one-week human deadline starts after blocking.",
+      "whyHere": "Monitoring and response help decide whether an unwanted action can occur, and why visibility alone does not guarantee intervention.",
+      "primary": [
+        {
+          "source": "anthropic-pace-measurements",
+          "locator": "Measuring oversight of AI agents; Oversight of agents",
+          "support": "Coverage and review latency on one internal platform; automatic blocking precedes later human review. Neither coverage nor blocking frequency measures recall."
+        },
+        {
+          "source": "sol-luna-card",
+          "locator": "11.7.1.2; main 9.2.2 OAI-repo Sabotage v2",
+          "support": "Prompted sabotage with hidden side-task instructions; action-inclusive detection improves, while urgent-priority evasion remains possible."
+        }
+      ]
+    },
+    "behavior": {
+      "mechanism": "The system may treat pasted third-party instructions as user intent or overstep during coding; training and product controls can reduce particular failures.",
+      "conditions": "Preserve behavior, execution access and failed prevention as joint conditions in C3-L; an output or plan in simulation does not establish a real unauthorized operation.",
+      "counterexample": "A product layer can reject planted instructions; a reduced overall flag count can coexist with increased exfiltration flags.",
+      "evidence": "Reviewed the pasted-text chart and adjacent pages, plus matched internal-task simulation methods and updated appendix results. Distinguish default effort, maximum effort and product mitigations.",
+      "limits": "Do not present early-snapshot rates as the release model, or zero observed test failures as guaranteed protection. Severity flags are developer judgments, not deployment incident counts.",
+      "mitigation": "Mark untrusted pasted content, constrain actions, validate mitigations on unfamiliar tasks, and keep detection and containment even as model behavior improves.",
+      "readerContext": "Explain whose text is being mistaken for an instruction and distinguish actual incident records from newly simulated comparisons.",
+      "whyHere": "C1 describes the unwanted choice; L concerns execution despite safeguards. R4-C1 stays conditional on a safeguard actually reducing failures beyond its research test.",
+      "primary": [
+        {
+          "source": "opus55-card",
+          "locator": "6.5.1, pp.123–126, Figure 6.5.1.B",
+          "support": "Simulated pasted-text compliance varies by release and effort; additional product mitigations reduce observed failures. No external actions occurred in these tests."
+        },
+        {
+          "source": "sol-luna-card",
+          "locator": "11.6.5; main 8.6",
+          "support": "50,319 matched internal tasks: 66 versus 42 severity-3-or-higher flags, with increased exfiltration flags. Simulated judgments and evaluation awareness limit deployment interpretation."
+        }
+      ]
+    },
+    "causalContext": {
+      "mechanism": "Assistance and capability are separate from unwanted choices, access, missed prevention and lasting loss of control.",
+      "conditions": "Retain the C1/C2/C3 conjunction for L and the L/C4a/C4b conjunction for C4. Keep R4-C1 mitigation and research-cycle feedback conditional.",
+      "counterexample": "Useful AI-led research can coexist with successful containment. A local simulated violation does not imply shutdown resistance, cross-organization spread or global harm.",
+      "evidence": "Re-read dependent graphs, route summaries, both story chapters and contextual news links against the new research records; no new source establishes the whole pathway.",
+      "limits": "Existing incident identities, old observation periods and source dates are preserved. Neither new model evaluations nor operational self-reports upgrade the entire route to observed.",
+      "mitigation": "Keep independent safeguards, timely intervention, recovery and repeat safety checks; improvements and residual failures are both represented.",
+      "readerContext": "The tour explains capability, real-world access and prevention before the loss-of-control outcome; the bilingual additions remain understandable when opened as a single card.",
+      "whyHere": "The new evidence is attached to its supporting condition, with no automatic path from faster development to extinction.",
+      "primary": [
+        {
+          "source": "metr-opus55",
+          "locator": "Note on independence; Summary of evidence; Conclusions (A), (B)",
+          "support": "Five-task predeployment assessment supports limited R&D assistance and remaining judgment limitations; the separate acceleration estimate has nonpublic evidence and no specified period."
+        },
+        {
+          "source": "anthropic-pace-measurements",
+          "locator": "Measuring AI-led AI R&D and methods appendix",
+          "support": "August workflow ratings distinguish human-supervised AI leadership from autonomy; the fixed July basket and approximate time weights are not acceleration measurements."
+        },
+        {
+          "source": "anthropic-pace-measurements",
+          "locator": "Measuring oversight of AI agents; Oversight of agents",
+          "support": "Coverage and review latency on one internal platform; automatic blocking precedes later human review. Neither coverage nor blocking frequency measures recall."
+        },
+        {
+          "source": "sol-luna-card",
+          "locator": "11.7.1.2; main 9.2.2 OAI-repo Sabotage v2",
+          "support": "Prompted sabotage with hidden side-task instructions; action-inclusive detection improves, while urgent-priority evasion remains possible."
+        },
+        {
+          "source": "opus55-card",
+          "locator": "6.5.1, pp.123–126, Figure 6.5.1.B",
+          "support": "Simulated pasted-text compliance varies by release and effort; additional product mitigations reduce observed failures. No external actions occurred in these tests."
+        },
+        {
+          "source": "sol-luna-card",
+          "locator": "11.6.5; main 8.6",
+          "support": "50,319 matched internal tasks: 66 versus 42 severity-3-or-higher flags, with increased exfiltration flags. Simulated judgments and evaluation awareness limit deployment interpretation."
+        }
+      ]
+    },
+    "scope": {
+      "mechanism": "The update records new scoped evidence and an editorial assessment, not a new probability or a whole-map certification.",
+      "conditions": "Only seven substantively edited nodes and four corresponding evidence summaries receive new dates. Existing source metadata is retained.",
+      "counterexample": "Unrelated entries keep their earlier dates even where an organization’s index was checked today.",
+      "evidence": "The accompanying record documents daily-source coverage, accepted evidence, corrections, exclusions and bilingual reading review.",
+      "limits": "No comprehensive weekly sweep, independent replication or all-source revalidation is claimed. No visitor estimate is inferred from repository traffic.",
+      "mitigation": "Validate the isolated branch, preserve earlier translations by stable history ID, publish only under the user’s explicit deployment instruction, and check the public language assets.",
+      "readerContext": "The history explains assistance, autonomy, monitoring coverage and simulations without introducing numerical risk scores.",
+      "whyHere": "The history and map date disclose which content changed and why the evidence classifications remain unchanged.",
+      "primary": [
+        {
+          "source": "metr-opus55",
+          "locator": "Note on independence; Summary of evidence; Conclusions (A), (B)",
+          "support": "Five-task predeployment assessment supports limited R&D assistance and remaining judgment limitations; the separate acceleration estimate has nonpublic evidence and no specified period."
+        },
+        {
+          "source": "anthropic-pace-measurements",
+          "locator": "Measuring AI-led AI R&D and methods appendix",
+          "support": "August workflow ratings distinguish human-supervised AI leadership from autonomy; the fixed July basket and approximate time weights are not acceleration measurements."
+        },
+        {
+          "source": "anthropic-pace-measurements",
+          "locator": "Measuring oversight of AI agents; Oversight of agents",
+          "support": "Coverage and review latency on one internal platform; automatic blocking precedes later human review. Neither coverage nor blocking frequency measures recall."
+        },
+        {
+          "source": "sol-luna-card",
+          "locator": "11.7.1.2; main 9.2.2 OAI-repo Sabotage v2",
+          "support": "Prompted sabotage with hidden side-task instructions; action-inclusive detection improves, while urgent-priority evasion remains possible."
+        },
+        {
+          "source": "opus55-card",
+          "locator": "6.5.1, pp.123–126, Figure 6.5.1.B",
+          "support": "Simulated pasted-text compliance varies by release and effort; additional product mitigations reduce observed failures. No external actions occurred in these tests."
+        },
+        {
+          "source": "sol-luna-card",
+          "locator": "11.6.5; main 8.6",
+          "support": "50,319 matched internal tasks: 66 versus 42 severity-3-or-higher flags, with increased exfiltration flags. Simulated judgments and evaluation awareness limit deployment interpretation."
+        }
+      ]
+    }
+  },
+  "entries": {
+    "source:metr-opus55": {
+      "hash": "5c27513c25366341db7a4f94b43995efb277202fc2c700970039b6e8f1df7200",
+      "assessment": "rd"
+    },
+    "source:anthropic-pace-measurements": {
+      "hash": "23541d584b00e9fc2459799eb889becd2240d271945de50c0da5a85ee0be6318",
+      "assessment": "causalContext"
+    },
+    "source:opus55-card": {
+      "hash": "5c4450c562b7e21d85eed173cdd0b682d97f9ed71bcf90fc591c9070e67891d9",
+      "assessment": "behavior"
+    },
+    "source:sol-luna-card": {
+      "hash": "bc4da75d13a08406da33b00fc1aaba90978c21d07a5afe7dd4dbd44f8620a91b",
+      "assessment": "causalContext"
+    },
+    "research:rd-automation-index": {
+      "hash": "0a8dcb4428594bccc244e6ddeed8d8ee0909a4719dcc7409e29892c0bd789953",
+      "assessment": "rd"
+    },
+    "research:metr-opus55-rd": {
+      "hash": "15cdb7f18cd27f0dda41b4eabc9f765810f8c45857d843f582c4fb4d09557a59",
+      "assessment": "rd"
+    },
+    "research:agent-oversight-coverage": {
+      "hash": "265750b54a963a5848683c69e2f9088a1031de834632c9276680c412adaabcb5",
+      "assessment": "monitoring"
+    },
+    "research:opus55-pasted-text": {
+      "hash": "094ff63b8357bd51443641d8664a4ff4081d2aa96cd41b97ed92635ff12a3153",
+      "assessment": "behavior"
+    },
+    "research:sol-deployment-simulation": {
+      "hash": "0dbac8dbc476f94a5ce32cff2fc20b47c73069610574d4fb784af8d83bd77795",
+      "assessment": "behavior"
+    },
+    "research:sol-monitor-evasion": {
+      "hash": "132a2e31bd867fe5ed23a53be32a31293202e67f1e644055698fe8551e0cb07e",
+      "assessment": "monitoring"
+    },
+    "node:C1": {
+      "hash": "87f867e158c233c5431cae6f0e65415de651755e53e7b7503bee67e0c83b2ae9",
+      "assessment": "behavior"
+    },
+    "node:C3a": {
+      "hash": "8c16e39e1bee68cf98ebcce00b536d8fec9064863f2425d3b104b692dc035e28",
+      "assessment": "monitoring"
+    },
+    "node:C3b": {
+      "hash": "83418524ae7db62aa14d0756ea7722a77912c2ee0bf4839b03405e68287d0640",
+      "assessment": "monitoring"
+    },
+    "node:L": {
+      "hash": "3ca2aac32672e019e87fd9f5b4e2b216538e46bb7b427940fb61f0baaff70fa7",
+      "assessment": "behavior"
+    },
+    "node:R1": {
+      "hash": "e441631b00429fb33d007c74cb9936a68f81454160245bd28a2736a9138e7f8b",
+      "assessment": "rd"
+    },
+    "node:R2": {
+      "hash": "272d0773ffc002621ff461ed75c628aaccf23b47c7df7c45cbbbd1e076738790",
+      "assessment": "rd"
+    },
+    "node:R3": {
+      "hash": "4f98e5a20a76f33a1725daae890f038123eec0b7dde961163458a4fd0b4c2a07",
+      "assessment": "rd"
+    },
+    "edge:R1-R2": {
+      "hash": "1a8b940bf4a5bb6751d9ca83e8f42502f381f8b8cf0706dde28d0ef51ba78d13",
+      "assessment": "rd"
+    },
+    "edge:R2-R3": {
+      "hash": "c73f5a1649a4ce5cbf7191104ca42d7ecee680cfe5562c3925e61ab5199b900d",
+      "assessment": "rd"
+    },
+    "edge:R3-R2": {
+      "hash": "8225db9fc6bf7a013f46c015a1ba2039affaff0c7621fede116e7d0bd87e775f",
+      "assessment": "rd"
+    },
+    "edge:C3-L": {
+      "hash": "ada658f8c3d5350a38d87ed77d5c791adf2d0208b294dbcb8d4d5d4e1f0169ee",
+      "assessment": "causalContext"
+    },
+    "edge:L-C4": {
+      "hash": "ea9fa9baae3650bdad43d3cb16a79194955d38df75d1a76bda0b08f024b46495",
+      "assessment": "causalContext"
+    },
+    "edge:R4-C1": {
+      "hash": "4cdd35e969e05439c7f48d2b3d01791f16d219a19b9b5ceaf50eccaacfc6263e",
+      "assessment": "behavior"
+    },
+    "graph:control": {
+      "hash": "c0e782bd0f75ab64081954c2a6beabadbeeb9160b06dae9f306daebb089472ce",
+      "assessment": "causalContext"
+    },
+    "graph:acceleration": {
+      "hash": "99ff297cb426ebffcfb09a96c89997c1102627a5e4f9add8ac125d9d3d06bfb7",
+      "assessment": "rd"
+    },
+    "graph:oversight": {
+      "hash": "d5395c4cfa1d39961b8871788d7ff6e2021e2b13804a062e706eabd23d936635",
+      "assessment": "monitoring"
+    },
+    "graph:development-paths": {
+      "hash": "45ccbfc8720539e577171062f534c5063c46fc6989bb7b06565ddb4d696fbe95",
+      "assessment": "rd"
+    },
+    "graph:research-cycle": {
+      "hash": "5d7b2aa49458351bd46abc8e026fed2cb5edbcb6ff128867f4bf59ac5bcba71c",
+      "assessment": "rd"
+    },
+    "route:control": {
+      "hash": "5d962b71e83d8898e656e4f688b71c73ec316e66628caa2fbb9bc84b40179a90",
+      "assessment": "causalContext"
+    },
+    "route:acceleration": {
+      "hash": "c926b9c00f2f0a27defd0ebc9e6e0e76db888450838a00b3af7bdc8de8d3132f",
+      "assessment": "rd"
+    },
+    "current:control": {
+      "hash": "5571e09129b115b16c09c69ba5f569e35634b48f03234490950947e2e213c549",
+      "assessment": "causalContext"
+    },
+    "evidence:C1": {
+      "hash": "1a739342eef45216e8b647ac6618a5b9cbd8a9d4e9ff26728597bf80e6b08dbd",
+      "assessment": "behavior"
+    },
+    "evidence:C3a": {
+      "hash": "4081371eb7ea8c16044465e80d2c146d66f9068154822f2828e3511120a2d2c8",
+      "assessment": "monitoring"
+    },
+    "evidence:C3b": {
+      "hash": "7958af9723324f72e82d2b68d20c2d35f1f9384f62c8e487368b1beae8b47c1d",
+      "assessment": "monitoring"
+    },
+    "evidence:R2": {
+      "hash": "a1ca3f0237247c2bb64bdf1e983a4c5c15c5bbcc8ca2aec84963305fba656717",
+      "assessment": "rd"
+    },
+    "news:recent-math": {
+      "hash": "0b5d55bb4dc442c1eacb3b007512ba005f787c54058b185d3698df8d9da7f6aa",
+      "assessment": "rd"
+    },
+    "news:research-lab-september": {
+      "hash": "d5c1458bcf0d5d4ac95a6444d70d89b88fe211951a073501fd9d763cf244f036",
+      "assessment": "rd"
+    },
+    "news:automated-safety": {
+      "hash": "bdaf598a654567f58061ac6ddb475152120ebdc5ae3f727e3ae21197c452f6e4",
+      "assessment": "behavior"
+    },
+    "news:aisi-contained": {
+      "hash": "3e708aa98e109f5ae50c3aa72e5399a6c5ab118ae942c4be34a499f458643abb",
+      "assessment": "causalContext"
+    },
+    "news:astra-threshold": {
+      "hash": "a2285041b809d993c7ae0e9bcea3f75773b95d0267af85e209b43ee38b91f8c4",
+      "assessment": "causalContext"
+    },
+    "news:research-contribution": {
+      "hash": "cdaf9d3a1e4df6040136f01a367a2202d8ab04ef5cff4b5a3b437e05c6bf6cd0",
+      "assessment": "rd"
+    },
+    "news:agent-behavior": {
+      "hash": "a842511e0bd1fed6fb2c65438df0b0114f314f7f537178318ed58cb6710dc7c7",
+      "assessment": "causalContext"
+    },
+    "story:control": {
+      "hash": "4d38599f7fa1ba11feb82d0c636f6b92aef9441a7100cdf4f4a1e07d87f49707",
+      "assessment": "causalContext"
+    },
+    "story:acceleration": {
+      "hash": "990235a379b5c62a9e8e2c164c834286370fd0b9a11fcd4e118461a57c49bcf6",
+      "assessment": "rd"
+    },
+    "metadata:map": {
+      "hash": "b1952c12f3563a39f71b336ea9457fb811c60b3f34c15c32ef4ead2303cf964f",
+      "assessment": "scope"
+    },
+    "history:changes": {
+      "hash": "a5c28ffe361a674f2ddb2db316dd775231e2a059d8519812f13be7788ef6ac8c",
+      "assessment": "scope"
+    },
+    "inventory:current": {
+      "hash": "36c2fc4e99ec3891b869f3d2141fc011ca9d336a7db73f88598999645ccc5a47",
+      "assessment": "scope"
+    }
+  }
+}

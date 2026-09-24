@@ -511,5 +511,41 @@
     "period": "2026年9月17日のベータ制度開始の発表。初期提供の実績を含むが、効果を比べた実験の報告ではありません。",
     "checked": "2026-09-20",
     "primary": "提供者自身による利用条件と監視制度の説明。独立した効果検証ではありません。"
+  },
+  "metr-opus55": {
+    "title": "METR — Summary of its predeployment evaluation of Claude Opus 5.5",
+    "period": "公表前の10営業日のAPI評価。正確な実施日は未記載。社内の加速に関する別チームの推定は対象期間が不明。",
+    "primary": "METR自身の評価報告。無償の評価契約で実施し、Anthropicの確認・編集後にMETRが最終文を承認。非公開情報を含み、全面的に追試できる公開資料ではない。",
+    "url": "https://metr.org/blog/2026-09-22-claude-opus-5-5/",
+    "published": "2026-09-22",
+    "date": "2026-09-22",
+    "checked": "2026-09-23"
+  },
+  "anthropic-pace-measurements": {
+    "title": "Anthropic — Measurements for understanding the pace of AI development inside frontier labs",
+    "period": "研究開発の自動化と監督は2026年8月の社内データ。作業の分類・重みは7月の記録を基準とする。",
+    "primary": "開発元による社内測定と方法の説明。第三者による継続的な確認は計画として記載。",
+    "url": "https://www.anthropic.com/institute/measuring-pace-of-ai-development",
+    "published": "2026-09-17",
+    "date": "2026-09-17",
+    "checked": "2026-09-23"
+  },
+  "opus55-card": {
+    "title": "Anthropic — Claude Opus 5.5 System Card",
+    "period": "公開前のClaude Opus 5.5と旧モデルの評価。ここでは貼り付けた文章の扱いと、その対策の比較を参照。実験日は未記載。",
+    "primary": "開発元が実施した模擬評価。製品側の追加対策の有無を区別し、通常利用の発生率とは扱わない。",
+    "url": "https://www-cdn.anthropic.com/fc1b44717c85dc068bc6ba5024219938094694bd/Claude%20Opus%205.5%20System%20Card.pdf",
+    "published": "2026-09-22",
+    "date": "2026-09-22",
+    "checked": "2026-09-23"
+  },
+  "sol-luna-card": {
+    "title": "OpenAI — GPT-6 Sol and Luna system-card appendix",
+    "period": "9月22日追加の付録。GPT-6 Solなどの公開前評価と、社内Codex作業を使った模擬実行。正確な実施日は未記載。",
+    "primary": "開発元による評価。同日の評価更新を含み、以前の版の数値と混ぜて比較しない。",
+    "url": "https://deploymentsafety.openai.com/gpt-6-astra/sec:appendix-sol-luna",
+    "published": "2026-09-22",
+    "date": "2026-09-22",
+    "checked": "2026-09-23"
   }
 }

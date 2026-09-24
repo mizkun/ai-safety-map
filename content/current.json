@@ -138,15 +138,16 @@
     },
     "C1": {
       "level": "tested",
-      "summary": "模擬環境や訓練中に、人の意図と異なる行動が報告されています。個別の行動記録と、誤った目標を追ったという原因の解釈は分けます。通常利用の発生率は示しません。",
+      "summary": "模擬環境や訓練中に、意図から外れる行動が報告されています。対策で失敗が減る試験もありますが、結果は設定に依存し、通常利用の発生率ではありません。",
       "research": [
         "generalization",
         "summer",
         "claude-cyber-incidents",
-        "compaction-concealment"
+        "compaction-concealment",
+        "opus55-pasted-text"
       ],
       "review": {
-        "checkedAt": "2026-09-17",
+        "checkedAt": "2026-09-23",
         "intervalDays": 7,
         "reason": "既存の根拠がカードの条件をどこまで直接確かめているかを分類しています。根拠の更新時に見直します。"
       }
@@ -215,14 +216,16 @@
     },
     "C3a": {
       "level": "tested",
-      "summary": "模擬環境で、不正な判定や監督を欺く行動が報告されています。監督方法を変えると結果も変わります。",
+      "summary": "監督が見逃す例と、操作の記録も見ることで検出が改善する試験があります。監視に通した割合、危険の検出、緊急対応への通知は分けて判断します。",
       "research": [
         "summer",
         "scheming",
-        "control-protocol"
+        "control-protocol",
+        "agent-oversight-coverage",
+        "sol-monitor-evasion"
       ],
       "review": {
-        "checkedAt": "2026-09-11",
+        "checkedAt": "2026-09-23",
         "intervalDays": 7,
         "reason": "既存の根拠がカードの条件をどこまで直接確かめているかを分類しています。根拠の更新時に見直します。"
       }
@@ -269,13 +272,14 @@
     },
     "C3b": {
       "level": "indirect",
-      "summary": "実際の事例には、検知後に封じ込められたものがあります。対応に必要な時間は手がかりになりますが、被害を防ぐのに間に合わなかったことの確認ではありません。",
+      "summary": "検知後の封じ込めや、実行前に遮断する運用例があります。事後の確認期限だけで、被害を防ぐのに間に合ったかは判断できません。",
       "research": [
         "aisi-incident",
-        "control-roadmap"
+        "control-roadmap",
+        "agent-oversight-coverage"
       ],
       "review": {
-        "checkedAt": "2026-09-20",
+        "checkedAt": "2026-09-23",
         "intervalDays": 7,
         "reason": "既存の根拠がカードの条件をどこまで直接確かめているかを分類しています。根拠の更新時に見直します。"
       }
@@ -399,14 +403,15 @@
     },
     "R2": {
       "level": "indirect",
-      "summary": "開発者の業務記録や社内調査は、AIの寄与を示しています。コード量や主観的な出力量の増加を、同じ品質・資源での開発全体の加速率とは扱いません。",
+      "summary": "研究支援の進歩は報告されていますが、開発全体の加速率はなお間接的な根拠です。外部評価にも非公開の情報と対象期間の不明な推定が含まれます。",
       "research": [
         "rd-use",
         "horizon",
-        "anthropic-rd-progress"
+        "anthropic-rd-progress",
+        "metr-opus55-rd"
       ],
       "review": {
-        "checkedAt": "2026-09-20",
+        "checkedAt": "2026-09-23",
         "intervalDays": 7,
         "reason": "既存の根拠がカードの条件をどこまで直接確かめているかを分類しています。根拠の更新時に見直します。"
       }
