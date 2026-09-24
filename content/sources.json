@@ -547,5 +547,32 @@
     "published": "2026-09-22",
     "date": "2026-09-22",
     "checked": "2026-09-23"
+  },
+  "art-discovery": {
+    "title": "Anthropic — Claude discovers a novel enzyme system with CRISPR-like repeats",
+    "period": "公表時点までの社内の探索・分析・実験。各工程の実施日は未記載。",
+    "primary": "研究を実施した開発元の初期成果報告。実験は人間が行い、仕組みの機能は調査中。独立した追試ではない。",
+    "url": "https://www.anthropic.com/news/claude-discovers-novel-enzyme-system",
+    "published": "2026-09-23",
+    "date": "2026-09-23",
+    "checked": "2026-09-24"
+  },
+  "art-preprint": {
+    "title": "Yoon et al. — Autonomous AI agents discover reverse transcriptases with tandem repeat arrays",
+    "period": "Claude Mythos 5による探索と、その後の人間主導の分析。探索の経過時間は21.5時間。研究全体の所要時間とは異なる。",
+    "primary": "Anthropicの著者による技術報告。査読済みとは確認していない。同じ探索の10回の再実行では配列の発見を再現できなかった。",
+    "url": "https://www-cdn.anthropic.com/22573675ada52a8ca8a97a1a4b4326b2f208a071.pdf",
+    "published": "2026-09-23",
+    "date": "2026-09-23",
+    "checked": "2026-09-24"
+  },
+  "embedded-evaluation-partnership": {
+    "title": "Anthropic — Partnering with Accenture on embedded evaluation",
+    "period": "Accenture傘下のFacultyが率いる評価チームとの提携発表。今後の業務・資金提供・アクセスの方針を述べる。",
+    "primary": "提携当事者による体制整備の発表。完了した監査や、事故を防ぐ効果の測定結果ではない。",
+    "url": "https://www.anthropic.com/news/accenture-embedded-evaluation",
+    "published": "2026-09-18",
+    "date": "2026-09-18",
+    "checked": "2026-09-24"
   }
 }

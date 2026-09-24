@@ -8,7 +8,8 @@
     "aisi-incident",
     "framework",
     "pace-frontier",
-    "claude-cyber-assessment"
+    "claude-cyber-assessment",
+    "embedded-evaluation-partnership"
   ],
   "questions": [],
   "related": [],
@@ -20,7 +21,7 @@
     "評価への気づきと、実際の監視回避を区別できているか。"
   ],
   "review": {
-    "checkedAt": "2026-09-17",
+    "checkedAt": "2026-09-24",
     "intervalDays": 7,
     "reason": "能力・行動・対策の評価は短期間で変わり得るため。"
   },
@@ -35,7 +36,8 @@
     "oversight-gap",
     "frontier-pacing",
     "embedded-evaluators",
-    "claude-cyber-monitors"
+    "claude-cyber-monitors",
+    "embedded-evaluator-partnership"
   ],
   "shortTitle": "コントロールの失敗"
 }

@@ -209,7 +209,7 @@
         "aisi-incident"
       ],
       "review": {
-        "checkedAt": "2026-09-11",
+        "checkedAt": "2026-09-24",
         "intervalDays": 7,
         "reason": "既存の根拠がカードの条件をどこまで直接確かめているかを分類しています。根拠の更新時に見直します。"
       }
