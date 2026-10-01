@@ -574,5 +574,95 @@
     "published": "2026-09-18",
     "date": "2026-09-18",
     "checked": "2026-09-24"
+  },
+  "metr-action-monitor": {
+    "title": "METR — Implementing a basic blocking action monitor",
+    "url": "https://metr.org/notes/2026-09-27-implementing-a-basic-blocking-action-monitor/",
+    "published": "2026-09-27",
+    "checked": "2026-10-01",
+    "date": "2026-09-27",
+    "period": "実行前監視の実装・試験。実験の正確な日程は未記載。運用量の参考値は2026年8月。",
+    "primary": "監視を実装・評価したMETRの原報告。AISIによる記録の再評価はMETRの報告経由。"
+  },
+  "aisi-astra-supply-chain": {
+    "title": "UK AISI — GPT-6 Astra performs unsanctioned supply chain attacks in simulations",
+    "url": "https://www.aisi.gov.uk/blog/gpt-6-astra-performs-unsanctioned-supply-chain-attacks-in-simulations",
+    "published": "2026-09-28",
+    "checked": "2026-10-01",
+    "date": "2026-09-28",
+    "period": "9月3日の公開前に実施したGPT-6 Astraの模擬評価。正確な試験日は未記載。",
+    "primary": "英国AISIが実施した外部評価の原報告。"
+  },
+  "anthropic-glm53": {
+    "title": "Anthropic — GLM-5.3 and the spread of advanced cyber capabilities",
+    "url": "https://www.anthropic.com/research/glm-5-3-and-the-spread-of-advanced-cyber-capabilities",
+    "published": "2026-09-29",
+    "checked": "2026-10-01",
+    "date": "2026-09-29",
+    "period": "GLM-5.3の既知の脆弱性評価と、支援を引き出す模擬試験。試験日は未記載。",
+    "primary": "AnthropicのFrontier Red Teamによる他社モデルの評価。競合する開発企業の報告。"
+  },
+  "nist-glm53": {
+    "title": "NIST CAISI — Assessment of Z.ai GLM-5.3 cyber capabilities",
+    "url": "https://www.nist.gov/news-events/news/2026/09/caisis-assessment-zais-glm-53-cyber-capabilities",
+    "published": "2026-09-17",
+    "checked": "2026-10-01",
+    "date": "2026-09-17",
+    "period": "GLM-5.3と比較モデルを4種類の課題で評価。正確な試験日は未記載。",
+    "primary": "評価を実施した米国NIST CAISIの原報告。"
+  },
+  "openai-sol61": {
+    "title": "OpenAI — GPT-6.1 Sol system card addendum",
+    "url": "https://deploymentsafety.openai.com/gpt-6-1-sol",
+    "published": "2026-09-29",
+    "checked": "2026-10-01",
+    "date": "2026-09-29",
+    "period": "GPT-6.1 Solの公開時評価。実験日は未記載。模擬配備と監視評価を区別。",
+    "primary": "開発元OpenAIのシステムカード。独立追試ではない。"
+  },
+  "openai-public-token": {
+    "title": "OpenAI — Exposing a GitHub token in a public repository",
+    "url": "https://alignment.openai.com/misalignment-reports/exposing-a-github-token-in-a-public-repository/",
+    "published": null,
+    "checked": "2026-10-01",
+    "date": "2026年9月25日更新／初出日は未確認",
+    "period": "2026年5月27日の社内運用中の事故。9月25日更新の報告。モデル名は非公開。",
+    "primary": "当事者OpenAIによる事故調査・対応の報告。"
+  },
+  "openai-dns-access": {
+    "title": "OpenAI — An agent used DNS to reach an external chatbot",
+    "url": "https://alignment.openai.com/misalignment-reports/an-agent-used-dns-to-reach-an-external-chatbot/",
+    "published": null,
+    "checked": "2026-10-01",
+    "date": "2026年9月25日更新／初出日は未確認",
+    "period": "2026年9月20日の社内研究モデルの学習中の出来事。9月25日更新の報告。",
+    "primary": "当事者OpenAIによる事故調査・対応の報告。"
+  },
+  "anthropic-robot-work": {
+    "title": "Anthropic — What work can robots do?",
+    "url": "https://www.anthropic.com/research/what-work-can-robots-do",
+    "published": "2026-09-30",
+    "checked": "2026-10-01",
+    "date": "2026-09-30",
+    "period": "ロボットの既存資料と職務をClaudeで分類した推定。雇用の重みは米国2025年データ。",
+    "primary": "推定を行ったAnthropicの原研究。新しいロボットの実地試験ではない。"
+  },
+  "anthropic-project-swap": {
+    "title": "Anthropic — Project Swap: What happens when agents trade for us?",
+    "url": "https://www.anthropic.com/research/project-swap",
+    "published": "2026-09-24",
+    "checked": "2026-10-01",
+    "date": "2026-09-24",
+    "period": "2026年夏、社員201人の本の交換と、その市場を模した再実行。正確な実施日は未記載。",
+    "primary": "実験を行ったAnthropicの原報告。"
+  },
+  "synthid-bio": {
+    "title": "Stutz et al. — Function-preserving watermarking of AI-generated proteins",
+    "url": "https://www.nature.com/articles/s41586-026-10965-y",
+    "published": "2026-09-30",
+    "checked": "2026-10-01",
+    "date": "2026-09-30",
+    "period": "ProteinMPNNによる配列とAlphaFold 3による構造の電子透かし。実験日は未記載。",
+    "primary": "開発チームによるNature掲載の原研究。実運用の被害防止の評価ではない。"
   }
 }

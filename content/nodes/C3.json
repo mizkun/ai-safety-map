@@ -9,7 +9,8 @@
     "framework",
     "pace-frontier",
     "claude-cyber-assessment",
-    "embedded-evaluation-partnership"
+    "embedded-evaluation-partnership",
+    "metr-action-monitor"
   ],
   "questions": [],
   "related": [],
@@ -21,7 +22,7 @@
     "評価への気づきと、実際の監視回避を区別できているか。"
   ],
   "review": {
-    "checkedAt": "2026-09-24",
+    "checkedAt": "2026-10-01",
     "intervalDays": 7,
     "reason": "能力・行動・対策の評価は短期間で変わり得るため。"
   },
@@ -37,7 +38,8 @@
     "frontier-pacing",
     "embedded-evaluators",
     "claude-cyber-monitors",
-    "embedded-evaluator-partnership"
+    "embedded-evaluator-partnership",
+    "blocking-action-monitor"
   ],
   "shortTitle": "コントロールの失敗"
 }

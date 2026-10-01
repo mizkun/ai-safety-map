@@ -4,7 +4,9 @@
   "explanation": "C3a3.md",
   "sources": [
     "control-paper",
-    "incident"
+    "incident",
+    "metr-action-monitor",
+    "openai-sol61"
   ],
   "questions": [],
   "related": [],
@@ -16,14 +18,16 @@
     "scheming"
   ],
   "review": {
-    "checkedAt": "2026-09-24",
+    "checkedAt": "2026-10-01",
     "intervalDays": 7,
     "reason": "監督回避と、それを防ぐ手法の評価は変化が速いため。"
   },
   "status": "limited",
   "research": [
     "control-protocol",
-    "hf-incident"
+    "hf-incident",
+    "blocking-action-monitor",
+    "sol61-monitoring"
   ],
   "shortTitle": "実行中の監督をすり抜ける"
 }

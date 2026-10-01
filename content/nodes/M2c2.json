@@ -5,7 +5,8 @@
   "sources": [
     "anthropic-threat-202609",
     "aisi-incident",
-    "astra"
+    "astra",
+    "anthropic-glm53"
   ],
   "questions": [],
   "related": [],
@@ -14,7 +15,7 @@
   ],
   "watch": [],
   "review": {
-    "checkedAt": "2026-09-18",
+    "checkedAt": "2026-10-01",
     "intervalDays": 7,
     "reason": "能力・行動・対策の評価は短期間で変わり得るため。"
   },
@@ -22,7 +23,8 @@
   "research": [
     "threat-cyber-sep26",
     "aisi-incident",
-    "astra-guard"
+    "astra-guard",
+    "glm53-cyber-access"
   ],
   "shortTitle": "支援が攻撃対象に届く"
 }

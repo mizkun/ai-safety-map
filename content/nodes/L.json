@@ -7,7 +7,10 @@
     "incident",
     "claude-cyber-assessment",
     "openai-file-sharing",
-    "sol-luna-card"
+    "sol-luna-card",
+    "openai-sol61",
+    "openai-public-token",
+    "openai-dns-access"
   ],
   "questions": [],
   "related": [],
@@ -20,7 +23,7 @@
     "発見後の対応で、何が止まり、何が続いたか。"
   ],
   "review": {
-    "checkedAt": "2026-09-23",
+    "checkedAt": "2026-10-01",
     "intervalDays": 7,
     "reason": "能力・行動・対策の評価は短期間で変わり得るため。"
   },
@@ -33,7 +36,10 @@
     "hf-incident",
     "claude-cyber-incidents",
     "unauthorized-file-sharing",
-    "sol-deployment-simulation"
+    "sol-deployment-simulation",
+    "sol61-deployment-simulation",
+    "public-token-incident",
+    "dns-access-incident"
   ],
   "shortTitle": "局所的に意図しない行動"
 }

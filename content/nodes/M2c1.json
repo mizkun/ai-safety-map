@@ -6,7 +6,9 @@
     "anthropic-threat-202609",
     "astra-card",
     "aisi",
-    "gemini-38"
+    "gemini-38",
+    "anthropic-glm53",
+    "nist-glm53"
   ],
   "questions": [],
   "related": [],
@@ -19,7 +21,7 @@
     "既知の課題への成績と、未知の課題・強い防御への成績はどう違うか。"
   ],
   "review": {
-    "checkedAt": "2026-09-18",
+    "checkedAt": "2026-10-01",
     "intervalDays": 7,
     "reason": "能力・行動・対策の評価は短期間で変わり得るため。"
   },
@@ -28,7 +30,9 @@
     "threat-cyber-sep26",
     "astra-cyber",
     "aisi-range",
-    "gemini-38"
+    "gemini-38",
+    "glm53-cyber-access",
+    "glm53-caisi"
   ],
   "shortTitle": "現実に近いサイバー作業を遂行"
 }
