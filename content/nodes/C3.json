@@ -10,7 +10,9 @@
     "pace-frontier",
     "claude-cyber-assessment",
     "embedded-evaluation-partnership",
-    "metr-action-monitor"
+    "metr-action-monitor",
+    "aisi-evaluation-security",
+    "openai-training-safety-cases"
   ],
   "questions": [],
   "related": [],
@@ -22,7 +24,7 @@
     "評価への気づきと、実際の監視回避を区別できているか。"
   ],
   "review": {
-    "checkedAt": "2026-10-01",
+    "checkedAt": "2026-10-03",
     "intervalDays": 7,
     "reason": "能力・行動・対策の評価は短期間で変わり得るため。"
   },
@@ -39,7 +41,9 @@
     "embedded-evaluators",
     "claude-cyber-monitors",
     "embedded-evaluator-partnership",
-    "blocking-action-monitor"
+    "blocking-action-monitor",
+    "aisi-layered-evaluation-controls",
+    "training-safety-case-guidelines"
   ],
   "shortTitle": "コントロールの失敗"
 }

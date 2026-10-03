@@ -43,7 +43,9 @@
     "urls": [
       "https://openai.com/safety/",
       "https://openai.com/research/index/",
-      "https://deploymentsafety.openai.com/"
+      "https://deploymentsafety.openai.com/",
+      "https://alignment.openai.com/",
+      "https://alignment.openai.com/misalignment-reports/"
     ],
     "focus": "システムカード、能力の閾値、評価条件、研究の自動化、安全性の改善。開発元による報告として扱う。",
     "nodes": [

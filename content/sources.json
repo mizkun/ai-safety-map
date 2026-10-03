@@ -664,5 +664,32 @@
     "date": "2026-09-30",
     "period": "ProteinMPNNによる配列とAlphaFold 3による構造の電子透かし。実験日は未記載。",
     "primary": "開発チームによるNature掲載の原研究。実運用の被害防止の評価ではない。"
+  },
+  "aisi-evaluation-security": {
+    "url": "https://www.aisi.gov.uk/blog/building-a-more-secure-environment-for-evaluating-dangerous-capabilities",
+    "published": "2026-10-01",
+    "date": "2026-10-01",
+    "checked": "2026-10-03",
+    "title": "英国AISI — 危険能力の評価環境を守る対策の更新",
+    "period": "2026年8月の事故公表後から10月1日までの対策整備。個別の試験日・対象モデル名は未記載。",
+    "primary": "対策を導入したAISI自身の運用報告。NCSCの支援があるが、独立した有効性評価の公表ではない。"
+  },
+  "openai-training-safety-cases": {
+    "url": "https://openai.com/index/towards-safety-cases-for-frontier-ai-training/",
+    "published": "2026-09-28",
+    "date": "2026-09-28",
+    "checked": "2026-10-03",
+    "title": "OpenAI — 学習を続けるための安全性の根拠を示す初期指針",
+    "period": "2026年9月28日時点の初期指針。先端モデルの強化学習が対象で、実装を進めている段階。",
+    "primary": "提案主体による原文。個別モデルの比較実験や、全項目を実装済みとする監査報告ではない。"
+  },
+  "schwartz-claude-shaped-science": {
+    "url": "https://www.anthropic.com/research/claude-shaped-science",
+    "published": "2026-10-01",
+    "date": "2026-10-01",
+    "checked": "2026-10-03",
+    "title": "Matthew Schwartz — Claude-shaped science",
+    "period": "2026年夏から約3ヶ月の研究実践。Claude Fable 5とBootLoopsを使用。個別の実施日は未記載。",
+    "primary": "研究を行った著者自身の寄稿。著者は当時Anthropicの客員研究者。独立した比較評価ではなく、個別成果は検証が続く。"
   }
 }

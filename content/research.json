@@ -946,5 +946,41 @@
     "method": "出所の印を加えた設計と加えない設計の機能や、印を検出できるかを比較。",
     "result": "調べた条件では、機能を保ちながら出所の印を検出できた。",
     "limitation": "悪用や被害を防いだ実運用の結果ではない。意図的な改変や対象外の道具には限界があり、出所が分かることは安全性の保証ではない。"
+  },
+  "aisi-layered-evaluation-controls": {
+    "source": "aisi-evaluation-security",
+    "type": "observation",
+    "title": "外部通信と実行前の監視を、別々の層で守る",
+    "kind": "評価環境の防御・運用報告",
+    "locator": "What we committed to and what we have done / Using AI to test our own security / What comes next",
+    "evaluator": "英国AISI。NCSCが支援。",
+    "setting": "エージェントを使うサイバー評価。外部通信を、評価環境とその外側の仮想マシンで別々に制限。対象モデル名は未記載。",
+    "method": "過去の記録、人工的な記録、模擬環境での監視回避試験を使用。隔離の試験には人間の監督と手動停止も置いた。",
+    "result": "AISIは、疑わしい操作を実行前に止めて人へ回す監視と、開始前の設定確認を導入し、評価の大半を再開したと報告した。",
+    "limitation": "検出率、回避試験の成功率、停止所要時間、実害減少の比較は未公表。新しい隔離基盤と統合した対応基盤は整備中。全ての防壁が有効と確認されたわけではない。"
+  },
+  "training-safety-case-guidelines": {
+    "source": "openai-training-safety-cases",
+    "type": "argument",
+    "title": "学習を続ける根拠と、止める条件を事前に決める案",
+    "kind": "学習中の安全管理の指針案",
+    "locator": "導入、1. Technical safeguards、2. Operational guidelines、3. Investigations of misalignment incidents",
+    "evaluator": "OpenAI（指針の提案主体）",
+    "setting": "先端モデルの強化学習。社内・社外での利用には、別途さらに広い検討が必要と明記。",
+    "method": "安全と判断する根拠と残るリスクを文書化し、別チームの異論、監査、停止を決める権限と対応期限を組み合わせる提案。",
+    "result": "監視や自動停止が働かない状態で学習を始めにくくする設計や、事故後の調査・再発確認も提案した。",
+    "limitation": "実装中の推奨事項であり、安全性の証明ではない。具体的な対応期限、導入範囲、被害を減らした比較結果は示していない。"
+  },
+  "bootloops-human-research-judgment": {
+    "source": "schwartz-claude-shaped-science",
+    "type": "observation",
+    "title": "計算を進めるAIと、研究の意義を判断する人間",
+    "kind": "著者による研究実践の報告",
+    "locator": "Claude, take the wheel! / I know Kung Fu / The technical details / Disclosure",
+    "evaluator": "Matthew Schwartzと分野の専門家。SchwartzはAnthropicの客員研究者。",
+    "setting": "2026年夏のClaude Fable 5と、計算用の道具をまとめたBootLoops。クラウド上で複数の研究を進め、人が方向付けと確認を行った。",
+    "method": "AIに向く候補問題を探し、コードと計算を進めた。専門家が新しさや重要性を見直し、問いを修正した。",
+    "result": "著者は約400候補から、3ヶ月で19人の共著者と36本の原稿を作ったと報告。最初の計算が正しくても、専門家の助言まで意義が乏しい場合があった。",
+    "limitation": "原稿数は検証済みの発見数ではない。選んだ課題の実践であり、人の作業を含む対照比較もない。次のAIの開発全体や自己改善の加速を直接測っていない。"
   }
 }

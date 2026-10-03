@@ -1,5 +1,27 @@
 [
   {
+    "id": "evaluation-defenses-research-review-20261003",
+    "date": "2026-10-03",
+    "nodes": [
+      "C2b",
+      "C3",
+      "C3a",
+      "C3b",
+      "R1"
+    ],
+    "sources": [
+      "aisi-evaluation-security",
+      "openai-training-safety-cases",
+      "schwartz-claude-shaped-science"
+    ],
+    "kind": "防御の実装と研究支援の点検",
+    "title": "導入した防御と整備中の対策を分けて追記",
+    "summary": "AISIの評価再開と防御、OpenAIの学習中の安全管理案、専門家が方向付ける研究支援を追加しました。",
+    "before": "事故後の制限や監視をAISIがどう導入したかと、新しい安全管理案は未収録でした。",
+    "after": "実装した対策、整備中の基盤、指針案を区別。研究支援でも、計算の正しさと研究の意義を分けて説明します。",
+    "reason": "対策の発表を安全性の証明と扱わず、研究成果の数を無人の研究能力と混同しないため。"
+  },
+  {
     "id": "monitoring-access-review-20261001",
     "date": "2026-10-01",
     "nodes": [
