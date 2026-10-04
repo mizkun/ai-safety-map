@@ -691,5 +691,41 @@
     "title": "Matthew Schwartz — Claude-shaped science",
     "period": "2026年夏から約3ヶ月の研究実践。Claude Fable 5とBootLoopsを使用。個別の実施日は未記載。",
     "primary": "研究を行った著者自身の寄稿。著者は当時Anthropicの客員研究者。独立した比較評価ではなく、個別成果は検証が続く。"
+  },
+  "openai-reference-eda": {
+    "url": "https://alignment.openai.com/misalignment-reports/reaching-an-internal-eda-host-through-a-reference-tool/",
+    "published": null,
+    "date": "2026-10-02",
+    "checked": "2026-10-04",
+    "title": "OpenAI — 参照ツールから社内の別の計算機へ無許可で到達した事例",
+    "period": "2026年3月27日の評価中の事例。同日発見。報告更新：10月2日。初回公表日は未確認。",
+    "primary": "開発元が自社の評価・事故を調べた一次報告。モデル名は非公開で、独立した追試ではない。"
+  },
+  "openai-reference-copy": {
+    "url": "https://alignment.openai.com/misalignment-reports/command-injecting-a-reference-tool-to-copy-a-source-file/",
+    "published": null,
+    "date": "2026-10-02",
+    "checked": "2026-10-04",
+    "title": "OpenAI — 参照ツールの制限を越えてソースコードを取得した事例",
+    "period": "2026年5月16日の強化学習中の事例。5月25日発見。報告更新：10月2日。初回公表日は未確認。",
+    "primary": "開発元による事故調査と対策の報告。未公開モデルの事例で、現在の公開モデルの発生率を測った結果ではない。"
+  },
+  "openai-restart-preparation": {
+    "url": "https://alignment.openai.com/misalignment-reports/preparing-for-a-restart-after-reading-slack/",
+    "published": null,
+    "date": "2026-10-02",
+    "checked": "2026-10-04",
+    "title": "OpenAI — 停止予定を知り、正規の再起動に備えた事例",
+    "period": "2026年5月22日の社内利用。報告更新：10月2日。初回公表日は未確認。",
+    "primary": "OpenAI自身による行動と停止回避の調査。同社はこの行動を意図のズレと分類していない。独立調査ではない。"
+  },
+  "anthropic-cvd-dashboard": {
+    "url": "https://red.anthropic.com/2026/cvd/",
+    "published": null,
+    "date": "2026-10-02",
+    "checked": "2026-10-04",
+    "title": "Anthropic — 脆弱性の発見・報告・修正を追う公開集計",
+    "period": "2026年10月2日19:47 UTC更新。初期表示の発見期間は2025年11月1日〜2026年10月2日。初回公表日は未確認。",
+    "primary": "Anthropicによる累積集計。一部の候補は外部のセキュリティ企業が確認するが、全件の独立検証や被害減少の比較ではない。"
   }
 }

@@ -65,7 +65,8 @@
     "urls": [
       "https://alignment.anthropic.com/",
       "https://www.anthropic.com/research",
-      "https://www.anthropic.com/threat-intelligence"
+      "https://www.anthropic.com/threat-intelligence",
+      "https://red.anthropic.com/2026/cvd/"
     ],
     "focus": "目標のずれ、監督、エージェントの行動、研究支援、安全性の改善。模擬実験と実運用を分ける。",
     "nodes": [

@@ -146,10 +146,12 @@
         "compaction-concealment",
         "opus55-pasted-text",
         "astra-scope-simulation",
-        "public-token-incident"
+        "public-token-incident",
+        "reference-tool-internal-access",
+        "reference-tool-source-copy"
       ],
       "review": {
-        "checkedAt": "2026-10-01",
+        "checkedAt": "2026-10-04",
         "intervalDays": 7,
         "reason": "既存の根拠がカードの条件をどこまで直接確かめているかを分類しています。根拠の更新時に見直します。"
       }
@@ -230,10 +232,11 @@
         "sol-monitor-evasion",
         "blocking-action-monitor",
         "sol61-monitoring",
-        "aisi-layered-evaluation-controls"
+        "aisi-layered-evaluation-controls",
+        "reference-tool-source-copy"
       ],
       "review": {
-        "checkedAt": "2026-10-03",
+        "checkedAt": "2026-10-04",
         "intervalDays": 7,
         "reason": "既存の根拠がカードの条件をどこまで直接確かめているかを分類しています。根拠の更新時に見直します。"
       }

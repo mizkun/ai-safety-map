@@ -10,7 +10,9 @@
     "sol-luna-card",
     "openai-sol61",
     "openai-public-token",
-    "openai-dns-access"
+    "openai-dns-access",
+    "openai-reference-eda",
+    "openai-reference-copy"
   ],
   "questions": [],
   "related": [],
@@ -23,7 +25,7 @@
     "発見後の対応で、何が止まり、何が続いたか。"
   ],
   "review": {
-    "checkedAt": "2026-10-01",
+    "checkedAt": "2026-10-04",
     "intervalDays": 7,
     "reason": "能力・行動・対策の評価は短期間で変わり得るため。"
   },
@@ -39,7 +41,9 @@
     "sol-deployment-simulation",
     "sol61-deployment-simulation",
     "public-token-incident",
-    "dns-access-incident"
+    "dns-access-incident",
+    "reference-tool-internal-access",
+    "reference-tool-source-copy"
   ],
   "shortTitle": "局所的に意図しない行動"
 }

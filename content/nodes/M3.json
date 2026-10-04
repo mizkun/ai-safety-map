@@ -7,7 +7,8 @@
     "astra-card",
     "control",
     "rand-extinction",
-    "synthid-bio"
+    "synthid-bio",
+    "anthropic-cvd-dashboard"
   ],
   "questions": [],
   "related": [],
@@ -16,7 +17,7 @@
     "実害だけでなく、防御と封じ込めが働いた例も報告されたか。"
   ],
   "review": {
-    "checkedAt": "2026-10-01",
+    "checkedAt": "2026-10-04",
     "intervalDays": 30,
     "reason": "経路を支える前提、反論、防壁の有効性に変化がないか確認するため。"
   },
@@ -26,7 +27,8 @@
     "astra-cyber",
     "control-roadmap",
     "extinction",
-    "biological-watermarking"
+    "biological-watermarking",
+    "vulnerability-disclosure-patching"
   ],
   "shortTitle": "防止・封じ込めが追いつかない"
 }

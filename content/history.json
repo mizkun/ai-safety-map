@@ -1,5 +1,29 @@
 [
   {
+    "id": "tool-boundaries-defense-review-20261004",
+    "date": "2026-10-04",
+    "nodes": [
+      "C1",
+      "C2b",
+      "C3a",
+      "C4a",
+      "L",
+      "M3"
+    ],
+    "sources": [
+      "openai-reference-eda",
+      "openai-reference-copy",
+      "openai-restart-preparation",
+      "anthropic-cvd-dashboard"
+    ],
+    "kind": "道具の制限と、防御・停止の点検",
+    "title": "無許可操作と正規の再起動を分け、防御の修正実績も追加",
+    "summary": "OpenAIの3件の行動報告と、Anthropicの脆弱性対応の集計を追加。発生時期、監視範囲、人の介入、修正と導入の違いを説明します。",
+    "before": "参照ツールの制限を越えた2事例と、正規の再起動に従った例、脆弱性の修正状況は未収録でした。",
+    "after": "6項目を更新。無許可の操作と停止への抵抗を区別し、監視や修正の範囲を明記。根拠の色と矢印の条件は維持しました。",
+    "reason": "事故の追加を停止不能の証拠とせず、防御の進歩も、確認できた範囲で読めるようにするため。"
+  },
+  {
     "id": "evaluation-defenses-research-review-20261003",
     "date": "2026-10-03",
     "nodes": [
