@@ -275,10 +275,11 @@
         "control-protocol",
         "hf-incident",
         "blocking-action-monitor",
-        "sol61-monitoring"
+        "sol61-monitoring",
+        "external-monitor-stress-tests"
       ],
       "review": {
-        "checkedAt": "2026-10-01",
+        "checkedAt": "2026-10-05",
         "intervalDays": 7,
         "reason": "既存の根拠がカードの条件をどこまで直接確かめているかを分類しています。根拠の更新時に見直します。"
       }

@@ -1030,5 +1030,17 @@
     "method": "人が再現・妥当性を確かめてから保守者へ報告する経路と、同じ外部確認を経ずに直接報告する経路がある。人の確認や対応の余力が制約になる。",
     "result": "10月2日時点の同社集計では、保守者への報告は6,157件、うち修正公開を把握したものは516件。報告には外部確認を経ていない4,824件が含まれる。",
     "limitation": "報告数は確認済みの欠陥数ではない。修正公開は利用者による導入とも異なり、未修正数や防御の成功率をこの比率から推定できない。実際の被害を減らした量も未測定。"
+  },
+  "external-monitor-stress-tests": {
+    "source": "aisi-monitor-stress-tests",
+    "type": "evaluation",
+    "title": "監視の弱点を探し、改修へ戻す外部評価",
+    "kind": "外部評価者による社内監視の検証",
+    "locator": "Our evaluations of frontier control monitors、Automated red teaming、Next steps",
+    "evaluator": "英国AISI。両社との協力評価で、製品全体の独立認証ではない。",
+    "setting": "DeepMindの実行後の推論監視と、Anthropicの実行前の操作監視。別の自動探索例ではClaude 4.6 Sonnetを提案側と監視側に使用。",
+    "method": "危険な作業を含む記録で、監視の判断と、点検対象に入らない操作を調べた。",
+    "result": "両社の監視に弱点を発見。Anthropicの複数版の改修・試験へ反映したと報告。",
+    "limitation": "内部監視のモデル版は未詳。採点情報を使える探索もあり、通常利用の回避率や改修後の防御率を示す結果ではない。"
   }
 }

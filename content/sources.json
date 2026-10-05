@@ -727,5 +727,14 @@
     "title": "Anthropic — 脆弱性の発見・報告・修正を追う公開集計",
     "period": "2026年10月2日19:47 UTC更新。初期表示の発見期間は2025年11月1日〜2026年10月2日。初回公表日は未確認。",
     "primary": "Anthropicによる累積集計。一部の候補は外部のセキュリティ企業が確認するが、全件の独立検証や被害減少の比較ではない。"
+  },
+  "aisi-monitor-stress-tests": {
+    "title": "英国AISI — 社内の監視AIの弱点を調べる外部評価",
+    "url": "https://www.aisi.gov.uk/blog/how-our-new-control-red-team-is-stress-testing-frontier-monitors",
+    "published": "2026-07-23",
+    "period": "公表前の社内監視の検証と自動探索実験。個別の実験日は未記載。",
+    "checked": "2026-10-05",
+    "date": "公表：2026-07-23／実験日は未記載",
+    "primary": "評価を実施した英国AISIの原報告。開発企業と協力した限定的な検証。"
   }
 }
