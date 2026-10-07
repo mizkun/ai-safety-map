@@ -736,5 +736,77 @@
     "checked": "2026-10-05",
     "date": "公表：2026-07-23／実験日は未記載",
     "primary": "評価を実施した英国AISIの原報告。開発企業と協力した限定的な検証。"
+  },
+  "metr-observability": {
+    "url": "https://metr.org/blog/2026-10-06-ai-systems-could-cover-up-misbehavior/",
+    "published": "2026-10-06",
+    "date": "2026-10-06",
+    "checked": "2026-10-07",
+    "title": "METR — AIの行動記録を読む画面の改変と、防御の課題",
+    "period": "2026年の隔離した試験環境での概念実証。報告先のIssueは6月22日作成。実験日と使用モデルは未記載。",
+    "primary": "検証を行ったMETRの原報告。人がAIの助けを借りて弱点を探した実証で、通常の評価で起きた悪用事例ではない。"
+  },
+  "inspect-viewer-injection": {
+    "url": "https://github.com/UKGovernmentBEIS/inspect_ai/issues/4318",
+    "published": "2026-06-22",
+    "date": "2026-06-22",
+    "checked": "2026-10-07",
+    "title": "Inspect — 行動記録の閲覧画面の弱点と修正の記録",
+    "period": "6月22日の報告、6月23日の保守担当者による修正確認。関連PR #4323は6月22日UTCにマージ。",
+    "primary": "報告者と保守担当者の公開記録。修正の確認であり、利用先への導入率や被害防止率の測定ではない。"
+  },
+  "inspect-untrusted-viewer": {
+    "url": "https://github.com/UKGovernmentBEIS/inspect_ai/pull/5566",
+    "published": "2026-09-25",
+    "date": "2026-09-25",
+    "checked": "2026-10-07",
+    "title": "Inspect — 信頼しない記録を文字のまま表示する機能",
+    "period": "9月25日提案、10月1日マージ。確認したマージ版は6bea9cd4f6981bf50703284e1595710e8dec6ad4。",
+    "primary": "保守元のマージ済み変更と文書を確認。古い閲覧ソフトやScoutの対応、設定による適用範囲に制約がある。"
+  },
+  "openai-laser": {
+    "url": "https://alignment.openai.com/laser/",
+    "published": "2026-10-06",
+    "date": "2026-10-06",
+    "checked": "2026-10-07",
+    "title": "OpenAI — LASERによる安全性評価用の会話の抽出",
+    "period": "公表前の社内実装と利用。個別の実験日と判定モデルの版は未記載。",
+    "primary": "手法を開発・利用したOpenAIの原報告。抽出の効率と、防御や判定の正確さは別に読む。"
+  },
+  "openai-ironclad": {
+    "url": "https://openai.com/index/advancing-computer-use-with-ironclad/",
+    "published": "2026-10-06",
+    "date": "2026-10-06",
+    "checked": "2026-10-07",
+    "title": "OpenAI — Ironcladでの複数工程の業務評価",
+    "period": "GPT-6 AstraとGPT-5.6 Solによる11課題の研究評価。個別の実施日は未記載。",
+    "primary": "開発元と協力企業が設計した研究評価の報告。独立した追試や顧客の業務時間の測定ではない。"
+  },
+  "openai-math-release": {
+    "url": "https://openai.com/index/sharing-ai-progress-in-mathematics/",
+    "published": "2026-10-06",
+    "date": "2026-10-06",
+    "checked": "2026-10-07",
+    "title": "OpenAI — 内部モデルによる数学成果の公開",
+    "period": "未公開の内部モデルによる、公表前の数学研究評価。モデル版と実施期間は未記載。",
+    "primary": "開発元の公開説明。専門家への相談や成果の公開は、各主張の独立検証の完了を意味しない。"
+  },
+  "openai-math-repository": {
+    "url": "https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/README.md",
+    "published": "2026-10-06",
+    "date": "2026-10-06",
+    "checked": "2026-10-07",
+    "title": "OpenAI — 数学の原稿・形式化・作成条件の公開資料",
+    "period": "初回公開版adc7f1241b42e322a6451854ab7e4b4c146bf78a。研究の実施日は未記載。",
+    "primary": "成果を公開した組織の原資料。READMEと形式化の案内を確認した。個々の証明の再実行や独立した正しさの検証は行っていない。"
+  },
+  "agmai-math-release-response": {
+    "url": "https://agmai.org/statement-oct6/",
+    "published": "2026-10-06",
+    "date": "2026-10-06",
+    "checked": "2026-10-07",
+    "title": "AGMAI — 数学成果の公開に助言した団体の見解",
+    "period": "OpenAIの10月6日の成果公開を受けた、同日付の声明。成果の個別検証ではない。",
+    "primary": "助言を行った団体自身の声明。助言は成果の評価や作成過程への支持を意味せず、数学者による評価はこれからだと説明。"
   }
 }

@@ -195,12 +195,13 @@
     },
     "C2a": {
       "level": "tested",
-      "summary": "明確な成功条件を持つソフトウェア課題などで、一連の作業を終える能力が測られています。曖昧な依頼や対人調整を含む仕事全体の確認ではありません。",
+      "summary": "一連の作業を測る評価がありますが、業務の部分点と完遂率は別です。契約業務の11課題での改善も、仕事全体の自動化や実測の時間削減を示しません。",
       "research": [
-        "horizon"
+        "horizon",
+        "ironclad-workflow-evaluation"
       ],
       "review": {
-        "checkedAt": "2026-09-11",
+        "checkedAt": "2026-10-07",
         "intervalDays": 7,
         "reason": "既存の根拠がカードの条件をどこまで直接確かめているかを分類しています。根拠の更新時に見直します。"
       }
@@ -243,14 +244,15 @@
     },
     "C3a1": {
       "level": "indirect",
-      "summary": "点検役のAIを追加学習しても、未知の種類の虚偽の検出では改善が限られる実験があります。ただし、実際の仕事での見逃しを測ったものではなく、他の方法が上回る条件もあります。",
+      "summary": "未知の虚偽の検出が改善しにくい実験があります。珍しい会話を評価へ集める手法も進んでいますが、抽出の効率は判定の正確さや実運用の安全性とは別です。",
       "research": [
         "horizon",
         "astra-cyber",
-        "lie-detector-transfer"
+        "lie-detector-transfer",
+        "laser-evaluation-sampling"
       ],
       "review": {
-        "checkedAt": "2026-09-22",
+        "checkedAt": "2026-10-07",
         "intervalDays": 7,
         "reason": "既存の根拠がカードの条件をどこまで直接確かめているかを分類しています。根拠の更新時に見直します。"
       }
@@ -270,16 +272,17 @@
     },
     "C3a3": {
       "level": "tested",
-      "summary": "人工的な記録で監視の見逃しと、操作記録を使う監視の改善が報告されています。通常利用での回避頻度ではありません。",
+      "summary": "監視の見逃しや、記録を読む画面の弱点が試験で報告され、防御の修正・改善も進んでいます。通常利用の隠蔽頻度や、修正後の防御全体の有効性を測ったものではありません。",
       "research": [
         "control-protocol",
         "hf-incident",
         "blocking-action-monitor",
         "sol61-monitoring",
-        "external-monitor-stress-tests"
+        "external-monitor-stress-tests",
+        "viewer-integrity-test"
       ],
       "review": {
-        "checkedAt": "2026-10-05",
+        "checkedAt": "2026-10-07",
         "intervalDays": 7,
         "reason": "既存の根拠がカードの条件をどこまで直接確かめているかを分類しています。根拠の更新時に見直します。"
       }

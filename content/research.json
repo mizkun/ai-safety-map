@@ -1042,5 +1042,53 @@
     "method": "危険な作業を含む記録で、監視の判断と、点検対象に入らない操作を調べた。",
     "result": "両社の監視に弱点を発見。Anthropicの複数版の改修・試験へ反映したと報告。",
     "limitation": "内部監視のモデル版は未詳。採点情報を使える探索もあり、通常利用の回避率や改修後の防御率を示す結果ではない。"
+  },
+  "viewer-integrity-test": {
+    "source": "metr-observability",
+    "type": "evaluation",
+    "title": "記録が残っていても、確認画面を信用できるとは限らない",
+    "kind": "人がAIを使った隔離環境での概念実証",
+    "locator": "本文のInspect実証、Appendix、脚注3〜5。修正はInspectのIssue #4318とPR #5566でも照合。",
+    "evaluator": "METR。研究者がAIの助けを借りて弱点を探索。使用モデルは未記載。",
+    "setting": "本番から分離した試験環境。AIの出力を、人が読む画面が解釈して表示する仕組みを検証。",
+    "method": "記録の見え方を書き換えられるかを試した。保管された元の記録と、閲覧画面を区別した。",
+    "result": "画面とダウンロード内容を偽れる弱点を報告。元の記録は残った。保守元は6月に修正し、10月には解釈せず文字表示する選択肢も追加。",
+    "limitation": "実評価での悪用は未観測だが、この手法に絞った全記録の調査はしていない。実際の隠蔽頻度、修正の導入率、防御全体の有効性は不明。"
+  },
+  "laser-evaluation-sampling": {
+    "source": "openai-laser",
+    "type": "evaluation",
+    "title": "見落としやすい会話を、評価用に集める",
+    "kind": "開発元による評価データの抽出手法",
+    "locator": "Privacy Considerations、Design、Reasoning grader、Impact",
+    "evaluator": "OpenAI。方針を人が用意し、推論モデルが会話を判定。モデル版は未記載。",
+    "setting": "合成・非識別化された会話を使用。生の利用者データにはアクセスしないと報告。",
+    "method": "安価な分類器で判定の境目にある会話を選び、推論モデルの判定を使って選び方を更新する。",
+    "result": "同程度の禁止会話例を集める判定計算を、無作為抽出より約1万分の1にできると報告。特定の方針と出現率に依存する。",
+    "limitation": "抽出した会話の割合は、利用全体の危険率ではない。人の確認を基準にした正確さ、未知の失敗の網羅、防止率や事故の減少は示していない。"
+  },
+  "ironclad-workflow-evaluation": {
+    "source": "openai-ironclad",
+    "type": "evaluation",
+    "title": "業務の部分点と、仕事を完遂する力を分ける",
+    "kind": "協力企業と設計した11課題の研究評価",
+    "locator": "Turning contracting workflows into training tasks、How Astra performed、脚注1〜3",
+    "evaluator": "OpenAI。Ironcladの社員とOpenAI社内の利用者が課題の選定を支援。",
+    "setting": "提供されたソフトウェア環境と公開契約を基にした模擬課題。AstraはMax、GPT-5.6 SolはHighの推論設定。",
+    "method": "承認手順などの設定を、各課題8〜50の基準で採点。関連する合成課題で学習。試行中の人の介入量や反復回数は未記載。",
+    "result": "平均点は55.0%対41.6%。推定所要時間は19.2分対37.0分で、処理速度を仮定した計算。",
+    "limitation": "部分点であり、全要件を満たした課題の割合ではない。時間は顧客の実測削減時間ではなく、職業全体の自動化や独立した追試も示していない。"
+  },
+  "mathematics-release-verification": {
+    "source": "openai-math-repository",
+    "type": "observation",
+    "title": "数学の成果公開と、証明の確認を分ける",
+    "kind": "開発元が公開した原稿と検証用資料",
+    "locator": "README: Navigating the collection、How the results were produced、Versions and citations。lean/README.mdも確認。",
+    "evaluator": "OpenAI。未公開の内部モデルで研究問題を評価し、成果を選んで整理。",
+    "setting": "約4,000問題から722原稿・372の関連群を公開したと説明。全てにLeanの形式化が付くわけではない。",
+    "method": "多くは共通の手順だが例外もあり、一部は人が読みやすさを編集。成果あたり平均計算量をChatGPT Proの約3時間相当として説明。",
+    "result": "原稿、一部の形式化、10件の推論の要約、改訂を残す方針を公開。検証段階の異なる結果を含む。",
+    "limitation": "原稿数は独立検証済みの発見数ではなく、問題数との割り算も成功率にならない。計算量は人の作業込みの研究時間ではない。本点検では個々の証明を再実行していない。"
   }
 }

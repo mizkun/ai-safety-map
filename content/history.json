@@ -1,5 +1,31 @@
 [
   {
+    "id": "observability-and-evaluation-20261007",
+    "date": "2026-10-07",
+    "nodes": [
+      "C3a3",
+      "C3a1",
+      "C2a",
+      "R1"
+    ],
+    "sources": [
+      "metr-observability",
+      "inspect-viewer-injection",
+      "inspect-untrusted-viewer",
+      "openai-laser",
+      "openai-ironclad",
+      "openai-math-release",
+      "openai-math-repository",
+      "agmai-math-release-response"
+    ],
+    "kind": "監督・評価・研究成果の点検",
+    "title": "監督画面の弱点と修正、評価と成果の限界を追加",
+    "summary": "METRの閲覧画面の実証と保守元の修正を追加。LASER、契約業務の評価、数学成果の公開も、対象と限界を分けて説明します。",
+    "before": "監督の判断や記録の保護を扱っていましたが、閲覧画面自体の弱点と今回の評価・研究資料は未収録でした。",
+    "after": "4項目を更新。隔離試験と実際の悪用、抽出効率と正確さ、部分点と完遂率、成果公開と独立検証を区別。根拠の分類と矢印の条件は維持しました。",
+    "reason": "能力や防御の進歩を反映しながら、発表された数値を安全性や全自動化の実証へ読み替えないため。"
+  },
+  {
     "id": "weekly-monitor-backfill-20261005",
     "date": "2026-10-05",
     "nodes": [
