@@ -9,7 +9,11 @@
     "anthropic-biomolecular",
     "anthropic-pace-measurements",
     "art-preprint",
-    "art-discovery"
+    "art-discovery",
+    "schwartz-claude-shaped-science",
+    "openai-math-release",
+    "openai-math-repository",
+    "agmai-math-release-response"
   ],
   "questions": [],
   "related": [],
@@ -20,7 +24,7 @@
     "仕事の量、質、人間の介入を分けて測れているか。"
   ],
   "review": {
-    "checkedAt": "2026-09-24",
+    "checkedAt": "2026-10-07",
     "intervalDays": 7,
     "reason": "能力・行動・対策の評価は短期間で変わり得るため。"
   },
@@ -34,7 +38,9 @@
     "formalization",
     "biomolecular-tool-optimization",
     "rd-automation-index",
-    "art-research-discovery"
+    "art-research-discovery",
+    "bootloops-human-research-judgment",
+    "mathematics-release-verification"
   ],
   "shortTitle": "AIが研究の一部を進める"
 }

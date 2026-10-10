@@ -1,5 +1,187 @@
 [
   {
+    "id": "evaluation-and-boundaries-20261010",
+    "date": "2026-10-10",
+    "nodes": [
+      "C3a2",
+      "R4",
+      "C3",
+      "M2c1",
+      "M2b1",
+      "R3",
+      "L",
+      "M3"
+    ],
+    "sources": [
+      "openai-metagaming-latents",
+      "aisi-transect",
+      "transect-paper",
+      "openai-gpt6-october",
+      "anthropic-unintended-actions",
+      "anthropic-oss-scanner"
+    ],
+    "kind": "評価・操作の境界・防御の点検",
+    "title": "評価への気づき、外部操作と防御の新しい報告を追加",
+    "summary": "評価を意識する推論、記録分析、10月版の能力評価、意図しない外部操作と欠陥の検証を追加しました。",
+    "before": "これまでの評価・事故・対策を扱っていましたが、10月6〜9日の関連報告は未収録でした。",
+    "after": "8項目を更新。推論と行動、既知事例の再試験と未知の失敗への防御、候補の確認と修正の普及を区別します。根拠の分類と矢印の条件は維持しました。",
+    "reason": "能力と対策の変化を反映しつつ、限られた試験や選ばれた実例を普段の発生率や世界規模の被害へ読み替えないため。"
+  },
+  {
+    "id": "observability-and-evaluation-20261007",
+    "date": "2026-10-07",
+    "nodes": [
+      "C3a3",
+      "C3a1",
+      "C2a",
+      "R1"
+    ],
+    "sources": [
+      "metr-observability",
+      "inspect-viewer-injection",
+      "inspect-untrusted-viewer",
+      "openai-laser",
+      "openai-ironclad",
+      "openai-math-release",
+      "openai-math-repository",
+      "agmai-math-release-response"
+    ],
+    "kind": "監督・評価・研究成果の点検",
+    "title": "監督画面の弱点と修正、評価と成果の限界を追加",
+    "summary": "METRの閲覧画面の実証と保守元の修正を追加。LASER、契約業務の評価、数学成果の公開も、対象と限界を分けて説明します。",
+    "before": "監督の判断や記録の保護を扱っていましたが、閲覧画面自体の弱点と今回の評価・研究資料は未収録でした。",
+    "after": "4項目を更新。隔離試験と実際の悪用、抽出効率と正確さ、部分点と完遂率、成果公開と独立検証を区別。根拠の分類と矢印の条件は維持しました。",
+    "reason": "能力や防御の進歩を反映しながら、発表された数値を安全性や全自動化の実証へ読み替えないため。"
+  },
+  {
+    "id": "weekly-monitor-backfill-20261005",
+    "date": "2026-10-05",
+    "nodes": [
+      "C3a3"
+    ],
+    "sources": [
+      "aisi-monitor-stress-tests"
+    ],
+    "kind": "週次点検・監視の外部評価",
+    "title": "監視の弱点を探す試験と、実運用の防御力を区別",
+    "summary": "7月のAISIによる社内監視の検証を補いました。弱点の発見と改修への反映を、通常利用の回避率と区別します。",
+    "before": "制御実験や最近の監視比較は記載していましたが、AISIによる両社の社内監視の検証は未収録でした。",
+    "after": "点検へ送る範囲、採点情報を使う実験の限界、改修後の再検証を追記。根拠の分類と矢印の条件は維持しました。",
+    "reason": "監視を置くだけで安全が保証されるとも、見つかった弱点が全ての運用に通じるとも読めないようにするため。"
+  },
+  {
+    "id": "tool-boundaries-defense-review-20261004",
+    "date": "2026-10-04",
+    "nodes": [
+      "C1",
+      "C2b",
+      "C3a",
+      "C4a",
+      "L",
+      "M3"
+    ],
+    "sources": [
+      "openai-reference-eda",
+      "openai-reference-copy",
+      "openai-restart-preparation",
+      "anthropic-cvd-dashboard"
+    ],
+    "kind": "道具の制限と、防御・停止の点検",
+    "title": "無許可操作と正規の再起動を分け、防御の修正実績も追加",
+    "summary": "OpenAIの3件の行動報告と、Anthropicの脆弱性対応の集計を追加。発生時期、監視範囲、人の介入、修正と導入の違いを説明します。",
+    "before": "参照ツールの制限を越えた2事例と、正規の再起動に従った例、脆弱性の修正状況は未収録でした。",
+    "after": "6項目を更新。無許可の操作と停止への抵抗を区別し、監視や修正の範囲を明記。根拠の色と矢印の条件は維持しました。",
+    "reason": "事故の追加を停止不能の証拠とせず、防御の進歩も、確認できた範囲で読めるようにするため。"
+  },
+  {
+    "id": "evaluation-defenses-research-review-20261003",
+    "date": "2026-10-03",
+    "nodes": [
+      "C2b",
+      "C3",
+      "C3a",
+      "C3b",
+      "R1"
+    ],
+    "sources": [
+      "aisi-evaluation-security",
+      "openai-training-safety-cases",
+      "schwartz-claude-shaped-science"
+    ],
+    "kind": "防御の実装と研究支援の点検",
+    "title": "導入した防御と整備中の対策を分けて追記",
+    "summary": "AISIの評価再開と防御、OpenAIの学習中の安全管理案、専門家が方向付ける研究支援を追加しました。",
+    "before": "事故後の制限や監視をAISIがどう導入したかと、新しい安全管理案は未収録でした。",
+    "after": "実装した対策、整備中の基盤、指針案を区別。研究支援でも、計算の正しさと研究の意義を分けて説明します。",
+    "reason": "対策の発表を安全性の証明と扱わず、研究成果の数を無人の研究能力と混同しないため。"
+  },
+  {
+    "id": "monitoring-access-review-20261001",
+    "date": "2026-10-01",
+    "nodes": [
+      "M1",
+      "M2",
+      "M2c",
+      "M2c1",
+      "M2c2",
+      "M2b",
+      "M2b1",
+      "R4",
+      "F4",
+      "C1",
+      "C3a",
+      "C3b",
+      "L",
+      "R2",
+      "R3",
+      "C2",
+      "C2a",
+      "C2b",
+      "C3",
+      "C3a1",
+      "C3a2",
+      "C3a3",
+      "C4",
+      "F1",
+      "F2",
+      "F2a",
+      "F2b",
+      "F3",
+      "I1",
+      "I1a",
+      "I1b",
+      "I2",
+      "NOW",
+      "P1",
+      "R0",
+      "R1",
+      "R5",
+      "W1",
+      "W2",
+      "W3",
+      "W6",
+      "M3"
+    ],
+    "sources": [
+      "metr-action-monitor",
+      "aisi-astra-supply-chain",
+      "anthropic-glm53",
+      "nist-glm53",
+      "openai-sol61",
+      "openai-public-token",
+      "openai-dns-access",
+      "anthropic-robot-work",
+      "anthropic-project-swap",
+      "synthid-bio"
+    ],
+    "kind": "監視・アクセス・仕事の根拠更新と再点検",
+    "title": "警告から停止までの課題と、防御の改善を追加",
+    "summary": "実際の事故、監視の試験、サイバー能力、仕事の推定を区別して追加。期限に達した41項目と9本の矢印も根拠を読み直しました。",
+    "before": "監視の検出と停止の違い、モデルや提供形態による支援の違い、新しい費用推定は十分に収録していませんでした。",
+    "after": "発生時期、模擬環境、人の介入、得点の分母を明記。電子透かしなど防御研究の成果と限界も追加し、根拠の色と経路の条件を維持しました。",
+    "reason": "新しい能力や事故を、制御不能や世界規模の被害の証拠と混同せず、防御の進歩も同時に読めるようにするため。"
+  },
+  {
     "id": "research-and-evaluation-recheck-20260924",
     "date": "2026-09-24",
     "nodes": [

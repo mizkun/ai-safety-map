@@ -144,10 +144,14 @@
         "summer",
         "claude-cyber-incidents",
         "compaction-concealment",
-        "opus55-pasted-text"
+        "opus55-pasted-text",
+        "astra-scope-simulation",
+        "public-token-incident",
+        "reference-tool-internal-access",
+        "reference-tool-source-copy"
       ],
       "review": {
-        "checkedAt": "2026-09-23",
+        "checkedAt": "2026-10-04",
         "intervalDays": 7,
         "reason": "既存の根拠がカードの条件をどこまで直接確かめているかを分類しています。根拠の更新時に見直します。"
       }
@@ -191,12 +195,13 @@
     },
     "C2a": {
       "level": "tested",
-      "summary": "明確な成功条件を持つソフトウェア課題などで、一連の作業を終える能力が測られています。曖昧な依頼や対人調整を含む仕事全体の確認ではありません。",
+      "summary": "一連の作業を測る評価がありますが、業務の部分点と完遂率は別です。契約業務の11課題での改善も、仕事全体の自動化や実測の時間削減を示しません。",
       "research": [
-        "horizon"
+        "horizon",
+        "ironclad-workflow-evaluation"
       ],
       "review": {
-        "checkedAt": "2026-09-11",
+        "checkedAt": "2026-10-07",
         "intervalDays": 7,
         "reason": "既存の根拠がカードの条件をどこまで直接確かめているかを分類しています。根拠の更新時に見直します。"
       }
@@ -206,10 +211,15 @@
       "summary": "監督の見逃しや許可外行動は、この条件を考える手がかりです。人間が封じ込めた事例もあり、検出・阻止・復旧がすべて間に合わない状況を一括して確認したものではありません。",
       "research": [
         "control-protocol",
-        "aisi-incident"
+        "aisi-incident",
+        "blocking-action-monitor",
+        "aisi-layered-evaluation-controls",
+        "training-safety-case-guidelines",
+        "gpt6-october-alignment",
+        "unintended-actions-october"
       ],
       "review": {
-        "checkedAt": "2026-09-24",
+        "checkedAt": "2026-10-10",
         "intervalDays": 7,
         "reason": "既存の根拠がカードの条件をどこまで直接確かめているかを分類しています。根拠の更新時に見直します。"
       }
@@ -222,24 +232,29 @@
         "scheming",
         "control-protocol",
         "agent-oversight-coverage",
-        "sol-monitor-evasion"
+        "sol-monitor-evasion",
+        "blocking-action-monitor",
+        "sol61-monitoring",
+        "aisi-layered-evaluation-controls",
+        "reference-tool-source-copy"
       ],
       "review": {
-        "checkedAt": "2026-09-23",
+        "checkedAt": "2026-10-04",
         "intervalDays": 7,
         "reason": "既存の根拠がカードの条件をどこまで直接確かめているかを分類しています。根拠の更新時に見直します。"
       }
     },
     "C3a1": {
       "level": "indirect",
-      "summary": "点検役のAIを追加学習しても、未知の種類の虚偽の検出では改善が限られる実験があります。ただし、実際の仕事での見逃しを測ったものではなく、他の方法が上回る条件もあります。",
+      "summary": "未知の虚偽の検出が改善しにくい実験があります。珍しい会話を評価へ集める手法も進んでいますが、抽出の効率は判定の正確さや実運用の安全性とは別です。",
       "research": [
         "horizon",
         "astra-cyber",
-        "lie-detector-transfer"
+        "lie-detector-transfer",
+        "laser-evaluation-sampling"
       ],
       "review": {
-        "checkedAt": "2026-09-22",
+        "checkedAt": "2026-10-07",
         "intervalDays": 7,
         "reason": "既存の根拠がカードの条件をどこまで直接確かめているかを分類しています。根拠の更新時に見直します。"
       }
@@ -249,37 +264,46 @@
       "summary": "評価や監督を意識して問題を隠す行動が、条件を作った実験で報告されています。通常利用で自発的に行う頻度は示していません。",
       "research": [
         "scheming",
-        "summer"
+        "summer",
+        "metagaming-latents"
       ],
       "review": {
-        "checkedAt": "2026-09-11",
+        "checkedAt": "2026-10-10",
         "intervalDays": 7,
         "reason": "既存の根拠がカードの条件をどこまで直接確かめているかを分類しています。根拠の更新時に見直します。"
       }
     },
     "C3a3": {
       "level": "tested",
-      "summary": "限られた監督をすり抜けたり、評価を不正に変えたりする例があります。より強い監督にも通用するとは限りません。",
+      "summary": "監視の見逃しや、記録を読む画面の弱点が試験で報告され、防御の修正・改善も進んでいます。通常利用の隠蔽頻度や、修正後の防御全体の有効性を測ったものではありません。",
       "research": [
         "control-protocol",
-        "hf-incident"
+        "hf-incident",
+        "blocking-action-monitor",
+        "sol61-monitoring",
+        "external-monitor-stress-tests",
+        "viewer-integrity-test"
       ],
       "review": {
-        "checkedAt": "2026-09-11",
+        "checkedAt": "2026-10-07",
         "intervalDays": 7,
         "reason": "既存の根拠がカードの条件をどこまで直接確かめているかを分類しています。根拠の更新時に見直します。"
       }
     },
     "C3b": {
       "level": "indirect",
-      "summary": "検知後の封じ込めや、実行前に遮断する運用例があります。事後の確認期限だけで、被害を防ぐのに間に合ったかは判断できません。",
+      "summary": "警告後の自動停止が働かず、手動停止まで遅れた実例があります。その待ち時間で被害が拡大したかは別に確認が必要です。",
       "research": [
         "aisi-incident",
         "control-roadmap",
-        "agent-oversight-coverage"
+        "agent-oversight-coverage",
+        "dns-access-incident",
+        "blocking-action-monitor",
+        "aisi-layered-evaluation-controls",
+        "training-safety-case-guidelines"
       ],
       "review": {
-        "checkedAt": "2026-09-23",
+        "checkedAt": "2026-10-03",
         "intervalDays": 7,
         "reason": "既存の根拠がカードの条件をどこまで直接確かめているかを分類しています。根拠の更新時に見直します。"
       }
@@ -339,10 +363,11 @@
       "summary": "機械による決済の利用例があります。契約・実行・決済を、必要な認可や紛争対応まで含めてAIに任せられるかは別途確かめる必要があります。",
       "research": [
         "payments",
-        "vend"
+        "vend",
+        "agent-book-exchange"
       ],
       "review": {
-        "checkedAt": "2026-09-11",
+        "checkedAt": "2026-10-01",
         "intervalDays": 7,
         "reason": "既存の根拠がカードの条件をどこまで直接確かめているかを分類しています。根拠の更新時に見直します。"
       }
@@ -380,10 +405,11 @@
       "summary": "既存のGemini評価では検索との比較や専門家による試験があり、一部では専門家の誘導が必要でした。通常兵器の新しい模擬評価は、利用者への追加の効果を直接測っていません。",
       "research": [
         "gemini-safety",
-        "physical-software-eval-sep26"
+        "physical-software-eval-sep26",
+        "gpt6-october-capabilities"
       ],
       "review": {
-        "checkedAt": "2026-09-20",
+        "checkedAt": "2026-10-10",
         "intervalDays": 7,
         "reason": "既存の根拠がカードの条件をどこまで直接確かめているかを分類しています。根拠の更新時に見直します。"
       }
@@ -421,10 +447,11 @@
       "summary": "限られた安全性の課題で、AIを使った研究や監督方法による改善が測られています。現実の運用全体の安全性を保証する結果ではありません。",
       "research": [
         "alignment-research",
-        "control-protocol"
+        "control-protocol",
+        "transect-review-tooling"
       ],
       "review": {
-        "checkedAt": "2026-09-20",
+        "checkedAt": "2026-10-10",
         "intervalDays": 7,
         "reason": "既存の根拠がカードの条件をどこまで直接確かめているかを分類しています。根拠の更新時に見直します。"
       }
@@ -458,12 +485,13 @@
     },
     "W2": {
       "level": "indirect",
-      "summary": "移動と物の操作をつなぐ実演があります。現場での安全性、耐久性、失敗からの復帰まで満たすことの確認ではありません。",
+      "summary": "選んだ作業での進歩に加え、技術的可能性と費用の推定があります。仕事全体の実用的な代替率ではありません。",
       "research": [
-        "robotics"
+        "robotics",
+        "robot-work-estimates"
       ],
       "review": {
-        "checkedAt": "2026-09-11",
+        "checkedAt": "2026-10-01",
         "intervalDays": 7,
         "reason": "既存の根拠がカードの条件をどこまで直接確かめているかを分類しています。根拠の更新時に見直します。"
       }

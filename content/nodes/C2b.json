@@ -5,13 +5,17 @@
   "sources": [
     "aisi-incident",
     "visa-agents",
-    "openai-file-sharing"
+    "openai-file-sharing",
+    "openai-dns-access",
+    "aisi-evaluation-security",
+    "openai-reference-eda",
+    "openai-reference-copy"
   ],
   "questions": [],
   "related": [],
   "terms": [],
   "review": {
-    "checkedAt": "2026-09-24",
+    "checkedAt": "2026-10-04",
     "intervalDays": 7,
     "reason": "能力・行動・対策の評価は短期間で変わり得るため。"
   },
@@ -22,7 +26,11 @@
   "research": [
     "aisi-incident",
     "payments",
-    "unauthorized-file-sharing"
+    "unauthorized-file-sharing",
+    "dns-access-incident",
+    "aisi-layered-evaluation-controls",
+    "reference-tool-internal-access",
+    "reference-tool-source-copy"
   ],
   "shortTitle": "現実への接点・権限"
 }

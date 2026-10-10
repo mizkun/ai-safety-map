@@ -6,7 +6,8 @@
     "anthropic-physical-eval-202609",
     "anthropic-threat-202609",
     "gemini-safety",
-    "anthropic-lsvp"
+    "anthropic-lsvp",
+    "openai-gpt6-october"
   ],
   "questions": [],
   "related": [],
@@ -15,7 +16,7 @@
   ],
   "watch": [],
   "review": {
-    "checkedAt": "2026-09-20",
+    "checkedAt": "2026-10-10",
     "intervalDays": 7,
     "reason": "能力・行動・対策の評価は短期間で変わり得るため。"
   },
@@ -25,7 +26,8 @@
     "threat-weapons-sep26",
     "threat-bio-sep26",
     "gemini-safety",
-    "life-sciences-access-monitoring"
+    "life-sciences-access-monitoring",
+    "gpt6-october-capabilities"
   ],
   "shortTitle": "情報支援で実行の難所が減る"
 }

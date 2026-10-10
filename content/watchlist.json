@@ -43,7 +43,9 @@
     "urls": [
       "https://openai.com/safety/",
       "https://openai.com/research/index/",
-      "https://deploymentsafety.openai.com/"
+      "https://deploymentsafety.openai.com/",
+      "https://alignment.openai.com/",
+      "https://alignment.openai.com/misalignment-reports/"
     ],
     "focus": "システムカード、能力の閾値、評価条件、研究の自動化、安全性の改善。開発元による報告として扱う。",
     "nodes": [
@@ -63,7 +65,8 @@
     "urls": [
       "https://alignment.anthropic.com/",
       "https://www.anthropic.com/research",
-      "https://www.anthropic.com/threat-intelligence"
+      "https://www.anthropic.com/threat-intelligence",
+      "https://red.anthropic.com/2026/cvd/"
     ],
     "focus": "目標のずれ、監督、エージェントの行動、研究支援、安全性の改善。模擬実験と実運用を分ける。",
     "nodes": [

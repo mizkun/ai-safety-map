@@ -10,7 +10,8 @@
   ],
   "sources": [
     "visa-agents",
-    "vend"
+    "vend",
+    "anthropic-project-swap"
   ],
   "questions": [],
   "related": [],
@@ -18,14 +19,15 @@
     "承認された取引か、責任者は誰か、実際の利益はいくらかを見る。"
   ],
   "review": {
-    "checkedAt": "2026-09-24",
+    "checkedAt": "2026-10-10",
     "intervalDays": 7,
     "reason": "能力、実運用、経済制度、反証を分けて継続確認するため。"
   },
   "status": "limited",
   "research": [
     "payments",
-    "vend"
+    "vend",
+    "agent-book-exchange"
   ],
   "shortTitle": "契約・実行・決済を委任"
 }

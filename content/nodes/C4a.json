@@ -4,7 +4,8 @@
   "explanation": "C4a.md",
   "sources": [
     "frontier",
-    "incident"
+    "incident",
+    "openai-restart-preparation"
   ],
   "questions": [],
   "related": [],
@@ -12,7 +13,7 @@
     "replication"
   ],
   "review": {
-    "checkedAt": "2026-09-10",
+    "checkedAt": "2026-10-04",
     "intervalDays": 30,
     "reason": "経路を支える前提、反論、防壁の有効性に変化がないか確認するため。"
   },
@@ -22,7 +23,8 @@
   "status": "hypothesis",
   "research": [
     "frontier",
-    "hf-incident"
+    "hf-incident",
+    "authorized-restart-preparation"
   ],
   "shortTitle": "停止を試みても活動が続く"
 }

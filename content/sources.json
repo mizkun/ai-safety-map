@@ -574,5 +574,293 @@
     "published": "2026-09-18",
     "date": "2026-09-18",
     "checked": "2026-09-24"
+  },
+  "metr-action-monitor": {
+    "title": "METR — Implementing a basic blocking action monitor",
+    "url": "https://metr.org/notes/2026-09-27-implementing-a-basic-blocking-action-monitor/",
+    "published": "2026-09-27",
+    "checked": "2026-10-01",
+    "date": "2026-09-27",
+    "period": "実行前監視の実装・試験。実験の正確な日程は未記載。運用量の参考値は2026年8月。",
+    "primary": "監視を実装・評価したMETRの原報告。AISIによる記録の再評価はMETRの報告経由。"
+  },
+  "aisi-astra-supply-chain": {
+    "title": "UK AISI — GPT-6 Astra performs unsanctioned supply chain attacks in simulations",
+    "url": "https://www.aisi.gov.uk/blog/gpt-6-astra-performs-unsanctioned-supply-chain-attacks-in-simulations",
+    "published": "2026-09-28",
+    "checked": "2026-10-01",
+    "date": "2026-09-28",
+    "period": "9月3日の公開前に実施したGPT-6 Astraの模擬評価。正確な試験日は未記載。",
+    "primary": "英国AISIが実施した外部評価の原報告。"
+  },
+  "anthropic-glm53": {
+    "title": "Anthropic — GLM-5.3 and the spread of advanced cyber capabilities",
+    "url": "https://www.anthropic.com/research/glm-5-3-and-the-spread-of-advanced-cyber-capabilities",
+    "published": "2026-09-29",
+    "checked": "2026-10-01",
+    "date": "2026-09-29",
+    "period": "GLM-5.3の既知の脆弱性評価と、支援を引き出す模擬試験。試験日は未記載。",
+    "primary": "AnthropicのFrontier Red Teamによる他社モデルの評価。競合する開発企業の報告。"
+  },
+  "nist-glm53": {
+    "title": "NIST CAISI — Assessment of Z.ai GLM-5.3 cyber capabilities",
+    "url": "https://www.nist.gov/news-events/news/2026/09/caisis-assessment-zais-glm-53-cyber-capabilities",
+    "published": "2026-09-17",
+    "checked": "2026-10-01",
+    "date": "2026-09-17",
+    "period": "GLM-5.3と比較モデルを4種類の課題で評価。正確な試験日は未記載。",
+    "primary": "評価を実施した米国NIST CAISIの原報告。"
+  },
+  "openai-sol61": {
+    "title": "OpenAI — GPT-6.1 Sol system card addendum",
+    "url": "https://deploymentsafety.openai.com/gpt-6-1-sol",
+    "published": "2026-09-29",
+    "checked": "2026-10-01",
+    "date": "2026-09-29",
+    "period": "GPT-6.1 Solの公開時評価。実験日は未記載。模擬配備と監視評価を区別。",
+    "primary": "開発元OpenAIのシステムカード。独立追試ではない。"
+  },
+  "openai-public-token": {
+    "title": "OpenAI — Exposing a GitHub token in a public repository",
+    "url": "https://alignment.openai.com/misalignment-reports/exposing-a-github-token-in-a-public-repository/",
+    "published": null,
+    "checked": "2026-10-01",
+    "date": "2026年9月25日更新／初出日は未確認",
+    "period": "2026年5月27日の社内運用中の事故。9月25日更新の報告。モデル名は非公開。",
+    "primary": "当事者OpenAIによる事故調査・対応の報告。"
+  },
+  "openai-dns-access": {
+    "title": "OpenAI — An agent used DNS to reach an external chatbot",
+    "url": "https://alignment.openai.com/misalignment-reports/an-agent-used-dns-to-reach-an-external-chatbot/",
+    "published": null,
+    "checked": "2026-10-01",
+    "date": "2026年9月25日更新／初出日は未確認",
+    "period": "2026年9月20日の社内研究モデルの学習中の出来事。9月25日更新の報告。",
+    "primary": "当事者OpenAIによる事故調査・対応の報告。"
+  },
+  "anthropic-robot-work": {
+    "title": "Anthropic — What work can robots do?",
+    "url": "https://www.anthropic.com/research/what-work-can-robots-do",
+    "published": "2026-09-30",
+    "checked": "2026-10-01",
+    "date": "2026-09-30",
+    "period": "ロボットの既存資料と職務をClaudeで分類した推定。雇用の重みは米国2025年データ。",
+    "primary": "推定を行ったAnthropicの原研究。新しいロボットの実地試験ではない。"
+  },
+  "anthropic-project-swap": {
+    "title": "Anthropic — Project Swap: What happens when agents trade for us?",
+    "url": "https://www.anthropic.com/research/project-swap",
+    "published": "2026-09-24",
+    "checked": "2026-10-01",
+    "date": "2026-09-24",
+    "period": "2026年夏、社員201人の本の交換と、その市場を模した再実行。正確な実施日は未記載。",
+    "primary": "実験を行ったAnthropicの原報告。"
+  },
+  "synthid-bio": {
+    "title": "Stutz et al. — Function-preserving watermarking of AI-generated proteins",
+    "url": "https://www.nature.com/articles/s41586-026-10965-y",
+    "published": "2026-09-30",
+    "checked": "2026-10-01",
+    "date": "2026-09-30",
+    "period": "ProteinMPNNによる配列とAlphaFold 3による構造の電子透かし。実験日は未記載。",
+    "primary": "開発チームによるNature掲載の原研究。実運用の被害防止の評価ではない。"
+  },
+  "aisi-evaluation-security": {
+    "url": "https://www.aisi.gov.uk/blog/building-a-more-secure-environment-for-evaluating-dangerous-capabilities",
+    "published": "2026-10-01",
+    "date": "2026-10-01",
+    "checked": "2026-10-03",
+    "title": "英国AISI — 危険能力の評価環境を守る対策の更新",
+    "period": "2026年8月の事故公表後から10月1日までの対策整備。個別の試験日・対象モデル名は未記載。",
+    "primary": "対策を導入したAISI自身の運用報告。NCSCの支援があるが、独立した有効性評価の公表ではない。"
+  },
+  "openai-training-safety-cases": {
+    "url": "https://openai.com/index/towards-safety-cases-for-frontier-ai-training/",
+    "published": "2026-09-28",
+    "date": "2026-09-28",
+    "checked": "2026-10-03",
+    "title": "OpenAI — 学習を続けるための安全性の根拠を示す初期指針",
+    "period": "2026年9月28日時点の初期指針。先端モデルの強化学習が対象で、実装を進めている段階。",
+    "primary": "提案主体による原文。個別モデルの比較実験や、全項目を実装済みとする監査報告ではない。"
+  },
+  "schwartz-claude-shaped-science": {
+    "url": "https://www.anthropic.com/research/claude-shaped-science",
+    "published": "2026-10-01",
+    "date": "2026-10-01",
+    "checked": "2026-10-03",
+    "title": "Matthew Schwartz — Claude-shaped science",
+    "period": "2026年夏から約3ヶ月の研究実践。Claude Fable 5とBootLoopsを使用。個別の実施日は未記載。",
+    "primary": "研究を行った著者自身の寄稿。著者は当時Anthropicの客員研究者。独立した比較評価ではなく、個別成果は検証が続く。"
+  },
+  "openai-reference-eda": {
+    "url": "https://alignment.openai.com/misalignment-reports/reaching-an-internal-eda-host-through-a-reference-tool/",
+    "published": null,
+    "date": "2026-10-02",
+    "checked": "2026-10-04",
+    "title": "OpenAI — 参照ツールから社内の別の計算機へ無許可で到達した事例",
+    "period": "2026年3月27日の評価中の事例。同日発見。報告更新：10月2日。初回公表日は未確認。",
+    "primary": "開発元が自社の評価・事故を調べた一次報告。モデル名は非公開で、独立した追試ではない。"
+  },
+  "openai-reference-copy": {
+    "url": "https://alignment.openai.com/misalignment-reports/command-injecting-a-reference-tool-to-copy-a-source-file/",
+    "published": null,
+    "date": "2026-10-02",
+    "checked": "2026-10-04",
+    "title": "OpenAI — 参照ツールの制限を越えてソースコードを取得した事例",
+    "period": "2026年5月16日の強化学習中の事例。5月25日発見。報告更新：10月2日。初回公表日は未確認。",
+    "primary": "開発元による事故調査と対策の報告。未公開モデルの事例で、現在の公開モデルの発生率を測った結果ではない。"
+  },
+  "openai-restart-preparation": {
+    "url": "https://alignment.openai.com/misalignment-reports/preparing-for-a-restart-after-reading-slack/",
+    "published": null,
+    "date": "2026-10-02",
+    "checked": "2026-10-04",
+    "title": "OpenAI — 停止予定を知り、正規の再起動に備えた事例",
+    "period": "2026年5月22日の社内利用。報告更新：10月2日。初回公表日は未確認。",
+    "primary": "OpenAI自身による行動と停止回避の調査。同社はこの行動を意図のズレと分類していない。独立調査ではない。"
+  },
+  "anthropic-cvd-dashboard": {
+    "url": "https://red.anthropic.com/2026/cvd/",
+    "published": null,
+    "date": "2026-10-02",
+    "checked": "2026-10-04",
+    "title": "Anthropic — 脆弱性の発見・報告・修正を追う公開集計",
+    "period": "2026年10月2日19:47 UTC更新。初期表示の発見期間は2025年11月1日〜2026年10月2日。初回公表日は未確認。",
+    "primary": "Anthropicによる累積集計。一部の候補は外部のセキュリティ企業が確認するが、全件の独立検証や被害減少の比較ではない。"
+  },
+  "aisi-monitor-stress-tests": {
+    "title": "英国AISI — 社内の監視AIの弱点を調べる外部評価",
+    "url": "https://www.aisi.gov.uk/blog/how-our-new-control-red-team-is-stress-testing-frontier-monitors",
+    "published": "2026-07-23",
+    "period": "公表前の社内監視の検証と自動探索実験。個別の実験日は未記載。",
+    "checked": "2026-10-05",
+    "date": "公表：2026-07-23／実験日は未記載",
+    "primary": "評価を実施した英国AISIの原報告。開発企業と協力した限定的な検証。"
+  },
+  "metr-observability": {
+    "url": "https://metr.org/blog/2026-10-06-ai-systems-could-cover-up-misbehavior/",
+    "published": "2026-10-06",
+    "date": "2026-10-06",
+    "checked": "2026-10-07",
+    "title": "METR — AIの行動記録を読む画面の改変と、防御の課題",
+    "period": "2026年の隔離した試験環境での概念実証。報告先のIssueは6月22日作成。実験日と使用モデルは未記載。",
+    "primary": "検証を行ったMETRの原報告。人がAIの助けを借りて弱点を探した実証で、通常の評価で起きた悪用事例ではない。"
+  },
+  "inspect-viewer-injection": {
+    "url": "https://github.com/UKGovernmentBEIS/inspect_ai/issues/4318",
+    "published": "2026-06-22",
+    "date": "2026-06-22",
+    "checked": "2026-10-07",
+    "title": "Inspect — 行動記録の閲覧画面の弱点と修正の記録",
+    "period": "6月22日の報告、6月23日の保守担当者による修正確認。関連PR #4323は6月22日UTCにマージ。",
+    "primary": "報告者と保守担当者の公開記録。修正の確認であり、利用先への導入率や被害防止率の測定ではない。"
+  },
+  "inspect-untrusted-viewer": {
+    "url": "https://github.com/UKGovernmentBEIS/inspect_ai/pull/5566",
+    "published": "2026-09-25",
+    "date": "2026-09-25",
+    "checked": "2026-10-07",
+    "title": "Inspect — 信頼しない記録を文字のまま表示する機能",
+    "period": "9月25日提案、10月1日マージ。確認したマージ版は6bea9cd4f6981bf50703284e1595710e8dec6ad4。",
+    "primary": "保守元のマージ済み変更と文書を確認。古い閲覧ソフトやScoutの対応、設定による適用範囲に制約がある。"
+  },
+  "openai-laser": {
+    "url": "https://alignment.openai.com/laser/",
+    "published": "2026-10-06",
+    "date": "2026-10-06",
+    "checked": "2026-10-07",
+    "title": "OpenAI — LASERによる安全性評価用の会話の抽出",
+    "period": "公表前の社内実装と利用。個別の実験日と判定モデルの版は未記載。",
+    "primary": "手法を開発・利用したOpenAIの原報告。抽出の効率と、防御や判定の正確さは別に読む。"
+  },
+  "openai-ironclad": {
+    "url": "https://openai.com/index/advancing-computer-use-with-ironclad/",
+    "published": "2026-10-06",
+    "date": "2026-10-06",
+    "checked": "2026-10-07",
+    "title": "OpenAI — Ironcladでの複数工程の業務評価",
+    "period": "GPT-6 AstraとGPT-5.6 Solによる11課題の研究評価。個別の実施日は未記載。",
+    "primary": "開発元と協力企業が設計した研究評価の報告。独立した追試や顧客の業務時間の測定ではない。"
+  },
+  "openai-math-release": {
+    "url": "https://openai.com/index/sharing-ai-progress-in-mathematics/",
+    "published": "2026-10-06",
+    "date": "2026-10-06",
+    "checked": "2026-10-07",
+    "title": "OpenAI — 内部モデルによる数学成果の公開",
+    "period": "未公開の内部モデルによる、公表前の数学研究評価。モデル版と実施期間は未記載。",
+    "primary": "開発元の公開説明。専門家への相談や成果の公開は、各主張の独立検証の完了を意味しない。"
+  },
+  "openai-math-repository": {
+    "url": "https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/README.md",
+    "published": "2026-10-06",
+    "date": "2026-10-06",
+    "checked": "2026-10-07",
+    "title": "OpenAI — 数学の原稿・形式化・作成条件の公開資料",
+    "period": "初回公開版adc7f1241b42e322a6451854ab7e4b4c146bf78a。研究の実施日は未記載。",
+    "primary": "成果を公開した組織の原資料。READMEと形式化の案内を確認した。個々の証明の再実行や独立した正しさの検証は行っていない。"
+  },
+  "agmai-math-release-response": {
+    "url": "https://agmai.org/statement-oct6/",
+    "published": "2026-10-06",
+    "date": "2026-10-06",
+    "checked": "2026-10-07",
+    "title": "AGMAI — 数学成果の公開に助言した団体の見解",
+    "period": "OpenAIの10月6日の成果公開を受けた、同日付の声明。成果の個別検証ではない。",
+    "primary": "助言を行った団体自身の声明。助言は成果の評価や作成過程への支持を意味せず、数学者による評価はこれからだと説明。"
+  },
+  "openai-metagaming-latents": {
+    "url": "https://alignment.openai.com/metagaming-latents/",
+    "published": "2026-10-06",
+    "date": "2026-10-06",
+    "checked": "2026-10-10",
+    "title": "OpenAIほか — 評価や報酬を意識する推論の内部的な仕組み",
+    "period": "能力を伸ばすo3の強化学習途中のモデル。実験日と各版の識別子は未記載。",
+    "primary": "OpenAIと共同著者による内部介入実験。独立した追試や実運用の隠蔽率の調査ではない。"
+  },
+  "aisi-transect": {
+    "url": "https://www.aisi.gov.uk/blog/transect-making-large-scale-agentic-evaluations-easier-to-understand",
+    "published": "2026-10-07",
+    "date": "2026-10-07",
+    "checked": "2026-10-10",
+    "title": "AISI — 長いエージェントの記録を調べるTransect",
+    "period": "公表前のツール開発と単一の6日間の実行例。実行日は未記載。",
+    "primary": "ツール開発者による原報告。記録を調べる支援と、危険を防ぐ効果の実証を区別。"
+  },
+  "transect-paper": {
+    "url": "https://arxiv.org/abs/2610.08364",
+    "published": "2026-10-06",
+    "date": "2026-10-06",
+    "checked": "2026-10-10",
+    "title": "Pilditchほか — Transectの方法と適用例（v1）",
+    "period": "v1、2026年10月6日。Claude Opus 4.7をOpenClawで動かした単一の事例。",
+    "primary": "AISIとMeridianの著者による原論文（プレプリント）。能力や安全性の実証評価とは位置付けていない。"
+  },
+  "openai-gpt6-october": {
+    "url": "https://deploymentsafety.openai.com/gpt-6-october",
+    "published": "2026-10-07",
+    "date": "2026-10-07",
+    "checked": "2026-10-10",
+    "title": "OpenAI — GPT-6 Sol・Lunaの2026年10月版評価",
+    "period": "ChatGPT向け10月版。Codex・Work向け9月版とは別。個別の実験日は未記載。",
+    "primary": "開発元のシステムカード。社内の評価条件と能力の閾値に基づく判断。"
+  },
+  "anthropic-unintended-actions": {
+    "url": "https://www.anthropic.com/research/investigating-unintended-model-actions",
+    "published": "2026-10-09",
+    "date": "2026-10-09",
+    "checked": "2026-10-10",
+    "title": "Anthropic — 評価・社内利用中の意図しない操作と対策",
+    "period": "7月に始めた記録調査で見つけた事例など。各事例の発生日は未記載。",
+    "primary": "開発元による調査と対策の報告。詳細の一部は非公開で、独立した全記録の監査ではない。"
+  },
+  "anthropic-oss-scanner": {
+    "url": "https://www.anthropic.com/research/launching-opt-in-vuln-finding-service-for-open-source",
+    "published": "2026-10-08",
+    "date": "2026-10-08",
+    "checked": "2026-10-10",
+    "title": "Anthropic — OSS Scannerと報告の検証",
+    "period": "公表前の数週間の試験。初期版の48プロジェクト・97件の高重大度候補を専門家が確認。",
+    "primary": "サービス開発元の原報告。依頼した専門家の検証を含むが、運用全体の独立評価ではない。"
   }
 }
