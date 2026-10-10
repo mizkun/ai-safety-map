@@ -214,10 +214,12 @@
         "aisi-incident",
         "blocking-action-monitor",
         "aisi-layered-evaluation-controls",
-        "training-safety-case-guidelines"
+        "training-safety-case-guidelines",
+        "gpt6-october-alignment",
+        "unintended-actions-october"
       ],
       "review": {
-        "checkedAt": "2026-10-03",
+        "checkedAt": "2026-10-10",
         "intervalDays": 7,
         "reason": "既存の根拠がカードの条件をどこまで直接確かめているかを分類しています。根拠の更新時に見直します。"
       }
@@ -262,10 +264,11 @@
       "summary": "評価や監督を意識して問題を隠す行動が、条件を作った実験で報告されています。通常利用で自発的に行う頻度は示していません。",
       "research": [
         "scheming",
-        "summer"
+        "summer",
+        "metagaming-latents"
       ],
       "review": {
-        "checkedAt": "2026-09-11",
+        "checkedAt": "2026-10-10",
         "intervalDays": 7,
         "reason": "既存の根拠がカードの条件をどこまで直接確かめているかを分類しています。根拠の更新時に見直します。"
       }
@@ -402,10 +405,11 @@
       "summary": "既存のGemini評価では検索との比較や専門家による試験があり、一部では専門家の誘導が必要でした。通常兵器の新しい模擬評価は、利用者への追加の効果を直接測っていません。",
       "research": [
         "gemini-safety",
-        "physical-software-eval-sep26"
+        "physical-software-eval-sep26",
+        "gpt6-october-capabilities"
       ],
       "review": {
-        "checkedAt": "2026-09-20",
+        "checkedAt": "2026-10-10",
         "intervalDays": 7,
         "reason": "既存の根拠がカードの条件をどこまで直接確かめているかを分類しています。根拠の更新時に見直します。"
       }
@@ -443,10 +447,11 @@
       "summary": "限られた安全性の課題で、AIを使った研究や監督方法による改善が測られています。現実の運用全体の安全性を保証する結果ではありません。",
       "research": [
         "alignment-research",
-        "control-protocol"
+        "control-protocol",
+        "transect-review-tooling"
       ],
       "review": {
-        "checkedAt": "2026-09-20",
+        "checkedAt": "2026-10-10",
         "intervalDays": 7,
         "reason": "既存の根拠がカードの条件をどこまで直接確かめているかを分類しています。根拠の更新時に見直します。"
       }

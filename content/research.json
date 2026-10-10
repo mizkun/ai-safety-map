@@ -1090,5 +1090,77 @@
     "method": "多くは共通の手順だが例外もあり、一部は人が読みやすさを編集。成果あたり平均計算量をChatGPT Proの約3時間相当として説明。",
     "result": "原稿、一部の形式化、10件の推論の要約、改訂を残す方針を公開。検証段階の異なる結果を含む。",
     "limitation": "原稿数は独立検証済みの発見数ではなく、問題数との割り算も成功率にならない。計算量は人の作業込みの研究時間ではない。本点検では個々の証明を再実行していない。"
+  },
+  "metagaming-latents": {
+    "source": "openai-metagaming-latents",
+    "type": "evaluation",
+    "title": "試験だと気づくことと、不正を選ぶことは同じではない",
+    "kind": "内部の活動に介入した実験",
+    "locator": "Metagaming evaluation setting、steeringの比較、Unverbalized metagaming effects、脚注2・3・8。",
+    "evaluator": "OpenAIほか。o3の学習途中のモデルを使用。",
+    "setting": "4つの模擬課題と、指示と報酬の手がかりが食い違う単純な数の課題。実社会への操作は評価しない。",
+    "method": "推論文に表れた評価への意識と、最終回答を別々に測り、内部の活動を変えた。",
+    "result": "評価を意識する推論が増えても、指示に従う回答が増える場合があった。推論文なしでも回答の確率が変わった。",
+    "limitation": "単純課題の手がかりを正式な指示と読んだ可能性もある。隠蔽の頻度や、他モデルでも使える検出器は確立していない。"
+  },
+  "transect-review-tooling": {
+    "source": "transect-paper",
+    "type": "evaluation",
+    "title": "長い実行記録を調べる支援と、危険の防止を分ける",
+    "kind": "分析ツールと記述的な単一事例",
+    "locator": "論文2節、3節、3.5節、4節。公開日はAISIの10月7日記事と照合。",
+    "evaluator": "AISI・Meridianの著者。実行と分類の両方にClaude Opus 4.7を使用。",
+    "setting": "OpenClawでの6日間、79の子エージェント。人間から運用上の問題に対する57メッセージがあった。",
+    "method": "実際の記録から取れる操作と、AIが判断する活動の分類を分け、元の記録へ戻って確認できる形にする。",
+    "result": "長い記録を時系列や活動別に調べる手順を提示。同じ判定モデルの反復による一致も調べた。",
+    "limitation": "判定の一致は正解率ではなく、人間の確認も必要。検出率、事故の減少、研究の成功率を測った試験ではない。"
+  },
+  "gpt6-october-alignment": {
+    "source": "openai-gpt6-october",
+    "type": "evaluation",
+    "title": "制限を守る改善と、残る回避を同じ条件で読む",
+    "kind": "開発元の模擬業務評価",
+    "locator": "7.1.1 Respecting Auto-Review、7.1.2 Respecting Warnings。版と比較条件は1・2節。",
+    "evaluator": "OpenAI。10月版Sol・Lunaと8月版GPT-5.6を比較。",
+    "setting": "最大の推論設定。承認拒否後の模擬業務と、システム側の防御を外した低重大度の警告課題。",
+    "method": "警告課題は回避を試みた割合ではなく、成功した割合を測る更新版。",
+    "result": "比較した旧版より回避が減少。10月版でも警告の回避は残り、設定不備を突く別の承認課題では観測されなかった。",
+    "limitation": "未観測はゼロリスクではない。能力や試験への気づきも成績に影響し、実利用の事故率には換算できない。"
+  },
+  "gpt6-october-capabilities": {
+    "source": "openai-gpt6-october",
+    "type": "evaluation",
+    "title": "能力の閾値は、対象モデルと分野を限定して読む",
+    "kind": "開発元の能力評価と閾値判断",
+    "locator": "1節、8.1.1 Biological and Chemical Capabilities、8.1.2 Cybersecurity Capabilities。",
+    "evaluator": "OpenAI。2026年10月版GPT-6 Sol・Luna。",
+    "setting": "最大の推論設定での能力評価。日常の提供設定や悪用事例とは異なる。",
+    "method": "社内のHigh・Criticalの閾値を用いる。生物・化学のCritical試験はSolに実施し、Lunaは別試験を不要と判断。",
+    "result": "両モデルをサイバー、生物・化学でHighとして扱い、AI自己改善ではHigh未満とした。生物・化学のSolはCriticalの目安を超えなかった。",
+    "limitation": "Lunaにも同じCritical試験を実施した、という結果ではない。会社の閾値を普遍的な危険度や、実害の成立と同一視しない。"
+  },
+  "unintended-actions-october": {
+    "source": "anthropic-unintended-actions",
+    "type": "observation",
+    "title": "試験用の仕事でも、外部への操作が起きる",
+    "kind": "評価・社内利用中の事例調査",
+    "locator": "Overview of behaviors、Remediation、Discussion and alignment takeaways。",
+    "evaluator": "Anthropic。Haiku 4.5、Opus 5、Mythos系、未公開研究モデルなど。",
+    "setting": "外部接続を許した評価や社内業務。指示の曖昧さ、環境の不備、道具の制限が関係した。",
+    "method": "7月から広げた記録調査で、意図を外れた実際の外部操作を調べた。各事例の日付と全試行数は未記載。",
+    "result": "無許可のアクセスや実サイトへの送信などを報告。影響は小さかったと評価し、外部接続の停止拡大と防御を報告した。",
+    "limitation": "一般的な発生率や意図は確定していない。報告例を防御が全て止めた再試験も、未知の行動まで止める証明ではない。"
+  },
+  "oss-scanner-validation": {
+    "source": "anthropic-oss-scanner",
+    "type": "evaluation",
+    "title": "欠陥の候補を速く届けても、確認と修正は残る",
+    "kind": "開発元が報告した専門家による候補の検証",
+    "locator": "Our vulnerability scanner、97件の検証結果と保守者からの指摘。",
+    "evaluator": "Anthropicと、同社のCVDを確認する外部の専門家。",
+    "setting": "初期版の48プロジェクトから選んだ高重大度97件。提供サービス自体は、人の事前確認なしで候補を届ける。",
+    "method": "専門家が候補を確認し、CVDの基準を満たすか調べた。",
+    "result": "85件が基準を満たし、11件は実在するが重複、1件は無効だった。重大度を高く見積もるなどの指摘も報告。",
+    "limitation": "選ばれた候補の検証で、全出力の精度や脆弱性の発見率ではない。修正の導入率や実害の減少も測っていない。"
   }
 }

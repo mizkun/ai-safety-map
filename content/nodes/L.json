@@ -12,7 +12,8 @@
     "openai-public-token",
     "openai-dns-access",
     "openai-reference-eda",
-    "openai-reference-copy"
+    "openai-reference-copy",
+    "anthropic-unintended-actions"
   ],
   "questions": [],
   "related": [],
@@ -25,7 +26,7 @@
     "発見後の対応で、何が止まり、何が続いたか。"
   ],
   "review": {
-    "checkedAt": "2026-10-04",
+    "checkedAt": "2026-10-10",
     "intervalDays": 7,
     "reason": "能力・行動・対策の評価は短期間で変わり得るため。"
   },
@@ -43,7 +44,8 @@
     "public-token-incident",
     "dns-access-incident",
     "reference-tool-internal-access",
-    "reference-tool-source-copy"
+    "reference-tool-source-copy",
+    "unintended-actions-october"
   ],
   "shortTitle": "局所的に意図しない行動"
 }

@@ -5,7 +5,8 @@
   "sources": [
     "scheming",
     "gemini-safety",
-    "summer"
+    "summer",
+    "openai-metagaming-latents"
   ],
   "questions": [],
   "related": [],
@@ -13,7 +14,7 @@
     "evaluation-awareness"
   ],
   "review": {
-    "checkedAt": "2026-10-01",
+    "checkedAt": "2026-10-10",
     "intervalDays": 7,
     "reason": "能力・行動・対策の評価は短期間で変わり得るため。"
   },
@@ -24,7 +25,8 @@
   "research": [
     "scheming",
     "gemini-safety",
-    "summer"
+    "summer",
+    "metagaming-latents"
   ],
   "shortTitle": "評価中だけ問題を隠す"
 }

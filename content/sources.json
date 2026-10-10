@@ -808,5 +808,59 @@
     "title": "AGMAI — 数学成果の公開に助言した団体の見解",
     "period": "OpenAIの10月6日の成果公開を受けた、同日付の声明。成果の個別検証ではない。",
     "primary": "助言を行った団体自身の声明。助言は成果の評価や作成過程への支持を意味せず、数学者による評価はこれからだと説明。"
+  },
+  "openai-metagaming-latents": {
+    "url": "https://alignment.openai.com/metagaming-latents/",
+    "published": "2026-10-06",
+    "date": "2026-10-06",
+    "checked": "2026-10-10",
+    "title": "OpenAIほか — 評価や報酬を意識する推論の内部的な仕組み",
+    "period": "能力を伸ばすo3の強化学習途中のモデル。実験日と各版の識別子は未記載。",
+    "primary": "OpenAIと共同著者による内部介入実験。独立した追試や実運用の隠蔽率の調査ではない。"
+  },
+  "aisi-transect": {
+    "url": "https://www.aisi.gov.uk/blog/transect-making-large-scale-agentic-evaluations-easier-to-understand",
+    "published": "2026-10-07",
+    "date": "2026-10-07",
+    "checked": "2026-10-10",
+    "title": "AISI — 長いエージェントの記録を調べるTransect",
+    "period": "公表前のツール開発と単一の6日間の実行例。実行日は未記載。",
+    "primary": "ツール開発者による原報告。記録を調べる支援と、危険を防ぐ効果の実証を区別。"
+  },
+  "transect-paper": {
+    "url": "https://arxiv.org/abs/2610.08364",
+    "published": "2026-10-06",
+    "date": "2026-10-06",
+    "checked": "2026-10-10",
+    "title": "Pilditchほか — Transectの方法と適用例（v1）",
+    "period": "v1、2026年10月6日。Claude Opus 4.7をOpenClawで動かした単一の事例。",
+    "primary": "AISIとMeridianの著者による原論文（プレプリント）。能力や安全性の実証評価とは位置付けていない。"
+  },
+  "openai-gpt6-october": {
+    "url": "https://deploymentsafety.openai.com/gpt-6-october",
+    "published": "2026-10-07",
+    "date": "2026-10-07",
+    "checked": "2026-10-10",
+    "title": "OpenAI — GPT-6 Sol・Lunaの2026年10月版評価",
+    "period": "ChatGPT向け10月版。Codex・Work向け9月版とは別。個別の実験日は未記載。",
+    "primary": "開発元のシステムカード。社内の評価条件と能力の閾値に基づく判断。"
+  },
+  "anthropic-unintended-actions": {
+    "url": "https://www.anthropic.com/research/investigating-unintended-model-actions",
+    "published": "2026-10-09",
+    "date": "2026-10-09",
+    "checked": "2026-10-10",
+    "title": "Anthropic — 評価・社内利用中の意図しない操作と対策",
+    "period": "7月に始めた記録調査で見つけた事例など。各事例の発生日は未記載。",
+    "primary": "開発元による調査と対策の報告。詳細の一部は非公開で、独立した全記録の監査ではない。"
+  },
+  "anthropic-oss-scanner": {
+    "url": "https://www.anthropic.com/research/launching-opt-in-vuln-finding-service-for-open-source",
+    "published": "2026-10-08",
+    "date": "2026-10-08",
+    "checked": "2026-10-10",
+    "title": "Anthropic — OSS Scannerと報告の検証",
+    "period": "公表前の数週間の試験。初期版の48プロジェクト・97件の高重大度候補を専門家が確認。",
+    "primary": "サービス開発元の原報告。依頼した専門家の検証を含むが、運用全体の独立評価ではない。"
   }
 }

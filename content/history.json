@@ -1,5 +1,33 @@
 [
   {
+    "id": "evaluation-and-boundaries-20261010",
+    "date": "2026-10-10",
+    "nodes": [
+      "C3a2",
+      "R4",
+      "C3",
+      "M2c1",
+      "M2b1",
+      "R3",
+      "L",
+      "M3"
+    ],
+    "sources": [
+      "openai-metagaming-latents",
+      "aisi-transect",
+      "transect-paper",
+      "openai-gpt6-october",
+      "anthropic-unintended-actions",
+      "anthropic-oss-scanner"
+    ],
+    "kind": "評価・操作の境界・防御の点検",
+    "title": "評価への気づき、外部操作と防御の新しい報告を追加",
+    "summary": "評価を意識する推論、記録分析、10月版の能力評価、意図しない外部操作と欠陥の検証を追加しました。",
+    "before": "これまでの評価・事故・対策を扱っていましたが、10月6〜9日の関連報告は未収録でした。",
+    "after": "8項目を更新。推論と行動、既知事例の再試験と未知の失敗への防御、候補の確認と修正の普及を区別します。根拠の分類と矢印の条件は維持しました。",
+    "reason": "能力と対策の変化を反映しつつ、限られた試験や選ばれた実例を普段の発生率や世界規模の被害へ読み替えないため。"
+  },
+  {
     "id": "observability-and-evaluation-20261007",
     "date": "2026-10-07",
     "nodes": [
