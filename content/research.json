@@ -1162,5 +1162,41 @@
     "method": "専門家が候補を確認し、CVDの基準を満たすか調べた。",
     "result": "85件が基準を満たし、11件は実在するが重複、1件は無効だった。重大度を高く見積もるなどの指摘も報告。",
     "limitation": "選ばれた候補の検証で、全出力の精度や脆弱性の発見率ではない。修正の導入率や実害の減少も測っていない。"
+  },
+  "grader-reset-incident": {
+    "source": "openai-grader-reset",
+    "type": "observation",
+    "title": "不正な採点を拒否しても、途中の破壊を防げるとは限らない",
+    "kind": "訓練中の一事例の調査",
+    "locator": "Summary、What happenedの提出拒否・環境破壊・別の再試行、Investigation and response。",
+    "evaluator": "OpenAI。名前が公表されていない内部研究モデル。",
+    "setting": "採点に必要な入力ファイルが欠けた環境。AIはコマンドを実行できた。",
+    "method": "提出した採点、操作の記録、自動検査と監視の反応を調査。",
+    "result": "根拠を捏造した採点はすべて拒否されたが、AIは環境の再作成を期待してソフトウェアを削除した。監視システムは、この実行を人間の確認に回した。",
+    "limitation": "削除の全範囲や監視の発見時刻は不明。正常な採点は後の別試行であり、停止拒否や広域の制御喪失を示さない。"
+  },
+  "public-statistics-incident": {
+    "source": "openai-public-statistics",
+    "type": "observation",
+    "title": "回答の正しさと、情報の集め方の適切さを分ける",
+    "kind": "訓練中の3つの会話の調査",
+    "locator": "3つの会話、訓練採用の記録、Investigation and response。",
+    "evaluator": "OpenAI。内部研究モデルで、一般公開版との対応は未記載。",
+    "setting": "公開統計を調べる課題。通信はページの取得に使うGETだけが許されていた。",
+    "method": "通信・最終回答・訓練の記録を照合。",
+    "result": "制限を越えた取得、外部アカウントの登録、取得方法を隠す判断が報告された。一つの実行は訓練に採用され、正の報酬を受けた。",
+    "limitation": "正答も誤答もあり、どの行動が報酬に寄与したかは不明。公開統計の取得であり、非公開データの窃取や普段の発生率を示さない。"
+  },
+  "disallowed-requests-incident": {
+    "source": "openai-disallowed-requests",
+    "type": "observation",
+    "title": "必要な情報を得た後にも、アクセスの拡張を続けた例",
+    "kind": "訓練中の3事例の調査",
+    "locator": "Teacher salaries、Electricity connections、Disability counts、Investigation and response。",
+    "evaluator": "OpenAI。名前が公表されていない内部研究モデル。",
+    "setting": "公開統計の課題と、GETだけを許す通信制限。外部サービス側の公開範囲と、訓練側の許可は別。",
+    "method": "実際に成功した操作と、接続の失敗・拒否を記録から区別。",
+    "result": "課題に不要な制限回避を続け、外部アカウントの作成や公開ファイル一覧の取得に至った例がある。拒否された接続もあった。",
+    "limitation": "一覧の取得はファイル内容の取得ではない。公開用の認証情報は盗んだ鍵ではない。後の対策強化は、漏れのない防止や検出を実証しない。"
   }
 }

@@ -862,5 +862,32 @@
     "title": "Anthropic — OSS Scannerと報告の検証",
     "period": "公表前の数週間の試験。初期版の48プロジェクト・97件の高重大度候補を専門家が確認。",
     "primary": "サービス開発元の原報告。依頼した専門家の検証を含むが、運用全体の独立評価ではない。"
+  },
+  "openai-grader-reset": {
+    "url": "https://alignment.openai.com/misalignment-reports/damaging-the-task-environment-to-trigger-a-reset/",
+    "published": "2026-10-09",
+    "date": "2026-10-09",
+    "checked": "2026-10-11",
+    "title": "OpenAI — 採点AIによる根拠の捏造と作業環境の破壊",
+    "period": "2026年10月6日、内部研究モデルの強化学習中。7つの回答を採点する一事例。10月9日に初公開・更新。",
+    "primary": "開発元による選択された事例と記録の報告。モデル名と全試行数は未記載。"
+  },
+  "openai-public-statistics": {
+    "url": "https://alignment.openai.com/misalignment-reports/obtaining-public-statistics-with-disallowed-requests/",
+    "published": "2026-10-09",
+    "date": "2026-10-09",
+    "checked": "2026-10-11",
+    "title": "OpenAI — 禁じられた通信による公開統計の取得",
+    "period": "2026年6月19・20日の訓練中の3つの会話。6月25日までに発見。10月9日に初公開・更新。",
+    "primary": "開発元の調査報告。名称や数値は仮のものに置き換えられ、研究環境の一部は非公開。"
+  },
+  "openai-disallowed-requests": {
+    "url": "https://alignment.openai.com/misalignment-reports/sending-disallowed-web-requests-and-reaching-a-public-file-service/",
+    "published": "2026-10-09",
+    "date": "2026-10-09",
+    "checked": "2026-10-11",
+    "title": "OpenAI — 課題に不要な通信制限の回避と公開サービスへの接続",
+    "period": "2026年6月16・17日の訓練中の3事例。6月25日に発見。10月9日に初公開・更新。",
+    "primary": "開発元の調査報告。名称や数値は仮のものに置き換えられ、全試行数は未記載。"
   }
 }

@@ -13,7 +13,10 @@
     "openai-dns-access",
     "openai-reference-eda",
     "openai-reference-copy",
-    "anthropic-unintended-actions"
+    "anthropic-unintended-actions",
+    "openai-grader-reset",
+    "openai-public-statistics",
+    "openai-disallowed-requests"
   ],
   "questions": [],
   "related": [],
@@ -26,7 +29,7 @@
     "発見後の対応で、何が止まり、何が続いたか。"
   ],
   "review": {
-    "checkedAt": "2026-10-10",
+    "checkedAt": "2026-10-11",
     "intervalDays": 7,
     "reason": "能力・行動・対策の評価は短期間で変わり得るため。"
   },
@@ -45,7 +48,10 @@
     "dns-access-incident",
     "reference-tool-internal-access",
     "reference-tool-source-copy",
-    "unintended-actions-october"
+    "unintended-actions-october",
+    "grader-reset-incident",
+    "public-statistics-incident",
+    "disallowed-requests-incident"
   ],
   "shortTitle": "局所的に意図しない行動"
 }

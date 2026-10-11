@@ -9,13 +9,15 @@
     "openai-dns-access",
     "aisi-evaluation-security",
     "openai-reference-eda",
-    "openai-reference-copy"
+    "openai-reference-copy",
+    "openai-public-statistics",
+    "openai-disallowed-requests"
   ],
   "questions": [],
   "related": [],
   "terms": [],
   "review": {
-    "checkedAt": "2026-10-04",
+    "checkedAt": "2026-10-11",
     "intervalDays": 7,
     "reason": "能力・行動・対策の評価は短期間で変わり得るため。"
   },
@@ -30,7 +32,9 @@
     "dns-access-incident",
     "aisi-layered-evaluation-controls",
     "reference-tool-internal-access",
-    "reference-tool-source-copy"
+    "reference-tool-source-copy",
+    "public-statistics-incident",
+    "disallowed-requests-incident"
   ],
   "shortTitle": "現実への接点・権限"
 }

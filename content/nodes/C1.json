@@ -12,7 +12,8 @@
     "aisi-astra-supply-chain",
     "openai-public-token",
     "openai-reference-eda",
-    "openai-reference-copy"
+    "openai-reference-copy",
+    "openai-public-statistics"
   ],
   "questions": [],
   "related": [
@@ -32,7 +33,7 @@
     "能力を保ちながら危険な行動が減る対策はあるか。"
   ],
   "review": {
-    "checkedAt": "2026-10-04",
+    "checkedAt": "2026-10-11",
     "intervalDays": 7,
     "reason": "能力・行動・対策の評価は短期間で変わり得るため。"
   },
@@ -50,7 +51,8 @@
     "astra-scope-simulation",
     "public-token-incident",
     "reference-tool-internal-access",
-    "reference-tool-source-copy"
+    "reference-tool-source-copy",
+    "public-statistics-incident"
   ],
   "shortTitle": "アライメントの失敗"
 }
