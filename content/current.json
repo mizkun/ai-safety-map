@@ -285,10 +285,12 @@
         "blocking-action-monitor",
         "sol61-monitoring",
         "external-monitor-stress-tests",
-        "viewer-integrity-test"
+        "viewer-integrity-test",
+        "haiku55-monitorability",
+        "structural-monitor-rollback"
       ],
       "review": {
-        "checkedAt": "2026-10-07",
+        "checkedAt": "2026-10-12",
         "intervalDays": 7,
         "reason": "既存の根拠がカードの条件をどこまで直接確かめているかを分類しています。根拠の更新時に見直します。"
       }
@@ -303,10 +305,11 @@
         "dns-access-incident",
         "blocking-action-monitor",
         "aisi-layered-evaluation-controls",
-        "training-safety-case-guidelines"
+        "training-safety-case-guidelines",
+        "agent-recovery-limits"
       ],
       "review": {
-        "checkedAt": "2026-10-03",
+        "checkedAt": "2026-10-12",
         "intervalDays": 7,
         "reason": "既存の根拠がカードの条件をどこまで直接確かめているかを分類しています。根拠の更新時に見直します。"
       }

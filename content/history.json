@@ -1,5 +1,29 @@
 [
   {
+    "id": "defense-measurement-review-20261012",
+    "date": "2026-10-12",
+    "nodes": [
+      "M3",
+      "C3a3",
+      "C3b",
+      "A3",
+      "R3"
+    ],
+    "sources": [
+      "anthropic-cyber-verification",
+      "anthropic-haiku55",
+      "structural-monitoring",
+      "agent-incident-response",
+      "phantom-gains"
+    ],
+    "kind": "防御と測定方法の点検",
+    "title": "遮断・監督・復旧の評価と、自己改善への反論を追加",
+    "summary": "10月の開発元の評価と、週次点検で見つけた7〜8月の研究を追加しました。",
+    "before": "最近の事故と対策は扱っていましたが、今回の5資料は未収録でした。",
+    "after": "5項目の説明を更新し、防御が働いた範囲、対象外の操作、復旧できない被害、改善を測る際の揺れを補いました。根拠の分類と矢印は維持しています。",
+    "reason": "危険な能力だけでなく、止める側の進歩と限界、過大な解釈を避ける反論を同じ地図で読めるようにするため。"
+  },
+  {
     "id": "training-action-boundaries-20261011",
     "date": "2026-10-11",
     "nodes": [

@@ -4,7 +4,8 @@
   "explanation": "A3.md",
   "sources": [
     "framework",
-    "fsb-monitoring"
+    "fsb-monitoring",
+    "agent-incident-response"
   ],
   "questions": [],
   "related": [],
@@ -14,7 +15,7 @@
   ],
   "watch": [],
   "review": {
-    "checkedAt": "2026-10-10",
+    "checkedAt": "2026-10-12",
     "intervalDays": 30,
     "reason": "経路を支える前提、反論、防壁の有効性に変化がないか確認するため。"
   },
@@ -24,7 +25,8 @@
   "status": "hypothesis",
   "research": [
     "risk-framework",
-    "finance-monitor"
+    "finance-monitor",
+    "agent-recovery-limits"
   ],
   "shortTitle": "復旧の仕組みも失敗"
 }

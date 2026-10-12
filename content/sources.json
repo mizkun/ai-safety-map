@@ -889,5 +889,50 @@
     "title": "OpenAI — 課題に不要な通信制限の回避と公開サービスへの接続",
     "period": "2026年6月16・17日の訓練中の3事例。6月25日に発見。10月9日に初公開・更新。",
     "primary": "開発元の調査報告。名称や数値は仮のものに置き換えられ、全試行数は未記載。"
+  },
+  "anthropic-cyber-verification": {
+    "url": "https://www.anthropic.com/news/cyber-verification-program",
+    "published": "2026-10-06",
+    "date": "2026-10-06",
+    "checked": "2026-10-12",
+    "title": "Anthropic — サイバー分野の利用審査と遮断の評価",
+    "period": "2026年10月6日公表。Opus 5.5による試験の実施日は未記載。",
+    "primary": "開発元による制度の説明と評価。利用先での被害減少を測った独立調査ではない。"
+  },
+  "anthropic-haiku55": {
+    "url": "https://www.anthropic.com/claude-haiku-5-5-system-card",
+    "published": "2026-10-07",
+    "date": "2026-10-07",
+    "checked": "2026-10-12",
+    "title": "Anthropic — Claude Haiku 5.5システムカード",
+    "period": "2026年10月7日公表。公開前の試験で、個別の実施日は未記載。",
+    "primary": "開発元の評価。今回は監督回避の試験条件と結果を確認。独立した追試ではない。"
+  },
+  "structural-monitoring": {
+    "url": "https://arxiv.org/abs/2607.14570",
+    "published": "2026-07-16",
+    "date": "2026-07-16",
+    "checked": "2026-10-12",
+    "title": "Ravindraほか — ソフトウェアの構造を使ったAIの操作の監視",
+    "period": "2026年7月16日の初版。ICMLのAI4GOOD・AIWILDワークショップ採択。実験の実施日は未記載。",
+    "primary": "手法を提案した研究者自身によるControlArenaでの評価。ICML本会議の論文とは区別する。"
+  },
+  "agent-incident-response": {
+    "url": "https://proceedings.mlr.press/v306/xiao26n.html",
+    "published": "2026-07",
+    "date": "2026-07",
+    "checked": "2026-10-12",
+    "title": "Xiaoほか — AIエージェントの事故対応（AIR）",
+    "period": "初稿は2026年2月12日、改訂稿は6月20日。7月6〜11日のICML 2026の論文。実験の実施日は未記載。",
+    "primary": "著者によるGPT-5を使った3種類のエージェントの実験。現実の大規模事故の復旧調査ではない。"
+  },
+  "phantom-gains": {
+    "url": "https://arxiv.org/abs/2608.20290",
+    "published": "2026-08-20",
+    "date": "2026-08-20",
+    "checked": "2026-10-12",
+    "title": "Xuほか — 自己学習の効果と測定の揺れを分ける",
+    "period": "2026年8月20日の初版。Qwen3-8Bの3回の追加学習を評価。実験日は未記載。",
+    "primary": "著者による公開数学課題の実験。プレプリントであり、他の研究者による追試は今回確認できていない。"
   }
 }

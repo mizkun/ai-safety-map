@@ -10,7 +10,9 @@
     "aisi-monitor-stress-tests",
     "metr-observability",
     "inspect-viewer-injection",
-    "inspect-untrusted-viewer"
+    "inspect-untrusted-viewer",
+    "anthropic-haiku55",
+    "structural-monitoring"
   ],
   "questions": [],
   "related": [],
@@ -22,7 +24,7 @@
     "scheming"
   ],
   "review": {
-    "checkedAt": "2026-10-07",
+    "checkedAt": "2026-10-12",
     "intervalDays": 7,
     "reason": "監督回避と、それを防ぐ手法の評価は変化が速いため。"
   },
@@ -33,7 +35,9 @@
     "blocking-action-monitor",
     "sol61-monitoring",
     "external-monitor-stress-tests",
-    "viewer-integrity-test"
+    "viewer-integrity-test",
+    "haiku55-monitorability",
+    "structural-monitor-rollback"
   ],
   "shortTitle": "実行中の監督をすり抜ける"
 }
