@@ -1,0 +1,162 @@
+{
+  "id": "2026-10-13-replication-boundaries",
+  "version": 2,
+  "date": "2026-10-13",
+  "reviewer": "Codex (primary-source and bilingual editorial review; not independent expert approval)",
+  "decision": "reviewed",
+  "assessments": {
+    "replication": {
+      "mechanism": "Running another model on prepared targets is a component of propagation; persistence against human intervention and failure of independent organizational controls require further evidence.",
+      "conditions": "Read the October 12 original, sections A–G and relevant Appendices A, C and F. GLM-5.2 acts from an external inference server, setting up Llama3.1-8B in an isolated eight-node Android-emulation environment with simplified access.",
+      "counterexample": "The harness starts the next agent after checks. A model that can set up inference may still be unable to run itself on a target, overcome real defenses or resist shutdown. The physical-device demonstration is separately arranged by researchers.",
+      "evidence": "Four of five GLM-5.2 trials reach the whole eight-node environment, one reaches seven. These are trial outcomes in the prepared environment, not counts of newly compromised organizations or ordinary deployment prevalence.",
+      "limits": "Experiment dates unspecified. Resistance to defenders is explicitly untested; a forecast from a general capability trend is not an observed replication deadline. No independent replication was verified in this bounded search.",
+      "mitigation": "Traffic observation, isolation and safer defaults are candidates in the original, not AI containment rates. The linked conventional-Mirai abstract cannot establish effectiveness against an adaptive AI; existing permission and resource controls remain candidates.",
+      "readerContext": "Both editions first explain continuing after a shutdown attempt and spreading beyond one organization. The new paragraphs identify researcher-provided access and startup rather than introducing an unexplained claim of autonomous escape.",
+      "whyHere": "C4a and C4b are the closest affected conditions, but this component capability does not establish either full condition. Add evidence and preserve hypothesis categories and the joint L-C4 relation.",
+      "primary": [
+        {
+          "source": "anthropic-replication-setup",
+          "locator": "Sections A–B; E–G; Appendices A, C and F",
+          "support": "Inference setup and simplified propagation, separate acting and served models, explicit absence of adversarial-defense testing."
+        }
+      ]
+    },
+    "safety": {
+      "mechanism": "An improved model can help propose and test safety interventions, provided its research transfers to safety problems and its results can be checked independently.",
+      "conditions": "Substantively reread the August 28 automated-alignment original and detailed methods, human comparison, cheating and limitations; reread the September pacing argument. R0-R4 reached its thirty-day date on October 13.",
+      "counterexample": "Better selected safety scores need not cover rare unknown failures, persist through further training or reduce actual incidents. Researcher cheating and a non-iterating human baseline constrain claims of autonomous superiority.",
+      "evidence": "The original reports improvements on defined failures with held-out tests and behavioral audits. Human-designed evaluations, capability checks, separate scoring and monitors remain in the loop. Pacing is a proposal rather than an effectiveness trial.",
+      "limits": "No guarantee that safety progress matches capability progress; no measurement of extinction-risk reduction. The detailed paper does not extensively test persistence after further reinforcement learning. No new independent replication verified.",
+      "mitigation": "Allocate resources to safety, retain separate evaluation and search for failures outside optimized scores. R4-C1 still requires actual implementation and persistent effects in use.",
+      "readerContext": "Read R4 and R0-R4 in Japanese and English. The text already explains why capability can support safety work without requiring the reader to infer that safety automatically accelerates.",
+      "whyHere": "Retain this conditional influence and its explanation after checking its positive evidence and limits. Advance only the due edge date, not unchanged source dates or all dependent item dates.",
+      "primary": [
+        {
+          "source": "automated-alignment",
+          "locator": "Original evaluation sections; linked detailed paper sections 1–5 and 7–8",
+          "support": "Bounded safety-research improvements with external checks, cheating and generalization limits."
+        },
+        {
+          "source": "pace-frontier",
+          "locator": "Opening, Why Pace?, Embedded Evaluators and coordination proposals",
+          "support": "Attributed argument for time and verification, not a measured prevention effect."
+        }
+      ]
+    },
+    "context": {
+      "mechanism": "Local failure, persistence despite shutdown and cross-organization spread combine before broad loss of control; separate conditions connect that to global harm.",
+      "conditions": "Read the changed bilingual tour/detail context, L-C4, C4-H, R4-C1 and R0-R4, four affected graphs, three route definitions and the control story.",
+      "counterexample": "Copied agents may remain containable; independent organizations may block spread. The same research capability can support defenses, and no replicated process necessarily reaches essential services.",
+      "evidence": "The new capability experiment supports a narrower component than C4a or C4b. The due-edge evidence supports possible safety-research assistance rather than automatic matching progress. Existing summaries already preserve these distinctions.",
+      "limits": "Separate experiments do not demonstrate simultaneous satisfaction of every AND condition. Metadata dependencies reaching the work graph do not constitute new labor-outcome evidence.",
+      "mitigation": "Keep independent response capacity, resource revocation and outcome verification. Retain conditional global-harm bridges and safety-research mitigation requirements.",
+      "readerContext": "Read the displayed sequence from local deviation to recovery and onward to harm in both editions. References to numbers and model names are explained in the research card, with plain-language boundaries in the node prose.",
+      "whyHere": "Source and edge changes invalidate dependency fingerprints even when their conclusions remain appropriate. Retain topology, routes and categories after reading the affected contexts.",
+      "primary": [
+        {
+          "source": "anthropic-replication-setup",
+          "locator": "Sections B, E–G",
+          "support": "Prepared propagation is not shutdown resistance or independent organizations losing control."
+        },
+        {
+          "source": "automated-alignment",
+          "locator": "Evaluation design and limitations",
+          "support": "Limited safety assistance does not assure deployment prevention."
+        }
+      ]
+    },
+    "provenance": {
+      "mechanism": "Publication, experiment, source-check and item-review dates represent different claims. A new source does not refresh unrelated observations.",
+      "conditions": "October 13 daily review, September 29–October 13 window. Reused draft PR #11 after fetching main and checking its ancestry, with the user checkout preserved. One edge was due.",
+      "counterexample": "Index access cannot refresh scientific conclusions. A voluntary AISI agenda and a conventional-malware abstract cannot be promoted to new measured AI containment effectiveness.",
+      "evidence": "Added one source/card and two bilingual node paragraphs; rereviewed and retained R0-R4. Preserved all thirty-four prior history translations and all evidence levels and topology.",
+      "limits": "Eighteen daily starting pages and targeted searches are bounded coverage, not proof of no other correction. No full conventional-Mirai paper review, independent replication, browser layout test or public-production check claimed.",
+      "mitigation": "Keep exact source and methods references, trial denominators, remaining uncertainties and before/after rationale. Validate content and build before updating the draft; never auto-merge.",
+      "readerContext": "The history says what the experiment adds and what remains unproved. Technical details stay in the evidence card while the explanation identifies actors and the missing causal conditions.",
+      "whyHere": "Metadata and history describe actual substantive work. The inventory retains hypothesis-level persistence and spread rather than treating a new date as observed loss of control.",
+      "primary": [
+        {
+          "source": "anthropic-replication-setup",
+          "locator": "Publication header, sections B and E–G",
+          "support": "October 12 publication, unspecified experiment dates, bounded results."
+        },
+        {
+          "source": "automated-alignment",
+          "locator": "Methods and limitations",
+          "support": "Substantive due-item rereview; no wholesale source-date refresh."
+        }
+      ]
+    }
+  },
+  "entries": {
+    "source:anthropic-replication-setup": {
+      "hash": "fbcafd155b96598fe3033e62d2706646119c59ad29ba005def3186f8ca314064",
+      "assessment": "replication"
+    },
+    "research:replication-setup-boundaries": {
+      "hash": "c5f56c9c57115ec14fb148933c561242213b51a6d3729aad436d9711587e3cfb",
+      "assessment": "replication"
+    },
+    "node:C4a": {
+      "hash": "366688b64bff4563289405a469328d1b15a8b114187c916d2d20ac809e96c025",
+      "assessment": "replication"
+    },
+    "node:C4b": {
+      "hash": "2c6b8ac2b1975096ab2288f63319a1045fe168dff9bedb5fc6a74e76d41b45f1",
+      "assessment": "replication"
+    },
+    "edge:L-C4": {
+      "hash": "e10cd5e5af9bd3cbda76391bf95421a6dd40965a42ea0bf36757534d05e5ba55",
+      "assessment": "context"
+    },
+    "edge:R0-R4": {
+      "hash": "b4f8a491cecf752334c21f972285e6019c62d5ba21a077324fd886a08f73e1b5",
+      "assessment": "safety"
+    },
+    "graph:control": {
+      "hash": "245e54b709c44838cf473a999b0eac260971f76016d817a69274a7d3db132012",
+      "assessment": "context"
+    },
+    "graph:acceleration": {
+      "hash": "a674293c0ca41ee9c5ab870a0de4ee05faabd2ab83a51ce90c05e7796b03a7e7",
+      "assessment": "context"
+    },
+    "graph:persistence-scale": {
+      "hash": "d68f3e29a76353c41188bf7e4d8f29d23036319d6b2be1ec533fc75c326f43b5",
+      "assessment": "context"
+    },
+    "graph:work": {
+      "hash": "507cbd09b3744de821a54e5314e44793b1606c9b69501f7f2e77d181787c93b5",
+      "assessment": "context"
+    },
+    "route:control": {
+      "hash": "1940401518d17b0aa356d2823d9eda15cc04e8c6c9adfc80afa8276445c8b062",
+      "assessment": "context"
+    },
+    "route:acceleration": {
+      "hash": "6c0507cdd5709d3562127bd122ecab05a173c870a314b8fbca43dfb4ae27f64a",
+      "assessment": "context"
+    },
+    "route:work": {
+      "hash": "a0800fe971cb5a80b6487656df543ee886941eee2e60d4022090cd65769f1887",
+      "assessment": "context"
+    },
+    "story:control": {
+      "hash": "3a4b38db6762ed8c1162e7660719f827372d92b3fe82c4deb99ff826ad0d00c0",
+      "assessment": "context"
+    },
+    "metadata:map": {
+      "hash": "bb60e0a96ccad1aac7142ee490b3abda200fe8dcddd94be65782957f4304f788",
+      "assessment": "provenance"
+    },
+    "history:changes": {
+      "hash": "526a9f46da9c3d5eb105c3940ce307f163e51af1fb4f71602bda0eafbc7e626c",
+      "assessment": "provenance"
+    },
+    "inventory:current": {
+      "hash": "1b271e638217e211a359bff39e84ae21171e2c95d50fa261fed407864d57b92e",
+      "assessment": "provenance"
+    }
+  }
+}

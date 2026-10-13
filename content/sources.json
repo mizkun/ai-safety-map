@@ -934,5 +934,14 @@
     "title": "Xuほか — 自己学習の効果と測定の揺れを分ける",
     "period": "2026年8月20日の初版。Qwen3-8Bの3回の追加学習を評価。実験日は未記載。",
     "primary": "著者による公開数学課題の実験。プレプリントであり、他の研究者による追試は今回確認できていない。"
+  },
+  "anthropic-replication-setup": {
+    "url": "https://www.anthropic.com/research/self-replicating-ai",
+    "published": "2026-10-12",
+    "date": "2026-10-12",
+    "checked": "2026-10-13",
+    "title": "Anthropic — データセンター外でAIを動かし、複製する能力の評価",
+    "period": "2026年10月12日公表。機器での動作と、隔離した模擬環境での複製の試験。実施日は未記載。",
+    "primary": "AnthropicのFrontier Red Teamによる原報告。独立した追試や、現実の侵入事故の調査ではない。"
   }
 }
