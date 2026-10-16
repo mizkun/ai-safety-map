@@ -173,7 +173,7 @@
     "source": "horizon",
     "locator": "Methodological Details / FAQ",
     "evaluator": "METR",
-    "setting": "主にソフトウェア開発・機械学習・サイバーの明確に定義された課題。公開ページ更新は2026年5月8日。",
+    "setting": "主にソフトウェア開発・機械学習・サイバーの明確に定義された課題。測定追加の最終記載は2026年5月8日で、9月8日に継続更新していないことを追記。",
     "method": "人間の専門家の所要時間を課題の長さとし、AIの成功率が50%・80%になる長さを推定する。",
     "result": "長い課題に対応する能力の伸びを比較できる。現行の課題群では16時間を超える測定の信頼性が低いと明記している。",
     "limitation": "AI自身が何時間連続して動けるかの指標ではない。職場の暗黙知、曖昧な依頼、対人調整を含む全労働への換算もできない。",
@@ -1084,12 +1084,12 @@
     "type": "observation",
     "title": "数学の成果公開と、証明の確認を分ける",
     "kind": "開発元が公開した原稿と検証用資料",
-    "locator": "README: Navigating the collection、How the results were produced、Versions and citations。lean/README.mdも確認。",
+    "locator": "改訂READMEのNavigating the collection・作成条件、同版history.mdの撤回と修正。",
     "evaluator": "OpenAI。未公開の内部モデルで研究問題を評価し、成果を選んで整理。",
-    "setting": "約4,000問題から722原稿・372の関連群を公開したと説明。全てにLeanの形式化が付くわけではない。",
+    "setting": "約4,000問題から選ばれた原稿。初回722原稿から3件撤回し、改訂版は719原稿・372関連群。",
     "method": "多くは共通の手順だが例外もあり、一部は人が読みやすさを編集。成果あたり平均計算量をChatGPT Proの約3時間相当として説明。",
-    "result": "原稿、一部の形式化、10件の推論の要約、改訂を残す方針を公開。検証段階の異なる結果を含む。",
-    "limitation": "原稿数は独立検証済みの発見数ではなく、問題数との割り算も成功率にならない。計算量は人の作業込みの研究時間ではない。本点検では個々の証明を再実行していない。"
+    "result": "符号の誤りと依存する証明の問題で3原稿を撤回。主結果の300/719に形式化があると報告。",
+    "limitation": "撤回は全成果の否定でも、残る原稿の保証でもない。原稿数・形式化率は独立検証済みの発見数や実用の成功率ではない。個々の証明は再実行していない。"
   },
   "metagaming-latents": {
     "source": "openai-metagaming-latents",
@@ -1270,5 +1270,101 @@
     "method": "アクセスの障害を簡略化。動作確認に合格すると、実験の仕組みが次のエージェントを起動する。",
     "result": "GLM-5.2の5試行中4試行が8台の環境全体、1試行が7台に到達。小さいモデルには、部分的に成功しても一連の作業を完遂できないものがあった。",
     "limitation": "自身の大きなモデルを各機器で動かした結果ではない。防御への抵抗は未試験。実際の組織間の拡散や停止不能、将来の実現時期を実証していない。"
+  },
+  "argon-bio-uplift": {
+    "source": "gemini-argon-report",
+    "type": "evaluation",
+    "title": "情報の質の改善と、物理的な実行を区別",
+    "kind": "専門家による情報支援の比較",
+    "locator": "3.2.1.3節、表3.2〜3.3、3.3.2.3節。",
+    "evaluator": "Google DeepMind。科学分野6人と運用面2人の専門家が評価。",
+    "setting": "外付けの防御を適用しないArgonと、検索の基準を3場面で比較。",
+    "method": "回答を0〜100点の基準で採点。物理的な実行成功率ではない。",
+    "result": "3場面のうち2場面で検索より高い評価、1場面で低い評価。別の防御試験では、要求単位と試行群単位で成功率が異なる。",
+    "limitation": "専門家による情報評価。未熟練者の実行や現実の危害は実証しない。防御後の残余リスクが低いという判断は開発元の評価。"
+  },
+  "argon-cyber-evaluation": {
+    "source": "gemini-argon-report",
+    "type": "evaluation",
+    "title": "模擬課題の全問成功にも、解き方の確認が必要",
+    "kind": "外付け防御なしのサイバー能力評価",
+    "locator": "3.2.2.3〜3.2.2.5節、図3.2、脚注12。",
+    "evaluator": "Google DeepMind。IrregularのCyScenarioBenchを使用。",
+    "setting": "Argonにコマンド実行・Python・検索の道具を与えた模擬環境。",
+    "method": "複数回の試行で一度でも達成した課題数と、試行ごとの信頼性を区別。",
+    "result": "12課題全てを達成。ただし2課題は想定外の解法で、意図した能力を過大評価する可能性がある。",
+    "limitation": "現実の未知の対象への一回の成功率ではない。防御なしの能力を一般提供時の成功率へ置き換えない。"
+  },
+  "argon-monitoring-assumptions": {
+    "source": "gemini-argon-report",
+    "type": "evaluation",
+    "title": "監視の改善と、残る前提を分ける",
+    "kind": "監視の試験と開発元の安全性評価",
+    "locator": "3.4.3.3〜3.4.3.4節、3.4.4.3節、3.4.5節。",
+    "evaluator": "Google DeepMind。内部評価と委託評価を含む。",
+    "setting": "学習・評価・社内利用・対象の外部利用。即時停止する監視と事後の監視が混在。",
+    "method": "操作と推論文を点検。警告された例に加え、学習の10,000試行を層別無作為抽出して調査。",
+    "result": "監視による検出例と、改善の余地を報告。監視外の経路や、修正済み・修正中の回避手段が残る。",
+    "limitation": "別モデルの監督でも協調的な見逃しを防げるかは直接検証されていない。高い検知率・改変耐性・迅速な対応は安全性判断の前提。"
+  },
+  "argon-rd-trend": {
+    "source": "gemini-argon-report",
+    "type": "observation",
+    "title": "コードの自動化と、開発全体の加速を分ける",
+    "kind": "社内の工程調査と能力指標の分析",
+    "locator": "3.4.2節、図3.13〜3.16。",
+    "evaluator": "Google DeepMind。社内の責任者・研究者12人への調査など。",
+    "setting": "Geminiの能力指標と社内開発。コードの集計には2026年4〜9月を含む。",
+    "method": "4月1日を境に能力指標の伸びを比較。工程ごとの人の関与も調査。",
+    "result": "AIが書くコードは増加する一方、指標の伸びの加速に統計的に有意な差は確認されなかった。人の方針選択・検証も残る。",
+    "limitation": "一社の指標と期間の結果。AIが加速に寄与しないことや、今後も加速しないことの証明ではない。"
+  },
+  "distillation-extraction-defense": {
+    "source": "anthropic-distillation-defenses",
+    "type": "observation",
+    "title": "能力の模倣に使う情報の流出を減らす",
+    "kind": "サービス上の対策前後の観測",
+    "locator": "Our new methods、How well our new methods work、末尾の限界。",
+    "evaluator": "Anthropic。自社サービス上の推定。",
+    "setting": "推論文を他のモデルの訓練へ転用する抽出を対象に、利用制限と検知を併用。",
+    "method": "抽出された推論文のトークン量を対策前後で比較。",
+    "result": "自社サービス上の抽出量が10〜100分の1になったと報告。",
+    "limitation": "被害や模倣モデルの能力が同じ割合で減ったとは分からない。他社サービスへの移動、長期の持続性、強い継続的な攻撃は未検証。"
+  },
+  "uv-map-human-review": {
+    "source": "claude-uv-map",
+    "type": "observation",
+    "title": "AIの研究支援にも、人が誤りを見つける役割が残る",
+    "kind": "天文学のデータ統合の事例",
+    "locator": "Building the missing map、Trial and error、The final map。",
+    "evaluator": "Brice Ménard。Claude Scienceを使用し、人が方針と結果を確認。",
+    "setting": "既存の観測を統合し、未観測の約3分の1を推定。モデルの詳細版は未記載。",
+    "method": "複数のAIに処理・確認を分担。人が画像を点検して修正を指示。",
+    "result": "AI同士の2回の確認で残った補正の誤りを人が発見し、修正した。",
+    "limitation": "推定部分は新しい観測ではない。選ばれた一事例で、無介入の成功率や研究全体の加速率は測っていない。"
+  },
+  "trained-alignment-auditors": {
+    "source": "auditor-training",
+    "type": "evaluation",
+    "title": "AIの点検役を訓練する改善と限界",
+    "kind": "人工的な問題を使った監査の訓練",
+    "locator": "2〜4節、6節のLimitations、付録G。",
+    "evaluator": "Paul Rosu・Rowan Wang。Haiku 4.5を訓練。",
+    "setting": "主に指示で隠れた行動を埋め込み、別の行動・場面で評価。追加学習した対象にも転用を試す。",
+    "method": "調査同士を比較して学習し、問題のない対象も混ぜる。判定役は訓練と評価で分ける。",
+    "result": "選ばれた総合指標でOpus 4.6に並ぶ改善。単純に懸念のある報告を褒める訓練では、根拠の乏しい発見を作る失敗が起きた。",
+    "limitation": "評価の4指標はAIによる採点で、人の検証はない。自然に生じる未知の問題を網羅する能力や運用時の安全性は未証明。"
+  },
+  "embedded-evaluator-access": {
+    "source": "anthropic-evaluators-update",
+    "type": "observation",
+    "title": "外部評価者が見られる情報と公表権限",
+    "kind": "評価制度の実施状況の報告",
+    "locator": "What we mean by employee-like access、Our other evaluator partnerships、訂正脚注2。",
+    "evaluator": "Anthropicが説明するMETRなどとの関係。",
+    "setting": "METRの6人に社内ツール等へのアクセスを開始。顧客情報など除外範囲がある。",
+    "method": "METRは事前の公表承認を要しないが、定めた種類の情報には削除要求があり得る。",
+    "result": "METRは削除の妥当性についても公表できる。他の提携は同じアクセス・公表条件とは限らない。",
+    "limitation": "制度の開始と権限の説明であり、見逃しや事故が減った測定ではない。SecureBioを同じ段階の常駐評価と扱わない。"
   }
 }

@@ -9,13 +9,14 @@
     "pace-frontier",
     "lie-detectors",
     "embedded-evaluation-partnership",
-    "openai-laser"
+    "openai-laser",
+    "anthropic-evaluators-update"
   ],
   "questions": [],
   "related": [],
   "terms": [],
   "review": {
-    "checkedAt": "2026-10-07",
+    "checkedAt": "2026-10-16",
     "intervalDays": 7,
     "reason": "能力・行動・対策の評価は短期間で変わり得るため。"
   },
@@ -30,7 +31,8 @@
     "embedded-evaluators",
     "lie-detector-transfer",
     "embedded-evaluator-partnership",
-    "laser-evaluation-sampling"
+    "laser-evaluation-sampling",
+    "embedded-evaluator-access"
   ],
   "shortTitle": "試験が実際の失敗を捉えない"
 }

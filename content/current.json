@@ -202,7 +202,7 @@
         "ironclad-workflow-evaluation"
       ],
       "review": {
-        "checkedAt": "2026-10-07",
+        "checkedAt": "2026-10-16",
         "intervalDays": 7,
         "reason": "既存の根拠がカードの条件をどこまで直接確かめているかを分類しています。根拠の更新時に見直します。"
       }
@@ -254,10 +254,11 @@
         "horizon",
         "astra-cyber",
         "lie-detector-transfer",
-        "laser-evaluation-sampling"
+        "laser-evaluation-sampling",
+        "embedded-evaluator-access"
       ],
       "review": {
-        "checkedAt": "2026-10-07",
+        "checkedAt": "2026-10-16",
         "intervalDays": 7,
         "reason": "既存の根拠がカードの条件をどこまで直接確かめているかを分類しています。根拠の更新時に見直します。"
       }
@@ -287,10 +288,11 @@
         "external-monitor-stress-tests",
         "viewer-integrity-test",
         "haiku55-monitorability",
-        "structural-monitor-rollback"
+        "structural-monitor-rollback",
+        "argon-monitoring-assumptions"
       ],
       "review": {
-        "checkedAt": "2026-10-12",
+        "checkedAt": "2026-10-16",
         "intervalDays": 7,
         "reason": "既存の根拠がカードの条件をどこまで直接確かめているかを分類しています。根拠の更新時に見直します。"
       }
@@ -408,14 +410,15 @@
     },
     "M2b1": {
       "level": "tested",
-      "summary": "既存のGemini評価では検索との比較や専門家による試験があり、一部では専門家の誘導が必要でした。通常兵器の新しい模擬評価は、利用者への追加の効果を直接測っていません。",
+      "summary": "検索との比較や専門家による情報評価があります。Argonの3場面では2つで検索を上回り、1つでは下回りました。情報の質と、人が物理的に実行できるかは別です。",
       "research": [
         "gemini-safety",
         "physical-software-eval-sep26",
-        "gpt6-october-capabilities"
+        "gpt6-october-capabilities",
+        "argon-bio-uplift"
       ],
       "review": {
-        "checkedAt": "2026-10-10",
+        "checkedAt": "2026-10-16",
         "intervalDays": 7,
         "reason": "既存の根拠がカードの条件をどこまで直接確かめているかを分類しています。根拠の更新時に見直します。"
       }
@@ -435,15 +438,16 @@
     },
     "R2": {
       "level": "indirect",
-      "summary": "研究支援の進歩は報告されていますが、開発全体の加速率はなお間接的な根拠です。外部評価にも非公開の情報と対象期間の不明な推定が含まれます。",
+      "summary": "一部の自動化は進んでいますが、開発全体の加速は別の問いです。Googleの対象期間・能力指標では加速の差は統計的に有意ではなく、全社・全期間への一般化はできません。",
       "research": [
         "rd-use",
         "horizon",
         "anthropic-rd-progress",
-        "metr-opus55-rd"
+        "metr-opus55-rd",
+        "argon-rd-trend"
       ],
       "review": {
-        "checkedAt": "2026-09-23",
+        "checkedAt": "2026-10-16",
         "intervalDays": 7,
         "reason": "既存の根拠がカードの条件をどこまで直接確かめているかを分類しています。根拠の更新時に見直します。"
       }
@@ -454,10 +458,11 @@
       "research": [
         "alignment-research",
         "control-protocol",
-        "transect-review-tooling"
+        "transect-review-tooling",
+        "trained-alignment-auditors"
       ],
       "review": {
-        "checkedAt": "2026-10-10",
+        "checkedAt": "2026-10-16",
         "intervalDays": 7,
         "reason": "既存の根拠がカードの条件をどこまで直接確かめているかを分類しています。根拠の更新時に見直します。"
       }

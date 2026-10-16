@@ -19,11 +19,11 @@
   },
   "horizon": {
     "title": "METR — Task-Completion Time Horizons",
-    "date": "ページの更新日：2026年5月8日",
+    "date": "ページの更新日：2026年9月8日",
     "url": "https://metr.org/time-horizons/",
     "published": null,
-    "period": "ページ更新：2026年5月8日。モデルごとの評価時期は異なる",
-    "checked": "2026-09-09",
+    "period": "測定追加の最終記載は2026年5月8日。9月8日に継続更新していないことを追記。モデルごとの評価時期は異なる。",
+    "checked": "2026-10-16",
     "primary": "当該研究・評価・出来事を実施または調査した組織による一次報告"
   },
   "discovery": {
@@ -792,12 +792,12 @@
     "primary": "開発元の公開説明。専門家への相談や成果の公開は、各主張の独立検証の完了を意味しない。"
   },
   "openai-math-repository": {
-    "url": "https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/README.md",
+    "url": "https://github.com/openai/math/blob/301488868beec11bfd897168433b0a64f5258559/README.md",
     "published": "2026-10-06",
     "date": "2026-10-06",
-    "checked": "2026-10-07",
+    "checked": "2026-10-16",
     "title": "OpenAI — 数学の原稿・形式化・作成条件の公開資料",
-    "period": "初回公開版adc7f1241b42e322a6451854ab7e4b4c146bf78a。研究の実施日は未記載。",
+    "period": "10月6日初回公開、10月8日改訂301488868beec11bfd897168433b0a64f5258559。研究の実施日は未記載。",
     "primary": "成果を公開した組織の原資料。READMEと形式化の案内を確認した。個々の証明の再実行や独立した正しさの検証は行っていない。"
   },
   "agmai-math-release-response": {
@@ -943,5 +943,59 @@
     "title": "Anthropic — データセンター外でAIを動かし、複製する能力の評価",
     "period": "2026年10月12日公表。機器での動作と、隔離した模擬環境での複製の試験。実施日は未記載。",
     "primary": "AnthropicのFrontier Red Teamによる原報告。独立した追試や、現実の侵入事故の調査ではない。"
+  },
+  "gemini-argon-report": {
+    "url": "https://storage.googleapis.com/deepmind-media/gemini/gemini_4_safety_report.pdf",
+    "published": "2026-10-13",
+    "date": "2026-10-13",
+    "checked": "2026-10-16",
+    "title": "Google DeepMind — Gemini 4 Argonの安全性評価",
+    "period": "2026年10月版。10月13日のモデルカードと同時公開。実験日は一律には記載されず、研究開発の集計には2026年4〜9月の値を含む。",
+    "primary": "開発元の原報告。委託先の評価も収録するが、その原データを独立に再検証したものではない。"
+  },
+  "anthropic-distillation-defenses": {
+    "url": "https://www.anthropic.com/research/distillation-defenses",
+    "published": "2026-10-12",
+    "date": "2026-10-12",
+    "checked": "2026-10-16",
+    "title": "Anthropic — 他モデルへの能力の模倣を狙う抽出への防御",
+    "period": "10月12日公表。直近数ヶ月の対策と自社サービス上の抽出量を報告。全ての測定期間・対象数は公開されていない。",
+    "primary": "防御を実装した開発元の原報告。独立した追試ではない。"
+  },
+  "claude-uv-map": {
+    "url": "https://www.anthropic.com/research/the-missing-map-of-the-sky",
+    "published": "2026-10-08",
+    "date": "2026-10-08",
+    "checked": "2026-10-16",
+    "title": "Brice Ménard — Claudeと作った紫外線の全天マップ",
+    "period": "10月8日公表。2026年夏の作業を述べる。観測資料は過去の望遠鏡データで、未観測部分は推定。",
+    "primary": "研究を行った天体物理学者・Anthropic研究者による事例報告。比較実験ではない。"
+  },
+  "auditor-training": {
+    "url": "https://arxiv.org/html/2608.25460v1",
+    "published": "2026-08-26",
+    "date": "2026-08-26",
+    "checked": "2026-10-16",
+    "title": "Rosu・Wang — 強化学習でAIの点検役を改善する",
+    "period": "原論文v1は8月26日公開。10月15日の著者ブログから確認。実験日は未記載。",
+    "primary": "著者の原論文。人工的に行動を埋め込んだモデルでの評価。独立した追試は未確認。"
+  },
+  "anthropic-evaluators-update": {
+    "url": "https://www.anthropic.com/news/an-update-on-independent-evaluators",
+    "published": "2026-10-15",
+    "date": "2026-10-15",
+    "checked": "2026-10-16",
+    "title": "Anthropic — 外部評価者のアクセスと公表権限の更新",
+    "period": "10月15日公表。同日の訂正はSecureBioの契約・点検段階を明確化。",
+    "primary": "評価を受ける企業の制度・実施状況の説明。評価者による効果検証の報告ではない。"
+  },
+  "openai-math-corrections": {
+    "url": "https://github.com/openai/math/blob/301488868beec11bfd897168433b0a64f5258559/history.md",
+    "published": "2026-10-08",
+    "date": "2026-10-08",
+    "checked": "2026-10-16",
+    "title": "OpenAI — 数学原稿の撤回・修正記録",
+    "period": "10月8日05:03 UTCの改訂3014888。履歴本文の見出しは10月7日。研究実施日とは別。",
+    "primary": "原稿を公表した組織自身の訂正記録。証明の独立した再検証は行っていない。"
   }
 }

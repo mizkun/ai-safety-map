@@ -1,5 +1,34 @@
 [
   {
+    "id": "defenses-and-corrections-20261016",
+    "date": "2026-10-16",
+    "nodes": [
+      "C3a1",
+      "C3a3",
+      "M2b1",
+      "M2c1",
+      "M3",
+      "R1",
+      "R2",
+      "R4"
+    ],
+    "sources": [
+      "gemini-argon-report",
+      "anthropic-distillation-defenses",
+      "claude-uv-map",
+      "auditor-training",
+      "anthropic-evaluators-update",
+      "openai-math-corrections",
+      "horizon"
+    ],
+    "kind": "能力・防御・訂正の点検",
+    "title": "新しい能力と防御を併記し、数学原稿の撤回を反映",
+    "summary": "10月16日までの資料と期限に達した3項目を点検しました。",
+    "before": "新しいArgon評価、監査の改善、外部評価のアクセス条件は未収録で、数学の資料は初回版を参照していました。",
+    "after": "防御の前提と限界、人の検証を明記。数学の3原稿撤回と改訂版、METRの測定ページの更新停止を資料欄へ反映し、C2aの説明は原資料を再確認して維持しました。根拠分類と矢印は変更していません。",
+    "reason": "能力・防御・検証済みの成果を混同せず、訂正と対策の改善も同じ地図で読めるようにするため。"
+  },
+  {
     "id": "replication-boundaries-review-20261013",
     "date": "2026-10-13",
     "nodes": [
