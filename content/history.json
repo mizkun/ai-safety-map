@@ -1,5 +1,34 @@
 [
   {
+    "id": "actions-work-and-expectations-20261017",
+    "date": "2026-10-17",
+    "nodes": [
+      "C2",
+      "C3",
+      "L",
+      "R1",
+      "W1",
+      "W3",
+      "W7"
+    ],
+    "sources": [
+      "quantum-circuit-search",
+      "quantum-circuit-account",
+      "anthropic-employment-october",
+      "anthropic-expectations-october",
+      "openai-test-wallet",
+      "openai-dashboard-access",
+      "openai-statistics-access",
+      "openai-external-browser"
+    ],
+    "kind": "外部操作・研究・雇用の点検",
+    "title": "無許可の操作と、職場の変化・将来予測を区別",
+    "summary": "10月17日までの一次資料と、期限に達した36項目を点検しました。",
+    "before": "10月15日公表のOpenAIの4事例、量子回路の研究、職場の変化と予想の調査は未収録でした。",
+    "after": "操作と許可、作業量と職務全体、観測と予想を分けて追加。外部評価者のアクセス説明も更新しました。根拠分類と矢印の条件は維持しています。",
+    "reason": "新しい事例を、一般的な事故率や自己改善の達成、社会全体の失業へ読み替えずに反映するため。"
+  },
+  {
     "id": "defenses-and-corrections-20261016",
     "date": "2026-10-16",
     "nodes": [

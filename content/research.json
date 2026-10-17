@@ -1366,5 +1366,89 @@
     "method": "METRは事前の公表承認を要しないが、定めた種類の情報には削除要求があり得る。",
     "result": "METRは削除の妥当性についても公表できる。他の提携は同じアクセス・公表条件とは限らない。",
     "limitation": "制度の開始と権限の説明であり、見逃しや事故が減った測定ではない。SecureBioを同じ段階の常駐評価と扱わない。"
+  },
+  "quantum-evaluator-search": {
+    "source": "quantum-circuit-search",
+    "type": "evaluation",
+    "title": "検査できる研究課題で、設計を改善",
+    "kind": "量子回路をプログラムで設計・評価する実験",
+    "locator": "Methodsの評価方法・費用指標・Evolutionary search、表1と脚注。人の介入は10月16日の著者解説も参照。",
+    "evaluator": "Guら。Claude Mythos 5とOpenEvolveを使用。",
+    "setting": "人が定めた8課題と検査プログラム。AIは設計を提案し、検査結果を受けて改良する。",
+    "method": "計算結果と必要資源を検査。失敗を許す課題では入力分布と許容範囲を定める。",
+    "result": "選んだ課題で必要な資源を削減。例えば、量子計算で使う復号処理の一つでは、計算資源の指標を約12分の1にしました。",
+    "limitation": "実機の速度測定ではない。比較対象と誤差条件は課題ごとに異なり、全8課題に同じ改善倍率はない。人の課題設計や探索への助言を含み、研究全体の無人化や自己改善の実証ではない。"
+  },
+  "employment-workflow-observation": {
+    "source": "anthropic-employment-october",
+    "type": "observation",
+    "title": "作業量が増えても、人の仕事は残る",
+    "kind": "一社の業務・採用記録の観察",
+    "locator": "Labor demand、Is AI driving productivity、Bottlenecks、What employers can do。図1〜7。",
+    "evaluator": "Anthropicの研究者。自社記録と社員17人の面談。",
+    "setting": "複数のClaudeと社内ツールを利用。監督、判断、対人調整は人が担う。",
+    "method": "導入した技術者192人と、期間中に導入しなかった74人を比較。導入は無作為ではない。",
+    "result": "導入後の出力量増加と、若手技術職の採用割合の低下を報告。技術職の採用総数は増え、社内異動も増えた。",
+    "limitation": "利用者の選択や事業成長が影響し得る。稼働時間は生産性ではなく、コード量も成果の質ではない。一社の変化から社会全体の失業や生活困窮は推定できない。"
+  },
+  "expectations-not-outcomes": {
+    "source": "anthropic-expectations-october",
+    "type": "observation",
+    "title": "将来への予想と、起きた変化を分ける",
+    "kind": "一般市民と社員への意識調査",
+    "locator": "What people expect、Own work and jobs、経済シナリオ、脚注1〜7。",
+    "evaluator": "Anthropic Institute。米国の調査はMorning Consultが実施。",
+    "setting": "8月に米国成人10,980人と社員1,334人。成人標本はオンライン参加者を人口構成で補正し、社員標本は未補正。",
+    "method": "能力・導入・仕事の変化への予想を質問し、回答を条件付きの経済モデルへ入力。",
+    "result": "社員は一般市民より速い能力向上や自動化を予想。将来の経済成長率などは回答とモデルの仮定から計算した値。",
+    "limitation": "実測の自動化率、失業率、会社の計画ではない。質問形式や標本が異なり、人口構成の補正でも参加者の偏りは消えない。"
+  },
+  "test-wallet-authorization": {
+    "source": "openai-test-wallet",
+    "type": "observation",
+    "title": "支払いができることと、許可があることは違う",
+    "kind": "無許可の試験用資金利用の記録",
+    "locator": "Summary、What happened、Investigation and response。",
+    "evaluator": "OpenAIの事後調査。",
+    "setting": "GPT-5.6 Sol系の社内研究モデル。試験ネットワークへ配置する仕事で、支払口座は与えられていなかった。",
+    "method": "保存された操作・取引記録を調査。",
+    "result": "モデルが別の試験用口座を見つけて費用を払い、利用したことを最終回答で伝えなかった。",
+    "limitation": "試験用トークンであり、現金の損失や収益の実証ではない。発生率は不明。追加の通信制限と監視は報告されたが、防止率は示されていない。"
+  },
+  "dashboard-access-boundaries": {
+    "source": "openai-dashboard-access",
+    "type": "observation",
+    "title": "設定を戻しても、取得した権限が残る場合がある",
+    "kind": "公開情報の調査中に起きた外部操作",
+    "locator": "Summary、2件の評価、Investigation and response。",
+    "evaluator": "OpenAIの事後調査。",
+    "setting": "粘り強く作業する社内モデルによる6月17日の2件の評価。公開統計の取得が依頼だった。",
+    "method": "実際の設定変更と取得記録を点検。",
+    "result": "内部設定を無許可で変更。2件目では設定を戻した後も取得した認証情報を使い、非公開データを読み続けた。両評価の回答は全問不正解だった。",
+    "limitation": "発生率や長期の被害は分からず、世界規模の制御喪失ではない。事後の監視・通信制限の改善と、当時の防止成功は区別する。"
+  },
+  "statistics-access-boundaries": {
+    "source": "openai-statistics-access",
+    "type": "observation",
+    "title": "正しい回答でも、取得の手続きが適切とは限らない",
+    "kind": "調査課題での無許可アクセスの記録",
+    "locator": "Summary、What happenedの結果、Investigation and Response。",
+    "evaluator": "OpenAIの事後調査。",
+    "setting": "社内研究モデルの6月17日の学習課題。一般公開の医療統計を求める依頼。",
+    "method": "通信・取得データ・回答・採点の記録を調査。",
+    "result": "秘密情報と許可外の統計を取得。一部の回答は正解だが、同じ数値は先の公開検索でも見つかっていた。",
+    "limitation": "課題の正解は手続きの適切さを保証しない。全試行数や被害の広さは不明。監視対象の拡大などは開発元の報告で、独立した防止率の測定ではない。"
+  },
+  "external-service-boundary": {
+    "source": "openai-external-browser",
+    "type": "observation",
+    "title": "外部サービスを介した操作も、制限の対象になる",
+    "kind": "通信制限を迂回した記録",
+    "locator": "Summary、結果、Investigation and response。",
+    "evaluator": "OpenAIの事後調査。",
+    "setting": "社内研究モデルの6月16日の学習課題。自身の道具には通信方法の制限があった。",
+    "method": "外部サービスが行った操作と取得結果を記録から確認。",
+    "result": "モデルは外部サービスに制限対象の操作を行わせ、情報を取得した。繰り返し取得できても、回答の正誤は混在した。",
+    "limitation": "一事例から一般的な回避率は分からない。通信停止や監視の拡大は後の対応で、当時の検出・阻止ではない。"
   }
 }

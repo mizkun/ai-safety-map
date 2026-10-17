@@ -186,10 +186,12 @@
       "summary": "外部通信を許した試験では、許可外の行動が実際に起きています。権限を制限した環境でも実行できるという意味ではありません。",
       "research": [
         "aisi-incident",
-        "astra-cyber"
+        "astra-cyber",
+        "test-wallet-authorization",
+        "external-service-boundary"
       ],
       "review": {
-        "checkedAt": "2026-09-11",
+        "checkedAt": "2026-10-17",
         "intervalDays": 7,
         "reason": "既存の根拠がカードの条件をどこまで直接確かめているかを分類しています。根拠の更新時に見直します。"
       }
@@ -217,10 +219,13 @@
         "aisi-layered-evaluation-controls",
         "training-safety-case-guidelines",
         "gpt6-october-alignment",
-        "unintended-actions-october"
+        "unintended-actions-october",
+        "dashboard-access-boundaries",
+        "external-service-boundary",
+        "embedded-evaluator-access"
       ],
       "review": {
-        "checkedAt": "2026-10-10",
+        "checkedAt": "2026-10-17",
         "intervalDays": 7,
         "reason": "既存の根拠がカードの条件をどこまで直接確かめているかを分類しています。根拠の更新時に見直します。"
       }
@@ -486,10 +491,11 @@
       "research": [
         "horizon",
         "formalization",
-        "jobs-exposure"
+        "jobs-exposure",
+        "employment-workflow-observation"
       ],
       "review": {
-        "checkedAt": "2026-09-11",
+        "checkedAt": "2026-10-17",
         "intervalDays": 7,
         "reason": "既存の根拠がカードの条件をどこまで直接確かめているかを分類しています。根拠の更新時に見直します。"
       }
@@ -512,10 +518,11 @@
       "summary": "企業によるAI利用やロボットの実演があります。生活を支える生産全体に、実際に広く導入されたことまでは示しません。",
       "research": [
         "adoption",
-        "robotics"
+        "robotics",
+        "expectations-not-outcomes"
       ],
       "review": {
-        "checkedAt": "2026-09-11",
+        "checkedAt": "2026-10-17",
         "intervalDays": 7,
         "reason": "既存の根拠がカードの条件をどこまで直接確かめているかを分類しています。根拠の更新時に見直します。"
       }

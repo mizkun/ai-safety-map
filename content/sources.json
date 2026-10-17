@@ -997,5 +997,77 @@
     "title": "OpenAI — 数学原稿の撤回・修正記録",
     "period": "10月8日05:03 UTCの改訂3014888。履歴本文の見出しは10月7日。研究実施日とは別。",
     "primary": "原稿を公表した組織自身の訂正記録。証明の独立した再検証は行っていない。"
+  },
+  "quantum-circuit-search": {
+    "url": "https://arxiv.org/html/2610.22367v1",
+    "published": "2026-10-15",
+    "date": "2026-10-15",
+    "checked": "2026-10-17",
+    "title": "Guら — AIと検査プログラムによる量子回路の設計",
+    "period": "原論文v1は10月15日17:59 UTC公開。実験日は未記載。10月16日の著者解説とは公表日が異なる。",
+    "primary": "研究を実施した著者のプレプリント。独立した追試は未確認。"
+  },
+  "quantum-circuit-account": {
+    "url": "https://www.anthropic.com/research/designing-efficient-quantum-circuits",
+    "published": "2026-10-16",
+    "date": "2026-10-16",
+    "checked": "2026-10-17",
+    "title": "Anthropic — Claudeによる量子回路設計の実施記録",
+    "period": "10月16日公表。初期の指示と探索を広げる声掛けを含む53時間の事例など。実施日は未記載。",
+    "primary": "実施した研究チームの解説。原論文と同じ研究で、別の追試ではない。"
+  },
+  "anthropic-employment-october": {
+    "url": "https://www.anthropic.com/research/employment-at-anthropic",
+    "published": "2026-10-16",
+    "date": "2026-10-16",
+    "checked": "2026-10-17",
+    "title": "Anthropic — 社内のAI利用と雇用の変化",
+    "period": "10月16日公表。2024〜2026年の社内記録、2026年8月までの稼働時間など。指標ごとに期間が異なる。",
+    "primary": "自社の業務記録と17人の面談に基づく観察研究。無作為にAI利用を割り当てた試験ではない。"
+  },
+  "anthropic-expectations-october": {
+    "url": "https://www.anthropic.com/research/ai-expectations-gap",
+    "published": "2026-10-16",
+    "date": "2026-10-16",
+    "checked": "2026-10-17",
+    "title": "Anthropic — 一般市民と社員のAIへの予想の違い",
+    "period": "10月16日公表。本文は8月の調査。9月の再調査と、9月9日公開のウェブ質問への回答は別の標本。",
+    "primary": "調査を設計した研究者の原報告。回答者の予想と、経済モデルによる計算を扱う。"
+  },
+  "openai-test-wallet": {
+    "url": "https://alignment.openai.com/misalignment-reports/using-a-funded-test-cryptocurrency-wallet-without-authorization/",
+    "published": "2026-10-15",
+    "date": "2026-10-15",
+    "checked": "2026-10-17",
+    "title": "OpenAI — 試験用口座の無許可利用",
+    "period": "6月26日の学習中の操作。9月25日発見、10月15日公表・更新。",
+    "primary": "開発元による過去の記録の調査。選ばれた事例で、全試行に対する頻度は不明。"
+  },
+  "openai-dashboard-access": {
+    "url": "https://alignment.openai.com/misalignment-reports/accessing-and-changing-internal-systems-during-dashboard-research/",
+    "published": "2026-10-15",
+    "date": "2026-10-15",
+    "checked": "2026-10-17",
+    "title": "OpenAI — 公開情報の調査中に内部システムを変更",
+    "period": "6月17日の2件の評価。8月13日までに発見、10月15日公表・更新。",
+    "primary": "開発元による過去の記録の調査。選ばれた事例で、全試行に対する頻度は不明。"
+  },
+  "openai-statistics-access": {
+    "url": "https://alignment.openai.com/misalignment-reports/retrieving-server-secrets-and-bypassing-authorization-on-a-government-statistics-website/",
+    "published": "2026-10-15",
+    "date": "2026-10-15",
+    "checked": "2026-10-17",
+    "title": "OpenAI — 統計調査中の秘密情報取得と無許可アクセス",
+    "period": "6月17日の学習中の操作。8月13日発見、10月15日公表・更新。",
+    "primary": "開発元による過去の記録の調査。選ばれた事例で、全試行に対する頻度は不明。"
+  },
+  "openai-external-browser": {
+    "url": "https://alignment.openai.com/misalignment-reports/circumventing-internet-restrictions-through-an-external-browser/",
+    "published": "2026-10-15",
+    "date": "2026-10-15",
+    "checked": "2026-10-17",
+    "title": "OpenAI — 外部ブラウザーを介した通信制限の回避",
+    "period": "6月16日の学習中の操作。6月25日までに発見、10月15日公表・更新。",
+    "primary": "開発元による過去の記録の調査。選ばれた事例で、全試行に対する頻度は不明。"
   }
 }
