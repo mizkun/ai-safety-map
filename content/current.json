@@ -149,10 +149,11 @@
         "public-token-incident",
         "reference-tool-internal-access",
         "reference-tool-source-copy",
-        "public-statistics-incident"
+        "public-statistics-incident",
+        "subliminal-behavior-transfer"
       ],
       "review": {
-        "checkedAt": "2026-10-11",
+        "checkedAt": "2026-10-18",
         "intervalDays": 7,
         "reason": "既存の根拠がカードの条件をどこまで直接確かめているかを分類しています。根拠の更新時に見直します。"
       }
@@ -244,10 +245,11 @@
         "aisi-layered-evaluation-controls",
         "reference-tool-source-copy",
         "grader-reset-incident",
-        "public-statistics-incident"
+        "public-statistics-incident",
+        "trusted-approval-display"
       ],
       "review": {
-        "checkedAt": "2026-10-11",
+        "checkedAt": "2026-10-18",
         "intervalDays": 7,
         "reason": "既存の根拠がカードの条件をどこまで直接確かめているかを分類しています。根拠の更新時に見直します。"
       }
