@@ -1087,5 +1087,41 @@
     "title": "Dubińskiら — 無関係に見える学習データを通じた振る舞いの伝播",
     "period": "原論文v1は10月7日公開。実験日は未記載。同じ基盤モデルから作った教師と生徒を主に比較。チェス課題はQwen3.6-27B。",
     "primary": "研究を行った著者のプレプリント。制御された学習実験で、実運用での伝播を測ったものではない。独立した追試は未確認。"
+  },
+  "mass-self-supervision": {
+    "url": "https://arxiv.org/abs/2610.12176",
+    "published": "2026-10-08",
+    "date": "2026-10-08",
+    "checked": "2026-10-19",
+    "title": "Leeほか — MASSによる2回の自己改善実験",
+    "period": "2026年10月8日の初版。Qwen3.6-27Bを出発点に2回の改善を実施。実験日は未記載。",
+    "primary": "UC BerkeleyとSakana AIの著者による実験。プレプリントであり、独立した追試は今回確認できていない。"
+  },
+  "athanor-post-training": {
+    "url": "https://arxiv.org/abs/2610.21055",
+    "published": "2026-10-15",
+    "date": "2026-10-15",
+    "checked": "2026-10-19",
+    "title": "Zhouほか — Athanorによる小規模AIの追加学習",
+    "period": "2026年10月15日の初版。4つのClaude Opus 5.5エージェントによる104時間の実験。実施日は未記載。",
+    "primary": "ByteDanceと大学の著者による実験。1回の共同作業を報告したプレプリント。"
+  },
+  "open-science-followups": {
+    "url": "https://arxiv.org/abs/2610.19159",
+    "published": "2026-10-13",
+    "date": "2026-10-13",
+    "checked": "2026-10-19",
+    "title": "Kimほか — 未解決の科学研究をエージェントに任せる評価",
+    "period": "2026年10月13日の初版。科学者が選んだ15課題を9種類のエージェントで評価。実施日は明記されていない。",
+    "primary": "大学・研究所の著者による新しい評価課題の実験。プレプリントであり、独立した追試は今回確認できていない。"
+  },
+  "fsb-ai-practices-final": {
+    "url": "https://www.fsb.org/2026/10/sound-practices-for-responsible-adoption-of-artificial-intelligence-ai-final-report/",
+    "published": "2026-10-15",
+    "date": "2026-10-15",
+    "checked": "2026-10-19",
+    "title": "FSB — 責任あるAI導入のための実務指針・最終報告",
+    "period": "2026年10月15日の最終報告。6月10日〜7月22日の意見募集を経た12項目の指針。",
+    "primary": "金融安定理事会による原報告。法的拘束力のある規則や、対策の有効性を測った実験ではない。"
   }
 }

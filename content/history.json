@@ -1,5 +1,27 @@
 [
   {
+    "id": "research-cycles-and-financial-controls-20261019",
+    "date": "2026-10-19",
+    "nodes": [
+      "R1",
+      "R3",
+      "C3b",
+      "F4"
+    ],
+    "sources": [
+      "mass-self-supervision",
+      "athanor-post-training",
+      "open-science-followups",
+      "fsb-ai-practices-final"
+    ],
+    "kind": "自己改善・研究の検証・金融の防壁",
+    "title": "自己改善の限定的な実験と、検証・復旧の条件を追加",
+    "summary": "10月19日の日次・週次調査で4資料を追加し、期限に達した2項目を再点検しました。",
+    "before": "自己改善の説明は開発者の判断と部分的な寄与が中心で、今回の2回の反復実験は未収録でした。",
+    "after": "RSIを限定的な実験の根拠として表示し、関連する2本の矢印も更新。別のAIを改良する実験、科学研究の検証上の限界、金融の停止・復旧指針を追加しました。",
+    "reason": "少数回の改善を持続的な加速と混同せず、研究の成果と検証、指針と実際の対策効果を分けるため。"
+  },
+  {
     "id": "approval-and-learning-20261018",
     "date": "2026-10-18",
     "nodes": [

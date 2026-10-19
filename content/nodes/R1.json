@@ -17,7 +17,9 @@
     "claude-uv-map",
     "openai-math-corrections",
     "quantum-circuit-search",
-    "quantum-circuit-account"
+    "quantum-circuit-account",
+    "athanor-post-training",
+    "open-science-followups"
   ],
   "questions": [],
   "related": [],
@@ -28,7 +30,7 @@
     "仕事の量、質、人間の介入を分けて測れているか。"
   ],
   "review": {
-    "checkedAt": "2026-10-17",
+    "checkedAt": "2026-10-19",
     "intervalDays": 7,
     "reason": "能力・行動・対策の評価は短期間で変わり得るため。"
   },
@@ -46,7 +48,9 @@
     "bootloops-human-research-judgment",
     "mathematics-release-verification",
     "uv-map-human-review",
-    "quantum-evaluator-search"
+    "quantum-evaluator-search",
+    "athanor-small-model",
+    "open-science-verification"
   ],
   "shortTitle": "AIが研究の一部を進める"
 }

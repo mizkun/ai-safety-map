@@ -11,7 +11,8 @@
     "metr-opus55",
     "anthropic-pace-measurements",
     "openai-gpt6-october",
-    "phantom-gains"
+    "phantom-gains",
+    "mass-self-supervision"
   ],
   "questions": [],
   "related": [
@@ -29,14 +30,14 @@
     "計算資源や検証を含めても循環が持続するか。"
   ],
   "review": {
-    "checkedAt": "2026-10-12",
+    "checkedAt": "2026-10-19",
     "intervalDays": 7,
     "reason": "能力・行動・対策の評価は短期間で変わり得るため。"
   },
   "topics": [
     "rsi"
   ],
-  "status": "hypothesis",
+  "status": "limited",
   "research": [
     "rd-use",
     "gemini-safety",
@@ -46,7 +47,8 @@
     "metr-opus55-rd",
     "rd-automation-index",
     "gpt6-october-capabilities",
-    "self-training-null-audit"
+    "self-training-null-audit",
+    "mass-two-rounds"
   ],
   "shortTitle": "RSI（再帰的自己改善）が始まる",
   "subgraph": "research-cycle"

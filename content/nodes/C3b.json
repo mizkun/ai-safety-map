@@ -12,13 +12,14 @@
     "openai-dns-access",
     "aisi-evaluation-security",
     "openai-training-safety-cases",
-    "agent-incident-response"
+    "agent-incident-response",
+    "fsb-ai-practices-final"
   ],
   "questions": [],
   "related": [],
   "terms": [],
   "review": {
-    "checkedAt": "2026-10-12",
+    "checkedAt": "2026-10-19",
     "intervalDays": 7,
     "reason": "能力・行動・対策の評価は短期間で変わり得るため。"
   },
@@ -36,7 +37,8 @@
     "dns-access-incident",
     "aisi-layered-evaluation-controls",
     "training-safety-case-guidelines",
-    "agent-recovery-limits"
+    "agent-recovery-limits",
+    "financial-ai-stop-and-recover"
   ],
   "shortTitle": "警告への対処が間に合わない"
 }

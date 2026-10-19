@@ -315,10 +315,11 @@
         "blocking-action-monitor",
         "aisi-layered-evaluation-controls",
         "training-safety-case-guidelines",
-        "agent-recovery-limits"
+        "agent-recovery-limits",
+        "financial-ai-stop-and-recover"
       ],
       "review": {
-        "checkedAt": "2026-10-12",
+        "checkedAt": "2026-10-19",
         "intervalDays": 7,
         "reason": "既存の根拠がカードの条件をどこまで直接確かめているかを分類しています。根拠の更新時に見直します。"
       }
@@ -540,6 +541,19 @@
         "checkedAt": "2026-10-11",
         "intervalDays": 7,
         "reason": "報告された利用・試験と、カードの条件全体の成立を分けて見直すため。"
+      }
+    },
+    "R3": {
+      "level": "tested",
+      "summary": "1系列のモデルを2回改良し、次の改良にも使った実験があります。一部の研究課題は改善しましたが、幅広い能力や長期間の加速を確かめたものではありません。",
+      "research": [
+        "mass-two-rounds",
+        "self-training-null-audit"
+      ],
+      "review": {
+        "checkedAt": "2026-10-19",
+        "intervalDays": 7,
+        "reason": "限定した反復実験と、開発全体の持続的な加速を区別して点検するため。"
       }
     }
   }

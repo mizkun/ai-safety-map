@@ -1,5 +1,5 @@
 {
-  "asOf": "2026-10-18",
+  "asOf": "2026-10-19",
   "routes": [
     {
       "id": "control",
@@ -691,11 +691,12 @@
         "openai-rd",
         "gemini-safety",
         "anthropic-rsi",
-        "pace-frontier"
+        "pace-frontier",
+        "mass-self-supervision"
       ],
       "basis": "編集上の条件付き仮説。下の一次資料は、個別の能力・行動・仕組みを支持します。矢印全体の成立を実証したものではありません。",
       "review": {
-        "checkedAt": "2026-10-17",
+        "checkedAt": "2026-10-19",
         "intervalDays": 7,
         "reason": "接続を支える能力・権限・防壁について、新しい証拠や反論を確認するため。"
       },
@@ -703,9 +704,10 @@
         "rd-use",
         "gemini-safety",
         "anthropic-rd-progress",
-        "frontier-pacing"
+        "frontier-pacing",
+        "mass-two-rounds"
       ],
-      "current": "AmodeiはRSIが始まりつつあると述べています。Anthropicの業務分析は部分的な寄与を報告していますが、後継AIの完全自律開発や反復で強まる加速の実証ではありません。"
+      "current": "MASSでは、改良後のモデルを次の改良にも使う循環を2回試し、一部の研究課題で改善を報告しています。1系列の小規模な実験であり、研究開発全体の加速や、長期間の持続を確かめたものではありません。"
     },
     "R3-R2": {
       "id": "R3-R2",
@@ -723,20 +725,22 @@
       "sources": [
         "openai-rd",
         "pace-frontier",
-        "anthropic-rsi"
+        "anthropic-rsi",
+        "mass-self-supervision"
       ],
-      "basis": "自己改善という仮説のフィードバックを示す整理。反復する効果の実測は別に必要です。",
+      "basis": "自己改善のフィードバックを示す整理。限られた実験の結果を、研究開発全体の持続的な加速へ一般化するには別の検証が必要です。",
       "review": {
-        "checkedAt": "2026-10-17",
+        "checkedAt": "2026-10-19",
         "intervalDays": 7,
         "reason": "接続を支える能力・権限・防壁について、新しい証拠や反論を確認するため。"
       },
       "research": [
         "rd-use",
         "frontier-pacing",
-        "anthropic-rd-progress"
+        "anthropic-rd-progress",
+        "mass-two-rounds"
       ],
-      "current": "開発者から循環が始まりつつあるという判断は示されています。世代ごとの改善幅、持続、人間や計算資源の寄与を分けた公開の検証は、今回の資料では確認できません。"
+      "current": "MASSの2回の循環では改善する課題と改善しない課題がありました。出力トークン当たりの得点は、探索・学習・人の準備を含む開発全体の速度とは異なります。世代を重ねた加速の強さと持続は、引き続き未確認です。"
     },
     "C3-L": {
       "id": "C3-L",
