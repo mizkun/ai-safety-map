@@ -150,10 +150,11 @@
         "reference-tool-internal-access",
         "reference-tool-source-copy",
         "public-statistics-incident",
-        "subliminal-behavior-transfer"
+        "subliminal-behavior-transfer",
+        "graft-reward-hacking"
       ],
       "review": {
-        "checkedAt": "2026-10-18",
+        "checkedAt": "2026-10-20",
         "intervalDays": 7,
         "reason": "既存の根拠がカードの条件をどこまで直接確かめているかを分類しています。根拠の更新時に見直します。"
       }
@@ -199,13 +200,14 @@
     },
     "C2a": {
       "level": "tested",
-      "summary": "一連の作業を測る評価がありますが、業務の部分点と完遂率は別です。契約業務の11課題での改善も、仕事全体の自動化や実測の時間削減を示しません。",
+      "summary": "一連の作業を測る評価では、契約業務やコード作成の改善が報告されています。ただし、機能ごとの合格率と、仕事全体を終えた割合は別です。",
       "research": [
         "horizon",
-        "ironclad-workflow-evaluation"
+        "ironclad-workflow-evaluation",
+        "multilang-code-completion"
       ],
       "review": {
-        "checkedAt": "2026-10-16",
+        "checkedAt": "2026-10-20",
         "intervalDays": 7,
         "reason": "既存の根拠がカードの条件をどこまで直接確かめているかを分類しています。根拠の更新時に見直します。"
       }

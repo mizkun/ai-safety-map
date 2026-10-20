@@ -1092,7 +1092,7 @@
     "url": "https://arxiv.org/abs/2610.12176",
     "published": "2026-10-08",
     "date": "2026-10-08",
-    "checked": "2026-10-19",
+    "checked": "2026-10-20",
     "title": "Leeほか — MASSによる2回の自己改善実験",
     "period": "2026年10月8日の初版。Qwen3.6-27Bを出発点に2回の改善を実施。実験日は未記載。",
     "primary": "UC BerkeleyとSakana AIの著者による実験。プレプリントであり、独立した追試は今回確認できていない。"
@@ -1123,5 +1123,32 @@
     "title": "FSB — 責任あるAI導入のための実務指針・最終報告",
     "period": "2026年10月15日の最終報告。6月10日〜7月22日の意見募集を経た12項目の指針。",
     "primary": "金融安定理事会による原報告。法的拘束力のある規則や、対策の有効性を測った実験ではない。"
+  },
+  "graft-gradient-routing": {
+    "url": "https://arxiv.org/abs/2610.17062",
+    "published": "2026-10-12",
+    "date": "2026-10-12",
+    "checked": "2026-10-20",
+    "title": "Wardほか — 不正な行動の学習先を分けるGRAFT",
+    "period": "論文初版は2026年10月12日、著者解説は10月19日。実験の実施日は未記載。",
+    "primary": "著者による実験のプレプリント。独立した追試は今回確認できていない。"
+  },
+  "anthropic-self-assessment": {
+    "url": "https://safeguards.anthropic.com/2026/self-assessment/",
+    "published": "2026-10-16",
+    "date": "2026-10-16",
+    "checked": "2026-10-20",
+    "title": "Anthropic — 回答後の自己評価による悪用の検知",
+    "period": "2026年10月16日公表。Fable 5で6月から運用した監視と、別の24課題の試験。評価の実施日と実運用標本の件数は未記載。",
+    "primary": "Anthropicによる自社モデル・監視の報告。独立した人間の判定との比較ではない。"
+  },
+  "openai-low-resource-code": {
+    "url": "https://openai.com/index/low-resource-programming-languages/",
+    "published": "2026-10-19",
+    "date": "2026-10-19",
+    "checked": "2026-10-20",
+    "title": "OpenAI — 多様なプログラミング言語でのコード作成・移行の評価",
+    "period": "2026年10月19日公表。20言語のSQLite作成と、別のCOBOL移行試験。実験日は未記載。",
+    "primary": "OpenAIによる自社モデルの評価。MultiLangBenchの手順とテストを公開。実際の業務全体の代替を測ったものではない。"
   }
 }

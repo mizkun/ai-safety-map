@@ -14,7 +14,8 @@
     "openai-reference-eda",
     "openai-reference-copy",
     "openai-public-statistics",
-    "subliminal-learning-transfer"
+    "subliminal-learning-transfer",
+    "graft-gradient-routing"
   ],
   "questions": [],
   "related": [
@@ -34,7 +35,7 @@
     "能力を保ちながら危険な行動が減る対策はあるか。"
   ],
   "review": {
-    "checkedAt": "2026-10-18",
+    "checkedAt": "2026-10-20",
     "intervalDays": 7,
     "reason": "能力・行動・対策の評価は短期間で変わり得るため。"
   },
@@ -54,7 +55,8 @@
     "reference-tool-internal-access",
     "reference-tool-source-copy",
     "public-statistics-incident",
-    "subliminal-behavior-transfer"
+    "subliminal-behavior-transfer",
+    "graft-reward-hacking"
   ],
   "shortTitle": "アライメントの失敗"
 }

@@ -6,7 +6,8 @@
     "horizon",
     "formalization",
     "openai-rd",
-    "openai-ironclad"
+    "openai-ironclad",
+    "openai-low-resource-code"
   ],
   "questions": [],
   "related": [],
@@ -15,7 +16,7 @@
     "benchmark"
   ],
   "review": {
-    "checkedAt": "2026-10-16",
+    "checkedAt": "2026-10-20",
     "intervalDays": 7,
     "reason": "能力・行動・対策の評価は短期間で変わり得るため。"
   },
@@ -27,7 +28,8 @@
     "horizon",
     "formalization",
     "rd-use",
-    "ironclad-workflow-evaluation"
+    "ironclad-workflow-evaluation",
+    "multilang-code-completion"
   ],
   "shortTitle": "一連の作業を完遂"
 }

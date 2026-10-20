@@ -1,5 +1,27 @@
 [
   {
+    "id": "training-detection-and-code-20261020",
+    "date": "2026-10-20",
+    "nodes": [
+      "C1",
+      "M3",
+      "C2a",
+      "R3"
+    ],
+    "sources": [
+      "graft-gradient-routing",
+      "anthropic-self-assessment",
+      "openai-low-resource-code",
+      "mass-self-supervision"
+    ],
+    "kind": "学習・悪用検知・コード評価",
+    "title": "不正を減らす学習と悪用の検知を追加し、コード評価の範囲を明記",
+    "summary": "10月20日の点検で3資料を追加し、自己改善の既存資料も公開コードと照合しました。",
+    "before": "新しい学習手法、回答後の自己評価、多言語でのコード作成の評価は未収録でした。",
+    "after": "C1・M3・C2aへ実験条件と限界を追加。MASSは論文初版と公開リポジトリの評価範囲を分け、既存の分類は維持しました。",
+    "reason": "対策の改善も追い、検知と阻止、部分点と完遂、公開コードと元の実験を混同しないため。"
+  },
+  {
     "id": "research-cycles-and-financial-controls-20261019",
     "date": "2026-10-19",
     "nodes": [
