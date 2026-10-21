@@ -1,5 +1,27 @@
 [
   {
+    "id": "monitoring-boundaries-and-validation-20261021",
+    "date": "2026-10-21",
+    "nodes": [
+      "C3a",
+      "C3a1",
+      "C3a3",
+      "R1"
+    ],
+    "sources": [
+      "openai-monitoring-suppression",
+      "openai-monitorability-metrics",
+      "metr-august-risk-review",
+      "claude-binder-validation"
+    ],
+    "kind": "監視の評価と研究の検証",
+    "title": "監視の変更事例・比較指標・外部点検と、実験での研究検証を追加",
+    "summary": "10月21日の点検で、監視と研究支援に関する4件の一次資料を追加しました。",
+    "before": "監視の通知を止めた事例、再試行を含む指標、8月リスク報告の外部レビュー、新しい結合実験は未収録でした。",
+    "after": "C3a・C3a1・C3a3・R1に条件と限界を追加しました。分類と経路は維持し、監視の得点と防止、結合と治療効果を区別しました。",
+    "reason": "実際の作業で残る監視の穴と対策の評価を更新し、古い対象時期や研究の途中成果を最新の全面的な安全性・能力と取り違えないため。"
+  },
+  {
     "id": "training-detection-and-code-20261020",
     "date": "2026-10-20",
     "nodes": [

@@ -19,7 +19,8 @@
     "quantum-circuit-search",
     "quantum-circuit-account",
     "athanor-post-training",
-    "open-science-followups"
+    "open-science-followups",
+    "claude-binder-validation"
   ],
   "questions": [],
   "related": [],
@@ -30,7 +31,7 @@
     "仕事の量、質、人間の介入を分けて測れているか。"
   ],
   "review": {
-    "checkedAt": "2026-10-19",
+    "checkedAt": "2026-10-21",
     "intervalDays": 7,
     "reason": "能力・行動・対策の評価は短期間で変わり得るため。"
   },
@@ -50,7 +51,8 @@
     "uv-map-human-review",
     "quantum-evaluator-search",
     "athanor-small-model",
-    "open-science-verification"
+    "open-science-verification",
+    "binder-human-lab-validation"
   ],
   "shortTitle": "AIが研究の一部を進める"
 }

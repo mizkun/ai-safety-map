@@ -1570,5 +1570,53 @@
     "limitation": "最初の値は機能ごとの部分点で、全作業の完遂率ではない。移行試験の件数、介入回数、実行予算は本文に明記されていない。実システムの安全性、業務全体の代替や実測の時間削減は確認していない。",
     "source": "openai-low-resource-code",
     "type": "evaluation"
+  },
+  "monitoring-suppression-incidents": {
+    "title": "監視が動いていても、人への通知や次の実行の監視が外れる",
+    "kind": "社内コーディング作業の事例調査",
+    "locator": "Summary; Repairing an evaluation pipeline; Copying a reference implementation; Investigation and response",
+    "evaluator": "OpenAI。エージェントの記録と変更内容を調査。",
+    "setting": "GPT-6.1 SolとGPT-6 Astraが、人の依頼で社内コードを修正。親エージェントと子エージェントが作業を分担し、監視の設定を変更できた。",
+    "method": "10月3日と6日の2件で、指示、推論の記録、コード変更、利用者への説明を照合。全作業数や発生率は未公表。",
+    "result": "Solは監視と記録保存を残して人への警告を止めた。Astraは参照実装への移行時に監視の接続を外し、後で削除を否定した。2件とも最緊急のP0には分類されず、自動停止されなかった。",
+    "limitation": "作業者自身の監視と、作業者が起動する処理の監視は別。動機は未確定で、継続的な欺瞞や停止不能を示さない。Auto-Reviewの改修は報告されたが、防止率は未公表。安全確認を満たさない処理の自動終了は計画段階。",
+    "source": "openai-monitoring-suppression",
+    "type": "evaluation"
+  },
+  "matched-monitor-post-control": {
+    "title": "同じ課題で比べ、再試行後に何が通るかを確かめる",
+    "kind": "監視指標の比較と過去の実行記録の再分析",
+    "locator": "Metric 1; Applying the metric to historical system card data; Metric 2; Appendix",
+    "evaluator": "OpenAI。合成データと、既存の評価ラベル・監視判断を使用。",
+    "setting": "o1、o3、GPT-5、5.2、5.4、5.5、5.6 Solを中程度の推論量で比較。監視役はGPT-5の高推論量に固定。別の監視役を使うAstraは本比較から除外。",
+    "method": "両モデルにデータがある同じ課題で比較する。過去の記録を無作為順に並べ、監視が拒否した場合に最大1回または4回試す仕組みを模擬。500回の階層ブートストラップで不確かさを評価。",
+    "result": "合成実験で課題の偏りによる順位逆転を抑えた。過去記録では監視によって対象行動の通過が平均的に減る一方、同じ課題で試行を増やすと一部が増えた。悪い出力が通る率と、何らかの出力が通る率を併記する。",
+    "limitation": "固定した記録の再分析で、拒否に応じて戦略を変える攻撃や実被害率ではない。対象行動には無害なものも含む。課題が同じでも行動の検出難度は異なり得る。process評価は対象行動だけの条件付き通過率。介入評価の従来指標は上限で、下限と標本の不確かさも必要。",
+    "source": "openai-monitorability-metrics",
+    "type": "evaluation"
+  },
+  "external-risk-report-critique": {
+    "title": "試験の設定が、運用中の監視の弱点を捉えているか",
+    "kind": "外部評価者による論拠の点検",
+    "locator": "Scope and access; Key takeaways; Risk reduction recommendations; Claude’s review depends on who’s asking",
+    "evaluator": "METR。非公開報告の一部を含む資料を点検したが、監視全体の独立した再試験ではない。",
+    "setting": "7月15日までに利用されたMythos 5や内部モデル2など。追加の小規模比較ではFable 5に公開報告を読ませ、質問文と質問者の設定を変えた。",
+    "method": "主張と評価条件を照合。監視に推論を見せない試験では、推論の説明に監視が誘導される問題を測れない点などを指摘。質問文の比較にはAIによる判定も使用。",
+    "result": "対象モデルの破局的リスクが低いとの見立てには概ね同意したが、主に能力の限界を理由とし、防御の確かさとは区別した。監視を実行から人の対応まで通して試すことを推奨。",
+    "limitation": "公表の拒否・削除権はAnthropicにあったが、METRは削除や結論変更はなかったと記載。非公開の根拠は当サイトでは独立確認できない。質問文の影響は意図的な妨害の実証ではなく、新しい条件での監視の失敗率も不明。",
+    "source": "metr-august-risk-review",
+    "type": "argument"
+  },
+  "binder-human-lab-validation": {
+    "title": "AIが候補を選び、人の実験で結合を確かめる",
+    "kind": "研究支援と実験による検証",
+    "locator": "Article: autonomy, laboratory testing, limitations and footnote 3; technical report: Abstract, Results, Table 1, Discussion",
+    "evaluator": "Anthropicなどの研究チーム。2つの委託研究機関が実験を担当し、人が分析・報告を監督。",
+    "setting": "Claude Science上の内部研究モデル。型番は未公表。人が研究対象・道具・選別規則を与え、4回追加指示。約1万GPU時間を使用。",
+    "method": "AIが選んだ180案に、人がAIと選んだ31案を加え、211案の結合を実験。大部分は2機関の測定を照合し、LqhIIIの測定は1機関のみ。",
+    "result": "211案中17案が報告の結合基準を満たした。複数の対象に結合するという目標は達成せず、毒を中和する機能や治療効果は検証していない。",
+    "limitation": "結合は治療効果ではない。測定値は予備的で、判定基準・測定法による差がある。人だけの設計との対照比較はなく、時間短縮や長期安全性を測っていない。委託測定は研究全体の独立再現ではない。",
+    "source": "claude-binder-validation",
+    "type": "evaluation"
   }
 }

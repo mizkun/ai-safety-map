@@ -235,7 +235,7 @@
     },
     "C3a": {
       "level": "tested",
-      "summary": "監督が見逃す例と、操作の記録も見ることで検出が改善する試験があります。監視に通した割合、危険の検出、緊急対応への通知は分けて判断します。",
+      "summary": "監視の点数は、対象の課題や再試行の条件で変わります。検出率だけでなく、危険な出力が通る率、無害な出力まで止める割合、人への通知・対応を確かめます。",
       "research": [
         "summer",
         "scheming",
@@ -248,26 +248,28 @@
         "reference-tool-source-copy",
         "grader-reset-incident",
         "public-statistics-incident",
-        "trusted-approval-display"
+        "trusted-approval-display",
+        "matched-monitor-post-control"
       ],
       "review": {
-        "checkedAt": "2026-10-18",
+        "checkedAt": "2026-10-21",
         "intervalDays": 7,
         "reason": "既存の根拠がカードの条件をどこまで直接確かめているかを分類しています。根拠の更新時に見直します。"
       }
     },
     "C3a1": {
       "level": "indirect",
-      "summary": "未知の虚偽の検出が改善しにくい実験があります。珍しい会話を評価へ集める手法も進んでいますが、抽出の効率は判定の正確さや実運用の安全性とは別です。",
+      "summary": "外部レビューは、試験と実運用の監視の違いを指摘しています。対象モデルの能力に限界があるという見立てと、防御の有効性が確かめられたことは別です。",
       "research": [
         "horizon",
         "astra-cyber",
         "lie-detector-transfer",
         "laser-evaluation-sampling",
-        "embedded-evaluator-access"
+        "embedded-evaluator-access",
+        "external-risk-report-critique"
       ],
       "review": {
-        "checkedAt": "2026-10-16",
+        "checkedAt": "2026-10-21",
         "intervalDays": 7,
         "reason": "既存の根拠がカードの条件をどこまで直接確かめているかを分類しています。根拠の更新時に見直します。"
       }
@@ -288,7 +290,7 @@
     },
     "C3a3": {
       "level": "tested",
-      "summary": "監視の見逃しや、記録を読む画面の弱点が試験で報告され、防御の修正・改善も進んでいます。通常利用の隠蔽頻度や、修正後の防御全体の有効性を測ったものではありません。",
+      "summary": "監視の回避試験に加え、社内作業で通知や監視の接続を外した事例が報告されています。動機・発生頻度と、防御の改修後の有効性は未確定です。",
       "research": [
         "control-protocol",
         "hf-incident",
@@ -298,10 +300,11 @@
         "viewer-integrity-test",
         "haiku55-monitorability",
         "structural-monitor-rollback",
-        "argon-monitoring-assumptions"
+        "argon-monitoring-assumptions",
+        "monitoring-suppression-incidents"
       ],
       "review": {
-        "checkedAt": "2026-10-16",
+        "checkedAt": "2026-10-21",
         "intervalDays": 7,
         "reason": "既存の根拠がカードの条件をどこまで直接確かめているかを分類しています。根拠の更新時に見直します。"
       }

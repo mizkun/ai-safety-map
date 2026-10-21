@@ -13,7 +13,8 @@
     "inspect-untrusted-viewer",
     "anthropic-haiku55",
     "structural-monitoring",
-    "gemini-argon-report"
+    "gemini-argon-report",
+    "openai-monitoring-suppression"
   ],
   "questions": [],
   "related": [],
@@ -25,7 +26,7 @@
     "scheming"
   ],
   "review": {
-    "checkedAt": "2026-10-16",
+    "checkedAt": "2026-10-21",
     "intervalDays": 7,
     "reason": "監督回避と、それを防ぐ手法の評価は変化が速いため。"
   },
@@ -39,7 +40,8 @@
     "viewer-integrity-test",
     "haiku55-monitorability",
     "structural-monitor-rollback",
-    "argon-monitoring-assumptions"
+    "argon-monitoring-assumptions",
+    "monitoring-suppression-incidents"
   ],
   "shortTitle": "実行中の監督をすり抜ける"
 }

@@ -1150,5 +1150,41 @@
     "title": "OpenAI — 多様なプログラミング言語でのコード作成・移行の評価",
     "period": "2026年10月19日公表。20言語のSQLite作成と、別のCOBOL移行試験。実験日は未記載。",
     "primary": "OpenAIによる自社モデルの評価。MultiLangBenchの手順とテストを公開。実際の業務全体の代替を測ったものではない。"
+  },
+  "openai-monitoring-suppression": {
+    "title": "OpenAI — 監視の通知停止と監視機構の削除の事例",
+    "period": "10月3日（GPT-6.1 Sol）と10月6日（GPT-6 Astra）の社内作業。同日発見、10月20日公表・更新。",
+    "primary": "出来事を調査した開発企業の原報告。公開された2件であり、独立調査や頻度の測定ではない。",
+    "url": "https://alignment.openai.com/misalignment-reports/suppressing-misalignment-monitoring-alerts-and-disabling-misalignment-monitoring/",
+    "published": "2026-10-20",
+    "date": "2026-10-20",
+    "checked": "2026-10-21"
+  },
+  "openai-monitorability-metrics": {
+    "title": "OpenAI — 監視の比較と、監視を通した後に残るリスクの測定",
+    "period": "10月20日公表。過去のシステムカードの実行記録を再分析。新たな実運用試験ではなく、元の各試験日・全試行数は本文に未記載。",
+    "primary": "Guan・Xie・Bakerによる指標の提案、合成実験、開発元の過去の評価記録の再分析。",
+    "url": "https://alignment.openai.com/beyond-gmean-squared/",
+    "published": "2026-10-20",
+    "date": "2026-10-20",
+    "checked": "2026-10-21"
+  },
+  "metr-august-risk-review": {
+    "title": "METR — Anthropicの8月リスク報告の外部点検",
+    "period": "10月20日公表。8月報告が扱う7月15日までのモデル・運用が対象。報告の初稿は7月24日に受領。10月の最新モデルの安全評価ではない。",
+    "primary": "Jurkovic・Hua・Barnesによる外部レビュー。内部報告への限定的アクセスに基づき、10月15日発表の拡張アクセスとは別の契約。",
+    "url": "https://metr.org/blog/2026-10-20-misalignment-risk-report-august-2026-review/",
+    "published": "2026-10-20",
+    "date": "2026-10-20",
+    "checked": "2026-10-21"
+  },
+  "claude-binder-validation": {
+    "title": "Anthropic — AIによるタンパク質の提案と実験での結合確認",
+    "period": "記事・技術報告は10月20日公表。設計作業は64時間、4回の追加指示あり。設計・実験の正確な暦日は未記載。",
+    "primary": "開発元の研究報告。Adaptyv BioとTwist Bioscienceが委託実験を実施し、Anthropic側が報告をまとめた。独立した追試とは区別する。",
+    "url": "https://www.anthropic.com/research/claude-scorpion-toxin-binder-design",
+    "published": "2026-10-20",
+    "date": "2026-10-20",
+    "checked": "2026-10-21"
   }
 }
