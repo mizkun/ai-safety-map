@@ -1,5 +1,23 @@
 [
   {
+    "id": "research-interpretation-and-response-20261022",
+    "date": "2026-10-22",
+    "nodes": [
+      "R1",
+      "C3b"
+    ],
+    "sources": [
+      "distributed-biology-study",
+      "metr-control-assessment-proposal"
+    ],
+    "kind": "研究支援と監視の対応",
+    "title": "研究候補を整理する実験と、警告後の対応を評価する提案を追加",
+    "summary": "10月22日の点検で、研究支援と監視の評価に関する一次資料2件を追加しました。",
+    "before": "多数のAIで生物学データを分担する実験と、監視から人の対応までを評価するMETRの提案は未収録でした。",
+    "after": "R1に報告の評価と実験検証の違いを、C3bに通知後の対応を試す提案を追加しました。分類と経路は維持しました。",
+    "reason": "研究途中の成果を研究全体の自動化と取り違えず、監視の警告と実際に止める能力を分けて理解できるようにするため。"
+  },
+  {
     "id": "monitoring-boundaries-and-validation-20261021",
     "date": "2026-10-21",
     "nodes": [

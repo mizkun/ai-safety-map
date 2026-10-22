@@ -1618,5 +1618,29 @@
     "limitation": "結合は治療効果ではない。測定値は予備的で、判定基準・測定法による差がある。人だけの設計との対照比較はなく、時間短縮や長期安全性を測っていない。委託測定は研究全体の独立再現ではない。",
     "source": "claude-binder-validation",
     "type": "evaluation"
+  },
+  "distributed-biology-interpretation": {
+    "title": "AIが分担して研究候補を整理し、人が報告を比べる",
+    "kind": "既存データの分析と専門家による報告の評価",
+    "locator": "Results: distributed agents; literature grounding; blinded human experts; Figures 1, 2, 4; Discussion",
+    "evaluator": "研究チームが分析を評価。博士水準の生物学専門家30人が、出力元を伏せた報告を審査。",
+    "setting": "GPT-Rosalind-5.5の1,946エージェントが、異なる実験条件のデータを分担。人がデータ・指示・分析道具・文献へのアクセスを用意し、元論文と結論は与えなかった。",
+    "method": "提供データから確認できる既存の知見55件と照合。専門家は選ばれた60報告を評価し、20組について各3人が比較。検索は許可、生成AIの利用は禁止。",
+    "result": "55件中48件に一致・補足し、4件を部分的に再現。組ごとの60判断では分担方式が45回、単独方式が10回選ばれ、5回は同等。研究候補の有用性を支持する。",
+    "limitation": "専門家の好みは、新しい生物学的な仕組みの実験確認ではない。32分はAI分析の時間で、人の所要時間は推計。総計算量を揃えた比較や、研究全体の短縮を示さない。独立データ・追加実験での検証が必要。",
+    "source": "distributed-biology-study",
+    "type": "evaluation"
+  },
+  "end-to-end-control-assessment": {
+    "title": "警告が人に届き、必要な対応まで進むかを試す",
+    "kind": "監視から対応までの評価手順の提案",
+    "locator": "Response, including human evasion; Access details; footnotes 3, 4, 7",
+    "evaluator": "METRが外部評価者向けに提案。",
+    "setting": "社内AIの記録、監視の設定、担当者への聞き取りにアクセスして調べる想定。",
+    "method": "許可と安全管理の下で試験事例を入れ、通知・人の判断・封じ込めまでの流れと時間を確認する。",
+    "result": "確認すべき範囲を示した提案。新しい検出率や停止時間の測定結果ではない。",
+    "limitation": "記録の信頼性とアクセスに左右される。運営企業が資料を選ぶ場合、評価の独立性にも限界がある。",
+    "source": "metr-control-assessment-proposal",
+    "type": "argument"
   }
 }

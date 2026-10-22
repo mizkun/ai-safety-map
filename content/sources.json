@@ -1186,5 +1186,23 @@
     "published": "2026-10-20",
     "date": "2026-10-20",
     "checked": "2026-10-21"
+  },
+  "distributed-biology-study": {
+    "title": "Sunほか — 多数のAIで生物学データを分担して解釈する",
+    "period": "未査読論文v1は10月16日公開。既存のマウス脳データを再分析。AIの実行・専門家評価の正確な暦日は本文に未記載。",
+    "primary": "Scripps、OpenAI、PerturbAIなどの共著者による原研究。独立した追試は未確認。",
+    "url": "https://www.biorxiv.org/content/10.64898/2026.10.15.759436v1",
+    "published": "2026-10-16",
+    "date": "2026-10-16",
+    "checked": "2026-10-22"
+  },
+  "metr-control-assessment-proposal": {
+    "title": "METR — 社内AIの監視と対応を外部評価するための提案",
+    "period": "10月14日公表。評価手順と必要なアクセスの提案で、新しい試験結果や対象モデル・実験期間は示していない。",
+    "primary": "評価手法を提案したMETRの原論考。防御の有効性の実測とは区別する。",
+    "url": "https://metr.org/blog/2026-10-14-control-assessment-proposal/",
+    "published": "2026-10-14",
+    "date": "2026-10-14",
+    "checked": "2026-10-22"
   }
 }
