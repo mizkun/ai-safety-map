@@ -1642,5 +1642,41 @@
     "limitation": "記録の信頼性とアクセスに左右される。運営企業が資料を選ぶ場合、評価の独立性にも限界がある。",
     "source": "metr-control-assessment-proposal",
     "type": "argument"
+  },
+  "internal-monitoring-coverage-audit": {
+    "title": "監視対象になっていることと、実際に監視されることは違う",
+    "kind": "社内の監視構成と記録の外部点検",
+    "locator": "Findings on eligibility, compaction and trigger timing; post-exercise claims; footnotes 3–6",
+    "evaluator": "METRとRedwoodの担当者が、社内資料・設定・コードを読み、約12人に聞き取り。",
+    "setting": "当時の社内Responses APIのエージェント利用が中心。他の推論サービスの利用量は把握できず、全社の監視率ではない。",
+    "method": "監視へ送る対象、実際に届く記録、作業者が監視に干渉できる箇所を点検。",
+    "result": "要約処理に伴う監視の欠落などを報告。対象に指定された割合は、実際に監視が完了した割合や問題の検出率とは異なる。",
+    "limitation": "現実にAIが弱点を悪用した頻度は不明。開発元は修正を報告したが、METRは改修後を再評価していない。公開情報にも制約がある。",
+    "source": "metr-openai-monitoring-audit",
+    "type": "evaluation"
+  },
+  "blocking-monitor-hardening": {
+    "title": "監視する範囲と記録の扱いを変え、回避を減らす",
+    "kind": "操作を遮断する監視の比較試験",
+    "locator": "Sections 3–5; Figures 3 and 8; Appendices E–F",
+    "evaluator": "著者が、環境内の検査プログラムとAIによる模擬環境・採点を使って評価。",
+    "setting": "主にOpus 5へ攻撃を指示し、通常は監視の内部情報も提供。Sonnet 5のAuto Mode、GPT-5.6 LunaによるGuardian相当の構成、Opus 4.8の改良版などを比較。",
+    "method": "4種の攻撃で各集計セル60試行以上。実行環境の試験と模擬試験を区別し、通常のコード作業4,000操作も点検。",
+    "result": "改良版では、4種をまとめた平均の攻撃成功率が50ポイント超低下。通常操作の誤遮断は各構成で1%未満だった。",
+    "limitation": "複数の設定とモデルを変えた比較を含む。会話をまたぐ攻撃は残り、通常利用の事故率ではない。監視AIの共謀や隔離機構の強さは未検証。遅延はトークン数からの推計。",
+    "source": "auto-mode-red-team",
+    "type": "evaluation"
+  },
+  "checked-software-proofs": {
+    "title": "AIが書いた証明を、検証器で確かめる",
+    "kind": "ソフトウェアの限られた性質の形式検証",
+    "locator": "Turning tests into proofs; Limitations; Appendix pp. 1–2; linked OSS Verify README",
+    "evaluator": "AnthropicとTheorem。証明はRocq検証器で確認し、人はコード修正を監査。",
+    "setting": "既存のテスト入口とRISC-V/Linuxの機械モデルを使用。単一スレッド・固定メモリなどの前提があり、全ての利用環境ではない。",
+    "method": "入力64 MiB未満などの条件で、対象の実行ファイルがクラッシュしない性質を証明。必要に応じてコードを修正し、修正版の命題を再検証。",
+    "result": "報告全体は123ライブラリの239入口。公開リポジトリには25ライブラリの60入口の証明があり、全成果の公開とは異なる。",
+    "limitation": "仕様・機械モデル・検証器を信頼する必要がある。全機能の正しさや現実の被害低下を証明せず、公開版は処理が終わらない実行も排除しない。",
+    "source": "anthropic-formal-verification",
+    "type": "evaluation"
   }
 }

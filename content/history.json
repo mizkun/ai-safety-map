@@ -1,5 +1,29 @@
 [
   {
+    "id": "monitoring-and-proof-boundaries-20261023",
+    "date": "2026-10-23",
+    "nodes": [
+      "C3a3",
+      "M3",
+      "M2b1",
+      "M2c1",
+      "R2",
+      "R4"
+    ],
+    "sources": [
+      "metr-openai-monitoring-audit",
+      "auto-mode-red-team",
+      "anthropic-formal-verification",
+      "oss-verify-proof-release"
+    ],
+    "kind": "監視と防御の検証",
+    "title": "監視の点検・改良と、ソフトウェアの証明を追加",
+    "summary": "10月23日の点検で、監視と防御に関する3件の報告と公開証明を追加し、期限に達した4項目を再確認しました。",
+    "before": "社内監視の外部点検、Auto Modeの改良試験、ソフトウェアの形式検証の新資料は未収録でした。",
+    "after": "C3a3に監視の欠落と改良の条件を、M3に証明の保証範囲を追加。M2b1・M2c1・R2・R4は原資料を再確認し、分類と説明を維持しました。",
+    "reason": "監視対象と実際の監視、試験での防御改善と運用全体の安全性、限られた性質の証明と全機能の正しさを分けるため。"
+  },
+  {
     "id": "research-interpretation-and-response-20261022",
     "date": "2026-10-22",
     "nodes": [

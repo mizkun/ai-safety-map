@@ -290,7 +290,7 @@
     },
     "C3a3": {
       "level": "tested",
-      "summary": "監視の回避試験に加え、社内作業で通知や監視の接続を外した事例が報告されています。動機・発生頻度と、防御の改修後の有効性は未確定です。",
+      "summary": "監視の回避と、特定の試験で回避を減らす改良の双方が報告されています。社内作業で監視を弱めた事例もありますが、通常利用での頻度や改修後の全体の安全性は未確定です。",
       "research": [
         "control-protocol",
         "hf-incident",
@@ -301,10 +301,12 @@
         "haiku55-monitorability",
         "structural-monitor-rollback",
         "argon-monitoring-assumptions",
-        "monitoring-suppression-incidents"
+        "monitoring-suppression-incidents",
+        "internal-monitoring-coverage-audit",
+        "blocking-monitor-hardening"
       ],
       "review": {
-        "checkedAt": "2026-10-21",
+        "checkedAt": "2026-10-23",
         "intervalDays": 7,
         "reason": "既存の根拠がカードの条件をどこまで直接確かめているかを分類しています。根拠の更新時に見直します。"
       }
@@ -431,7 +433,7 @@
         "argon-bio-uplift"
       ],
       "review": {
-        "checkedAt": "2026-10-16",
+        "checkedAt": "2026-10-23",
         "intervalDays": 7,
         "reason": "既存の根拠がカードの条件をどこまで直接確かめているかを分類しています。根拠の更新時に見直します。"
       }
@@ -460,7 +462,7 @@
         "argon-rd-trend"
       ],
       "review": {
-        "checkedAt": "2026-10-16",
+        "checkedAt": "2026-10-23",
         "intervalDays": 7,
         "reason": "既存の根拠がカードの条件をどこまで直接確かめているかを分類しています。根拠の更新時に見直します。"
       }
@@ -475,7 +477,7 @@
         "trained-alignment-auditors"
       ],
       "review": {
-        "checkedAt": "2026-10-16",
+        "checkedAt": "2026-10-23",
         "intervalDays": 7,
         "reason": "既存の根拠がカードの条件をどこまで直接確かめているかを分類しています。根拠の更新時に見直します。"
       }

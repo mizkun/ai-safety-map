@@ -12,7 +12,9 @@
     "anthropic-oss-scanner",
     "anthropic-cyber-verification",
     "anthropic-distillation-defenses",
-    "anthropic-self-assessment"
+    "anthropic-self-assessment",
+    "anthropic-formal-verification",
+    "oss-verify-proof-release"
   ],
   "questions": [],
   "related": [],
@@ -21,7 +23,7 @@
     "実害だけでなく、防御と封じ込めが働いた例も報告されたか。"
   ],
   "review": {
-    "checkedAt": "2026-10-20",
+    "checkedAt": "2026-10-23",
     "intervalDays": 30,
     "reason": "経路を支える前提、反論、防壁の有効性に変化がないか確認するため。"
   },
@@ -36,7 +38,8 @@
     "oss-scanner-validation",
     "cyber-access-blocking",
     "distillation-extraction-defense",
-    "self-assessment-misuse-detection"
+    "self-assessment-misuse-detection",
+    "checked-software-proofs"
   ],
   "shortTitle": "防止・封じ込めが追いつかない"
 }

@@ -1204,5 +1204,41 @@
     "published": "2026-10-14",
     "date": "2026-10-14",
     "checked": "2026-10-22"
+  },
+  "metr-openai-monitoring-audit": {
+    "title": "METR — OpenAI社内の監視を外部から点検する",
+    "period": "7月21日〜8月11日の試行。主に7月21日以前の監視構成が対象。10月22日の公表時点の監視範囲や改修後の効果は未検証。",
+    "primary": "METRとRedwoodの担当者による高アクセスの点検。公開版は一部の要約で、OpenAIに情報の削除権がある。",
+    "url": "https://metr.org/blog/2026-10-22-red-teaming-openai-agent-monitoring/",
+    "published": "2026-10-22",
+    "date": "2026-10-22",
+    "checked": "2026-10-23"
+  },
+  "auto-mode-red-team": {
+    "title": "Remediosほか — 操作を遮断する監視の弱点と改良（v2）",
+    "period": "v1は9月17日、v2は9月27日。10月22日の著者ブログから確認。9月の監視構成が対象で、試験の正確な暦日は未記載。",
+    "primary": "Anthropicの研究者とフェローによる原論文。攻撃を指示した試験で、独立した追試は未確認。",
+    "url": "https://arxiv.org/html/2609.19587v2",
+    "published": "2026-09-17",
+    "date": "2026-09-17",
+    "checked": "2026-10-23"
+  },
+  "anthropic-formal-verification": {
+    "title": "Anthropic・Theorem — AIによるソフトウェアの形式検証",
+    "period": "10月22日公表。数週間の証明作成と別の小規模比較。厳密な実施日と全証明作成に用いたモデル構成は未記載。",
+    "primary": "開発元と共同研究者による原報告・付録。公開された証明は成果全体の一部で、この点検で検証器を再実行したものではない。",
+    "url": "https://www.anthropic.com/research/formal-verification",
+    "published": "2026-10-22",
+    "date": "2026-10-22",
+    "checked": "2026-10-23"
+  },
+  "oss-verify-proof-release": {
+    "title": "Theorem — OSS Verify公開証明 2026.10.0",
+    "url": "https://github.com/theorem-labs/oss-verify-proofs/tree/8f5f46768858af236a4270f9628e6beed9aa0e72",
+    "published": "2026-10-22",
+    "date": "2026-10-22",
+    "checked": "2026-10-23",
+    "period": "公開コミットは10月22日20:28 UTC。READMEの対象・仮定・除外範囲を確認。証明の再実行はしていない。",
+    "primary": "証明と命題を公開したTheoremの原リポジトリ。公開範囲は60入口・25ライブラリ。"
   }
 }
