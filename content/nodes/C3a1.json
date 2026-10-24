@@ -8,13 +8,16 @@
     "astra-card",
     "pace-frontier",
     "lie-detectors",
-    "embedded-evaluation-partnership"
+    "embedded-evaluation-partnership",
+    "openai-laser",
+    "anthropic-evaluators-update",
+    "metr-august-risk-review"
   ],
   "questions": [],
   "related": [],
   "terms": [],
   "review": {
-    "checkedAt": "2026-09-24",
+    "checkedAt": "2026-10-21",
     "intervalDays": 7,
     "reason": "能力・行動・対策の評価は短期間で変わり得るため。"
   },
@@ -28,7 +31,10 @@
     "astra-cyber",
     "embedded-evaluators",
     "lie-detector-transfer",
-    "embedded-evaluator-partnership"
+    "embedded-evaluator-partnership",
+    "laser-evaluation-sampling",
+    "embedded-evaluator-access",
+    "external-risk-report-critique"
   ],
   "shortTitle": "試験が実際の失敗を捉えない"
 }

@@ -4,13 +4,14 @@
   "explanation": "C4b.md",
   "sources": [
     "incident",
-    "power"
+    "power",
+    "anthropic-replication-setup"
   ],
   "questions": [],
   "related": [],
   "terms": [],
   "review": {
-    "checkedAt": "2026-09-10",
+    "checkedAt": "2026-10-13",
     "intervalDays": 30,
     "reason": "経路を支える前提、反論、防壁の有効性に変化がないか確認するため。"
   },
@@ -20,7 +21,8 @@
   "status": "hypothesis",
   "research": [
     "hf-incident",
-    "power-seeking"
+    "power-seeking",
+    "replication-setup-boundaries"
   ],
   "shortTitle": "組織を超えて制御が失敗"
 }

@@ -11,7 +11,8 @@
   "sources": [
     "fsb-ai",
     "fsb-monitoring",
-    "fsi-cyber-resilience"
+    "fsi-cyber-resilience",
+    "fsb-ai-practices-final"
   ],
   "questions": [],
   "related": [],
@@ -19,7 +20,7 @@
     "値動きだけでなく、決済や資金供給の機能が続いているかを見る。"
   ],
   "review": {
-    "checkedAt": "2026-09-22",
+    "checkedAt": "2026-10-19",
     "intervalDays": 7,
     "reason": "能力、実運用、経済制度、反証を分けて継続確認するため。"
   },
@@ -27,7 +28,8 @@
   "research": [
     "finance-risk",
     "finance-monitor",
-    "financial-cyber-recovery"
+    "financial-cyber-recovery",
+    "financial-ai-stop-and-recover"
   ],
   "shortTitle": "市場の防壁が連鎖を抑えない"
 }

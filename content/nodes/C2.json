@@ -5,7 +5,9 @@
   "sources": [
     "astra-card",
     "aisi-incident",
-    "horizon"
+    "horizon",
+    "openai-test-wallet",
+    "openai-external-browser"
   ],
   "questions": [],
   "related": [],
@@ -19,7 +21,7 @@
     "課題の長さだけでなく、成功率と人の介入がどう変わるか。"
   ],
   "review": {
-    "checkedAt": "2026-09-24",
+    "checkedAt": "2026-10-24",
     "intervalDays": 7,
     "reason": "能力・行動・対策の評価は短期間で変わり得るため。"
   },
@@ -31,7 +33,9 @@
   "research": [
     "astra-cyber",
     "aisi-incident",
-    "horizon"
+    "horizon",
+    "test-wallet-authorization",
+    "external-service-boundary"
   ],
   "shortTitle": "意図と異なる行動を実行"
 }
