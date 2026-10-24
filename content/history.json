@@ -1,5 +1,49 @@
 [
   {
+    "id": "incident-followups-and-containment-20261024",
+    "date": "2026-10-24",
+    "nodes": [
+      "C2",
+      "C3",
+      "C3a2",
+      "C4",
+      "F1",
+      "F2",
+      "F2a",
+      "F2b",
+      "F3",
+      "I1",
+      "I1a",
+      "I1b",
+      "I2",
+      "L",
+      "M1",
+      "M2",
+      "M2b",
+      "M2c",
+      "M2c2",
+      "NOW",
+      "P1",
+      "R0",
+      "R5",
+      "W1",
+      "W2",
+      "W3",
+      "W6"
+    ],
+    "sources": [
+      "aisi-incident-alignment-followup",
+      "anthropic-aisi-alignment-assessment",
+      "openai-training-containment-october"
+    ],
+    "kind": "事故の追跡分析と防御",
+    "title": "事故の追試と、学習環境の防御改修を追加",
+    "summary": "10月24日の点検で3資料と研究カードを追加し、期限に達した27項目と7本の矢印を原資料に照らして再確認しました。",
+    "before": "7月のAISIの事故を分析した10月23日の追試と、OpenAIの学習環境の改修報告は未収録でした。",
+    "after": "Lに同じ事故の追跡分析、C3a2に評価への認識による解釈の限界、C3に隔離の改修と試験条件を追加。分類と矢印の条件は維持しました。",
+    "reason": "実際の事故と後からの模擬試験を重複させず、試験内の改善と実運用全体の安全性を分けるため。"
+  },
+  {
     "id": "monitoring-and-proof-boundaries-20261023",
     "date": "2026-10-23",
     "nodes": [

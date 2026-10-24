@@ -6,7 +6,8 @@
     "scheming",
     "gemini-safety",
     "summer",
-    "openai-metagaming-latents"
+    "openai-metagaming-latents",
+    "aisi-incident-alignment-followup"
   ],
   "questions": [],
   "related": [],
@@ -14,7 +15,7 @@
     "evaluation-awareness"
   ],
   "review": {
-    "checkedAt": "2026-10-17",
+    "checkedAt": "2026-10-24",
     "intervalDays": 7,
     "reason": "能力・行動・対策の評価は短期間で変わり得るため。"
   },
@@ -26,7 +27,8 @@
     "scheming",
     "gemini-safety",
     "summer",
-    "metagaming-latents"
+    "metagaming-latents",
+    "incident-simulation-and-awareness"
   ],
   "shortTitle": "評価中だけ問題を隠す"
 }

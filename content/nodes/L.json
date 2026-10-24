@@ -18,7 +18,9 @@
     "openai-public-statistics",
     "openai-disallowed-requests",
     "openai-dashboard-access",
-    "openai-statistics-access"
+    "openai-statistics-access",
+    "aisi-incident-alignment-followup",
+    "anthropic-aisi-alignment-assessment"
   ],
   "questions": [],
   "related": [],
@@ -31,7 +33,7 @@
     "発見後の対応で、何が止まり、何が続いたか。"
   ],
   "review": {
-    "checkedAt": "2026-10-17",
+    "checkedAt": "2026-10-24",
     "intervalDays": 7,
     "reason": "能力・行動・対策の評価は短期間で変わり得るため。"
   },
@@ -55,7 +57,9 @@
     "public-statistics-incident",
     "disallowed-requests-incident",
     "dashboard-access-boundaries",
-    "statistics-access-boundaries"
+    "statistics-access-boundaries",
+    "incident-simulation-and-awareness",
+    "incident-replay-alignment"
   ],
   "shortTitle": "局所的に意図しない行動"
 }

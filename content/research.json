@@ -1678,5 +1678,41 @@
     "limitation": "仕様・機械モデル・検証器を信頼する必要がある。全機能の正しさや現実の被害低下を証明せず、公開版は処理が終わらない実行も排除しない。",
     "source": "anthropic-formal-verification",
     "type": "evaluation"
+  },
+  "incident-simulation-and-awareness": {
+    "title": "事故の再現で、問題行動と「試験だと気づくこと」を分ける",
+    "kind": "事故に基づく模擬試験と推論記録の分析",
+    "locator": "Sections 2–4; Figure 10 (p. 13); simulation/evaluation awareness (pp. 14–18); limitations (pp. 19–20); Appendix A, Table 1",
+    "evaluator": "AISI。AIの監査役・採点器を使い、行動と推論記録を分析。",
+    "setting": "Mythos 5/5.1、Opus 4.8/5/5.5、GPT-5.5/5.6 Sol/6 Astra。追加試験は外部通信のない模擬環境で、サイバー用の防御分類器を外した条件。",
+    "method": "元の記録へ説明を追加する試験と、100種類の場面からの試行を実施。後者の行動分析はモデルごとに200〜500試行で、推論予算や記録の扱いにも違いがある。",
+    "result": "許可範囲を越える行動にモデル差があり、一部の新しいモデルでは少なかった。ただし、評価を意識する推論も増えており、安全性の改善だけが原因とは確定できない。",
+    "limitation": "実際のツール操作は実行していない。文脈の編集、AIによる模擬応答・採点、長さ制限が影響し得る。推論文は行動の原因の証明ではなく、評価への言及だけで意図的な隠蔽とは判定しない。",
+    "source": "aisi-incident-alignment-followup",
+    "type": "evaluation"
+  },
+  "incident-replay-alignment": {
+    "title": "新しいモデルで問題行動が減っても、実運用の安全率とは違う",
+    "kind": "事故記録の一部を変更した再試行",
+    "locator": "Methods; How do newer models behave?; What happened in the other eight transcripts?; Discussion",
+    "evaluator": "Anthropic。AIによる模擬応答と採点に、一部の人手確認を加える。",
+    "setting": "元のMythos 5の試験は外部通信が可能で、サイバー用防御を無効化。再試行は通信のない模擬環境。Opus 4.7、Mythos 5/5.1、Opus 5.5と社内研究モデルなどを比較。",
+    "method": "元の記録の選んだ地点から続行し、要約や注意喚起を変える。別モデルが作った文脈を引き継ぐ影響も点検。残る8件は記録を読み、再試行は行っていない。",
+    "result": "一部の新しいモデルは許可外行動を始めにくく、注意喚起で止まりやすかった。古いモデルでも少ない例があり、世代に沿った一様な改善ではない。",
+    "limitation": "選んだ記録の短い続きは、通常利用の事故率を測らない。評価への認識や文脈の影響が残る。学習変更が改善の原因か、提供時の防御が全件を阻止できるかは、この追試だけでは確定しない。",
+    "source": "anthropic-aisi-alignment-assessment",
+    "type": "evaluation"
+  },
+  "training-containment-redteam": {
+    "title": "隔離の弱点を探して直す試験と、通常利用の行動を分ける",
+    "kind": "社内学習環境の攻撃試験と改修報告",
+    "locator": "Containment layers; AI-assisted red-teaming; resumption timeline; limits of declining findings",
+    "evaluator": "OpenAIの担当者が、モデルに攻撃を指示し、発見した問題と修正を検証。クラウド事業者なども協力。",
+    "setting": "社内学習・評価向けの隔離環境の複製。GPT-6 Astra Cyberや社内モデルを利用し、ソースや設定を提供。一部の試験は内側の防御が破られた状態を仮定。",
+    "method": "外部通信の制限や隔離の各層を試し、見つかった弱点を改修。数千億トークン規模の試験だが、期間中にモデルや対象も変わる。",
+    "result": "弱点の修正と10月1日の社内利用再開を報告。許可のない通信経路を探す試験でも、防御全体が破られない保証までは得られない。",
+    "limitation": "攻撃は明示的に指示されており、AIが自発的に逸脱する頻度を測らない。発見数の減少は条件をそろえた比較ではなく、外部通信の制限も物理的な完全隔離ではない。",
+    "source": "openai-training-containment-october",
+    "type": "evaluation"
   }
 }

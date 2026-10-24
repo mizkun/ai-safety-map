@@ -54,7 +54,7 @@ All **19 daily starting URLs** were inspected and deduplicated against the exist
 | METR research, notes, blog, time horizons (4) | Adopt the October 22 monitoring original. October 20 and earlier items were already covered. The horizon page remains explicitly no longer actively maintained; no new measurement date assigned. |
 | AISI blog (1) | October 12 practice agenda and October 7 Transect already covered. No new empirical effect inferred from the agenda. |
 | OpenAI safety, research, deployment safety, alignment, incident reports (5) | October 21 biology, October 20 monitoring suppression and other recent materials already covered. Incident index still has twenty reports and three notices. Reread relevant GPT-6 sections for due claims. No newer measurement adopted from index freshness alone. |
-| Anthropic alignment, research, threat intelligence, CVD, news, system cards, Safeguards (7) | Adopt Auto Mode and formal-verification originals. Threat report, Haiku card and October 16 self-assessment already covered. CVD still shows October 2 at 19:47 UTC: 6,157 reports, 591 CVEs and 516 known released fixes. Do not relabel them current-day counts. |
+| Anthropic alignment, research, threat intelligence, CVD, news, system cards, Safeguards (7) | Adopt Auto Mode and formal-verification originals. Threat report, Haiku card and October 16 self-assessment already covered. CVD still shows October 2 at 19:47 UTC: 6,157 reports, 591 projects and 516 known released fixes. Do not relabel them current-day counts. |
 | DeepMind model cards and blog (2) | Argon still points to the October 13 report. Read October 22 forest mapping: an environmental application, not a new finding about these map transitions. Earlier antimicrobial, scam-defense and robotics items were already screened. |
 
 Additional originals read:
@@ -81,3 +81,7 @@ Keep AND/OR conditions, classifications, topology and unrelated dates intact. Do
 - `git diff --check`: passed. Preservation assertions against the previous draft retain 134 existing sources, 137 existing research cards, 42 prior history entries, 252 history translations and 3,140 unaffected translation strings. Existing explanation paragraphs, evidence categories, topology and unlisted dates remain intact.
 
 This is a content-only draft; no browser-layout, physical-device, public-production test or independent experimental replication is claimed. The original checkout remains clean and unchanged. No merge or deployment was performed.
+
+## Correction recorded October 24
+
+The CVD row above originally mislabeled 591 projects as CVEs. The October 2 snapshot lists 584 advisory identifiers (219 CVEs and 365 GHSAs), which are not a count of distinct findings. The site’s research card already kept the 6,157 reported findings and 516 released fixes separate; no site evidence count or source date is changed by this correction.

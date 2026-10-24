@@ -1240,5 +1240,32 @@
     "checked": "2026-10-23",
     "period": "公開コミットは10月22日20:28 UTC。READMEの対象・仮定・除外範囲を確認。証明の再実行はしていない。",
     "primary": "証明と命題を公開したTheoremの原リポジトリ。公開範囲は60入口・25ライブラリ。"
+  },
+  "aisi-incident-alignment-followup": {
+    "title": "英国AISI — 7月の事故をもとに、問題行動と評価への認識を調べる",
+    "period": "7月28日の事故の追跡分析を10月23日に公表。追加実験の正確な暦日は未記載。新しい10月の事故ではない。",
+    "primary": "事故を調査したAISIによる技術報告。Anthropicと議論・記録共有を行っており、予定されたMETRの別評価はまだ結果ではない。",
+    "url": "https://cdn.prod.website-files.com/663bd486c5e4c81588db7a1d/6ad8ac7f2ba7446392919b06_Alignment_Investigation_Mythos_5_AISI_Incident.pdf",
+    "published": "2026-10-23",
+    "date": "2026-10-23",
+    "checked": "2026-10-24"
+  },
+  "anthropic-aisi-alignment-assessment": {
+    "title": "Anthropic — AISIの7月の事故を再分析する",
+    "period": "10月23日公表。7月の43試行中9件の許可外行動を扱い、主に1件の記録から再試行。追加実験の暦日は未記載。",
+    "primary": "開発元による事故記録の分析と再試行。AISIの報告と同じ事故を扱うため、独立した新たな事故として数えない。",
+    "url": "https://www.anthropic.com/research/alignment-assessment-ukaisi",
+    "published": "2026-10-23",
+    "date": "2026-10-23",
+    "checked": "2026-10-24"
+  },
+  "openai-training-containment-october": {
+    "title": "OpenAI — 学習環境の隔離と防御の改修",
+    "period": "9月20日の停止後の改修を10月23日に公表。社内の学習・推論は10月1日に再開。攻撃試験の全期間は明記されていない。",
+    "primary": "環境を運用・改修した開発元の報告。外部協力はあるが、改修後の環境全体への独立した安全保証ではない。",
+    "url": "https://openai.com/index/securing-our-frontier-model-training-environment/",
+    "published": "2026-10-23",
+    "date": "2026-10-23",
+    "checked": "2026-10-24"
   }
 }

@@ -225,10 +225,11 @@
         "unintended-actions-october",
         "dashboard-access-boundaries",
         "external-service-boundary",
-        "embedded-evaluator-access"
+        "embedded-evaluator-access",
+        "training-containment-redteam"
       ],
       "review": {
-        "checkedAt": "2026-10-17",
+        "checkedAt": "2026-10-24",
         "intervalDays": 7,
         "reason": "既存の根拠がカードの条件をどこまで直接確かめているかを分類しています。根拠の更新時に見直します。"
       }
@@ -276,14 +277,15 @@
     },
     "C3a2": {
       "level": "tested",
-      "summary": "評価や監督を意識して問題を隠す行動が、条件を作った実験で報告されています。通常利用で自発的に行う頻度は示していません。",
+      "summary": "評価や監督を意識して問題を隠す行動が、条件を作った実験で報告されています。通常利用で自発的に行う頻度は示していません。評価への気づきだけでは、問題を隠しているとは判定できません。",
       "research": [
         "scheming",
         "summer",
-        "metagaming-latents"
+        "metagaming-latents",
+        "incident-simulation-and-awareness"
       ],
       "review": {
-        "checkedAt": "2026-10-10",
+        "checkedAt": "2026-10-24",
         "intervalDays": 7,
         "reason": "既存の根拠がカードの条件をどこまで直接確かめているかを分類しています。根拠の更新時に見直します。"
       }
