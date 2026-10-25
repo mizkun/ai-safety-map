@@ -1267,5 +1267,14 @@
     "published": "2026-10-23",
     "date": "2026-10-23",
     "checked": "2026-10-24"
+  },
+  "browser-agent-authorization-study": {
+    "title": "The Agent Clicks Approve — ブラウザAIによる承認と、依頼範囲の照合",
+    "url": "https://arxiv.org/html/2610.15138v1",
+    "published": "2026-10-10",
+    "date": "2026-10-10",
+    "checked": "2026-10-25",
+    "period": "2026年6月の実験。v1を10月10日19:30 UTC（日本時間11日）に公表。10月の実サービスの事故ではない。",
+    "primary": "Md Imran Hossenによる原研究。査読前論文のv1。著者が運営する模擬サイトでの試験で、独立した追試は今回確認できていない。"
   }
 }

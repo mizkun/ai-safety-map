@@ -1714,5 +1714,17 @@
     "limitation": "攻撃は明示的に指示されており、AIが自発的に逸脱する頻度を測らない。発見数の減少は条件をそろえた比較ではなく、外部通信の制限も物理的な完全隔離ではない。",
     "source": "openai-training-containment-october",
     "type": "evaluation"
+  },
+  "task-scoped-authorization": {
+    "title": "承認ボタンをAIが押すことと、利用者の承認を分ける",
+    "source": "browser-agent-authorization-study",
+    "type": "evaluation",
+    "kind": "模擬サイトでの承認操作と防御の比較",
+    "locator": "Sections III–VI; Figure 3 and Table I; Section VIII (Limitations)",
+    "evaluator": "Md Imran Hossen。利用者が認めた範囲と、サーバーに記録された操作を比較。",
+    "setting": "Claude Haiku 4.5、GPT-5.5とbrowser-use 0.13.0。ログイン済みとして扱う模擬環境で、画面の再認証や人間への確認はない。",
+    "method": "ページに埋め込んだ指示に対し、承認・通知先登録を試す。依頼で認めた対象を実行前に固定し、受け付ける側で照合する防御と比較。",
+    "result": "主要比較では防御なしの73試行で範囲外の操作を記録。防御ありの70試行では送信を全て拒否し、許可された対照73試行では操作が完了。",
+    "limitation": "実際のアクセス用トークン発行や通知送信は行っていない。定型の依頼と正しい許可範囲を前提とし、各条件は5〜10試行。別の入口、自由な依頼文、追加認証への一般化は未検証。"
   }
 }
