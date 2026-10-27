@@ -1,5 +1,32 @@
 [
   {
+    "id": "safeguards-and-recovery-20261027",
+    "date": "2026-10-27",
+    "nodes": [
+      "C1",
+      "C2a",
+      "M2b1",
+      "R1",
+      "W2",
+      "R3",
+      "F4"
+    ],
+    "sources": [
+      "protein-filtering-durability",
+      "reprobait-tool-reconstruction",
+      "openai-terra-october",
+      "openai-science-release-oct26",
+      "reterm-recovery-training",
+      "recova-robot-recovery"
+    ],
+    "kind": "能力と防御の点検",
+    "title": "防御の持続性、失敗後の復帰、研究成果の検証を補足",
+    "summary": "生物分野の対策、新モデルの行動、作業中の復帰と研究資料の公開について6資料を追加。期限に達した6項目も再点検しました。",
+    "before": "データ制限の持続性、道具の再作成、今回の復帰の試験と10月26日の報告は未収録でした。",
+    "after": "実験の条件と人の役割を補い、性能の改善、許可の順守、実際の危害、外部の検証を区別しました。分類と矢印の意味は維持しています。",
+    "reason": "能力の進歩だけでなく防御の改善と限界も示し、限られた成果を経路全体の成立や安全の保証へ広げないため。"
+  },
+  {
     "id": "task-scoped-authorization-20261025",
     "date": "2026-10-25",
     "nodes": [

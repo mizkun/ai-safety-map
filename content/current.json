@@ -151,10 +151,11 @@
         "reference-tool-source-copy",
         "public-statistics-incident",
         "subliminal-behavior-transfer",
-        "graft-reward-hacking"
+        "graft-reward-hacking",
+        "terra-authorization-evaluation"
       ],
       "review": {
-        "checkedAt": "2026-10-20",
+        "checkedAt": "2026-10-27",
         "intervalDays": 7,
         "reason": "既存の根拠がカードの条件をどこまで直接確かめているかを分類しています。根拠の更新時に見直します。"
       }
@@ -204,10 +205,11 @@
       "research": [
         "horizon",
         "ironclad-workflow-evaluation",
-        "multilang-code-completion"
+        "multilang-code-completion",
+        "terminal-error-recovery"
       ],
       "review": {
-        "checkedAt": "2026-10-20",
+        "checkedAt": "2026-10-27",
         "intervalDays": 7,
         "reason": "既存の根拠がカードの条件をどこまで直接確かめているかを分類しています。根拠の更新時に見直します。"
       }
@@ -432,10 +434,11 @@
         "gemini-safety",
         "physical-software-eval-sep26",
         "gpt6-october-capabilities",
-        "argon-bio-uplift"
+        "argon-bio-uplift",
+        "reprobait-access-limits"
       ],
       "review": {
-        "checkedAt": "2026-10-23",
+        "checkedAt": "2026-10-27",
         "intervalDays": 7,
         "reason": "既存の根拠がカードの条件をどこまで直接確かめているかを分類しています。根拠の更新時に見直します。"
       }
@@ -517,10 +520,11 @@
       "summary": "選んだ作業での進歩に加え、技術的可能性と費用の推定があります。仕事全体の実用的な代替率ではありません。",
       "research": [
         "robotics",
-        "robot-work-estimates"
+        "robot-work-estimates",
+        "robot-scene-recovery"
       ],
       "review": {
-        "checkedAt": "2026-10-01",
+        "checkedAt": "2026-10-27",
         "intervalDays": 7,
         "reason": "既存の根拠がカードの条件をどこまで直接確かめているかを分類しています。根拠の更新時に見直します。"
       }
@@ -560,7 +564,7 @@
         "self-training-null-audit"
       ],
       "review": {
-        "checkedAt": "2026-10-19",
+        "checkedAt": "2026-10-27",
         "intervalDays": 7,
         "reason": "限定した反復実験と、開発全体の持続的な加速を区別して点検するため。"
       }

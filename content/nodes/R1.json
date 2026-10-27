@@ -21,7 +21,8 @@
     "athanor-post-training",
     "open-science-followups",
     "claude-binder-validation",
-    "distributed-biology-study"
+    "distributed-biology-study",
+    "openai-science-release-oct26"
   ],
   "questions": [],
   "related": [],
@@ -32,7 +33,7 @@
     "仕事の量、質、人間の介入を分けて測れているか。"
   ],
   "review": {
-    "checkedAt": "2026-10-22",
+    "checkedAt": "2026-10-27",
     "intervalDays": 7,
     "reason": "能力・行動・対策の評価は短期間で変わり得るため。"
   },
@@ -54,7 +55,8 @@
     "athanor-small-model",
     "open-science-verification",
     "binder-human-lab-validation",
-    "distributed-biology-interpretation"
+    "distributed-biology-interpretation",
+    "science-release-verification"
   ],
   "shortTitle": "AIが研究の一部を進める"
 }

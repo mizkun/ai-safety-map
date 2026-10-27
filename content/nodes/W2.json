@@ -10,7 +10,8 @@
   ],
   "sources": [
     "robotics-2",
-    "anthropic-robot-work"
+    "anthropic-robot-work",
+    "recova-robot-recovery"
   ],
   "questions": [],
   "related": [],
@@ -18,14 +19,15 @@
     "実環境の稼働時間、故障率、遠隔操作の介入、維持費を見る。"
   ],
   "review": {
-    "checkedAt": "2026-10-24",
+    "checkedAt": "2026-10-27",
     "intervalDays": 7,
     "reason": "能力、実運用、経済制度、反証を分けて継続確認するため。"
   },
   "status": "limited",
   "research": [
     "robotics",
-    "robot-work-estimates"
+    "robot-work-estimates",
+    "robot-scene-recovery"
   ],
   "shortTitle": "身体労働の自動化"
 }

@@ -1276,5 +1276,59 @@
     "checked": "2026-10-25",
     "period": "2026年6月の実験。v1を10月10日19:30 UTC（日本時間11日）に公表。10月の実サービスの事故ではない。",
     "primary": "Md Imran Hossenによる原研究。査読前論文のv1。著者が運営する模擬サイトでの試験で、独立した追試は今回確認できていない。"
+  },
+  "protein-filtering-durability": {
+    "title": "The Effectiveness and Durability of Pretraining Data Filtering in Protein Language Models",
+    "url": "https://arxiv.org/html/2610.26651v1",
+    "published": "2026-10-19",
+    "date": "2026-10-19",
+    "period": "v1は10月19日16:08 UTC（日本時間20日）に公表。AISIの解説は10月26日。実験を行った時期は明記されていない。",
+    "primary": "英国AISIの研究者らによる原論文。タンパク質モデルの限定した予測課題を扱う。独立した追試は今回確認できていない。",
+    "checked": "2026-10-27"
+  },
+  "reprobait-tool-reconstruction": {
+    "title": "ReproBAIT: Can coding agents build their own biological AI tools?",
+    "url": "https://arxiv.org/pdf/2610.19810",
+    "published": "2026-10-14",
+    "date": "2026-10-14",
+    "period": "v1は10月14日に公表。AISIの解説は10月26日。実験を行った時期は明記されていない。",
+    "primary": "英国AISIとSecureBioの著者らによる原研究。論文のPDFを確認。独立した追試は今回確認できていない。",
+    "checked": "2026-10-27"
+  },
+  "openai-terra-october": {
+    "title": "GPT-6.1 Terra System Card",
+    "url": "https://deploymentsafety.openai.com/gpt-6-1-terra",
+    "published": "2026-10-26",
+    "date": "2026-10-26",
+    "period": "10月26日公表。個々の試験の実施日は明記されていない。通常提供と異なる設定の評価を含む。",
+    "primary": "OpenAI自身による評価報告。模擬環境や一部の安全策を適用しない試験を含み、実サービスの事故統計ではない。",
+    "checked": "2026-10-27"
+  },
+  "openai-science-release-oct26": {
+    "title": "Working with academic communities to build scientific understanding",
+    "url": "https://openai.com/index/building-scientific-understanding-with-academic-communities/",
+    "published": "2026-10-26",
+    "date": "2026-10-26",
+    "period": "10月26日公表。記載された出力は9月9日〜10月19日で、文章と形式化の生成日は異なる。",
+    "primary": "OpenAI自身の研究成果・資料公開の報告。外部研究者による検討を進めるもので、その結論を先に保証する報告ではない。",
+    "checked": "2026-10-27"
+  },
+  "reterm-recovery-training": {
+    "title": "ReTerm: Recovery Training for Self-Improving Terminal Agents",
+    "url": "https://arxiv.org/html/2610.18484v2",
+    "published": "2026-10-13",
+    "date": "2026-10-14",
+    "period": "初版は10月13日。10月14日16:45 UTC（日本時間15日）のv2を確認。実験実施日は明記されていない。",
+    "primary": "Xieらによる原研究のv2。著者による評価で、独立した追試は今回確認できていない。",
+    "checked": "2026-10-27"
+  },
+  "recova-robot-recovery": {
+    "title": "Recova: Agent-Guided Failure Recovery for Autonomous Robotic Manipulation",
+    "url": "https://arxiv.org/html/2610.01178v1",
+    "published": "2026-10-01",
+    "date": "2026-10-01",
+    "period": "v1は10月1日に公表。今回の週次見直しで追加。実験を行った時期は明記されていない。",
+    "primary": "Liuらによる原論文。実機試験とシミュレーションを区別して確認。独立した追試は今回確認できていない。",
+    "checked": "2026-10-27"
   }
 }
