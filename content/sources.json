@@ -1330,5 +1330,23 @@
     "period": "v1は10月1日に公表。今回の週次見直しで追加。実験を行った時期は明記されていない。",
     "primary": "Liuらによる原論文。実機試験とシミュレーションを区別して確認。独立した追試は今回確認できていない。",
     "checked": "2026-10-27"
+  },
+  "monitorability-causal-training": {
+    "title": "Learning to Be Monitored: Causal Bounds and Intervention-Aware Post-Training Recipes for Chain-of-Thought Monitorability",
+    "url": "https://arxiv.org/html/2610.31733v1",
+    "date": "2026-10-22",
+    "published": "2026-10-22",
+    "period": "v1は10月22日16:00 UTC（日本時間23日）に公表。実験の実施日は明記されていない。",
+    "primary": "Fuらの原論文。プレプリントのv1を確認。独立した追試は今回確認できていない。",
+    "checked": "2026-10-28"
+  },
+  "monitorability-post-training": {
+    "title": "Monitorability Is Trainable: Post-Training for Chain-of-Thought Monitorability",
+    "url": "https://arxiv.org/pdf/2610.29734v1",
+    "date": "2026-10-21",
+    "published": "2026-10-21",
+    "period": "v1は10月21日に公表。実験の実施日は明記されていない。研究者が準備した課題と学習用のモデルを使う。",
+    "primary": "Anwarらの原論文。プレプリントのv1の本文・表・付録を確認。独立した追試は今回確認できていない。",
+    "checked": "2026-10-28"
   }
 }

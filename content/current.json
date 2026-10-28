@@ -252,10 +252,12 @@
         "grader-reset-incident",
         "public-statistics-incident",
         "trusted-approval-display",
-        "matched-monitor-post-control"
+        "matched-monitor-post-control",
+        "intervention-aware-monitorability",
+        "monitorability-recovery-training"
       ],
       "review": {
-        "checkedAt": "2026-10-21",
+        "checkedAt": "2026-10-28",
         "intervalDays": 7,
         "reason": "既存の根拠がカードの条件をどこまで直接確かめているかを分類しています。根拠の更新時に見直します。"
       }
@@ -272,7 +274,7 @@
         "external-risk-report-critique"
       ],
       "review": {
-        "checkedAt": "2026-10-21",
+        "checkedAt": "2026-10-28",
         "intervalDays": 7,
         "reason": "既存の根拠がカードの条件をどこまで直接確かめているかを分類しています。根拠の更新時に見直します。"
       }

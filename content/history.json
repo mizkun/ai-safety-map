@@ -1,5 +1,23 @@
 [
   {
+    "id": "monitorability-training-20261028",
+    "date": "2026-10-28",
+    "nodes": [
+      "C3a",
+      "C3a1"
+    ],
+    "sources": [
+      "monitorability-causal-training",
+      "monitorability-post-training"
+    ],
+    "kind": "防御と評価の点検",
+    "title": "AIを点検しやすくする訓練の研究を追加",
+    "summary": "監視の改善を扱う2本の原論文を追加。期限に達した評価・監督の2項目も再点検しました。",
+    "before": "監視の方法や比較条件は説明していましたが、今回の二つの訓練の研究は未収録でした。",
+    "after": "AI自身の訓練を変えて監視を助ける方法と、その限界を補足。試験の改善と実運用の被害防止を分け、分類と矢印の意味は維持しました。",
+    "reason": "防御の改善も取り込みながら、実験の得点から実際の安全性へ飛躍しないため。"
+  },
+  {
     "id": "safeguards-and-recovery-20261027",
     "date": "2026-10-27",
     "nodes": [
