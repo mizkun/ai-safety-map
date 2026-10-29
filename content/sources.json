@@ -632,10 +632,10 @@
   "openai-dns-access": {
     "title": "OpenAI — An agent used DNS to reach an external chatbot",
     "url": "https://alignment.openai.com/misalignment-reports/an-agent-used-dns-to-reach-an-external-chatbot/",
-    "published": null,
-    "checked": "2026-10-01",
-    "date": "2026年9月25日更新／初出日は未確認",
-    "period": "2026年9月20日の社内研究モデルの学習中の出来事。9月25日更新の報告。",
+    "published": "2026-09-25",
+    "checked": "2026-10-29",
+    "date": "2026-09-25",
+    "period": "2026年9月20日の社内研究モデルの学習中の出来事。公式の事故一覧は初出・更新を9月25日と記載。",
     "primary": "当事者OpenAIによる事故調査・対応の報告。"
   },
   "anthropic-robot-work": {
@@ -1348,5 +1348,50 @@
     "period": "v1は10月21日に公表。実験の実施日は明記されていない。研究者が準備した課題と学習用のモデルを使う。",
     "primary": "Anwarらの原論文。プレプリントのv1の本文・表・付録を確認。独立した追試は今回確認できていない。",
     "checked": "2026-10-28"
+  },
+  "gemini-carbon-announcement": {
+    "title": "Google DeepMind — Gemini 4 Carbon: our next frontier model",
+    "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-carbon/",
+    "date": "2026-10-28",
+    "published": "2026-10-28",
+    "period": "10月28日の発表。各試験と社内利用の実施期間は明記されていない。まず一部の防御担当者へ提供する段階。",
+    "primary": "開発元Google DeepMindの発表本文。個別試験の母数や全設定は本文では確認できず、独立した追試としては扱わない。",
+    "checked": "2026-10-29"
+  },
+  "bighat-antibody-leads": {
+    "title": "Anthropic / BigHat — Reasoning in the loop: antibody lead optimization by probing mechanism and measurement",
+    "url": "https://www.bighatbio.com/bighat-anthropic-collaboration-report-10-27-2026",
+    "date": "2026-10-27",
+    "published": "2026-10-27",
+    "period": "10月27日の共同研究報告。実験は2026年6月29日〜9月4日。2種類の抗体断片、合計7回の設計と実験。",
+    "primary": "StantonらとBigHatの原報告PDF。共同研究の当事者による報告で、独立した追試は今回確認できていない。",
+    "checked": "2026-10-29"
+  },
+  "enveda-cmc-review": {
+    "title": "Enveda — CDP: a language-model system for quality review of executed pharmaceutical batch records",
+    "url": "https://enveda.com/CMC-Document-Processor/",
+    "date": "2026-10-27",
+    "published": "2026-10-27",
+    "period": "10月27日公表。1件の第2相臨床試験用の製造工程から4つの記録、計1,061ページを評価。実施日は明記されていない。",
+    "primary": "CDPを開発・利用するEnvedaの原報告。評価対象の記録は非公開で、独立した追試ではない。",
+    "checked": "2026-10-29"
+  },
+  "nist-agent-incident-practices": {
+    "title": "NIST / NSA / CISA — Key Practices for Incident Readiness and Response in Super Intelligence Training and Evaluation",
+    "url": "https://www.nist.gov/document/keypracticesforincidentreadinessandresponseinsuperintelligence-trainingandevaluation",
+    "date": "2026-10-16",
+    "published": "2026-10-16",
+    "period": "10月16日公表の任意の実務指針、Version 1.0。特定モデルの事故率や対策効果を測った実験ではない。",
+    "primary": "NIST・NSA・CISAの共同文書。14ページの原文で、準備・検知・対応・復旧・報告を確認。",
+    "checked": "2026-10-29"
+  },
+  "gemini-carbon-methods": {
+    "title": "Google DeepMind — Gemini 4 Carbon Model Evaluation",
+    "url": "https://storage.googleapis.com/deepmind-media/gemini/gemini_4_carbon_model_evaluation.pdf",
+    "date": "2026-10",
+    "published": null,
+    "checked": "2026-10-29",
+    "period": "2026年10月版。正確な公表日・実験日は明記されていない。10月29日に公式のモデルページから取得。",
+    "primary": "Google DeepMindの評価方法・結果の原文PDF。本文と結果表を確認。外部評価から引用した値は、評価者の原データまで確認したとは扱わない。"
   }
 }

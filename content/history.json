@@ -1,5 +1,29 @@
 [
   {
+    "id": "capabilities-research-response-20261029",
+    "date": "2026-10-29",
+    "nodes": [
+      "C1",
+      "M2c1",
+      "R1",
+      "C3b"
+    ],
+    "sources": [
+      "gemini-carbon-announcement",
+      "gemini-carbon-methods",
+      "bighat-antibody-leads",
+      "enveda-cmc-review",
+      "nist-agent-incident-practices",
+      "openai-dns-access"
+    ],
+    "kind": "能力と防御の点検",
+    "title": "サイバー評価、創薬支援、事故対応の資料を追加",
+    "summary": "Gemini 4 Carbonの評価、創薬の部分工程での支援、事故対応の実務指針を確認しました。",
+    "before": "今回の評価と共同研究、米国機関の対応指針は未収録で、DNS接続の事故報告の初出日も未確認でした。",
+    "after": "試験の安全策、人の役割、再試行と測定の限界を添えて追加。期限に達したC3bを再点検し、DNS報告の公表日を補いました。分類と矢印は維持しました。",
+    "reason": "能力と防御の両方を追い、部分的な成果や指針の公表を、一般的な能力や安全性の保証に置き換えないため。"
+  },
+  {
     "id": "monitorability-training-20261028",
     "date": "2026-10-28",
     "nodes": [

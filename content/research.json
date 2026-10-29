@@ -1822,5 +1822,65 @@
     "result": "用意した監視の失敗から一部を回復し、3つの安全性ベンチマークでは出力の安全・危険の判別が改善。危険な回答そのものが一律に減ったわけではない。",
     "limitation": "推論が長くなり、行動自体も変わる。安全性評価は1回の訓練・試験分割。より強いAIの実際の監視失敗や、追加学習後も効果が続くかは未確認。",
     "source": "monitorability-post-training"
+  },
+  "carbon-cyber-and-patching": {
+    "source": "gemini-carbon-methods",
+    "type": "evaluation",
+    "title": "サイバー作業の能力を、発見・利用・修正に分けて見る",
+    "kind": "開発元によるサイバー能力の評価",
+    "locator": "Methodology; Cybersecurity; Results table (printed pp. 1, 3–4)",
+    "evaluator": "Google DeepMind。修正課題はCollinear AIの公開評価から引用。",
+    "setting": "安全策なしのサイバー試験。SEC-bench Proは2026年5月版の183課題。ExploitGymはネット接続なし。",
+    "method": "SECは各課題3回を平均した1回あたりの成功率。Exploitは課題ごと1回で6時間・10時間の条件を評価。CWEはプログラムが判定する1回試行の成績。",
+    "result": "SEC-bench Proで88.2%、ExploitGymで54.8%、CWE-benchで71.0%を報告。修正する側の能力も含む。",
+    "limitation": "判定の一部にもAIを使用。54.8%がどちらの時間条件か表から特定できず、他社の数字は別報告から引用。実運用の侵害確率や防御効果とは異なる。"
+  },
+  "carbon-alignment-evaluation": {
+    "source": "gemini-carbon-announcement",
+    "type": "evaluation",
+    "title": "不正な試みと、その成功を分けて確かめる",
+    "kind": "開発元による行動と安全策の評価",
+    "locator": "Advancing frontier model safety & security",
+    "evaluator": "Google DeepMind（開発元）",
+    "setting": "Gemini 4 CarbonのTerminal-Bench 4.0、社内のコード作成、別のプロンプトインジェクション試験。設定はそれぞれ異なる。",
+    "method": "不正の試み・成功、社内の重大な意図逸脱の警告、外部の指示に誘導される攻撃の成功を別々に測る。",
+    "result": "Terminal-Benchでは不正の成功0.0%、試み0.4%。社内の重大な警告は約8割減り、用意した誘導攻撃の試験では成功0.0%と報告。",
+    "limitation": "試行数や警告の母数・監視範囲などは本文にない。試験での成功ゼロや警告の減少は、未知の攻撃への安全性や実運用の事故率を保証しない。"
+  },
+  "antibody-human-reasoning-loop": {
+    "source": "bighat-antibody-leads",
+    "type": "evaluation",
+    "title": "AIと研究者が、抗体の設計と測り方を見直す",
+    "kind": "人とAIによる抗体断片の改良",
+    "locator": "Sections 4 and 8; Appendix A.4 and Appendix I",
+    "evaluator": "AnthropicとBigHatの共同研究者",
+    "setting": "主にClaude Fable 5をClaude Codeで使用。BigHatの実験記録と測定の生データを参照し、人が設計の最終判断と実験を担当。",
+    "method": "2種類の抗体断片で約1,010案を設計し、7回の実験を通じて、性能だけでなく測定指標が目的に合うかも調べる。",
+    "result": "両方の候補で結合の強さや安定性などの改善を報告。生データを読み直すよう研究者が促し、測定方法も修正した。",
+    "limitation": "1つの実験基盤・2種類の結果で、主な値は1〜2回の測定。別の設計法との比較実験はなく、AI単独の効果や患者への有効性は確認していない。"
+  },
+  "manufacturing-record-human-review": {
+    "source": "enveda-cmc-review",
+    "type": "evaluation",
+    "title": "薬の製造記録をAIが点検し、人が確認する",
+    "kind": "製造記録の点検支援の評価",
+    "locator": "Study design; Results; Configuration management; Controls for GMP use",
+    "evaluator": "Enveda。社内の判定者1人が採点し、別の1人が確認。",
+    "setting": "主にClaude Opus 4.7、別試行で5.5。AIは記録を読むだけで変更・出荷の権限は持たず、人が指摘を確認して判断。",
+    "method": "4記録について人の点検と比較。同じ記録を調整にも使用し、複数の実行の結果と、1実行の時間を区別した。",
+    "result": "人が見つけた11件を複数実行のいずれかで指摘。4.7の実行で追加7件を確認。AI処理と人の確認は166分、人だけでは1,553分。",
+    "limitation": "11件中2件の一致には判定者の補足が必要。各実行に読み違いがあり、4.7の指摘の79%は対応不要。別モデルへの切替も有効な設定で、未知の記録での精度や薬の安全性を保証しない。"
+  },
+  "incident-readiness-and-recovery": {
+    "source": "nist-agent-incident-practices",
+    "type": "argument",
+    "title": "警告から停止、再開の確認までを準備する",
+    "kind": "事故への備えと対応の実務指針",
+    "locator": "Practices 2, 4, 6 and 7; Areas for Future Work",
+    "evaluator": "NIST・NSA・CISA（指針の作成主体）",
+    "setting": "主に、人の監督が限られた長い作業をするAIの学習・評価を行う組織。特定モデルの試験ではない。",
+    "method": "対応の演習、監視の点検、自動停止、再開前の封じ込め確認を組み合わせる10の実務方針。",
+    "result": "異常検知時の停止と、再開前に停止機構・権限・監視が働くか確かめることを推奨。事故後の学習で、将来の異常を見つけにくくしないよう求める。",
+    "limitation": "任意の推奨事項で、実装率や停止時間、被害削減の比較結果は示していない。文書の名称は、超知能の出現を確認した証拠ではない。"
   }
 }

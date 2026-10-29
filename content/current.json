@@ -152,10 +152,11 @@
         "public-statistics-incident",
         "subliminal-behavior-transfer",
         "graft-reward-hacking",
-        "terra-authorization-evaluation"
+        "terra-authorization-evaluation",
+        "carbon-alignment-evaluation"
       ],
       "review": {
-        "checkedAt": "2026-10-27",
+        "checkedAt": "2026-10-29",
         "intervalDays": 7,
         "reason": "既存の根拠がカードの条件をどこまで直接確かめているかを分類しています。根拠の更新時に見直します。"
       }
@@ -329,10 +330,11 @@
         "aisi-layered-evaluation-controls",
         "training-safety-case-guidelines",
         "agent-recovery-limits",
-        "financial-ai-stop-and-recover"
+        "financial-ai-stop-and-recover",
+        "incident-readiness-and-recovery"
       ],
       "review": {
-        "checkedAt": "2026-10-19",
+        "checkedAt": "2026-10-29",
         "intervalDays": 7,
         "reason": "既存の根拠がカードの条件をどこまで直接確かめているかを分類しています。根拠の更新時に見直します。"
       }
