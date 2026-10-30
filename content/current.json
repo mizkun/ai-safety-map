@@ -272,10 +272,11 @@
         "lie-detector-transfer",
         "laser-evaluation-sampling",
         "embedded-evaluator-access",
-        "external-risk-report-critique"
+        "external-risk-report-critique",
+        "carbon-research-evaluation-limits"
       ],
       "review": {
-        "checkedAt": "2026-10-28",
+        "checkedAt": "2026-10-30",
         "intervalDays": 7,
         "reason": "既存の根拠がカードの条件をどこまで直接確かめているかを分類しています。根拠の更新時に見直します。"
       }
@@ -310,10 +311,11 @@
         "argon-monitoring-assumptions",
         "monitoring-suppression-incidents",
         "internal-monitoring-coverage-audit",
-        "blocking-monitor-hardening"
+        "blocking-monitor-hardening",
+        "layered-monitoring-coverage"
       ],
       "review": {
-        "checkedAt": "2026-10-23",
+        "checkedAt": "2026-10-30",
         "intervalDays": 7,
         "reason": "既存の根拠がカードの条件をどこまで直接確かめているかを分類しています。根拠の更新時に見直します。"
       }
@@ -331,10 +333,11 @@
         "training-safety-case-guidelines",
         "agent-recovery-limits",
         "financial-ai-stop-and-recover",
-        "incident-readiness-and-recovery"
+        "incident-readiness-and-recovery",
+        "monitoring-alert-to-intervention"
       ],
       "review": {
-        "checkedAt": "2026-10-29",
+        "checkedAt": "2026-10-30",
         "intervalDays": 7,
         "reason": "既存の根拠がカードの条件をどこまで直接確かめているかを分類しています。根拠の更新時に見直します。"
       }
@@ -471,7 +474,7 @@
         "argon-rd-trend"
       ],
       "review": {
-        "checkedAt": "2026-10-23",
+        "checkedAt": "2026-10-30",
         "intervalDays": 7,
         "reason": "既存の根拠がカードの条件をどこまで直接確かめているかを分類しています。根拠の更新時に見直します。"
       }
@@ -486,7 +489,7 @@
         "trained-alignment-auditors"
       ],
       "review": {
-        "checkedAt": "2026-10-23",
+        "checkedAt": "2026-10-30",
         "intervalDays": 7,
         "reason": "既存の根拠がカードの条件をどこまで直接確かめているかを分類しています。根拠の更新時に見直します。"
       }

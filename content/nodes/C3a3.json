@@ -16,7 +16,8 @@
     "gemini-argon-report",
     "openai-monitoring-suppression",
     "metr-openai-monitoring-audit",
-    "auto-mode-red-team"
+    "auto-mode-red-team",
+    "openai-layered-monitoring-october"
   ],
   "questions": [],
   "related": [],
@@ -28,7 +29,7 @@
     "scheming"
   ],
   "review": {
-    "checkedAt": "2026-10-23",
+    "checkedAt": "2026-10-30",
     "intervalDays": 7,
     "reason": "監督回避と、それを防ぐ手法の評価は変化が速いため。"
   },
@@ -45,7 +46,8 @@
     "argon-monitoring-assumptions",
     "monitoring-suppression-incidents",
     "internal-monitoring-coverage-audit",
-    "blocking-monitor-hardening"
+    "blocking-monitor-hardening",
+    "layered-monitoring-coverage"
   ],
   "shortTitle": "実行中の監督をすり抜ける"
 }

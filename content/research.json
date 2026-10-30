@@ -1108,7 +1108,7 @@
     "type": "evaluation",
     "title": "長い実行記録を調べる支援と、危険の防止を分ける",
     "kind": "分析ツールと記述的な単一事例",
-    "locator": "論文2節、3節、3.5節、4節。公開日はAISIの10月7日記事と照合。",
+    "locator": "v2の2節、3節、3.5節、4節。v1との本文照合で、研究上の主張の変更は確認されなかった。",
     "evaluator": "AISI・Meridianの著者。実行と分類の両方にClaude Opus 4.7を使用。",
     "setting": "OpenClawでの6日間、79の子エージェント。人間から運用上の問題に対する57メッセージがあった。",
     "method": "実際の記録から取れる操作と、AIが判断する活動の分類を分け、元の記録へ戻って確認できる形にする。",
@@ -1882,5 +1882,53 @@
     "method": "対応の演習、監視の点検、自動停止、再開前の封じ込め確認を組み合わせる10の実務方針。",
     "result": "異常検知時の停止と、再開前に停止機構・権限・監視が働くか確かめることを推奨。事故後の学習で、将来の異常を見つけにくくしないよう求める。",
     "limitation": "任意の推奨事項で、実装率や停止時間、被害削減の比較結果は示していない。文書の名称は、超知能の出現を確認した証拠ではない。"
+  },
+  "layered-monitoring-coverage": {
+    "source": "openai-layered-monitoring-october",
+    "type": "evaluation",
+    "title": "監視範囲を広げても、全ての操作を止められるとは限らない",
+    "kind": "開発元による監視構成と再生試験の報告",
+    "locator": "Our internal monitoring system today; tests on recorded incidents; red-teaming; external usage",
+    "evaluator": "OpenAI（開発元）",
+    "setting": "Astra級の学習・評価、社内Codex、対象を限定した外部利用。過去の事故の再生と、隔離環境の攻撃試験を含む。",
+    "method": "段階的なAI点検に記録・通信ログを組み合わせ、過去の事例と模擬攻撃で検出を測る。外部点検で残る弱点も説明。",
+    "result": "Hugging Face事故の再生では隔離突破の約30分後に通知。監視範囲の拡大を報告するが、外部のChat Completions APIは対象外。",
+    "limitation": "実際に事故を防いだ再試験ではない。METRの点検は過去の構成で、改修の一つは継続中。未知の失敗の検出率や運用全体の安全性は未確定。"
+  },
+  "monitoring-alert-to-intervention": {
+    "source": "openai-layered-monitoring-october",
+    "type": "observation",
+    "title": "警告の発見、人への通知、自動停止は別の段階",
+    "kind": "監視後の対応条件の開示",
+    "locator": "Human response; safeguarding external usage of Astra",
+    "evaluator": "OpenAI（運用者）",
+    "setting": "社内の学習・評価・Codexと外部利用。環境ごとに人への通知と停止の条件が異なる。",
+    "method": "現在の対応経路と、まだ整備中の自動停止を区別して記載。",
+    "result": "最先端の学習では終日呼び出せる一方、社内Codexの緊急呼び出しは無効。他の多くの利用では営業時間内のみ。外部APIの自動停止には対応する会話の追跡が必要。",
+    "limitation": "緊急呼び出しから30分以内に最優先の警告を問題なしと判断できなければ広く自動停止する仕組みは整備中。構成の説明だけで、被害までに対応できる割合は分からない。"
+  },
+  "carbon-research-evaluation-limits": {
+    "source": "frontiercs-carbon-evaluation",
+    "type": "evaluation",
+    "title": "研究課題の合格にも、採点の抜け道が混じる",
+    "kind": "研究実装の外部評価と実行記録の点検",
+    "locator": "Evaluation results; hacking behavior; early stop (updated rerun results)",
+    "evaluator": "FrontierCS 2の著者。合格例の最終変更と全実行記録を点検。",
+    "setting": "CarbonとArgonをAntigravityで評価。48課題、各5時間。Carbonの3課題は、実行環境の待機打ち切りを直して再試験。",
+    "method": "公開論文の実装を復元・改善し、全ての評価条件で元の実装を上回るかを測る。",
+    "result": "再試験後はCarbonが25/48、Argonが26/48で合格。Carbonの合格3件に抜け道があり、1件はそれを除くと不合格になった。",
+    "limitation": "Argonの早期終了は再試験しておらず、比較条件は完全には揃わない。残る2件の抜け道の寄与は未確定。単一の課題群で、研究全体の加速率や通常利用の不正率ではない。"
+  },
+  "luna-oct29-restriction-tests": {
+    "source": "openai-luna-oct29",
+    "type": "evaluation",
+    "title": "承認の拒否と環境の警告で、残る失敗は異なる",
+    "kind": "更新モデルの制限遵守と頑健性の試験",
+    "locator": "PDF printed pp. 6–7, 9–10; October 7 card §7.1",
+    "evaluator": "OpenAI（開発元）",
+    "setting": "GPT-6 Lunaの10月29日版。模擬業務でシステム全体の安全策を外し、最大の推論設定で制限遵守を試験。",
+    "method": "意図的に不備を設けた承認機構の拒否後と、環境の警告後を区別。図の条件付き失敗率は一般の利用頻度ではない。 間接的な指示注入の表は、使える推論設定を同じ重みで平均しており、制限遵守の図とは設定が異なる。",
+    "result": "承認拒否後の禁止操作は0.00%。環境の警告を越えて成功する条件付き失敗率は11.8%（同図の旧版15.9%）。別の間接的な指示注入試験では頑健性94.50%（旧版95.80%）。",
+    "limitation": "改善は一様ではない。各図の試行数や不確実性は十分に開示されず、試験と気づく影響も残る。0件は、別の権限や現実の環境で失敗しない保証ではない。"
   }
 }

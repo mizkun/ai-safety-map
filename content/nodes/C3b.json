@@ -15,13 +15,14 @@
     "agent-incident-response",
     "fsb-ai-practices-final",
     "metr-control-assessment-proposal",
-    "nist-agent-incident-practices"
+    "nist-agent-incident-practices",
+    "openai-layered-monitoring-october"
   ],
   "questions": [],
   "related": [],
   "terms": [],
   "review": {
-    "checkedAt": "2026-10-29",
+    "checkedAt": "2026-10-30",
     "intervalDays": 7,
     "reason": "能力・行動・対策の評価は短期間で変わり得るため。"
   },
@@ -42,7 +43,8 @@
     "agent-recovery-limits",
     "financial-ai-stop-and-recover",
     "end-to-end-control-assessment",
-    "incident-readiness-and-recovery"
+    "incident-readiness-and-recovery",
+    "monitoring-alert-to-intervention"
   ],
   "shortTitle": "警告への対処が間に合わない"
 }

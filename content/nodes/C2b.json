@@ -13,13 +13,15 @@
     "openai-public-statistics",
     "openai-disallowed-requests",
     "agent-step-up-study",
-    "browser-agent-authorization-study"
+    "browser-agent-authorization-study",
+    "openai-luna-oct29",
+    "openai-gpt6-october"
   ],
   "questions": [],
   "related": [],
   "terms": [],
   "review": {
-    "checkedAt": "2026-10-25",
+    "checkedAt": "2026-10-30",
     "intervalDays": 7,
     "reason": "能力・行動・対策の評価は短期間で変わり得るため。"
   },
@@ -38,7 +40,8 @@
     "public-statistics-incident",
     "disallowed-requests-incident",
     "approval-effect-binding",
-    "task-scoped-authorization"
+    "task-scoped-authorization",
+    "luna-oct29-restriction-tests"
   ],
   "shortTitle": "現実への接点・権限"
 }

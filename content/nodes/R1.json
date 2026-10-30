@@ -24,7 +24,8 @@
     "distributed-biology-study",
     "openai-science-release-oct26",
     "bighat-antibody-leads",
-    "enveda-cmc-review"
+    "enveda-cmc-review",
+    "frontiercs-carbon-evaluation"
   ],
   "questions": [],
   "related": [],
@@ -35,7 +36,7 @@
     "仕事の量、質、人間の介入を分けて測れているか。"
   ],
   "review": {
-    "checkedAt": "2026-10-29",
+    "checkedAt": "2026-10-30",
     "intervalDays": 7,
     "reason": "能力・行動・対策の評価は短期間で変わり得るため。"
   },
@@ -60,7 +61,8 @@
     "distributed-biology-interpretation",
     "science-release-verification",
     "antibody-human-reasoning-loop",
-    "manufacturing-record-human-review"
+    "manufacturing-record-human-review",
+    "carbon-research-evaluation-limits"
   ],
   "shortTitle": "AIが研究の一部を進める"
 }

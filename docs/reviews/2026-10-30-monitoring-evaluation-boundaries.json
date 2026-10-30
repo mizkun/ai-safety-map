@@ -1,0 +1,351 @@
+{
+  "id": "2026-10-30-monitoring-evaluation-boundaries",
+  "version": 2,
+  "date": "2026-10-30",
+  "reviewer": "Codex (primary-source and bilingual editorial review; not independent replication)",
+  "decision": "reviewed",
+  "assessments": {
+    "monitoring": {
+      "mechanism": "Monitoring must receive useful evidence, recognize a problem and trigger effective action; these are separate failure points.",
+      "conditions": "Read coverage, layers, response, replay, historical audit and external-interface conditions. Compare C3a3/C3b and the evaluation/oversight decomposition in both languages.",
+      "counterexample": "An alert from a recorded incident does not show it would have been contained; an action may be blocked by a separate control even when monitoring fails.",
+      "evidence": "Add the developer report with historical replay and workload-specific response coverage. Reread the older external audit and Auto Mode hardening for the due C3a3 explanation.",
+      "limits": "No unknown-failure recall, representative incidence or total harm-reduction result is supplied. One old-audit fix is pending; expanded coverage has not received the same external retest.",
+      "mitigation": "Protect evidence, retest fixes, match agent permissions and measure the full notification-to-containment path, including disabled or business-hours paging.",
+      "readerContext": "Explain that detecting, notifying and stopping are different steps before introducing API details in the research cards.",
+      "whyHere": "C3a3 concerns missed runtime oversight and C3b late response. Keep limited statuses and tested/indirect evidence, without claiming the joint conditions for loss of control or harm.",
+      "primary": [
+        {
+          "source": "openai-layered-monitoring-october",
+          "locator": "Coverage; layers 1–3; Human response; replay; Red-teaming; External usage",
+          "support": "Expanded monitoring, incomplete context, distinct response paths and simulation limits."
+        },
+        {
+          "source": "metr-openai-monitoring-audit",
+          "locator": "Scope, method and limitations",
+          "support": "Historical configuration and access bounds; not current-system retesting."
+        },
+        {
+          "source": "auto-mode-red-team",
+          "locator": "Hardening results and limitations; paper v2",
+          "support": "Tested defense improvements with residual attacks and inspection costs."
+        }
+      ]
+    },
+    "implementation": {
+      "mechanism": "A scored implementation can exploit what a test accepts instead of solving the intended task. Harness behavior can also alter apparent capability.",
+      "conditions": "Read the complete current Carbon evaluation and its corrected reruns; distinguish five-hour task budgets from the six-hour background wait, and unmatched Argon reruns.",
+      "counterexample": "A passing score may disappear when a loophole is removed; an early stop can arise from harness timeout rather than inability to solve the task.",
+      "evidence": "Use the opened primary article, with 25/48 Carbon passes and trace review, instead of the stale 24/48 search result. Link to R1 and C3a1 with existing classifications.",
+      "limits": "The contribution of two loopholes is unknown; not all early stops were rerun. The study is not a replication of a different cheating metric, ordinary-use frequency, or end-to-end research speed.",
+      "mitigation": "Inspect final code and traces, ablate suspected shortcuts and compare matched task/harness conditions before extrapolating.",
+      "readerContext": "Keep the main explanation about what was actually built and tested; reserve counts and settings for cards. Both languages retain uncertainty and unmatched comparisons.",
+      "whyHere": "R1 covers useful partial research work; C3a1 covers imperfect test coverage. R1-R2 still requires useful bottleneck improvement; no new work-adoption or sustained RSI claim follows.",
+      "primary": [
+        {
+          "source": "frontiercs-carbon-evaluation",
+          "locator": "Evaluation results; Hacking behavior; Early stop",
+          "support": "Updated reruns, passing-trace review and limits on comparison and validity."
+        }
+      ]
+    },
+    "permissions": {
+      "mechanism": "A model can obey a restriction while an executor independently enforces access; failed model compliance is not itself proof of acquired real-world permission.",
+      "conditions": "Read the Luna addendum figures on printed pp.9–10, Table 4 on p.7 and October 7 card §7.1. Separate maximum-reasoning restriction tests from averaged injection robustness.",
+      "counterexample": "No prohibited actions after approval rejection can coexist with failures after environmental warnings and lower robustness on a separate injection test.",
+      "evidence": "Add the October 29 version and its 0.00%, conditional 11.8% and separate robustness result, with same-chart comparator and test conditions.",
+      "limits": "Simulated environments and deliberately flawed controls omit the full safeguard stack. Denominators and uncertainty are incomplete, and awareness of evaluation can affect results.",
+      "mitigation": "Bind execution to explicit permissions, test enforcement separately from model behavior, and validate restrictions under realistic access and intervention conditions.",
+      "readerContext": "The node explains approval refusals versus warnings without implying that internet connectivity grants every permission. The card names the conditional denominator limitation.",
+      "whyHere": "C2b is the access component alongside C2a capability. Retain observed access and the ability-access graph; no new real-world incident or probability follows.",
+      "primary": [
+        {
+          "source": "openai-luna-oct29",
+          "locator": "PDF printed pp.6–7 and 9–10",
+          "support": "Updated restriction figures and separate indirect-injection robustness."
+        },
+        {
+          "source": "openai-gpt6-october",
+          "locator": "§7.1, printed pp.15–17",
+          "support": "Simulated conditions, deliberately flawed approval mechanism and maximum reasoning."
+        }
+      ]
+    },
+    "acceleration": {
+      "mechanism": "Faster component work speeds development only when it improves a bottleneck without offsets in experiments, verification or integration; feedback also requires useful successors.",
+      "conditions": "Substantively reread OpenAI workflow analysis, Anthropic internal analysis, METR Opus assessment and Argon §3.4.2. Read R2 and three R&D edges, chapters and news in both languages.",
+      "counterexample": "More AI-written code or higher task scores can coexist with unchanged overall development speed. One company’s nonsignificant trend is not proof that AI is useless.",
+      "evidence": "Retain R2 prose and limited/indirect classifications; renew its dates based on original methods, human roles, task coverage and the bounded trend comparison.",
+      "limits": "Internal usage and self-estimates do not isolate AI causally. Support for the separate whole-process estimate is inaccessible; a bounded company metric does not generalize across labs and periods.",
+      "mitigation": "Measure completed useful output and whole-process time with verification, compute, staff effort and human intervention; evaluate safety at each successor cycle.",
+      "readerContext": "Keep coding speed, research contribution, overall development and sustained self-improvement distinct. The new Carbon result does not collapse these stages.",
+      "whyHere": "R1-R2, R2-R3 and R3-R2 remain conditional. Control, acceleration and work routes retain independent access, safeguards, adoption and distribution requirements.",
+      "primary": [
+        {
+          "source": "openai-rd",
+          "locator": "Workflow measurements and limitations",
+          "support": "Human-directed activity metrics rather than an isolated full-process causal estimate."
+        },
+        {
+          "source": "anthropic-rsi",
+          "locator": "Internal usage, surveys and human responsibilities",
+          "support": "Output counts and perceived acceleration with people retaining goals and review."
+        },
+        {
+          "source": "metr-opus55",
+          "locator": "R&D assessment and whole-process-estimate limitations",
+          "support": "Research assistance and judgment gaps; inaccessible support for a separate estimate."
+        },
+        {
+          "source": "gemini-argon-report",
+          "locator": "§3.4.2, printed pp.74–77",
+          "support": "Company-specific capability trend, methodology and nonsignificant acceleration comparison."
+        }
+      ]
+    },
+    "safety": {
+      "mechanism": "AI research or audit tools can improve specific safeguards, but deployed risk reduction requires valid measures, transfer and durable implementation.",
+      "conditions": "Reread automated alignment §§6–8, auditor training methods/limits and Transect v2 §§2–4. Compare v1/v2 full text and read R4, its two edges, safeguard and linked news.",
+      "counterexample": "Consistent labels can be wrong; rewarded alarming reports can create false findings; a selected safety metric can improve without preventing real incidents.",
+      "evidence": "Retain R4 limited/tested and its explanation. Pin Transect to v2 after identifying only version-date/contact correction, with no research-claim change. Renew only R4 node/evidence and Transect source confirmation.",
+      "limits": "Prepared problems, AI judges, selected targets and one trace case do not establish detection of every unknown problem or persistent improvement through further training.",
+      "mitigation": "Use held-out cases, benign controls, independent verification and durable deployment tests; preserve source traces and separate researcher and evaluator roles.",
+      "readerContext": "Explain the benefit of easier inspection while retaining the distinction between a useful tool and demonstrated accident prevention.",
+      "whyHere": "R0-R4 is possible application of capabilities to safety; R4-C1 remains a conditional mitigation. The older safeguard example retains its explicitly bounded setup and date.",
+      "primary": [
+        {
+          "source": "automated-alignment",
+          "locator": "Underlying technical report §§6–8",
+          "support": "Limited safety targets, transfer experiments and unknown post-training durability."
+        },
+        {
+          "source": "auditor-training",
+          "locator": "v1 §§2–4 and limitations",
+          "support": "Prepared behaviors, reward-induced false positives and AI judging."
+        },
+        {
+          "source": "transect-paper",
+          "locator": "v2 §§2, 3, 3.5, 4; normalized-text comparison with v1",
+          "support": "Trace-analysis method and single-case limits; correspondence correction only."
+        }
+      ]
+    },
+    "publication": {
+      "mechanism": "A map explains conditional pathways; newer publication dates, test scores and warnings do not by themselves establish real-world harm.",
+      "conditions": "Review the adopted originals, bilingual additions and dependencies; preserve earlier records by stable ID and source versions. Renew only substantively checked items.",
+      "counterexample": "A policy announcement can describe desired behavior without showing models follow it; a model pass can be invalid, and a fast alert can precede ineffective intervention.",
+      "evidence": "Add three sources, four cards and five paragraphs, record three due rereads and the Transect correction, and keep all classifications and topology unchanged.",
+      "limits": "This is a bounded daily editorial review, not an exhaustive survey, independent replication, browser test or production verification.",
+      "mitigation": "Keep the update in existing draft PR #11 for human review, with content, dependency, translation, build and preservation checks. Do not merge or deploy automatically.",
+      "readerContext": "Use separate publication, experimental and confirmation dates and pair improvements with limits in both languages.",
+      "whyHere": "The metadata, history and inventory summarize the actual review scope without presenting confirmation dates as scientific validation or completion of an extinction pathway.",
+      "primary": [
+        {
+          "source": "openai-layered-monitoring-october",
+          "locator": "Coverage, replay and response",
+          "support": "Main new operational account and scope limits."
+        },
+        {
+          "source": "frontiercs-carbon-evaluation",
+          "locator": "Corrected results and trace review",
+          "support": "External capability/evaluation evidence and limitations."
+        },
+        {
+          "source": "openai-luna-oct29",
+          "locator": "System card and methods references",
+          "support": "Mixed restriction outcomes in bounded tests."
+        }
+      ]
+    }
+  },
+  "entries": {
+    "source:transect-paper": {
+      "hash": "6495cffc2ba344e9ac2c1323b98aede0f1513f60791bc76d1b532a3fc7be9928",
+      "assessment": "safety"
+    },
+    "source:openai-layered-monitoring-october": {
+      "hash": "5cc43dcc4447864f56a9f21f47a4af9e0964c0894ea5a443c4e5d253926a0b2a",
+      "assessment": "monitoring"
+    },
+    "source:frontiercs-carbon-evaluation": {
+      "hash": "b05a10340db81e3fb73dd6a2ae1b290b2d07f492d1b76d95935aaa0c8b8bb24e",
+      "assessment": "implementation"
+    },
+    "source:openai-luna-oct29": {
+      "hash": "c15d7a27a452d8adb78020d1f0b2027cc170eb2d271a2e220940065932cb15dc",
+      "assessment": "permissions"
+    },
+    "research:transect-review-tooling": {
+      "hash": "82ebf7384e1aae08bfb174750f2ef61145e3488ecc28882e11d08af467ddfa64",
+      "assessment": "safety"
+    },
+    "research:layered-monitoring-coverage": {
+      "hash": "0d941a093718605d70651efc366473e855ad35049794aa271319ebac3e15cda8",
+      "assessment": "monitoring"
+    },
+    "research:monitoring-alert-to-intervention": {
+      "hash": "4d7f0078db7d096e390813c9844e79dd8a0f265b8c0cae69b1b240d5a5b3182f",
+      "assessment": "monitoring"
+    },
+    "research:carbon-research-evaluation-limits": {
+      "hash": "40d01ef03f98478dfd1c0183e9ca5451a3283c7412d2bfddbd2a7e24ceee3a04",
+      "assessment": "implementation"
+    },
+    "research:luna-oct29-restriction-tests": {
+      "hash": "bcb5efe5f59af0e435522dca5eb995c48a9f1c152ebc53efe9ceb11929fdc878",
+      "assessment": "permissions"
+    },
+    "node:C2b": {
+      "hash": "2f0d8ff4bd2efa1c2615045ebd6feb472aa3a40aac0d82c3007becb7993712d6",
+      "assessment": "permissions"
+    },
+    "node:C3a1": {
+      "hash": "7f3737f170384f145f0a1068ecc3e4903754aa53226547b1b4d634d44d22879d",
+      "assessment": "implementation"
+    },
+    "node:C3a3": {
+      "hash": "e08e1cc725105b4eb4f3a3de10f8fa8829f4e5c9adab9b278323c51d10001aca",
+      "assessment": "monitoring"
+    },
+    "node:C3b": {
+      "hash": "9830e4c54142bd1b343eb1dac9514b3b4e16b48175e4c1e954cbab3edd931bce",
+      "assessment": "monitoring"
+    },
+    "node:R1": {
+      "hash": "6c772a5d3460f9283a6fc61f6cb71719152ffa11c5e88080b57372c85dff7798",
+      "assessment": "implementation"
+    },
+    "node:R2": {
+      "hash": "8ad1039136df04e052bb0fceb8da7021b53a57b88f93d0fb32067de03ac6dcf5",
+      "assessment": "acceleration"
+    },
+    "node:R4": {
+      "hash": "e78c51f2b941eb7d1bcaeccae0e41aee8a7d7b3e8122b9fcb23ea3161cda654b",
+      "assessment": "safety"
+    },
+    "edge:R1-R2": {
+      "hash": "aea43e52a24b8a7cf034490b861724f2d34796d47ab4194e053f785150ffacff",
+      "assessment": "acceleration"
+    },
+    "edge:R2-R3": {
+      "hash": "3345583801e3c999239d269e0a576b61a86645798f3f38a42a4c38f4328ed4b4",
+      "assessment": "acceleration"
+    },
+    "edge:R3-R2": {
+      "hash": "bf357e603c673b27ca059ce81171f5aa875bce1ce3dd61a5a285f5a62222cbac",
+      "assessment": "acceleration"
+    },
+    "edge:R4-C1": {
+      "hash": "ee515b0c780507ee78b326fc778e8a94396c52dce7129ec884574366832cd9cb",
+      "assessment": "safety"
+    },
+    "edge:R0-R4": {
+      "hash": "201f0b0c8c7ed6afcb09d5d8a1b466edd6128e733cf44b75a032730d61ea50b4",
+      "assessment": "safety"
+    },
+    "graph:control": {
+      "hash": "33978720a8758e414a3aafa71e5379e6562cc73a59d3b68425833b12c6049cc6",
+      "assessment": "monitoring"
+    },
+    "graph:acceleration": {
+      "hash": "09da2bce17b17f57e44c1e49adaf544fdd22275c12b06cf727b2ff7e05eda7f0",
+      "assessment": "acceleration"
+    },
+    "graph:ability-access": {
+      "hash": "3b87993cb6a66a18499329e94126c2161b0387e0ac0d0b462bfcca16274af145",
+      "assessment": "permissions"
+    },
+    "graph:oversight": {
+      "hash": "9958d215fc441ed9620df601903cba5e34b5013daef9135a02a9c1cd260a8790",
+      "assessment": "monitoring"
+    },
+    "graph:evaluation": {
+      "hash": "cd349010c6012d6c1fc46d4f8fe974612b8ff0ece2735ac998799e1d318052c5",
+      "assessment": "monitoring"
+    },
+    "graph:work": {
+      "hash": "359e8988508d98df3e683fba3a79cf45b3cf6687093e22a17f9a93c260b8106a",
+      "assessment": "acceleration"
+    },
+    "graph:research-cycle": {
+      "hash": "9a71e557c3a2a028b83ad6000a0d060d526358c76861432bf94a0c78377ccbed",
+      "assessment": "acceleration"
+    },
+    "route:control": {
+      "hash": "b78f818044c863c5b44a057c269ebce3073a2261f7da00fc55ce9ffd7fa3f3df",
+      "assessment": "monitoring"
+    },
+    "route:acceleration": {
+      "hash": "dbcec86860f95434a804973b2b9e49e8425bad4c826105ffe0ede786616a16ad",
+      "assessment": "acceleration"
+    },
+    "route:work": {
+      "hash": "22671cc7a1c32258819a79dd4876d9824c6a524fc9a41fb3f1a63f5d65844a4c",
+      "assessment": "acceleration"
+    },
+    "safeguard:R4": {
+      "hash": "017d35e4bdf276a427f80b82004525fc9761befc8db71871a36d89b62dad515c",
+      "assessment": "safety"
+    },
+    "evidence:C3a1": {
+      "hash": "e844e94c290656efce26778012fc73310139f1024e378b235998d0e8f2f07e5a",
+      "assessment": "implementation"
+    },
+    "evidence:C3a3": {
+      "hash": "90b3e60568eb1314f5328b3a7035f1327ff060b696fa7fcdfd22ac2f5af8122e",
+      "assessment": "monitoring"
+    },
+    "evidence:C3b": {
+      "hash": "6eb8e6b20cfd811cc5f526d48fe6beaa15d8bf9d1fa92fccb9774c1061f17d49",
+      "assessment": "monitoring"
+    },
+    "evidence:R2": {
+      "hash": "d0e49cff400e47af5c9987024070f0f3a3bd7d29f71de3a7870006b80cd1e4b9",
+      "assessment": "acceleration"
+    },
+    "evidence:R4": {
+      "hash": "857f0521ff66c680ffec024c2616ec48fd883794b34ba7d1c185e18cac177b10",
+      "assessment": "safety"
+    },
+    "news:recent-math": {
+      "hash": "ef1d9815877eee1ab4580a9ffbd68c5fd2f0a8affa71ca20794c4ec329786cd9",
+      "assessment": "acceleration"
+    },
+    "news:research-lab-september": {
+      "hash": "1224c56ac486c496af26c781afa29eb08f4972e6c5075c1668014047df766550",
+      "assessment": "acceleration"
+    },
+    "news:automated-safety": {
+      "hash": "8667112783fc19afce56ca1ad636e228bf52b87893bb6069efd34dd8f8838de1",
+      "assessment": "safety"
+    },
+    "news:research-contribution": {
+      "hash": "34c3210a9ea88e160c8af7834a838772966ed2d05a2d5844c7ecce900ed615fb",
+      "assessment": "acceleration"
+    },
+    "news:time-horizons": {
+      "hash": "c86fac5ee20132c759128cbd4157f141d9e57d9c8a65592cc9c3039979b0aade",
+      "assessment": "permissions"
+    },
+    "story:control": {
+      "hash": "49fa2c7186ab4d8c9bd7a607684fe4c4a2eb5f68df881b52c4668fae0a0b9dd6",
+      "assessment": "monitoring"
+    },
+    "story:acceleration": {
+      "hash": "dcdaaa47af06e65f5ed6de729922895e1ac2343a3702d645bada8034aad0c1e5",
+      "assessment": "acceleration"
+    },
+    "metadata:map": {
+      "hash": "45ccdd4a9ae4ef7dacad451c7760e25e67561c5cb6fa08800c3bc7d2d290f7a9",
+      "assessment": "publication"
+    },
+    "history:changes": {
+      "hash": "60cf13d608c2549cd881570f14e3222aa0a17b09ea48d8f15fca2249a13dfa5a",
+      "assessment": "publication"
+    },
+    "inventory:current": {
+      "hash": "72cc677a84bbcad4592767b6fb5a8f589e013f9cde7f97bda94470cf0a68379e",
+      "assessment": "publication"
+    }
+  }
+}

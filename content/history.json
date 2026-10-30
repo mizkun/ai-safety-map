@@ -1,5 +1,30 @@
 [
   {
+    "id": "monitoring-evaluation-boundaries-20261030",
+    "date": "2026-10-30",
+    "nodes": [
+      "C3a3",
+      "C3b",
+      "C3a1",
+      "R1",
+      "C2b",
+      "R2",
+      "R4"
+    ],
+    "sources": [
+      "openai-layered-monitoring-october",
+      "frontiercs-carbon-evaluation",
+      "openai-luna-oct29",
+      "transect-paper"
+    ],
+    "kind": "監視と評価の点検",
+    "title": "監視から停止までの条件と、評価結果の限界を補足",
+    "summary": "OpenAIの監視報告、Carbonの外部評価、Luna更新版を追加し、期限に達した3項目を読み直しました。",
+    "before": "最新の監視範囲・対応条件、外部の研究課題で見つかった抜け道、Luna更新版の試験は未収録でした。",
+    "after": "再生試験と実際の防止を分け、Carbonの再試験後の集計と比較の限界、Lunaの残る失敗を記載。R2・R4の説明は維持し、Transectの参照を照合済みのv2へ更新しました。",
+    "reason": "改善と失敗を併せて読み、試験の合格、警告の検出、現実の被害の防止を混同しないため。"
+  },
+  {
     "id": "capabilities-research-response-20261029",
     "date": "2026-10-29",
     "nodes": [

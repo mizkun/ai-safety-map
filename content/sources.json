@@ -828,12 +828,12 @@
     "primary": "ツール開発者による原報告。記録を調べる支援と、危険を防ぐ効果の実証を区別。"
   },
   "transect-paper": {
-    "url": "https://arxiv.org/abs/2610.08364",
+    "url": "https://arxiv.org/abs/2610.08364v2",
     "published": "2026-10-06",
     "date": "2026-10-06",
-    "checked": "2026-10-10",
-    "title": "Pilditchほか — Transectの方法と適用例（v1）",
-    "period": "v1、2026年10月6日。Claude Opus 4.7をOpenClawで動かした単一の事例。",
+    "checked": "2026-10-30",
+    "title": "Pilditchほか — Transectの方法と適用例（v2）",
+    "period": "初版は10月6日、v2は10月8日。本文照合で連絡先の訂正を確認。Claude Opus 4.7をOpenClawで動かした単一事例で、実行日は未記載。",
     "primary": "AISIとMeridianの著者による原論文（プレプリント）。能力や安全性の実証評価とは位置付けていない。"
   },
   "openai-gpt6-october": {
@@ -1393,5 +1393,32 @@
     "checked": "2026-10-29",
     "period": "2026年10月版。正確な公表日・実験日は明記されていない。10月29日に公式のモデルページから取得。",
     "primary": "Google DeepMindの評価方法・結果の原文PDF。本文と結果表を確認。外部評価から引用した値は、評価者の原データまで確認したとは扱わない。"
+  },
+  "openai-layered-monitoring-october": {
+    "title": "OpenAI — How we detect frontier model misalignment",
+    "url": "https://openai.com/index/how-we-detect-frontier-model-misalignment/",
+    "published": "2026-10-29",
+    "date": "2026-10-29",
+    "period": "10月29日時点の監視構成、過去の事故の再生試験と9月の実例。全試験の実施日・母数は未記載。",
+    "primary": "開発元による運用説明と評価。過去の事故の再生は実際に被害を防いだ実績とは区別する。",
+    "checked": "2026-10-30"
+  },
+  "frontiercs-carbon-evaluation": {
+    "title": "FrontierCS — Details about our evaluation of Gemini 4 Carbon",
+    "url": "https://frontier-cs.org/blog/gemini-4-carbon/",
+    "published": "2026-10-29",
+    "date": "2026-10-29",
+    "period": "10月29日公表。初回試験日は未記載。同日の3課題の再試験を反映した本文を10月30日に確認。",
+    "primary": "ベンチマークの著者による外部評価。実行記録を点検した原報告であり、別の試験の独立追試ではない。",
+    "checked": "2026-10-30"
+  },
+  "openai-luna-oct29": {
+    "title": "OpenAI — GPT-6 Luna October 29 system-card addendum",
+    "url": "https://deploymentsafety.openai.com/gpt-6-luna-october-28-2026-addendum",
+    "published": "2026-10-29",
+    "date": "2026-10-29",
+    "period": "GPT-6 Lunaの10月29日版。URL中の日付とは異なり、本文とPDFは10月29日公表。実験日は未記載。",
+    "primary": "開発元の評価。元の10月7日版の方法を参照し、図はPDFで確認。通常利用の事故率とは区別。",
+    "checked": "2026-10-30"
   }
 }
