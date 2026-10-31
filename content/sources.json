@@ -1420,5 +1420,14 @@
     "period": "GPT-6 Lunaの10月29日版。URL中の日付とは異なり、本文とPDFは10月29日公表。実験日は未記載。",
     "primary": "開発元の評価。元の10月7日版の方法を参照し、図はPDFで確認。通常利用の事故率とは区別。",
     "checked": "2026-10-30"
+  },
+  "openai-rosalind6": {
+    "title": "OpenAI — GPT-Rosalind-6 system-card addendum",
+    "url": "https://deploymentsafety.openai.com/gpt-rosalind-6",
+    "published": "2026-10-30",
+    "date": "2026-10-30",
+    "period": "10月30日公表。GPT-Rosalind-6の評価で、実験日は未記載。監視・対応の再試験は公表時点で進行中。",
+    "primary": "開発元による評価と利用条件の説明。独立した追試や、被害を防いだ効果の測定ではない。",
+    "checked": "2026-10-31"
   }
 }
