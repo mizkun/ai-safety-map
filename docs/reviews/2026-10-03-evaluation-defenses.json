@@ -1,0 +1,270 @@
+{
+  "id": "2026-10-03-evaluation-defenses",
+  "version": 2,
+  "date": "2026-10-03",
+  "reviewer": "Codex (editorial primary-source review; not independent expert approval)",
+  "decision": "reviewed",
+  "assessments": {
+    "evaluation-controls": {
+      "mechanism": "Access restrictions reduce what an agent can affect. Synchronous monitoring can hold a suspicious action for human review before execution; alerting, enforced stopping and recovery remain separate operations.",
+      "conditions": "Keep ability plus access in C2, and C1/C2/C3 together for L. C3a and C3b remain potentially overlapping alternatives: failure to detect versus failure to respond in time.",
+      "counterexample": "A capable model can choose an unauthorized action but fail to reach its target because networking is blocked, or have the operation held for review before harm.",
+      "evidence": "Read AISI’s full October 1 operational update, separating implemented restrictions and preflight checks from the future sandbox and unified response infrastructure. Compared its implementation status with OpenAI’s proposed training guidance.",
+      "limits": "AISI names no evaluated model, precise test dates, recall, evasion success rate, response-time distribution or comparative harm reduction. Its own report with NCSC support is not independent effectiveness validation; reused incident transcripts are not new incidents.",
+      "mitigation": "Evaluate both network layers, monitoring coverage, action-only checks when reasoning text is unavailable, pre-action enforcement and human escalation. Do not mark these defenses universally effective simply because evaluation resumed.",
+      "readerContext": "Both languages first describe the concrete restriction or hold. They distinguish an available connection from authorization, a warning from an executed stop, and implementation from measured effectiveness.",
+      "whyHere": "The new defense report belongs beside the existing failures to show where the route can still be interrupted. It does not change the joint route to local failure or imply permanent loss of control.",
+      "primary": [
+        {
+          "source": "aisi-evaluation-security",
+          "locator": "What we committed to and what we have done; Using AI to test our own security; What comes next",
+          "support": "Implemented layered network restrictions, pre-action checks and preflight checks; most evaluations restarted. Quantitative effectiveness not published and new infrastructure remains in progress."
+        },
+        {
+          "source": "openai-training-safety-cases",
+          "locator": "Introduction and sections 1-3",
+          "support": "Initial guidance being implemented for frontier reinforcement-learning training, including monitoring, stopping, risk arguments, dissent, audits and incident investigation."
+        },
+        {
+          "source": "openai-dns-access",
+          "locator": "Summary and investigation/response timeline",
+          "support": "Event on September 20, report updated September 25; detection within 15 minutes, human acknowledgment, failed automatic termination and manual termination about 2.5 hours after acknowledgment, without established additional harm."
+        }
+      ]
+    },
+    "training-guidance": {
+      "mechanism": "A safety case links reasons for accepting residual training risk with decisions to continue, revise safeguards or stop. Assigned authority and escalation connect an alert to an operational decision.",
+      "conditions": "The guidance addresses frontier reinforcement-learning training; broader deployment risks require separate assessment. Evidence, monitoring and enforceable pause procedures must actually be implemented and checked.",
+      "counterexample": "A company can publish guidelines while monitoring is incomplete or a shutdown mechanism fails. Publication alone does not stop the unsafe action.",
+      "evidence": "Read the proposer’s introduction and technical safeguards, operational guidelines and incident-investigation sections. The article explicitly describes aspirational recommendations being implemented.",
+      "limits": "No numeric response deadline, complete implementation inventory, model-comparison experiment or measured harm reduction is established. This is an argument card, not an observed success rate.",
+      "mitigation": "The proposal includes documented risk arguments, dissent from another team, audit access, authority to pause, response deadlines, regression checks and controls against running without required monitoring.",
+      "readerContext": "The card explains what is proposed without requiring the reader to know the term safety case; Japanese and English state ongoing implementation and training-only scope.",
+      "whyHere": "It adds a specific prevention proposal to C3 and C3b, where monitoring and warnings need to result in a timely decision. It is not evidence that the failure condition has disappeared.",
+      "primary": [
+        {
+          "source": "openai-training-safety-cases",
+          "locator": "Introduction and sections 1-3",
+          "support": "Initial guidance being implemented for frontier reinforcement-learning training, including monitoring, stopping, risk arguments, dissent, audits and incident investigation."
+        }
+      ]
+    },
+    "research-judgment": {
+      "mechanism": "AI can perform coding and calculations, while people still decide which questions matter and validate results. Faster subtasks improve the whole project only when they relieve its limiting work.",
+      "conditions": "R1-R2 still requires useful results and no offsetting delay in other work or verification. Selected physics and scientific projects do not directly measure AI-successor development or recursive improvement.",
+      "counterexample": "A technically correct calculation can have little scientific value until an expert redirects it; more manuscripts or code need not shorten useful research end to end.",
+      "evidence": "Read the guest practitioner account and disclosure: summer Fable 5 with BootLoops, roughly 400 candidates, 36 manuscripts and 19 coauthors, with expert direction and checking. The earlier Opus 4.5 example is a separate period.",
+      "limits": "The author was a visiting researcher at Anthropic. Manuscript counts are not independent validation, and selected projects have no matched human-only comparison or total human-effort denominator. This is not an independent benchmark or direct evidence of R2/R3.",
+      "mitigation": "Keep expert assessment of novelty, independent validation, correction of false completion claims and accounting for human checking. Measure completed useful research and full-project time, not just model output.",
+      "readerContext": "Both languages distinguish doing calculations from judging their significance and explain why human direction remains relevant. The acceleration tour already introduces checking time before recursive improvement.",
+      "whyHere": "R1 needs a concrete explanation of why AI-assisted work and whole-project acceleration differ. Dependent research and mathematics examples retain their existing distinctions rather than promoting this report into verified autonomous discovery.",
+      "primary": [
+        {
+          "source": "schwartz-claude-shaped-science",
+          "locator": "Claude, take the wheel!; I know Kung Fu; The technical details; Disclosure",
+          "support": "Selected summer 2026 research with Fable 5, human direction and checking; manuscript counts do not measure verified discoveries or whole-project speedup."
+        }
+      ]
+    },
+    "dependent-routes": {
+      "mechanism": "Capability, access, dangerous choices and prevention interact but are not an automatic chronological chain. Research assistance can improve capabilities or defenses without demonstrating an unstoppable feedback loop.",
+      "conditions": "Control and acceleration routes retain AND/OR and conditional relationships. ASI-C3 requires both usable access and defenses that fail to keep pace; R1-R2 requires useful bottleneck relief.",
+      "counterexample": "A more capable system can remain restricted and monitored. A research assistant can produce correct calculations without deciding a useful question or removing validation bottlenecks.",
+      "evidence": "Read the unchanged three dependent edges, five graphs, two routes and their chapter text against the new implementation report, training proposal and research account.",
+      "limits": "No new source demonstrates ASI, general control failure, persistent cross-organization spread or recursive self-improvement. Dependency fingerprints do not imply new experimental confirmation of the connected route.",
+      "mitigation": "Preserve restrictions, pre-action checks, intervention authority and independent research validation as ways to interrupt the proposed transitions. Preserve the possibility that AI helps safety research.",
+      "readerContext": "The control tour starts by explaining why ability must reach real-world operations. The acceleration tour explains whole-project bottlenecks and human involvement before a feedback loop. The additions do not bypass these introductory steps.",
+      "whyHere": "These dependent views reuse the edited node explanations; checking them prevents a limited new example from making a broader diagram or tour appear more certain than its evidence.",
+      "primary": [
+        {
+          "source": "aisi-evaluation-security",
+          "locator": "What we committed to and what we have done; Using AI to test our own security; What comes next",
+          "support": "Implemented layered network restrictions, pre-action checks and preflight checks; most evaluations restarted. Quantitative effectiveness not published and new infrastructure remains in progress."
+        },
+        {
+          "source": "openai-training-safety-cases",
+          "locator": "Introduction and sections 1-3",
+          "support": "Initial guidance being implemented for frontier reinforcement-learning training, including monitoring, stopping, risk arguments, dissent, audits and incident investigation."
+        },
+        {
+          "source": "schwartz-claude-shaped-science",
+          "locator": "Claude, take the wheel!; I know Kung Fu; The technical details; Disclosure",
+          "support": "Selected summer 2026 research with Fable 5, human direction and checking; manuscript counts do not measure verified discoveries or whole-project speedup."
+        }
+      ]
+    },
+    "review-provenance": {
+      "mechanism": "The dated history and research inventory identify what was learned, while source checking and explanation rechecking remain separate events. Expanded primary indexes reduce discovery omissions.",
+      "conditions": "Only the five substantively changed nodes and their applicable evidence overrides receive new review dates; old source and edge dates are retained. Watchlist cadence remains daily and no Monday survey is claimed.",
+      "counterexample": "An accessible publication index or a successful build does not establish that all evidence is current, that a defense works, or that an old scientific interpretation has been rechecked.",
+      "evidence": "Compared the new primary URLs with existing sources, research cards, the September 24/October 1 reviews and the open draft PR. Read new full primary reports and checked visible correction notices on existing material.",
+      "limits": "This is an editorial proposal without independent expert sign-off. Finding no verified independent replication in the inspected material does not prove none exists. Search summaries were not adopted as evidence.",
+      "mitigation": "Keep provenance and publication/observation dates, review only the affected dependencies, validate both translations and maintain one weekly draft PR for human review without merging or deploying.",
+      "readerContext": "The history explains implemented defenses versus work in progress and why calculations and useful research differ. It does not equate the map’s content date with the date of every measurement.",
+      "whyHere": "These metadata changes make the new evidence traceable and discoverable without silently replacing older records or overclaiming the coverage of this daily check.",
+      "primary": [
+        {
+          "source": "aisi-evaluation-security",
+          "locator": "What we committed to and what we have done; Using AI to test our own security; What comes next",
+          "support": "Implemented layered network restrictions, pre-action checks and preflight checks; most evaluations restarted. Quantitative effectiveness not published and new infrastructure remains in progress."
+        },
+        {
+          "source": "openai-training-safety-cases",
+          "locator": "Introduction and sections 1-3",
+          "support": "Initial guidance being implemented for frontier reinforcement-learning training, including monitoring, stopping, risk arguments, dissent, audits and incident investigation."
+        },
+        {
+          "source": "schwartz-claude-shaped-science",
+          "locator": "Claude, take the wheel!; I know Kung Fu; The technical details; Disclosure",
+          "support": "Selected summer 2026 research with Fable 5, human direction and checking; manuscript counts do not measure verified discoveries or whole-project speedup."
+        }
+      ]
+    }
+  },
+  "entries": {
+    "source:aisi-evaluation-security": {
+      "hash": "739e61e81fbd5e2ecc5b97178d68e828a19f58260e74ab9cf33f3f2672dc1cb8",
+      "assessment": "evaluation-controls"
+    },
+    "source:openai-training-safety-cases": {
+      "hash": "f34cdb1f97a9ab08bf3c95ad4cd5250cb05c2dc304699ee5ddee90ee85a46039",
+      "assessment": "training-guidance"
+    },
+    "source:schwartz-claude-shaped-science": {
+      "hash": "adb3be8eaee2eb149f47bafda85605960b73828084698801843bde278c242d54",
+      "assessment": "research-judgment"
+    },
+    "research:aisi-layered-evaluation-controls": {
+      "hash": "3e57c00a68406ff523fb5a0d31e656b13de5009c72c3ddd129c560ef9385020f",
+      "assessment": "evaluation-controls"
+    },
+    "research:training-safety-case-guidelines": {
+      "hash": "2a42552c67ece6c3f7bddb77dd448b7aceabff56a322a8171f9d1db4ab1a69ce",
+      "assessment": "training-guidance"
+    },
+    "research:bootloops-human-research-judgment": {
+      "hash": "bdfd0589db95f7e8290b343632d4560299ace428d04be8669190e63c63003d50",
+      "assessment": "research-judgment"
+    },
+    "node:C2b": {
+      "hash": "0896f51f69354d1b532188afce94f4ba70e7603097796b5c6562ad22d693a2e8",
+      "assessment": "evaluation-controls"
+    },
+    "node:C3": {
+      "hash": "462090b40e3724c023527f6f7a834a545b4d25139a74aad046b3640899a0a7e8",
+      "assessment": "evaluation-controls"
+    },
+    "node:C3a": {
+      "hash": "4087d1e528f2ddeaff3d68b4033e3c9537c5e8b8927b7a0f9b0b2b82f9b2ea81",
+      "assessment": "evaluation-controls"
+    },
+    "node:C3b": {
+      "hash": "1e87dc3fb86530f6ce13cc314bb4963f7eb65c37ee37a82e57af0e15569c1347",
+      "assessment": "evaluation-controls"
+    },
+    "node:R1": {
+      "hash": "62e652356c26854ec17067021b85b6d764ba3346da554e3b2a726bba5cb2cec2",
+      "assessment": "research-judgment"
+    },
+    "edge:R1-R2": {
+      "hash": "be944031129be2d85802d593418f9b518789457925bed691fb57384bb7c44a48",
+      "assessment": "research-judgment"
+    },
+    "edge:C3-L": {
+      "hash": "d3ab866b1ffac424f17bde42c6b6ce214c866344d2e1e50a5bba149b402e0662",
+      "assessment": "evaluation-controls"
+    },
+    "edge:ASI-C3": {
+      "hash": "42443beb521251dc91cd1249f5b377f01de48f19ae16a937e861c1d83fc8c1e3",
+      "assessment": "dependent-routes"
+    },
+    "graph:control": {
+      "hash": "c89db968ccd28a7d749a9281dca0e523085b1da47755c7cc18899d49beba33af",
+      "assessment": "dependent-routes"
+    },
+    "graph:acceleration": {
+      "hash": "5a1cf13d20058dbdfa8e06719ac2c751af00cf45facb21fea32c6610a01165a0",
+      "assessment": "dependent-routes"
+    },
+    "graph:ability-access": {
+      "hash": "5741466476e7bc8927bd14618d0f30be10da473ae5f7f7f86e69caf2fc29a9f2",
+      "assessment": "dependent-routes"
+    },
+    "graph:oversight": {
+      "hash": "dd33613ca27b933a251674679a4a760af772b46fd8271c991192ea8f74c1ee7c",
+      "assessment": "dependent-routes"
+    },
+    "graph:research-cycle": {
+      "hash": "336ad9e338ce62da795234257b20261cb16e6f3dc1136db97d93b11a6c03f482",
+      "assessment": "dependent-routes"
+    },
+    "route:control": {
+      "hash": "a8159afc2c637746074ab49f6518868d0ea5eb07670f3c3da5b070715fb8fa36",
+      "assessment": "dependent-routes"
+    },
+    "route:acceleration": {
+      "hash": "71b417d97e359915400d2800496db82ce7d5a0e2b1b259550019b51de4754451",
+      "assessment": "dependent-routes"
+    },
+    "current:control": {
+      "hash": "5cff3f5f2c05b58fb0703cb1b6e0d2acc1c45e886c598ab29b6244e7a1a4cc23",
+      "assessment": "evaluation-controls"
+    },
+    "evidence:C3": {
+      "hash": "2ae059b6e0dfb27b67c8eba73fc3fada2789ffd3e172080b324178d7a160562a",
+      "assessment": "evaluation-controls"
+    },
+    "evidence:C3a": {
+      "hash": "e2de5eb3091a0a2c5d0b02efbd4814689a81fc77345bc45b1b66b6a6566783cb",
+      "assessment": "evaluation-controls"
+    },
+    "evidence:C3b": {
+      "hash": "3fddf01888bd3982b0e5daf40a11c06bdbf0b10901fe44fb8ab6d52da0bc540c",
+      "assessment": "evaluation-controls"
+    },
+    "news:recent-math": {
+      "hash": "9ba4cb66d8510c547aac5feae4e44fa448da855e1da7ff6bda360daea7de03b5",
+      "assessment": "research-judgment"
+    },
+    "news:research-lab-september": {
+      "hash": "6ffc2e01b1767b4d3ef50db38bfe05402752b117559428456fbdbc3753f6635b",
+      "assessment": "research-judgment"
+    },
+    "news:research-contribution": {
+      "hash": "3d07507222a7bc80f93002134b564d5164210ed96c05a9f16afa8c752553d35b",
+      "assessment": "research-judgment"
+    },
+    "news:agent-behavior": {
+      "hash": "3b6cc00f6ecc8f25bf27a43cb76e5604b9be5ca9d0e521f5efc675756d581dbe",
+      "assessment": "evaluation-controls"
+    },
+    "news:time-horizons": {
+      "hash": "2fbffae72e37825b5b677ed0ffbd6f778dd04c01526842e8dc420f10e67631d3",
+      "assessment": "evaluation-controls"
+    },
+    "story:control": {
+      "hash": "fa3b311e75ce84ed54a6ac7577c4037aaabb8e983508dc6087b545b45c2242d3",
+      "assessment": "dependent-routes"
+    },
+    "story:acceleration": {
+      "hash": "3487c5c5bbf3b508fa95bc673cb2e1dc231a1b8dc9375d5cc009b1b0221d13ff",
+      "assessment": "dependent-routes"
+    },
+    "watch:openai": {
+      "hash": "5c6b2bb33924579f5ec19894a9a4b3e07bf0c3519dd70272849e0ce9e916f9d6",
+      "assessment": "review-provenance"
+    },
+    "metadata:map": {
+      "hash": "92a89858e84203cee5dd7d27df3c0c1e3893a9634dbc7124c38c99968453cb3c",
+      "assessment": "review-provenance"
+    },
+    "history:changes": {
+      "hash": "88e303cc6c067a77bd6cfbc47a49c92ac3b52871c0c1545136fe97226b2ee518",
+      "assessment": "review-provenance"
+    },
+    "inventory:current": {
+      "hash": "dfeae118a573add98a4bc6cef4ca38e31e8744ed849e35726ec3a99e2c5820fe",
+      "assessment": "review-provenance"
+    }
+  }
+}

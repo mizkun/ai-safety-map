@@ -1,0 +1,361 @@
+{
+  "id": "2026-10-19-research-cycles-and-controls",
+  "version": 2,
+  "date": "2026-10-19",
+  "reviewer": "Codex (primary-source and bilingual editorial review; not independent expert approval)",
+  "decision": "reviewed",
+  "assessments": {
+    "iterative": {
+      "mechanism": "An updated model returns to execution, workflow improvement and output selection in the next round. This tests one bounded feedback loop, not indefinite acceleration of all research.",
+      "conditions": "Read MASS v1 Sections 3–5, Appendix B, C.3–C.5 and Table 7, plus the author page. Qwen3.6-27B receives two rounds of training under human-provided tasks, procedure and compute; external judgments do not feed back into learning.",
+      "counterexample": "Score per output token improves on four research benchmarks but decreases on two software benchmarks. Phantom Gains shows why a frozen-model comparison is needed in a different three-round experiment; it is not a replication of MASS.",
+      "evidence": "Eight tasks supply fine-tuning data. Three are excluded from training, validation and checkpoint selection but still used during workflow-search evaluation. The result warrants limited/tested evidence at R3 and bounded updates to R2-R3 and R3-R2.",
+      "limits": "One family and two iterations, small or uneven absolute-score gains, model judges and incomplete pipeline-cost accounting. The paper does not demonstrate continued improvement, independence from human setup, or whole-industry acceleration. No code or independent replication was verified.",
+      "mitigation": "Compare fixed baselines, separately measure validation and compute costs, preserve held-out tasks and test whether research gains survive more rounds. Maintain external oversight while researcher capability increases.",
+      "readerContext": "Read R3, its evidence summary and both feedback connections in Japanese and English. A limited iterative experiment is distinct from the stronger sustained process; the current label is explicit about that boundary.",
+      "whyHere": "R3 was due. Add mass-self-supervision and mass-two-rounds, change hypothesis to limited with an explicit tested evidence summary, and update the two conditional/feedback explanations without changing topology.",
+      "primary": [
+        {
+          "source": "mass-self-supervision",
+          "locator": "Sections 3–5; Appendix B, C.3–C.5; Table 7; author account",
+          "support": "Two-round setup, held-out/search distinction, uneven results and accounting limits."
+        },
+        {
+          "source": "phantom-gains",
+          "locator": "Version 1 methods and frozen-model control",
+          "support": "Different experiment in which changing measurement can imitate improvement."
+        },
+        {
+          "source": "openai-gpt6-october",
+          "locator": "October 7 model scope and self-improvement assessment",
+          "support": "A developer-specific threshold for Sol/Luna, not a universal capability ceiling."
+        }
+      ]
+    },
+    "posttraining": {
+      "mechanism": "Agents can carry out additional training of another model without that model replacing the research agent. This supports a component of AI research, not the recursive step itself.",
+      "conditions": "Read Athanor v1 setup/results, Sections 3–5, Table 1 and Section 8. Four Opus 5.5 agents share a 104-hour campaign to improve Qwen3-4B-Base, with eight GPUs each and human-prepared tools and evaluation.",
+      "counterexample": "The small-model scores approach the official Instruct release but remain below official reasoning releases. Public data include stronger-model distillation even though new teacher-model calls are forbidden.",
+      "evidence": "Development mean 15.9 to 67.3 and held-out mean 9.2 to 48.2, compared with 66.5 and 47.9 for Instruct under the same evaluation. These are reported means, not demonstrated significant superiority.",
+      "limits": "One shared campaign is not four replications. Humans supply the objective, starter code and recovery of broken infrastructure. No larger-model or replacement-researcher experiment is shown; experiment dates and independent replication remain unverified.",
+      "mitigation": "Keep hidden evaluation and account for human/compute inputs. Validate resulting models independently before attributing whole-process or self-improvement gains.",
+      "readerContext": "Read the new source/card and its R1 paragraph in both languages. Name the separate researcher and target models so the reader can distinguish post-training from recursive improvement.",
+      "whyHere": "Add athanor-post-training and athanor-small-model to R1 as bounded evidence of carrying out research work. Preserve R1 classification and the separation from R3.",
+      "primary": [
+        {
+          "source": "athanor-post-training",
+          "locator": "Sections 3–5 and 8; Table 1; submission record",
+          "support": "Researcher/target models, human setup, reported comparisons and single-campaign limits."
+        }
+      ]
+    },
+    "verification": {
+      "mechanism": "Producing a report or executable result does not establish a new scientific finding. Evidence must connect claims, records, required artifacts and the substantive scientific objective.",
+      "conditions": "Read Into the Unknown v1 PDF Sections 2–5, Table 2 and selected appendix traces. Nine configurations attempt fifteen open follow-ups with supplied papers, data, code, internet, task compute, no time limit and up to five review rounds.",
+      "counterexample": "The benchmark does not negate successes in bounded post-training or research tasks. Some appendix checks apply a stronger scientific rubric than a minimal visible instruction, so a failed grade is not automatically fabricated work.",
+      "evidence": "Authors report 0 of 135 submissions meeting all conditions and 114 failing integrity checks. Scientists verify requirements, but GPT-6 Astra grades four times and requires three passing judgments per rubric item.",
+      "limits": "Automated grading on selected difficult tasks is not a measure of intentional deception or all human-assisted science. Model-list, figure-count and legacy-text inconsistencies prevent adopting rankings or time-effect claims. No human regrading or full appendix audit was performed.",
+      "mitigation": "Verify records, artifacts and scientific success separately; use independent evaluation and seek replication. Keep successful task results and failed verification visible together.",
+      "readerContext": "Read R1 from definition through limits in Japanese and English, including the two new paragraphs. Research assistance, validated discovery and acceleration of all development remain separate.",
+      "whyHere": "Add open-science-followups and open-science-verification as a counterpoint at R1. Preserve its observed classification; do not turn a difficult-benchmark failure into absence of useful research assistance.",
+      "primary": [
+        {
+          "source": "open-science-followups",
+          "locator": "Sections 2–5; Table 2; selected appendix traces; submission record",
+          "support": "Task conditions, automated grading, attributed aggregate counts and internal inconsistencies."
+        },
+        {
+          "source": "athanor-post-training",
+          "locator": "Table 1 and Section 8",
+          "support": "A contrasting bounded success and its generalization limits."
+        }
+      ]
+    },
+    "response": {
+      "mechanism": "A warning needs authorized and timely intervention. Stopping AI also needs fallback operations and recovery if essential financial services depend on it.",
+      "conditions": "Read FSB summary/practices and Sections 3.7 and 3.9, plus the OpenAI DNS timeline, AISI containment account and AIR v2 methods/results. Distinguish policy guidance, operational incidents and controlled recovery experiments.",
+      "counterexample": "AISI reports containment and no identified harm; AIR recovers some tested states. Other actions, including disclosure or irreversible deletion, cannot simply be undone. The DNS delay does not show that harm grew during the delay.",
+      "evidence": "FSB recommends tested stopping/revocation, named authority, escalation, fallback and joint exercises for shared-provider failures. It supplies no measured adoption, response-time, recovery or harm-reduction rate.",
+      "limits": "The incident settings and recovery denominators differ, so their results cannot be pooled as a general success rate. A nonbinding final report does not demonstrate implementation or effectiveness. Older attached sources were not all reread today.",
+      "mitigation": "Test stopping mechanisms and responsibilities together, revoke credentials where needed, plan independent fallback and provider recovery, and measure both intervention latency and service continuity.",
+      "readerContext": "Read C3b and F4 in both languages. Distinguish a local response delay from general loss of control and a guidance document from observed failure or protection of financial markets.",
+      "whyHere": "C3b was due; F4 receives substantive new defensive guidance. Add fsb-ai-practices-final and financial-ai-stop-and-recover, retain C3b limited/indirect and F4 hypothesis, and update only their node dates and the changed C3b evidence summary.",
+      "primary": [
+        {
+          "source": "fsb-ai-practices-final",
+          "locator": "Summary/practices; Section 3.7 pp.50–54; Section 3.9 pp.63–64",
+          "support": "Stopping, accountability, fallback/recovery and provider-dependency recommendations."
+        },
+        {
+          "source": "openai-dns-access",
+          "locator": "Summary and September 20 timeline; September 25 update",
+          "support": "Observed delay and failed automatic stopping, without quantified downstream harm."
+        },
+        {
+          "source": "aisi-incident",
+          "locator": "July 25–28 conditions, detection and response",
+          "support": "Permissive test access, containment and human rejection of an unauthorized contribution."
+        },
+        {
+          "source": "agent-incident-response",
+          "locator": "Version 2 methods, runtime recovery results and irreversible-action limits",
+          "support": "Conditional recovery under provided rules/tools, with non-recoverable outcomes."
+        }
+      ]
+    },
+    "connections": {
+      "mechanism": "R1-R2 requires useful contributions to improve overall development after validation and resource costs. F1-F3 requires shared financial behavior or dependencies to propagate disruption; it is not implied by the existence of AI tools.",
+      "conditions": "Read both retained edge explanations and conditions in Japanese and English against the new small-model, verification and financial-practices material.",
+      "counterexample": "Outputs can fail scientific verification despite extensive work. Isolation, fallback, varied exposures or effective intervention can prevent shared tools from producing market-wide disruption.",
+      "evidence": "New studies identify component results and constraints without measuring aggregate development speed or an AI-driven financial cascade. FSB supplies recommendations rather than causal effect sizes.",
+      "limits": "Component experiments and policy statements do not establish that all prerequisites occur together, nor a frequency or inevitability of the downstream outcome.",
+      "mitigation": "Measure whole-process results after validation, and test continuity and concentration risks under joint failures. Preserve conditional language and explicit defense assumptions.",
+      "readerContext": "The reader sees a necessary qualification between a research task and accelerated development, and between financial AI adoption and systemic effects. Both languages retain these distinctions.",
+      "whyHere": "Retain R1-R2 and F1-F3 wording and checked dates. Their fingerprints change because endpoint evidence changed, so record the dependency rereview without unrelated date renewal.",
+      "primary": [
+        {
+          "source": "open-science-followups",
+          "locator": "Sections 2–5; Table 2",
+          "support": "Verification separates an output from successful research."
+        },
+        {
+          "source": "athanor-post-training",
+          "locator": "Sections 3–5 and 8",
+          "support": "A bounded development task does not establish overall acceleration."
+        },
+        {
+          "source": "fsb-ai-practices-final",
+          "locator": "Sections 3.7 and 3.9",
+          "support": "Fallback and third-party dependence constrain systemic inference."
+        }
+      ]
+    },
+    "navigation": {
+      "mechanism": "The stories separate capability, choice, permissions, failed prevention, persistent control loss and wider harm. Research feedback and financial dependence contribute under different conditions and can also support defenses.",
+      "conditions": "Read acceleration, oversight, money, finance-conditions, development-paths and research-cycle graph definitions; acceleration/money route previews; and control/acceleration/money story chapters in both languages.",
+      "counterexample": "Better models can improve safety research, an experiment may stop after two rounds, and revocation plus fallback can interrupt a financial pathway. Neither new experiment observes catastrophe or permanent loss of control.",
+      "evidence": "The added cards fit the existing non-exhaustive structure. No graph membership, route ordering or story claims need changing to represent the limited results.",
+      "limits": "A narrative pathway is not a prediction, probability estimate, necessary sequence or sufficient condition for global harm. Joint conditions cannot be inferred by assembling unrelated experiments.",
+      "mitigation": "Keep safety improvement and containment branches visible and introduce access and validation conditions before stronger outcomes. Let the evidence cards carry the detailed limits.",
+      "readerContext": "Tour text already explains why practical access and validation matter. New plain-language paragraphs do not require a glossary or UI change.",
+      "whyHere": "Retain six graphs, two routes and three stories after substantive endpoint changes; record their bilingual dependency review rather than modifying navigation for a new paper.",
+      "primary": [
+        {
+          "source": "mass-self-supervision",
+          "locator": "Sections 3–5; Table 7",
+          "support": "Limited feedback and uneven gains constrain the research story."
+        },
+        {
+          "source": "fsb-ai-practices-final",
+          "locator": "Sections 3.7 and 3.9",
+          "support": "Intervention and continuity are separate, conditional defenses."
+        }
+      ]
+    },
+    "summaries": {
+      "mechanism": "Short news and current-information summaries link observations to open questions; a new component result must not silently upgrade the stronger conclusion in a retained summary.",
+      "conditions": "Read the money summary, recent-math, research-lab-september and research-contribution in Japanese and English, along with their changed endpoint details.",
+      "counterexample": "More output or a plausible paper can fail verification. Promised financial controls need implementation and measurement before they support a claim of protection.",
+      "evidence": "The retained summaries already distinguish developer usage, research contribution, verification and overall acceleration. The money summary remains explicitly attributed to the earlier FSB analysis.",
+      "limits": "These older source accounts were not all revalidated today. Their dates remain unchanged; dependency reading does not renew source verification or imply a new quantitative result.",
+      "mitigation": "Use the new linked cards to expose both bounded gains and failure modes; preserve the questions about validation, intervention and the full process.",
+      "readerContext": "Each summary remains intelligible without assuming RSI means unlimited acceleration or a stopping recommendation means effective recovery.",
+      "whyHere": "Retain three news contexts and current:money after reading their dependencies. Advance no summary dates merely because R1, R3 or F4 changed.",
+      "primary": [
+        {
+          "source": "open-science-followups",
+          "locator": "Sections 2–5; Table 2",
+          "support": "Verification limits qualify research-news interpretation."
+        },
+        {
+          "source": "mass-self-supervision",
+          "locator": "Sections 3–5; Table 7",
+          "support": "Bounded iterations do not establish indefinitely continuing progress."
+        },
+        {
+          "source": "fsb-ai-practices-final",
+          "locator": "Summary and Sections 3.7, 3.9",
+          "support": "Guidance is distinct from measured financial defense effectiveness."
+        }
+      ]
+    },
+    "provenance": {
+      "mechanism": "Publication dates, experiment periods, author evaluations and editorial verification are distinct. Stable IDs make each proposed change traceable to its source and affected pathway.",
+      "conditions": "Read four source records and four cards in both languages, their original version/publication records, the new history entry and the selected date/category changes. Compare with the existing draft and Monday coverage records.",
+      "counterexample": "An unchanged index or source count is not a substantive rereview. Unretrieved IMF full text and a theoretical abstract cannot support an empirical map update.",
+      "evidence": "Add four sources/cards and one history entry; identify R1, R3, C3b, F4 and R2-R3/R3-R2. New experiment dates remain unspecified rather than copied from publication dates.",
+      "limits": "Primary reading and checks are not independent replication or expert approval. The bounded search cannot establish that no correction exists; original-paper inconsistencies and full-text retrieval gaps remain recorded.",
+      "mitigation": "Preserve prior history and translations by stable ID, retain old records, keep the draft for human review and run content, logic, freshness and build validation before updating it.",
+      "readerContext": "The bilingual history states the limited R3 category change and why other research and financial evidence remains bounded. No silent conversion of policy into observed safety.",
+      "whyHere": "Update map asOf, history and current inventory to reflect this documented review. Keep the existing PR, no merge/deployment, and renew only substantively addressed dates.",
+      "primary": [
+        {
+          "source": "mass-self-supervision",
+          "locator": "Submission history, methods and Table 7",
+          "support": "October 8 v1 and bounded author-reported experiment."
+        },
+        {
+          "source": "athanor-post-training",
+          "locator": "Submission history and Sections 3–5, 8",
+          "support": "October 15 v1, shared campaign and limits."
+        },
+        {
+          "source": "open-science-followups",
+          "locator": "Submission history, Table 2 and Section 4",
+          "support": "October 13 v1 with explicit grading and editorial qualifications."
+        },
+        {
+          "source": "fsb-ai-practices-final",
+          "locator": "Publication page, summary and consultation context",
+          "support": "October 15 final recommendations, not a measured intervention."
+        }
+      ]
+    }
+  },
+  "entries": {
+    "source:mass-self-supervision": {
+      "hash": "84e17a226376493ede9339a2746309a4958255c5581cd6ca3ca50e1d95128a39",
+      "assessment": "iterative"
+    },
+    "source:athanor-post-training": {
+      "hash": "0087ecc8616cf3c8a71786542be5a786df6b1ed8b524a574093628c9c5d186a0",
+      "assessment": "posttraining"
+    },
+    "source:open-science-followups": {
+      "hash": "414c2df81d67dbbeaa3cbad0d55e7cc60dcd4df8aa40c0e5dd3703c547d74013",
+      "assessment": "verification"
+    },
+    "source:fsb-ai-practices-final": {
+      "hash": "4d8c775c4c40def0b81548012066984c8a741c31440fc316093342f3fd7becbc",
+      "assessment": "response"
+    },
+    "research:mass-two-rounds": {
+      "hash": "3e0ceaee64f1edceee21d89a913bc23e08c336ef07941d4eff5dfc3be21f1888",
+      "assessment": "iterative"
+    },
+    "research:athanor-small-model": {
+      "hash": "6a90768e96bc5794a22dfa644f55b43d44b6cd25883c7d3921e882f5a9a85b67",
+      "assessment": "posttraining"
+    },
+    "research:open-science-verification": {
+      "hash": "2053998c670e7c515720a67b7fc63f83844282eded05c2ee6ca9652d5b1c3f3f",
+      "assessment": "verification"
+    },
+    "research:financial-ai-stop-and-recover": {
+      "hash": "c2485be87f5177f036030f7e924e24625d33532daec2102b3c5a88644aae40fe",
+      "assessment": "response"
+    },
+    "node:C3b": {
+      "hash": "449866d5889022cdb5ca6423247a8530465bf802aae6df929af08e8f630ce4c9",
+      "assessment": "response"
+    },
+    "node:F4": {
+      "hash": "8448cd61547818949c46d746abb0dd12aa8a84a52e803b3100d9dbdbf60e3571",
+      "assessment": "response"
+    },
+    "node:R1": {
+      "hash": "a807e8c0f5474f663dc2937424c31a33520bf32ec5df5f89bf806a576ae511f3",
+      "assessment": "verification"
+    },
+    "node:R3": {
+      "hash": "2554f7d9221f79acaa6a75aba9e74b8fdefec1078cd7b74b4378f0ba5080a44c",
+      "assessment": "iterative"
+    },
+    "edge:R1-R2": {
+      "hash": "75dd97bffb1c2e48ab388148b7a52ae2505c3c8fa6ecb96faa4334b157a3840a",
+      "assessment": "connections"
+    },
+    "edge:R2-R3": {
+      "hash": "6a4c94d6ec45b1405987692e649267a3038b1fb939c80725fd5417f59b86c334",
+      "assessment": "iterative"
+    },
+    "edge:R3-R2": {
+      "hash": "f809bcab2a735ce100de10f878ff852a6b0fc53cbb09b0626df23472277a57b0",
+      "assessment": "iterative"
+    },
+    "edge:F1-F3": {
+      "hash": "4959baed64467e71b1caf0a62820a51b3e370be61fc03e9da24be7899a10551e",
+      "assessment": "connections"
+    },
+    "graph:acceleration": {
+      "hash": "1cbb2ed7e093e9056da9eea8b82bb20c6918b290b6af2350ba8856ec8955f89e",
+      "assessment": "navigation"
+    },
+    "graph:oversight": {
+      "hash": "c4c03f4a0c6bb279c55f3e5a0cb5c8178c954afa7913f959af533f5222545ad5",
+      "assessment": "navigation"
+    },
+    "graph:money": {
+      "hash": "7ee916604c623ce625c5a375fb369d90156abbc08c447375ea3274fa7c660824",
+      "assessment": "navigation"
+    },
+    "graph:finance-conditions": {
+      "hash": "8a295c05e422be2c157ffde62c19228e30630fff18d2b37c0107b1de3bcf0d37",
+      "assessment": "navigation"
+    },
+    "graph:development-paths": {
+      "hash": "aec61b07e7c26dc55861a58985d7e618fe7dc38b5d801272139c2406cabd18fd",
+      "assessment": "navigation"
+    },
+    "graph:research-cycle": {
+      "hash": "c872f282ebcc2fa44f237f37a3eebcd4d67a8c4ffdfd7da69dde85341c0feafa",
+      "assessment": "navigation"
+    },
+    "route:acceleration": {
+      "hash": "baa2374d6e689ffb59166ef948ea61fe079e534f2429e9ee9b6ba454bda82a14",
+      "assessment": "navigation"
+    },
+    "route:money": {
+      "hash": "e4a8ef829eaa7bc471b83fef1ac9383b1f7143cee704bb5c441759d33cda9b15",
+      "assessment": "navigation"
+    },
+    "current:money": {
+      "hash": "af43acc7ec1a2bf9a96f8a97cc4a767f64373987b0837f40851944c616679ae8",
+      "assessment": "summaries"
+    },
+    "evidence:C3b": {
+      "hash": "e1daa706602fce0d821b23d362d69704998e9416214e1bd7c0df09ed2a39bce2",
+      "assessment": "response"
+    },
+    "evidence:R3": {
+      "hash": "5ee13883959942e6985abbc923ec6d7245021e141019d42a7b050b9bfd2b4d73",
+      "assessment": "iterative"
+    },
+    "news:recent-math": {
+      "hash": "c45735be9c67a251e3eb52a0e4cdb87a132ea212c518a5f97f7eeaf28efe0b5c",
+      "assessment": "summaries"
+    },
+    "news:research-lab-september": {
+      "hash": "ee670d4c20067f8aa12732261db216f7ac948a9dcc0f77f618f93cadc9354e1b",
+      "assessment": "summaries"
+    },
+    "news:research-contribution": {
+      "hash": "9c7713c7dd0049a3ca9b8507c9e37743d5df535ba737916e6cb266d55f69c9d8",
+      "assessment": "summaries"
+    },
+    "story:control": {
+      "hash": "d4508e9eb72d65cc545c99a7b7c28e34baca526b328769b82cd3cce4d8a40a47",
+      "assessment": "navigation"
+    },
+    "story:acceleration": {
+      "hash": "7f151aac5ed0080997664eead8b06c068398da86bde15c0c37b6e9899ed8353f",
+      "assessment": "navigation"
+    },
+    "story:money": {
+      "hash": "1f5882c860b5efa72a9533598944e238c8ae3eefa706106dce0ef012a8749aea",
+      "assessment": "navigation"
+    },
+    "metadata:map": {
+      "hash": "09e1e47d3244c8f3b14e9bd5350f8fc7cdd87e8f3025cf423a8269d348a5ff22",
+      "assessment": "provenance"
+    },
+    "history:changes": {
+      "hash": "9cd1f03cf393a8e3dfa89e9f788350a65b315221036e709bb21d8610ed548592",
+      "assessment": "provenance"
+    },
+    "inventory:current": {
+      "hash": "df055ad8e442c685eb65f7ef9d5b6eebd6dd3d2e4c5bc4e5d09942252c9136db",
+      "assessment": "provenance"
+    }
+  }
+}

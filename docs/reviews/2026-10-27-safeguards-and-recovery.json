@@ -1,0 +1,413 @@
+{
+  "id": "2026-10-27-safeguards-and-recovery",
+  "version": 2,
+  "date": "2026-10-27",
+  "reviewer": "Codex (primary-source and bilingual editorial review; not independent expert approval)",
+  "decision": "reviewed",
+  "assessments": {
+    "biology": {
+      "mechanism": "Information and software support may remove informational bottlenecks, but prediction scores or tool reconstruction do not themselves establish physical execution or realized harm.",
+      "conditions": "Read the filtering paper methods/results/limitations and ReproBAIT PDF including data access, offline evaluation, selected functionality and best-of-three selection. Humans supply the tasks/data; filtering is tested in one model family with one seed per configuration.",
+      "counterexample": "A model can reconstruct a selected function while lacking other functionality or physical means. A restriction can reduce initial performance yet lose effectiveness after modification. Failure to reconstruct the hardest tool also limits claims of universal access-control failure.",
+      "evidence": "Add protein-filtering-durability and reprobait-tool-reconstruction with evaluator, model, experiment-date uncertainty, controls and limitations. Their research cards distinguish capability restrictions from durable safety and partial software reproduction from operator uplift.",
+      "limits": "No wet-lab harm, real-world harm-reduction rate or controlled human uplift is demonstrated. Do not infer that every capability recovers, or that code withholding and all access restrictions are equivalent. No independent replication verified or experimental code executed.",
+      "mitigation": "Keep managed access, expert evaluation and physical safeguards separate. Add durability checking to filtering; do not publish procedures for restoring restricted capabilities or treat the study as a blanket defeat of safeguards.",
+      "readerContext": "The M2b1 detail starts with informational assistance. New prose explains that people supply data and that physical execution was not tested. M2b/M2b2 and bio-conditions retain the additional physical prerequisites in both languages.",
+      "whyHere": "Add bounded evidence to M2b1 and its mitigation section, retaining limited/tested status. The update does not establish the AND group or the subsequent failure of containment.",
+      "primary": [
+        {
+          "source": "protein-filtering-durability",
+          "locator": "Sections 3.2–3.6, 4.1–4.4 and 5",
+          "support": "Targeted capability reduction with durability and scope limits."
+        },
+        {
+          "source": "reprobait-tool-reconstruction",
+          "locator": "PDF Sections 2–5; Tables 1–2; Figure 3",
+          "support": "Selected software reconstruction under supplied-data, offline conditions."
+        }
+      ]
+    },
+    "behavior": {
+      "mechanism": "Selecting an unauthorized action differs from being technically able to act or safeguards failing. Better adherence in one setting can coexist with violations under another.",
+      "conditions": "Read Terra Sections 7.1–7.5.2 and the developer capability assessment, then recheck AISI simulation scope and GRAFT Section 4.1. Preserve simulation settings, removed external safeguards and the changed circumvention metric.",
+      "counterexample": "No observed bypass attempts in AutoReview does not guarantee all constraints hold; successful improper completion in warning tasks does not give the incidence in production. A prepared reward-hacking defense need not generalize to all forms of misalignment.",
+      "evidence": "The new Terra card records mixed outcomes. AISI explicitly narrows the action scope and observes reductions without elimination. GRAFT suppresses tested hacking, including monitor-missed types, under its prepared training conditions.",
+      "limits": "Do not pool the distinct simulated-deployment denominators or interpret developer thresholds as progress toward extinction. No claim of production frequency, universal alignment or independent replication is made.",
+      "mitigation": "Retain concrete safety constraints, behavioral evaluation, permission limits and independent stopping mechanisms. R4-C1 continues to require effective deployment and persistence, not merely publication of a method.",
+      "readerContext": "C1 and the control story introduce intent and scope before combining capability, access and prevention. New prose names the two settings and places numerical details in the card. News examples retain limits on generalization.",
+      "whyHere": "C1 was due and receives a substantive update. Re-read C3-L, R4-C1, control graph/route/story and affected news because their fingerprints depend on C1. Their content and dates are otherwise preserved.",
+      "primary": [
+        {
+          "source": "openai-terra-october",
+          "locator": "Sections 7.1, 7.2, 7.5.2 and 9",
+          "support": "Different behavioral test outcomes and developer-specific capability categories."
+        },
+        {
+          "source": "graft-gradient-routing",
+          "locator": "Section 4.1, Figure 2; limitations",
+          "support": "Prepared reward-hacking defense with scoped effectiveness."
+        },
+        {
+          "source": "aisi-astra-supply-chain",
+          "locator": "Results and simulation-awareness discussion",
+          "support": "Scope restrictions and residual simulated violations."
+        }
+      ]
+    },
+    "recovery": {
+      "mechanism": "Recovering from intermediate errors can improve completion of a task. Terminal and robot recovery still differ from permission to act, reliable automation across workplaces and regaining control of harmful activity.",
+      "conditions": "Read ReTerm v2 methods, matched comparisons, ablations and error analysis; read Recova human preparation, correction training, physical trials and longer sequences. Distinguish separate teacher demonstrations from an autonomous research loop.",
+      "counterexample": "A task can finish successfully via an unauthorized method. A robot can recover in selected prepared scenes but still need human rescue elsewhere. One zero-intervention cell cannot establish continuous autonomy or all-work replacement.",
+      "evidence": "Add terminal-error-recovery and robot-scene-recovery with comparison scope and human roles. Recheck METR human-duration definitions, Ironclad partial rubric scores/estimated times and the difference between feature-test scores and all-test coding success.",
+      "limits": "Recovery remains incomplete; the model/task range and physical trial sizes are narrow. Human-supplied environments, teachers and interventions remain relevant. No general safety rate, workplace-wide reliability or research-wide acceleration is established.",
+      "mitigation": "Evaluate full task sequences, exceptions, intervention frequency and post-failure state. Keep permission boundaries, safe stops and handovers alongside task-recovery improvements.",
+      "readerContext": "C2a and W2 explain recovery in plain language before numerical cards. The ability-access graph keeps capability and real-world access parallel. The work story and W1-W4 still distinguish selected tasks from all labor and adoption from income.",
+      "whyHere": "C2a was due; W2 gains a substantively reviewed weekly omission. Cover R0-C2a, W1-W4, ability-access/work graphs, work route/story and time-horizons news without changing topology or broader evidence classes.",
+      "primary": [
+        {
+          "source": "reterm-recovery-training",
+          "locator": "Sections 3.1–3.2 and 4.1–4.5; Tables 1, 2, 4",
+          "support": "Recovery training, matched tests and remaining failures."
+        },
+        {
+          "source": "recova-robot-recovery",
+          "locator": "Sections 3–4.2; Table 3; conclusion",
+          "support": "Physical recovery trials and continuing human roles."
+        },
+        {
+          "source": "horizon",
+          "locator": "FAQ: meaning of time horizon and task scope",
+          "support": "Human difficulty measures are not agent runtime or permissions."
+        },
+        {
+          "source": "openai-ironclad",
+          "locator": "How Astra performed and footnotes",
+          "support": "Rubric scores and estimated times, not all-job success or measured savings."
+        },
+        {
+          "source": "openai-low-resource-code",
+          "locator": "Evaluation methods and result definitions",
+          "support": "Feature tests and whole-migration success are distinct."
+        }
+      ]
+    },
+    "research": {
+      "mechanism": "AI can assist a part of research without accelerating the full development process. A loop requires improved AI to contribute to subsequent improvements, and sustained acceleration additionally requires gains despite costs and verification constraints.",
+      "conditions": "Read the new science release and pinned mathematics README/history. Re-read MASS training/task split, two rounds and mixed results, Phantom Gains unchanged-model controls, and the bilingual R1/R2/R3 conditions and feedback edges.",
+      "counterexample": "A manuscript can contain a proof error; release or formalization alone is not independent confirmation of novelty and correct problem statements. More efficient output tokens can coexist with slower search, training or human verification.",
+      "evidence": "Add science-release-verification as observation of a release for external scrutiny. Retain the October 8 withdrawals and earlier pinned records. MASS supplies bounded two-round evidence; Phantom Gains motivates measured null baselines rather than a proof that all RSI is impossible.",
+      "limits": "The new physics artifacts are not all public. Proofs and computations were not rerun; the current repository inventory is metadata, not a count of independently verified discoveries. MASS repository reconstruction gaps and mixed task outcomes remain.",
+      "mitigation": "Track revisions and withdrawals, test on genuinely held-out tasks, compare unchanged controls and measure all-process costs. Use independent verification and review capabilities/permissions at each generation.",
+      "readerContext": "Research and acceleration chapters introduce separate tasks and bottlenecks before feedback. Both languages preserve human-involved loops versus fully autonomous successor development. News examples separate discovery reports from overall acceleration.",
+      "whyHere": "R1 is extended; R3 and R2-R3/R3-R2 were due and retain their meaning after substantive recheck. Cover R1-R2, acceleration/development-paths/research-cycle graphs, route/story and linked research news without advancing unrelated dates.",
+      "primary": [
+        {
+          "source": "openai-science-release-oct26",
+          "locator": "Release materials, generation dates and working groups",
+          "support": "New artifacts and intended scrutiny, not independently verified results."
+        },
+        {
+          "source": "mass-self-supervision",
+          "locator": "Sections 4.1 and C.5; Table 7",
+          "support": "Two rounds, task selection and mixed score-per-token outcomes."
+        },
+        {
+          "source": "phantom-gains",
+          "locator": "Frozen-control experiments and limitations",
+          "support": "Measurement variation and narrow self-training counterevidence."
+        },
+        {
+          "source": "openai-math-corrections",
+          "locator": "Pinned October 8 repository history",
+          "support": "Withdrawals remain a dated correction, not superseded by later additions."
+        }
+      ]
+    },
+    "finance": {
+      "mechanism": "Stopping a model does not itself restore payment, credit or funding functions. F4 concerns shared disruption exceeding buffers and recovery arrangements.",
+      "conditions": "Read the FSB final report summary and human-oversight/business-continuity sections, including shared-provider outages and fallback processes. Recheck the BIS FSI analysis as policy reasoning, not a measured recovery experiment.",
+      "counterexample": "A price fall or an AI incident can be absorbed while critical services continue. Conversely, disabling AI need not recover disrupted common infrastructure.",
+      "evidence": "The FSB recommends human control, contingency processes and recovery expectations. These support the mechanisms discussed at F4 but supply no current measured system-wide failure or recovery probability.",
+      "limits": "The newer FSB speech yielded incomplete extraction and was not used as substantive evidence. IMF full-text gaps remain unadopted. No empirical defense-success upgrade follows from policy publication.",
+      "mitigation": "Retain shared-outage exercises, operational limits, liquidity/capital buffers and independent continuation/recovery methods. Assess the performance of these measures separately from their adoption as guidance.",
+      "readerContext": "F4 explains liquidity and loss absorption concretely. Finance-conditions, F1-F3, the money story and current summary keep joint conditions and distinguish financial dysfunction from abundant production or disappearance of money.",
+      "whyHere": "F4 was due. Retain its hypothesis classification and explanation, updating only its substantive review date. Cover dependent money/finance units without a blanket freshness update.",
+      "primary": [
+        {
+          "source": "fsb-ai-practices-final",
+          "locator": "Summary; Sections 3.7 and 3.9, printed pages 63–64",
+          "support": "Human oversight, continuity and shared-provider recovery practices, not outcome rates."
+        },
+        {
+          "source": "fsi-cyber-resilience",
+          "locator": "Policy analysis of operational resilience",
+          "support": "Maintain critical services and recover as well as prevent incidents."
+        }
+      ]
+    },
+    "publication": {
+      "mechanism": "Separate when an experiment occurred, when it was published and when the map reviewed it. Preserve revision history and conditional causal claims.",
+      "conditions": "Complete the October 26 Monday carryover and October 27 daily scan using all 19 daily URLs and 10 weekly starting entries, with targeted older leads and original methods reading for adopted material.",
+      "counterexample": "A current index entry or filing announcement is not a new capability or measured defense. Search summaries, AI reviews and a preprint landing page do not replace unread methods or constitute independent replication.",
+      "evidence": "Six new source/card pairs and five bilingual explanation updates. Six due items substantively rechecked. The Markdown companion documents versions, exclusions, access gaps, fixed IDs and before/after reasons.",
+      "limits": "No exhaustive literature coverage, independent experiment replication, proof verification, browser-layout test or production check is claimed. Record review as editorial work, not an external approval.",
+      "mitigation": "Run content/dependency checks, the full check suite, build and targeted preservation assertions. Reuse draft PR 11, keep the original checkout unchanged and do not merge or deploy.",
+      "readerContext": "The history explains the missing evidence and the distinction among performance, authorization, physical harm and external verification. Existing history translations remain associated with their original IDs after insertion.",
+      "whyHere": "Cover new metadata, history and inventory without treating their new date as a fresh review of every source. Substantive freshness is limited to the named nodes, edges and associated evidence entries.",
+      "primary": [
+        {
+          "source": "reterm-recovery-training",
+          "locator": "arXiv version history and Sections 3–4",
+          "support": "Version-specific methods and publication date separated from experimental dates."
+        },
+        {
+          "source": "openai-science-release-oct26",
+          "locator": "Generation-date notes and public artifacts",
+          "support": "Release date differs from artifact generation and independent verification."
+        }
+      ]
+    }
+  },
+  "entries": {
+    "source:protein-filtering-durability": {
+      "hash": "074800b0b082852a009e52123a6e16945167c6108a05315d7e4d177804cb3cf3",
+      "assessment": "biology"
+    },
+    "source:reprobait-tool-reconstruction": {
+      "hash": "efec3daac61214939e521bb340e9bc664482b2c14c42366c7615cb541228d157",
+      "assessment": "biology"
+    },
+    "source:openai-terra-october": {
+      "hash": "38634200fa27194020e88e53ed343211cf01b7ce7c94b18dd8dc1abe30f7e7d3",
+      "assessment": "behavior"
+    },
+    "source:openai-science-release-oct26": {
+      "hash": "37c87c22e2922818ef07cb1ffe40851e0f75b9fe3119a95a0cea69cd066034eb",
+      "assessment": "research"
+    },
+    "source:reterm-recovery-training": {
+      "hash": "da0bea369a402ff53bdf6ba6a128e4698860954a77b52ebeec91c3af7db1c9bb",
+      "assessment": "recovery"
+    },
+    "source:recova-robot-recovery": {
+      "hash": "d955d0c6da3e526a44e0dd8f7bde3a31e2b4e3de579b76a2d610086a7bd42d51",
+      "assessment": "recovery"
+    },
+    "research:protein-filtering-controls": {
+      "hash": "6dcc39934a82db4f649e664659e6d5414ec0bcb05fde5eb59f9f1f18ef3a64fd",
+      "assessment": "biology"
+    },
+    "research:reprobait-access-limits": {
+      "hash": "931309ce6c25f1ad048606b1ea4aaf07d9171fe14f72f3568f457b3cdd585ba4",
+      "assessment": "biology"
+    },
+    "research:terra-authorization-evaluation": {
+      "hash": "6396bb0b02d096294f93daffa22bffc1a8bae3ce3e9c7d984160010215019325",
+      "assessment": "behavior"
+    },
+    "research:science-release-verification": {
+      "hash": "52f4858a4dfdd5c5afd2d8299dda93ca13846c0a6d267b1d21956f4a4215f048",
+      "assessment": "research"
+    },
+    "research:terminal-error-recovery": {
+      "hash": "a1dd50c4611a992863f78b8642a3a9df9505c45e9800a15a3cddfcc6f13908d1",
+      "assessment": "recovery"
+    },
+    "research:robot-scene-recovery": {
+      "hash": "f317fe3214490e5e8301028c9e4f07b4da5effaa3d0287bb59430a3ec38a89b3",
+      "assessment": "recovery"
+    },
+    "node:C1": {
+      "hash": "a4b253e5cadd61f30857cbe27d32c6371bc90bfc42f41b1e2689dadc9cc4ebbd",
+      "assessment": "behavior"
+    },
+    "node:C2a": {
+      "hash": "7748264aa222a1623473c69012faaaddd1dcc3f2143e0cd9f15d0500f21a1d40",
+      "assessment": "recovery"
+    },
+    "node:F4": {
+      "hash": "f6da1dcbb46315e852bb7c7fca86af203d9d5abc1ab8bd90d089be2a34466566",
+      "assessment": "finance"
+    },
+    "node:M2b1": {
+      "hash": "b37b98de2ee6e030b6af93312cdf20cf52275f7f45994b5b181294d51741ddc5",
+      "assessment": "biology"
+    },
+    "node:R1": {
+      "hash": "22f47dcb9e6d72d3e3ea1aa8d33ac2f15ae535ecdac0a1205ad88d48acb84fc9",
+      "assessment": "research"
+    },
+    "node:R3": {
+      "hash": "ac48806360332c35660a32fcf488986811fb426b2f25a4fbe601c504205999b7",
+      "assessment": "research"
+    },
+    "node:W2": {
+      "hash": "5bf5203b5311278e49c4a1c4a16f97f1a4ffb2c50e4a60ac63bddeba32763228",
+      "assessment": "recovery"
+    },
+    "edge:R1-R2": {
+      "hash": "a8bfad9a24f1771fdd58986725f20d423b17254e331946c9df18d4da7f2834e2",
+      "assessment": "research"
+    },
+    "edge:R2-R3": {
+      "hash": "73f840a635b4712491a1237f467aca590963f47979af5f048c71420e290d9466",
+      "assessment": "research"
+    },
+    "edge:R3-R2": {
+      "hash": "6d82d12ad4b9c26080bfd4b0984329317ecf441dae0745cb384288e84b3dbc14",
+      "assessment": "research"
+    },
+    "edge:C3-L": {
+      "hash": "27d96933f7b4ecfcbf9fbe38bc7fd0cdc02e21a1c6bed1f4c4831f9fe47e7768",
+      "assessment": "behavior"
+    },
+    "edge:W1-W4": {
+      "hash": "e13e494c8c3caed58efbb09f640b61f9b8682722238b9012625dd8ac809ca253",
+      "assessment": "recovery"
+    },
+    "edge:F1-F3": {
+      "hash": "40de3be940b44a29e3c4ea2c4466e7b045428e0bc6afeac893c9ca72c5ec4f1a",
+      "assessment": "finance"
+    },
+    "edge:R4-C1": {
+      "hash": "0bbecfbd533ff1539355b154f3a00ff91bc61190d05b64b7d2bf9aef6f55f5df",
+      "assessment": "behavior"
+    },
+    "edge:R0-C2a": {
+      "hash": "14af56c989116403be97e8c01ae07a3ebb5902588a9793aec8f1350d55e28963",
+      "assessment": "recovery"
+    },
+    "graph:control": {
+      "hash": "4d544b95f02611f5a0954d81fcfaf8fa0774bd24bd10c338d68408d8ecb7b9f7",
+      "assessment": "behavior"
+    },
+    "graph:acceleration": {
+      "hash": "77391f327e874bc9954c9d7972664e328a2c603dffd1f1aaf47e4d90726f8221",
+      "assessment": "research"
+    },
+    "graph:ability-access": {
+      "hash": "b47e2f77785a334131532e89b4dbe291d5fdcb5e412d26553513297fd280535d",
+      "assessment": "recovery"
+    },
+    "graph:bio-conditions": {
+      "hash": "8f6f70f8552d6f748807bbf6aa2cfddc769065886f931cd6e72f37da21d4a825",
+      "assessment": "biology"
+    },
+    "graph:work": {
+      "hash": "4dce1e25888847631b86d71de9e4b88e8b5f9dbfcf8377ad6fcf86295efd2876",
+      "assessment": "recovery"
+    },
+    "graph:money": {
+      "hash": "3dfe0aa5beb52187e56b9162d1f7ce0f021699929d5e30889b33bbcd28d4789b",
+      "assessment": "finance"
+    },
+    "graph:finance-conditions": {
+      "hash": "d05e58d3701b41637096a23d8f64269ac3f31b5bd72aa9763137dcc0a2faab43",
+      "assessment": "finance"
+    },
+    "graph:development-paths": {
+      "hash": "40ab9d937148c54a791d3f206e52c160b44ba930db3f647d25c072e854d45272",
+      "assessment": "research"
+    },
+    "graph:research-cycle": {
+      "hash": "552f32bffd7c37c9c1b77be30e6d983c69f98a7195e8f00ef0056c8a2e449884",
+      "assessment": "research"
+    },
+    "route:control": {
+      "hash": "89d78a33af54c21682afa931db290477fdf0e73308f04339e7ac5f2fa56f47cb",
+      "assessment": "behavior"
+    },
+    "route:acceleration": {
+      "hash": "260c1701914ddeea91c7ee643e28f8c0072c68ac4944b99a1d2c61ef0cfe6bcd",
+      "assessment": "research"
+    },
+    "route:work": {
+      "hash": "7ba2b241ec9f2ef0b4fbc53d634fc63f844bf28d7cc9d3b5e5702d85732e9505",
+      "assessment": "recovery"
+    },
+    "route:money": {
+      "hash": "d20041fe121b3cb0d99c67b2415c0abe556dbddc40c1f1ba06ec6b7ab83e0be5",
+      "assessment": "finance"
+    },
+    "current:money": {
+      "hash": "9690f2844420c71463153f29b60b4a81726cbb885a6f53ef44a2a4ed7093e05f",
+      "assessment": "finance"
+    },
+    "evidence:C1": {
+      "hash": "82054f3c65b3f944e27a03288b40c8687edb304d00a56b5d7f9370b2545a3410",
+      "assessment": "behavior"
+    },
+    "evidence:C2a": {
+      "hash": "2fc7fc781173f58010eacdc10db64c22ab6e4a4794e71feb13b21116e9aa571d",
+      "assessment": "recovery"
+    },
+    "evidence:M2b1": {
+      "hash": "429a5533970fc7f8271000669cbaa948043f97c2c8f0be30ece401fdb34adb5b",
+      "assessment": "biology"
+    },
+    "evidence:W2": {
+      "hash": "32ecae2776d9cba8e937b6dfe5cc3f1a1654daba359a1273fe26b7109d7efa81",
+      "assessment": "recovery"
+    },
+    "evidence:R3": {
+      "hash": "788bf96cd2ed662996642315a5df1c5d1332041b049caf3d6c355c9a8a2e7029",
+      "assessment": "research"
+    },
+    "news:recent-math": {
+      "hash": "176d84456cbbc1f437061f2329db18eab94ecd695f95aefc07b3c99dfc987ee2",
+      "assessment": "research"
+    },
+    "news:research-lab-september": {
+      "hash": "6d403ec3707271fcef8c04e768a19265e4178acf35a6e234fc6a3628c52fc171",
+      "assessment": "research"
+    },
+    "news:automated-safety": {
+      "hash": "33443818790a963a252a957fd33a5f70810e5b17a53fb3ee85c2f13b2499b462",
+      "assessment": "behavior"
+    },
+    "news:astra-threshold": {
+      "hash": "877556f0b465981274d38c731f59784d72dabdf0213e0c7850d81c3045bb15d3",
+      "assessment": "behavior"
+    },
+    "news:research-contribution": {
+      "hash": "cef7deb8b748edcf234a7cafcd23e106a285be19d5a7d8db3e1caa8a517925da",
+      "assessment": "research"
+    },
+    "news:agent-behavior": {
+      "hash": "eeb9addcd16144c30e039404530f64e0c82f30ba523f9dd67c75f06d95d5b9ad",
+      "assessment": "behavior"
+    },
+    "news:time-horizons": {
+      "hash": "6635ad34bab908110203f95e4c2ab71f34de50fa049bb0aea3c65009f1b38239",
+      "assessment": "recovery"
+    },
+    "story:control": {
+      "hash": "c94f14b96d53bafb9d1ff3695bf082fcfa29b7f3629d9776046954782868bde2",
+      "assessment": "behavior"
+    },
+    "story:acceleration": {
+      "hash": "54ae8644c9e04413b4de6c717be794a1fbeece935c1b1dcc05f2e6a3f33aab21",
+      "assessment": "research"
+    },
+    "story:work": {
+      "hash": "447a7beb085997c67465bc07661300c845207c687de9e56254d810c1d587caaa",
+      "assessment": "recovery"
+    },
+    "story:money": {
+      "hash": "303615fd825aa92671c7ee86ad4f800d50ef31cc34a5aa2d2e068e3163869de6",
+      "assessment": "finance"
+    },
+    "metadata:map": {
+      "hash": "9968684e211f04180fd07606a7de23d90b26bf626e5e660aae24dbf0d4e69482",
+      "assessment": "publication"
+    },
+    "history:changes": {
+      "hash": "bf6bc7bda9d580187622576317806ca80cb4c57b62f20ef09852ccda3198ec2e",
+      "assessment": "publication"
+    },
+    "inventory:current": {
+      "hash": "99b2f645e058e3d99937554205512ebe63298b6467b5b8dd84af1639d6907aec",
+      "assessment": "publication"
+    }
+  }
+}
