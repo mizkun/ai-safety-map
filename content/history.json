@@ -1,5 +1,22 @@
 [
   {
+    "id": "carbon-pass-count-correction-20261101",
+    "date": "2026-11-01",
+    "nodes": [
+      "R1",
+      "C3a1"
+    ],
+    "sources": [
+      "frontiercs-carbon-evaluation"
+    ],
+    "kind": "数値の訂正",
+    "title": "Carbonの研究課題の合格数を訂正",
+    "summary": "FrontierCSの原文と図に合わせ、Carbonの合格数を25/48から26/48へ訂正しました。",
+    "before": "研究カードと日英のR1の説明に、Carbonの合格数を25/48と記載していました。",
+    "after": "原報告が合格と集計した数を26/48へ訂正。採点の抜け道と、比較相手の再試験条件が揃わないという限界は維持しました。",
+    "reason": "11月1日に原報告の本文と図を再確認し、下書きの数値との不一致を確認したため。新しい実験や研究全体の加速を示すものとは扱いません。"
+  },
+  {
     "id": "rosalind-capability-and-monitoring-20261031",
     "date": "2026-10-31",
     "nodes": [

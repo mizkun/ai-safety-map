@@ -1408,9 +1408,9 @@
     "url": "https://frontier-cs.org/blog/gemini-4-carbon/",
     "published": "2026-10-29",
     "date": "2026-10-29",
-    "period": "10月29日公表。初回試験日は未記載。同日の3課題の再試験を反映した本文を10月30日に確認。",
+    "period": "10月29日公表。初回試験日は未記載。同日の3課題の再試験を反映した集計を11月1日に確認。",
     "primary": "ベンチマークの著者による外部評価。実行記録を点検した原報告であり、別の試験の独立追試ではない。",
-    "checked": "2026-10-30"
+    "checked": "2026-11-01"
   },
   "openai-luna-oct29": {
     "title": "OpenAI — GPT-6 Luna October 29 system-card addendum",
