@@ -1429,5 +1429,41 @@
     "period": "10月30日公表。GPT-Rosalind-6の評価で、実験日は未記載。監視・対応の再試験は公表時点で進行中。",
     "primary": "開発元による評価と利用条件の説明。独立した追試や、被害を防いだ効果の測定ではない。",
     "checked": "2026-10-31"
+  },
+  "distributed-agent-monitoring": {
+    "title": "Multi-Agent AI Control: Distributed Attacks Hamper Per-Instance Monitors",
+    "url": "https://arxiv.org/html/2607.07368v2",
+    "published": "2026-10-12",
+    "date": "2026-10-12",
+    "period": "初版は7月8日、確認した第2版は10月12日公表。実験の実施日は未記載。11月2日の週次点検で追加。",
+    "primary": "Makinsらによる原実験の論文。第2版の方法・結果・限界を確認。同じ著者による別モデルでの比較は、独立した追試とは区別。",
+    "checked": "2026-11-02"
+  },
+  "mas-guard": {
+    "title": "MAS-Guard: Unified Guardrails from Individual Agents to Multi-Agent LLM Systems",
+    "url": "https://arxiv.org/html/2610.28397v1",
+    "published": "2026-10-20",
+    "date": "2026-10-20",
+    "period": "10月20日公表の第1版。実験の実施日は未記載。単独のAIと複数のAIによる作業の計6試験を比較。",
+    "primary": "Oracle AIのKachueeらによる、自ら開発した防御の原評価。プレプリント。独立した追試は今回確認できていない。",
+    "checked": "2026-11-02"
+  },
+  "correlated-approval-monitors": {
+    "title": "Correlated Failures of AI Approval Monitors",
+    "url": "https://arxiv.org/html/2610.29178v1",
+    "published": "2026-10-21",
+    "date": "2026-10-21",
+    "period": "10月21日公表の第1版。実験日は未記載。架空の支払いと、独立に作った3種類の記録を使用。",
+    "primary": "Luca Zanoliniによる原実験のプレプリント。事前登録した試験と、後から追加した大きなモデルの比較を区別。独立した追試は今回未確認。",
+    "checked": "2026-11-02"
+  },
+  "human-agent-oversight": {
+    "title": "Looks Fine to Me: Understanding Oversight in Agentic Interactions",
+    "url": "https://arxiv.org/html/2610.27801v1",
+    "published": "2026-10-20",
+    "date": "2026-10-20",
+    "period": "10月20日公表の第1版。実験の実施日は未記載。短いPython課題を用いる人間の参加者の試験。",
+    "primary": "Dissanayakeらによる人間の参加者を用いた原実験のプレプリント。実運用の事故調査や、欺くAIの能力評価ではない。",
+    "checked": "2026-11-02"
   }
 }

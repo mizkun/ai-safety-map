@@ -255,7 +255,9 @@
         "trusted-approval-display",
         "matched-monitor-post-control",
         "intervention-aware-monitorability",
-        "monitorability-recovery-training"
+        "monitorability-recovery-training",
+        "correlated-approval-monitors",
+        "human-agent-oversight"
       ],
       "review": {
         "checkedAt": "2026-10-28",
@@ -312,7 +314,9 @@
         "monitoring-suppression-incidents",
         "internal-monitoring-coverage-audit",
         "blocking-monitor-hardening",
-        "layered-monitoring-coverage"
+        "layered-monitoring-coverage",
+        "distributed-agent-monitoring",
+        "mas-guard"
       ],
       "review": {
         "checkedAt": "2026-10-30",

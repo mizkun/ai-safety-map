@@ -18,7 +18,9 @@
     "agent-step-up-study",
     "openai-monitorability-metrics",
     "monitorability-causal-training",
-    "monitorability-post-training"
+    "monitorability-post-training",
+    "correlated-approval-monitors",
+    "human-agent-oversight"
   ],
   "questions": [],
   "related": [],
@@ -52,7 +54,9 @@
     "trusted-approval-display",
     "matched-monitor-post-control",
     "intervention-aware-monitorability",
-    "monitorability-recovery-training"
+    "monitorability-recovery-training",
+    "correlated-approval-monitors",
+    "human-agent-oversight"
   ],
   "shortTitle": "評価・監督が危険を見落とす"
 }
