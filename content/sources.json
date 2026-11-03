@@ -1465,5 +1465,32 @@
     "period": "10月20日公表の第1版。実験の実施日は未記載。短いPython課題を用いる人間の参加者の試験。",
     "primary": "Dissanayakeらによる人間の参加者を用いた原実験のプレプリント。実運用の事故調査や、欺くAIの能力評価ではない。",
     "checked": "2026-11-02"
+  },
+  "openai-activation-classifiers": {
+    "title": "OpenAI — Training activation classifiers for safety and alignment",
+    "url": "https://alignment.openai.com/training-activation-classifiers/",
+    "published": "2026-11-02",
+    "date": "2026-11-02",
+    "period": "11月2日の手法説明。実験日は未記載。GPT-5.6から導入したと報告しており、この日に導入を始めたという意味ではない。",
+    "primary": "OpenAIによる自社の監視手法の説明と評価。独立した追試ではない。",
+    "checked": "2026-11-03"
+  },
+  "reinbench-recovery": {
+    "title": "When to Intervene? An Empirical Study of Errors and Self-Recovery in LLM Agents",
+    "url": "https://arxiv.org/html/2610.36471v1",
+    "published": "2026-10-27",
+    "date": "2026-10-27",
+    "period": "10月27日公表の第1版。Webの実行記録は2025年8月13日。デスクトップの記録の実行日は未記載。",
+    "primary": "Duanらによる既存の実行記録の分析と予測手法の原評価。プレプリント。",
+    "checked": "2026-11-03"
+  },
+  "treasuryqa-bench": {
+    "title": "TreasuryQA Bench: Can AI Agents Work an Archive of Scanned Financial Records?",
+    "url": "https://arxiv.org/html/2610.38924v1",
+    "published": "2026-10-28",
+    "date": "2026-10-28",
+    "period": "10月28日公表の第1版。文書読み取りサービスの利用は10月3〜21日。資料自体は1793〜2024年の米国財務省刊行物。",
+    "primary": "Tambiらによる原評価のプレプリント。著者は試験環境を提供するVeris AIに所属し、読み取りサービスのReductoと共同公開。",
+    "checked": "2026-11-03"
   }
 }

@@ -20,7 +20,8 @@
     "monitorability-causal-training",
     "monitorability-post-training",
     "correlated-approval-monitors",
-    "human-agent-oversight"
+    "human-agent-oversight",
+    "openai-activation-classifiers"
   ],
   "questions": [],
   "related": [],
@@ -56,7 +57,8 @@
     "intervention-aware-monitorability",
     "monitorability-recovery-training",
     "correlated-approval-monitors",
-    "human-agent-oversight"
+    "human-agent-oversight",
+    "activation-probe-monitoring"
   ],
   "shortTitle": "評価・監督が危険を見落とす"
 }

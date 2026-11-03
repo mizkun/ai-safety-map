@@ -207,10 +207,12 @@
         "horizon",
         "ironclad-workflow-evaluation",
         "multilang-code-completion",
-        "terminal-error-recovery"
+        "terminal-error-recovery",
+        "local-error-recovery",
+        "scanned-record-workflow"
       ],
       "review": {
-        "checkedAt": "2026-10-27",
+        "checkedAt": "2026-11-03",
         "intervalDays": 7,
         "reason": "既存の根拠がカードの条件をどこまで直接確かめているかを分類しています。根拠の更新時に見直します。"
       }
@@ -257,7 +259,8 @@
         "intervention-aware-monitorability",
         "monitorability-recovery-training",
         "correlated-approval-monitors",
-        "human-agent-oversight"
+        "human-agent-oversight",
+        "activation-probe-monitoring"
       ],
       "review": {
         "checkedAt": "2026-10-28",
@@ -536,7 +539,7 @@
         "robot-scene-recovery"
       ],
       "review": {
-        "checkedAt": "2026-10-27",
+        "checkedAt": "2026-11-03",
         "intervalDays": 7,
         "reason": "既存の根拠がカードの条件をどこまで直接確かめているかを分類しています。根拠の更新時に見直します。"
       }
@@ -576,7 +579,7 @@
         "self-training-null-audit"
       ],
       "review": {
-        "checkedAt": "2026-10-27",
+        "checkedAt": "2026-11-03",
         "intervalDays": 7,
         "reason": "限定した反復実験と、開発全体の持続的な加速を区別して点検するため。"
       }
