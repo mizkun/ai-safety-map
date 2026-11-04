@@ -14,7 +14,8 @@
     "pace-frontier",
     "aisi-transect",
     "transect-paper",
-    "auditor-training"
+    "auditor-training",
+    "anthropic-automated-em-search"
   ],
   "questions": [],
   "related": [],
@@ -32,7 +33,8 @@
     "control-protocol",
     "frontier-pacing",
     "transect-review-tooling",
-    "trained-alignment-auditors"
+    "trained-alignment-auditors",
+    "training-data-monitor-blindspots"
   ],
   "shortTitle": "安全性の研究・対策も加速"
 }

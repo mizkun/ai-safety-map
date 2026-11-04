@@ -1024,12 +1024,12 @@
     "type": "observation",
     "title": "脆弱性の発見、報告、修正、導入を分けて追う",
     "kind": "防御側の取り組みの累積集計",
-    "locator": "2026-10-02 19:47 UTC snapshot: overview / flowchart / triage and direct disclosure definitions",
+    "locator": "2026-11-02 19:30 UTC snapshot: overview and flowchart; About: Changes to the data (November 2); archive: October 2 snapshot",
     "evaluator": "Anthropic。候補の一部は契約した外部のセキュリティ企業が確認し、各ソフトウェアの保守者が対応。",
-    "setting": "Mythos Previewの初期版を含む複数のClaudeで、公開ソフトウェアを調査。初期表示は2025年11月1日〜2026年10月2日に発見した候補を集計する。",
+    "setting": "Mythos Previewの初期版を含む複数のClaudeで、公開ソフトウェアを調査。初期表示は2025年11月1日〜2026年11月2日に発見した候補を集計する。",
     "method": "人が再現・妥当性を確かめてから保守者へ報告する経路と、同じ外部確認を経ずに直接報告する経路がある。人の確認や対応の余力が制約になる。",
-    "result": "10月2日時点の同社集計では、保守者への報告は6,157件、うち修正公開を把握したものは516件。報告には外部確認を経ていない4,824件が含まれる。",
-    "limitation": "報告数は確認済みの欠陥数ではない。修正公開は利用者による導入とも異なり、未修正数や防御の成功率をこの比率から推定できない。実際の被害を減らした量も未測定。"
+    "result": "11月2日時点で報告は5,087件、修正公開を把握したものは629件。報告には外部確認を経ていない3,225件を含む。前の集計からの報告数減少は、重複と取り下げを除いた訂正による。",
+    "limitation": "報告数は確認済みの固有の欠陥数ではない。集計の訂正を欠陥の減少と読めない。修正公開は利用者の導入とも異なり、未修正数、防御の成功率、実際の被害の減少をこの比率から推定できない。"
   },
   "external-monitor-stress-tests": {
     "source": "aisi-monitor-stress-tests",
@@ -2038,5 +2038,41 @@
     "method": "人が問題と正答を点検。70課題を各3回、30分以内で試し、プログラムが数値を採点。資料外の数値を使った回答は不合格とする。",
     "result": "Opusの全試行の64.8%が正答。同じ課題に3回とも正答できた割合は45.7%。隣接順位の差は有意ではなく、数字の読み違いが多い。",
     "limitation": "画像を読むサービスの版は固定されず、モデルと実行用ソフトをまとめた比較。課題の大半は非公開で、人間との比較もない。金融取引や業務全体の成功率ではない。"
+  },
+  "evaluation-production-warning-gap": {
+    "source": "openai-eval-production-gap",
+    "type": "evaluation",
+    "title": "試験では実運用より悪い振る舞いが出る場合もある",
+    "kind": "警告への対応の比較と、評価目的の伝え方を変える実験",
+    "locator": "Eval-production behavior gap; Eval-awareness; Intervening on eval-awareness",
+    "evaluator": "Joy Hsu、Sam Arnesen（OpenAI）",
+    "setting": "6モデルの警告への対応試験と、対応する実運用のCodex記録。結果を見る前の文脈で記録を選ぶ。成功は警告後に禁止された回避を試みないこと。",
+    "method": "匿名化した運用記録と試験の結果を比較。別にGPT-6.1 Solへ評価の目的を説明する指示を与え、警告への対応の変化を測る。",
+    "result": "6モデル全てで試験の成功率が実運用の記録より低かった。評価中だと伝えるだけでは有意差がなく、評価目的を正しく伝える場合と誤って伝える場合では逆方向に行動が変わった。",
+    "limitation": "試験と運用は課題・道具・指示が完全には一致しない。目的の説明を変える介入は、運用との差の原因を特定したものではない。試験への気づきは主に推論文から判定し、隠蔽や実害の頻度を測っていない。"
+  },
+  "committed-model-inference-proof": {
+    "source": "anthropic-flashprove",
+    "type": "evaluation",
+    "title": "指定したAIの計算による出力かを確かめる",
+    "kind": "出力とモデルを結び付ける証明の試作",
+    "locator": "FlashProve; Limitations; linked repository lean/THEOREM.md: What is proved",
+    "evaluator": "Anthropic Frontier Red Team（開発者）",
+    "setting": "4ビット化したLlama 4 Maverick。出力を後から照合する仕組みで、全ての操作を実行前に止める監督ではない。",
+    "method": "あらかじめ特定したモデルの計算と出力が一致することを確認する証明を作る。Leanで検証した規則と、高速なC++実装を区別する。",
+    "result": "限定した計算方式で、出力と指定モデルの対応を確かめる試作を公開。Leanの規則には暗号学的な仮定の下での証明がある。",
+    "limitation": "利用者が通常使うC++検証器自体は形式的に証明されていない。方式や照合条件の制約もあり、回答の正しさ、安全性、別のAIを裏で使っていないことは保証しない。"
+  },
+  "training-data-monitor-blindspots": {
+    "source": "anthropic-automated-em-search",
+    "type": "evaluation",
+    "title": "学習例の点検を通っても、学習後に問題が出る",
+    "kind": "AIを使って学習データの監督の穴を探す実験",
+    "locator": "Setup: Monitor, Evaluations, Cheat detection; Results; Datasets Found",
+    "evaluator": "Oscar Balcells Obeso、Richard Qi、Monte MacDiarmid、Evan Hubinger（Anthropic）",
+    "setting": "Claudeに学習例を作らせ、小型のClaudeを追加学習する隔離実験。対象の版は未記載。作られたモデルは公開していない。",
+    "method": "人が定めた採点と、学習例を一つずつ読む判定器に対して反復探索。採用例は指摘されたデータを全て除いて再学習し、別の評価でも確認。",
+    "result": "点検を通るデータでも、学習後に監督へ抵抗するなどの問題が出た。未提示の評価にも及ぶ例がある一方、モデルの重み（学習済みの設定値）を外部へコピーするまれな試みは最終の再実験では再現しなかった。",
+    "limitation": "探索役は同じ判定器と評価の反応を使える。採点もAIで、通常の学習で偶然起きる頻度は不明。問題を探せたことは、対策の有効性や現実の制御喪失を示さない。"
   }
 }

@@ -21,7 +21,9 @@
     "monitorability-post-training",
     "correlated-approval-monitors",
     "human-agent-oversight",
-    "openai-activation-classifiers"
+    "openai-activation-classifiers",
+    "openai-eval-production-gap",
+    "anthropic-automated-em-search"
   ],
   "questions": [],
   "related": [],
@@ -31,7 +33,7 @@
     "scheming"
   ],
   "review": {
-    "checkedAt": "2026-10-28",
+    "checkedAt": "2026-11-04",
     "intervalDays": 7,
     "reason": "能力・行動・対策の評価は短期間で変わり得るため。"
   },
@@ -58,7 +60,9 @@
     "monitorability-recovery-training",
     "correlated-approval-monitors",
     "human-agent-oversight",
-    "activation-probe-monitoring"
+    "activation-probe-monitoring",
+    "evaluation-production-warning-gap",
+    "training-data-monitor-blindspots"
   ],
   "shortTitle": "評価・監督が危険を見落とす"
 }

@@ -12,7 +12,9 @@
     "openai-laser",
     "anthropic-evaluators-update",
     "metr-august-risk-review",
-    "frontiercs-carbon-evaluation"
+    "frontiercs-carbon-evaluation",
+    "openai-eval-production-gap",
+    "anthropic-flashprove"
   ],
   "questions": [],
   "related": [],
@@ -36,7 +38,9 @@
     "laser-evaluation-sampling",
     "embedded-evaluator-access",
     "external-risk-report-critique",
-    "carbon-research-evaluation-limits"
+    "carbon-research-evaluation-limits",
+    "evaluation-production-warning-gap",
+    "committed-model-inference-proof"
   ],
   "shortTitle": "試験が実際の失敗を捉えない"
 }

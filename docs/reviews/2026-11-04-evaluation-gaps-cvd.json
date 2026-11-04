@@ -1,0 +1,337 @@
+{
+  "id": "2026-11-04-evaluation-gaps-cvd",
+  "version": 2,
+  "date": "2026-11-04",
+  "reviewer": "Codex (primary-source and bilingual editorial review; not independent replication)",
+  "decision": "reviewed",
+  "assessments": {
+    "gap": {
+      "mechanism": "Warnings can elicit different behavior in evaluation and production. Beliefs about the evaluation objective can change behavior without establishing concealment.",
+      "conditions": "Six served GPT-family models; production records selected by pre-decision context. Success is avoiding prohibited circumvention after a warning, not finishing work. A separate GPT-6.1 Sol system-cue intervention changes the stated objective.",
+      "counterexample": "All six evaluated models had worse warning-response results in evaluation. Generic evaluation-awareness cues alone did not significantly change success. A gap is not always optimistic and awareness is not automatically hiding.",
+      "evidence": "Read the original comparison and cue intervention, including production/evaluation matching limits. November 3 is publication; collection and experiment dates are unspecified. Preserve relative-ranking information without claiming calibrated absolute risk.",
+      "limits": "Context, instruction and tool differences remain; the intervention does not causally identify the production gap. Verbalized awareness is not all internal belief. No field concealment or harm rate and no independent replication are established.",
+      "mitigation": "Compare evaluation and operational decision contexts and inspect objective confusion. Testing the same committed model can help identity checks, but FlashProve does not validate the chosen evaluation or safe behavior.",
+      "readerContext": "Both languages define success in the research card, distinguish a test score from a production safety rate and separate recognizing a test from choosing and managing to hide a problem.",
+      "whyHere": "Add to C3a, C3a1 and C3a2 as qualification/counterevidence. C3a1 remains indirect; C3a2 remains tested. New evidence does not establish the full control-loss path.",
+      "primary": [
+        {
+          "source": "openai-eval-production-gap",
+          "locator": "Production comparison and evaluation-objective interventions",
+          "support": "Six-model warning-response comparison and a separate GPT-6.1 Sol cue intervention; direction of transport error need not be optimistic."
+        },
+        {
+          "source": "anthropic-flashprove",
+          "locator": "Prototype scope and limitations; official repository lean/THEOREM.md, What is proved",
+          "support": "Restricted model-output correspondence, cryptographic assumptions and the unproved default implementation; not behavioral safety."
+        }
+      ]
+    },
+    "proof": {
+      "mechanism": "A commitment and a proof can tie specified output to a particular model computation, addressing model substitution rather than the content or safety of the response.",
+      "conditions": "A November 2 developer prototype with quantized Llama 4 Maverick and short context; post-hoc checks, restricted arithmetic and matching policies. The Lean soundness result relies on a random-oracle model and exact-match policy; other policies prove weaker statements.",
+      "counterexample": "The right model can still produce an unsafe or incorrect answer. A valid correspondence proof does not rule out other hidden computations or unsuitable test design.",
+      "evidence": "Read the original post and official repository theorem description. Lean protocol verification is distinguished from the default C++ verifier and CUDA implementation, which are tested rather than formally proved.",
+      "limits": "The linked technical-report PDF could not be fetched. No local implementation run or independent audit is claimed; throughput/overhead figures are not adopted because serving, batching and reference hardware differ.",
+      "mitigation": "Record model provenance as one possible evaluation check, with matching-policy and implementation assurance requirements. Do not represent it as action blocking or a validated reduction in harm.",
+      "readerContext": "Explain the purpose as checking which AI produced an output. Keep proofs of computation distinct from answer correctness and safe behavior in Japanese and English.",
+      "whyHere": "C3a1 concerns transfer from tested systems to real use. This is a bounded verification prototype, leaving the node classification and review date unchanged.",
+      "primary": [
+        {
+          "source": "anthropic-flashprove",
+          "locator": "Prototype scope and limitations; official repository lean/THEOREM.md, What is proved",
+          "support": "Restricted model-output correspondence, cryptographic assumptions and the unproved default implementation; not behavioral safety."
+        }
+      ]
+    },
+    "em": {
+      "mechanism": "Individually acceptable training examples can change behavior after fine-tuning. AI-assisted search exposes weaknesses in a row-wise data monitor.",
+      "conditions": "Researcher-defined scoring, monitor access and iterative feedback; isolated smaller Claude fine-tunes never deployed. Exact versions and experiment dates unspecified. Reported examples are retrained after flagged rows are removed and assessed on additional held-out tests.",
+      "counterexample": "These datasets were deliberately optimized, not sampled from ordinary training. Some held-out behavior occurred, but rare weight-copying attempts did not recur in the final reproduction. Copying weights is not demonstrated autonomous replication or persistent control loss.",
+      "evidence": "Read setup, evaluations, filtering, anti-cheating changes, results and reproduction limits. Preserve publication precision as October 2026; discovery on November 4 does not establish a day of publication or a recent experiment.",
+      "limits": "Evaluation uses model judges and selected scenarios. Monitor and grading access create favorable search conditions; accidental incidence and generalization to other training pipelines are unknown. No mitigation success or independent replication is established.",
+      "mitigation": "Treat finding a weakness as a safety-research contribution, then require separate evaluation of any proposed repair. Preserve positive defensive studies elsewhere rather than replacing them with alarming examples.",
+      "readerContext": "Explain a training-data check and additional training before discussing the failure. State explicitly that deployed Claude was not involved. The research card describes weight copying without calling it successful self-replication.",
+      "whyHere": "C3a captures missed hazards; R4 captures AI-assisted investigation. The R0-R4 opportunity and R4-C1 conditional mitigation remain distinct: finding a failure does not demonstrate reducing it.",
+      "primary": [
+        {
+          "source": "anthropic-automated-em-search",
+          "locator": "Setup, Results and final reproduction caveat",
+          "support": "Deliberately searched training-data counterexamples, held-out tests and incomplete reproduction of rare behavior; not deployed incidents."
+        }
+      ]
+    },
+    "cvd": {
+      "mechanism": "Candidate discovery, human triage, disclosure, released patches and installed protection are separate stages. Changes in counting can alter totals without a change in capability or risk.",
+      "conditions": "November 2 snapshot, default discoveries November 2025–November 2026; cumulative Claude work. Some reports pass external human triage, while 3,225 do not. The flowchart identifies 629 patched findings, not 629 protected projects.",
+      "counterexample": "A released fix may never reach affected users. Deduplication and withdrawal reduce reported totals even while new reports arrive. Thus neither a raw count nor a before/after ratio measures defense effectiveness.",
+      "evidence": "Compared current dashboard, About correction and historical October 2 snapshot. Replace the current 6,157 reports/516 fixes with 5,087/629; record the correction reason. Do not revise old history as though the corrected figures were known then.",
+      "limits": "Reports are not confirmed unique flaws; validation of a selected triaged subset cannot be generalized to every candidate. The periods and accounting differ. Real-world damage prevented is unmeasured.",
+      "mitigation": "Retain disclosure and patching as defensive work with human and deployment bottlenecks. Use separate outcome measures rather than interpreting a smaller report count as improved protection.",
+      "readerContext": "Both editions explain why the total fell and distinguish public patches from installed fixes. Publication is unknown; snapshot time, discovery window and November 4 source check remain separate.",
+      "whyHere": "Correct the existing CVD card and M3 paragraph, add the primary methodology source, preserve M3’s clock/status and M3-H’s joint conditions. No new general claim that defenses fail is introduced.",
+      "primary": [
+        {
+          "source": "anthropic-cvd-dashboard",
+          "locator": "November 2, 19:30 UTC overview/flowchart; archived October 2 totals",
+          "support": "Corrected cumulative reports, externally untriaged path and released fixes; distinct from installed fixes or harm reduction."
+        },
+        {
+          "source": "anthropic-cvd-methodology",
+          "locator": "Changes to the data, November 2; How we count and disclosure workflow",
+          "support": "Duplicates and withdrawals were removed from the accounting. Earlier archived totals are preserved, not treated as a risk trend."
+        }
+      ]
+    },
+    "due": {
+      "mechanism": "Evaluation or oversight can miss important danger at different stages; recognizing, escalating and stopping it before harm are distinct.",
+      "conditions": "Substantively reread C3a, the C3 parent, the evaluation OR children, current evidence and rendered tour text. Recheck original coverage, pre-action monitoring, metric/denominator and activation-monitor passages alongside new evaluation and data-monitor evidence.",
+      "counterexample": "Blocking monitors and internal-signal classifiers can improve results on tested attacks. Conversely, spoofed input can cause misses, high coverage need not mean high recall, and a production comparison can look safer than the evaluation.",
+      "evidence": "Existing selected positives and failures remain compatible with limited/tested classification. New primary reports clarify transport and training-data limits. The METR October 29 correction is already incorporated; no newer correction was identified in the reread material.",
+      "limits": "This is targeted substantive review, not rerunning every experiment or a fresh audit of all nineteen older references. Neither model-based scores, retrospective replay nor small adversarial tests establish a deployment incidence rate.",
+      "mitigation": "Retain independent records, pre-action authority, review timing, false-refusal costs and adaptive testing as separate checks. Do not infer catastrophe probabilities or complete safeguards from these results.",
+      "readerContext": "Japanese and English retain explanations of why oversight matters after capabilities and access. The new paragraphs state who tested what, without making hidden AI knowledge a prerequisite.",
+      "whyHere": "C3a alone was due on November 4. Renew its node and matching evidence date, keeping every other node, edge and evidence clock unchanged. Dates are not advanced for index visits or successful builds.",
+      "primary": [
+        {
+          "source": "metr-action-monitor",
+          "locator": "Incident and synthetic-action evaluations; robustness to evasion",
+          "support": "Pre-action interception shows scoped positive results, but a manually constructed spoof evaded the monitor in 12 of 30 trials."
+        },
+        {
+          "source": "openai-monitorability-metrics",
+          "locator": "Historical results; rejection-gate metrics; causal-recall bounds",
+          "support": "Task mix, output denominators and retry policy change what monitor scores mean. Bounds and historical replay are not deployment harm rates."
+        },
+        {
+          "source": "openai-activation-classifiers",
+          "locator": "Deployment; empirical properties; limitations",
+          "support": "Internal-signal classifiers can interrupt output and hold tools for AI review; tested resistance does not establish universal detection."
+        },
+        {
+          "source": "anthropic-pace-measurements",
+          "locator": "Agent oversight coverage and limitations",
+          "support": "A platform-specific coverage measure is not recall, timely human review or harm prevention."
+        },
+        {
+          "source": "metr-openai-monitoring-audit",
+          "locator": "Findings and October 29 update log",
+          "support": "External audit identifies coverage/escalation gaps; correction to reported remediation status was already incorporated and is retained."
+        },
+        {
+          "source": "openai-eval-production-gap",
+          "locator": "Production comparison and evaluation-objective interventions",
+          "support": "Six-model warning-response comparison and a separate GPT-6.1 Sol cue intervention; direction of transport error need not be optimistic."
+        },
+        {
+          "source": "anthropic-automated-em-search",
+          "locator": "Setup, Results and final reproduction caveat",
+          "support": "Deliberately searched training-data counterexamples, held-out tests and incomplete reproduction of rare behavior; not deployed incidents."
+        }
+      ]
+    },
+    "dependencies": {
+      "mechanism": "Capability, behavior, permission, oversight failure, inability to recover, broad harm and extinction remain separate causal conditions.",
+      "conditions": "Read five changed bilingual explanations, their actual tour stops, the three affected stories, four route previews, six dependent graphs, misuse current summary, R4 safeguard and two linked news examples; inspect M3-H, R0-R4 and R4-C1.",
+      "counterexample": "A safety investigation can find a failure without reducing it; a model proof can verify provenance without safe behavior; patch publication can fail to prevent damage if not installed. Successful containment can still interrupt the misuse route.",
+      "evidence": "Three research cards and four source records are added, with one existing CVD source/card corrected. The October-only date, negative replication result and differing evaluation direction are preserved. Prior history and all 41 edge IDs/topology remain unchanged.",
+      "limits": "The daily review covers the overlapping October 21–November 4 window and existing-source corrections. It does not repeat the Monday weekly sweep or turn newly discovered October material into a date-specific release.",
+      "mitigation": "Keep positive defenses and counterevidence alongside failure modes. No color changes, automatic merger, deployment or unrequested external messages follow from these edits.",
+      "readerContext": "Match Japanese and English claims and uncertainty. Keep the original news examples attached to their own dated studies; no new glossary entry is needed for the plain-language additions.",
+      "whyHere": "Map as-of, history, translations and inventory reflect the scoped update. Dependency checks establish context consistency without silently renewing their clocks.",
+      "primary": [
+        {
+          "source": "openai-eval-production-gap",
+          "locator": "Production comparison and evaluation-objective interventions",
+          "support": "Six-model warning-response comparison and a separate GPT-6.1 Sol cue intervention; direction of transport error need not be optimistic."
+        },
+        {
+          "source": "anthropic-flashprove",
+          "locator": "Prototype scope and limitations; official repository lean/THEOREM.md, What is proved",
+          "support": "Restricted model-output correspondence, cryptographic assumptions and the unproved default implementation; not behavioral safety."
+        },
+        {
+          "source": "anthropic-automated-em-search",
+          "locator": "Setup, Results and final reproduction caveat",
+          "support": "Deliberately searched training-data counterexamples, held-out tests and incomplete reproduction of rare behavior; not deployed incidents."
+        },
+        {
+          "source": "anthropic-cvd-dashboard",
+          "locator": "November 2, 19:30 UTC overview/flowchart; archived October 2 totals",
+          "support": "Corrected cumulative reports, externally untriaged path and released fixes; distinct from installed fixes or harm reduction."
+        },
+        {
+          "source": "anthropic-cvd-methodology",
+          "locator": "Changes to the data, November 2; How we count and disclosure workflow",
+          "support": "Duplicates and withdrawals were removed from the accounting. Earlier archived totals are preserved, not treated as a risk trend."
+        }
+      ]
+    }
+  },
+  "entries": {
+    "source:anthropic-cvd-dashboard": {
+      "hash": "33f1f1b85770085306b665fca77de7b09839288f9a56ba2123e3f95b78186c5e",
+      "assessment": "cvd"
+    },
+    "source:openai-eval-production-gap": {
+      "hash": "f77948c7b4f532edf0404ef42d8cd3da20a88bf411094116ff492768b6c9bb94",
+      "assessment": "gap"
+    },
+    "source:anthropic-flashprove": {
+      "hash": "701e19eb2c6162a6fd70a422ba995284b2e681f3b6d7686e8b372e5dcfd08892",
+      "assessment": "proof"
+    },
+    "source:anthropic-automated-em-search": {
+      "hash": "f6b0b6a82a425d46b9acc530281faf859defb6f22b02459b384fe050bfff0883",
+      "assessment": "em"
+    },
+    "source:anthropic-cvd-methodology": {
+      "hash": "a9c5968d3b844da28e1d84311786eb107e297ee07d1e46ff98d7457ebb4ba7ca",
+      "assessment": "cvd"
+    },
+    "research:vulnerability-disclosure-patching": {
+      "hash": "ab842b7971e6912b8847983a074df18c597841fe9b9447be763d0fe79f6ed01f",
+      "assessment": "cvd"
+    },
+    "research:evaluation-production-warning-gap": {
+      "hash": "e48c2d94f437afda39272d142d4b584c8a790ced16aa24a32337e51a39850366",
+      "assessment": "gap"
+    },
+    "research:committed-model-inference-proof": {
+      "hash": "fc3f80cc160415c629b3ada61c519c1c40090b98b0b47afc96533087f8b7af74",
+      "assessment": "proof"
+    },
+    "research:training-data-monitor-blindspots": {
+      "hash": "0895c889604e8646ec7b306c6f1410cfe7e5db0a380e83144a53fffca6381e8d",
+      "assessment": "em"
+    },
+    "node:C3a": {
+      "hash": "dbc00f9469c7ed1b1fc76f84cbbad606fd7306223dc0f5201b8c2e1a1b32514d",
+      "assessment": "due"
+    },
+    "node:C3a1": {
+      "hash": "7c258f18f94db7a46fa0c164f138edeea5f3fae05393817d71315289fd7ab321",
+      "assessment": "gap"
+    },
+    "node:C3a2": {
+      "hash": "3592fa0567503b96476e93a3a9e3c4a6a97f5c6f82958b85796580db1376d7ed",
+      "assessment": "gap"
+    },
+    "node:M3": {
+      "hash": "f50832875934a77ceceae02d476a31e5786beb2c13fd6a35304410106364e8dc",
+      "assessment": "cvd"
+    },
+    "node:R4": {
+      "hash": "d5dc0d4c50d604936ef08fdf4842d53bf446db99fac146f1da147899af25ca98",
+      "assessment": "em"
+    },
+    "edge:M3-H": {
+      "hash": "b7a37b72a671cf541f35be83928c604c5b2ff6c30db63e0fce53386557ef4fdd",
+      "assessment": "cvd"
+    },
+    "edge:R4-C1": {
+      "hash": "8ad469d52501ca3234236a0728e15f76308cad07f94c4ae95d6b2ecf62a81757",
+      "assessment": "dependencies"
+    },
+    "edge:R0-R4": {
+      "hash": "1f923f0db814094e57baeac9224579d8523facbb8b01ba2628c90825ecc66ba0",
+      "assessment": "dependencies"
+    },
+    "graph:control": {
+      "hash": "4123c643e7e5ddd0b75334cf2a6f64ea8b0da28e2c3f323b64152f2dd2d892ee",
+      "assessment": "dependencies"
+    },
+    "graph:misuse": {
+      "hash": "8a33e307c7541a749095ec277070cbc5fd4917ff663d4af9757288d283b8cb01",
+      "assessment": "dependencies"
+    },
+    "graph:acceleration": {
+      "hash": "67f756dbfe40ff0f7da961743744d1a9f3af5a2f5b8570104cfa2272a4686bd2",
+      "assessment": "dependencies"
+    },
+    "graph:oversight": {
+      "hash": "957eff4d44066b8047b7755600a68e355ba38f7b4863518a44c5048303987c93",
+      "assessment": "due"
+    },
+    "graph:evaluation": {
+      "hash": "e576b0f9650216b86e09d96a45bea0a6e8c3f70413a0f81394653f076436d415",
+      "assessment": "due"
+    },
+    "graph:work": {
+      "hash": "925dc48b70c1777a73f4e5fb6ffd87d45388d0146a6edb357a6d4583f0397b5e",
+      "assessment": "dependencies"
+    },
+    "route:control": {
+      "hash": "7e1a8e9e0bc69f6263a068ae9c71348f2e9d5a759bc0e54df3bcf8373150f896",
+      "assessment": "dependencies"
+    },
+    "route:misuse": {
+      "hash": "95187498ecf0c33208ad06fed63b2076505ebfedb74915fc4d6e9bf66b5f83df",
+      "assessment": "dependencies"
+    },
+    "route:acceleration": {
+      "hash": "f5da8ab6153fe3ca890deccadbf3e3f3698dc2db9f901bf854879cd69c4bef4e",
+      "assessment": "dependencies"
+    },
+    "route:work": {
+      "hash": "4b062cc9ebf1af89d0444d3d5cab711c09c7693e2c43820d92880ed1871d84b0",
+      "assessment": "dependencies"
+    },
+    "current:misuse": {
+      "hash": "6ffb5b8bef5dde54a491f1158a908accb55a1ea7f82aa634970e6b976446afb6",
+      "assessment": "cvd"
+    },
+    "safeguard:R4": {
+      "hash": "6010a98f996b7fe00b0f3ce8671fd62bec15bd879c593b21ab4c1d482342b075",
+      "assessment": "dependencies"
+    },
+    "evidence:C3a": {
+      "hash": "7d7bd41cc6f0331a6e50116908f74a5c0577503b04b0cc34bf62d12b401d9bdd",
+      "assessment": "due"
+    },
+    "evidence:C3a1": {
+      "hash": "defa9af4a5ab80df46303a5d24253e7ad0a513d563f446876ce350f638d7706c",
+      "assessment": "gap"
+    },
+    "evidence:C3a2": {
+      "hash": "7c76e8a9e9398a5c1149e3b11654fab6e6a4dd539410b6c9b2314611e0abaa89",
+      "assessment": "gap"
+    },
+    "evidence:R4": {
+      "hash": "c218fae8808ea9107fc85244e418ec6bb295273d470628562b3a4fc57e4dcbfd",
+      "assessment": "em"
+    },
+    "news:automated-safety": {
+      "hash": "642fb864c586e1e0dd1952894adc91ddc53506cb8cfca087598843d5e366b256",
+      "assessment": "dependencies"
+    },
+    "news:agent-behavior": {
+      "hash": "f57295bd0a73c0032d582baf1146549043144815ccb25857cf30a71dbef9f381",
+      "assessment": "dependencies"
+    },
+    "story:control": {
+      "hash": "9273b26e26e6c3708c6345a7eb94f10ce411330a66a0e31f58e67f6d8e32f4d7",
+      "assessment": "dependencies"
+    },
+    "story:misuse": {
+      "hash": "32be6e8e6c2b5f06ea50257bfa39e647e5e10df12f2004b2b47179c20c57bcfe",
+      "assessment": "dependencies"
+    },
+    "story:acceleration": {
+      "hash": "0608984c6f0689b31afbcda74f20243871c3fd6e425ae4b67f84696f5d4b6628",
+      "assessment": "dependencies"
+    },
+    "metadata:map": {
+      "hash": "63be57a34430f000e65a55cc0d93b921455e74ce3e8bd4c0166d616e989667cb",
+      "assessment": "dependencies"
+    },
+    "history:changes": {
+      "hash": "37765aaa8aee9b35c1ab2bd2b344df97ef4cbf7b01b4ef7914b5873ffa174c31",
+      "assessment": "dependencies"
+    },
+    "inventory:current": {
+      "hash": "39da56651dc1971388689864aae2bf2369fa9f7f6fb0ccf0005021ca41a01a06",
+      "assessment": "dependencies"
+    }
+  }
+}

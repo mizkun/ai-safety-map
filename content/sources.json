@@ -722,10 +722,10 @@
   "anthropic-cvd-dashboard": {
     "url": "https://red.anthropic.com/2026/cvd/",
     "published": null,
-    "date": "2026-10-02",
-    "checked": "2026-10-04",
+    "date": "2026-11-02",
+    "checked": "2026-11-04",
     "title": "Anthropic — 脆弱性の発見・報告・修正を追う公開集計",
-    "period": "2026年10月2日19:47 UTC更新。初期表示の発見期間は2025年11月1日〜2026年10月2日。初回公表日は未確認。",
+    "period": "2026年11月2日19:30 UTC更新。初期表示の発見期間は2025年11月1日〜2026年11月2日。重複と取り下げを除く訂正を含む。初回公表日は未確認。",
     "primary": "Anthropicによる累積集計。一部の候補は外部のセキュリティ企業が確認するが、全件の独立検証や被害減少の比較ではない。"
   },
   "aisi-monitor-stress-tests": {
@@ -1492,5 +1492,41 @@
     "period": "10月28日公表の第1版。文書読み取りサービスの利用は10月3〜21日。資料自体は1793〜2024年の米国財務省刊行物。",
     "primary": "Tambiらによる原評価のプレプリント。著者は試験環境を提供するVeris AIに所属し、読み取りサービスのReductoと共同公開。",
     "checked": "2026-11-03"
+  },
+  "openai-eval-production-gap": {
+    "title": "OpenAI — Eval-production behavior gaps in agent safety and the role of eval-awareness",
+    "url": "https://alignment.openai.com/eval-production-behavior-gap/",
+    "published": "2026-11-03",
+    "date": "2026-11-03",
+    "period": "11月3日公表。試験の実施日と実運用記録の収集期間は未記載。GPT-5.6、6、6.1の6モデルを比較。",
+    "primary": "Joy Hsu、Sam Arnesen（OpenAI）による自社モデルの比較と介入実験。独立した追試ではない。",
+    "checked": "2026-11-04"
+  },
+  "anthropic-flashprove": {
+    "title": "Anthropic — Progress on provable inference for large language models",
+    "url": "https://www.anthropic.com/research/provable-inference",
+    "published": "2026-11-02",
+    "date": "2026-11-02",
+    "period": "11月2日の研究試作の報告。個々の測定日は未記載。4ビット整数計算のLlama 4 Maverick、最大1,024トークンの文脈を使用。",
+    "primary": "Anthropicの開発報告と公式の実装・定理の説明。独立した追試ではない。",
+    "checked": "2026-11-04"
+  },
+  "anthropic-automated-em-search": {
+    "title": "Anthropic — Automated Subtle Emergent Misalignment Research",
+    "url": "https://alignment.anthropic.com/2026/automated-em-search/",
+    "published": "2026-10",
+    "date": "2026-10",
+    "period": "原文の公表日は2026年10月までで、日付は未記載。実験日も未記載。11月4日に未収録の資料として点検したもので、今週の実験とは断定しない。",
+    "primary": "Oscar Balcells Obesoら（Anthropic）の開発者実験。公開中のClaudeの事故や、独立した追試の報告ではない。",
+    "checked": "2026-11-04"
+  },
+  "anthropic-cvd-methodology": {
+    "title": "Anthropic — About the public CVD dashboard",
+    "url": "https://red.anthropic.com/2026/cvd/about/",
+    "published": null,
+    "date": "2026-11-02",
+    "checked": "2026-11-04",
+    "period": "11月2日の集計訂正を含む方法説明。初回公表日と訂正作業の実施期間は未記載。",
+    "primary": "集計を公開するAnthropic自身の方法・変更記録。第三者の再集計ではない。"
   }
 }

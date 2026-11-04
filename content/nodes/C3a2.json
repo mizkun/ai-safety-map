@@ -7,7 +7,8 @@
     "gemini-safety",
     "summer",
     "openai-metagaming-latents",
-    "aisi-incident-alignment-followup"
+    "aisi-incident-alignment-followup",
+    "openai-eval-production-gap"
   ],
   "questions": [],
   "related": [],
@@ -28,7 +29,8 @@
     "gemini-safety",
     "summer",
     "metagaming-latents",
-    "incident-simulation-and-awareness"
+    "incident-simulation-and-awareness",
+    "evaluation-production-warning-gap"
   ],
   "shortTitle": "評価中だけ問題を隠す"
 }

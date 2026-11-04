@@ -260,10 +260,12 @@
         "monitorability-recovery-training",
         "correlated-approval-monitors",
         "human-agent-oversight",
-        "activation-probe-monitoring"
+        "activation-probe-monitoring",
+        "evaluation-production-warning-gap",
+        "training-data-monitor-blindspots"
       ],
       "review": {
-        "checkedAt": "2026-10-28",
+        "checkedAt": "2026-11-04",
         "intervalDays": 7,
         "reason": "既存の根拠がカードの条件をどこまで直接確かめているかを分類しています。根拠の更新時に見直します。"
       }
@@ -278,7 +280,9 @@
         "laser-evaluation-sampling",
         "embedded-evaluator-access",
         "external-risk-report-critique",
-        "carbon-research-evaluation-limits"
+        "carbon-research-evaluation-limits",
+        "evaluation-production-warning-gap",
+        "committed-model-inference-proof"
       ],
       "review": {
         "checkedAt": "2026-10-30",
@@ -293,7 +297,8 @@
         "scheming",
         "summer",
         "metagaming-latents",
-        "incident-simulation-and-awareness"
+        "incident-simulation-and-awareness",
+        "evaluation-production-warning-gap"
       ],
       "review": {
         "checkedAt": "2026-10-24",
@@ -494,7 +499,8 @@
         "alignment-research",
         "control-protocol",
         "transect-review-tooling",
-        "trained-alignment-auditors"
+        "trained-alignment-auditors",
+        "training-data-monitor-blindspots"
       ],
       "review": {
         "checkedAt": "2026-10-30",

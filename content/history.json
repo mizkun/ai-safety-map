@@ -1,5 +1,29 @@
 [
   {
+    "id": "evaluation-gaps-cvd-correction-20261104",
+    "date": "2026-11-04",
+    "nodes": [
+      "C3a",
+      "C3a1",
+      "C3a2",
+      "R4",
+      "M3"
+    ],
+    "sources": [
+      "openai-eval-production-gap",
+      "anthropic-flashprove",
+      "anthropic-automated-em-search",
+      "anthropic-cvd-dashboard",
+      "anthropic-cvd-methodology"
+    ],
+    "kind": "研究・対策の追記と集計訂正",
+    "title": "試験と実運用の差を補足し、脆弱性の集計訂正を反映",
+    "summary": "評価への気づき、学習データの監督、使われたモデルの確認を補足。脆弱性の報告件数は重複などを除いた訂正を反映しました。",
+    "before": "試験中の行動変化と監督の限界を説明し、脆弱性の集計は10月2日の報告6,157件・修正516件を掲載していました。",
+    "after": "試験の方が悪い結果になる比較と、監督を調べる実験・技術を追加。集計は11月2日の報告5,087件・修正629件へ更新し、報告数減少が集計訂正によることを明示しました。",
+    "reason": "11月4日の一次資料点検。危険度の分類と矢印は維持し、期限に達した評価・監督（C3a）だけ確認日を更新しました。"
+  },
+  {
     "id": "monitoring-recovery-20261103",
     "date": "2026-11-03",
     "nodes": [

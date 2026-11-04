@@ -15,7 +15,8 @@
     "anthropic-self-assessment",
     "anthropic-formal-verification",
     "oss-verify-proof-release",
-    "openai-rosalind6"
+    "openai-rosalind6",
+    "anthropic-cvd-methodology"
   ],
   "questions": [],
   "related": [],
