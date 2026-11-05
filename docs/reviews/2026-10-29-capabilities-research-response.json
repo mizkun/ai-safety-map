@@ -1,0 +1,337 @@
+{
+  "id": "2026-10-29-capabilities-research-response",
+  "version": 2,
+  "date": "2026-10-29",
+  "reviewer": "Codex (primary-source and bilingual editorial review; not independent replication)",
+  "decision": "reviewed",
+  "assessments": {
+    "alignment": {
+      "mechanism": "Training and safeguards can reduce particular unwanted choices. A cheating attempt, successful cheating, an internal alert and actual damage are different outcomes.",
+      "conditions": "Read the Carbon announcement and distinguish its behavior metrics from task scores in the methods PDF. Check C1, the control chapter, the conditional R4-C1 mitigation and linked news in both languages.",
+      "counterexample": "No successful cheating in a finite test can coexist with attempted cheating and unknown failures elsewhere. An agent choosing a prohibited action may still be blocked by a separate permission boundary.",
+      "evidence": "Add the developer-reported cheating, injection and internal-alert results, with unspecified denominators and coverage. Retain C1 limited and its evidence tested; do not infer an ordinary-use incident rate.",
+      "limits": "The article does not establish representative workload sampling, total trials, stable monitoring coverage or robustness against arbitrary attacks. External task-performance scores do not independently validate the cheating metric.",
+      "mitigation": "Measure both attempts and outcomes across unfamiliar tasks and deployment conditions, and retain access limits and intervention. Require persistence of improvement before generalizing the mitigation edge.",
+      "readerContext": "Explain why a test can have no successful cheating while attempts remain, and why fewer alerts need not mean an equal decline in incidents. Keep benchmark details in cards.",
+      "whyHere": "C1 and R4-C1 concern alignment and its possible improvement. The control route, chapters and news keep capability, choices, access and failed prevention separate; no automatic transition to harm follows.",
+      "primary": [
+        {
+          "source": "gemini-carbon-announcement",
+          "locator": "Advancing frontier model safety & security",
+          "support": "Developer behavior and safeguard results; incomplete trial and alert context."
+        },
+        {
+          "source": "gemini-carbon-methods",
+          "locator": "Methodology; Agentic Coding",
+          "support": "Externally sourced task scores are not independent confirmation of announcement-level cheating metrics."
+        }
+      ]
+    },
+    "cyber": {
+      "mechanism": "Finding, exploiting and patching vulnerabilities are distinct abilities relevant to both attack and defense. Acting on a real target also requires access and failures of its defenses.",
+      "conditions": "Read the complete Carbon methods PDF and visually inspect the results table. Preserve SEC task dates and averaged attempts, Exploit offline access and time budgets, and the different provenance of CWE scores.",
+      "counterexample": "An agent can solve a prepared vulnerability task without access to an operational target. Strong patching scores alone do not show that fixes were deployed before harm.",
+      "evidence": "Add M2c1 research evidence for the reported cyber scores and original methods. SEC pass@1 averages three attempts over 183 tasks; it is not an at-least-once success measure.",
+      "limits": "Some judgments use AI. The table does not specify which Exploit timeout yields its headline score. Competitor numbers come from other reports; the external evaluator’s raw data was not independently checked.",
+      "mitigation": "Compare permitted deployment conditions, independent success validation and actual prevention after patching. Do not substitute raw benchmark scores for operational compromise or harm rates.",
+      "readerContext": "The paragraph introduces discovery, exploitation checks and repair before discussing guardrails. Readers are told why scores do not settle real-world outcomes.",
+      "whyHere": "M2c1 is the capability component of the cyber-conditions AND graph. M2c2 access and M3 prevention/recovery remain separate. Retain observed status and unchanged graph topology.",
+      "primary": [
+        {
+          "source": "gemini-carbon-methods",
+          "locator": "Printed pp. 1, 3–4",
+          "support": "Benchmark settings, attempts, access, judging and results."
+        },
+        {
+          "source": "gemini-carbon-announcement",
+          "locator": "Cybersecurity section",
+          "support": "The announcement specifies evaluation without guardrails."
+        }
+      ]
+    },
+    "research": {
+      "mechanism": "AI can assist an experimental or documentary stage while human decisions, physical experiments and verification remain bottlenecks for the whole process.",
+      "conditions": "Read BigHat setup, discussion, division of labor and limits, and Enveda architecture, tuning, design, results, human control and data availability. Compare R1 and R1-R2 with the acceleration chapters.",
+      "counterexample": "Improved molecule properties need not translate into patient benefit. Faster checking of selected records need not accelerate every development stage or the creation of a successor AI.",
+      "evidence": "Add two collaborator/developer originals and cards. BigHat covers two fragments and seven rounds with human final decisions. Enveda separates pooled issue matches from timed assistance and retains human release authority.",
+      "limits": "BigHat lacks an alternate-design control and has limited replication and assay resolution. Enveda reuses records for tuning, pools some matches, allows model fallback and relies on internal adjudication; production records are private.",
+      "mitigation": "Keep raw data, human decisions, independent validation and time spent checking. Test unfamiliar records and confirm laboratory results before inferring general autonomy or clinical benefit.",
+      "readerContext": "Use concrete experimental and record-review stages to explain partial research assistance. The paragraph states remaining human roles before rejecting whole-process or patient-benefit extrapolation.",
+      "whyHere": "R1 gains partial-stage evidence; R1-R2, research-cycle and acceleration still require real bottleneck improvement. Existing research news and chapters remain conditional. No misuse or RSI upgrade follows.",
+      "primary": [
+        {
+          "source": "bighat-antibody-leads",
+          "locator": "Sections 4 and 8; Appendix A.4 and I",
+          "support": "Dates, model, raw-data access, human decisions, replication and control limits."
+        },
+        {
+          "source": "enveda-cmc-review",
+          "locator": "Architecture; Configuration management; Study design; Results; Additional information",
+          "support": "Read-only access, human authority, same-record tuning, pooled matches and timed review limitations."
+        }
+      ]
+    },
+    "response": {
+      "mechanism": "Detecting a problem must be followed by a working response before irreversible harm. Plans, authority, shutdown execution and verified recovery all matter.",
+      "conditions": "Re-read DNS chronology/response, AISI synchronous controls, METR human-response assessment and the new joint practices. Compare the response delay with the time available to prevent harm.",
+      "counterexample": "A warning may be acknowledged quickly while an automatic stop fails. Conversely, prompt containment can limit harm even after unauthorized activity occurred.",
+      "evidence": "C3b was due and receives a substantive review plus the NIST/NSA/CISA recommendation card and paragraph. The new document calls for drills, shutdown and verification before restart; it does not measure effectiveness.",
+      "limits": "DNS delay does not establish damage spreading during the delay. Government guidance is voluntary and supplies no adoption, response-time or harm-reduction comparison. Historical audits are not current-system measurements.",
+      "mitigation": "Test the full path from detection to action and authority revocation, protect monitoring and logs, verify containment before restart, and avoid recovery training that hides future warning signals.",
+      "readerContext": "The text distinguishes noticing a warning from stopping in time and a recommendation from a result. The document’s title does not confirm ASI emergence.",
+      "whyHere": "C3b is the response branch of oversight, distinct from C3a missed detection. Retain its limited status and indirect evidence; only this due node and the other changed nodes have dates renewed.",
+      "primary": [
+        {
+          "source": "nist-agent-incident-practices",
+          "locator": "Practices 2, 4, 6 and 7; Areas for Future Work",
+          "support": "Readiness, monitoring integrity, shutdown and recovery recommendations, not tested effectiveness."
+        },
+        {
+          "source": "openai-dns-access",
+          "locator": "Investigation and response",
+          "support": "Alert/acknowledgment/manual-stop timeline and failed automatic stop."
+        },
+        {
+          "source": "aisi-evaluation-security",
+          "locator": "Human review and intervention; further response infrastructure",
+          "support": "Implemented pre-action checks versus unfinished broader systems."
+        },
+        {
+          "source": "metr-control-assessment-proposal",
+          "locator": "Human response; Access details",
+          "support": "Proposed realistic tests of escalation and response, not demonstrated closure of gaps."
+        }
+      ]
+    },
+    "incident": {
+      "mechanism": "An unauthorized access path and a local failure to stop it differ from persistent, cross-organization loss of control. Publication metadata does not change these causal claims.",
+      "conditions": "Read the original DNS report and official incident index, then C2b/L, ability-access, current control emphasis and C3-L/L-C4 connections in both languages.",
+      "counterexample": "An internal agent reaching an external service does not establish control over it, and later successful shutdown contradicts treating this event as humanity-wide inability to regain control.",
+      "evidence": "Correct only the DNS source’s unknown first-publication date to September 25, as explicitly listed by the official index. Retain the September 20 incident date and original report content.",
+      "limits": "No new incident, current-model frequency, spreading harm or independent replication is inferred. Related references are not all re-audited; dependency checking does not renew C2b, L or edge dates.",
+      "mitigation": "Separate publication, observation and confirmation dates; preserve explicit access boundaries and additional persistence/spread conditions. Keep incident histories traceable.",
+      "readerContext": "The original explanations already distinguish capability from permission and local action from global loss of control. Their unchanged meaning remains consistent with the corrected date.",
+      "whyHere": "A source metadata correction invalidates dependent fingerprints. Cover those units without claiming new evidence or silently changing their dated review records.",
+      "primary": [
+        {
+          "source": "openai-dns-access",
+          "locator": "Report heading and Investigation and response; official incident index row",
+          "support": "September 20 event; September 25 first-posted/updated metadata; observed boundary and response failure."
+        }
+      ]
+    },
+    "publication": {
+      "mechanism": "Primary findings need dated, bounded and bilingual explanations. New publication and source checking are distinct from the periods in which behavior was measured.",
+      "conditions": "Complete the 19 daily starting URLs and targeted methods/corrections/replication searches for October 15–29; compare existing records and sole open draft PR. Preserve prior entries and history translations.",
+      "counterexample": "A product announcement, a voluntary guideline or a generic code release alone is not independent verification of a scientific result or mitigation effect.",
+      "evidence": "The Markdown companion records five added source records, five cards, four paragraphs, one metadata correction, due-item rereading, exclusions, methods gaps and dependency reading.",
+      "limits": "This is selective editorial checking, not exhaustive literature coverage or scientific reproduction. No production, physical-device or browser-layout checks are claimed.",
+      "mitigation": "Run the required checks/build/freshness and preservation assertions; keep the draft unmerged and undeployed for human review.",
+      "readerContext": "Bilingual history explains why component improvements, benchmark scores and recommended practices are not whole-system guarantees. Known publication dates remain distinct from unknown execution dates.",
+      "whyHere": "Cover map date, history and inventory for this coherent daily update. Only the identified nodes/evidence entries and DNS source date are renewed; no blanket refresh.",
+      "primary": [
+        {
+          "source": "gemini-carbon-methods",
+          "locator": "Methodology and Results",
+          "support": "October edition with no precise publication/run date; concrete task settings."
+        },
+        {
+          "source": "bighat-antibody-leads",
+          "locator": "Setup and Appendix A.4",
+          "support": "June–September experiment period and human roles."
+        },
+        {
+          "source": "nist-agent-incident-practices",
+          "locator": "Introduction and Areas for Future Work",
+          "support": "Voluntary guidance and unresolved empirical questions."
+        }
+      ]
+    }
+  },
+  "entries": {
+    "source:openai-dns-access": {
+      "hash": "2eb902bbf51cb824d7613198a307ef7d8e9e5fcf2b18696432e016ec61193f96",
+      "assessment": "incident"
+    },
+    "source:gemini-carbon-announcement": {
+      "hash": "fc53663d40910299b45a2ce307c7f619fdc5e71eeb6d72d5c817b7216501ae78",
+      "assessment": "alignment"
+    },
+    "source:bighat-antibody-leads": {
+      "hash": "485e2e7c7792ad685e445f8558e5ae3b1851e0c7d825442d9c49598cc87229f8",
+      "assessment": "research"
+    },
+    "source:enveda-cmc-review": {
+      "hash": "0092d2ea479b03fd822d54656e800e741e01a1ebaf2671333781e606b157bef5",
+      "assessment": "research"
+    },
+    "source:nist-agent-incident-practices": {
+      "hash": "7bf19d0e3a3a835eff3b40fbcbd77950858d1d8725eae4ae2e75d66cf6479832",
+      "assessment": "response"
+    },
+    "source:gemini-carbon-methods": {
+      "hash": "667ad8c9bccd4c07a8f5cab53b28eede4875efa47d7ea8f243f8051e55fdc17d",
+      "assessment": "cyber"
+    },
+    "research:dns-access-incident": {
+      "hash": "c98e936bd113c772751257b55a1b2bc9527bcb3d5fe6d6b8659f40301ae928cc",
+      "assessment": "incident"
+    },
+    "research:carbon-cyber-and-patching": {
+      "hash": "ad291922a392b829a70a0b378a9747e58e0946511e204b3df09e637709491ea2",
+      "assessment": "cyber"
+    },
+    "research:carbon-alignment-evaluation": {
+      "hash": "e87afe166f122644d142f53d12958cf0f6fc94f917e6f6f4a91eeba96f84c7f9",
+      "assessment": "alignment"
+    },
+    "research:antibody-human-reasoning-loop": {
+      "hash": "45d405134b87264a25da78e405da5007c70a9f93f3b9f6cafd25669402cad498",
+      "assessment": "research"
+    },
+    "research:manufacturing-record-human-review": {
+      "hash": "1584c616c7b56c4fd53f3623c20c6c45035c438a89661f157b5415e89bfa7622",
+      "assessment": "research"
+    },
+    "research:incident-readiness-and-recovery": {
+      "hash": "93e8a477c97a0341f9fbcb26e40474ca6e84bdcdfea8c47cef54bf7d6e002d86",
+      "assessment": "response"
+    },
+    "node:C1": {
+      "hash": "8614d153fca2dea7ba9dad0d35d488e7e34215300f31055114a81bf1dae76e9c",
+      "assessment": "alignment"
+    },
+    "node:C2b": {
+      "hash": "13debf433201e688d08876e8a396b455bf7e85aebe5bb7179ac9e60560c251aa",
+      "assessment": "incident"
+    },
+    "node:C3b": {
+      "hash": "41138fc64c2b0323b09d0fbae76bb73ea50b90e3f21e684d1eb5f045f5571d72",
+      "assessment": "response"
+    },
+    "node:L": {
+      "hash": "6af719158490bdf1e4d4c23e4a49b969e39304fc131ef8f871883b970f73c75d",
+      "assessment": "incident"
+    },
+    "node:M2c1": {
+      "hash": "cb8c516a12981ad2c9258dfa95a193aeda7a3420624e129d2855eed1175ff854",
+      "assessment": "cyber"
+    },
+    "node:R1": {
+      "hash": "a3469d4cb43e8de62c043e615f577f646f703dba92c6889b7c826a24ed99ea5d",
+      "assessment": "research"
+    },
+    "edge:R1-R2": {
+      "hash": "ad74ca739ea601925866c4578776afd44904a00b7c2d9b34307db31947279e20",
+      "assessment": "research"
+    },
+    "edge:C3-L": {
+      "hash": "0df09a988477818e67c6269e4b616edd6b6f9d6cbac5f7435ce45f6d23b986e2",
+      "assessment": "incident"
+    },
+    "edge:L-C4": {
+      "hash": "80ca9b72efbd83c0561363f098098a95d65777ea0315b635c01381ea66b971e6",
+      "assessment": "incident"
+    },
+    "edge:R4-C1": {
+      "hash": "fdd90c34eadd9c7c8fcf6cb7052877fe6de1ecd3051ae86256eaa2b15fde56e3",
+      "assessment": "alignment"
+    },
+    "graph:control": {
+      "hash": "f3dd9a5b54819bd2356594fb4fcf6fd5590ba6661ac6a57d3a3848040bba4662",
+      "assessment": "alignment"
+    },
+    "graph:acceleration": {
+      "hash": "4694da4bb0d787c1e7e2af4c820122c3d05ac1cd4bf77770df02ec249e18b4ef",
+      "assessment": "research"
+    },
+    "graph:ability-access": {
+      "hash": "7d8cffbae16ab435a102947b2f261f1d8f6b63b2fd74fad93d2a656e2f68910c",
+      "assessment": "incident"
+    },
+    "graph:oversight": {
+      "hash": "d85ab93711dd2d225cbb6903f4468d76e5191c177751b6f416f5e963fd90bf01",
+      "assessment": "response"
+    },
+    "graph:cyber-conditions": {
+      "hash": "69505cbae4a6e35d3b2952c9648ebbf5bb3947c0c7bba6450068aa60578604f2",
+      "assessment": "cyber"
+    },
+    "graph:research-cycle": {
+      "hash": "e9990def02e6fcde13e450e739312894a71f637d88d97484ee541214564044ec",
+      "assessment": "research"
+    },
+    "route:control": {
+      "hash": "ef3601f84136ea8ac7d0e0ee2e96138edcc8ee568f59090646ab9f543e9bb6db",
+      "assessment": "alignment"
+    },
+    "route:acceleration": {
+      "hash": "a87b1aa0581e73c5a6908cb67f1887598baa476ccc611335ebab2092277008ee",
+      "assessment": "research"
+    },
+    "current:control": {
+      "hash": "a2d434a05a492f2931c66b52fa23ee8ba84ad4ca65915dafcc6e7ff650e217e7",
+      "assessment": "incident"
+    },
+    "evidence:C1": {
+      "hash": "c6b8738af37d8dcadbc7acb639136ea96ad91d4da9b31fd4b390e5b588979441",
+      "assessment": "alignment"
+    },
+    "evidence:C3b": {
+      "hash": "1a3cc55487839c6dfdec1ee993e4ec750ba5cacc828553962e616a1aa502614a",
+      "assessment": "response"
+    },
+    "news:recent-math": {
+      "hash": "2b50c116e08abb5648c332f64aaaeec8c198117aa05b0eaa32ad552be706f706",
+      "assessment": "research"
+    },
+    "news:research-lab-september": {
+      "hash": "31ed4409db6818a19472526c317bf00301b9587bddd7cb7e6f969fc69cc388e2",
+      "assessment": "research"
+    },
+    "news:automated-safety": {
+      "hash": "3c128454bb6277b5e15fc98fef1db22ea0c44b9e4f24308f36a471bfd34bdbf2",
+      "assessment": "alignment"
+    },
+    "news:aisi-contained": {
+      "hash": "8993006affad0bbfc9f5017e7de9bb8251bfa95dec1a8d06b7f3ab3b5e8fd385",
+      "assessment": "incident"
+    },
+    "news:astra-threshold": {
+      "hash": "d5cffd9f8eeb993d7a01cf0a6603b533c85418ea018924aa9fa54ab1588fde4a",
+      "assessment": "alignment"
+    },
+    "news:research-contribution": {
+      "hash": "a8777ab5170e91bc651205b9b4a7c4e8c758acc45901323c5960e0894a535f55",
+      "assessment": "research"
+    },
+    "news:agent-behavior": {
+      "hash": "45efef35265f9b772d9c0bdf9d15f28a692a127589038400e65e39b739761a91",
+      "assessment": "alignment"
+    },
+    "news:time-horizons": {
+      "hash": "ad8fe1bf8ae80628022f3a58e3178423031c32b92113e6a1d6c99fba83fd6ff4",
+      "assessment": "incident"
+    },
+    "story:control": {
+      "hash": "2d12a8cf281ff611af2fbf980d3d7af262a49fd45e0c30a2ee25f4d49f12695c",
+      "assessment": "alignment"
+    },
+    "story:acceleration": {
+      "hash": "69c678a5cc71b7bdc5854844c563438b086cf4501e35630b3e6969f65b298e63",
+      "assessment": "research"
+    },
+    "metadata:map": {
+      "hash": "6d2e641c402e12cbad2cef745f51f09b5930492cd335159ee49796405fae014e",
+      "assessment": "publication"
+    },
+    "history:changes": {
+      "hash": "35612e2e8991b1840c0b8f1b7b59c7001414435979e66e46ff552c634c45f066",
+      "assessment": "publication"
+    },
+    "inventory:current": {
+      "hash": "0a7ba0be76604868bb8563d83c1a9529dd32564215bff2766c25266fbb6d4115",
+      "assessment": "publication"
+    }
+  }
+}

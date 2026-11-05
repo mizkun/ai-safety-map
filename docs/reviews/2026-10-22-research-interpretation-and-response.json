@@ -1,0 +1,165 @@
+{
+  "id": "2026-10-22-research-interpretation-and-response",
+  "version": 2,
+  "date": "2026-10-22",
+  "reviewer": "Codex (primary-source and bilingual editorial review; not independent expert approval)",
+  "decision": "reviewed",
+  "assessments": {
+    "interpretation": {
+      "mechanism": "Parallel interpretation can organize existing experimental data and literature into research candidates. Expert preference for selected reports does not establish the proposed biological mechanisms.",
+      "conditions": "Read the original v1 main-text PDF/XML: distributed-agent results, literature comparison, blinded expert review, Figures 1/2/4 and Discussion. GPT-Rosalind-5.5 used human-supplied data, shared prompts, coding tools and literature access; the original manuscript was withheld.",
+      "counterexample": "More detailed reports can leave experimental work and independent validation unchanged. The comparison is with selected single-agent reports, not a measured human-only research campaign.",
+      "evidence": "The 55 testable findings are a subset of 71 source-study findings: 48 matched/refined plus four partially recovered. Thirty experts assessed 60 selected reports. The 45/60 preference result is 20 report pairs with three judgments each, not 60 independent discoveries.",
+      "limits": "Preprint v1 was posted October 16; the developer article appeared October 21. Run dates are unstated in the main text. Human months-to-year effort is illustrative, and fixed model/prompt/tools do not establish matched total compute. Supplementary methods could not be retrieved; no supplemental-only claim or independent replication is adopted.",
+      "mitigation": "Retain human review, independent datasets and prospective experiments before accepting mechanisms or downstream benefits. Count verification time, cost and unsuccessful candidates when assessing productivity.",
+      "readerContext": "The bilingual paragraph introduces the existing mouse-brain data and distinguishes report quality from experimental confirmation. It explains what the 32-minute figure covers before readers can mistake it for total research time.",
+      "whyHere": "Add bounded research assistance at R1 while preserving observed status. Do not upgrade R2, R3, R4, ASI or biological-misuse nodes from this result; neither recursive improvement nor broad dangerous capability was tested.",
+      "primary": [
+        {
+          "source": "distributed-biology-study",
+          "locator": "Main-text Results and Figures 1, 2, 4; Discussion; publisher version metadata",
+          "support": "Existing-data interpretation, report comparisons, exact denominators and remaining validation limits."
+        }
+      ]
+    },
+    "response": {
+      "mechanism": "Detection can fail to prevent harm when escalation or response is delayed. A proposed audit helps specify what to test without establishing a measured protection rate.",
+      "conditions": "Read METR’s original proposal, especially the response section and access qualifications. It proposes authorized assessment of operational records and response, without a new model trial or measured stopping-time distribution.",
+      "counterexample": "A warning may lead to timely containment, while permission limits or blocking may prevent an action before human review. A vulnerability in one layer does not establish irreversible harm.",
+      "evidence": "Add the original methodological proposal as argument at C3b. Preserve limited status and the indirect evidence summary based on previously recorded incidents; the proposal is not an additional observed failure.",
+      "limits": "A procedure is not a deployed mitigation or independent validation of a particular developer. Records, access and evaluator independence constrain the conclusion. Do not treat suggested sample sizes as completed experiments.",
+      "mitigation": "Use response evidence to test the existing countermeasure claims. This review adds no operational attack procedure and does not claim that detection alone proves prevention.",
+      "readerContext": "Both languages explain why an alert is insufficient and explicitly call the addition a proposal, located under countermeasures rather than presenting it as a new incident.",
+      "whyHere": "C3b separates late response from C3a missed detection. Keep the oversight OR branches, local failure L and persistent loss C4 distinct; retain the existing evidence date and source attribution.",
+      "primary": [
+        {
+          "source": "metr-control-assessment-proposal",
+          "locator": "Response, including human evasion; Access details; footnotes 3, 4, 7",
+          "support": "Proposed evaluation of response, access limits and independence qualifications."
+        }
+      ]
+    },
+    "dependencies": {
+      "mechanism": "R1-R2 requires improvements to a real development bottleneck without offsetting verification delays. The oversight graph distinguishes missed detection from late response, not successive compulsory steps.",
+      "conditions": "Read R1-R2, the acceleration/research-cycle/oversight graphs, acceleration route/story, C3b evidence, three research news contexts and C3 parent context in both languages. New source results are checked against these unchanged conditions.",
+      "counterexample": "Biology-report preference can improve while total AI-development time remains unchanged. A late alert can still be followed by recovery, and prevention can come from another layer.",
+      "evidence": "The new study and proposal support their local additions, not the entire connection or all downstream conditions. News examples retain their original sources and existing limitations.",
+      "limits": "Dependency reading is not a renewed scientific audit of every older reference. Preserve original edge/evidence dates, classifications, topology, UI and unrelated content.",
+      "mitigation": "Keep whole-process measurement, verification and prevention conditions explicit. Do not infer acceleration or catastrophe from a local metric or evaluation proposal.",
+      "readerContext": "Tour text introduces research tasks and the role of verification before feedback and practical consequences. Both language editions retain the difference between assistance, full development and recursive improvement.",
+      "whyHere": "The added node references change dependency fingerprints. Recheck their meaning while leaving unsupported downstream claims and dates unchanged.",
+      "primary": [
+        {
+          "source": "distributed-biology-study",
+          "locator": "Discussion and Figure 2",
+          "support": "Further independent and prospective evaluation is needed; elapsed analysis time is not whole research time."
+        },
+        {
+          "source": "metr-control-assessment-proposal",
+          "locator": "Response section",
+          "support": "A methodological proposal does not quantify downstream prevention."
+        }
+      ]
+    },
+    "publication": {
+      "mechanism": "Dated provenance and a change history distinguish new observations from proposals and from the date of editorial review.",
+      "conditions": "Inspect all 19 daily starting URLs for October 8–22; deduplicate against draft head da919633. Confirm publisher version metadata and original reports rather than adopting search snippets.",
+      "counterexample": "An index visit, appointment announcement or unchanged version listing does not justify renewing a scientific confirmation date.",
+      "evidence": "Add two sources and two research cards. Advance only the substantively changed R1/C3b node dates, new source dates and map asOf; preserve all 41 previous history entries with translations by ID.",
+      "limits": "No independent replication was verified in the bounded search. Supplementary methods retrieval failed and prior weekly IMF retrieval gaps remain. This record does not claim exhaustive literature coverage or production publication.",
+      "mitigation": "Keep omissions and source limits in the accompanying record, validate dependency and bilingual gates, and retain the work as a draft for human review.",
+      "readerContext": "The new history entry states what was absent, what changed and why, in both languages. Source publication and check dates remain separate.",
+      "whyHere": "Cover inventory, history and map metadata without blanket date renewal. Continue the existing proposal; no merge or deployment is authorized by this heartbeat.",
+      "primary": [
+        {
+          "source": "distributed-biology-study",
+          "locator": "Publisher v1 metadata and main text",
+          "support": "October 16 preprint and bounded empirical scope."
+        },
+        {
+          "source": "metr-control-assessment-proposal",
+          "locator": "Dated original proposal",
+          "support": "October 14 methodological proposal, not new performance data."
+        }
+      ]
+    }
+  },
+  "entries": {
+    "source:distributed-biology-study": {
+      "hash": "5dde7e6f05bc9e5353d806e4d4b7015a0066cb8859350eb9f99142c40417a91f",
+      "assessment": "interpretation"
+    },
+    "source:metr-control-assessment-proposal": {
+      "hash": "1a83dd913c831c41174f09f478f99908255d793890601ae670a63717c80e09f0",
+      "assessment": "response"
+    },
+    "research:distributed-biology-interpretation": {
+      "hash": "de2960eb5de55e84971e083efffeac77e84311ea5f2317b8656977da4788afca",
+      "assessment": "interpretation"
+    },
+    "research:end-to-end-control-assessment": {
+      "hash": "40c1a3ce0411957eba31ac18c5594e775ff560674e186c5dc206efd5233051e7",
+      "assessment": "response"
+    },
+    "node:C3b": {
+      "hash": "47f35f96539f30a80793ff156343c7d43e81d859cb789c13c82cd7b76c08960d",
+      "assessment": "response"
+    },
+    "node:R1": {
+      "hash": "4b80b1ea0e577b9d7b604f9086cd88304cea366c2374350b2fed9b956456c734",
+      "assessment": "interpretation"
+    },
+    "edge:R1-R2": {
+      "hash": "07661cdbce1af3bf0a37311cf2d36719e704095cd6ec3b3eec50b6ee4c09512b",
+      "assessment": "dependencies"
+    },
+    "graph:acceleration": {
+      "hash": "6368e9d87846a03774025a27f62a6c38a77a2e710acb1725bae961e2c4cdaad4",
+      "assessment": "dependencies"
+    },
+    "graph:oversight": {
+      "hash": "39d8d0da2dff108d7fa28b447d82458ded87d209477954f01e2e9e3c48d9d678",
+      "assessment": "dependencies"
+    },
+    "graph:research-cycle": {
+      "hash": "cca6a55f7b4eb18c6fac2d450250db7dd837024273ea871c5d90c0b9b00cde86",
+      "assessment": "dependencies"
+    },
+    "route:acceleration": {
+      "hash": "007c9f9a310ff620cc0c20bd832607df7ce4c68ab3c4a902b1824c736e296aae",
+      "assessment": "dependencies"
+    },
+    "evidence:C3b": {
+      "hash": "25662a2cb313c6d0cc33d34e8e88706b9359d0c82af0d454c693b0c7f97d1e19",
+      "assessment": "response"
+    },
+    "news:recent-math": {
+      "hash": "5cb9bb5c2908c7b000ff0f527b989b653bddfa6300181cdd8683ab73cf2e530e",
+      "assessment": "dependencies"
+    },
+    "news:research-lab-september": {
+      "hash": "639a672f64fd6a899b066fc385fe13c71f8bae1ff9fd2cc2613b8fb5451fb561",
+      "assessment": "dependencies"
+    },
+    "news:research-contribution": {
+      "hash": "8b6528284f764e435bc30e452550ecf8d27c374393b6a8fa3355e6e29ec671cf",
+      "assessment": "dependencies"
+    },
+    "story:acceleration": {
+      "hash": "49c4b39f0c16955663c516636357fbaadd3d485d025e4dd78f7cf303f2b81e16",
+      "assessment": "dependencies"
+    },
+    "metadata:map": {
+      "hash": "024ee63a8f44e9503c6b2d2186d550fcb0e4e045adc9b0ee7b9b226e85570478",
+      "assessment": "publication"
+    },
+    "history:changes": {
+      "hash": "ad5ef500803547dffcbbbd2036328ff9fefd98be05eb3ffa8d9a53942668f9d2",
+      "assessment": "publication"
+    },
+    "inventory:current": {
+      "hash": "ac95de58ea0a899bc42a05a36da32f293c3f9145d02d94e68bfa615b58810017",
+      "assessment": "publication"
+    }
+  }
+}

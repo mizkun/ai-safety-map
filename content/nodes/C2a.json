@@ -5,7 +5,12 @@
   "sources": [
     "horizon",
     "formalization",
-    "openai-rd"
+    "openai-rd",
+    "openai-ironclad",
+    "openai-low-resource-code",
+    "reterm-recovery-training",
+    "reinbench-recovery",
+    "treasuryqa-bench"
   ],
   "questions": [],
   "related": [],
@@ -14,7 +19,7 @@
     "benchmark"
   ],
   "review": {
-    "checkedAt": "2026-09-24",
+    "checkedAt": "2026-11-03",
     "intervalDays": 7,
     "reason": "能力・行動・対策の評価は短期間で変わり得るため。"
   },
@@ -25,7 +30,12 @@
   "research": [
     "horizon",
     "formalization",
-    "rd-use"
+    "rd-use",
+    "ironclad-workflow-evaluation",
+    "multilang-code-completion",
+    "terminal-error-recovery",
+    "local-error-recovery",
+    "scanned-record-workflow"
   ],
   "shortTitle": "一連の作業を完遂"
 }

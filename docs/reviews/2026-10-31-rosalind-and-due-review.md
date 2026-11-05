@@ -1,0 +1,67 @@
+# October 31, 2026 — life-sciences evaluation and due explanations
+
+## Scope and decision
+
+Daily review for **October 17–31 JST**. Saturday: no weekly-wide survey is claimed. Continue sole open draft [PR #11](https://github.com/mizkun/ai-safety-map/pull/11), starting at `a2351a5a786f0d66b1f404cc27598057cfb85282`. Today's fetch found `origin/main` at `d6049fdbd6568ec605c94bb6d849ea5b03d13634`, already an ancestor. The original checkout was clean at `0ec102b1788c10763bd864cd24832f678b67f928`; use the existing isolated worktree.
+
+Add **one source, two research cards and two bilingual paragraphs**, at **M2b1** and **M3**. Keep classifications and topology unchanged. The initially due **26 nodes and seven edges** were substantively reread and retain their text; renew only their dates, the two changed node dates and M2b1's evidence-review date. Do not blanket-refresh old source, current-route or evidence-summary dates.
+
+## New original and editorial decision
+
+[OpenAI's GPT-Rosalind-6 addendum](https://deploymentsafety.openai.com/gpt-rosalind-6), published **October 30**; experiment calendar dates unspecified. Read the complete [14-page PDF](https://deploymentsafety.openai.com/gpt-rosalind-6/gpt-rosalind-6.pdf) and visually inspect the tables on printed pp. 11–12. The model shares Astra weights without additional training. Other-domain classifications are inherited assessments, not new independent tests.
+
+- **M2b1 / `rosalind6-capability-boundaries`:** distinguish knowledge/design proxies and the developer's High/Critical categories from physical execution and harm. Refusal-adjusted scores are not deployed success rates. The indicative criteria do not prove safety.
+- **M3 / `rosalind6-access-and-monitoring`:** distinguish approved access, least privilege and qualified human review from demonstrated monitoring effectiveness. The shared process was tested on the predecessor; retesting on version 6 is ongoing after deployment and results are not public.
+
+Before: the new version and that retest status were absent. After: add both with their limits. Preserve M2b1's limited/tested classification, M3's hypothesis status, and **M3-H** as a joint conditional connection. The `bio-conditions` AND group still requires physical prerequisites in addition to information assistance. No glossary change is needed because the new paragraph explains the categories inline.
+
+Do not promote separate tool-behavior percentages to a new ordinary-use incident rate: versions, inference settings, grading and sample coverage differ. Nor is the cyber regression test a deployment test: real-time blocking was disabled and some attempts were excluded. Those results do not require another C2b paragraph or duplicate Astra capability evidence.
+
+## Substantive rereview of due items
+
+Read all six sections of each due node in Japanese and English, the seven due connections, and the dependencies listed below. The following is the scope of today's source rereading, not a claim to have replicated the studies or reread every historical reference.
+
+| Nodes / connections renewed | Primary portions rechecked | Reason to retain the explanation |
+| --- | --- | --- |
+| **C2, C3, C3a2, C4, L**; **ASI-C3, C3-L, L-C4** | [AISI October 23 author blog](https://www.aisi.gov.uk/blog/investigating-alignment-failures-in-aisis-incident): findings, awareness and limits; [Anthropic assessment](https://www.anthropic.com/research/alignment-assessment-ukaisi): methods, newer models and discussion; [OpenAI containment](https://openai.com/index/securing-our-frontier-model-training-environment/): layers, directed testing and restart; METR incident summary and frontier-report executive assessment/process; Amodei pacing proposal | Replay studies revisit the same July event and simulate tool responses. Human refusal, revocable access and containment are counterexamples to inevitable persistent loss. Test awareness alone is not concealment. Directed tests and changing configurations do not measure general incident rates. |
+| **NOW, R0, R5**; **R1-R2, R0-ASI, R0-C2a, R0-W1** | [Chinchilla abstract](https://arxiv.org/abs/2203.15556); [METR horizons methods/FAQ](https://metr.org/time-horizons/) and [discovery note](https://metr.org/notes/2026-08-14-llm-contribution-to-discoveries/); [OpenAI R&D metrics/intervention](https://openai.com/index/research-acceleration-view-inside-openai/); [Anthropic RSI analysis](https://www.anthropic.com/institute/recursive-self-improvement) | Ordinary improvements need no recursive loop. Human task-time is not AI runtime; research-task successes are not complete-process acceleration. Human prioritization and validation remain relevant; ASI and safety benefits remain conditional branches. |
+| **M1, M2, M2b, M2c, M2c2** | [September threat report](https://www.anthropic.com/threat-intelligence-report-september-2026): period, cyber human roles and biological framing; [GLM-5.3 methods/safeguards](https://www.anthropic.com/research/glm-5-3-and-the-spread-of-advanced-cyber-capabilities); [physical-capability evaluation](https://www.anthropic.com/research/intelligence-targeting-conventional-weapons-capabilities): simulated tasks and limits | Selected historical cases, information assistance, task engagement, task success and actual harmful execution are distinct. Malicious intent, access and failed defenses remain separate conditions. No operational attack or physical-harm instructions are copied. |
+| **F1, F2, F2a, F2b, F3** | [BoE/FCA survey](https://www.bankofengland.co.uk/report/2024/artificial-intelligence-in-uk-financial-services-2024): original summary and denominators; [FSB 2024](https://www.fsb.org/2024/11/the-financial-stability-implications-of-artificial-intelligence/): original summary; [FSB October 15 final practices](https://www.fsb.org/2026/10/sound-practices-for-responsible-adoption-of-artificial-intelligence-ai-final-report/): governance, lifecycle and third parties; [FSI paper](https://www.bis.org/publications/fsi-paper-28-when-machines-attack-frontier-ai-cyber-threats-and-policy-responses-financial-sector): original abstract only | Firm use does not show broad autonomous market control. Common dependencies and offensive threats coexist with defensive possibilities. Published practices do not establish implementation or loss reduction; individual conditions do not establish a systemic crisis. |
+| **I1, I1a, I1b, I2, P1** | Vend tools and human purchasing approval; [Project Swap](https://www.anthropic.com/research/project-swap): methods, limitations and delivery discussion; [Visa](https://www.visa.com/en-us/thought-leadership/innovation/agentic-payments-from-the-ground-up): article and data footnotes; [IMF original](https://www.imf.org/en/publications/wp/issues/2025/04/04/ai-adoption-and-inequality-565729): abstract and PDF introduction | Human operations, incomplete delivery and total costs qualify sales and contracts. Payment volume is not profit. Ownership, prices and allocation determine who benefits; the economic model is conditional rather than an observed future. |
+| **W1, W3, W6** | [Employment at Anthropic](https://www.anthropic.com/research/employment-at-anthropic): methods, nonrandom adoption and human bottlenecks; [expectations study](https://www.anthropic.com/research/ai-expectations-gap): methods/footnotes; [Census original abstract](https://www.census.gov/library/working-papers/2026/adrm/CES-WP-26-25.html); [ILO exposure method](https://www.ilo.org/publications/generative-ai-and-jobs-refined-global-index-occupational-exposure); [robot-work study](https://www.anthropic.com/research/what-work-can-robots-do): methods/scope | Output, adoption, exposure, expectations and displacement are different measures. Developer employees and modeled robotic feasibility do not represent general realized adoption. Household access cannot be inferred from aggregate productivity. |
+
+The METR frontier report covers **February 16–March 16** rather than the current frontier. OpenAI's containment account was published after the **October 1** internal restart. Anthropic's employment comparisons are not randomized; its expectations surveys differ in sampling and weighting. Census covers **November 2025–January 2026**, despite a later page update. Visa's data extend through **April 21**. Retain these historical boundaries.
+
+The AISI technical PDF remains supported by the October 24 review; today's reread used its author blog and Anthropic's original follow-up, not another full technical-PDF audit. The full FSI paper was not reread. The previously inaccessible IMF PDF was retrievable through the original page today; read its abstract and introduction (pp. 1–4), but do not claim a full-model audit or replication. This narrows the retrieval gap without upgrading the economic evidence class. Other earlier biology-supplement and PatchPlanet-detail gaps remain unresolved.
+
+## Daily coverage, corrections and non-adoptions
+
+Opened all **19 daily starting URLs** in the watchlist: METR (4), AISI (1), OpenAI (5), Anthropic (7), DeepMind (2). Compared against the draft's **158 prior sources, 161 prior cards**, existing review notes and the sole open PR. Targeted searches included corrections, independent checks, defenses and counterarguments, as well as capability/incident announcements. Search snippets and secondary reports were leads only.
+
+- AISI October 23/26, METR October 20/22, Anthropic October 26/27 and OpenAI's October 29 monitoring material were already covered. Do not duplicate the same incident or paper under a new publication summary.
+- The Carbon external-evaluation correction, including corrected reruns and the unmatched Argon comparison, is already in the October 30 draft. Luna's update and its differing evaluation settings are also already covered.
+- OpenAI's incident index remains at 20 reports and three notices, with its latest incident publication October 20. Anthropic's CVD page still reports October 2 at 19:47 UTC. Reopening either does not renew the underlying source confirmation dates.
+- The October 29 Model Spec and Anthropic science-programme announcements describe behavior aims or programmes, not measured defense effectiveness or research outcomes. Previously screened Genie material adds no verified operational-reliability change here.
+- FSB's final October practices are already incorporated. Broader financial-market or AI-valuation discussion is not evidence that AI took control of transactions or caused the conditional financial pathway in this map.
+- No additional primary correction or independent reproduction changing these explanations was verified in this bounded search. This is not proof that none exists. No weekly backfill, model inference, scientific reproduction, or execution of instructions embedded in sources, Issues or PRs was performed.
+
+## Dependency and bilingual review
+
+Generate the actual Japanese and English reading exports, each with **119 tour stops, 76 nodes and 41 connections**. Read the two additions and cards in both languages, all due explanations, all **21 dependent edges**, **15 graph definitions**, **five route summaries and full stories**, **six news entries**, **four current-route summaries** and **13 evidence summaries**. The companion record covers **103 changed/dependent units across nine assessments**.
+
+The new source changes neither the conditions on **M3-H** nor the distinction between **M2b1** information assistance and **M2b2** physical prerequisites. The retained **C4-H** bridge still requires widespread damage to essential functions. Work/income paths retain demand, authorization, fulfillment and distribution; finance keeps correlated decisions and failed safeguards separate. Current colors continue to classify evidence, not probability or progress toward catastrophe.
+
+All prior history and translations are preserved by stable ID. Only M2b1/M3 receive new prose; the other renewed nodes and seven due edges retain their wording. Source dates for unchanged originals, older current-route summaries and unrelated evidence dates remain untouched. No UI, browser layout, physical-device or production validation is claimed.
+
+## Validation
+
+- `npm run check`: passed, including **81 tests**, content and bilingual gates, dependent-review coverage, TypeScript and lint.
+- `npm run build`: passed, including local prerendering and **11 entry-point assets**.
+- `npm run review:reading`: both editions exported **119 tour stops, 76 nodes and 41 connections** each; the substantive reading scope is above.
+- `npm run check:freshness -- --date=2026-10-31`: **zero due items and zero within two days** on the draft. This is date arithmetic, not scientific validation or the freshness of undeployed main.
+- `git diff --check`: passed.
+- Preservation assertions passed for **158 prior sources, 161 prior cards, 49 history entries, 294 history translations and 3,406 unaffected translation strings**. Both new paragraphs are strictly additive. All classifications, topology and unlisted dates remain unchanged.
+- The draft contains **159 sources and 163 cards**. Relative to origin/main, it adds **95 sources and 95 cards** and touches **32 bilingual explanations**.
+- A final fetch confirmed unchanged origin/main and the existing PR head. The original checkout remains clean and unchanged. PR CI is recorded against the pushed commit separately.
+
+Leave this update in draft PR #11 for human review. No automatic merge or deployment.
