@@ -1,5 +1,25 @@
 [
   {
+    "id": "validated-work-human-review-20261105",
+    "date": "2026-11-05",
+    "nodes": [
+      "C1",
+      "M2c1",
+      "M3",
+      "R1"
+    ],
+    "sources": [
+      "openai-linux-kernel-pipeline",
+      "anthropic-vault-research"
+    ],
+    "kind": "能力と防御の追記・再点検",
+    "title": "欠陥の発見から修正へ進む工程と、人が担う研究の判断",
+    "summary": "Linuxの欠陥調査と、生物研究でのAI支援を追記。成果の確認、人の判断、修正を届ける工程を区別しました。",
+    "before": "サイバー課題での発見・利用・修正の成績と、研究の一部をAIが手伝う例を説明していました。",
+    "after": "新しい調査の実行条件を補足。成功した方法の確認、修正案の検証と適用、人が実験と解析を導く役割を明記しました。",
+    "reason": "11月5日の一次資料点検。期限に達したC1・M2c1だけ確認日を更新し、分類と図の接続は維持しました。"
+  },
+  {
     "id": "evaluation-gaps-cvd-correction-20261104",
     "date": "2026-11-04",
     "nodes": [

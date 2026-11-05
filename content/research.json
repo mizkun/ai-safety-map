@@ -2074,5 +2074,29 @@
     "method": "人が定めた採点と、学習例を一つずつ読む判定器に対して反復探索。採用例は指摘されたデータを全て除いて再学習し、別の評価でも確認。",
     "result": "点検を通るデータでも、学習後に監督へ抵抗するなどの問題が出た。未提示の評価にも及ぶ例がある一方、モデルの重み（学習済みの設定値）を外部へコピーするまれな試みは最終の再実験では再現しなかった。",
     "limitation": "探索役は同じ判定器と評価の反応を使える。採点もAIで、通常の学習で偶然起きる頻度は不明。問題を探せたことは、対策の有効性や現実の制御喪失を示さない。"
+  },
+  "kernel-validation-and-patch-review": {
+    "source": "openai-linux-kernel-pipeline",
+    "type": "evaluation",
+    "title": "欠陥の発見から修正案へ進めても、人の確認は残る",
+    "kind": "隔離環境での脆弱性調査と修正案の評価",
+    "locator": "Summary; Vulnerability validation; Exploitability assessment; Patch generation; Using the wrong 0-day; Iteration improves patch generation",
+    "evaluator": "OpenAIのサイバー研究チーム。報告前に人間の研究者が結果と修正案を確認。",
+    "setting": "未公開のサイバー向けモデルを使う研究用システム。標準的な防御を有効にしたLinuxの仮想環境で、通常の利用者権限からの操作を試す。外部への侵入の観測ではない。",
+    "method": "候補の発見、再現、影響の確認、修正案の作成をつなぐ。修正案との対応で重複を整理。初期の試行で別の欠陥を利用した例があり、指定した欠陥を使ったか確認する検査も追加した。",
+    "result": "管理者権限へ進める欠陥を948件と集計し、修正案を作成したと報告。調査中には保守者側の修正も進んだ。初期の修正案には不完全な対応などがあり、人の助言を受けて改善した。",
+    "limitation": "948件全ての修正公開・利用者への導入を示す数字ではない。通常の利用者として既に操作できる条件があり、外部からの侵入確率とは異なる。別の強化環境では防御設定を一部変更しており、結果を混ぜない。"
+  },
+  "vault-research-human-direction": {
+    "source": "anthropic-vault-research",
+    "type": "observation",
+    "title": "人が実験と判断を担い、AIが構造の解析を手伝う",
+    "kind": "生物研究でのAI支援の事例報告",
+    "locator": "Finding, isolating, and mapping a new vault with Claude; A new way of doing science; Authors and acknowledgements",
+    "evaluator": "Januka Athukoralage、Peter Yoon、Nicholas Perry、Matthew Durrantら（Anthropic）",
+    "setting": "生物研究のチームが、タンパク質でできた粒子の構造を調べる。Claudeは資料調査、実験案、画像の解析を支援。内部の計算資源へ接続し、人が実験と解析方針を担当。",
+    "method": "研究者が候補と実験方法を選び、得た画像の解析をClaudeに進めさせる。解析の誤りなどを人が見つけ、修正した。",
+    "result": "粒子の立体構造を得たと報告。支援が複数の工程に及んだ一方、AIの誤った提案や解析で手戻りも起きた。",
+    "limitation": "AIなしの同条件の比較はなく、研究全体の加速率は分からない。詳細なモデル版と実施日は未記載。自然の宿主で同じ粒子ができるか、何の働きをするかは未確認。"
   }
 }

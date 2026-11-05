@@ -1528,5 +1528,23 @@
     "checked": "2026-11-04",
     "period": "11月2日の集計訂正を含む方法説明。初回公表日と訂正作業の実施期間は未記載。",
     "primary": "集計を公開するAnthropic自身の方法・変更記録。第三者の再集計ではない。"
+  },
+  "openai-linux-kernel-pipeline": {
+    "title": "OpenAI — A thousand fewer paths to root",
+    "url": "https://openai.com/index/a-thousand-fewer-paths-to-root/",
+    "published": "2026-11-04",
+    "date": "2026-11-04",
+    "period": "11月4日公表。主な調査は2026年10月中旬。7月の別モデルによる調査との比較もあるが、対象コードの版は異なる。",
+    "primary": "OpenAIによる自社の研究用システムの報告。人の確認を含むが、独立した再実行ではない。",
+    "checked": "2026-11-05"
+  },
+  "anthropic-vault-research": {
+    "title": "Anthropic — Investigating vault particles with Claude",
+    "url": "https://www.anthropic.com/research/investigating-vault-particles-with-claude",
+    "published": "2026-11-04",
+    "date": "2026-11-04",
+    "period": "11月4日公表。4か月未満の研究と説明しているが、開始・終了日は未記載。複数の時期のClaudeを使い、個別の版は未記載。",
+    "primary": "Anthropicの研究チームによる早期の実践報告。原稿をbioRxivへ投稿した段階で、査読済み論文や独立した追試ではない。",
+    "checked": "2026-11-05"
   }
 }

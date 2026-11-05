@@ -156,7 +156,7 @@
         "carbon-alignment-evaluation"
       ],
       "review": {
-        "checkedAt": "2026-10-29",
+        "checkedAt": "2026-11-05",
         "intervalDays": 7,
         "reason": "既存の根拠がカードの条件をどこまで直接確かめているかを分類しています。根拠の更新時に見直します。"
       }

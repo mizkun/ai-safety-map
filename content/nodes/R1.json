@@ -25,7 +25,8 @@
     "openai-science-release-oct26",
     "bighat-antibody-leads",
     "enveda-cmc-review",
-    "frontiercs-carbon-evaluation"
+    "frontiercs-carbon-evaluation",
+    "anthropic-vault-research"
   ],
   "questions": [],
   "related": [],
@@ -62,7 +63,8 @@
     "science-release-verification",
     "antibody-human-reasoning-loop",
     "manufacturing-record-human-review",
-    "carbon-research-evaluation-limits"
+    "carbon-research-evaluation-limits",
+    "vault-research-human-direction"
   ],
   "shortTitle": "AIが研究の一部を進める"
 }

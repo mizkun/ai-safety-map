@@ -16,7 +16,8 @@
     "anthropic-formal-verification",
     "oss-verify-proof-release",
     "openai-rosalind6",
-    "anthropic-cvd-methodology"
+    "anthropic-cvd-methodology",
+    "openai-linux-kernel-pipeline"
   ],
   "questions": [],
   "related": [],
@@ -42,7 +43,8 @@
     "distillation-extraction-defense",
     "self-assessment-misuse-detection",
     "checked-software-proofs",
-    "rosalind6-access-and-monitoring"
+    "rosalind6-access-and-monitoring",
+    "kernel-validation-and-patch-review"
   ],
   "shortTitle": "防止・封じ込めが追いつかない"
 }

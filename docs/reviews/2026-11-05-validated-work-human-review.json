@@ -1,0 +1,277 @@
+{
+  "id": "2026-11-05-validated-work-human-review",
+  "version": 2,
+  "date": "2026-11-05",
+  "reviewer": "Codex (primary-source and bilingual editorial review; not independent replication)",
+  "decision": "reviewed",
+  "assessments": {
+    "alignment": {
+      "mechanism": "C1 concerns choosing behavior that conflicts with legitimate objectives or constraints, distinct from the ability and access to execute it or failed prevention.",
+      "conditions": "Reread the complete C1 explanation, current evidence, intent branches and control context. Reopen GRAFT v1 experiments/limitations, Terra permission/warning settings and Carbon safety claims; compare the November 4 evaluation-gap and isolated-fine-tuning evidence already in this draft.",
+      "counterexample": "GRAFT reduces hacking in specified tests but has capability tradeoffs and limited larger-model evidence. Zero observed success need not mean zero attempts; an evaluation–production gap can be pessimistic. Deliberate isolated misalignment does not establish deployed incidence.",
+      "evidence": "GRAFT remains a single version; the arithmetic study has multiple seeds, while the 32B SFT study has one per configuration and wide uncertainty. Terra changes the warning metric to successful circumvention; Carbon alert denominators remain unspecified. These preserve limited/tested interpretation.",
+      "limits": "No independent re-execution is claimed. A third-party 0.6B pilot was discovered, but its repository comparison report returned 404; the model-card summary is insufficient to adopt efficacy figures or call it a full replication. Existing earlier incidents are not newly re-audited in full.",
+      "mitigation": "Keep training improvements, explicit constraints and operational safeguards together. Do not treat reducing proxy scores or alerts as demonstrated prevention of all harmful choices.",
+      "readerContext": "Japanese and English retain who acts, why misalignment matters, the difference from human misuse, and the extra capability/access/prevention conditions.",
+      "whyHere": "C1 was due November 5. Retain its prose, classification and edges, renewing only the C1 node and matching evidence clock after substantive review.",
+      "primary": [
+        {
+          "source": "graft-gradient-routing",
+          "locator": "Version 1, sections 4, 5 and 7; experiments and limitations",
+          "support": "Scoped reduction in reward hacking with partial monitors; weak/generalization-limited experiments and capability tradeoffs remain."
+        },
+        {
+          "source": "openai-terra-october",
+          "locator": "Sections 7.1–7.5 and 9",
+          "support": "Different permission and warning evaluations use different success/attempt metrics and settings; not production incident rates."
+        },
+        {
+          "source": "gemini-carbon-announcement",
+          "locator": "Advancing frontier model safety and security",
+          "support": "Successful cheating, attempts, internal alerts and prompt-injection tests are separate measurements."
+        },
+        {
+          "source": "openai-eval-production-gap",
+          "locator": "Matched production comparison and objective-cue intervention",
+          "support": "Previously added counterevidence: tests need not overstate safety; objective-cue results do not establish intentional concealment."
+        },
+        {
+          "source": "anthropic-automated-em-search",
+          "locator": "Setup, Results and final reproduction caveat",
+          "support": "Previously added deliberate training-data search, not deployed behavior; rare weight copying did not recur in the final reproduction."
+        }
+      ]
+    },
+    "cyber": {
+      "mechanism": "A research pipeline can connect flaw discovery, dynamic validation and local privilege escalation; verifying the attained privilege alone may misidentify the flaw used.",
+      "conditions": "Unnamed upcoming cyber model; isolated stock-distribution Linux VMs with standard defenses and existing unprivileged local execution. Main campaign was mid-October, published November 4. Researchers review output before disclosure.",
+      "counterexample": "No local foothold means the tested escalation is not directly available. Early runs sometimes succeeded via another flaw, motivating independent path checks. Separate kernelCTF results remove an incompatible mitigation and cannot be pooled with the main campaign.",
+      "evidence": "Read all relevant pipeline stages, accounting, human-review, unintended-path and testing-infrastructure caveats. The report consolidates 1,169 working exploit outputs into 948 findings using corresponding fixes. The public card retains only the bounded 948 count.",
+      "limits": "This is developer reporting, not 948 external systems compromised or patches installed. July and October scans target different code states. Hypothetical bounty revenue is not realized profit. Testing-infrastructure vulnerabilities do not by themselves demonstrate autonomous escape in deployment.",
+      "mitigation": "Recheck the intended flaw, patched target, variants and current code; maintain isolation and separate capability from access. Human verification remains a bottleneck even when candidate generation scales.",
+      "readerContext": "Both languages explain existing local access before describing the result. Do not make the reader infer that administrative access was reached from an arbitrary external network.",
+      "whyHere": "M2c1 was due and stays observed; M2c2 access and M3 prevention remain separate. Reread Carbon methods for existing task/trial differences, without re-counting its image table or changing prior scores. Renew only M2c1’s clock.",
+      "primary": [
+        {
+          "source": "openai-linux-kernel-pipeline",
+          "locator": "Summary; discovery/validation; exploitation assessment; patch generation; wrong-vulnerability checks; iteration",
+          "support": "An isolated mid-October campaign with local access, human verification and candidate patches. Outcome, mechanism, patch release and installed protection differ."
+        },
+        {
+          "source": "gemini-carbon-methods",
+          "locator": "Methodology and Cybersecurity, printed pages 1 and 3",
+          "support": "Versioned tasks, repeats, judge and guardrail settings constrain interpretation of cyber and patching scores."
+        }
+      ]
+    },
+    "patching": {
+      "mechanism": "Defensive impact requires a valid fix, maintainer acceptance, release and user adoption after a candidate is found. Discovery and candidate patch counts do not measure harm reduction.",
+      "conditions": "The same isolated Linux pipeline generated fixes for expert review. The original reports incomplete variants and other initial patch problems, followed by human-guided iteration. Some upstream fixes were independently advancing during the scan.",
+      "counterexample": "A candidate can block a demonstration while leaving another failure path open or introducing performance/maintenance problems. Even a published correct patch can fail to protect a user who has not installed it.",
+      "evidence": "Read patch generation, maintainer progress and iteration sections. Keep the distinction between the main campaign and its separate adapted hardened environment; do not interpret all 948 findings as released fixes.",
+      "limits": "No controlled deployed harm-reduction comparison is reported. Expert review is part of the developer workflow, not independent reproduction. Yesterday’s CVD counting correction remains unchanged after checking the current snapshot and methodology.",
+      "mitigation": "Track validation and delivery alongside discovery, including the interval before installation. Represent observed defensive work without asserting universal success or failure of defenses.",
+      "readerContext": "The Japanese addition says candidate generation does not establish delivery to users, matching English. The previous CVD paragraph already separates duplicates, released patches and adoption.",
+      "whyHere": "Add the same bounded card to M3 without renewing its not-due clock. M3-H still requires harmful purpose, useful assistance, failed prevention and wider propagation, none established by this defense report.",
+      "primary": [
+        {
+          "source": "openai-linux-kernel-pipeline",
+          "locator": "Summary; discovery/validation; exploitation assessment; patch generation; wrong-vulnerability checks; iteration",
+          "support": "An isolated mid-October campaign with local access, human verification and candidate patches. Outcome, mechanism, patch release and installed protection differ."
+        }
+      ]
+    },
+    "vault": {
+      "mechanism": "AI can assist several research steps while humans select experiments, make measurements, direct analysis and repair errors. This is distinct from whole-project acceleration or autonomous research.",
+      "conditions": "November 4 developer practice report describes a project under four months, without exact dates or model versions. Claude has internal compute access for analysis; researchers perform physical work and guide decisions.",
+      "counterexample": "Humans overrode an initial model suggestion, and other model mistakes caused delay and a flawed analysis. A useful structure report does not establish natural-host assembly or biological function.",
+      "evidence": "Read the complete original article, workflow, errors, limitations and contributor disclosure. Only the high-level human-directed assistance and reported structure are adopted. The manuscript is submitted to bioRxiv, not represented as peer-reviewed.",
+      "limits": "The attached PDF exceeds browser retrieval limits and direct retrieval returned 403; full technical methods were not inspected. No structural-accuracy, experimental-success or quantitative speedup claim is adopted. No matched AI-free control or independent replication is established.",
+      "mitigation": "Keep expert validation, experimental measurements and recorded setbacks visible. Do not extrapolate this benign structural research to harmful capability or unbounded self-improvement.",
+      "readerContext": "Both editions explain a particle made of protein without requiring specialist terminology or offering experimental procedures. Humans’ responsibility for physical work and judgment remains explicit.",
+      "whyHere": "Add to R1, keeping its clock and R1-R2 unchanged. The conditional bridge requires improvements in the whole workflow, including validation and other bottlenecks.",
+      "primary": [
+        {
+          "source": "anthropic-vault-research",
+          "locator": "Finding, isolating, and mapping; A new way of doing science; contributors",
+          "support": "Human-directed experiments and compute-assisted structural analysis, with model-induced setbacks and unconfirmed natural function."
+        }
+      ]
+    },
+    "dependencies": {
+      "mechanism": "Capabilities, permissions, behavior, defenses, persistent loss of control and broad harm remain distinct. Research assistance must survive verification before it implies faster development.",
+      "conditions": "Read changed Japanese/English passages as rendered in the actual tour and standalone context, due C1/M2c1, parent M2c, current misuse summary, five dependent graphs, route previews and relevant control/misuse/acceleration story context and six news examples.",
+      "counterexample": "Denied local access, timely patch adoption, a mistaken successful evaluation or human correction of flawed research all interrupt an automatic transition to later outcomes.",
+      "evidence": "Two source/card pairs, three bilingual additions and one history entry; two due nodes and one matching evidence date renewed. No existing source/card is rewritten. Existing history, classifications and 41-edge topology are retained.",
+      "limits": "This is the Thursday daily scan for October 22–November 5 plus corrections, not another Monday sweep. Broader search leads and unavailable attachments are not counted as fully verified evidence.",
+      "mitigation": "Include defensive improvement and review bottlenecks alongside cyber capability. Avoid numerical catastrophe estimates, unqualified success rates and claims of fully autonomous science.",
+      "readerContext": "Inspect M3-H, R1-R2, C3-L and R4-C1 and keep the conditional language. Older news examples remain linked to their own sources; no new glossary entry is needed.",
+      "whyHere": "The map date, history and translation inventory reflect only this scoped update. All unrelated review dates remain intact; no automatic merge or deploy follows.",
+      "primary": [
+        {
+          "source": "openai-linux-kernel-pipeline",
+          "locator": "Summary; discovery/validation; exploitation assessment; patch generation; wrong-vulnerability checks; iteration",
+          "support": "An isolated mid-October campaign with local access, human verification and candidate patches. Outcome, mechanism, patch release and installed protection differ."
+        },
+        {
+          "source": "anthropic-vault-research",
+          "locator": "Finding, isolating, and mapping; A new way of doing science; contributors",
+          "support": "Human-directed experiments and compute-assisted structural analysis, with model-induced setbacks and unconfirmed natural function."
+        },
+        {
+          "source": "graft-gradient-routing",
+          "locator": "Version 1, sections 4, 5 and 7; experiments and limitations",
+          "support": "Scoped reduction in reward hacking with partial monitors; weak/generalization-limited experiments and capability tradeoffs remain."
+        },
+        {
+          "source": "openai-terra-october",
+          "locator": "Sections 7.1–7.5 and 9",
+          "support": "Different permission and warning evaluations use different success/attempt metrics and settings; not production incident rates."
+        },
+        {
+          "source": "gemini-carbon-announcement",
+          "locator": "Advancing frontier model safety and security",
+          "support": "Successful cheating, attempts, internal alerts and prompt-injection tests are separate measurements."
+        }
+      ]
+    }
+  },
+  "entries": {
+    "source:openai-linux-kernel-pipeline": {
+      "hash": "5e528829961a90994c246754a413a1f120d9f7920009f2346e2becdf1ab995cf",
+      "assessment": "cyber"
+    },
+    "source:anthropic-vault-research": {
+      "hash": "83e5d09757f6238a03f66d3679d83c290d8e9f1ff45cee11317e1eca2fd412ec",
+      "assessment": "vault"
+    },
+    "research:kernel-validation-and-patch-review": {
+      "hash": "2c4f5693780948a27c93c2b6b34a9766396e545257f47a2de9222d6cf10236dd",
+      "assessment": "cyber"
+    },
+    "research:vault-research-human-direction": {
+      "hash": "6c739e6556b4959f7354327e3c3c98439ee17e730cb2b93636926f35d9104ac6",
+      "assessment": "vault"
+    },
+    "node:C1": {
+      "hash": "e46d00c8282c25a1dfecf0b4aad093f79e999498bfe2c8b6143f3c68ac7bbaa4",
+      "assessment": "alignment"
+    },
+    "node:M2c1": {
+      "hash": "b5d478c382f06f4494374b4242658343e74a36dd6ed00a97254d44b44a7ff51b",
+      "assessment": "cyber"
+    },
+    "node:M3": {
+      "hash": "9e1b4ae4317a891ff8b68b2f26e5cfda39a6275904770b0265fc29fa636ad76f",
+      "assessment": "patching"
+    },
+    "node:R1": {
+      "hash": "92f00f830ae9b4838c2e4353d2c48ba258bd976d9b19fd94ae2a4c5187d2475a",
+      "assessment": "vault"
+    },
+    "edge:M3-H": {
+      "hash": "2cb139229ce7414cef041d78b4d3ea02b2709fb2026a729f928643e8d8a10704",
+      "assessment": "patching"
+    },
+    "edge:R1-R2": {
+      "hash": "d0ce71c2ddb693eb37feaa115cc968d0f48ac82629b4ae43311f576b0fa08bd7",
+      "assessment": "vault"
+    },
+    "edge:C3-L": {
+      "hash": "539a0bc5fbeb70638c011298d718a57b907caf3c3d68c23eee12a575f686e33e",
+      "assessment": "alignment"
+    },
+    "edge:R4-C1": {
+      "hash": "ccf1eec3bd2f8cb5b4c843460d88dc942ba1425be94aaa3bf4f81f105550857b",
+      "assessment": "alignment"
+    },
+    "graph:control": {
+      "hash": "31550d0ee111453782dceb887926ad2bb28a11c7cf4dfaa1f8809061adbc8651",
+      "assessment": "dependencies"
+    },
+    "graph:misuse": {
+      "hash": "fe19693d15d95ca6ef2ba65ba1a26c8f511a74a17f59b36967a7770efa176b7f",
+      "assessment": "dependencies"
+    },
+    "graph:acceleration": {
+      "hash": "132afcc463ab1d5a449ff024d8579a8938bd2cd82ebab0e21ed7bb2e62d17278",
+      "assessment": "dependencies"
+    },
+    "graph:cyber-conditions": {
+      "hash": "c58eb08c5dabf81d76f7ad3131b1007477270fad8a5169ff0f44f69029f86ea2",
+      "assessment": "cyber"
+    },
+    "graph:research-cycle": {
+      "hash": "2347d8558c0885484de0da54d494f5adbe84096a6a2055cc60f10436ae76bd5b",
+      "assessment": "vault"
+    },
+    "route:control": {
+      "hash": "55f960e6817c96cd353d273cfc12ca87ee7874fd9a5f3c5a81921f60162d068e",
+      "assessment": "dependencies"
+    },
+    "route:misuse": {
+      "hash": "decd6c11054a9b023e769a8eadae1a19ecc624a721fd4a6784112639c9ec8c59",
+      "assessment": "dependencies"
+    },
+    "route:acceleration": {
+      "hash": "eea5c884027ca72a0f7a97ec3f9c8d55b9cd8e6400245fec4641bb1f3c5bee95",
+      "assessment": "dependencies"
+    },
+    "current:misuse": {
+      "hash": "4cda93b400e36e85bcf6551e4314acb7c6e8c08a0915242deeffc335fc0692d2",
+      "assessment": "patching"
+    },
+    "evidence:C1": {
+      "hash": "6ca50ef5424f832251d210ef2793d8c18ed9e9a1928d91d9397dc850f6c817b5",
+      "assessment": "alignment"
+    },
+    "news:recent-math": {
+      "hash": "003ba3ec88a79bca196cf8c5dea2bbe4a0ebd6a34029ec6ec2926f54105a3923",
+      "assessment": "dependencies"
+    },
+    "news:research-lab-september": {
+      "hash": "92eb9d5f9354cc9648c8449aaf3a11d6f47c6a9e07660682cbdd6dcaab7a6a68",
+      "assessment": "dependencies"
+    },
+    "news:automated-safety": {
+      "hash": "2dc60d7214404f445682ffdb44c331d171160f85399d0519ca24fe059d2512d3",
+      "assessment": "dependencies"
+    },
+    "news:astra-threshold": {
+      "hash": "fcb15927333dcf48fb996cd3e9b3234771b1d9b00ac1732658f9cf871ac30797",
+      "assessment": "dependencies"
+    },
+    "news:research-contribution": {
+      "hash": "35ac725cebcfdf330c6ccbcb303bafcdec55406944e347d9e9feaf0863f3c153",
+      "assessment": "dependencies"
+    },
+    "news:agent-behavior": {
+      "hash": "768a089854d982d00b750b0cc3b02368ce25218d6f6a8a7e96437fa2ec92fa31",
+      "assessment": "dependencies"
+    },
+    "story:control": {
+      "hash": "aaff504aee73519df90df107659ba2bf390504bd977d04345ead035e380a71b4",
+      "assessment": "dependencies"
+    },
+    "story:misuse": {
+      "hash": "b3a598a6ac638b2645a30e38b92adf79ca175b4bfb044ed51be76f78be85a54d",
+      "assessment": "dependencies"
+    },
+    "story:acceleration": {
+      "hash": "89a4b4e8448164dc652732daadc40dfdb3be4db62a5eda4bc172e719ba034045",
+      "assessment": "dependencies"
+    },
+    "metadata:map": {
+      "hash": "a46197d46bf311a4a65fdf78c4e5cb8385ed93c6f17f5e6ec807d5f70b76b92c",
+      "assessment": "dependencies"
+    },
+    "history:changes": {
+      "hash": "6cfe2fc871592c528db6377fa40b7a1c5f6152fb384426e5250532a86080c4bc",
+      "assessment": "dependencies"
+    },
+    "inventory:current": {
+      "hash": "715201e35a2fb98f0a08383c60aeac88617bf265cd06357fbd264692716dec7e",
+      "assessment": "dependencies"
+    }
+  }
+}
