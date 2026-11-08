@@ -19,7 +19,8 @@
     "auto-mode-red-team",
     "openai-layered-monitoring-october",
     "distributed-agent-monitoring",
-    "mas-guard"
+    "mas-guard",
+    "anthropic-project-eve"
   ],
   "questions": [],
   "related": [],
@@ -31,7 +32,7 @@
     "scheming"
   ],
   "review": {
-    "checkedAt": "2026-10-30",
+    "checkedAt": "2026-11-08",
     "intervalDays": 7,
     "reason": "監督回避と、それを防ぐ手法の評価は変化が速いため。"
   },
@@ -51,7 +52,8 @@
     "blocking-monitor-hardening",
     "layered-monitoring-coverage",
     "distributed-agent-monitoring",
-    "mas-guard"
+    "mas-guard",
+    "eve-team-oversight"
   ],
   "shortTitle": "実行中の監督をすり抜ける"
 }

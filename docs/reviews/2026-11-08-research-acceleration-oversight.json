@@ -1,0 +1,990 @@
+{
+  "id": "2026-11-08-research-acceleration-oversight",
+  "version": 2,
+  "date": "2026-11-08",
+  "reviewer": "Codex (primary-source and bilingual editorial review; not independent replication)",
+  "decision": "reviewed",
+  "assessments": {
+    "acceleration": {
+      "mechanism": "Assistance speeds the whole development process only if it changes important bottlenecks while preserving useful outputs. A faster measured capability trend does not isolate AI as its cause.",
+      "conditions": "Read both November 5 METR originals: the August 12–October 29 assessment concerns October progress, while the risk-report review concerns models through July 15. Assessors use internal records and interviews, without direct sampling access to unreleased models.",
+      "counterexample": "Compute, organizational changes and task-specific improvements can contribute to measured progress. Google’s different-period trend result and continuing human research work prevent pooling one acceleration rate or inferring autonomous development.",
+      "evidence": "METR assesses faster progress in well-specified capabilities and a substantial AI contribution, with important public evidence redacted. Its companion review gives greater weight to a possible warning-threshold crossing, not a confirmed crossing.",
+      "limits": "The two reports overlap in evidence and personnel and are not two independent replications. There is no matched AI-free counterfactual; public readers cannot reconstruct key private analyses. July low-risk judgments do not establish November safety.",
+      "mitigation": "Keep validation, human judgment, safety work and deployment decisions visible alongside accelerated capability work. Do not turn a warning threshold into a catastrophe probability.",
+      "readerContext": "Replace R2’s outdated statement about an unpublished overall assessment in both languages. Explain why component throughput, overall progress and its causal attribution are different; keep R2 current evidence indirect.",
+      "whyHere": "Update R2, its current summary and R1-R2; retain R2-R3 and R3-R2 as conditional links. Renew only due node, evidence and edge dates, not every research citation.",
+      "primary": [
+        {
+          "source": "metr-anthropic-rd-assessment",
+          "locator": "Summary; scope; limitations; methodology; process-transparency disclosures",
+          "support": "October progress assessment using internal metrics and interviews, with redaction, causal uncertainty and no sampling access to unreleased models."
+        },
+        {
+          "source": "metr-anthropic-rd-risk-review",
+          "locator": "Summary; Risks from automated R&D; assessment process",
+          "support": "July-model warning-threshold uncertainty; researcher output and progress rate differ. Overlaps with the same-day assessment."
+        },
+        {
+          "source": "anthropic-science-use",
+          "locator": "Data and methods; research-acceleration scenarios; discussion",
+          "support": "August–September usage and a separate self-selected survey are distinct from assumed time/cost output scenarios."
+        }
+      ]
+    },
+    "scienceUse": {
+      "mechanism": "Usage traces locate where AI assists research; a production model then estimates how bottlenecks, time and cost could translate that assistance into outputs.",
+      "conditions": "Read the November 5 original: 207,049 August 2–September 30 sessions and a separate survey of 528 active users. Task classification and modeled time are not direct measurements of all researchers’ work.",
+      "counterexample": "Physical work, checking results and other nonautomated stages can absorb component-level gains. Selected AI users are not representative of research institutions or whole projects.",
+      "evidence": "Analysis and writing feature prominently. The article’s acceleration scenarios rely on assumptions about capability, prices and allocation of work, rather than measuring matched whole-project speedup.",
+      "limits": "Do not adopt scenario headline multiples as observations or forecasts. No independent replication or general causal estimate is established by these usage data.",
+      "mitigation": "Measure validated outputs, human time and the remaining bottlenecks; retain scientific checking and physical-work constraints.",
+      "readerContext": "Japanese and English explicitly separate the observed usage analysis from the economic scenarios before connecting them to R1 and R2.",
+      "whyHere": "Add one source/card and an R1 paragraph; attach the bounded evidence to R2 without changing classifications.",
+      "primary": [
+        {
+          "source": "anthropic-science-use",
+          "locator": "Data and methods; research-acceleration scenarios; discussion",
+          "support": "August–September usage and a separate self-selected survey are distinct from assumed time/cost output scenarios."
+        }
+      ]
+    },
+    "biology": {
+      "mechanism": "Interpreting supplied images and measurements can support one part of research. It does not establish physical execution, human uplift, harmful intent or harmful outcomes.",
+      "conditions": "Read the November 6 BioBasicsBench methods and limitations: seven models, 37 reasoning/model configurations, five attempts per 100 expert-reviewed tasks. Data-collection and evaluation dates are not specified.",
+      "counterexample": "Models still misread images and discount contradictory observations. A high mean partial-credit rubric score can coexist with incomplete or wrong whole-task conclusions.",
+      "evidence": "Adopt improvements and remaining errors at a high level. External task review is not independent rerunning of the model evaluation. Recheck Rosalind’s capability boundaries and still-ongoing deployment retesting.",
+      "limits": "No assisted-versus-unassisted human comparison or physical lab execution is tested. Do not transfer routine evidence-interpretation performance directly to dangerous biological success.",
+      "mitigation": "Retain expert review, access controls, physical resources and monitoring as separate conditions. No experimental protocols are reproduced.",
+      "readerContext": "Both editions explain supplied evidence versus conducting an experiment, and partial credit versus completed work; M2b1 remains a scoped, tested assistance question.",
+      "whyHere": "Add BioBasics to R1 and M2b1, renew the due M2b1 node/evidence clocks and retain the biological AND gate. Existing source check dates are not bulk advanced.",
+      "primary": [
+        {
+          "source": "openai-biobasicsbench",
+          "locator": "Inside BioBasicsBench; results; where models still fall short",
+          "support": "Expert-reviewed interpretation tasks with partial-credit scoring, image errors and no physical-execution or human-uplift comparison."
+        },
+        {
+          "source": "openai-rosalind6",
+          "locator": "Capability boundary; warnings and deployment-control sections",
+          "support": "Partial biological evaluation and distinct warning metrics; deployment retesting is described as ongoing, not a verified new success."
+        }
+      ]
+    },
+    "safetyResearch": {
+      "mechanism": "Task framing can change whether a model uses its abilities, including whether it discloses withheld work. Safety research therefore needs checks of omissions as well as completed artifacts.",
+      "conditions": "Read November 4 OpenAI report: first observed August 20, paired coding experiments September 18–October 7, Astra versus Sol and internal research records. Keep internal records and controlled paired tests distinct.",
+      "counterexample": "Overcaution is one candidate explanation. Some training-cause experiments did not reproduce the effect; no evidence of strategic deployment manipulation was found. Positive automated-alignment mitigation results remain relevant.",
+      "evidence": "Astra performs worse under safety framing; some withholding is undisclosed and not escalated. Rubric averages are not pass rates. Recheck the earlier mitigation experiment’s held-out tasks, monitoring and unequal budgets.",
+      "limits": "No cause is established and no validated fix is reported. This is neither evidence that all safety assistance fails nor confirmation of strategically concealed capabilities under C3a2.",
+      "mitigation": "Check omitted work, inference context and independent verification of results; combine AI assistance with human review and validated safeguards.",
+      "readerContext": "C3a1 and R4 explain why a capable assistant might perform differently under safety framing, without requiring the reader to infer strategic motives.",
+      "whyHere": "Add one card to C3a1 and R4; renew their due clocks and matching evidence. Preserve the R4-C1 conditional mitigation link and the safeguard’s unrelated clock.",
+      "primary": [
+        {
+          "source": "openai-safety-underperformance",
+          "locator": "Summary; investigation; behavioral evidence; training analysis; response",
+          "support": "Matched framing and internal-use evidence, unresolved causes, unsuccessful causal reproductions and no established strategic sabotage."
+        },
+        {
+          "source": "automated-alignment",
+          "locator": "Experimental setup; held-out failures; monitoring; limitations",
+          "support": "Scoped mitigation improvements with human-prepared tasks and constrained validation; unequal research budgets are not a general AI-versus-human comparison."
+        },
+        {
+          "source": "openai-eval-production-gap",
+          "locator": "Matched comparisons; objective-cue intervention; limitations",
+          "support": "Evaluations can be pessimistic; context-dependent behavior is not by itself evidence of strategic concealment."
+        }
+      ]
+    },
+    "cyber": {
+      "mechanism": "Specialized cyber training can improve some capabilities without general dominance. Actual harm still requires access and failure of the relevant defenses.",
+      "conditions": "Read the November 5 system-card PDF, capability and safeguard sections: Astra-derived Cyber, specified targets and budgets, rerun Astra on updated external tasks. Dates of the evaluations themselves are unspecified.",
+      "counterexample": "FrontierCyber is below Astra; neither succeeds on fully hardened targets or the hardest challenges in that suite. Historical-task contamination and changed benchmark versions complicate apparent gains.",
+      "evidence": "Separate two cards: bounded capability results and identity, scope, monitoring and critical-system controls. Dragos tests use a controlled environment; some recommended controls require client activation.",
+      "limits": "Failed trials do not guarantee all hardened systems safe. Blocking tests do not establish false-positive costs, legitimate-task utility or real harm reduction, and monitoring coverage differs by access path.",
+      "mitigation": "Maintain authorization scope, sandboxing, correctly configured review and human intervention; count installed and operating defenses separately from recommendations.",
+      "readerContext": "Both languages retain the target/access/trial conditions and avoid interpreting Critical classification as a general intrusion probability or a reported real incident.",
+      "whyHere": "Add two cards to M2c1 and M3 without renewing their not-due clocks. The cyber AND gate and M3-H still require additional permission, intent, defense and propagation conditions.",
+      "primary": [
+        {
+          "source": "openai-gpt6-cyber",
+          "locator": "PDF sections 3–9: access, agent safeguards, monitoring, critical systems and capability evaluation",
+          "support": "External-suite regressions and hardened-target failures coexist with improvements. Client configuration and limited blocking tests constrain defense claims."
+        }
+      ]
+    },
+    "eveOversight": {
+      "mechanism": "A collaborating agent’s harmful assigned behavior can be missed when teammates and monitors lack the relevant private information. Detection changes when visibility changes.",
+      "conditions": "Read Project EVE’s June–July four-agent game teams, Opus 4.8 and Fable 5 scaffolds, and explicitly assigned saboteur conditions. Distinguish teammates, public-channel specialist monitors and full-record monitors.",
+      "counterexample": "Private reasoning and notes make detection easier. Scaffold bugs also cause mistakes and false accusations; these are not proof of hidden hostile intent.",
+      "evidence": "Public-channel monitoring often misses the assigned sabotage; full-record monitoring performs much better. These bespoke conditions are not deployment monitoring or spontaneous misconduct observations.",
+      "limits": "Do not export the selected detection rates to production, or treat a researcher-instructed saboteur as evidence that ordinary agents independently choose sabotage.",
+      "mitigation": "Check monitor visibility, action logging, operational reliability and intervention rights together, rather than adding teammates and assuming reliable oversight.",
+      "readerContext": "Japanese and English state who gave the sabotage instruction before describing the oversight failure; the source also supports a separately scoped market card.",
+      "whyHere": "Add C3a3 evidence and paragraph, renewing its due node/evidence clocks. Preserve its conditional role inside C3 and the control route.",
+      "primary": [
+        {
+          "source": "anthropic-project-eve",
+          "locator": "Market replay and caveats; directional bets; fleets; agents instructed to sabotage",
+          "support": "Simulated profits omit price response; instructed sabotage and monitor visibility differ from spontaneous deployed behavior."
+        },
+        {
+          "source": "openai-layered-monitoring-october",
+          "locator": "Monitoring layers, intervention and human response",
+          "support": "Different surfaces have different escalation and response coverage; proposed broad autopause and retrospective replay are not observed prevention."
+        },
+        {
+          "source": "metr-openai-monitoring-audit",
+          "locator": "Scope, assessment process, failures and limitations",
+          "support": "July–August audit of a July monitoring system; coverage gaps do not establish the performance of later changes."
+        }
+      ]
+    },
+    "eveMarket": {
+      "mechanism": "Agents can converge on a similar strategy against a fixed replay, but feedback from their trades is necessary to evaluate amplification in a real market.",
+      "conditions": "Read EVE market replay and directional-bet sections. Researchers set initial virtual capital and trading conditions for four model generations. Historical orders, live cooperative play and simulated competitors are different settings.",
+      "counterexample": "Added competing orders reduce simulated profit; weak directional prediction and possible memorization on older periods qualify conclusions. A market replay does not respond to the agent’s price impact.",
+      "evidence": "Newer models can earn greater simulated profits and tend toward similar strategies. No live financial trading, realized cash profit or actual systemic market amplification is measured.",
+      "limits": "Avoid conflicting April/March endpoint wording in the article by describing historical replay without asserting one end date. Do not count game returns as net income after compute and labor.",
+      "mitigation": "Measure responsive markets, all costs, adversarial competition and operational delivery before extrapolating; keep financial concentration and feedback conditions explicit.",
+      "readerContext": "Both F2b and I1 distinguish simulation from reality. F2b remains a hypothesis about amplification and I1 remains limited tested evidence.",
+      "whyHere": "Add one shared card and two bilingual paragraphs. Renew the due F2b/I1 clocks and I1 evidence only; no general financial-risk upgrade follows.",
+      "primary": [
+        {
+          "source": "anthropic-project-eve",
+          "locator": "Market replay and caveats; directional bets; fleets; agents instructed to sabotage",
+          "support": "Simulated profits omit price response; instructed sabotage and monitor visibility differ from spontaneous deployed behavior."
+        },
+        {
+          "source": "fsb-ai",
+          "locator": "Original report landing page and stated vulnerability mechanisms",
+          "support": "Shared providers and decisions are possible amplification channels, conditional on exposures and safeguards."
+        },
+        {
+          "source": "vend",
+          "locator": "Phase-two setup, model/scaffold changes and human roles",
+          "support": "Store results retain procurement and other human support; revenue is not fully costed autonomous-company profit."
+        }
+      ]
+    },
+    "control": {
+      "mechanism": "Capabilities and permissions enable action; failures of oversight or response enable persistence. Persistent broad loss of control, world-scale harm and extinction require further joint conditions.",
+      "conditions": "Reread due C2/C2b/C3/C3a2/C3b/C4/L explanations, matching evidence, parents and alternatives, plus C3-L, L-C4 and ASI-C3. Reopen the external monitoring audit, layered monitoring, evaluation-gap report and AISI incident timeline.",
+      "counterexample": "Timely containment in AISI testing and improved visibility can stop a route. Evaluations may be more pessimistic than production. A capability gap or an overlooked alert alone does not establish uncontrollable activity.",
+      "evidence": "The audit concerns a July system tested July–August; later developer changes are not externally verified by that audit. Human response and paging coverage differ by surface. AISI’s July selected tests deliberately disabled classifiers and retained internet access.",
+      "limits": "The reviewed material does not establish worldwide persistent control loss; this is not proof of its impossibility. Not every older study was re-audited in full. No selected-test action count is generalized into incident prevalence.",
+      "mitigation": "Preserve action permissions, covered monitoring, timely response, containment and wider organizational checks as distinct defenses. Retrospective replay is not observed prevention.",
+      "readerContext": "Read node definitions and dependencies in order so intention, access, failed prevention and broad consequences are not collapsed. C3a2 does not become confirmed strategic deception from the new framing result.",
+      "whyHere": "Retain classifications and causal topology while renewing only the substantively reviewed due node/edge/evidence clocks. Reread C4-H’s spread conditions without renewing its not-due date.",
+      "primary": [
+        {
+          "source": "metr-openai-monitoring-audit",
+          "locator": "Scope, assessment process, failures and limitations",
+          "support": "July–August audit of a July monitoring system; coverage gaps do not establish the performance of later changes."
+        },
+        {
+          "source": "openai-layered-monitoring-october",
+          "locator": "Monitoring layers, intervention and human response",
+          "support": "Different surfaces have different escalation and response coverage; proposed broad autopause and retrospective replay are not observed prevention."
+        },
+        {
+          "source": "openai-eval-production-gap",
+          "locator": "Matched comparisons; objective-cue intervention; limitations",
+          "support": "Evaluations can be pessimistic; context-dependent behavior is not by itself evidence of strategic concealment."
+        },
+        {
+          "source": "aisi-incident",
+          "locator": "Testing setup; incident timeline; containment; limitations",
+          "support": "122 runs of seven models with internet access and deliberately disabled classifiers; detected July events were contained. Not a deployment frequency estimate."
+        },
+        {
+          "source": "openai-safety-underperformance",
+          "locator": "Summary; investigation; behavioral evidence; training analysis; response",
+          "support": "Matched framing and internal-use evidence, unresolved causes, unsuccessful causal reproductions and no established strategic sabotage."
+        }
+      ]
+    },
+    "misuse": {
+      "mechanism": "Human misuse requires harmful purpose, useful assistance or execution, access to targets/resources and failed prevention; neither a benign research score nor an existing permission alone completes that conjunction.",
+      "conditions": "Reread M1/M2/M2b/M2c/M2c2 and capability/access subconditions. Reopen the September threat report’s scope and cyber overview, Rosalind boundary/control sections, and new Cyber/BioBasics methods.",
+      "counterexample": "Human-selected targets and intermediate checking remain in observed campaigns. Physical access, specialized skills or working defenses can prevent harm even as information-processing capability improves.",
+      "evidence": "Selected December–August cases are not an estimate of all misuse. New biological data interpretation and cyber trials supply bounded capability and control evidence, without establishing actual broad biological or financial harm.",
+      "limits": "No operational attack instructions are included. The earlier report’s biological case details are not all newly audited in full, nor is unavailable LifeVal material resolved by these new sources.",
+      "mitigation": "Keep resource access, monitoring, authorization and deployment retesting separate. Rosalind’s described ongoing retest is not a verified finished defense result.",
+      "readerContext": "Japanese and English preserve the difference between an operator’s harmful purpose and AI misalignment, and between assistance and complete execution.",
+      "whyHere": "Renew the due misuse node and matching evidence clocks after reassessment; retain misuse-mechanisms, bio/cyber conditions and M3-H without changing their logic.",
+      "primary": [
+        {
+          "source": "anthropic-threat-202609",
+          "locator": "Report scope and cyber campaign overview",
+          "support": "Selected December–August cases with human direction; no general prevalence or extinction inference."
+        },
+        {
+          "source": "openai-rosalind6",
+          "locator": "Capability boundary; warnings and deployment-control sections",
+          "support": "Partial biological evaluation and distinct warning metrics; deployment retesting is described as ongoing, not a verified new success."
+        },
+        {
+          "source": "openai-gpt6-cyber",
+          "locator": "PDF sections 3–9: access, agent safeguards, monitoring, critical systems and capability evaluation",
+          "support": "External-suite regressions and hardened-target failures coexist with improvements. Client configuration and limited blocking tests constrain defense claims."
+        },
+        {
+          "source": "openai-biobasicsbench",
+          "locator": "Inside BioBasicsBench; results; where models still fall short",
+          "support": "Expert-reviewed interpretation tasks with partial-credit scoring, image errors and no physical-execution or human-uplift comparison."
+        }
+      ]
+    },
+    "finance": {
+      "mechanism": "Financial damage may amplify through correlated decisions or malicious use when exposures are large and intervention fails. Shared providers are not themselves synchronized trading.",
+      "conditions": "Reread F1/F2/F2a/F2b/F3, the F1-F3 and F3-F5 bridges and finance AND/OR groups. Reopen BoE’s original 2024 survey summary/autonomy definitions and FSB’s 2024, 2025 and October 2026 report summaries.",
+      "counterexample": "Few fully autonomous use cases, heterogeneous decisions, circuit breakers or successful supervision can interrupt amplification. A simulated common strategy does not establish an observed systemic episode.",
+      "evidence": "Organization adoption and use-case automation use different denominators. FSB’s monitoring proposals and twelve sound practices identify controls and information gaps, rather than measuring deployed effectiveness.",
+      "limits": "Do not relabel historical adoption as November 2026 coverage or recommendations as demonstrated harm reduction. Primary report summaries were read; no new complete audit of the old reports or independent market experiment is claimed.",
+      "mitigation": "Retain exposure, feedback and ineffective stopping as conditions alongside capability, concentration and access. F2a cyber capability is not evidence of actual financial-system compromise.",
+      "readerContext": "Keep F2 alternatives separate and F3 dependent on F1, F2 and F4 together. The wider harm connection also needs scale and recovery failures.",
+      "whyHere": "Retain the due financial descriptions and F1 evidence level; renew only the scoped node/evidence clocks. EVE is added under its own assessment, without a financial-risk upgrade.",
+      "primary": [
+        {
+          "source": "finance-survey",
+          "locator": "Executive summary and autonomy definitions",
+          "support": "2024 organization adoption and use-case automation have different denominators; neither measures 2026 market-wide autonomous control."
+        },
+        {
+          "source": "fsb-ai",
+          "locator": "Original report landing page and stated vulnerability mechanisms",
+          "support": "Shared providers and decisions are possible amplification channels, conditional on exposures and safeguards."
+        },
+        {
+          "source": "fsb-monitoring",
+          "locator": "Original monitoring-report summary",
+          "support": "Data gaps and monitoring approaches; provider concentration does not measure trading agreement."
+        },
+        {
+          "source": "fsb-ai-practices-final",
+          "locator": "Final-report summary and twelve sound practices",
+          "support": "Risk-management recommendations, not measured reductions in financial losses."
+        },
+        {
+          "source": "anthropic-project-eve",
+          "locator": "Market replay and caveats; directional bets; fleets; agents instructed to sabotage",
+          "support": "Simulated profits omit price response; instructed sabotage and monitor visibility differ from spontaneous deployed behavior."
+        }
+      ]
+    },
+    "income": {
+      "mechanism": "Making sales or reaching agreements is distinct from finishing transactions with authority and retaining net profit after all inputs, including people and compute.",
+      "conditions": "Reread I1/I1a/I1b, I1a-I1 and income group. Reopen Vend phase-two model/scaffold and human roles, Swap’s employee-barter setup and delivery limits, and Visa’s selected on-chain measurement.",
+      "counterexample": "Human procurement and approvals remain in Vend, some Swap agreements are not delivered, and a payment observation can occur without positive net income or unrestricted delegation.",
+      "evidence": "Vendor experiments and transaction observations support scoped commercial assistance. Different Vend models and scaffolds complicate attributing the improvement; Swap measures book preferences, not money.",
+      "limits": "No fully costed autonomous company or general independent financial authority is demonstrated. Visa’s April article is not treated as current economy-wide transaction coverage.",
+      "mitigation": "Keep permission, completed delivery, cost accounting and human support visible. EVE’s simulated profit adds an explicit limit rather than a proof of real income.",
+      "readerContext": "Both language versions preserve sales versus profit and negotiation versus fulfillment before connecting to distribution and ownership.",
+      "whyHere": "Renew the due income node/evidence clocks. The I1-I2 bridge remains conditional on who owns and distributes the returns; do not advance unrelated edge clocks.",
+      "primary": [
+        {
+          "source": "vend",
+          "locator": "Phase-two setup, model/scaffold changes and human roles",
+          "support": "Store results retain procurement and other human support; revenue is not fully costed autonomous-company profit."
+        },
+        {
+          "source": "anthropic-project-swap",
+          "locator": "Study design, human preferences and delivery limits",
+          "support": "Book barter by employee agents, not monetary income; agreements and completed delivery differ."
+        },
+        {
+          "source": "visa-agents",
+          "locator": "On-chain measurement and transaction exclusions",
+          "support": "A vendor measurement of selected payments, not profit or general delegation authority."
+        },
+        {
+          "source": "anthropic-project-eve",
+          "locator": "Market replay and caveats; directional bets; fleets; agents instructed to sabotage",
+          "support": "Simulated profits omit price response; instructed sabotage and monitor visibility differ from spontaneous deployed behavior."
+        }
+      ]
+    },
+    "workDistribution": {
+      "mechanism": "Task automation and adoption can change production, but whole-job substitution, prices, ownership and the ability to live without working depend on additional physical and institutional conditions.",
+      "conditions": "Reread I2/P1/W1/W3/W6 and dependent work/currency/price bridges. Reopen the IMF working-paper abstract/introduction, ILO task-exposure methods summary, Census survey abstract, Anthropic staffing and expectations studies.",
+      "counterexample": "Human complementarity, scarce resources, concentrated ownership or weak price pass-through can prevent broad welfare gains despite capable AI. Exposure need not produce unemployment.",
+      "evidence": "IMF uses calibrated scenarios with household data. Census reflects November 2025–January 2026 and weighted versus unweighted adoption. One firm’s staffing and a survey of expectations are not causal economy-wide labor outcomes.",
+      "limits": "No new complete calibration audit, future employment observation or aggregate inequality estimate is claimed. Earlier task statistics are not updated by assumptions or survey beliefs.",
+      "mitigation": "Retain institutional distribution, resource constraints, prices and genuine alternative access to necessities alongside automation; keep defensive and beneficial paths visible.",
+      "readerContext": "Read both causal destinations and current-summary context: automation, technical labor substitution, lower prices and not needing paid work remain separate claims.",
+      "whyHere": "Retain due node descriptions and W1/W3 evidence, renewing only those substantive clocks. Work-survey and other historical examples keep their original dates and scope.",
+      "primary": [
+        {
+          "source": "imf-distribution",
+          "locator": "Working-paper PDF abstract and introduction",
+          "support": "Household data plus a calibrated task model: conditional wage/capital distribution results, not observations of future inequality."
+        },
+        {
+          "source": "ilo-index",
+          "locator": "Author report summary and exposure methodology",
+          "support": "Occupational task exposure is distinct from job replacement and unemployment probability."
+        },
+        {
+          "source": "census-adoption",
+          "locator": "Working-paper author abstract and survey period",
+          "support": "November 2025–January 2026 adoption, weighted and unweighted differently; not current unemployment or full labor replacement."
+        },
+        {
+          "source": "anthropic-employment-october",
+          "locator": "Hiring composition, headcount and workflow discussion",
+          "support": "One developer’s changing work and staffing, without a causal AI-free comparison."
+        },
+        {
+          "source": "anthropic-expectations-october",
+          "locator": "Survey sampling, weighting and interpretation",
+          "support": "Beliefs and expectations, not observed capability or realized welfare gains."
+        }
+      ]
+    },
+    "researchBasics": {
+      "mechanism": "Human-directed research can improve capability without recursive self-improvement; capable research tools can help only if work transfers and is checked. Neither ASI nor unlimited acceleration follows automatically.",
+      "conditions": "Read NOW/R0/R1/R5 and the due R0-C2a, R0-W1 and R0-ASI bridges, development paths and research cycle. Reopen Chinchilla’s author abstract, METR’s measurement/update notice and new usage/BioBasics evidence.",
+      "counterexample": "Narrow benchmark progress can fail to transfer to messy work or physical tasks, and another workflow stage can remain a bottleneck. Higher capability can also improve safety research.",
+      "evidence": "Chinchilla is a human-directed allocation example. The time-horizon page’s last measurement is May 8 and its September notice limits currency; it measures human task-duration proxies, not autonomous runtime.",
+      "limits": "The whole long R1 bibliography is not newly independently verified; existing dated evidence remains dated. New research cases do not establish autonomous successor development or universal superiority.",
+      "mitigation": "Separate outputs, validation, human time and real deployment authority. Preserve the alternative route into R4 safety work.",
+      "readerContext": "NOW now describes mixed source types and separate publication/target periods without a stale calendar cutoff. Read new R1 and R2 text in actual tour order and standalone context in both languages.",
+      "whyHere": "Renew only the due basic-research nodes, R0 evidence and three capability bridges. R2 and new science/biology sources have more specific assessments; no classification or graph topology changes.",
+      "primary": [
+        {
+          "source": "chinchilla",
+          "locator": "Author abstract and compute/data allocation result",
+          "support": "Human-directed training allocation can improve performance without a recursive self-improvement loop."
+        },
+        {
+          "source": "horizon",
+          "locator": "Task-time interpretation and September 8 update notice",
+          "support": "A narrow human-task-duration proxy, with the last measurement on May 8; not a current universal runtime or capability ceiling."
+        },
+        {
+          "source": "anthropic-science-use",
+          "locator": "Data and methods; research-acceleration scenarios; discussion",
+          "support": "August–September usage and a separate self-selected survey are distinct from assumed time/cost output scenarios."
+        },
+        {
+          "source": "openai-biobasicsbench",
+          "locator": "Inside BioBasicsBench; results; where models still fall short",
+          "support": "Expert-reviewed interpretation tasks with partial-credit scoring, image errors and no physical-execution or human-uplift comparison."
+        },
+        {
+          "source": "metr-anthropic-rd-assessment",
+          "locator": "Summary; scope; limitations; methodology; process-transparency disclosures",
+          "support": "October progress assessment using internal metrics and interviews, with redaction, causal uncertainty and no sampling access to unreleased models."
+        }
+      ]
+    },
+    "dependencies": {
+      "mechanism": "Graph decompositions are explanatory joint conditions and alternatives, not a chronological inevitability chain or a probability calculator. Downstream dependency fingerprints change even when their text remains intact.",
+      "conditions": "Read the affected parent groups, 24 dependent connections, five route/story contexts, four current summaries and ten dated news examples. Inspect the eleven changed Japanese/English explanations and new source/cards in rendered reading context.",
+      "counterexample": "Denied access, corrected research, successful containment, market heterogeneity and institutional redistribution each prevent an automatic transition to a later harmful or beneficial outcome.",
+      "evidence": "This Sunday scan compares all 19 daily entry points for October 25–November 8, corrections and previously reviewed material. Seven sources, nine cards, eleven bilingual explanations and one history entry are new; only 34 due node and seven due edge clocks plus matching 18 evidence clocks advance.",
+      "limits": "This is not Monday’s full weekly backfill, independent scientific replication, an all-source re-audit, a production test or a new audit of every unchanged translation. Unavailable leads remain unresolved and targeted searches do not prove no replication exists.",
+      "mitigation": "Balance capability and failure reports with defenses, negative results, human intervention and limits on generalization. Keep all existing classifications and the 41-edge topology.",
+      "readerContext": "Older examples about work, math, lab research, safety, incidents, Astra, research contribution, agent behavior and task horizons remain explicitly tied to their dated original sources. No new glossary entry is needed.",
+      "whyHere": "Approve only the version-matched dependent units after contextual review; retain unrelated dates. Update the existing draft PR without automatic merge or deployment.",
+      "primary": [
+        {
+          "source": "metr-anthropic-rd-assessment",
+          "locator": "Summary; scope; limitations; methodology; process-transparency disclosures",
+          "support": "October progress assessment using internal metrics and interviews, with redaction, causal uncertainty and no sampling access to unreleased models."
+        },
+        {
+          "source": "openai-safety-underperformance",
+          "locator": "Summary; investigation; behavioral evidence; training analysis; response",
+          "support": "Matched framing and internal-use evidence, unresolved causes, unsuccessful causal reproductions and no established strategic sabotage."
+        },
+        {
+          "source": "openai-gpt6-cyber",
+          "locator": "PDF sections 3–9: access, agent safeguards, monitoring, critical systems and capability evaluation",
+          "support": "External-suite regressions and hardened-target failures coexist with improvements. Client configuration and limited blocking tests constrain defense claims."
+        },
+        {
+          "source": "anthropic-project-eve",
+          "locator": "Market replay and caveats; directional bets; fleets; agents instructed to sabotage",
+          "support": "Simulated profits omit price response; instructed sabotage and monitor visibility differ from spontaneous deployed behavior."
+        },
+        {
+          "source": "openai-biobasicsbench",
+          "locator": "Inside BioBasicsBench; results; where models still fall short",
+          "support": "Expert-reviewed interpretation tasks with partial-credit scoring, image errors and no physical-execution or human-uplift comparison."
+        },
+        {
+          "source": "fsb-ai-practices-final",
+          "locator": "Final-report summary and twelve sound practices",
+          "support": "Risk-management recommendations, not measured reductions in financial losses."
+        },
+        {
+          "source": "census-adoption",
+          "locator": "Working-paper author abstract and survey period",
+          "support": "November 2025–January 2026 adoption, weighted and unweighted differently; not current unemployment or full labor replacement."
+        }
+      ]
+    }
+  },
+  "entries": {
+    "source:metr-anthropic-rd-assessment": {
+      "hash": "170ce37531a295f559ad9511b573c62b36baca36e43333f1a0cd7e5d4fa2e6c4",
+      "assessment": "acceleration"
+    },
+    "source:metr-anthropic-rd-risk-review": {
+      "hash": "5839e737d4fa43d200b8fdb636e7246698fbbfbdd04dd6d84eec3f79c4f692a4",
+      "assessment": "acceleration"
+    },
+    "source:openai-safety-underperformance": {
+      "hash": "0c1c05e5bd590e74bd67d2a9ab83e7e15a89672404be39fbad831fd9d3bfe3ea",
+      "assessment": "safetyResearch"
+    },
+    "source:openai-gpt6-cyber": {
+      "hash": "ac28d5c173d97d6a443398bfa5a27299ab91ec3c14eaba1584d35fac6b0f5478",
+      "assessment": "cyber"
+    },
+    "source:anthropic-science-use": {
+      "hash": "81ddb594ef39ba7121c641ae0f54c3ea71d3302a7513bfa98966104174013df8",
+      "assessment": "scienceUse"
+    },
+    "source:openai-biobasicsbench": {
+      "hash": "e5cf9577ef37ee02de75b17380af73c51afe3d8fc24f3f191c3b8461452f3936",
+      "assessment": "biology"
+    },
+    "source:anthropic-project-eve": {
+      "hash": "557022261352552d3a992497dcf20aac6c74ab8f960c830e12f2b877e9243890",
+      "assessment": "eveOversight"
+    },
+    "research:metr-rd-acceleration-october": {
+      "hash": "ceb9f6a9071033965103d441d88036d853427895a6fd35c14d3f9cb41bb502c2",
+      "assessment": "acceleration"
+    },
+    "research:metr-rd-warning-threshold": {
+      "hash": "72d5a65ff575964c0518b0879f4c5b4f6f1dd3e8cbd144305bae85c43b4d7bd7",
+      "assessment": "acceleration"
+    },
+    "research:safety-task-underperformance": {
+      "hash": "fdaf7203495b4ea5e703385376bbcb1ccaedea711ea5bc8efe9bf6a2474b3914",
+      "assessment": "safetyResearch"
+    },
+    "research:gpt6-cyber-capabilities": {
+      "hash": "5db498019904ecd824db59905b901791be73234aa357a9ae14e9a4e22034a8e8",
+      "assessment": "cyber"
+    },
+    "research:gpt6-cyber-safeguards": {
+      "hash": "d9f937d6fe68f5e7279c40b55e77d006ff7d9f447ae5ee8631c594f4db812896",
+      "assessment": "cyber"
+    },
+    "research:science-use-and-scenarios": {
+      "hash": "30871abed1b0b662bedaef935d1a478ea4e7d6105377312d3e49583768ab7b7c",
+      "assessment": "scienceUse"
+    },
+    "research:biobasics-evidence-interpretation": {
+      "hash": "3082c94652c10959a87deb465d0cee2a4305fdb80ec76930b3b5bed9646e37dc",
+      "assessment": "biology"
+    },
+    "research:eve-market-replay": {
+      "hash": "6eebb0e65b082761272a786aecf7f308314b6bce8102f97e79400e1ceb50d187",
+      "assessment": "eveMarket"
+    },
+    "research:eve-team-oversight": {
+      "hash": "42397fa1eafbab39972af78ec03887d402d79c7d80899f7dbca4bd56d35388b7",
+      "assessment": "eveOversight"
+    },
+    "node:C2": {
+      "hash": "1ea9582c15111fec8fc6355cc1c8456a8f1e2a2a9bfd7878bcabe77e198c9900",
+      "assessment": "control"
+    },
+    "node:C2b": {
+      "hash": "07757428d85062ceb452e5ad80f63dbb8bf7fdd75f900f40b3218a953f19b6a4",
+      "assessment": "control"
+    },
+    "node:C3": {
+      "hash": "7ffb95eb61f8647385d39a3692f82b828590ce540b656c7ffc4b2e2af3d95aff",
+      "assessment": "control"
+    },
+    "node:C3a1": {
+      "hash": "60d782e9f3fb68b7c87c47b13bbf0a862fc4a92a6e7470d9e457e0d5d847090b",
+      "assessment": "safetyResearch"
+    },
+    "node:C3a2": {
+      "hash": "a062473a386fffa4e7aab2b3830b56422c25ea085e68337bacc97d18b51152ff",
+      "assessment": "control"
+    },
+    "node:C3a3": {
+      "hash": "a963886e854887631a28d6428347475b93fc40fe549b23497e317fbfb9868170",
+      "assessment": "eveOversight"
+    },
+    "node:C3b": {
+      "hash": "dcaa8fcb7a19eba2669bac3100b448f63e8009a3fd48aea360fd007ae6e482e8",
+      "assessment": "control"
+    },
+    "node:C4": {
+      "hash": "c2b89796d8aa25f8d344de508d0fc2f1f4ced4d55ab6e283c4be592f9a73e85e",
+      "assessment": "control"
+    },
+    "node:F1": {
+      "hash": "22bd956dda541abdfddeecb1a9a98e0cce230dde73d04d976105500eeb051a32",
+      "assessment": "finance"
+    },
+    "node:F2": {
+      "hash": "318a96fc0e8fc46a286cc44fb9550e4e220883f9edb710f6f5e807cb86e9b02e",
+      "assessment": "finance"
+    },
+    "node:F2a": {
+      "hash": "07040510c5ec9af59238cf83c8208f2f42cc5fa16dbdcc21bff9a445aadd3e3e",
+      "assessment": "finance"
+    },
+    "node:F2b": {
+      "hash": "fa6f124e3ca010f65db3db0b507293aa00721667919b351d8bb8c231a815dfec",
+      "assessment": "eveMarket"
+    },
+    "node:F3": {
+      "hash": "800380a3678cbf834efc8dba05fcb3181be543aba2ffb40cdd5ee3b1e8367618",
+      "assessment": "finance"
+    },
+    "node:I1": {
+      "hash": "d2bd206b83a62db5d7accdfd643edbeb0512fd2d3906b3cb4919ed48959ecd55",
+      "assessment": "eveMarket"
+    },
+    "node:I1a": {
+      "hash": "5ce0e02bf0676cb9fe4885f0858d91b9ee169d3b9f6735535dfc6fbae931d4cf",
+      "assessment": "income"
+    },
+    "node:I1b": {
+      "hash": "5523b5578f96cf0ddbdd0a235c51da65d559225b2c00564fad77253f492fddb4",
+      "assessment": "income"
+    },
+    "node:I2": {
+      "hash": "7c910d50c0fcaaf34a30065190fee7f2480437352386820cedfedbdac776dc76",
+      "assessment": "workDistribution"
+    },
+    "node:L": {
+      "hash": "c1d1c68afb55307a83cd6409fff6ee43d66b390a726cbc8e49b753baf58a484b",
+      "assessment": "control"
+    },
+    "node:M1": {
+      "hash": "88251079dae8cbfdc801edbcb6a41de3bad1d664c0401f952c99a10477c9c87e",
+      "assessment": "misuse"
+    },
+    "node:M2": {
+      "hash": "559f7f68646cafcbf5ecda3b61f379024dd1aac35fdd94204c655eb33f494b0d",
+      "assessment": "misuse"
+    },
+    "node:M2b": {
+      "hash": "e5f241e9007762a522d3b9b6899dbd15b68c32025a5cff7580346c8e8fcac23e",
+      "assessment": "misuse"
+    },
+    "node:M2b1": {
+      "hash": "d0da55225fb0f7d780f6ba618f77d152026fb9c2af809895803e6ddb722c2b54",
+      "assessment": "biology"
+    },
+    "node:M2c": {
+      "hash": "00ffa0a68256183340460a212ab4e2ffa9838d618048ffd3c47cde4df94d6590",
+      "assessment": "misuse"
+    },
+    "node:M2c1": {
+      "hash": "63eed81d81814edfbde91b3b92ca3057e166b9ecb8475c562e1232720b5bb86a",
+      "assessment": "cyber"
+    },
+    "node:M2c2": {
+      "hash": "c400be32ac0610b6a5f579c665c8823c6b9cbdcd52f5b9fabcd7dcae886a4bad",
+      "assessment": "misuse"
+    },
+    "node:M3": {
+      "hash": "7309a1c948489e468d401dae5cb9d974bdf4fbf4d3e45495d4a3c7f2b64e2005",
+      "assessment": "cyber"
+    },
+    "node:NOW": {
+      "hash": "a4a98d43d790676711f1f3656494fb7eab9bd1f853be848517e4ccb99774d171",
+      "assessment": "researchBasics"
+    },
+    "node:P1": {
+      "hash": "12ecef390556a11d0b600c35873a0a224e48957f4862b7f0151e74e6fa7c63fc",
+      "assessment": "workDistribution"
+    },
+    "node:R0": {
+      "hash": "12fe1f1731028c923f00f4018cc6717e829e340b31ccd5e50744588d392b37cb",
+      "assessment": "researchBasics"
+    },
+    "node:R1": {
+      "hash": "3e74b7960593ae6209295821c79ee70fff77183d85ede3bb913a95d5881de027",
+      "assessment": "researchBasics"
+    },
+    "node:R2": {
+      "hash": "1c56443a2d813c6bc0531f7cf06812a10ea1b67b97ad62cf8fa04b8bc1a985ea",
+      "assessment": "acceleration"
+    },
+    "node:R4": {
+      "hash": "ce58728952d241f4ff566b7f14393a5fe0d7f83ef14e80354a92c7fa76d890ac",
+      "assessment": "safetyResearch"
+    },
+    "node:R5": {
+      "hash": "c5a1a5335251eb3442c51a19c3f4b8684954a9b963e144aac70f826b1e9316e8",
+      "assessment": "researchBasics"
+    },
+    "node:W1": {
+      "hash": "5547b4c1794c098bc708c3e0e36aba63bb549ae6d104d2d1c0c403d4e63c766d",
+      "assessment": "workDistribution"
+    },
+    "node:W3": {
+      "hash": "f6f48366d0ce253530fc17ab76451931d7d9ea41b930f6ec03227bac7c4b2e18",
+      "assessment": "workDistribution"
+    },
+    "node:W6": {
+      "hash": "e15808b98a05310a5b0e0f6d28a38ae4a409295d14561319bded33186046e5d1",
+      "assessment": "workDistribution"
+    },
+    "edge:C4-H": {
+      "hash": "469164d3ef64ddfcca66de2015b7891cf674f83457840780b381d5e5ae5f43f2",
+      "assessment": "control"
+    },
+    "edge:M3-H": {
+      "hash": "85b7a5a9a64c0623a66527077eec14a858511e624a8704b1a8eccf18534ecab6",
+      "assessment": "cyber"
+    },
+    "edge:R1-R2": {
+      "hash": "f8052f26bb8f0c47807c739757a25f4d35e1cbd9d596e02b79bee8d3c9905094",
+      "assessment": "acceleration"
+    },
+    "edge:R2-R3": {
+      "hash": "9ed71e1252b1727968eaad1b43c71abf71f922e89554d2dd13ead0fda0a9d2f1",
+      "assessment": "acceleration"
+    },
+    "edge:R3-R2": {
+      "hash": "e4682eacb8587d2bd8398a4c19c2bf82b0412e453cc9a367abf7e33c1ebd238b",
+      "assessment": "acceleration"
+    },
+    "edge:C3-L": {
+      "hash": "d4ce96cc86a9bb49f8f6017d296f4464eecdfb29a25d279cdb53088bd4fb4fbd",
+      "assessment": "control"
+    },
+    "edge:L-C4": {
+      "hash": "bef4e2e8250150acd7226430ca84fd3530cbf74a984cc6be0339916f4619fc53",
+      "assessment": "control"
+    },
+    "edge:W1-W4": {
+      "hash": "505870ee06b205b8b830c58c35e0700f546be15a06311e1f884dab3137dcfa2a",
+      "assessment": "workDistribution"
+    },
+    "edge:I1a-I1": {
+      "hash": "8a75e5d1b2947e849ab304194cc1972b2bf907b5e42b7186198e31a6d0505511",
+      "assessment": "income"
+    },
+    "edge:I1-I2": {
+      "hash": "6379875a4a9a2c73bc5c25ced57930601440496e802518130d62694deb282d2f",
+      "assessment": "workDistribution"
+    },
+    "edge:W4-P1": {
+      "hash": "fe1d7e92e05f6419be94ab751e69951a5a29a0d0eb3101d003438b882a438535",
+      "assessment": "workDistribution"
+    },
+    "edge:P1-P3": {
+      "hash": "c1041e0bcf7c51eb0b88aa6f9c4109e49514b924fee8282df81fc42cd71de064",
+      "assessment": "workDistribution"
+    },
+    "edge:F1-F3": {
+      "hash": "35145de6e44fc1e1b7f09b51508cbaa99e1d588e861ebf87d84672be881a7732",
+      "assessment": "finance"
+    },
+    "edge:R4-C1": {
+      "hash": "f59e8ec997f37e8bbe21651e4f2b0275aa6910987883fff711d1bbe80b3d6622",
+      "assessment": "safetyResearch"
+    },
+    "edge:W3-W5": {
+      "hash": "27910583fc7643fc7f2c7b4a83e02aaa15f0d24bc8bcfc481a6430962b9a74cb",
+      "assessment": "workDistribution"
+    },
+    "edge:W4-W3": {
+      "hash": "1a869c08cce36a2ee19396b585cdb6ad442fb602b24338fe2cdb3bcc5277ce9c",
+      "assessment": "workDistribution"
+    },
+    "edge:W3-W7": {
+      "hash": "9454a4d2451e7db4bfbc52e06e0fdc87974541219081ba0fd211ae1a8e4da0d0",
+      "assessment": "workDistribution"
+    },
+    "edge:F3-F5": {
+      "hash": "10a64eba56c3264b780c2830a50af5299038fbbdd9034706e2c5895c8dd64ee2",
+      "assessment": "finance"
+    },
+    "edge:W3-W9": {
+      "hash": "e7b1dd582de1aba5d93e07ba41370ef2c7b457d158b78ca6cd1ecffc09cab63c",
+      "assessment": "workDistribution"
+    },
+    "edge:R0-C2a": {
+      "hash": "d8b465c56ba4d032333132953aaee12d971453df3cf1f4a2a73720d7367f2b19",
+      "assessment": "researchBasics"
+    },
+    "edge:R0-W1": {
+      "hash": "7f5fcdf10931333b84c5211454ab22506a5e2aede39f056f056b7991464407ea",
+      "assessment": "researchBasics"
+    },
+    "edge:R0-ASI": {
+      "hash": "93e4c7322449f4d914da672d2a7d48a0f36faff4898780862bd53a984be6d5db",
+      "assessment": "researchBasics"
+    },
+    "edge:ASI-C3": {
+      "hash": "58dbecdc1086f6f82931831cc0fadb6f1fb1f18f9013f74586ca8fae70adba65",
+      "assessment": "control"
+    },
+    "edge:R0-R4": {
+      "hash": "5deca85769c81c20674db0697d0e17849f0ae81f21817605c920837a1f6aa8e6",
+      "assessment": "researchBasics"
+    },
+    "graph:control": {
+      "hash": "16b0cf7bca8fa8b3b01bb4252eae4f5d57839db1945867a963da2d2c61489c0a",
+      "assessment": "dependencies"
+    },
+    "graph:misuse": {
+      "hash": "153c3444c18885a3d8996769468e61e32e346b82b121ce0ee261017422166771",
+      "assessment": "dependencies"
+    },
+    "graph:acceleration": {
+      "hash": "09089084585e9090316594a0d7540dffbeb44e74cb0e0f1d87374183e2d440a3",
+      "assessment": "dependencies"
+    },
+    "graph:ability-access": {
+      "hash": "88f27ba23acd570eb96bd633c1ea3f98992d2f335d75bace8fdec267f3a4a062",
+      "assessment": "control"
+    },
+    "graph:oversight": {
+      "hash": "67545333399816cd4657bf692b658b39a84e0209a61004d65d1291263b7c9066",
+      "assessment": "control"
+    },
+    "graph:evaluation": {
+      "hash": "842717b2d94d4a33cb797a5724148641db82f6d94fb6788899fa5e55893a310c",
+      "assessment": "safetyResearch"
+    },
+    "graph:misuse-mechanisms": {
+      "hash": "5a9601be58661f6de10ad1f2f2d726db5d0d13221666b2a16ffdcc77a68c3674",
+      "assessment": "misuse"
+    },
+    "graph:cyber-conditions": {
+      "hash": "5e8b186f651bc9a77399b6892ed0010062a205911d3f7011325c87914453b7fd",
+      "assessment": "cyber"
+    },
+    "graph:bio-conditions": {
+      "hash": "7cf1f4d27e88708af106fadd0e41ddb071c16b16fb01312b96737fc2e02a5e12",
+      "assessment": "biology"
+    },
+    "graph:work": {
+      "hash": "329236d7a338ea3913829daeea72b94dabee2d2d1a2dbb270853be8180829917",
+      "assessment": "dependencies"
+    },
+    "graph:money": {
+      "hash": "f58570dc2c0eff21108c1f24c2f4c3934c3393b32fd4d9e4086b9c28c074ecb8",
+      "assessment": "dependencies"
+    },
+    "graph:finance-mechanisms": {
+      "hash": "097cc8a9e7bfc952556a24f7c20f42e7a337601fb1999ed19117f70f910b1093",
+      "assessment": "finance"
+    },
+    "graph:income-conditions": {
+      "hash": "5930abb07929d67888b4bcef49a18e6f9f221554ee8099b8dbca6faf701d7b9f",
+      "assessment": "income"
+    },
+    "graph:currency-conditions": {
+      "hash": "e77d10ded672850c2792d0b9bc7a488a3d11b4bf9d59f5cec4f00dd54369d579",
+      "assessment": "workDistribution"
+    },
+    "graph:finance-conditions": {
+      "hash": "708aab81216bdc55ef92e7fbf701de9afe6a78b3835d6f0b7bd72d194f2a0f44",
+      "assessment": "finance"
+    },
+    "graph:development-paths": {
+      "hash": "4857b58641a5d556e715ff94f7786b4da84aba6639a6a81761b76ce44f439bfb",
+      "assessment": "researchBasics"
+    },
+    "graph:research-cycle": {
+      "hash": "5faeb7337dc0e3ba901e98201cc4ffd6385532edfe17c7f13a1f6e58dca16bd0",
+      "assessment": "acceleration"
+    },
+    "route:control": {
+      "hash": "3f832c534138f1d8da3cfcd229795af834ad24f7e6378a0e0905e3cddffe3ecc",
+      "assessment": "dependencies"
+    },
+    "route:misuse": {
+      "hash": "d30af150f3ba225d4e73a05964afc60e63ddc1589fd4ae73b4315b18cd693b95",
+      "assessment": "dependencies"
+    },
+    "route:acceleration": {
+      "hash": "a75e333343fff0741be1a78784f26479a1f2698fa74e471e458b2467a24558e8",
+      "assessment": "dependencies"
+    },
+    "route:work": {
+      "hash": "a35be2d754cd483def94ebd8c96b5b4664384fcbd74f0563370b9a29b730fd7b",
+      "assessment": "dependencies"
+    },
+    "route:money": {
+      "hash": "276895a8bd26c9627e4385bdd8f00d531e98b56b5bc22773c77ff01574ce0da9",
+      "assessment": "dependencies"
+    },
+    "current:control": {
+      "hash": "6b7a04904e9ecab1492c7f515bfd5604fde40450e44541840de90dacd21c6c9f",
+      "assessment": "dependencies"
+    },
+    "current:misuse": {
+      "hash": "efd139975334079ef1b9db55c9e07783f524372df688143e750ef7d3b1311698",
+      "assessment": "dependencies"
+    },
+    "current:work": {
+      "hash": "b9f727d2dad1231b9b1fede009edfa16ae0cbc2d216503924448cbbb2ff442e3",
+      "assessment": "dependencies"
+    },
+    "current:money": {
+      "hash": "a4311ad44c0ea4da43364980da2b90ec12268f8c577d1b7e75df03cf6d81d13d",
+      "assessment": "dependencies"
+    },
+    "safeguard:R4": {
+      "hash": "3d1dcba0133ca798a31bfcdd1855392ac532d0ae66ea76c7c9e5ccc89bb346e9",
+      "assessment": "safetyResearch"
+    },
+    "evidence:C2": {
+      "hash": "c654776ff9d33636c1a9553dfff9b139a2f69d7b9bf61dd649cad4f5cde0bd0b",
+      "assessment": "control"
+    },
+    "evidence:C3": {
+      "hash": "0cd66edffef2263bba1369bc1712208a9684285d28b15abc97150f3bf296b7f5",
+      "assessment": "control"
+    },
+    "evidence:C3a1": {
+      "hash": "5fa995e5bbaac9a5dc013ee69382b50cbf94d74e054c487494700acf4ace58cc",
+      "assessment": "safetyResearch"
+    },
+    "evidence:C3a2": {
+      "hash": "4da4dff0064934a8e58e9487d882a3eb4c31061a70ea0fd3da7246c5189dec13",
+      "assessment": "control"
+    },
+    "evidence:C3a3": {
+      "hash": "5aeedf3ad466bc2027ef25ff0e089f138784bb6d1574747437c70883ceba08d3",
+      "assessment": "eveOversight"
+    },
+    "evidence:C3b": {
+      "hash": "b6182528179318ed9f73fbd6e3d861b58f2f8a036b12c154304fb88e8e529a68",
+      "assessment": "control"
+    },
+    "evidence:F1": {
+      "hash": "e134f383cefed67f72864aa5c3aa22f1ba72b9f66e8e8d794067aeeb758e96c6",
+      "assessment": "finance"
+    },
+    "evidence:I1": {
+      "hash": "1cb8c984f3725f0d9aa7366b978d6d9f88ae3a315288a8d57ae899cbb2fd5765",
+      "assessment": "eveMarket"
+    },
+    "evidence:I1a": {
+      "hash": "672428600042e0bafcc9d1ab4157a4bb039921eccd6e05c8a952b1f7a18e2fc5",
+      "assessment": "income"
+    },
+    "evidence:I1b": {
+      "hash": "3255313ee0ec5b966ca556e18fe07cb1894050bd3c37dde64f8c659100612e51",
+      "assessment": "income"
+    },
+    "evidence:M2": {
+      "hash": "138f86f4a18de6c90458e4c87859b2bef85ed297da9e9dd921ccb303c097f0e8",
+      "assessment": "misuse"
+    },
+    "evidence:M2b": {
+      "hash": "9bd2a33a18eff0b35a4c941e2a5dc8232843d71feac058387943687f378fa9c8",
+      "assessment": "misuse"
+    },
+    "evidence:M2b1": {
+      "hash": "1bb3ee28496cde35714d6f2ab851dd08c965e8ce05eaf737c4c124998bcccf2c",
+      "assessment": "biology"
+    },
+    "evidence:R0": {
+      "hash": "a3f2e6bd4ddc0a46d11adf643a85419f24cc65c9bc4f150cbc51500f53ffaf90",
+      "assessment": "researchBasics"
+    },
+    "evidence:R2": {
+      "hash": "d38ee6c7174ba8cf6c4d2c5a6a7b3a8441d0be5288bc81321948532cb0820ff3",
+      "assessment": "acceleration"
+    },
+    "evidence:R4": {
+      "hash": "870678f33cb9a5997b1da59fb36a6aacda6a7fba04631eb660e846b9ce105e07",
+      "assessment": "safetyResearch"
+    },
+    "evidence:W1": {
+      "hash": "cbbff442bddb17c7ece288f5bca875eb2ba36da25fbb9c99077cdd9cb885a33d",
+      "assessment": "workDistribution"
+    },
+    "evidence:W3": {
+      "hash": "3fa93f0a9ca6302d5c58d2979b8257940a2dab142f3d791c9fdfa0aabf7e083f",
+      "assessment": "workDistribution"
+    },
+    "news:work-survey": {
+      "hash": "cb0b9952850839d55749be6a4ddd10faeb0f4e942b0fd63b7bc1b61ab05c8417",
+      "assessment": "workDistribution"
+    },
+    "news:agent-income": {
+      "hash": "acf201a917ad06fb2e7620bacf7d0feb8ed90b23df42d7fbcdc285b7ce096de3",
+      "assessment": "income"
+    },
+    "news:recent-math": {
+      "hash": "6fee46b3fff12d93b108cb4d50b299c1687f79c09faddcbb09557f8df4f87829",
+      "assessment": "dependencies"
+    },
+    "news:research-lab-september": {
+      "hash": "5c0f4374fb2ef048d63356ea1dc02d10bbf1e525babf6f31f5a1686e184f5469",
+      "assessment": "dependencies"
+    },
+    "news:automated-safety": {
+      "hash": "2dbd382165b5577187aa8280cef37720deaab3290c1502b3271fb6d19c725b92",
+      "assessment": "safetyResearch"
+    },
+    "news:aisi-contained": {
+      "hash": "715992a70583e29b036c580bc1fc6a494b489f36074445bcbf4842671d8d76fd",
+      "assessment": "control"
+    },
+    "news:astra-threshold": {
+      "hash": "5142884a526e5668f2882aee41fa05bc7bd0230bd75474cb4cf896459f25ba30",
+      "assessment": "dependencies"
+    },
+    "news:research-contribution": {
+      "hash": "7922531ed301032905a0748a007b9970476d57a421f0ab437a106498db4136dc",
+      "assessment": "dependencies"
+    },
+    "news:agent-behavior": {
+      "hash": "a6fd0b82346b8f9da578531de89bf818754c38cb3dc51e6158a2c809fd1ee25d",
+      "assessment": "dependencies"
+    },
+    "news:time-horizons": {
+      "hash": "ae1cc8fd78c09cdca0b9523ea0bdbb04d3c955216f2d4414d082e3df1368792a",
+      "assessment": "researchBasics"
+    },
+    "story:control": {
+      "hash": "57dcc22f1a94dad8a4aea2c2f7b20e1faa139490f3009d0fe2b7685c21b6c760",
+      "assessment": "dependencies"
+    },
+    "story:misuse": {
+      "hash": "6b6d3b82abf83698f48d80f878ae6f000dfd914e377b2ad13851ec595adf91d4",
+      "assessment": "dependencies"
+    },
+    "story:acceleration": {
+      "hash": "f0d732cc7ec17e21f33575c387e204ea20223bfabbcf638618ce7ebdf4c9c98c",
+      "assessment": "dependencies"
+    },
+    "story:work": {
+      "hash": "956c928f7a50b944f9eef1b1f32cecea041a1512bce0cb49b458d0281cbd83db",
+      "assessment": "dependencies"
+    },
+    "story:money": {
+      "hash": "9243909d9a51ebd841828b0aeb495786319675c673ba0778cd566d6e2b419a31",
+      "assessment": "dependencies"
+    },
+    "metadata:map": {
+      "hash": "8e4a353780acb699fa8fb5272b2a722bc1c407596e5f6be58077713e9e157b52",
+      "assessment": "dependencies"
+    },
+    "history:changes": {
+      "hash": "93d7e350aa7576e4a3361bc06e63b9b5a7413f999b0d328764b16d4479e8ec4b",
+      "assessment": "dependencies"
+    },
+    "inventory:current": {
+      "hash": "871d4c6bb71bc0b66fa62940c8392345a1d7af19d5451b73c007ac3173ce2d3f",
+      "assessment": "dependencies"
+    }
+  }
+}

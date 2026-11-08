@@ -26,7 +26,9 @@
     "bighat-antibody-leads",
     "enveda-cmc-review",
     "frontiercs-carbon-evaluation",
-    "anthropic-vault-research"
+    "anthropic-vault-research",
+    "anthropic-science-use",
+    "openai-biobasicsbench"
   ],
   "questions": [],
   "related": [],
@@ -37,7 +39,7 @@
     "仕事の量、質、人間の介入を分けて測れているか。"
   ],
   "review": {
-    "checkedAt": "2026-10-30",
+    "checkedAt": "2026-11-08",
     "intervalDays": 7,
     "reason": "能力・行動・対策の評価は短期間で変わり得るため。"
   },
@@ -64,7 +66,9 @@
     "antibody-human-reasoning-loop",
     "manufacturing-record-human-review",
     "carbon-research-evaluation-limits",
-    "vault-research-human-direction"
+    "vault-research-human-direction",
+    "science-use-and-scenarios",
+    "biobasics-evidence-interpretation"
   ],
   "shortTitle": "AIが研究の一部を進める"
 }

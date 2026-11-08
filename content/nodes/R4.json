@@ -15,7 +15,8 @@
     "aisi-transect",
     "transect-paper",
     "auditor-training",
-    "anthropic-automated-em-search"
+    "anthropic-automated-em-search",
+    "openai-safety-underperformance"
   ],
   "questions": [],
   "related": [],
@@ -23,7 +24,7 @@
     "未提示の評価、実運用、追加学習後でも効果が続くか。"
   ],
   "review": {
-    "checkedAt": "2026-10-30",
+    "checkedAt": "2026-11-08",
     "intervalDays": 7,
     "reason": "能力、実運用、経済制度、反証を分けて継続確認するため。"
   },
@@ -34,7 +35,8 @@
     "frontier-pacing",
     "transect-review-tooling",
     "trained-alignment-auditors",
-    "training-data-monitor-blindspots"
+    "training-data-monitor-blindspots",
+    "safety-task-underperformance"
   ],
   "shortTitle": "安全性の研究・対策も加速"
 }

@@ -195,7 +195,7 @@
         "external-service-boundary"
       ],
       "review": {
-        "checkedAt": "2026-10-17",
+        "checkedAt": "2026-11-08",
         "intervalDays": 7,
         "reason": "既存の根拠がカードの条件をどこまで直接確かめているかを分類しています。根拠の更新時に見直します。"
       }
@@ -234,7 +234,7 @@
         "training-containment-redteam"
       ],
       "review": {
-        "checkedAt": "2026-10-24",
+        "checkedAt": "2026-11-08",
         "intervalDays": 7,
         "reason": "既存の根拠がカードの条件をどこまで直接確かめているかを分類しています。根拠の更新時に見直します。"
       }
@@ -282,10 +282,11 @@
         "external-risk-report-critique",
         "carbon-research-evaluation-limits",
         "evaluation-production-warning-gap",
-        "committed-model-inference-proof"
+        "committed-model-inference-proof",
+        "safety-task-underperformance"
       ],
       "review": {
-        "checkedAt": "2026-10-30",
+        "checkedAt": "2026-11-08",
         "intervalDays": 7,
         "reason": "既存の根拠がカードの条件をどこまで直接確かめているかを分類しています。根拠の更新時に見直します。"
       }
@@ -301,7 +302,7 @@
         "evaluation-production-warning-gap"
       ],
       "review": {
-        "checkedAt": "2026-10-24",
+        "checkedAt": "2026-11-08",
         "intervalDays": 7,
         "reason": "既存の根拠がカードの条件をどこまで直接確かめているかを分類しています。根拠の更新時に見直します。"
       }
@@ -324,10 +325,11 @@
         "blocking-monitor-hardening",
         "layered-monitoring-coverage",
         "distributed-agent-monitoring",
-        "mas-guard"
+        "mas-guard",
+        "eve-team-oversight"
       ],
       "review": {
-        "checkedAt": "2026-10-30",
+        "checkedAt": "2026-11-08",
         "intervalDays": 7,
         "reason": "既存の根拠がカードの条件をどこまで直接確かめているかを分類しています。根拠の更新時に見直します。"
       }
@@ -349,7 +351,7 @@
         "monitoring-alert-to-intervention"
       ],
       "review": {
-        "checkedAt": "2026-10-30",
+        "checkedAt": "2026-11-08",
         "intervalDays": 7,
         "reason": "既存の根拠がカードの条件をどこまで直接確かめているかを分類しています。根拠の更新時に見直します。"
       }
@@ -375,7 +377,7 @@
         "finance-monitor"
       ],
       "review": {
-        "checkedAt": "2026-09-11",
+        "checkedAt": "2026-11-08",
         "intervalDays": 7,
         "reason": "既存の根拠がカードの条件をどこまで直接確かめているかを分類しています。根拠の更新時に見直します。"
       }
@@ -384,10 +386,11 @@
       "level": "tested",
       "summary": "人が承認や補充を担う店舗実験で、AIによる販売と収支改善が報告されています。人件費や計算費まで含む無人企業の持続的な利益の確認ではありません。",
       "research": [
-        "vend"
+        "vend",
+        "eve-market-replay"
       ],
       "review": {
-        "checkedAt": "2026-09-11",
+        "checkedAt": "2026-11-08",
         "intervalDays": 7,
         "reason": "既存の根拠がカードの条件をどこまで直接確かめているかを分類しています。根拠の更新時に見直します。"
       }
@@ -399,7 +402,7 @@
         "vend"
       ],
       "review": {
-        "checkedAt": "2026-09-11",
+        "checkedAt": "2026-11-08",
         "intervalDays": 7,
         "reason": "既存の根拠がカードの条件をどこまで直接確かめているかを分類しています。根拠の更新時に見直します。"
       }
@@ -413,7 +416,7 @@
         "agent-book-exchange"
       ],
       "review": {
-        "checkedAt": "2026-10-01",
+        "checkedAt": "2026-11-08",
         "intervalDays": 7,
         "reason": "既存の根拠がカードの条件をどこまで直接確かめているかを分類しています。根拠の更新時に見直します。"
       }
@@ -427,7 +430,7 @@
         "threat-bio-sep26"
       ],
       "review": {
-        "checkedAt": "2026-09-18",
+        "checkedAt": "2026-11-08",
         "intervalDays": 7,
         "reason": "報告された利用・試験と、カードの条件全体の成立を分けて見直すため。"
       }
@@ -441,7 +444,7 @@
         "physical-software-eval-sep26"
       ],
       "review": {
-        "checkedAt": "2026-09-20",
+        "checkedAt": "2026-11-08",
         "intervalDays": 7,
         "reason": "報告された利用・試験と、カードの条件全体の成立を分けて見直すため。"
       }
@@ -455,10 +458,11 @@
         "gpt6-october-capabilities",
         "argon-bio-uplift",
         "reprobait-access-limits",
-        "rosalind6-capability-boundaries"
+        "rosalind6-capability-boundaries",
+        "biobasics-evidence-interpretation"
       ],
       "review": {
-        "checkedAt": "2026-10-31",
+        "checkedAt": "2026-11-08",
         "intervalDays": 7,
         "reason": "既存の根拠がカードの条件をどこまで直接確かめているかを分類しています。根拠の更新時に見直します。"
       }
@@ -471,23 +475,26 @@
         "ordinary-progress"
       ],
       "review": {
-        "checkedAt": "2026-09-11",
+        "checkedAt": "2026-11-08",
         "intervalDays": 7,
         "reason": "既存の根拠がカードの条件をどこまで直接確かめているかを分類しています。根拠の更新時に見直します。"
       }
     },
     "R2": {
       "level": "indirect",
-      "summary": "一部の自動化は進んでいますが、開発全体の加速は別の問いです。Googleの対象期間・能力指標では加速の差は統計的に有意ではなく、全社・全期間への一般化はできません。",
+      "summary": "METRはAnthropicの10月時点の進歩の加速とAIの寄与を評価していますが、非公開の根拠や因果関係に不確かさがあります。別のGoogleの分析とは対象・期間・指標が異なり、一つの全体加速率にはまとめられません。",
       "research": [
         "rd-use",
         "horizon",
         "anthropic-rd-progress",
         "metr-opus55-rd",
-        "argon-rd-trend"
+        "argon-rd-trend",
+        "metr-rd-acceleration-october",
+        "metr-rd-warning-threshold",
+        "science-use-and-scenarios"
       ],
       "review": {
-        "checkedAt": "2026-10-30",
+        "checkedAt": "2026-11-08",
         "intervalDays": 7,
         "reason": "既存の根拠がカードの条件をどこまで直接確かめているかを分類しています。根拠の更新時に見直します。"
       }
@@ -500,10 +507,11 @@
         "control-protocol",
         "transect-review-tooling",
         "trained-alignment-auditors",
-        "training-data-monitor-blindspots"
+        "training-data-monitor-blindspots",
+        "safety-task-underperformance"
       ],
       "review": {
-        "checkedAt": "2026-10-30",
+        "checkedAt": "2026-11-08",
         "intervalDays": 7,
         "reason": "既存の根拠がカードの条件をどこまで直接確かめているかを分類しています。根拠の更新時に見直します。"
       }
@@ -531,7 +539,7 @@
         "employment-workflow-observation"
       ],
       "review": {
-        "checkedAt": "2026-10-17",
+        "checkedAt": "2026-11-08",
         "intervalDays": 7,
         "reason": "既存の根拠がカードの条件をどこまで直接確かめているかを分類しています。根拠の更新時に見直します。"
       }
@@ -559,7 +567,7 @@
         "expectations-not-outcomes"
       ],
       "review": {
-        "checkedAt": "2026-10-17",
+        "checkedAt": "2026-11-08",
         "intervalDays": 7,
         "reason": "既存の根拠がカードの条件をどこまで直接確かめているかを分類しています。根拠の更新時に見直します。"
       }

@@ -11,7 +11,8 @@
     "gemini-argon-report",
     "reprobait-tool-reconstruction",
     "protein-filtering-durability",
-    "openai-rosalind6"
+    "openai-rosalind6",
+    "openai-biobasicsbench"
   ],
   "questions": [],
   "related": [],
@@ -20,7 +21,7 @@
   ],
   "watch": [],
   "review": {
-    "checkedAt": "2026-10-31",
+    "checkedAt": "2026-11-08",
     "intervalDays": 7,
     "reason": "能力・行動・対策の評価は短期間で変わり得るため。"
   },
@@ -35,7 +36,8 @@
     "argon-bio-uplift",
     "reprobait-access-limits",
     "protein-filtering-controls",
-    "rosalind6-capability-boundaries"
+    "rosalind6-capability-boundaries",
+    "biobasics-evidence-interpretation"
   ],
   "shortTitle": "情報支援で実行の難所が減る"
 }

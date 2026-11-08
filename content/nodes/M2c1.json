@@ -13,7 +13,8 @@
     "gemini-argon-report",
     "gemini-carbon-announcement",
     "gemini-carbon-methods",
-    "openai-linux-kernel-pipeline"
+    "openai-linux-kernel-pipeline",
+    "openai-gpt6-cyber"
   ],
   "questions": [],
   "related": [],
@@ -41,7 +42,8 @@
     "gpt6-october-capabilities",
     "argon-cyber-evaluation",
     "carbon-cyber-and-patching",
-    "kernel-validation-and-patch-review"
+    "kernel-validation-and-patch-review",
+    "gpt6-cyber-capabilities"
   ],
   "shortTitle": "現実に近いサイバー作業を遂行"
 }

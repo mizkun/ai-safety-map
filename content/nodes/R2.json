@@ -9,7 +9,10 @@
     "anthropic-rsi",
     "pace-frontier",
     "metr-opus55",
-    "gemini-argon-report"
+    "gemini-argon-report",
+    "metr-anthropic-rd-assessment",
+    "metr-anthropic-rd-risk-review",
+    "anthropic-science-use"
   ],
   "questions": [],
   "related": [],
@@ -18,7 +21,7 @@
     "検証や統合も含めた開発全体の時間が短縮したか。"
   ],
   "review": {
-    "checkedAt": "2026-10-30",
+    "checkedAt": "2026-11-08",
     "intervalDays": 7,
     "reason": "能力・行動・対策の評価は短期間で変わり得るため。"
   },
@@ -33,7 +36,10 @@
     "anthropic-rd-progress",
     "frontier-pacing",
     "metr-opus55-rd",
-    "argon-rd-trend"
+    "argon-rd-trend",
+    "metr-rd-acceleration-october",
+    "metr-rd-warning-threshold",
+    "science-use-and-scenarios"
   ],
   "shortTitle": "AI開発の工程全体が加速"
 }

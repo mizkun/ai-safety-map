@@ -1,5 +1,36 @@
 [
   {
+    "id": "research-acceleration-oversight-20261108",
+    "date": "2026-11-08",
+    "nodes": [
+      "R1",
+      "R2",
+      "R4",
+      "C3a1",
+      "C3a3",
+      "M2b1",
+      "M2c1",
+      "M3",
+      "F2b",
+      "I1"
+    ],
+    "sources": [
+      "metr-anthropic-rd-assessment",
+      "metr-anthropic-rd-risk-review",
+      "openai-safety-underperformance",
+      "openai-gpt6-cyber",
+      "anthropic-science-use",
+      "openai-biobasicsbench",
+      "anthropic-project-eve"
+    ],
+    "kind": "研究・能力・監督の追記と再点検",
+    "title": "研究加速の外部評価と、AIの仕事を確かめる条件",
+    "summary": "研究開発の加速、安全性研究での成績低下、サイバーと生物の評価、ゲーム内の取引・監督の実験を追記しました。",
+    "before": "部分的な研究支援と監督の限界を説明していましたが、11月公表の外部評価や用途による成績差は未掲載でした。",
+    "after": "新しい評価の対象時期、権限、人の関与を補足。非公開の根拠、未解決の原因、模擬利益と現実の成果の違いを明記しました。",
+    "reason": "11月8日の一次資料点検。期限に達した34項目・7本の矢印を再点検し、分類と図の接続を維持しました。"
+  },
+  {
     "id": "validated-work-human-review-20261105",
     "date": "2026-11-05",
     "nodes": [

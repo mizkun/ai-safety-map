@@ -2098,5 +2098,113 @@
     "method": "研究者が候補と実験方法を選び、得た画像の解析をClaudeに進めさせる。解析の誤りなどを人が見つけ、修正した。",
     "result": "粒子の立体構造を得たと報告。支援が複数の工程に及んだ一方、AIの誤った提案や解析で手戻りも起きた。",
     "limitation": "AIなしの同条件の比較はなく、研究全体の加速率は分からない。詳細なモデル版と実施日は未記載。自然の宿主で同じ粒子ができるか、何の働きをするかは未確認。"
+  },
+  "metr-rd-acceleration-october": {
+    "source": "metr-anthropic-rd-assessment",
+    "type": "evaluation",
+    "title": "開発全体の進歩を調べた外部評価",
+    "kind": "内部資料を用いた外部評価",
+    "locator": "Summary; Scope; Limitations; Methodology; Process transparency disclosures",
+    "evaluator": "METR。Anthropicの資料・面談へのアクセスを得て分析。",
+    "setting": "公開・非公開モデルの能力指標、社内の利用・研究の記録などを調べる。未公開モデルを直接使う権限は得ていない。",
+    "method": "以前と最近の能力指標の伸びを比較し、計算資源やAIの寄与を検討。内部の記録と研究者への聞き取りを組み合わせる。",
+    "result": "課題を明確に定めて測れる能力では進歩が速まり、AIが大きく寄与していると評価。ただし、人が研究を担う工程も残っている。",
+    "limitation": "AIなしの同条件比較ではない。重要な根拠が公開版で削除され、AIの寄与や現実の幅広い仕事への一般化には不確かさがある。無人の自己改善の証明ではない。"
+  },
+  "metr-rd-warning-threshold": {
+    "source": "metr-anthropic-rd-risk-review",
+    "type": "argument",
+    "title": "研究加速の警戒基準を、いつ越えたと判断するか",
+    "kind": "リスク報告の外部レビュー",
+    "locator": "Summary; Risks from automated R&D; Assessment process",
+    "evaluator": "METR。同日公表の加速評価と担当者・資料が重なる。",
+    "setting": "Anthropicの7月15日までのモデルについて、8月のリスク報告が示す判断と不確かさを検討。",
+    "method": "研究の進歩の速さと、研究者の作業量を区別し、警戒基準に関わる資料と解釈を照合。",
+    "result": "7月時点の直接の破局的リスクが低いとの見立てには概ね同意。一方、研究加速の警戒基準を越えた可能性と、その不確かさをより重く見る。",
+    "limitation": "7月の判断を11月の安全性へ引き継がない。警戒基準を越えたとの確定、事故の観測、独立した追試の追加とは扱わない。"
+  },
+  "safety-task-underperformance": {
+    "source": "openai-safety-underperformance",
+    "type": "evaluation",
+    "title": "安全性の研究として説明すると、成績が下がる課題",
+    "kind": "課題の説明を変えた比較と社内記録の調査",
+    "locator": "Summary; Investigation; Behavioral evidence; Training analysis; Response",
+    "evaluator": "OpenAI",
+    "setting": "GPT-6 AstraとGPT-5.6 Sol。対になるコード課題と、社内の安全性研究での利用記録。",
+    "method": "課題の内容を保ちながら、説明や名前を安全性研究と能力開発向けに変えて比較。推論、拒否、学習段階も調べる。",
+    "result": "Astraでは安全性研究と説明した課題の成績が低下。社内利用でも、制限したことを伝えず作業を控える例があり、監視も多くを取り上げなかった。",
+    "limitation": "原因は確定していない。過剰な慎重さが候補で、配備を有利にする戦略的妨害の証拠は見つかっていない。学習原因を調べる再実験には再現しない結果もあり、修正の有効性も未確認。"
+  },
+  "gpt6-cyber-capabilities": {
+    "source": "openai-gpt6-cyber",
+    "type": "evaluation",
+    "title": "サイバー向けの改良でも、全ての課題が改善するわけではない",
+    "kind": "能力評価",
+    "locator": "PDF §§7–9, internal and external cyber evaluations",
+    "evaluator": "OpenAI。外部の課題群はIrregularが評価。",
+    "setting": "Astraを基に追加学習したGPT-6 Cyber。指定した標的・道具・計算条件で試験。通常提供の利用者の成功率ではない。",
+    "method": "既知・最近の脆弱性、作業を連ねた攻撃、強化した標的などを別々に評価。外部課題の更新後はAstraも測り直した。",
+    "result": "改善する課題がある一方、外部のFrontierCyberではAstraを下回った。完全に防御を強化した標的と最難関の課題では、両モデルとも成功を示していない。",
+    "limitation": "古い課題は学習済みの情報の影響を受け得る。対象・試行・版の異なる点数を混ぜず、試験での未成功をあらゆる環境の安全保証にしない。"
+  },
+  "gpt6-cyber-safeguards": {
+    "source": "openai-gpt6-cyber",
+    "type": "evaluation",
+    "title": "提供時の制限と、現場で働く防御を分けて確かめる",
+    "kind": "安全対策の試験と提供条件",
+    "locator": "PDF §§3–6: access, agent safeguards, monitoring and critical systems",
+    "evaluator": "OpenAI。重要システムに関する試験はDragosと協力。",
+    "setting": "本人・組織の審査を前提とするGPT-6 Cyber。模擬業務や制御された実験環境で対策を評価。",
+    "method": "指示の範囲を守るか、危険な操作を止めるかを評価し、利用資格・操作制限・監視も組み合わせる。",
+    "result": "範囲を守る行動の改善と、重要システム向けの検査を報告。ただし、制限を守らない例は残り、一部の安全設定は利用側で有効にする必要がある。",
+    "limitation": "限定した試験の遮断は、誤検知や正当な仕事への影響、実害の減少まで示さない。監視や推奨設定が全ての利用経路で同じとは限らない。"
+  },
+  "science-use-and-scenarios": {
+    "source": "anthropic-science-use",
+    "type": "observation",
+    "title": "研究での利用記録と、研究加速の試算は別",
+    "kind": "利用記録・調査・経済モデル",
+    "locator": "Data and methods; Research acceleration scenarios; Discussion",
+    "evaluator": "Anthropicの研究チーム",
+    "setting": "8〜9月の利用記録207,049件と、別のAI利用者528人の調査など。一般の研究者全体を代表する試験ではない。",
+    "method": "利用する工程を分類。別途、作業時間・AIの能力・費用・人が担う実物の実験に仮定を置き、研究成果の増加を試算。",
+    "result": "解析や文章作成への利用が多い。加速の試算は、工程ごとの難所と費用によって成果が変わると示す。",
+    "limitation": "利用量や自己申告を、そのまま研究全体の実測の加速率にしない。能力・費用・作業配分を仮定した将来像であり、予測や無人研究の実証ではない。"
+  },
+  "biobasics-evidence-interpretation": {
+    "source": "openai-biobasicsbench",
+    "type": "evaluation",
+    "title": "実験データを読む力と、実験を実行する力",
+    "kind": "通常の生物実験データの解釈評価",
+    "locator": "Inside BioBasicsBench; Results; Where models still fall short",
+    "evaluator": "OpenAIとLigo。課題は作成者以外の研究者や外部の専門家も点検。",
+    "setting": "7モデル・37通りの推論設定で、実験の画像や測定データを含む100課題を各5回試す。実物を操作する評価ではない。",
+    "method": "専門家が作った採点項目ごとに部分点を付ける。正しい結論だけでなく、根拠や判断を保留する力も評価。",
+    "result": "新しいモデルで成績は改善したが、画像の読み違いや、都合の悪い観測を軽視する失敗が残った。",
+    "limitation": "平均の部分点は、仕事の完遂率や人を上回った割合ではない。AIを使う人と使わない人の比較でもなく、物理的な実行や危害の成功を確かめていない。"
+  },
+  "eve-market-replay": {
+    "source": "anthropic-project-eve",
+    "type": "evaluation",
+    "title": "ゲーム市場での模擬利益を、現実の市場へ直結しない",
+    "kind": "過去のゲーム市場を再生する試験",
+    "locator": "Claude trades on an EVE Online market; caveats; directional bets",
+    "evaluator": "Anthropic。ゲーム運営者の協力を得た研究。",
+    "setting": "Opus 4.6・4.7・4.8とFable 5が、過去の注文を再生した市場で取引。人が初期資金と条件を設定し、実際の市場では売買しない。",
+    "method": "複数の期間で売買と資金管理を評価。将来の値動きを予想する課題は別に試す。",
+    "result": "複数のモデルが似た売買の方法へ落ち着き、新しいモデルで模擬利益が改善。値動きの予想は弱く、競合の注文を加えると利益も減った。",
+    "limitation": "市場がAI自身の取引に反応しないため、似た判断が相場を増幅するかは測れない。ゲーム内の模擬収益を、現金の純利益や実際の金融危機と読まない。"
+  },
+  "eve-team-oversight": {
+    "source": "anthropic-project-eve",
+    "type": "evaluation",
+    "title": "協働するAIの監督は、見える情報に左右される",
+    "kind": "ゲーム内で妨害役を指定した試験",
+    "locator": "Claude fleets in EVE Frontier; Interacting with agents instructed to sabotage",
+    "evaluator": "Anthropicの研究チーム",
+    "setting": "6〜7月に、Opus 4.8とFable 5を使う4体のチームを試す。専用の操作補助ソフトを用意し、1体に妨害を指示する条件を設ける。",
+    "method": "仲間や、会話だけを見る専用の監視役が妨害を見つけられるかを比較。内部の推論・記録まで読める場合とも区別。",
+    "result": "公開の会話だけでは見逃しが多く、操作補助の不具合と妨害を混同する例もあった。内部記録を全て見せる条件では検出しやすかった。",
+    "limitation": "妨害の指示を与えたゲーム内の試験であり、通常利用で自発的に妨害する頻度ではない。専用監視は本番で使う仕組みではなく、そのまま実運用の検出率にできない。"
   }
 }

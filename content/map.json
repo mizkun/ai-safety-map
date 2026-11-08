@@ -1,5 +1,5 @@
 {
-  "asOf": "2026-11-05",
+  "asOf": "2026-11-08",
   "routes": [
     {
       "id": "control",
@@ -659,20 +659,22 @@
       "sources": [
         "openai-rd",
         "discovery",
-        "anthropic-rsi"
+        "anthropic-rsi",
+        "metr-anthropic-rd-assessment"
       ],
       "basis": "編集上の条件付き仮説。下の一次資料は、個別の能力・行動・仕組みを支持します。矢印全体の成立を実証したものではありません。",
       "review": {
-        "checkedAt": "2026-10-31",
+        "checkedAt": "2026-11-08",
         "intervalDays": 7,
         "reason": "接続を支える能力・権限・防壁について、新しい証拠や反論を確認するため。"
       },
       "research": [
         "rd-use",
         "discoveries",
-        "anthropic-rd-progress"
+        "anthropic-rd-progress",
+        "metr-rd-acceleration-october"
       ],
-      "current": "OpenAIとAnthropicは開発へのAIの関与の増加を報告しています。コード量や自己推定の出力量を、開発全体の加速率へ読み替えることはできません。"
+      "current": "開発へのAIの関与に加え、METRはAnthropicの進歩の加速を評価しています。ただし、非公開の根拠やAIの寄与に不確かさがあり、工程全体の難所がどう変わったかを引き続き確かめます。"
     },
     "R2-R3": {
       "id": "R2-R3",
@@ -763,7 +765,7 @@
         "control-paper"
       ],
       "review": {
-        "checkedAt": "2026-10-31",
+        "checkedAt": "2026-11-08",
         "intervalDays": 7,
         "reason": "接続を支える能力・権限・防壁について、新しい証拠や反論を確認するため。"
       },
@@ -799,7 +801,7 @@
         "incident"
       ],
       "review": {
-        "checkedAt": "2026-10-31",
+        "checkedAt": "2026-11-08",
         "intervalDays": 7,
         "reason": "接続を支える能力・権限・防壁について、新しい証拠や反論を確認するため。"
       },
@@ -1611,7 +1613,7 @@
         "horizon"
       ],
       "review": {
-        "checkedAt": "2026-10-31",
+        "checkedAt": "2026-11-08",
         "intervalDays": 7,
         "reason": "能力や対策の変化を一次資料で確認するため。"
       }
@@ -1638,7 +1640,7 @@
         "horizon"
       ],
       "review": {
-        "checkedAt": "2026-10-31",
+        "checkedAt": "2026-11-08",
         "intervalDays": 7,
         "reason": "能力や対策の変化を一次資料で確認するため。"
       }
@@ -1666,7 +1668,7 @@
         "horizon"
       ],
       "review": {
-        "checkedAt": "2026-10-31",
+        "checkedAt": "2026-11-08",
         "intervalDays": 7,
         "reason": "能力や対策の変化を一次資料で確認するため。"
       }
@@ -1695,7 +1697,7 @@
         "frontier-pacing"
       ],
       "review": {
-        "checkedAt": "2026-10-31",
+        "checkedAt": "2026-11-08",
         "intervalDays": 7,
         "reason": "能力や対策の変化を一次資料で確認するため。"
       }

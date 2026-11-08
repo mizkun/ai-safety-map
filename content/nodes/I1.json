@@ -11,7 +11,8 @@
   "sources": [
     "vend",
     "visa-agents",
-    "anthropic-project-swap"
+    "anthropic-project-swap",
+    "anthropic-project-eve"
   ],
   "questions": [],
   "related": [],
@@ -19,7 +20,7 @@
     "検証可能な純利益と、その持続性を見る。"
   ],
   "review": {
-    "checkedAt": "2026-10-31",
+    "checkedAt": "2026-11-08",
     "intervalDays": 7,
     "reason": "能力、実運用、経済制度、反証を分けて継続確認するため。"
   },
@@ -28,7 +29,8 @@
   "research": [
     "vend",
     "payments",
-    "agent-book-exchange"
+    "agent-book-exchange",
+    "eve-market-replay"
   ],
   "shortTitle": "AIの仕事・取引が収入に"
 }

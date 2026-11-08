@@ -1546,5 +1546,68 @@
     "period": "11月4日公表。4か月未満の研究と説明しているが、開始・終了日は未記載。複数の時期のClaudeを使い、個別の版は未記載。",
     "primary": "Anthropicの研究チームによる早期の実践報告。原稿をbioRxivへ投稿した段階で、査読済み論文や独立した追試ではない。",
     "checked": "2026-11-05"
+  },
+  "metr-anthropic-rd-assessment": {
+    "title": "METR — Anthropic AI R&D Acceleration Assessment",
+    "url": "https://metr.org/blog/2026-11-05-anthropic-ai-rd-acceleration-assessment/",
+    "published": "2026-11-05",
+    "date": "2026-11-05",
+    "period": "調査は2026年8月12日〜10月29日。10月時点の進歩を、それ以前の期間と比較。非公開のモデルと内部資料も含む。",
+    "primary": "METRによる外部評価。提供された内部資料・面談を使う。公開版には開発元による削除があり、独立した再実行ではない。",
+    "checked": "2026-11-08"
+  },
+  "metr-anthropic-rd-risk-review": {
+    "title": "METR — Review of Risks from automated R&D in Anthropic’s August Risk Report",
+    "url": "https://metr.org/blog/2026-11-05-rd-section-anthropic-risk-report-august-2026-review/",
+    "published": "2026-11-05",
+    "date": "2026-11-05",
+    "period": "2026年7月15日までのモデルを対象とする8月報告のレビュー。点検は8月12日〜10月29日。",
+    "primary": "METRによる外部レビュー。同日公表の加速評価と担当者・資料が重なり、独立した二つの追試ではない。",
+    "checked": "2026-11-08"
+  },
+  "openai-safety-underperformance": {
+    "title": "OpenAI — Covert underperformance on safety research tasks",
+    "url": "https://alignment.openai.com/misalignment-reports/covert-underperformance-on-safety-research-tasks/",
+    "published": "2026-11-04",
+    "date": "2026-11-04",
+    "period": "最初の観測は2026年8月20日。対になる課題の実験は9月18日〜10月7日。社内利用の記録も調査。",
+    "primary": "OpenAIによる自社モデルの調査。原因について未解決の点があり、意図的な妨害と確定した報告ではない。",
+    "checked": "2026-11-08"
+  },
+  "openai-gpt6-cyber": {
+    "title": "OpenAI — GPT-6 Cyber System Card",
+    "url": "https://deploymentsafety.openai.com/gpt-6-cyber",
+    "published": "2026-11-05",
+    "date": "2026-11-05",
+    "period": "11月5日公表。各試験の実施日は未記載。最近の脆弱性を使う試験は2026年6〜8月の対象を含む。",
+    "primary": "OpenAIのシステムカード。Irregularなどとの外部評価を含むが、全ての対策の独立した検証ではない。",
+    "checked": "2026-11-08"
+  },
+  "anthropic-science-use": {
+    "title": "Anthropic — How researchers use Claude",
+    "url": "https://www.anthropic.com/research/how-researchers-use-claude",
+    "published": "2026-11-05",
+    "date": "2026-11-05",
+    "period": "利用記録は2026年8月2日〜9月30日。別の利用者調査と、仮定を置いた研究加速の試算を含む。",
+    "primary": "開発元による利用記録の分析と経済モデル。利用の観測と、研究全体の加速の試算は別の根拠。",
+    "checked": "2026-11-08"
+  },
+  "openai-biobasicsbench": {
+    "title": "OpenAI — Measuring how AI agents handle everyday wet-lab science",
+    "url": "https://openai.com/index/measuring-how-ai-agents-handle-wet-lab-science/",
+    "published": "2026-11-06",
+    "date": "2026-11-06",
+    "period": "11月6日公表。元の実験データの採取日と、モデル評価の実施日は未記載。",
+    "primary": "OpenAIとLigoによる課題作成・モデル評価。課題への専門家レビューと、独立した評価の再実行は別。",
+    "checked": "2026-11-08"
+  },
+  "anthropic-project-eve": {
+    "title": "Anthropic — Project EVE: Claude plays MMORPGs",
+    "url": "https://www.anthropic.com/research/project-eve-claude-plays-mmorpgs",
+    "published": "2026-11-06",
+    "date": "2026-11-06",
+    "period": "研究は2026年4〜7月。過去のゲーム市場の記録を再生する取引試験と、6〜7月の協働試験を区別。",
+    "primary": "Anthropicの研究者によるゲーム内の評価。現実の金融市場の利益や、自発的な妨害の観測ではない。",
+    "checked": "2026-11-08"
   }
 }
