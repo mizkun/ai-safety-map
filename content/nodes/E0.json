@@ -3,7 +3,8 @@
   "title": "被害の後も、生存・回復の道が残る",
   "explanation": "E0.md",
   "sources": [
-    "rand-extinction"
+    "rand-extinction",
+    "food-system-resilience"
   ],
   "questions": [],
   "related": [
@@ -20,13 +21,14 @@
     "resilience"
   ],
   "review": {
-    "checkedAt": "2026-10-10",
+    "checkedAt": "2026-11-09",
     "intervalDays": 30,
     "reason": "被害後の生存・回復の条件と、対策の有効性を区別して再確認するため。"
   },
   "status": "hypothesis",
   "research": [
-    "extinction"
+    "extinction",
+    "food-system-resilience"
   ],
   "shortTitle": "生存・回復の道が残る"
 }

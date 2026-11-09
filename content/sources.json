@@ -1609,5 +1609,23 @@
     "period": "研究は2026年4〜7月。過去のゲーム市場の記録を再生する取引試験と、6〜7月の協働試験を区別。",
     "primary": "Anthropicの研究者によるゲーム内の評価。現実の金融市場の利益や、自発的な妨害の観測ではない。",
     "checked": "2026-11-08"
+  },
+  "metacognitive-feedback": {
+    "title": "Maier et al. — Designing Against Deskilling",
+    "url": "https://arxiv.org/html/2609.20143v1",
+    "published": "2026-09-17",
+    "date": "2026-09-17",
+    "period": "2026年8月の英国成人を対象とした短時間の分数計算実験。公表日は9月17日、v1。",
+    "primary": "著者による事前登録した無作為割付実験のプレプリント。独立した追試は今回確認していない。",
+    "checked": "2026-11-09"
+  },
+  "food-system-resilience": {
+    "title": "Béné et al. — Decoupling food insecurity from shocks",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13598213/",
+    "published": "2026-09-15",
+    "date": "2026-09-15",
+    "period": "分析対象は2011〜2019年。2026年9月15日公開、9月22日号。AIによる災害の実験ではない。",
+    "primary": "PNAS掲載の原研究。国別の観測データと統計モデルによる分析で、対策の無作為比較ではない。",
+    "checked": "2026-11-09"
   }
 }

@@ -1,0 +1,642 @@
+{
+  "id": "2026-11-09-fallback-resilience",
+  "version": 2,
+  "date": "2026-11-09",
+  "reviewer": "Codex (primary-source and bilingual editorial review; not independent replication)",
+  "decision": "reviewed",
+  "assessments": {
+    "skills": {
+      "mechanism": "Delegation can weaken fallback only when practice, people, equipment or investment are lost. Changing how people request help can affect immediate learning without establishing organizational resilience.",
+      "conditions": "Read the August 2026 preregistered five-condition trial of 704 UK adults using GPT-OSS-120B. Complete answers require explicit requests, ten practice items precede six unaided items; humans retain task decisions.",
+      "counterexample": "AI access alone did not significantly reduce unaided performance; feedback can favor performance and participants can keep practicing. Continued delegation can coexist with retained alternatives and effective appeals.",
+      "evidence": "Feedback favored less answer offloading and better immediate performance under preregistered one-sided tests. Performance OR 1.51 has a two-sided 95% interval 0.98–2.33. Effort points did not clearly improve the two outcomes.",
+      "limits": "No delayed skills or organization-level handover outcomes, no verified independent replication. Do not convert the trial into prevention of irreversible dependence or reinterpret nonsignificance as equivalence.",
+      "mitigation": "Maintain unaided practice, fallback drills, transferable records and institutional alternatives. Feedback is a tentative limited intervention; oversight and rights to change decisions remain separate.",
+      "readerContext": "Both languages explain the concrete learning result before its limits; the main prose uses plain descriptions, with statistical qualification retained in the research card. D3 and E1 remain social control outcomes, not literal extinction.",
+      "whyHere": "Add the source/card to D2 and D1-D2 and retain the dependent sequence and story. Renew due D1/D2/D3/E1 and matching D1 evidence only, without changing current-route or source clocks.",
+      "primary": [
+        {
+          "source": "metacognitive-feedback",
+          "locator": "v1: sections 4–5, Table 3 and 6.5",
+          "support": "Randomized short practice and immediate unaided performance, with one-sided testing and uncertain durable effects."
+        },
+        {
+          "source": "gradual",
+          "locator": "Original ICML position-paper abstract",
+          "support": "Conditional institutional disempowerment, not an observation of worldwide irreversible loss."
+        },
+        {
+          "source": "census-adoption",
+          "locator": "Author abstract: supplement reference period and augmentation/employment paragraphs",
+          "support": "November 2025–January 2026 adoption differs from decision authority, job replacement and full automation."
+        }
+      ]
+    },
+    "resilience": {
+      "mechanism": "Essential services can remain impaired after harm, while geographic survival, supply alternatives and rebuilding remain possible. Preparedness can affect the link from shock to food outcomes.",
+      "conditions": "Read PNAS methods and limitations: 87 countries with complete 2011–2019 data; the descriptive plot uses 105. Hybrid models separate within-country and between-country associations. No AI model or deployment action is tested.",
+      "counterexample": "Severe damage does not by itself remove every survival or rebuilding option. Redundant supply can help sustain life, but observed buffering of historical acute shocks need not generalize to global prolonged failure.",
+      "evidence": "Supply redundancy and government effectiveness relate to smaller undernourishment fluctuations. RAND’s original overview distinguishes severe harm from extinction in three explored scenarios, without covering all possible pathways.",
+      "limits": "Country proxies, omitted variables and endogeneity remain; lagged instruments are a robustness check, not definitive causal identification. No observed worldwide AI catastrophe or recovery probability is inferred.",
+      "mitigation": "Separate prevention, containment, sustained essentials and reconstruction. Consider independent resources and aid routes while withholding any guarantee of effectiveness under untested conditions.",
+      "readerContext": "Japanese and English keep past food observations separate from AI scenarios. In tour order E0 follows H, while T/X require loss of survival possibilities. F6 still concerns prolonged transaction disruption rather than physical destruction.",
+      "whyHere": "Add bounded evidence to E0/F6, H-E0 and F5-F6. Retain C4-H/M3-H and H-T/T-X/H-G1 safeguards and the parallel control/misuse conditions. Do not promote statuses or alter topology.",
+      "primary": [
+        {
+          "source": "food-system-resilience",
+          "locator": "Tables 1–2, Figure 2, Discussion and Materials and Methods",
+          "support": "87-country regression versus 105-country descriptive plot, 2011–2019; associations and acute-shock limits."
+        },
+        {
+          "source": "rand-extinction",
+          "locator": "Author overview and key findings of the exploratory report",
+          "support": "Three scenarios distinguish catastrophe from literal extinction; no guarantee for all future pathways."
+        },
+        {
+          "source": "payment-resilience",
+          "locator": "Strategy: aims, operational resilience and payment-system scope",
+          "support": "Payment continuity and alternatives are institutional functions, not experimentally verified universal protection."
+        }
+      ]
+    },
+    "accidents": {
+      "mechanism": "A shared dependency can generate common failures, and outputs feeding other systems can propagate them. Failed independent detection, isolation and restoration are additional steps.",
+      "conditions": "Reassess A1/A2 and the three accident links against FSB continuity and third-party risk practices and the original risk-framework scope; distinguish financial use from society-wide deployment.",
+      "counterexample": "Systems may share a provider yet detect or isolate errors and recover independently. Simultaneous common-cause failures are not necessarily propagation through interacting systems.",
+      "evidence": "FSB recommendations explicitly address oversight, testing and third-party concentration. The draft’s earlier correlated-approval evidence remains a limited test, not a measured societal cascade.",
+      "limits": "No new causal frequency or proven reduction in catastrophic losses. Announcing sound practices does not establish that they are implemented or effective during a shared failure.",
+      "mitigation": "Check independent backups, separation, restored records and actual recovery exercises; common dependencies in fallback systems would undermine the proposed barrier.",
+      "readerContext": "Retain the explicit distinction between common cause, propagation and failed recovery in both route and story. Current summary remains tied to the dated FSB analysis.",
+      "whyHere": "Renew due A1/A2, A1-A2/A2-A3/A3-H and matching A1 evidence; inspect dependent graph, current summary and story without renewing unrelated clocks.",
+      "primary": [
+        {
+          "source": "fsb-ai-practices-final",
+          "locator": "Final report overview and practices 9–12",
+          "support": "Testing, human oversight, third-party dependencies and continuity are recommendations, not measured loss reduction."
+        },
+        {
+          "source": "framework",
+          "locator": "Author abstract and risk categorization",
+          "support": "System interaction is a risk mechanism to specify, not evidence of society-wide propagation."
+        },
+        {
+          "source": "rand-extinction",
+          "locator": "Author overview and key findings of the exploratory report",
+          "support": "Three scenarios distinguish catastrophe from literal extinction; no guarantee for all future pathways."
+        }
+      ]
+    },
+    "military": {
+      "mechanism": "AI advice may compress verification or improve it; erroneous adopted advice and inadequate checking are needed before escalation, followed by another party’s response.",
+      "conditions": "Read SIPRI’s original context/timeline analysis and the wargames author abstract. Game agents acting without human oversight differ from real military authority and command chains.",
+      "counterexample": "Better information, meaningful human reconsideration or communication can break the sequence. Competition and fast inference alone do not entail destructive action.",
+      "evidence": "Original studies support conditional mechanisms and simulated escalation. The new SIPRI essay describes unresolved reporting design, not demonstrated crisis prevention.",
+      "limits": "No actual war incidence, operational decision-control share or successful hotline intervention measured here. No claim to verify every historical military deployment or summit statement.",
+      "mitigation": "Retain verification time, independent information, interruption authority and crisis communication as distinct candidates; evaluate how they work in practice before calling them effective.",
+      "readerContext": "The tour introduces interacting human organizations before escalation. Both languages explain that game results do not reproduce real command systems or establish human correction time.",
+      "whyHere": "Renew S1/S2/S3, S2-S3/S3-H and matching S1 evidence. Review dependent S1-S2, current interaction and story but retain their dates.",
+      "primary": [
+        {
+          "source": "sipri",
+          "locator": "Overview and introduction on non-nuclear AI, timelines and contextual conditions",
+          "support": "Decision speed and sociotechnical context can affect escalation; AI use alone does not establish harmful outcomes."
+        },
+        {
+          "source": "wargames",
+          "locator": "Author abstract and simulation scope",
+          "support": "Escalatory choices of five models in games are not actual war rates or human command-chain evaluations."
+        },
+        {
+          "source": "rand-extinction",
+          "locator": "Author overview and key findings of the exploratory report",
+          "support": "Three scenarios distinguish catastrophe from literal extinction; no guarantee for all future pathways."
+        }
+      ]
+    },
+    "finance": {
+      "mechanism": "AI-influenced transactions can amplify losses only under exposure and failed-buffer conditions. Lost monetary acceptance and prolonged supply disruption require further failures; alternative arrangements may restore transactions.",
+      "conditions": "Recheck ECB payment strategy, monetary-autonomy discussion and FSB practices. F1-F3 remains joint with F2 and F4. F5/F7 require time, scale, acceptance, records and access, not merely a local outage.",
+      "counterexample": "Liquidity, reliable cash or alternate settlement can keep trade going despite a bank problem. Repair may be uneven and coexist with ongoing harm. Simulations and policy projects do not prove real resilience.",
+      "evidence": "Original institutional documents identify functions and continuity measures. BIS Agenti and October 29 payment-policy material were screened as proposed tools/analysis, not new deployed outcome estimates.",
+      "limits": "No evidence adopted here of AI causing world monetary collapse, all alternatives disappearing, or demonstrated universal recovery. Future plans and implemented arrangements remain distinct.",
+      "mitigation": "Keep independent settlement, records, essentials provision and accountable recovery. Avoid concentrating backups in the same infrastructure as normal operation.",
+      "readerContext": "The money story keeps abundance, monetary allocation and financial disruption separate. F6’s new food evidence does not turn F5-F6 into an observed AI-payment causal chain.",
+      "whyHere": "Retain and renew F5/F7, F1-F3/F3-F5/F5-F7; inspect money graph/story and F6 context. No finance statuses, AND gates or application features change.",
+      "primary": [
+        {
+          "source": "payment-resilience",
+          "locator": "Strategy: aims, operational resilience and payment-system scope",
+          "support": "Payment continuity and alternatives are institutional functions, not experimentally verified universal protection."
+        },
+        {
+          "source": "monetary-trust",
+          "locator": "Speech on monetary-system autonomy and public/private money",
+          "support": "Monetary acceptance and institutional support differ from price falls and local bank disruption."
+        },
+        {
+          "source": "fsb-ai-practices-final",
+          "locator": "Final report overview and practices 9–12",
+          "support": "Testing, human oversight, third-party dependencies and continuity are recommendations, not measured loss reduction."
+        },
+        {
+          "source": "food-system-resilience",
+          "locator": "Tables 1–2, Figure 2, Discussion and Materials and Methods",
+          "support": "87-country regression versus 105-country descriptive plot, 2011–2019; associations and acute-shock limits."
+        }
+      ]
+    },
+    "work": {
+      "mechanism": "Technical capacity affects feasible adoption, while costs, quality, institutions, demand and distribution determine employment and living standards. Full labor substitution is stronger than partial automation.",
+      "conditions": "Recheck ILO exposure methods, Census period/augmentation and IMF calibrated-model scope. The November ILO policy brief also separates exposure, adoption and realized outcomes; the inaccessible new IMF paper is excluded.",
+      "counterexample": "A task can be exposed without its job disappearing. New human work can coexist with layoffs, and displaced workers may lack access to it. Reduced required work can occur without literal all-labor automation.",
+      "evidence": "Surveys and exposure indices support bounded observations; economic models represent conditional scenarios. No retrieved result proves the conjunction of all cognitive and physical substitution or universal income provision.",
+      "limits": "No inference of unemployment probability, current labor-market coverage or welfare from exposure or one firm’s behavior. The new unverified IMF headline is not used to update W9.",
+      "mitigation": "Track actual quality/costs, household income, access to essential goods, transitions, skills and hiring opportunities. Keep distribution and production as joint conditions for W5.",
+      "readerContext": "The work tour presents capability, adoption and human complementarity before competing household outcomes. The historic work-survey example keeps its own period rather than becoming a November estimate.",
+      "whyHere": "Renew W4/W5/W9 and W1-W4/W4-W3/W3-W5/W3-W7/W3-W9. Retain route and story branches and all evidence levels.",
+      "primary": [
+        {
+          "source": "ilo-index",
+          "locator": "Original report summary: task sampling, exposure gradients and interpretation",
+          "support": "Occupational exposure is distinct from unemployment and complete labor substitution."
+        },
+        {
+          "source": "census-adoption",
+          "locator": "Author abstract: supplement reference period and augmentation/employment paragraphs",
+          "support": "November 2025–January 2026 adoption differs from decision authority, job replacement and full automation."
+        },
+        {
+          "source": "imf-distribution",
+          "locator": "Original WP/25/68 PDF abstract and introduction",
+          "support": "Calibrated household/task model separates wages, capital and adoption; scenarios are not realized future income."
+        }
+      ]
+    },
+    "time": {
+      "mechanism": "If livelihood and choice are secured, time can be reallocated to care, learning and other activities. Saved work time alone does not determine autonomy or wellbeing.",
+      "conditions": "Read the Korean-worker survey methods and self-reported time/output definitions; it concerns employed workers rather than a society no longer needing paid work.",
+      "counterexample": "Employers can absorb saved time or activity opportunities can remain inaccessible. More free time need not improve meaning or subjective wellbeing.",
+      "evidence": "Reported time savings and work allocation illustrate one channel, not the complete W5-W8 transition or a randomized welfare intervention.",
+      "limits": "Self-report and the employed-worker sample limit generalization to post-work lives. No new causal wellbeing estimate is adopted.",
+      "mitigation": "Preserve income, meaningful choice and access to social activities; verify these separately from technical productivity.",
+      "readerContext": "Both editions explain the actual survey population and distinguish time at work from freedom after paid work becomes unnecessary.",
+      "whyHere": "Renew due W8 only; review dependent W5-W8 and work-story context without advancing the not-yet-due edge date.",
+      "primary": [
+        {
+          "source": "time-reallocation",
+          "locator": "Abstract and sections 2.1–2.3",
+          "support": "Self-reported time/output among employed Korean workers, not a post-work welfare trial."
+        },
+        {
+          "source": "imf-distribution",
+          "locator": "Original WP/25/68 PDF abstract and introduction",
+          "support": "Calibrated household/task model separates wages, capital and adoption; scenarios are not realized future income."
+        }
+      ]
+    },
+    "allocation": {
+      "mechanism": "Productivity can lower total costs, but price pass-through, material scarcity and allocation constrain access. Non-price rules can change money’s role without removing its other functions.",
+      "conditions": "Read ECB money functions and the IMF task/adoption model; P1-P3 jointly requires P1 and P2, while P3-P4 needs actual alternate operating arrangements.",
+      "counterexample": "Cheaper production can coexist with scarce land, concentrated ownership or unequal access. Public provision can use money elsewhere; price falls do not imply monetary collapse.",
+      "evidence": "Original monetary explanations and conditional distribution models justify distinctions, not a measured transition to post-scarcity or fair allocation.",
+      "limits": "No claim that currency disappears, all resources become abundant or non-price distribution is automatically fair. Model assumptions are not real future observations.",
+      "mitigation": "Assess total costs, pass-through, access, transparent allocation and appeals separately; retain ownership and institutional choices.",
+      "readerContext": "Money chapter introduces abundance and access before contrasting financial failure. Terms remain defined by their concrete functions.",
+      "whyHere": "Renew P2/P3/P4 and W4-P1/P1-P3/P3-P4; review currency-conditions without changing the AND relationship or the three-branch money story.",
+      "primary": [
+        {
+          "source": "ecb-money",
+          "locator": "Functions of money and central/commercial bank money",
+          "support": "Medium of exchange, unit of account and store of value are distinct; cheaper production need not remove them."
+        },
+        {
+          "source": "imf-distribution",
+          "locator": "Original WP/25/68 PDF abstract and introduction",
+          "support": "Calibrated household/task model separates wages, capital and adoption; scenarios are not realized future income."
+        }
+      ]
+    },
+    "income": {
+      "mechanism": "An output earns revenue only with paying demand, delivery and valid authority. Sustainable profit deducts costs; ownership and institutions determine its recipients.",
+      "conditions": "Reopen Vend phase-two human/scaffold arrangements and Visa measurement footnotes. Keep human procurement, monitoring and liability visible and April payment data dated.",
+      "counterexample": "Payments can occur without profit; a successful store may depend on uncounted human work. More firm income can coexist with lower wages or unequal ownership.",
+      "evidence": "Small-store evidence and selected payment flows support partial commercial activity. Neither establishes fully autonomous, fully costed firms or general equitable income.",
+      "limits": "The earlier EVE simulation remains distinct from real-market profit. Vendor measures exclude identified test/wash flows but do not measure all commerce or full delegated authority.",
+      "mitigation": "Retain spending limits, approvals, delivery checks, accountability and explicit cost accounting; evaluate recipients and distribution independently.",
+      "readerContext": "The agent-income example keeps the revenue/profit distinction before income distribution. It does not claim that an AI legally owns proceeds.",
+      "whyHere": "Renew I1a-I1 and I1-I2 only, while reading their money-tour and dated news context. Underlying I nodes were checked yesterday and are not redated.",
+      "primary": [
+        {
+          "source": "vend",
+          "locator": "Phase-two setup, expanded human support and operational limitations",
+          "support": "Improved small-store performance retains support and changing scaffolds; not fully costed autonomous profit."
+        },
+        {
+          "source": "visa-agents",
+          "locator": "Payment data footnotes, delegated authority and accountability discussion",
+          "support": "Selected April 21 flows exclude identified wash/tests but are not net profit or complete operating authority."
+        },
+        {
+          "source": "imf-distribution",
+          "locator": "Original WP/25/68 PDF abstract and introduction",
+          "support": "Calibrated household/task model separates wages, capital and adoption; scenarios are not realized future income."
+        }
+      ]
+    },
+    "dependencies": {
+      "mechanism": "This patch updates limited evidence inside existing conditional paths; evidence from different studies does not make every condition jointly true.",
+      "conditions": "Review the three changed bilingual node sections, three evidence paragraphs, all affected graph/route/story contexts, current summaries and dated examples in the generated reading order.",
+      "counterexample": "Classifications and topology remain unchanged because new limited learning and historical food results do not establish societal disempowerment, global collapse or universal effective defenses.",
+      "evidence": "Two original studies added, 49 due nodes/connections substantively reassessed with bounded originals. New policy/abstract-only leads remain separated from adopted findings.",
+      "limits": "No independent reproduction, full audit of every old paper, complete literature census or production test. Pending original-text retrievals remain unresolved; search absence is not proof of no replication.",
+      "mitigation": "Only 22 node, 27 edge and three matching evidence clocks advance. Keep existing source clocks and all statuses; retain old history and translations when prepending the new entry.",
+      "readerContext": "Map date means latest included review, not every study current. Japanese and English retain uncertainty and distinct recovery, dependence, work and money endpoints without added jargon.",
+      "whyHere": "Record the exact 89 reviewed units and topic-specific assessments. Update only existing Draft PR #11; no merge, deployment, new task or message to another person.",
+      "primary": [
+        {
+          "source": "metacognitive-feedback",
+          "locator": "v1: sections 4–5, Table 3 and 6.5",
+          "support": "Randomized short practice and immediate unaided performance, with one-sided testing and uncertain durable effects."
+        },
+        {
+          "source": "food-system-resilience",
+          "locator": "Tables 1–2, Figure 2, Discussion and Materials and Methods",
+          "support": "87-country regression versus 105-country descriptive plot, 2011–2019; associations and acute-shock limits."
+        },
+        {
+          "source": "fsb-ai-practices-final",
+          "locator": "Final report overview and practices 9–12",
+          "support": "Testing, human oversight, third-party dependencies and continuity are recommendations, not measured loss reduction."
+        },
+        {
+          "source": "imf-distribution",
+          "locator": "Original WP/25/68 PDF abstract and introduction",
+          "support": "Calibrated household/task model separates wages, capital and adoption; scenarios are not realized future income."
+        },
+        {
+          "source": "rand-extinction",
+          "locator": "Author overview and key findings of the exploratory report",
+          "support": "Three scenarios distinguish catastrophe from literal extinction; no guarantee for all future pathways."
+        }
+      ]
+    }
+  },
+  "entries": {
+    "source:metacognitive-feedback": {
+      "hash": "fc21398ede8801cd6c85a147766e08b8abe5cdd2b9f5c44416f7662530971019",
+      "assessment": "skills"
+    },
+    "source:food-system-resilience": {
+      "hash": "e12ae4b2e5c727c3f727f6a3f75adf7ae8b9bd7f04a2695b2543a3426e62a82f",
+      "assessment": "resilience"
+    },
+    "research:metacognitive-feedback": {
+      "hash": "d50bea42805b197a7d858d64d6e91aeb9c7d25cd99c88f986483e9e4d7ac0c90",
+      "assessment": "skills"
+    },
+    "research:food-system-resilience": {
+      "hash": "1047cfd6620d6b2d8b04aac81d146209550854c30e58abdf50f1cd38206c1fce",
+      "assessment": "resilience"
+    },
+    "node:A1": {
+      "hash": "4525b264b840280b5ad3c356924315a7ebe510c9d4e8a92eadb8a04f85e3be56",
+      "assessment": "accidents"
+    },
+    "node:A2": {
+      "hash": "07c800271214ae42f26cfd572f5ad331413310bc76d70d0f6c085d3757b9ab0f",
+      "assessment": "accidents"
+    },
+    "node:D1": {
+      "hash": "9c53d7e548b006bb5b607714e2f4454d6b0776a3d7a38e83bfa62e8200221159",
+      "assessment": "skills"
+    },
+    "node:D2": {
+      "hash": "14e33b0346edffa01f9a1b2d0e5bd2510b47f20f1a096c3999a661bbd9a17d99",
+      "assessment": "skills"
+    },
+    "node:D3": {
+      "hash": "d02dc084c5ce7362874c1e3339c7a9b0f935425a758d76ce985c17a46d606f7e",
+      "assessment": "skills"
+    },
+    "node:E0": {
+      "hash": "959adc27c40bdfcfac20c79114f752b10d9e200fcc63c7bf02fb3627b2fa8d3d",
+      "assessment": "resilience"
+    },
+    "node:E1": {
+      "hash": "acae8d7ebfce9cd5a5e9b610fdae02bc7cbb1e1270f7775a7de7b7b952e38a50",
+      "assessment": "skills"
+    },
+    "node:F5": {
+      "hash": "1c37a2d7780cc70199be8dd1d9406568e3c1c0502f9a0759694ac2045cfbd8ed",
+      "assessment": "finance"
+    },
+    "node:F6": {
+      "hash": "32c3779b6ae132bb5f4c5733b36b8788bf1417f0f40bb03bbba4e6b763645aa0",
+      "assessment": "resilience"
+    },
+    "node:F7": {
+      "hash": "d7902b24d6d9a15b90657247c5909c5ea0ef6ed0b9a74b50a34928c1105eee6e",
+      "assessment": "finance"
+    },
+    "node:H": {
+      "hash": "63ba30f4ddfd6b5e50403ce32c2c2158a217f078b5b1b27f89ab69ce70af299e",
+      "assessment": "resilience"
+    },
+    "node:P2": {
+      "hash": "4ecbb955f2ec94839d4e451d64fff27d357bf68382010d183c90a6184bf54e5d",
+      "assessment": "allocation"
+    },
+    "node:P3": {
+      "hash": "ac5e67d708ea40a6eabaa60607cfe71c0be901428adc56b116fc4f790bf40b82",
+      "assessment": "allocation"
+    },
+    "node:P4": {
+      "hash": "447c6ec648fde9c6894c73193e02ef6870ac5f5b673eeb3f56f48a76f1621830",
+      "assessment": "allocation"
+    },
+    "node:S1": {
+      "hash": "b1dbce675a6f17a398865b2c3e314ac48b1f835dd9b54b2c4c6be8d891c109dd",
+      "assessment": "military"
+    },
+    "node:S2": {
+      "hash": "1b81952acc852fd01b8bd7efa466cd5ac3b43ab8115ef93f3e7b4e5b393bdddd",
+      "assessment": "military"
+    },
+    "node:S3": {
+      "hash": "8b06aec5762303c026460adacd93aa85e35943a4e43f0ea148277120939e6c40",
+      "assessment": "military"
+    },
+    "node:T": {
+      "hash": "c30cfe739491d1721e04803f473dc9c5555e708d72517d4afdf8203c118cad65",
+      "assessment": "resilience"
+    },
+    "node:W4": {
+      "hash": "2794d810502212fd4dc487d3529cc855d52c2adb14359e7ecd9c78483fcbe9a1",
+      "assessment": "work"
+    },
+    "node:W5": {
+      "hash": "cf87453ac6b0ffbe4d524fd4353cd25cb39f0d35e9e9fe0a540cf756d639b91f",
+      "assessment": "work"
+    },
+    "node:W8": {
+      "hash": "8be5209b745fc9511249da5370ff72f3f35997c9379e287b64f27c057d0904b1",
+      "assessment": "time"
+    },
+    "node:W9": {
+      "hash": "a03739f39fe1b167a92ebf6f5293e9c823c8ed2893cdc3ca91f5441af9fa1334",
+      "assessment": "work"
+    },
+    "edge:C4-H": {
+      "hash": "a839a1af80e41282683365e0cd37a08b7d09dd8c7c5f92646f40be123f2319d0",
+      "assessment": "resilience"
+    },
+    "edge:M3-H": {
+      "hash": "4f2ae74013b276c79923d035a44b35c1d112b57f7b4261b3905a2eacd99c3b32",
+      "assessment": "resilience"
+    },
+    "edge:S1-S2": {
+      "hash": "13ead4f7289b338feb33da45bebf937091ebdc69a6e66dfd36f10e90dd8a24eb",
+      "assessment": "military"
+    },
+    "edge:S2-S3": {
+      "hash": "f58de57aa7d6349788d28143de16e16d265f3c8a3617787495513e59529ce48e",
+      "assessment": "military"
+    },
+    "edge:S3-H": {
+      "hash": "cffe614412d47e836c8ce660759bbe7f2acb0b8d7953b17191c69cd39f78fc89",
+      "assessment": "military"
+    },
+    "edge:H-E0": {
+      "hash": "532acae4243b19f2c88d0b31b86d79bef2cb4d42a2bbca4845af52c263777899",
+      "assessment": "resilience"
+    },
+    "edge:H-T": {
+      "hash": "da32588bc75198e73ec96c1c37d5728b8835a3f5243ced47cb0cceddbca481ff",
+      "assessment": "resilience"
+    },
+    "edge:T-X": {
+      "hash": "156fe094a27230a98a382af1fef72f47fe69263edfa964fe1cd33e988a7c0820",
+      "assessment": "resilience"
+    },
+    "edge:D1-D2": {
+      "hash": "881ecf42a9ce1af972011a44c66aaee587acd404f8aa004c7d4b8f89a94f5a48",
+      "assessment": "skills"
+    },
+    "edge:D2-D3": {
+      "hash": "4a77deb8e40043a1bb28f8c1e3dfd1f840e903b20c1ba2ad674181438b1855be",
+      "assessment": "skills"
+    },
+    "edge:D3-E1": {
+      "hash": "c2df70cfb3f3e67e24797fcf3d3224236568d6f082f7962c769d8bb08db79798",
+      "assessment": "skills"
+    },
+    "edge:A1-A2": {
+      "hash": "678e9377a0ff99e46ccae6541398ca8aac7212765c03805d16ca1d75394c518b",
+      "assessment": "accidents"
+    },
+    "edge:A2-A3": {
+      "hash": "06439e3c20b0bf150bedbd2e379f20359853cc8f74c6377882467f2bd026bd3a",
+      "assessment": "accidents"
+    },
+    "edge:A3-H": {
+      "hash": "335122c3e3965810939dcd951609184565f2297b8cbddf782749ee4e867d5d6c",
+      "assessment": "accidents"
+    },
+    "edge:W1-W4": {
+      "hash": "b14c2236f02b8262fe2caeb7fcf43124db65fc2bef994daea5b4507c693b68a4",
+      "assessment": "work"
+    },
+    "edge:I1a-I1": {
+      "hash": "8fb2b1814924621f83252f54d513d9f938738066786279fd1194236c10be5043",
+      "assessment": "income"
+    },
+    "edge:I1-I2": {
+      "hash": "94677e6a69aeb018b66062bb9c232032575e61d19ac2cba07cd3f86010814056",
+      "assessment": "income"
+    },
+    "edge:W4-P1": {
+      "hash": "2014c344ab8578e43a7522b483d006d7b2d654d69937da8825b06d5b30569090",
+      "assessment": "allocation"
+    },
+    "edge:P1-P3": {
+      "hash": "64438db583237ad80291e21ad81230590e0e30b0157481131f8f6547e7aceaa3",
+      "assessment": "allocation"
+    },
+    "edge:F1-F3": {
+      "hash": "15b710db458cc03e9132afb5c4f7fff585fe2c3c0e3046ef92bbb3b6ec3ef15f",
+      "assessment": "finance"
+    },
+    "edge:H-G1": {
+      "hash": "8c5636dfa75f21df4c359edca5c9e093d7077f8ac204f6480f41a134ca174637",
+      "assessment": "resilience"
+    },
+    "edge:W3-W5": {
+      "hash": "a6b2b779509efae6dfac9bff997da18cd82adf1b05ef9792379bf095ce848e3f",
+      "assessment": "work"
+    },
+    "edge:W4-W3": {
+      "hash": "98624f6ce86128b05512663bc108b2b5d859e719976a55ac23564c9952f59712",
+      "assessment": "work"
+    },
+    "edge:W3-W7": {
+      "hash": "0166414aa07e602f74224d149c8988608ff255a0d4698f782215daad33e655ed",
+      "assessment": "work"
+    },
+    "edge:W5-W8": {
+      "hash": "c9daad3fe5ea0dad81d5de8eb86a9f0aa9774c12f22b97e84f1852d6146c7fec",
+      "assessment": "time"
+    },
+    "edge:P3-P4": {
+      "hash": "22be250334bdde29bdf10f8e181c515ed595087615c52d60a570e2f814063664",
+      "assessment": "allocation"
+    },
+    "edge:F3-F5": {
+      "hash": "7fd55eb5fc23d84f90d1be9c4fe7f248457a7e7eab4f3dd1979ec2a62e6c8d6a",
+      "assessment": "finance"
+    },
+    "edge:F5-F6": {
+      "hash": "7e7399592e437b9760753e2530d4a2850f7aff96f6e65349039eb903014b3f5b",
+      "assessment": "resilience"
+    },
+    "edge:F5-F7": {
+      "hash": "796663e0f9caea0f217aae52e283d140c9d4a5b09488a16e8c4da603abc54d82",
+      "assessment": "finance"
+    },
+    "edge:W3-W9": {
+      "hash": "76b435b32f28ffef039be8e4ed577be5c5b74af47180fcd36f8a1478ac903a72",
+      "assessment": "work"
+    },
+    "graph:control": {
+      "hash": "ced2bd5d276c1b7cd3e848d86eb2187f2041a8ccbfff3c94868b37f535098c66",
+      "assessment": "resilience"
+    },
+    "graph:misuse": {
+      "hash": "c4fd9eb4a411edc06df234e0d0a250b6c496377991efa49f5aa87d4ae2b41004",
+      "assessment": "resilience"
+    },
+    "graph:interaction": {
+      "hash": "06bdcac9529dc1c43004042e51d41fd7b6e9a30f3ced6bf4ab270fc8d18fd3cb",
+      "assessment": "military"
+    },
+    "graph:dependence": {
+      "hash": "174747e0587aaefd8ab3b8507843eb289bf19141265cf6beb33874cb1ec57dda",
+      "assessment": "skills"
+    },
+    "graph:accidents": {
+      "hash": "09f66cd238a0cc8d5f01c815a3a288f9154f08716dd7b893697a7ebdf86e6806",
+      "assessment": "accidents"
+    },
+    "graph:work": {
+      "hash": "8dc3d6266053fd5910be8ab91547023d516b57490827c54e27ef6f2d925ba008",
+      "assessment": "work"
+    },
+    "graph:money": {
+      "hash": "9abb31899a5b07ab64cef6c7983c433a375bdb0db5d8d333820350916ecd2fde",
+      "assessment": "finance"
+    },
+    "graph:currency-conditions": {
+      "hash": "c78327f15a1c0ef6b9e147378d8a1f09d04d76868368ccfccbbd362ae4f270e8",
+      "assessment": "allocation"
+    },
+    "route:control": {
+      "hash": "8b1cf19886bfa6e732076d0e27590c1ec0be7fd75069f107abfe29b7de050d1b",
+      "assessment": "resilience"
+    },
+    "route:misuse": {
+      "hash": "0373eb05613dff113977441208f97c9fb4590433a7f8e57d501e6ed2e18564b8",
+      "assessment": "resilience"
+    },
+    "route:interaction": {
+      "hash": "9f95e4806712e23b43faebefe6bd5b01e81f18b7cab97dca47d909d5b4b189ee",
+      "assessment": "military"
+    },
+    "route:accidents": {
+      "hash": "2b5877b62a637771ac2fe7d1af6337c01e87ebcc72a8c93ccddf3042eb1e7154",
+      "assessment": "accidents"
+    },
+    "route:dependence": {
+      "hash": "4d0d1724aa80bc90ac38293fc3183de687f0076f2d1a5f3ce492952b1558b71f",
+      "assessment": "skills"
+    },
+    "route:work": {
+      "hash": "fe26085df24badbfc2a0ed209f6a00561f1362d63b861f4cb59c467a4d14e6ad",
+      "assessment": "work"
+    },
+    "route:money": {
+      "hash": "38cb91e0a661071ebfec24c1966b6f293d3572abe8dbb156b2fa5700c7061d3d",
+      "assessment": "finance"
+    },
+    "current:interaction": {
+      "hash": "10fd0dfcaf3652095974f9ec21f92d7b50ded8db6ebed9862ab4e39cda443bd2",
+      "assessment": "military"
+    },
+    "current:accidents": {
+      "hash": "baed1a00494c882797ec60dee2dbc04c5914fbc6038be188e602c5d075d86448",
+      "assessment": "accidents"
+    },
+    "current:dependence": {
+      "hash": "7ee5ebcf447ea0e00b8456c8ce4e1fb1260f89bb41059b633a3e02d94e17100f",
+      "assessment": "skills"
+    },
+    "evidence:A1": {
+      "hash": "ffcf43f0dafe9a2ec7914d7313edbb6462a44605a4ffbee0a2b1b8e9a60b47c8",
+      "assessment": "accidents"
+    },
+    "evidence:D1": {
+      "hash": "c43e3d81db8e841105e6f8624c9fd9359ee6e89c6fd6ab80e3c5d990c4751e57",
+      "assessment": "skills"
+    },
+    "evidence:S1": {
+      "hash": "2a24e5ae5144f316067a7108a8682f90415aac55d154190fafde70049178543a",
+      "assessment": "military"
+    },
+    "news:work-survey": {
+      "hash": "2863139a5e10d117619c856ae88fd3570aa62e3f314e025e6ae4b485ce3aaa7a",
+      "assessment": "work"
+    },
+    "news:agent-income": {
+      "hash": "7c37da34aa2343db920783fb52d698e992728e76bfc62a20ccb20386d7fb7d11",
+      "assessment": "income"
+    },
+    "story:control": {
+      "hash": "c5b91a67bf6bb7179f7d0d734e3fa04959070f46312cb909a63792d2299043bc",
+      "assessment": "resilience"
+    },
+    "story:misuse": {
+      "hash": "eda1c7d80c088f9c224e11effbda9a96ef0e4a1655fcf0211afbd08247325f40",
+      "assessment": "resilience"
+    },
+    "story:interaction": {
+      "hash": "21af5d86b61c09dd098b44ae1f42c1d755c0d82ac0be7bdf386bd3e0f2ef6a25",
+      "assessment": "military"
+    },
+    "story:accidents": {
+      "hash": "8807038ca2b42317d260f3e4c0f99b705e9cad18489d562f912381c0989ada37",
+      "assessment": "accidents"
+    },
+    "story:dependence": {
+      "hash": "1ed5369bcc84d491a2304b32508f97e3893bf2087fde5c120b11d3684fd068ad",
+      "assessment": "skills"
+    },
+    "story:work": {
+      "hash": "1b531aeb25692dd433b17ed2989012680dabdcae2a190aa04618524b131ae2fb",
+      "assessment": "work"
+    },
+    "story:money": {
+      "hash": "b6e41701ce8e340fd9f26eb35e81b8a493046e761f089d47360b2c056ed3ff4e",
+      "assessment": "finance"
+    },
+    "metadata:map": {
+      "hash": "610eb2de6816203d2ec6e886de6355f6b57e8ceb74c4c964621606aa432577ec",
+      "assessment": "dependencies"
+    },
+    "history:changes": {
+      "hash": "80fc0184edc48e487745922023e2267ec347ca3d387037f9bc8ed11dac6767d3",
+      "assessment": "dependencies"
+    },
+    "inventory:current": {
+      "hash": "247fec2e9d029fef5cda4530b0171db0a5310b4c2a28d230f8c96559a2427acd",
+      "assessment": "dependencies"
+    }
+  }
+}
