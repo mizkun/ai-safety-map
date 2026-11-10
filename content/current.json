@@ -202,17 +202,19 @@
     },
     "C2a": {
       "level": "tested",
-      "summary": "一連の作業を測る評価では、契約業務やコード作成の改善が報告されています。ただし、機能ごとの合格率と、仕事全体を終えた割合は別です。",
+      "summary": "模擬業務の最終状態を全て確かめる試験と、人が製造した電子機器の実演があります。実業務全体の信頼性や、物理作業の無人化を一括して確認したものではありません。",
       "research": [
         "horizon",
         "ironclad-workflow-evaluation",
         "multilang-code-completion",
         "terminal-error-recovery",
         "local-error-recovery",
-        "scanned-record-workflow"
+        "scanned-record-workflow",
+        "fable52-workflow",
+        "electronics-human-build"
       ],
       "review": {
-        "checkedAt": "2026-11-03",
+        "checkedAt": "2026-11-10",
         "intervalDays": 7,
         "reason": "既存の根拠がカードの条件をどこまで直接確かめているかを分類しています。根拠の更新時に見直します。"
       }
@@ -231,10 +233,11 @@
         "dashboard-access-boundaries",
         "external-service-boundary",
         "embedded-evaluator-access",
-        "training-containment-redteam"
+        "training-containment-redteam",
+        "mythos52-sandbox-boundaries"
       ],
       "review": {
-        "checkedAt": "2026-11-08",
+        "checkedAt": "2026-11-10",
         "intervalDays": 7,
         "reason": "既存の根拠がカードの条件をどこまで直接確かめているかを分類しています。根拠の更新時に見直します。"
       }
@@ -299,10 +302,11 @@
         "summer",
         "metagaming-latents",
         "incident-simulation-and-awareness",
-        "evaluation-production-warning-gap"
+        "evaluation-production-warning-gap",
+        "mythos52-prompted-sandbagging"
       ],
       "review": {
-        "checkedAt": "2026-11-08",
+        "checkedAt": "2026-11-10",
         "intervalDays": 7,
         "reason": "既存の根拠がカードの条件をどこまで直接確かめているかを分類しています。根拠の更新時に見直します。"
       }
@@ -326,10 +330,11 @@
         "layered-monitoring-coverage",
         "distributed-agent-monitoring",
         "mas-guard",
-        "eve-team-oversight"
+        "eve-team-oversight",
+        "mythos52-prompted-sandbagging"
       ],
       "review": {
-        "checkedAt": "2026-11-08",
+        "checkedAt": "2026-11-10",
         "intervalDays": 7,
         "reason": "既存の根拠がカードの条件をどこまで直接確かめているかを分類しています。根拠の更新時に見直します。"
       }
@@ -491,10 +496,11 @@
         "argon-rd-trend",
         "metr-rd-acceleration-october",
         "metr-rd-warning-threshold",
-        "science-use-and-scenarios"
+        "science-use-and-scenarios",
+        "mythos52-rd-assessment"
       ],
       "review": {
-        "checkedAt": "2026-11-08",
+        "checkedAt": "2026-11-10",
         "intervalDays": 7,
         "reason": "既存の根拠がカードの条件をどこまで直接確かめているかを分類しています。根拠の更新時に見直します。"
       }
@@ -553,7 +559,7 @@
         "robot-scene-recovery"
       ],
       "review": {
-        "checkedAt": "2026-11-03",
+        "checkedAt": "2026-11-10",
         "intervalDays": 7,
         "reason": "既存の根拠がカードの条件をどこまで直接確かめているかを分類しています。根拠の更新時に見直します。"
       }
@@ -580,7 +586,7 @@
         "threat-bio-sep26"
       ],
       "review": {
-        "checkedAt": "2026-10-11",
+        "checkedAt": "2026-11-10",
         "intervalDays": 7,
         "reason": "報告された利用・試験と、カードの条件全体の成立を分けて見直すため。"
       }
@@ -590,10 +596,11 @@
       "summary": "1系列のモデルを2回改良し、次の改良にも使った実験があります。一部の研究課題は改善しましたが、幅広い能力や長期間の加速を確かめたものではありません。",
       "research": [
         "mass-two-rounds",
-        "self-training-null-audit"
+        "self-training-null-audit",
+        "mythos52-rd-assessment"
       ],
       "review": {
-        "checkedAt": "2026-11-03",
+        "checkedAt": "2026-11-10",
         "intervalDays": 7,
         "reason": "限定した反復実験と、開発全体の持続的な加速を区別して点検するため。"
       }

@@ -1,5 +1,5 @@
 {
-  "asOf": "2026-11-09",
+  "asOf": "2026-11-10",
   "routes": [
     {
       "id": "control",
@@ -539,7 +539,7 @@
       ],
       "basis": "編集上の条件付き仮説。下の一次資料は、個別の能力・行動・仕組みを支持します。矢印全体の成立を実証したものではありません。",
       "review": {
-        "checkedAt": "2026-10-11",
+        "checkedAt": "2026-11-10",
         "intervalDays": 30,
         "reason": "接続を支える能力・権限・防壁について、新しい証拠や反論を確認するため。"
       },
@@ -575,7 +575,7 @@
       ],
       "basis": "編集上の条件付き仮説。下の一次資料は、個別の能力・行動・仕組みを支持します。矢印全体の成立を実証したものではありません。",
       "review": {
-        "checkedAt": "2026-10-11",
+        "checkedAt": "2026-11-10",
         "intervalDays": 30,
         "reason": "接続を支える能力・権限・防壁について、新しい証拠や反論を確認するため。"
       },
@@ -694,11 +694,12 @@
         "gemini-safety",
         "anthropic-rsi",
         "pace-frontier",
-        "mass-self-supervision"
+        "mass-self-supervision",
+        "anthropic-fable52-system"
       ],
       "basis": "編集上の条件付き仮説。下の一次資料は、個別の能力・行動・仕組みを支持します。矢印全体の成立を実証したものではありません。",
       "review": {
-        "checkedAt": "2026-11-03",
+        "checkedAt": "2026-11-10",
         "intervalDays": 7,
         "reason": "接続を支える能力・権限・防壁について、新しい証拠や反論を確認するため。"
       },
@@ -707,7 +708,8 @@
         "gemini-safety",
         "anthropic-rd-progress",
         "frontier-pacing",
-        "mass-two-rounds"
+        "mass-two-rounds",
+        "mythos52-rd-assessment"
       ],
       "current": "MASSでは、改良後のモデルを次の改良にも使う循環を2回試し、一部の研究課題で改善を報告しています。1系列の小規模な実験であり、研究開発全体の加速や、長期間の持続を確かめたものではありません。"
     },
@@ -728,11 +730,12 @@
         "openai-rd",
         "pace-frontier",
         "anthropic-rsi",
-        "mass-self-supervision"
+        "mass-self-supervision",
+        "anthropic-fable52-system"
       ],
       "basis": "自己改善のフィードバックを示す整理。限られた実験の結果を、研究開発全体の持続的な加速へ一般化するには別の検証が必要です。",
       "review": {
-        "checkedAt": "2026-11-03",
+        "checkedAt": "2026-11-10",
         "intervalDays": 7,
         "reason": "接続を支える能力・権限・防壁について、新しい証拠や反論を確認するため。"
       },
@@ -740,7 +743,8 @@
         "rd-use",
         "frontier-pacing",
         "anthropic-rd-progress",
-        "mass-two-rounds"
+        "mass-two-rounds",
+        "mythos52-rd-assessment"
       ],
       "current": "MASSの2回の循環では改善する課題と改善しない課題がありました。出力トークン当たりの得点は、探索・学習・人の準備を含む開発全体の速度とは異なります。世代を重ねた加速の強さと持続は、引き続き未確認です。"
     },
@@ -1288,7 +1292,7 @@
       ],
       "basis": "対策が失敗を減らすという関係。指定された評価での実験と、実運用への一般化を分けて示します。",
       "review": {
-        "checkedAt": "2026-10-11",
+        "checkedAt": "2026-11-10",
         "intervalDays": 30,
         "reason": "能力の変化と、現実の導入・制度の追加証拠を確認するため。"
       },
@@ -1445,7 +1449,7 @@
       "current": "引用した時間配分の研究は、韓国の就業者のAI利用と、仕事中の時間の使い方を調べています。生活のための就労が不要になった後の時間の使い方は、直接検証していません。自由に使える時間や活動の機会が増えるかは、別に確かめる必要があります。",
       "basis": "編集上の条件付きシナリオ。追加条件と反例を明示し、前の状態だけから結果を決めません。",
       "review": {
-        "checkedAt": "2026-10-11",
+        "checkedAt": "2026-11-10",
         "intervalDays": 30,
         "reason": "追加条件と、反対の結果を生む制度を継続して点検するため。"
       }

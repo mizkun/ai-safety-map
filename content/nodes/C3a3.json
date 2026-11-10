@@ -20,7 +20,8 @@
     "openai-layered-monitoring-october",
     "distributed-agent-monitoring",
     "mas-guard",
-    "anthropic-project-eve"
+    "anthropic-project-eve",
+    "anthropic-fable52-system"
   ],
   "questions": [],
   "related": [],
@@ -32,7 +33,7 @@
     "scheming"
   ],
   "review": {
-    "checkedAt": "2026-11-08",
+    "checkedAt": "2026-11-10",
     "intervalDays": 7,
     "reason": "監督回避と、それを防ぐ手法の評価は変化が速いため。"
   },
@@ -53,7 +54,8 @@
     "layered-monitoring-coverage",
     "distributed-agent-monitoring",
     "mas-guard",
-    "eve-team-oversight"
+    "eve-team-oversight",
+    "mythos52-prompted-sandbagging"
   ],
   "shortTitle": "実行中の監督をすり抜ける"
 }

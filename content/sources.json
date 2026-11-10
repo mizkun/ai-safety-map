@@ -1627,5 +1627,23 @@
     "period": "分析対象は2011〜2019年。2026年9月15日公開、9月22日号。AIによる災害の実験ではない。",
     "primary": "PNAS掲載の原研究。国別の観測データと統計モデルによる分析で、対策の無作為比較ではない。",
     "checked": "2026-11-09"
+  },
+  "anthropic-fable52-system": {
+    "title": "Anthropic — Claude Fable 5.2 and Mythos 5.2 System Card",
+    "url": "https://www.anthropic.com/document/claude-fable-5-2-mythos-5-2-system-card",
+    "published": "2026-11-09",
+    "date": "2026-11-09",
+    "period": "主に公開前の評価。AutomationBenchは10月8日、能力指標の再推定は11月6日。他の試験の実施日は節ごとに未記載。",
+    "primary": "開発者の原報告。外部評価者の結果も収録するが、その転載を独立した追試と数えない。",
+    "checked": "2026-11-10"
+  },
+  "anthropic-electronics-design": {
+    "title": "Anthropic / Diode — Testing Claude on real-world electronics design",
+    "url": "https://www.anthropic.com/research/claude-electronics-design",
+    "published": "2026-11-09",
+    "date": "2026-11-09",
+    "period": "公開前の3種類の試作品。設計・製造の正確な実施日は未記載。数週間の利用を報告。",
+    "primary": "Anthropicと、商業上の関係があるDiodeによる共同実演の原報告。",
+    "checked": "2026-11-10"
   }
 }

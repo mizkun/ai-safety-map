@@ -18,7 +18,8 @@
     "openai-dashboard-access",
     "openai-external-browser",
     "anthropic-evaluators-update",
-    "openai-training-containment-october"
+    "openai-training-containment-october",
+    "anthropic-fable52-system"
   ],
   "questions": [],
   "related": [],
@@ -30,7 +31,7 @@
     "評価への気づきと、実際の監視回避を区別できているか。"
   ],
   "review": {
-    "checkedAt": "2026-11-08",
+    "checkedAt": "2026-11-10",
     "intervalDays": 7,
     "reason": "能力・行動・対策の評価は短期間で変わり得るため。"
   },
@@ -55,7 +56,8 @@
     "dashboard-access-boundaries",
     "external-service-boundary",
     "embedded-evaluator-access",
-    "training-containment-redteam"
+    "training-containment-redteam",
+    "mythos52-sandbox-boundaries"
   ],
   "shortTitle": "コントロールの失敗"
 }

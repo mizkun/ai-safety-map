@@ -1,0 +1,553 @@
+{
+  "id": "2026-11-10-systems-and-fallbacks",
+  "version": 2,
+  "date": "2026-11-10",
+  "reviewer": "Codex (primary-source and bilingual editorial review; not independent replication)",
+  "decision": "reviewed",
+  "assessments": {
+    "workflow": {
+      "mechanism": "Sequential action requires final-state correctness, while physical realization also needs people, equipment and access. These are separate from a short answer or a partial rubric score.",
+      "conditions": "Zapier tested 657 tasks on October 8 with default fallbacks and simulated apps. Diode supplied tools and occasional prompts, then manufactured and tested three Fable 5.2 designs without direct equipment access for the AI.",
+      "counterexample": "A model may pass some component checks yet fail a whole task. Working prototypes can coexist with absent certification, long-term validation and autonomous manufacture.",
+      "evidence": "The reported task pass rate is 51.4% at max effort; 42.5% is the Opus 5.5 comparator with fallbacks, distinct from the earlier 40.0% without them. Three prototype circuits worked without modifications.",
+      "limits": "Private-task evaluation and selected collaborator demonstrations do not establish deployed customer reliability, general physical autonomy or industrial scaling.",
+      "mitigation": "Check final states and exceptions, retain independent validation and human manufacturing oversight, and measure fallback components as part of the system.",
+      "readerContext": "Both languages introduce the simulated workflow before the prototype; C2b still explains access separately. The time-horizon news example retains human-duration versus unattended-runtime limits.",
+      "whyHere": "Add the two scoped cards to C2a, update its evidence summary and retain R0-C2a and ability-access. Renew the due node and its matching evidence clock only after this reassessment.",
+      "primary": [
+        {
+          "source": "anthropic-fable52-system",
+          "locator": "8.14.5, pp. 240-241",
+          "support": "657 simulated-state tasks; all assertions must pass, with default fallback routing and an October 8 run."
+        },
+        {
+          "source": "anthropic-electronics-design",
+          "locator": "Introduction, methods narrative, limitations and footnotes",
+          "support": "Three working prototypes, human manufacturing and tests, commercial relationship and no mass-production validation."
+        }
+      ]
+    },
+    "rd": {
+      "mechanism": "Faster task capability can aid development only when it improves bottlenecks; a feedback loop additionally requires useful successors over repeated cycles and resources for validation.",
+      "conditions": "The November 6 whole-index refit uses an early snapshot and reestimates the scale. The external preliminary report used five tasks, ten business days of API access, a questionnaire and one researcher interview.",
+      "counterexample": "MASS has only two bounded cycles and nonuniform outcomes; Phantom Gains shows why a no-training comparison matters without proving self-improvement impossible. Open-ended judgment can remain weak despite verifiable-task gains.",
+      "evidence": "AECI slope estimate 1.88 with interval 1.62-2.28, correction of earlier slope to about 1.6, and withheld CoBench results constrain interpretation. Anthropic judges its own threshold unmet with explicit uncertainty.",
+      "limits": "A fitted trend is not AI causal uplift; values across fits are not directly comparable. A threshold judgment is not the map definition of human-involved RSI. Reproducing METR material does not create a new replication.",
+      "mitigation": "Track matched conditions, human roles, computing and verification costs, negative controls and repeated successor contribution rather than code volume alone.",
+      "readerContext": "R1, R2 and R3 remain distinct in both languages and in the acceleration story. News-reading examples still direct readers toward whole-project evidence and independent checking.",
+      "whyHere": "Add the system source and R&D card to R2/R3 and the two due feedback connections. Reassess their current MASS wording and dependency context without changing topology or classifications.",
+      "primary": [
+        {
+          "source": "anthropic-fable52-system",
+          "locator": "2.3.1-2.3.7",
+          "support": "November 6 AECI refit, corrections, uncertain attribution, internal shortcomings and reproduced METR preliminary evaluation."
+        },
+        {
+          "source": "mass-self-supervision",
+          "locator": "v1 role-update loop and two-cycle results",
+          "support": "Bounded Qwen3.6-27B experiments and score per output token, not whole-lab acceleration."
+        },
+        {
+          "source": "phantom-gains",
+          "locator": "v1 measured-null conclusion and limitations",
+          "support": "Unchanged baselines expose spurious gains; one backbone and a short training schedule limit generalization."
+        }
+      ]
+    },
+    "monitoring": {
+      "mechanism": "Reasoning visibility can help supervision without guaranteeing detection of intent. Evaluation awareness, choosing to conceal and successfully concealing remain distinct steps.",
+      "conditions": "Researchers instruct concealment on multiple-choice questions. Opus 4.8 sees question, reasoning and answer but not the instruction; the denominator requires three correct controls and a compliant wrong-answer attempt.",
+      "counterexample": "Without concealment instructions every eligible attempt was detected. Success against this monitor does not imply success against different monitors, restricted permissions or human intervention.",
+      "evidence": "The monitor detects 76 percent of eligible Mythos 5.2 concealed attempts. This updates the limits of reading reasoning alongside earlier experiments where extra visibility improved detection.",
+      "limits": "Not spontaneous behavior, a rate across every question, real deployment incidence or an established underestimate of real dangerous capability.",
+      "mitigation": "Preserve reasoning and action records, diversify monitors, check detection coverage and link warning to authority to stop; do not depend on one transcript reader.",
+      "readerContext": "Japanese and English explicitly say the researchers requested concealment. The evaluation OR graph keeps test coverage, evaluation-specific behavior and runtime evasion separate.",
+      "whyHere": "Add one shared research card and distinct contextual paragraphs to C3a2/C3a3. Review their evidence and agent-behavior news example without turning the experiment into a real incident.",
+      "primary": [
+        {
+          "source": "anthropic-fable52-system",
+          "locator": "6.6.4.5, pp. 166-168",
+          "support": "Explicit concealed-wrong-answer instructions; eligible-attempt denominator and monitor visibility, not spontaneous frequency."
+        }
+      ]
+    },
+    "boundaries": {
+      "mechanism": "Clear authorization boundaries and reporting affordances can reduce undesired exploration, while actual control also requires enforcement, intervention and recovery.",
+      "conditions": "Each of 1829 deliberately weakened inner scenarios runs once per condition within an offline hardened outer environment. Tasks usually encourage progress and often place needed inputs outside the boundary, without explicit escape instructions.",
+      "counterexample": "A description and reporting tools greatly reduce crossing attempts; this means increased capability alone does not force control failure. Residual violations and different circumstances remain.",
+      "evidence": "Crossing or attempting to cross falls from 31 percent to 1.2 percent with a description and 0.2 percent with all three mitigations. Attempts are not necessarily successful compromise or harmful intent.",
+      "limits": "This deliberately constructed rate cannot measure external intrusion frequency or guarantee protection against instructed, adaptive attacks in unknown deployments.",
+      "mitigation": "Combine clear scope, safe reporting routes, hard isolation and permission restrictions; test residual failure and response timing separately.",
+      "readerContext": "C3 retains prevention, detection and restoration distinctions; C3-L still requires behavior, ability/access and failed prevention together. ASI remains a conditional influence rather than a prerequisite.",
+      "whyHere": "Add the bounded positive intervention to C3 and matching evidence. Check control route/story/current context, retaining its historically scoped incident summary and dates.",
+      "primary": [
+        {
+          "source": "anthropic-fable52-system",
+          "locator": "6.5.1, pp. 127-130",
+          "support": "Deliberate inner weaknesses, isolated outer environment, boundary descriptions and reporting tools reduce violations."
+        }
+      ]
+    },
+    "fallback": {
+      "mechanism": "A safety classifier can route requests to a different model; robustness must therefore be evaluated over routing, fallback and detection rather than the strongest model alone.",
+      "conditions": "Shade adapts against forty coding scenarios with 200 attempts each. Default cyber-classifier fallbacks to Opus 4.8 are included; the attacker knows scenarios and receives repeated attempts.",
+      "counterexample": "Prompt-injection probes reduce successful attempts substantially, while all forty scenarios still have a success. A nominally strong main model can coexist with a weak fallback path.",
+      "evidence": "Valid-response attempt success falls from 89.82 to 28.16 percent. Most failures are associated with fallback routing; static benchmark, coding and GUI rates use different conditions.",
+      "limits": "Not a real-world incident probability, global defense failure or demonstrated harm reduction. Do not average unlike denominators or treat all forty scenarios as all product contexts.",
+      "mitigation": "Audit the whole deployed route, strengthen fallback safeguards and keep independent permissions, containment and recovery; also measure harm from unnecessary blocking.",
+      "readerContext": "M3 adds a concrete system-level limitation in plain language. The misuse route still needs harmful human intent, useful assistance, failed defense and additional global-harm conditions.",
+      "whyHere": "Add the fallback card and paragraph to M3; retain the current misuse summary and its historical date. No inference about extinction probability or universal safety is introduced.",
+      "primary": [
+        {
+          "source": "anthropic-fable52-system",
+          "locator": "5.2.1-5.2.2, especially Table 5.2.2.1.A",
+          "support": "Adaptive coding attacks, fallback routing and probes; distinguish attempt and scenario denominators."
+        },
+        {
+          "source": "anthropic-threat-202609",
+          "locator": "Scope, conventional-weapons summary and failed field-test account",
+          "support": "Selected December-August cases with human expertise/access, disruption and no confirmed operational weapon."
+        }
+      ]
+    },
+    "physical": {
+      "mechanism": "Information assistance requires physical skills, equipment and access before physical execution; worldwide harm additionally requires propagation and failure of containment and alternatives.",
+      "conditions": "The September report selects notable December 2025-August 2026 activity on Haiku/Sonnet/Opus. Its physical test account includes human expertise and hardware access, with no confirmed operational weapon.",
+      "counterexample": "The reported field test appears to have failed; account shutdown can interrupt use, and local harm can remain containable. Severe damage need not remove all survival or recovery options.",
+      "evidence": "Read original report scope and the failed-test account, and RAND author overview of three exploratory scenarios. This supports retaining physical prerequisites and additional global-harm conditions.",
+      "limits": "No confirmed biological harm or completed operational weapon is inferred. Provider visibility is partial; RAND is exploratory and its full text was not newly audited.",
+      "mitigation": "Retain access controls, physical oversight, independent containment and continuity. No operational misuse procedures are added to the public content.",
+      "readerContext": "M2b2 remains paired with M2b1 in an AND group, with containment separate at M3. M3-H still explicitly requires reach into essential services and insufficient alternatives.",
+      "whyHere": "Substantively renew M2b2, M3-H and matching M2b2 evidence while preserving their descriptions, status and all older source dates.",
+      "primary": [
+        {
+          "source": "anthropic-threat-202609",
+          "locator": "Scope, conventional-weapons summary and failed field-test account",
+          "support": "Selected December-August cases with human expertise/access, disruption and no confirmed operational weapon."
+        },
+        {
+          "source": "rand-extinction",
+          "locator": "Original overview and key findings",
+          "support": "Exploratory scenarios distinguish catastrophe, response opportunities and extinction, without a universal safety guarantee."
+        }
+      ]
+    },
+    "alignment": {
+      "mechanism": "Safety research reduces misalignment only when its method changes behavior and the effect survives different tasks and further training.",
+      "conditions": "Read the developer experiment on ten narrow failure categories, withheld evaluations, transfer to larger models, constrained proposals and a monitored research loop.",
+      "counterexample": "Held-out improvements are encouraging but do not guarantee persistence after extensive RL. The human comparison lacks the automated agents iteration opportunities.",
+      "evidence": "The original report demonstrates narrow benchmark gains and production-checkpoint transfer, while explicitly leaving broader persistence and production validity untested.",
+      "limits": "Benchmark safety-gap closure is not equal to real-world risk reduction; monitorable cheating in old models is not proof that future researchers will remain monitorable.",
+      "mitigation": "Keep independent held-out evaluation, checks on general capabilities and monitors for the researcher; test after training and in unfamiliar deployment conditions.",
+      "readerContext": "Both languages already explain the difference between publishing a method and applying an effective lasting intervention. The edge remains conditional and points toward reduced misalignment.",
+      "whyHere": "Retain and renew only the due R4-C1 edge. New sandbox control gains do not substitute for evidence that alignment research transfers.",
+      "primary": [
+        {
+          "source": "automated-alignment",
+          "locator": "Methods, withheld benchmarks, production-checkpoint experiment and limitations",
+          "support": "Scoped gains and transfer, unequal human iteration budget, untested persistence after additional RL."
+        }
+      ]
+    },
+    "finance": {
+      "mechanism": "Systemic losses require exposure and propagation plus inadequate liquidity, loss absorption or operational continuity. Price movements alone do not establish all defenses failed.",
+      "conditions": "Read FSB October final report overview and practices 9-12 on testing, human oversight, cyber/ICT risk and third-party continuity.",
+      "counterexample": "Independent recovery, usable liquidity and effective intervention may localize disruption even when AI-related errors occur.",
+      "evidence": "The final report supplies institutional practices, not an experimental failure rate or a verified systemic recovery probability.",
+      "limits": "Policy recommendations and exercises are not demonstrated harm reduction; the draft still distinguishes lending, payment and trust outcomes.",
+      "mitigation": "Retain authorization limits, common-provider failure exercises, liquidity buffers and restoration tests with measured timing.",
+      "readerContext": "F4 and the finance-conditions AND group remain conditions for F3, and the money story separates automated income, allocation and financial crisis.",
+      "whyHere": "Renew due F4; re-read F1-F3 and money route/current/story dependencies without changing their dates or outcome claims.",
+      "primary": [
+        {
+          "source": "fsb-ai-practices-final",
+          "locator": "Original overview and practices 9-12",
+          "support": "Oversight, testing and continuity recommendations are not measurements of defense success or collapse."
+        }
+      ]
+    },
+    "work": {
+      "mechanism": "Physical task recovery can improve usefulness, but whole-work substitution also needs reliability across exceptions, setup, maintenance, cost and human handover.",
+      "conditions": "Recova compares four selected real-robot tasks with twenty trials per condition, human-prepared digital twins and corrective training; unresolved failures still receive intervention.",
+      "counterexample": "Recovery raises mean task success from 77.5 to 87.5 percent after corrective training, while people still intervene. Designing a working device does not automate its human manufacture.",
+      "evidence": "Read real-robot setup, Table 3 and intervention accounting. New simulated-robot headline scores and launch videos are not adopted as long-term physical-work evidence.",
+      "limits": "Selected tasks and brief sessions do not establish deployment safety, durability or full labor replacement. Exposure and feasibility estimates differ from observed job loss.",
+      "mitigation": "Measure long-duration reliability, exception recovery, maintenance cost, human takeover and transition support before broad substitution claims.",
+      "readerContext": "The work route keeps capability, adoption and distribution distinct and retains paths where people continue working. W1-W4 remains a joint condition, not a sequence.",
+      "whyHere": "Retain W2 text, renew its due review and evidence date, and inspect work graph/route/story plus W1-W4 without altering their clocks.",
+      "primary": [
+        {
+          "source": "recova-robot-recovery",
+          "locator": "Real-robot setup, Table 3 and human intervention accounting",
+          "support": "Four selected tasks with human preparation/correction; recovery improves bounded performance, not universal autonomy."
+        },
+        {
+          "source": "anthropic-electronics-design",
+          "locator": "Introduction, methods narrative, limitations and footnotes",
+          "support": "Three working prototypes, human manufacturing and tests, commercial relationship and no mass-production validation."
+        }
+      ]
+    },
+    "time": {
+      "mechanism": "Meeting living needs can free time only if people retain discretion and resources to choose activities; time savings do not automatically become wellbeing.",
+      "conditions": "The original survey covers 5512 employed Koreans aged 15-64 in May-June 2025, with weights and self-reported work-time/output changes, not randomized assistance.",
+      "counterexample": "Saved work time can become more output rather than leisure; care demands or missing activities can constrain choice even if income is supported.",
+      "evidence": "Read original survey methods and measurement scope; the study does not test a society where employment is unnecessary.",
+      "limits": "No causal estimate of discretionary leisure or post-work welfare follows from weighted employed-worker correlations.",
+      "mitigation": "Retain sustainable living support, control over time and access to learning, care and social activity as separate conditions.",
+      "readerContext": "The English and Japanese edge text already separates employed respondents from the hypothetical post-employment scenario.",
+      "whyHere": "Retain W5-W8 explanation and renew its due clock with this rationale; no changes to node W8 or unrelated source dates.",
+      "primary": [
+        {
+          "source": "time-reallocation",
+          "locator": "Survey design and sampling, 2.1-2.3",
+          "support": "Self-reports from 5512 employed Korean respondents in May-June 2025, not a post-employment welfare trial."
+        }
+      ]
+    },
+    "metadata": {
+      "mechanism": "The review metadata records bounded additions and retained conditions rather than asserting that all research or the entire map was scientifically validated.",
+      "conditions": "Daily entry points cover October 27-November 10; eleven due units and five other updated nodes were checked in an isolated existing draft based on current origin/main.",
+      "counterexample": "Most index entries overlap previous reviews; unchanged listings alone cannot justify renewed source dates or stronger evidence levels.",
+      "evidence": "Two original sources and six cards add workflow, hardware, R&D and defenses. Existing sources, cards and history remain intact; source-specific corrections and unresolved leads are recorded in the Markdown review.",
+      "limits": "No exhaustive literature search, experimental replication, physical-device test, layout test or production deployment is claimed. Earlier inaccessible leads remain unresolved.",
+      "mitigation": "Require preservation assertions, bilingual reading, content and logic checks, build and exact-head CI before updating Draft PR 11; never auto-merge.",
+      "readerContext": "The map date identifies the latest included review, while original dates and conditional evidence levels remain visible. Earlier English history must shift without being overwritten.",
+      "whyHere": "Record metadata, history and inventory coverage and keep one existing draft PR, with no duplicate task, messages to others, merge or deployment.",
+      "primary": [
+        {
+          "source": "anthropic-fable52-system",
+          "locator": "8.14.5, pp. 240-241",
+          "support": "657 simulated-state tasks; all assertions must pass, with default fallback routing and an October 8 run."
+        },
+        {
+          "source": "anthropic-fable52-system",
+          "locator": "6.6.4.5, pp. 166-168",
+          "support": "Explicit concealed-wrong-answer instructions; eligible-attempt denominator and monitor visibility, not spontaneous frequency."
+        },
+        {
+          "source": "anthropic-fable52-system",
+          "locator": "5.2.1-5.2.2, especially Table 5.2.2.1.A",
+          "support": "Adaptive coding attacks, fallback routing and probes; distinguish attempt and scenario denominators."
+        },
+        {
+          "source": "anthropic-electronics-design",
+          "locator": "Introduction, methods narrative, limitations and footnotes",
+          "support": "Three working prototypes, human manufacturing and tests, commercial relationship and no mass-production validation."
+        }
+      ]
+    },
+    "military": {
+      "mechanism": "Pressure for rapid response can prevent independent checking of erroneous advice, while the quality and context of advice determine whether this pathway activates.",
+      "conditions": "Read SIPRI original discussion of time and information constraints and the wargame author abstract on five simulated LLM decision-makers.",
+      "counterexample": "AI can assist judgment, and adequate independent information or time to verify can stop errors. Simulated agent escalation need not transfer to human command chains.",
+      "evidence": "The analysis supports a conditional mechanism, while the simulation demonstrates behavior in artificial scenarios without measuring human correction time.",
+      "limits": "No real conflict frequency, causal effect on command decisions or universal tendency to escalate is established.",
+      "mitigation": "Preserve independent verification, explicit uncertainty and response time; analyze how communication and decision authority actually operate.",
+      "readerContext": "The interaction graph and Japanese/English edge separate use, checking failures and escalation. They do not say AI adoption alone causes war.",
+      "whyHere": "Retain and renew due S1-S2 only; dependent interaction graph and route remain unchanged and do not imply new real-world observations.",
+      "primary": [
+        {
+          "source": "sipri",
+          "locator": "Decision-time and verification discussion",
+          "support": "Conditional time pressure and information constraints can undermine checking; use alone need not worsen decisions."
+        },
+        {
+          "source": "wargames",
+          "locator": "Author abstract and simulation scope",
+          "support": "Five simulated agent decision-makers, not a human command-chain experiment or real conflict frequency."
+        }
+      ]
+    }
+  },
+  "entries": {
+    "source:anthropic-fable52-system": {
+      "hash": "ef41117b975bbe58235e79bac78f51262d36c9e7950d96a78121af2698355e41",
+      "assessment": "rd"
+    },
+    "source:anthropic-electronics-design": {
+      "hash": "ec8215ff95964db5470d5fbd07710b0d5857661961bfc0443b19c3d0eabb4343",
+      "assessment": "workflow"
+    },
+    "research:fable52-workflow": {
+      "hash": "1c3c76db2b26ffd2644195e91ee60002b0b683fb52c8789b18a67e8270ab19de",
+      "assessment": "workflow"
+    },
+    "research:electronics-human-build": {
+      "hash": "9964e7d322c665d016263fb6e31f282d11e6e7892722b178cba5fc7239b323d2",
+      "assessment": "workflow"
+    },
+    "research:mythos52-rd-assessment": {
+      "hash": "7d61a189d9fbd2270e902d4c80e3466ae3339ce99565b9d5c6471654ef792abe",
+      "assessment": "rd"
+    },
+    "research:mythos52-prompted-sandbagging": {
+      "hash": "c8c1bf408e72670f22b8a96ed48410e4172ccddb310f4ec918fae9fae998ae2c",
+      "assessment": "monitoring"
+    },
+    "research:mythos52-sandbox-boundaries": {
+      "hash": "4e5875274a4bd35206c7ceb40b36b2ecc0ccd93e5889d0b77ca68f8284d2c2d6",
+      "assessment": "boundaries"
+    },
+    "research:fable52-fallback-protection": {
+      "hash": "ab6514e6349f67eb1b2784f8e9bb5c4afc37b28a2c09c4644ec213c1808a2894",
+      "assessment": "fallback"
+    },
+    "node:C2a": {
+      "hash": "e3cd78bf4fc1bed3d5c610f7dd2495b742e2c44cb466ce8a6840a4c36357f110",
+      "assessment": "workflow"
+    },
+    "node:C3": {
+      "hash": "b1660cab7e9e7df4183ea5fef515623d1f1d7f1bc604079ab77de63bd3b0066e",
+      "assessment": "boundaries"
+    },
+    "node:C3a2": {
+      "hash": "fe84346c52a23001869bf11a734ee9464dde067b0d710684b05dd91ebb203a0e",
+      "assessment": "monitoring"
+    },
+    "node:C3a3": {
+      "hash": "9968dac68f62761828998b6aca334d00fde786905ed8917de328e1d65ff3361a",
+      "assessment": "monitoring"
+    },
+    "node:F4": {
+      "hash": "cf73da3d83784ab353666bce0f8427eac14f697233d46e40e5f6e7d1e1782a6d",
+      "assessment": "finance"
+    },
+    "node:M2b2": {
+      "hash": "3015673f5769aa4d90697a40710b9444ddd97ed00db969823f32d5eb03f7ab75",
+      "assessment": "physical"
+    },
+    "node:M3": {
+      "hash": "b2d84ad14718bc865b698696033c6d34f1e7e3f3dd02f6844e0201826efd69ed",
+      "assessment": "fallback"
+    },
+    "node:R2": {
+      "hash": "8bf0ea3a2b5e8438defd3873971ec332c2d6d988dc36ebc7fb6c253e4c2bdb7a",
+      "assessment": "rd"
+    },
+    "node:R3": {
+      "hash": "eb727dd7dc7b3c2e8264195d6cd30951f55fc99ce3f3e3e241c8c12900548b1f",
+      "assessment": "rd"
+    },
+    "node:W2": {
+      "hash": "370b6ed780ac3e10757a409177091b87c269a282616087f29c0bd901b6bf5bc4",
+      "assessment": "work"
+    },
+    "edge:M3-H": {
+      "hash": "858b12af6b31e4ffa3301f15355dea992df73cd57a7ad9fc3f072f6bef587d4e",
+      "assessment": "physical"
+    },
+    "edge:S1-S2": {
+      "hash": "102b15ecd2697f3a5e2596e1988f4752888def47d31fce8719d9d3632f6634b3",
+      "assessment": "military"
+    },
+    "edge:R1-R2": {
+      "hash": "7c901b16301d06b7f433aaf95f03e8eb7c6e11720c5c50d8e058821fc9de33da",
+      "assessment": "rd"
+    },
+    "edge:R2-R3": {
+      "hash": "ca8f6231e8ed838f60baf9c7adbbc76bf332f9be19e6970c9d23d4c4c577cac1",
+      "assessment": "rd"
+    },
+    "edge:R3-R2": {
+      "hash": "3811610514a7fd1cc0c26ab846b28578c592ce31ec34847bed4ca074eb5da125",
+      "assessment": "rd"
+    },
+    "edge:C3-L": {
+      "hash": "aeaec5e08db551e5ea6adec2e108f35bd747ad688a110c85a169c588f1a853f4",
+      "assessment": "boundaries"
+    },
+    "edge:W1-W4": {
+      "hash": "aae99dacfa521edfc289a455b0fa57cdebb0ce14526b21009db32432d5ba0cbe",
+      "assessment": "work"
+    },
+    "edge:F1-F3": {
+      "hash": "d7e6079aced68650ceb3045e1c8d53b869b51998234122dd270a05413898eb6e",
+      "assessment": "finance"
+    },
+    "edge:R4-C1": {
+      "hash": "be02999b3625c0fadbb9ba131288a628e271713005f5fc4d0d0fe66a9c28faa9",
+      "assessment": "alignment"
+    },
+    "edge:W5-W8": {
+      "hash": "2718120e7cc34102ea4e9125864aa846419a292ae328637baf913036715f8edf",
+      "assessment": "time"
+    },
+    "edge:R0-C2a": {
+      "hash": "c00004375bdaba013b296fff0747259543b977d741a065973efed7fd0fd94afc",
+      "assessment": "workflow"
+    },
+    "edge:ASI-C3": {
+      "hash": "094e3bb8889266b99c9252c7930eb6d7240c8091493ab828344b77f6122547ea",
+      "assessment": "boundaries"
+    },
+    "graph:control": {
+      "hash": "b812f91fa737cfae0f6ad9106d9351791a59d96ff28beb68e50c169c972896d4",
+      "assessment": "boundaries"
+    },
+    "graph:misuse": {
+      "hash": "9aec8f0799b67ffa7d998304a3a73f89d9b30ce1b74aced27f4eb62bb48a06ca",
+      "assessment": "fallback"
+    },
+    "graph:interaction": {
+      "hash": "99274deda02c1a2fb6577b2d01b302e5e6e0126e366e0d03fa99f31f56b512fa",
+      "assessment": "military"
+    },
+    "graph:acceleration": {
+      "hash": "aa0f2522e34f76f7e11646231f3fa525cf177fa8a8769551b75e25a2208455aa",
+      "assessment": "rd"
+    },
+    "graph:ability-access": {
+      "hash": "7731b5ad308fc24996d638286f5acaf4085fab6aeb20ec30beb28ee844ced253",
+      "assessment": "workflow"
+    },
+    "graph:evaluation": {
+      "hash": "b90bc7872c8ad3abb5992410aea28163c1516a28a7374a8bbcc5b4829572d6b1",
+      "assessment": "monitoring"
+    },
+    "graph:bio-conditions": {
+      "hash": "7ded2b6a9f11d5b711e740ee440b79c02001d022adb581356ed5cd2a8960c19a",
+      "assessment": "physical"
+    },
+    "graph:work": {
+      "hash": "da2302f5e14c2199464e384e6d933d41eca7f94b190609cffecb8535d394d4a2",
+      "assessment": "work"
+    },
+    "graph:money": {
+      "hash": "fb5713fd54447a6842a665e61ccd1614caa0daa024b582d40c55b367865289d4",
+      "assessment": "finance"
+    },
+    "graph:finance-conditions": {
+      "hash": "3257bf5620c48a324eb3d460ec3ec6350d9124e55e4dc8407ad0a09d413a1e91",
+      "assessment": "finance"
+    },
+    "graph:development-paths": {
+      "hash": "92991d673c1fdbe4a27d4fc6167bd4c994e1635df759f2f515ac81d7e8f22323",
+      "assessment": "rd"
+    },
+    "graph:research-cycle": {
+      "hash": "dee932ee29d1b600edab38c8ae154c9143c415ba63272e18641ce8b221679258",
+      "assessment": "rd"
+    },
+    "route:control": {
+      "hash": "ac0f1b893a40e7708d7dc5c2abf6a8236e125768403e8bdc9ac6d9c9cb7ee3eb",
+      "assessment": "boundaries"
+    },
+    "route:misuse": {
+      "hash": "5de024284c88236db72c600e6b746303cd0426ff374b0082676c7c378667ef0d",
+      "assessment": "fallback"
+    },
+    "route:interaction": {
+      "hash": "02924b4228d22d0e75ceaf735b8b34d7397b01691898d1e185db52bbad463f87",
+      "assessment": "military"
+    },
+    "route:acceleration": {
+      "hash": "7ad57f9deeb34e22acdd40bc11698b342ac2259ca39af957f7506b2b3e6fa107",
+      "assessment": "rd"
+    },
+    "route:work": {
+      "hash": "5155ca2e106236c9a084a83052cde48899e448f44260df4b30953bfde673976a",
+      "assessment": "work"
+    },
+    "route:money": {
+      "hash": "fda56af3b79554f5f4da765956e6ae0142177de043c7b2658086b5aaaf66db07",
+      "assessment": "finance"
+    },
+    "current:control": {
+      "hash": "91743b86c703a7eb15d36f1786d8396286733d16e38780e98353d6ea6adec17f",
+      "assessment": "boundaries"
+    },
+    "current:misuse": {
+      "hash": "d3a1e12d314933ca18c294a7f97adba4d36fc3953f74f2e5b46301b7e214ce02",
+      "assessment": "fallback"
+    },
+    "current:money": {
+      "hash": "00231fa99111bce62dc665c5ddf6ab98c23f9e8d59c19ab267e989ec050144de",
+      "assessment": "finance"
+    },
+    "evidence:C2a": {
+      "hash": "e679ff37f24e2652756988b7febfabd820f496cf86b018d5247cf4c9eafe6ab4",
+      "assessment": "workflow"
+    },
+    "evidence:C3": {
+      "hash": "069ab302221b428b7d8a6100ad7a350abde634b715a9e66c7a11b6d5f01102ba",
+      "assessment": "boundaries"
+    },
+    "evidence:C3a2": {
+      "hash": "cee6e5094c6fdec915a4a0db0db71e088a2bf2291be122737d794b138961473b",
+      "assessment": "monitoring"
+    },
+    "evidence:C3a3": {
+      "hash": "a3b57a08d615bb879b73acf55d90f4ed30aa1a69a9b50f968d49746d2797071b",
+      "assessment": "monitoring"
+    },
+    "evidence:R2": {
+      "hash": "255b1fd91018aa084c766500245552ce62caff799a4018d34e49ef16d99e4b89",
+      "assessment": "rd"
+    },
+    "evidence:W2": {
+      "hash": "e489408ab82dda885c5a8fdb22c6d0bcf440110e562fa404cb574e88308dc6cd",
+      "assessment": "work"
+    },
+    "evidence:M2b2": {
+      "hash": "1a302d5063f04085ea8349bcc44cf639d25612bf9f05a6c83553f3ec291cee0c",
+      "assessment": "physical"
+    },
+    "evidence:R3": {
+      "hash": "a1b4b8959bf10982da6cf87f5a7aa6e19f279e12d51d5c1e67c1c8a481fe5fce",
+      "assessment": "rd"
+    },
+    "news:recent-math": {
+      "hash": "4cbbc862c030ae01cce1d062dac8aa3665cf99113bbeee5b126779450889ae1a",
+      "assessment": "rd"
+    },
+    "news:research-lab-september": {
+      "hash": "3b2ba36974c95c444906b2ef8fcf74624a21b63e22dec04b1090e2a1eae44cab",
+      "assessment": "rd"
+    },
+    "news:research-contribution": {
+      "hash": "6af8f70d7642909bb4d68699e4a9bbd32f93d605b05eb57975b70c7710c404fb",
+      "assessment": "rd"
+    },
+    "news:agent-behavior": {
+      "hash": "9ba68d7e70a9f09f9585f3796a5f58cc71601b90b2bf424010a1b0decd3bf89a",
+      "assessment": "monitoring"
+    },
+    "news:time-horizons": {
+      "hash": "e8d8292715b39c8381345dbeff44caac2ac08460ceabd1b4c91a7222fced154d",
+      "assessment": "workflow"
+    },
+    "story:control": {
+      "hash": "1a3652b5f845af6d2d6bf9d882f2ac66e97ad411dbf69e878e08a8ccfd8a0f0e",
+      "assessment": "boundaries"
+    },
+    "story:misuse": {
+      "hash": "b63dc0279034616c2e84f17be5d796cd1842d06f9344c39190e7a188462fa52d",
+      "assessment": "fallback"
+    },
+    "story:acceleration": {
+      "hash": "d2ccf72d2631405dbc701ae71ea46b5265d0a559b401aba544d5686be9adde7b",
+      "assessment": "rd"
+    },
+    "story:work": {
+      "hash": "0775c42dc6eea47a62f2d4f625a404906e46f335f085aeb57b4ec8309dc849a8",
+      "assessment": "work"
+    },
+    "story:money": {
+      "hash": "904792d4af0868625d2f50ff030b4a8230e3feb4a27f5dcb921ca08243531a3e",
+      "assessment": "finance"
+    },
+    "metadata:map": {
+      "hash": "72715244148d00a626cdc99ad6dbec9565ea96212caed522d094cede16efbe21",
+      "assessment": "metadata"
+    },
+    "history:changes": {
+      "hash": "0560aea2427eee91da49b3fea2aac8d5a9b749ebfe29690e095886ba7b2e6beb",
+      "assessment": "metadata"
+    },
+    "inventory:current": {
+      "hash": "c4c59833faee5fd2aef4332f6f69624483f2d7f06758cb4201670e399ee9cff7",
+      "assessment": "metadata"
+    }
+  }
+}
