@@ -1645,5 +1645,59 @@
     "period": "公開前の3種類の試作品。設計・製造の正確な実施日は未記載。数週間の利用を報告。",
     "primary": "Anthropicと、商業上の関係があるDiodeによる共同実演の原報告。",
     "checked": "2026-11-10"
+  },
+  "openai-monitorability-lifecycle": {
+    "title": "OpenAI — CoT monitorability across the model lifecycle",
+    "url": "https://alignment.openai.com/cot-monitorability-model-lifecycle/",
+    "published": "2026-11-10",
+    "date": "2026-11-10",
+    "period": "2025年8月のGPT-5から2026年9月のAstraなどを対象。個々の実験の実施日は未記載。",
+    "primary": "開発者の原実験。代理指標の変化と実際の監視回避を分けて報告。",
+    "checked": "2026-11-11"
+  },
+  "openai-peer-infrastructure-incident": {
+    "title": "OpenAI — Using peers’ work to gain unauthorized access to OpenAI research infrastructure",
+    "url": "https://alignment.openai.com/misalignment-reports/using-peers-work-to-gain-unauthorized-access-to-openai-research-infrastructure/",
+    "published": "2026-11-10",
+    "date": "2026-11-10",
+    "period": "2026年7月19日の2つの学習実行と、翌20日までの停止対応。8月に公表済みの事件に関する追加説明。",
+    "primary": "開発者による事故の原報告。以前のHugging Face事例と同じ事件に属し、新たな独立事例や追試ではない。",
+    "checked": "2026-11-11"
+  },
+  "homeopathic-learning": {
+    "title": "Clarke et al. — Homeopathic Learning: Diluting poisoned fine-tuning data can strengthen its effect",
+    "url": "https://arxiv.org/html/2611.10110v1",
+    "published": "2026-11-06",
+    "date": "2026-11-06",
+    "period": "論文v1は11月6日、Anthropicの解説は11月10日。実験の実施日は未記載。",
+    "primary": "著者による小規模モデルの実験と機序の仮説。プレプリントで、独立した追試は今回未確認。",
+    "checked": "2026-11-11"
+  },
+  "gemini-robotics25": {
+    "title": "Google DeepMind — Gemini Robotics 2.5 accelerates real-world physical intelligence",
+    "url": "https://deepmind.google/blog/gemini-robotics-2-5-accelerates-real-world-physical-intelligence/",
+    "published": "2026-11-10",
+    "date": "2026-11-10",
+    "period": "公開前の実機試験と、ドイツ・ハンガリーの自動車工場での試行。期間と実施日の詳細は未記載。",
+    "primary": "開発者と提携先による実機試行・安全性評価の原報告。独立した追試ではない。",
+    "checked": "2026-11-11"
+  },
+  "alphaproof-code-signal": {
+    "title": "Google DeepMind — AlphaProof Code: Verifying Signal’s Security at the Machine-Code Level",
+    "url": "https://deepmind.google/documents/36/Formal_Verification_of_Signal_4.pdf",
+    "published": "2026-11-10",
+    "date": "2026-11-10",
+    "period": "libsignal-protocol v0.105.4とspqr v1.6.0の検証。公開前の作業で、正確な開始・終了日は未記載。",
+    "primary": "開発チームの論文と公開証明。人が承認した仕様に対するLeanの検査であり、独立した成果物の再検証は今回未実施。",
+    "checked": "2026-11-11"
+  },
+  "gemini-carbon-safety": {
+    "title": "Google DeepMind — Gemini 4 Carbon Safety Report",
+    "url": "https://storage.googleapis.com/deepmind-media/gemini/gemini_4_carbon_safety_report.pdf",
+    "published": "2026-11-10",
+    "date": "2026-11-10",
+    "period": "11月10日のモデルカードに付属する報告。新規試験とArgonから引き継いだ評価を含み、試験日が明記されない部分もある。",
+    "primary": "開発者の安全性報告。外部評価者の結果も収録するが、報告書への転載を新たな追試と数えない。",
+    "checked": "2026-11-11"
   }
 }

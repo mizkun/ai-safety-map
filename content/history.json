@@ -1,5 +1,30 @@
 [
   {
+    "id": "monitoring-and-verification-20261111",
+    "date": "2026-11-11",
+    "nodes": [
+      "C3a",
+      "C3a3",
+      "C3b",
+      "M3",
+      "W2"
+    ],
+    "sources": [
+      "openai-monitorability-lifecycle",
+      "openai-peer-infrastructure-incident",
+      "homeopathic-learning",
+      "gemini-robotics25",
+      "alphaproof-code-signal",
+      "gemini-carbon-safety"
+    ],
+    "kind": "監督・能力・防御の更新",
+    "title": "監視の指標と実際の回避、証明と前提を分ける",
+    "summary": "推論文の監督、学習データの組み合わせ、7月の事故の追加報告、Carbonの防御、ロボットの工場試行と形式検証を追加。期限の評価・監督と復旧の条件を再点検しました。",
+    "before": "これまでの試験と事故をもとに、監督、防御、物理作業の条件を説明していました。",
+    "after": "6出典・7研究カードと5項目の説明を日英で追加。復旧の条件は原論文の範囲を再確認して維持。分類・矢印の構造は変えていません。",
+    "reason": "11月11日の点検。新規実験と引き継いだ評価、同じ事故の追加報告、人の役割、形式検証の前提を区別し、過大な一般化を避けるため。"
+  },
+  {
     "id": "systems-and-fallbacks-20261110",
     "date": "2026-11-10",
     "nodes": [

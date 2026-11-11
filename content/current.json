@@ -265,10 +265,12 @@
         "human-agent-oversight",
         "activation-probe-monitoring",
         "evaluation-production-warning-gap",
-        "training-data-monitor-blindspots"
+        "training-data-monitor-blindspots",
+        "monitorability-lifecycle-proxies",
+        "training-mixture-backdoors"
       ],
       "review": {
-        "checkedAt": "2026-11-04",
+        "checkedAt": "2026-11-11",
         "intervalDays": 7,
         "reason": "既存の根拠がカードの条件をどこまで直接確かめているかを分類しています。根拠の更新時に見直します。"
       }
@@ -331,10 +333,12 @@
         "distributed-agent-monitoring",
         "mas-guard",
         "eve-team-oversight",
-        "mythos52-prompted-sandbagging"
+        "mythos52-prompted-sandbagging",
+        "peer-residue-infrastructure",
+        "carbon-monitorability-scope"
       ],
       "review": {
-        "checkedAt": "2026-11-10",
+        "checkedAt": "2026-11-11",
         "intervalDays": 7,
         "reason": "既存の根拠がカードの条件をどこまで直接確かめているかを分類しています。根拠の更新時に見直します。"
       }
@@ -353,10 +357,11 @@
         "agent-recovery-limits",
         "financial-ai-stop-and-recover",
         "incident-readiness-and-recovery",
-        "monitoring-alert-to-intervention"
+        "monitoring-alert-to-intervention",
+        "peer-residue-infrastructure"
       ],
       "review": {
-        "checkedAt": "2026-11-08",
+        "checkedAt": "2026-11-11",
         "intervalDays": 7,
         "reason": "既存の根拠がカードの条件をどこまで直接確かめているかを分類しています。根拠の更新時に見直します。"
       }
@@ -556,10 +561,11 @@
       "research": [
         "robotics",
         "robot-work-estimates",
-        "robot-scene-recovery"
+        "robot-scene-recovery",
+        "robotics25-factory-pilot"
       ],
       "review": {
-        "checkedAt": "2026-11-10",
+        "checkedAt": "2026-11-11",
         "intervalDays": 7,
         "reason": "既存の根拠がカードの条件をどこまで直接確かめているかを分類しています。根拠の更新時に見直します。"
       }

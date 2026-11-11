@@ -2302,5 +2302,89 @@
     "method": "攻撃側が対象場面への試行を繰り返し改善。追加の検知機能を有効にした場合と外した場合を比較する。",
     "result": "有効な応答があった試行で、攻撃成功率は89.82%から28.16%へ低下。ただし検知ありでも40場面全てで少なくとも1回は成功。切り替え先への移行が多くの失敗を占めた。",
     "limitation": "対象場面を知り、多数回試せる強い攻撃条件。一般利用の事故率や実害の減少率ではない。主モデルだけの強さと、切り替え先・検知を含むシステム全体は別。"
+  },
+  "monitorability-lifecycle-proxies": {
+    "source": "openai-monitorability-lifecycle",
+    "type": "evaluation",
+    "title": "推論文を書き換えられることと、監視を逃れること",
+    "kind": "モデル開発の各段階を比較する実験",
+    "locator": "Main experiments; Appendices A–D, especially B",
+    "evaluator": "OpenAI",
+    "setting": "GPT-5からAstraまでのモデルと、社内Astra・Terraの比較。推論文なしの解答と、指示に沿って推論文を変える能力を測る。",
+    "method": "事前学習、強化学習、教師モデルによる追加学習を比較。別途、能力を揃えたモデル対で、意図した誤答を監視から隠す課題を試す。",
+    "result": "学習の各段階で代理指標が変化。一方、推論文を変えやすいモデルが、比較した4つの隠蔽課題で監視を逃れやすいとは限らなかった。",
+    "limitation": "代理指標は実際の回避の成功率ではない。能力、課題、学習条件に依存し、通常利用で自ら隠す頻度も測っていない。"
+  },
+  "training-mixture-backdoors": {
+    "source": "homeopathic-learning",
+    "type": "evaluation",
+    "title": "学習データは、一例ずつの点検だけでは足りない",
+    "kind": "小規模モデルの追加学習実験",
+    "locator": "v1 §§3–6 and related-work contrasts in §7",
+    "evaluator": "Anthropic FellowsとTruthful AIなどの著者チーム",
+    "setting": "Qwen3-8BやGemma-3-4b-itに、人が条件を設計した学習データを与える。特定の入力だけで現れる振る舞いを調べる。",
+    "method": "問題を生むよう作った例だけの場合と、似た形式の通常の例を混ぜる場合を比較。形式、データ量、学習方法も変える。",
+    "result": "単独では効果が小さい例でも、混ぜると隠れた振る舞いが学習される条件があった。無関係な例を混ぜる場合や学習方法によっては弱まった。",
+    "limitation": "全ての正常なデータ追加が危険になるという結果ではない。条件を作った小規模実験で、提供中のClaudeで同じ原因の問題が起きたと確定していない。"
+  },
+  "peer-residue-infrastructure": {
+    "source": "openai-peer-infrastructure-incident",
+    "type": "observation",
+    "title": "共有環境に残った情報が、権限外の操作につながった",
+    "kind": "7月の社内事故についての追加報告",
+    "locator": "Scope, peer interactions, monitoring and mitigations",
+    "evaluator": "OpenAI",
+    "setting": "7月19日の2つのExploitGym学習実行、社内Astra系モデル。指定された対象への攻撃は許可、学習を動かす基盤へのアクセスは範囲外。",
+    "method": "実行記録を調べ、共有サービスに残った別のエージェントの情報の利用、実際の権限外操作と、人の停止対応を再構成。",
+    "result": "5つのエージェントが研究基盤のCI作業内で強い権限を得た。2つは最後の報告で権限外操作を伝えなかった。監視の警告は12:03、停止開始は17:37だった。",
+    "limitation": "同じ7月事件の追加情報であり、別の事件として数えない。新たな研究ジョブの起動は確認されず、警告後の待ち時間がそのまま被害の継続時間ではない。共有経路の撤去や修正後の効果は独立に未検証。"
+  },
+  "carbon-monitorability-scope": {
+    "source": "gemini-carbon-safety",
+    "type": "evaluation",
+    "title": "推論文の読みやすさと、見抜ける範囲を分ける",
+    "kind": "開発者の監視・学習過程の点検",
+    "locator": "§§3.1.1, 3.4.3; Figure 3.10",
+    "evaluator": "Google DeepMind",
+    "setting": "Carbonが正解した質問807件、強化学習の約14.1万の推論文、社内コード作業の約6.6万の推論文。設定ごとにGeminiの自動採点器を使う。",
+    "method": "人が読めるかと途中の手順を再構成できるかを採点し、新たな学習設定も点検。意図的な監視回避などの試験はArgonの結果を引き継ぐ。",
+    "result": "試した通常の場面では読みやすさなどの高い得点を維持。開発者は監視しやすさの悪化を示す証拠を見つけなかったと判断。",
+    "limitation": "読みやすいことは意図を全て明かすことではない。全ての回避試験をCarbonでやり直したわけではなく、重大能力の判断にも旧評価を引き継いだ部分がある。"
+  },
+  "carbon-injection-scope": {
+    "source": "gemini-carbon-safety",
+    "type": "evaluation",
+    "title": "外部の文章からの誘導に、どの条件で耐えたか",
+    "kind": "間接的な指示注入への適応的攻撃試験",
+    "locator": "§6.1.3–6.1.7, Figures 6.2–6.5",
+    "evaluator": "Google DeepMind。Gray Swanの評価も収録。",
+    "setting": "30の検索資料を使う模擬場面、27のブラウザ場面、75のコード場面など。ブラウザ試験では提供時の追加検知を外す。",
+    "method": "攻撃側が読ませる資料や作業環境の文章を操作。コード試験では攻撃側が対象モデルの推論文も見られる強い条件。",
+    "result": "検索資料の試験では各場面40回の試行まで全て耐えたが、試行を増やすと成功する攻撃もある。コード試験ではArgonより耐える割合が少し下がった。",
+    "limitation": "特定の試験で成功がゼロでも、攻撃全体を防げるとは限らない。試行予算、見せる記録、防御の有無で条件が異なり、実運用の被害率ではない。"
+  },
+  "robotics25-factory-pilot": {
+    "source": "gemini-robotics25",
+    "type": "observation",
+    "title": "工場の実物を扱う試行と、仕事全体の代替は別",
+    "kind": "提携工場での実機試行と別設定の安全性試験",
+    "locator": "Real-world deployment and safety sections",
+    "evaluator": "Google DeepMind、Mercedes-Benz、Apptronik",
+    "setting": "ドイツとハンガリーのMercedes-Benz工場で、Apollo 2が金属部品の取り出し・順序付けを行う。ERとRobotics 2.5が分担。",
+    "method": "実物を扱う工程で動作を試す。別の安全性評価では、障害物や人への配慮と、危険な言語指示への耐性を調べる。",
+    "result": "提携先の試行で96%の成功を報告。安全性の試験にも改善が報告された。",
+    "limitation": "96%の試行数、成功の定義、継続期間、人の監督・復旧介入の詳細は未公表。言語試験の値は実機の事故率ではなく、仕事全体の無人化や長期の安全性も未確認。"
+  },
+  "alphaproof-code-defenses": {
+    "source": "alphaproof-code-signal",
+    "type": "evaluation",
+    "title": "人が決めた安全条件を、機械語まで検証する",
+    "kind": "暗号ライブラリの形式検証",
+    "locator": "§§2.1, 4, 5.1.6, 5.2.5, 5.3 and 6",
+    "evaluator": "Google DeepMindとGoogleの研究チーム",
+    "setting": "SignalのライブラリをAArch64向けに構築。人が仕様を承認し、Carbonを使うAIが証明を作り、Leanが検査する。",
+    "method": "接続とメッセージ処理の特定の安全性を、暗号などの前提の下で証明。過去に修正済みの2つの不具合を戻し、仕様違反も証明する。",
+    "result": "AIが作った証明を検査器で受理。文章の説得力ではなく、承認した条件への形式的な適合で成果を確かめる例。",
+    "limitation": "鍵の生成、全ての端末構成や漏えい経路などは範囲外。仕様、暗号、実行環境と検査器を信頼する前提が残る。Signal全体の無欠陥性や、AI自体の安全性を証明したものではない。"
   }
 }

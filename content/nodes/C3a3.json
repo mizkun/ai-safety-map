@@ -21,7 +21,9 @@
     "distributed-agent-monitoring",
     "mas-guard",
     "anthropic-project-eve",
-    "anthropic-fable52-system"
+    "anthropic-fable52-system",
+    "openai-peer-infrastructure-incident",
+    "gemini-carbon-safety"
   ],
   "questions": [],
   "related": [],
@@ -33,7 +35,7 @@
     "scheming"
   ],
   "review": {
-    "checkedAt": "2026-11-10",
+    "checkedAt": "2026-11-11",
     "intervalDays": 7,
     "reason": "監督回避と、それを防ぐ手法の評価は変化が速いため。"
   },
@@ -55,7 +57,9 @@
     "distributed-agent-monitoring",
     "mas-guard",
     "eve-team-oversight",
-    "mythos52-prompted-sandbagging"
+    "mythos52-prompted-sandbagging",
+    "peer-residue-infrastructure",
+    "carbon-monitorability-scope"
   ],
   "shortTitle": "実行中の監督をすり抜ける"
 }
