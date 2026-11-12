@@ -153,10 +153,11 @@
         "subliminal-behavior-transfer",
         "graft-reward-hacking",
         "terra-authorization-evaluation",
-        "carbon-alignment-evaluation"
+        "carbon-alignment-evaluation",
+        "multi-user-coordination"
       ],
       "review": {
-        "checkedAt": "2026-11-05",
+        "checkedAt": "2026-11-12",
         "intervalDays": 7,
         "reason": "既存の根拠がカードの条件をどこまで直接確かめているかを分類しています。根拠の更新時に見直します。"
       }
@@ -267,10 +268,11 @@
         "evaluation-production-warning-gap",
         "training-data-monitor-blindspots",
         "monitorability-lifecycle-proxies",
-        "training-mixture-backdoors"
+        "training-mixture-backdoors",
+        "weight-audit-defenses"
       ],
       "review": {
-        "checkedAt": "2026-11-11",
+        "checkedAt": "2026-11-12",
         "intervalDays": 7,
         "reason": "既存の根拠がカードの条件をどこまで直接確かめているかを分類しています。根拠の更新時に見直します。"
       }
@@ -519,10 +521,11 @@
         "transect-review-tooling",
         "trained-alignment-auditors",
         "training-data-monitor-blindspots",
-        "safety-task-underperformance"
+        "safety-task-underperformance",
+        "weight-audit-defenses"
       ],
       "review": {
-        "checkedAt": "2026-11-08",
+        "checkedAt": "2026-11-12",
         "intervalDays": 7,
         "reason": "既存の根拠がカードの条件をどこまで直接確かめているかを分類しています。根拠の更新時に見直します。"
       }

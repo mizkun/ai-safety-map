@@ -1699,5 +1699,23 @@
     "period": "11月10日のモデルカードに付属する報告。新規試験とArgonから引き継いだ評価を含み、試験日が明記されない部分もある。",
     "primary": "開発者の安全性報告。外部評価者の結果も収録するが、報告書への転載を新たな追試と数えない。",
     "checked": "2026-11-11"
+  },
+  "multi-user-teams": {
+    "title": "Paliskaraほか — Worse Together: How Performance Breaks Down in Multi-User Multi-Agent Teams",
+    "url": "https://arxiv.org/html/2610.00583v1",
+    "published": "2026-09-30",
+    "date": "2026-09-30（v1）／著者による紹介：2026-11-11",
+    "checked": "2026-11-12",
+    "period": "9月30日提出のv1。11月11日の著者ブログから再発見。各試験の実施日は未記載。4つの環境と77シナリオを人が設計した実験。",
+    "primary": "Anthropic Fellowsなどの著者による原論文。査読前で、実サービスの事故調査や独立した追試ではない。"
+  },
+  "lazarus-weight-audit": {
+    "title": "Microsoft Research / AI Red Team — Lazare, veni foras: Reprogramming Dormant Neurons to Backdoor AI Agents",
+    "url": "https://raw.githubusercontent.com/anadim/anadim.github.io/master/papers/Lazarus.pdf",
+    "published": null,
+    "date": "2026-11-10に著者ブログで紹介／論文の初出日は未確認",
+    "checked": "2026-11-12",
+    "period": "11月10日のMicrosoft Researchブログが参照する原論文。3種類の基盤モデルの人工的な改変と、その検出実験。個別試験の実施日は未記載。",
+    "primary": "Microsoft ResearchとAI Red Teamの原報告。自ら作った改変を使う評価であり、実際の悪用の観測や別チームの追試ではない。"
   }
 }
