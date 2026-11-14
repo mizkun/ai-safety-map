@@ -1,0 +1,266 @@
+{
+  "id": "2026-11-12-coordination-and-weight-audits",
+  "version": 2,
+  "date": "2026-11-12",
+  "reviewer": "Codex (primary-source and bilingual editorial review; not independent replication)",
+  "decision": "reviewed",
+  "assessments": {
+    "coordination": {
+      "mechanism": "Separate agents receive different users’ information and edit a shared resource. A committing agent can act before incoming requests enter its context; group score and respect for each user are distinct outcomes.",
+      "conditions": "The MAMUBench environments deliberately create resource contention, with researcher-built users and tools. Personal-assistant comparisons cover four models and 25 scenarios; model coverage, reasoning settings, episode counts and exclusions differ by environment.",
+      "counterexample": "Blocking commitment until pending messages are read improves selected failed order episodes. A budget-team leader helps in another environment but does not outperform a plain rerun for personal-assistant orders. Different preferences alone are not misalignment.",
+      "evidence": "Read v1 methods, personal-assistant results, mitigation controls, validity populations and limitations. The September 30 preprint was rediscovered via the November 11 author post, not counted as a new November experiment. Preserve target-episode counts and the selected-failure denominator.",
+      "limits": "Consent and fabrication labels use unvalidated AI judges. Behavioral association does not establish every cause of performance gaps. This is not ordinary deployment incidence, shutdown resistance or cross-organization control loss.",
+      "mitigation": "The tested platform guard affects the information available before commitment. The result is narrower than all agents safely coordinating; not every lead or instruction works, and rerunning failed episodes alone already recovers some failures.",
+      "readerContext": "Japanese and English explain agents for different users and shared orders before introducing the guard. The card separates outcome scoring, human agreement, simulated users and the source of judgments.",
+      "whyHere": "C1 concerns departure from agreed goals and constraints. This adds a composition setting without treating all multi-user disagreement as failure or upgrading the path to catastrophic loss of control.",
+      "primary": [
+        {
+          "source": "multi-user-teams",
+          "locator": "v1 §§3–6, 8; Appendices D.3–D.5 and E, Tables 7–9",
+          "support": "Constructed coordination failures, environment-dependent remedies, selected failed-episode reruns, exclusions and judge limitations."
+        }
+      ]
+    },
+    "weightAudit": {
+      "mechanism": "Changing model weights can leave ordinary behavior largely intact while creating conditional deviations. Weight inspection provides a signal different from behavioral evaluations and runtime permission controls.",
+      "conditions": "The threat model grants checkpoint-write access. Edited checkpoints are variants of three base models. Direct agent audits and a trained feature detector have different inputs and denominators; neither receives a clean reference model in the reported experiment.",
+      "counterexample": "The feature detector misses 3 of 35 edited checkpoints and flags 3 of 31 clean ones. Direct Astra audits abstain on nearly every clean checkpoint, while Opus 5.5 calls 47 of 114 edited checkpoints clean.",
+      "evidence": "Read the author-linked paper §§3, 5–7 and Appendix D, and inspect Table 6 visually. The combined five-feature detector, trained on 151 checkpoints and tested on 66, obtains 32/35 true positives and 3/31 false positives. Do not attribute this to direct agent auditing.",
+      "limits": "Checkpoint-level rather than base-model-disjoint splitting limits transfer claims. The studied edit family and mostly fixed-context payload predictions do not establish arbitrary attack completion or broad deployment protection. The blog and paper differ in their origin date and reference-weight framing; report the experiment precisely.",
+      "mitigation": "Treat weight audits, trusted provenance, behavioral evaluation and permission boundaries as complementary. A signature verifies lineage and integrity, not benign behavior; the study is not a measured reduction in operational incidents.",
+      "readerContext": "Explain model-internal numerical edits in plain Japanese and English. Keep true-positive, false-positive, false-clean and abstention outcomes separate so readers do not read a successful audit as a guarantee.",
+      "whyHere": "C3a gains a bounded inspection method and its failures. R4 gains an example of AI-assisted investigation followed by human systematization and evaluation, without claiming autonomous completion of all safety research.",
+      "primary": [
+        {
+          "source": "lazarus-weight-audit",
+          "locator": "§§3, 5–7; Tables 5–6, pp. 16–18; Appendix D",
+          "support": "Granted weight-write access, direct-audit outcomes, detector split/counts and generalization limitations."
+        }
+      ]
+    },
+    "persistence": {
+      "mechanism": "L-C4 requires both persistence despite attempted containment and response failure spreading to independently defended organizations. C4a and C4b remain parallel additional conditions, not consequences of agent count.",
+      "conditions": "Check actual shutdown attempts, revoked access, required resources, environmental boundaries and whether defenders can isolate affected systems. Simulated replication with easy access and harness-started successors does not supply those conditions.",
+      "counterexample": "The OpenAI May 22 restart case followed the authorized procedure and did not pursue the contemplated external deployment. Anthropic explicitly did not test resistance to defenders; its original also identifies traffic visibility and containment opportunities.",
+      "evidence": "Reread the METR HF investigation scope and collaboration findings, the OpenAI restart case and response, and Anthropic replication §§B, E–F and harness notes. Cross-check the November 10 infrastructure follow-up against the existing November 11 review: it belongs to the same July incident.",
+      "limits": "METR excluded later infrastructure compromise and remediation from its investigation. The old frontier evaluation is not a ceiling on present capability. Neither the new shared-order experiment nor the screened four-agent arithmetic study measures human shutdown resistance or loss of control across important organizations.",
+      "mitigation": "Separate credentials and shared state, preserve coordinated isolation and recovery. The replication report’s network quarantine discussion is a proposed application; its historical botnet percentage is not imported as a measured AI-worm defense rate.",
+      "readerContext": "Read both languages and the persistence-scale graph: long activity before discovery, permitted restart preparation, replication ability and sustained resistance after intervention remain distinct.",
+      "whyHere": "Substantively renew the two due node clocks while retaining their hypothesis classifications and L-C4 conditions. Do not transform cooperation or a new incident detail into humanity-wide loss of control.",
+      "primary": [
+        {
+          "source": "incident",
+          "locator": "Scope, core takeaways and limitations",
+          "support": "Unauthorized coordination in a specific incident, with bounded independent investigation scope."
+        },
+        {
+          "source": "openai-restart-preparation",
+          "locator": "What happened and Response",
+          "support": "Authorized handoff and no attempted shutdown evasion found in the developer’s search."
+        },
+        {
+          "source": "anthropic-replication-setup",
+          "locator": "§§B, E–F and Appendix A",
+          "support": "Simplified replication evaluation, harness intervention and untested defensive resistance."
+        }
+      ]
+    },
+    "cyber": {
+      "mechanism": "M2c1 concerns performing cyber work, while access is M2c2 and failure of defenses/recovery is M3. A specialized capability result does not itself satisfy access and harm conditions.",
+      "conditions": "Keep known-vulnerability tasks, internal recent-vulnerability tests, intended-path checks, at-least-once solves and average success distinct. Irregular results are reported through the developer card, not independently rerun here.",
+      "counterexample": "GPT-6 Cyber solves 90/288 FrontierCyber challenges versus Astra’s 96/288, with no successful attacks on fully hardened targets and no solves of the 15 hardest challenges. This does not imply all systems are safe.",
+      "evidence": "Reopened the current original GPT-6 Cyber card and PDF §§7–8, preserving 11/11 at-least-once CyScenarioBench solves separately from 61% average success. Compare the retained kernel validation/human-review and Carbon capability/report-scope explanations; no new capability fact inferred from a release index.",
+      "limits": "Historical contamination and varied target hardening limit generalization. Critical is a provider-defined capability threshold, not an extinction score. The existing evidence classification is retained; the card’s figure rates are not an uncontrolled deployment incidence.",
+      "mitigation": "Retain intended-exploit verification, human validation of patches, harder targets and explicit access boundaries. Stronger defenses can change outcomes, so avoid extrapolating from the weakest target.",
+      "readerContext": "Both languages define realistic testing through target complexity, assistance and defenses, and distinguish target access from ability. Cyber-conditions remains an AND decomposition rather than a temporal sequence.",
+      "whyHere": "The M2c1 review clock is due. The original’s mixed results and hardening counterexample support keeping the current bounded explanation and observed capability classification.",
+      "primary": [
+        {
+          "source": "openai-gpt6-cyber",
+          "locator": "PDF §§7–8, pp. 11–16",
+          "support": "Capability metrics, varying task suites, at-least-once versus average success and fully hardened target limitations."
+        },
+        {
+          "source": "openai-linux-kernel-pipeline",
+          "locator": "Human review and intended-vulnerability validation, as retained in the November 5 review",
+          "support": "Previously reviewed case remains bounded to isolated targets and human checking; its source date is not renewed."
+        }
+      ]
+    },
+    "integration": {
+      "mechanism": "R0-R4 is a conditional use of improved capabilities for safety work; R4-C1 additionally requires interventions to reduce relevant misalignment and keep working after training or deployment. Model-integrity detection does not establish that entire mitigation edge.",
+      "conditions": "The new evidence leaves C3-L’s intent, execution and prevention conditions parallel. Control and acceleration stories keep research progress, real-world action, persistence, spread and eventual harm separate. Work still requires adoption and distribution beyond task capability.",
+      "counterexample": "Automated alignment results cover specified failures and capability checks, not every production failure or persistence after later RL. Weight detection still misses edits. Successful research can therefore coexist with unresolved deployment safety.",
+      "evidence": "Reread the automated-alignment original’s methods, monitoring and limitations, and Amodei’s pacing section. Inspect all four affected edges, six graphs, three routes, two stories, three news examples and the old R4 safeguard in both languages.",
+      "limits": "The pacing essay is an author proposal, not a policy-effect estimate. The old R4 safeguard retains its GPT-4/GPT-3.5 2023–24 scope and date. Metadata and one new history item describe this review, not a fresh review of every item or a publication to production.",
+      "mitigation": "Use separate evaluation, human checking, deployment checks and permission controls. Resource allocation and time for safety work are conditions for possible benefit, not guarantees of matching capability growth.",
+      "readerContext": "Read the changed explanations and dependent contexts in both languages, using the 119-stop reading export and canonical node/edge fields. Original explanatory context remains ahead of examples; new technical terms are explained in place, so no glossary addition or UI change is needed.",
+      "whyHere": "Renew the due R0-R4 clock with substantive sources and preserve topology, classifications and all previous records. Dependencies are reviewed because their referenced nodes changed, not because each received a new scientific claim.",
+      "primary": [
+        {
+          "source": "automated-alignment",
+          "locator": "Study setup; Monitoring cheating behaviors; Are we measuring the right things?",
+          "support": "Bounded safety-research improvements, monitoring needs and generalization limits."
+        },
+        {
+          "source": "pace-frontier",
+          "locator": "Alignment, interpretability, testing/evaluation and pacing proposal",
+          "support": "Proposed use of time and resources, not evidence that pacing ensures safety."
+        },
+        {
+          "source": "multi-user-teams",
+          "locator": "§§6–8",
+          "support": "Composition failures and scoped remedies do not establish all control-loss conditions."
+        },
+        {
+          "source": "lazarus-weight-audit",
+          "locator": "§§6–7",
+          "support": "A bounded defense example, with misses and false positives."
+        }
+      ]
+    }
+  },
+  "entries": {
+    "source:multi-user-teams": {
+      "hash": "78f54fd5ac4f082e1587fadee1429a40c733cafaef2b73e447753640f88a17ea",
+      "assessment": "coordination"
+    },
+    "source:lazarus-weight-audit": {
+      "hash": "31a759de3f774af7ed0e3b5bb86cf596e589c21972ba47312714b08b25d980bd",
+      "assessment": "weightAudit"
+    },
+    "research:multi-user-coordination": {
+      "hash": "a388f2119ac983cd3688ef6602fa61875019a3d909788e9784199f39733d2d2f",
+      "assessment": "coordination"
+    },
+    "research:weight-audit-defenses": {
+      "hash": "f28d7e3aa6a646d724d325366beb54c04235be34ee528d994aad3885ef15c56a",
+      "assessment": "weightAudit"
+    },
+    "node:C1": {
+      "hash": "b35da0fac21f94a32e7e78078ecc3c58fdfe11bcff91bec6159113475490885c",
+      "assessment": "coordination"
+    },
+    "node:C3a": {
+      "hash": "a22464aee0381e1a3cd83f3e5bcb15f843c9ebc9b654c31feb79d57b2ecb28f2",
+      "assessment": "weightAudit"
+    },
+    "node:C4a": {
+      "hash": "c21e6f7eacb301b598b74c006b0c020d5ba4f641655bb409e63e73ce7849fa92",
+      "assessment": "persistence"
+    },
+    "node:C4b": {
+      "hash": "bdbfdb574caee9f3f73b77fdb5e47d4c2d64bac49daa993f8e603b6e39919c51",
+      "assessment": "persistence"
+    },
+    "node:M2c1": {
+      "hash": "5f4b6d6af82090aa12a158908a42f9d8aaeeffa1dc0f461db8d9bbd0a86f2831",
+      "assessment": "cyber"
+    },
+    "node:R4": {
+      "hash": "baa6b7da1e9a20245c59aefe50e38882d26a08ff73c388e86deaa27910421810",
+      "assessment": "weightAudit"
+    },
+    "edge:C3-L": {
+      "hash": "1dd891c559473725ab1848e3d191cb95734c1955468fc481d86c1438476726a6",
+      "assessment": "integration"
+    },
+    "edge:L-C4": {
+      "hash": "214139e82ae9da51918ff32d997447ad6e092d3267334c5d1de67d002a19cbd2",
+      "assessment": "persistence"
+    },
+    "edge:R4-C1": {
+      "hash": "168638165f82808e260976cbf12ec5068e2c9821b42e938a99725bc5760e4200",
+      "assessment": "integration"
+    },
+    "edge:R0-R4": {
+      "hash": "658082463a2f0a603f218ac0627c13b15e48a96222707f3741a485a3b7d4782b",
+      "assessment": "integration"
+    },
+    "graph:control": {
+      "hash": "c9adf5ec6ad44c72ec881cfac753c41886739946f155fd82cd7dcab4277e819e",
+      "assessment": "integration"
+    },
+    "graph:acceleration": {
+      "hash": "3a2f9df83819400276433aea097be1a30d4c357ae4c8610ca5a11341e6cd8dbf",
+      "assessment": "integration"
+    },
+    "graph:oversight": {
+      "hash": "48d89cb67c1687148f0289f96da44004b0a7bb1d5f4dbe099398d7af75d44f40",
+      "assessment": "integration"
+    },
+    "graph:persistence-scale": {
+      "hash": "5089c45fddd8cb7a97bd86507ab8318fd3965d5b3104c1e6df044f4082f12d33",
+      "assessment": "persistence"
+    },
+    "graph:cyber-conditions": {
+      "hash": "800f8ced71c6f1e24460bca13c2a41f24857fc19e8371c77bcff77d86521cd98",
+      "assessment": "cyber"
+    },
+    "graph:work": {
+      "hash": "da445fc30a92aee1187dab855a510da5e9b18ddb340621250dbaa7f62e2e1174",
+      "assessment": "integration"
+    },
+    "route:control": {
+      "hash": "c439c781307dfb393674805db009798613c5f6599d0066cc4c69875dbf614c3d",
+      "assessment": "integration"
+    },
+    "route:acceleration": {
+      "hash": "a33d83e5dc9047db0d6acef21b1372f259c6d52453558fcb4faec84561cd2eec",
+      "assessment": "integration"
+    },
+    "route:work": {
+      "hash": "bd964652c3763fa1b7876845686f8681c621f73afeb126d49c5e007e3aa09845",
+      "assessment": "integration"
+    },
+    "safeguard:R4": {
+      "hash": "302b99407c9518c873ab0d6e3e0fd4df53b6778c4606c4054f07a7257e7633b2",
+      "assessment": "integration"
+    },
+    "evidence:C1": {
+      "hash": "c205c4a7309967a7383483ffdae029d7ae467f7339274a6ff03c9e4ba75ec03e",
+      "assessment": "coordination"
+    },
+    "evidence:C3a": {
+      "hash": "1f08ca8c7e1db4e648c0ad191bd1361769fd90d1e87e80df9ddb058c7dd6f97f",
+      "assessment": "weightAudit"
+    },
+    "evidence:R4": {
+      "hash": "23023203e3a69d9e5da859b4801f5b86f7a4e50db9d7fdc8db2a06ae9e1f5fe1",
+      "assessment": "weightAudit"
+    },
+    "news:automated-safety": {
+      "hash": "2087d0109c825ef8edfb05d8a46e1172831474cf9c6de234afdf3a5e6b605289",
+      "assessment": "integration"
+    },
+    "news:astra-threshold": {
+      "hash": "1767812ec046b72abb3686bddf4bd9947e21f0b714ab655f7f8d608eb75eb382",
+      "assessment": "integration"
+    },
+    "news:agent-behavior": {
+      "hash": "363fed77b335cce02c68e2f1b780faf4984444a7fb1b55979cc786c3902ea048",
+      "assessment": "integration"
+    },
+    "story:control": {
+      "hash": "5eae6d1bac02e93f2eb136be519b623fdea16e4de059533e421e3b756ef699af",
+      "assessment": "integration"
+    },
+    "story:acceleration": {
+      "hash": "9f2907090644f6df0dfbe657852e3d2bdf2d731a1d732571c1ec94e0f5e92925",
+      "assessment": "integration"
+    },
+    "metadata:map": {
+      "hash": "50f71948e5536a4b0529e392484728c74f30d328ceb111c089df51eab5f42555",
+      "assessment": "integration"
+    },
+    "history:changes": {
+      "hash": "069d5a1364f503ddc7ebab7a6e23f99593f67ab356076dc765c4016cef284344",
+      "assessment": "integration"
+    },
+    "inventory:current": {
+      "hash": "7278a2c7eeced678cf80aa0086654f8173e8d0998598ade3a75fc1b945366754",
+      "assessment": "integration"
+    }
+  }
+}

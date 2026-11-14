@@ -1,0 +1,696 @@
+{
+  "id": "2026-10-31-rosalind-and-due-review",
+  "version": 2,
+  "date": "2026-10-31",
+  "reviewer": "Codex (primary-source and bilingual editorial review; not independent expert approval)",
+  "decision": "reviewed",
+  "assessments": {
+    "rosalind": {
+      "mechanism": "Knowledge and design-task performance can inform information assistance, but neither assessment categories nor the provision of access establish physical execution or harm.",
+      "conditions": "Read the October 30 GPT-Rosalind-6 addendum and full 14-page PDF; visually inspect printed pages 11–12. Same Astra weights, no additional training, approved users, and unspecified experiment dates are explicit.",
+      "counterexample": "A model can perform well on a proxy while a person cannot complete a real task. Conversely, staying below an indicative threshold does not prove the absence of harmful assistance.",
+      "evidence": "The developer assigns High biological/chemical capability; four design/prediction tests remain below indicative Critical thresholds. Some adjusted scores count refusals as correct rather than successful deployed assistance.",
+      "limits": "Criteria are provisional, some historical scoring is incompatible, and other-domain classifications are inherited from Astra. No human-with/without-AI physical execution effect, incident frequency or global outcome is inferred.",
+      "mitigation": "Approved access and qualified human review remain explicit prerequisites. This update does not equate a restricted research deployment with unrestricted availability or with a demonstrated effective defense.",
+      "readerContext": "M2b1 already distinguishes information support from physical prerequisites. The new bilingual paragraph explains High/Critical as developer test categories rather than stages on the map.",
+      "whyHere": "Add one source and the capability card at M2b1. Retain its limited/tested classification and existing comparative evidence summary; append the new research reference and renew its review date.",
+      "primary": [
+        {
+          "source": "openai-rosalind6",
+          "locator": "§§1–2, 4.1; threshold caveats and biological capability tables",
+          "support": "Version, proxy scope, refusal adjustment and indicative thresholds."
+        }
+      ]
+    },
+    "deployment": {
+      "mechanism": "Screening, scoped access, review and revocation may interrupt misuse; their specification is separate from evidence that detection and response prevent harm.",
+      "conditions": "Read §§4.2.1 and 4.2.3–4.2.4. Eligibility is unchanged from Rosalind-5.5; authorized users require least privilege and qualified human review before consequential use.",
+      "counterexample": "A legitimate approved user may still make an error; monitoring may flag activity after damage occurs. Detection and response can help without being perfect.",
+      "evidence": "The shared monitoring/enforcement process was tested on 5.5. The report says its repetition on version 6 is in progress after deployment, with no public retest results.",
+      "limits": "Access rules and internal governance disclosures are not measured defense effectiveness. Do not infer a new completed red-team result from the predecessor test or substitute model-level benchmark scores for end-to-end prevention.",
+      "mitigation": "Retain layered restrictions, target-side defense, containment and recovery. Keep the uncertainty about monitoring effectiveness visible alongside the reported requirements.",
+      "readerContext": "The new M3 paragraph explains why a safeguard announcement matters here while stating what remains unverified. It does not claim that all safeguards fail.",
+      "whyHere": "Add the deployment card and paragraph at M3, retaining hypothesis status and the conditional M3-H connection. No new evidence class, glossary term or topology is needed.",
+      "primary": [
+        {
+          "source": "openai-rosalind6",
+          "locator": "§§4.2.1, 4.2.3–4.2.4",
+          "support": "Approved access, human review, ongoing post-deployment retest and disclosure limits."
+        }
+      ]
+    },
+    "control": {
+      "mechanism": "Execution capability and access, unintended choices, failure of oversight and persistent loss of control are distinct. Separately observed inputs do not prove simultaneous occurrence.",
+      "conditions": "Reread C2, C3, C3a2, C4, L and their connections in both languages. Recheck AISI’s October 23 original blog, Anthropic’s methods/discussion, OpenAI containment, METR incident summary and May report assessment window.",
+      "counterexample": "People can interrupt an unauthorized local action or reject a request. Test awareness need not be concealment. Directed containment attacks do not measure spontaneous deployment behavior.",
+      "evidence": "The follow-ups analyze the same July event; edited replays simulate tools rather than execute new attacks. Containment testing describes implemented changes and an October 1 restart after the September pause.",
+      "limits": "The AISI technical PDF was read in the October 24 review, not completely reread today. METR’s February–March assessment is historical, not a current ceiling. Neither replays nor declining findings in changing tests prove global control loss or general safety.",
+      "mitigation": "Maintain revocable permissions, independent checks, containment, human response and recovery as separate defenses. Pacing remains a proposal whose implementation and effect require evidence.",
+      "readerContext": "Both editions state real access conditions before describing unauthorized action, and require persistence, spread and effects on essentials before global harm.",
+      "whyHere": "Renew five due node dates and ASI-C3, C3-L and L-C4 after substantive rereading. Preserve their text, classifications and dependent C4-H conditions; older evidence-summary dates are not refreshed.",
+      "primary": [
+        {
+          "source": "aisi-incident-alignment-followup",
+          "locator": "Linked October 23 AISI author blog: findings, awareness and limitations; technical PDF previously reviewed October 24",
+          "support": "Same-incident interpretation and limits of replay."
+        },
+        {
+          "source": "anthropic-aisi-alignment-assessment",
+          "locator": "Methods; newer models; remaining transcripts; discussion",
+          "support": "Human refusal, selected contexts and uncertain causes of improvement."
+        },
+        {
+          "source": "openai-training-containment-october",
+          "locator": "Containment layers; red-teaming; resumption and caveats",
+          "support": "Directed testing, human validation and evolving conditions."
+        },
+        {
+          "source": "incident",
+          "locator": "Summary, scope and limitations",
+          "support": "Bounded event, revoked access and intervention."
+        },
+        {
+          "source": "frontier",
+          "locator": "Executive summary and evaluation process",
+          "support": "February 16–March 16 window rather than a current ceiling."
+        },
+        {
+          "source": "pace-frontier",
+          "locator": "Proposal and rationale",
+          "support": "Proposed oversight is distinct from measured prevention."
+        }
+      ]
+    },
+    "development": {
+      "mechanism": "Ordinary development can improve capabilities without a recursive loop. Task-level research assistance contributes to overall speed only if its gains survive the remaining bottlenecks.",
+      "conditions": "Reread NOW, R0, R5 and R1-R2, R0-ASI, R0-C2a, R0-W1, with the dependent safety-research branch. Check Chinchilla abstract, METR methods/FAQ and discovery note, and developer R&D/RSI analyses.",
+      "counterexample": "Long software tasks may improve while validation, data or human decisions constrain the full process. Better development capabilities can also assist safety research.",
+      "evidence": "Horizon measures human-expert task difficulty at a specified success rate, not model runtime or occupation replacement. Developer workflow observations retain human prioritization and intervention; Chinchilla provides an ordinary-development example.",
+      "limits": "Do not turn selected discoveries, code counts, old horizon estimates or employee reports into a new whole-process acceleration rate or proof of ASI. The four due arrows remain editorial conditional links.",
+      "mitigation": "Compare full-process time, costs, resources, human involvement and validation. Independently evaluate the results of research assistance and safety interventions.",
+      "readerContext": "Both languages explain why capabilities matter for practical work and distinguish ordinary development, feedback, ASI and safety-research branches before downstream consequences.",
+      "whyHere": "Retain the three due explanations and four due connections and renew only their dates. No new capability ceiling, topology or status is inferred from the life-sciences addendum.",
+      "primary": [
+        {
+          "source": "chinchilla",
+          "locator": "Original abstract",
+          "support": "Ordinary compute-allocation improvements."
+        },
+        {
+          "source": "horizon",
+          "locator": "Methods and FAQ",
+          "support": "Human task-time, success rates, task scope and extrapolation limits."
+        },
+        {
+          "source": "discovery",
+          "locator": "Methods and limitations",
+          "support": "Uneven public discovery evidence and attribution."
+        },
+        {
+          "source": "openai-rd",
+          "locator": "Metrics, intervention and bottleneck discussion",
+          "support": "Component contributions versus the complete development process."
+        },
+        {
+          "source": "anthropic-rsi",
+          "locator": "Research/engineering distinction and remaining human judgment",
+          "support": "Feedback depends on more than producing code."
+        }
+      ]
+    },
+    "misuse": {
+      "mechanism": "Human intent, effective assistance, usable access and unsuccessful defense must be considered separately. Cyber and physical pathways require different conditions beyond answering questions.",
+      "conditions": "Reread M1, M2, M2b, M2c and M2c2, their decompositions and M3-H in both languages. Recheck the September threat report’s scope, GLM-5.3 methods/safeguards and the physical-capability evaluation’s simulation and limitations.",
+      "counterexample": "A response to a concerning biological query does not prove malicious intent or physical harm. Isolated simulated tasks can succeed while a defended target remains inaccessible; providers can also interrupt activity.",
+      "evidence": "The threat report covers selected December 2025–August 2026 cases with human roles. GLM testing distinguishes model engagement, task success and deployment safeguards; physical tests are bounded information or simulation evidence.",
+      "limits": "Do not infer ordinary incident prevalence, additional independent events, broad physical autonomy or complete defense failure. The new Rosalind addendum supports only information-assistance and deployment-condition updates.",
+      "mitigation": "Retain restrictions on use, target-side defense, monitoring, containment and recovery. A revoked account does not reverse earlier theft, while a local compromise need not propagate globally.",
+      "readerContext": "The explanations, AND groups and tour separate information from access and real execution, and explain the additional bridge to essential services.",
+      "whyHere": "Renew only the five due misuse-node dates. Preserve the parent descriptions, classifications and graph relationships; M2b1/M3 changes are handled by the two new assessments.",
+      "primary": [
+        {
+          "source": "anthropic-threat-202609",
+          "locator": "Introduction; cyber human roles; biological case framing and limits",
+          "support": "Selected historical cases and differing evidence strengths."
+        },
+        {
+          "source": "anthropic-glm53",
+          "locator": "Methods, safeguards and footnotes",
+          "support": "Simulated scope, engagement versus success, and API/open-weight differences."
+        },
+        {
+          "source": "anthropic-physical-eval-202609",
+          "locator": "Intelligence-targeting and simulated physical-task evaluations; limitations",
+          "support": "Information assistance and simulated performance differ from physical execution."
+        }
+      ]
+    },
+    "finance": {
+      "mechanism": "AI-mediated financial operations, correlated or unauthorized decisions and failed buffers are separate conditions for systemic disruption. A temporary financial shock is not the disappearance of money.",
+      "conditions": "Reread F1, F2, F2a, F2b, F3 and dependent financial connections in both languages. Recheck the BoE/FCA survey summary, FSB 2024 original analysis and October 15 final practices, plus the FSI original abstract.",
+      "counterexample": "Widespread use in firms need not mean broad autonomous control. Common providers can create dependencies while supervisory controls, reserves, independent payments or recovery limit effects.",
+      "evidence": "Survey adoption and autonomy denominators differ. FSB identifies vulnerabilities and publishes practices; FSI analyzes threats, defense and response. These are not measured probabilities of an AI-driven systemic crisis.",
+      "limits": "The full FSI paper was not reread today. Policy publication is not evidence that every firm has implemented it or that it reduces losses. No new market incident or investment conclusion is asserted.",
+      "mitigation": "Keep operation limits, lifecycle governance, third-party dependencies, human intervention and recovery distinct. Compare defensive implementation and outcomes rather than counting published practices.",
+      "readerContext": "Both editions explain actual financial operations and the additional conditions for spread, payment failure and loss of trust. Hypotheses remain labeled as such.",
+      "whyHere": "Renew five due node dates; retain all finance prose, classifications and dependent arrows. The final FSB practices are already in this draft and are not added twice.",
+      "primary": [
+        {
+          "source": "finance-survey",
+          "locator": "Summary and adoption/autonomy measures",
+          "support": "Firm-level use differs from fully autonomous use cases."
+        },
+        {
+          "source": "fsb-ai",
+          "locator": "Original summary of benefits and vulnerabilities",
+          "support": "Concentration and correlated behavior are conditional risks."
+        },
+        {
+          "source": "fsb-ai-practices-final",
+          "locator": "Final twelve practices, governance and lifecycle management",
+          "support": "Published defensive practices, not an effectiveness experiment."
+        },
+        {
+          "source": "fsi-cyber-resilience",
+          "locator": "Original abstract only",
+          "support": "Offense, defense and response policy analysis."
+        }
+      ]
+    },
+    "income": {
+      "mechanism": "Income requires paying demand, authorized transactions and fulfillment; sustained profit also requires covering costs. Ownership, allocation and prices determine who benefits.",
+      "conditions": "Reread I1, I1a, I1b, I2 and P1 in both languages. Recheck Vend’s tools/human approval, Project Swap methods and delivery failures, Visa’s filtered transaction data, and the IMF original abstract and PDF introduction.",
+      "counterexample": "A recorded agreement can remain undelivered. Payment volume may contain no sustained business profit. Production improvements can coexist with unequal access or lower labor income.",
+      "evidence": "Vend includes human purchasing and operations. Swap is a controlled employee book market with preference and fulfillment limits. Visa measures transactions, not autonomous profits. IMF presents a calibrated conditional economic model.",
+      "limits": "IMF PDF access was recovered today; only its abstract/introduction were read, not the full model audited or replicated. No current broad profit, scarcity elimination or distribution outcome follows from these materials.",
+      "mitigation": "Keep spending approval, delivery checks, accountable counterparties and dispute handling. Assess total costs and actual household access, including competition and distribution choices.",
+      "readerContext": "The income/money tour explains output, sales and profits before ownership and allocation, and keeps the abundance branch separate from financial breakdown.",
+      "whyHere": "Renew five due node dates; retain all wording, evidence levels and connected hypotheses. Do not refresh unrelated source or summary dates merely because their landing pages opened.",
+      "primary": [
+        {
+          "source": "vend",
+          "locator": "Tools, purchasing permissions and human approval",
+          "support": "Operational assistance and intervention."
+        },
+        {
+          "source": "anthropic-project-swap",
+          "locator": "Methods; limitations; discussion of missing deliveries and transaction rules",
+          "support": "Preferences, bounded trading and failure of physical fulfillment."
+        },
+        {
+          "source": "visa-agents",
+          "locator": "Article and footnotes on data through April 21",
+          "support": "Filtered payment counts are not business profit."
+        },
+        {
+          "source": "imf-distribution",
+          "locator": "Original abstract; PDF abstract/introduction pp.1–4",
+          "support": "Conditional task/household model rather than observed future income."
+        }
+      ]
+    },
+    "work": {
+      "mechanism": "Task capabilities, broad adoption and access to output are different links. Technical exposure can coexist with human coordination, continued employment and uneven household outcomes.",
+      "conditions": "Reread W1, W3, W6 and their dependent connections in both languages. Recheck October 16 employment and expectations studies, Census original abstract, ILO exposure methodology and the robotics-work study’s modeled scope.",
+      "counterexample": "A firm can produce more while hiring people, and similar AI adoption can benefit one household but harm another. Beliefs about future automation are not realized adoption or displacement.",
+      "evidence": "Anthropic employment data have nonrandom adoption, output-quality proxies and remaining human judgment. Expectations compare differently sampled surveys. Census firm- and employment-weighted use differ; ILO measures exposure, and robot estimates are model judgments.",
+      "limits": "A growing developer’s workforce is not representative or a randomized causal study. The original survey periods precede publication. None establishes all-role automation, worldwide deployment or equitable distribution.",
+      "mitigation": "Track reliability, exceptions, human handoffs, transition opportunities, income and essentials separately. Test whether access and distribution actually improve rather than inferring it from productivity.",
+      "readerContext": "Both languages introduce partial automation and remaining human work before complete substitution and optional paid work. Joint conditions and counterexamples remain explicit.",
+      "whyHere": "Renew three due node dates; retain existing adoption, distribution, news and tour wording. Related evidence-summary dates remain historical because their contents were not replaced.",
+      "primary": [
+        {
+          "source": "anthropic-employment-october",
+          "locator": "Methods, adoption comparison, output proxies and human bottlenecks",
+          "support": "Nonrandom within-company observations with human coordination."
+        },
+        {
+          "source": "anthropic-expectations-october",
+          "locator": "Methods and survey footnotes",
+          "support": "Expectations and sampling differences, not outcomes."
+        },
+        {
+          "source": "census-adoption",
+          "locator": "Original abstract and survey period",
+          "support": "Adoption denominators and historical period."
+        },
+        {
+          "source": "ilo-index",
+          "locator": "Exposure methodology and interpretation",
+          "support": "Task exposure is not realized job loss."
+        },
+        {
+          "source": "anthropic-robot-work",
+          "locator": "Methods and scope",
+          "support": "Model-estimated automation and feasibility assumptions."
+        }
+      ]
+    },
+    "context": {
+      "mechanism": "The full map links partial evidence through explicit conditions. Income, abundance, systemic financial harm, misuse and loss of control are distinct pathways rather than a single observed chain.",
+      "conditions": "Read 15 dependent graph definitions, five route summaries and full bilingual stories, six news entries, four current-route summaries, 13 evidence summaries and all 21 dependent edges. Generated both actual reading exports.",
+      "counterexample": "A recorded local failure may be contained; a task can improve without full-process acceleration; adoption can coexist with human work; a contract can be unpaid or undelivered.",
+      "evidence": "The new material adds one developer source and two cards. Existing source and card records remain unchanged, with 26 node and seven edge dates renewed only after the scoped rereads documented in the companion note.",
+      "limits": "Map asOf is the latest included review, not a claim that every source or the live site was checked today. No weekly-wide sweep, independent replication, expert approval or layout test is claimed.",
+      "mitigation": "Preserve evidence classes, graph topology, current-summary dates other than M2b1, and all prior history by stable ID. Do not merge or deploy this automated proposal.",
+      "readerContext": "Both languages retain definitions before consequences and describe why each additional condition is necessary to consider. The new history entry separates the new source from retained explanations.",
+      "whyHere": "Review propagated dependencies, metadata, history and inventory after content/date changes. The money graph and tour span finance, income and distribution and are considered together here.",
+      "primary": [
+        {
+          "source": "openai-rosalind6",
+          "locator": "Capability and deployment sections",
+          "support": "Bounded new evidence, not a whole pathway."
+        },
+        {
+          "source": "anthropic-project-swap",
+          "locator": "Discussion and limitations",
+          "support": "Transaction outcomes can differ from fulfillment."
+        },
+        {
+          "source": "imf-distribution",
+          "locator": "Abstract and introduction",
+          "support": "Conditional distribution consequences."
+        },
+        {
+          "source": "fsb-ai",
+          "locator": "Original vulnerability analysis",
+          "support": "System-wide consequences require additional conditions."
+        }
+      ]
+    }
+  },
+  "entries": {
+    "source:openai-rosalind6": {
+      "hash": "6e8716a72ec55c0fdd159cc24c59f9e7d6eee0c1c9e0e27972b8f2ecad71dd8a",
+      "assessment": "rosalind"
+    },
+    "research:rosalind6-capability-boundaries": {
+      "hash": "1505efb14e1378d6f57f97e1a39c7ea12748661ae021ee46501233c15fa24be7",
+      "assessment": "rosalind"
+    },
+    "research:rosalind6-access-and-monitoring": {
+      "hash": "b83a1caab51599b643638cf032c2ef59c8dad814193fd6fe8cec99a8798d2120",
+      "assessment": "deployment"
+    },
+    "node:C2": {
+      "hash": "983433718a12741560046293de4cd7ede7691840a035ee08cf8e4595ad2aec7d",
+      "assessment": "control"
+    },
+    "node:C3": {
+      "hash": "9067f28751ccc142db733eb6182fc8d4915dab6dcd89f19e4aaf2fe23bce945a",
+      "assessment": "control"
+    },
+    "node:C3a2": {
+      "hash": "90a44331829176d76757c25e033e59b24f7e8f6f4555caad3fc477fde407a405",
+      "assessment": "control"
+    },
+    "node:C4": {
+      "hash": "c79af2ac0aaca2c042758434f208a9a1889fb02aa6ac51c01ac73c26fb8c90a6",
+      "assessment": "control"
+    },
+    "node:F1": {
+      "hash": "f1b5a17f82d4318c83ebc84355904a850474c1effa370004c9d00731c7527f63",
+      "assessment": "finance"
+    },
+    "node:F2": {
+      "hash": "64435ddc935e0b47f33ecb86b7a58fd8a17be7a755e3c36fb09ae4192a4ab6c8",
+      "assessment": "finance"
+    },
+    "node:F2a": {
+      "hash": "5732ae72bd042600c5cbd71ce60fc13a553325ea4fae902ae39564e4bc3ecb5c",
+      "assessment": "finance"
+    },
+    "node:F2b": {
+      "hash": "4849f56557f52e6fb9d372b6ccfe01de3cce2786d05358c5b2400f0af8f27387",
+      "assessment": "finance"
+    },
+    "node:F3": {
+      "hash": "6932e2fb486dd145e721c4d4b014b3f765b1a4fa2293938a95f73196febfdb65",
+      "assessment": "finance"
+    },
+    "node:I1": {
+      "hash": "c3c6e612c6061dcd0b1728d7e361a151034c15e3da79e0fc44d088514848ccae",
+      "assessment": "income"
+    },
+    "node:I1a": {
+      "hash": "45322993202760306df62bb220996bdfa895d5d370b709d22fcf14a2032d7a73",
+      "assessment": "income"
+    },
+    "node:I1b": {
+      "hash": "65afc56801e78488b8a57c698d22325fa5c38e89df6d43721ca0529716717cf0",
+      "assessment": "income"
+    },
+    "node:I2": {
+      "hash": "d965279dd2701e4700ffad8be8a4f27dad9328b11ef3ad694eaaa84a9380c58c",
+      "assessment": "income"
+    },
+    "node:L": {
+      "hash": "a99f7be7337d0d07e28d6b63e2d07ea45f6696f2ff1eb3081b0a28803a197027",
+      "assessment": "control"
+    },
+    "node:M1": {
+      "hash": "6f0914634632b021bfcf5cf1e3976248f8924a8285579c34d723021193f6ec93",
+      "assessment": "misuse"
+    },
+    "node:M2": {
+      "hash": "b03761a1c82faa62200368a0d38e4e6923b7afc76802a36e6c0f850f59f12f0a",
+      "assessment": "misuse"
+    },
+    "node:M2b": {
+      "hash": "77d99191be462193ac8175a2e5e27d5836fb30bb1edae9a1a0a4a42151acd1d1",
+      "assessment": "misuse"
+    },
+    "node:M2b1": {
+      "hash": "b7ae393e539ebc8e5ce1068e319e65548e754f99e91e847338b2497c579d2e2f",
+      "assessment": "rosalind"
+    },
+    "node:M2c": {
+      "hash": "fc89d2e0f16688d07d6e1f19b114ea7af0f71ac81c61b0c2ebd9cefc1825ad68",
+      "assessment": "misuse"
+    },
+    "node:M2c2": {
+      "hash": "301219dbf02e2d64db8d55c0b0293af45c95b540d4b53cdb5eeed83a67ebe953",
+      "assessment": "misuse"
+    },
+    "node:M3": {
+      "hash": "39490322459c16962408018b0794c1e93df8996a1bf5a10087ce733d1cc09137",
+      "assessment": "deployment"
+    },
+    "node:NOW": {
+      "hash": "b4d55ff69f7b35929983382c0408e66b25d422f62c6ae03f3e40a19ac5472b9e",
+      "assessment": "development"
+    },
+    "node:P1": {
+      "hash": "cf1875ecadb3a329137cac48771c0083acd3f8f84800c9cd77ce3e80b097f1bf",
+      "assessment": "income"
+    },
+    "node:R0": {
+      "hash": "a35fa0e3a6b841d39f18ba9548aad078368eaf4547a262ae008ad2b8bb910a73",
+      "assessment": "development"
+    },
+    "node:R5": {
+      "hash": "e1c199b4f712daa7dabced7cf98d46cc25d294ee857947718b748a00c4d52eae",
+      "assessment": "development"
+    },
+    "node:W1": {
+      "hash": "cb8d4468760b53465b0fd2efb56e54f767a5b1607bc77739cd4e4c3b542ea113",
+      "assessment": "work"
+    },
+    "node:W3": {
+      "hash": "6c8d662702a1da5dd0eed57605674a1e00cfe6f367a5eb446390f051431ed613",
+      "assessment": "work"
+    },
+    "node:W6": {
+      "hash": "08699eca764f8df82589b2b8102ee3a5f83688c9d0c41954beddba0bfa8b8130",
+      "assessment": "work"
+    },
+    "edge:C4-H": {
+      "hash": "887364160565ab97f7d473751abc365cd11d153dedeb6173919df4d1659deaa5",
+      "assessment": "control"
+    },
+    "edge:M3-H": {
+      "hash": "804d5b247fd0fa6b58c5a177a31266cd9a4b8645c860a9aafc2a0552c93bd1de",
+      "assessment": "misuse"
+    },
+    "edge:R1-R2": {
+      "hash": "4a891acc11a4d233e5d4f70502c62d2afb12eeb598d9eba9f7282b73cfc77184",
+      "assessment": "development"
+    },
+    "edge:C3-L": {
+      "hash": "6664fe2295aa94e3d1af9c3b56b6ca001ed9eaae9859c1fd944bf9ee7f82c9b1",
+      "assessment": "control"
+    },
+    "edge:L-C4": {
+      "hash": "d3dda1fb3c3ee6043b4850102665c2584031de72d202eb8081d4023908a51c5b",
+      "assessment": "control"
+    },
+    "edge:W1-W4": {
+      "hash": "0003b996a731bc127d758fcb6625ab7556113551de4c6e1526431696d0e0a44e",
+      "assessment": "work"
+    },
+    "edge:I1a-I1": {
+      "hash": "077a97af5fd7dba611a44e4008b3ca259cef5658305a54aef6da0f9f4ed97b57",
+      "assessment": "income"
+    },
+    "edge:I1-I2": {
+      "hash": "853ae6e2267b14d84ea6e816fd6008489124519e88ba7deeb7ae0381a7d24e7f",
+      "assessment": "income"
+    },
+    "edge:W4-P1": {
+      "hash": "73a0141fdc281d38bab55a6e205d9e9a6d87f95fdb2f3ab06fa9c0a63c2d72d1",
+      "assessment": "income"
+    },
+    "edge:P1-P3": {
+      "hash": "79b92640f1c2607e68baa4043ab4115f3da24a54f1d484ca0c196670dc8a2534",
+      "assessment": "income"
+    },
+    "edge:F1-F3": {
+      "hash": "210cc7c712d10cfbcb2932e56a24313fb61770d4d7669034f5f1048516d24e20",
+      "assessment": "finance"
+    },
+    "edge:W3-W5": {
+      "hash": "2bc374270b3c8c57221048d510aa454b2f235e6d619437a1e78ed0c2b6503e55",
+      "assessment": "work"
+    },
+    "edge:W4-W3": {
+      "hash": "bcb6835799eaa054c7a1f080d43ef22e208eb488c67c246616660fb79b4ec076",
+      "assessment": "work"
+    },
+    "edge:W3-W7": {
+      "hash": "7544b966074b08542fbe1c0e9f24a673396b68163ab540bde19650338e229bff",
+      "assessment": "work"
+    },
+    "edge:F3-F5": {
+      "hash": "7ada5741e2eb31bff036799d15b5cf689b0322c5985ca02874aee7e9f7a30187",
+      "assessment": "finance"
+    },
+    "edge:W3-W9": {
+      "hash": "a475e165fa6ec3e6cea4af66d7662afcf6735df22457ff6aeb549d8ca16c9a00",
+      "assessment": "work"
+    },
+    "edge:R0-C2a": {
+      "hash": "11e1743b9a6e15c7e53ec1ca64b1d8dc9628809c0ed16d245fa452c4ab60cfa5",
+      "assessment": "development"
+    },
+    "edge:R0-W1": {
+      "hash": "4e40984421fff672da0691288dd2c5cefaa20e438175fa7c797f83a3b419a017",
+      "assessment": "development"
+    },
+    "edge:R0-ASI": {
+      "hash": "daa5716b4e62c00ee0df4c9ecfa651bd9f506ab7a9cd45f500210a449669fa6a",
+      "assessment": "development"
+    },
+    "edge:ASI-C3": {
+      "hash": "38f45d1a4daa647da3a1bac1573ee41b9c941336a2528d7a599964261ef39a35",
+      "assessment": "control"
+    },
+    "edge:R0-R4": {
+      "hash": "7b806b5080e6b91c9d878ac25b00c967192aaee9ac4f52cffe3c9b006ab0bb34",
+      "assessment": "development"
+    },
+    "graph:control": {
+      "hash": "f71c7a5f1604b02b8bda4392ca9e8eaffd9828c839bff088ab6d2caa5c2f98d4",
+      "assessment": "control"
+    },
+    "graph:misuse": {
+      "hash": "19a8c31988f5739ad7e3ab5dc4c3f08a54c52dcf15e41ed3f51d2618035b2899",
+      "assessment": "misuse"
+    },
+    "graph:acceleration": {
+      "hash": "9cc67f69e6e90b8f54cbeaeeddac274ceeb0bb1da032f4ed33ab1d38b12d9750",
+      "assessment": "development"
+    },
+    "graph:evaluation": {
+      "hash": "e1264280bc693916e34ae07e93ff013a2b51aa4eaca23ea4a000f183a4861491",
+      "assessment": "control"
+    },
+    "graph:misuse-mechanisms": {
+      "hash": "3c0acf72b442d8af9f860ddf57c7687bffb29979b9279f1b6a4c303bd5dba9dc",
+      "assessment": "misuse"
+    },
+    "graph:cyber-conditions": {
+      "hash": "af772e5f09b7330f398bae83c08be5199c5158ef00b59b78d0271e0980de75fc",
+      "assessment": "misuse"
+    },
+    "graph:bio-conditions": {
+      "hash": "219414f15903fc5fcda1d9ea492249642b66f3ba51c806c2843792f7a783ce6c",
+      "assessment": "rosalind"
+    },
+    "graph:work": {
+      "hash": "60397999c85b07c8c8251ac94d9f2ecb486e65d905c29fbf4b9e600982a98ab9",
+      "assessment": "work"
+    },
+    "graph:money": {
+      "hash": "25eeae0408cf6b3b25f7fd3788d19600bc72e4502cd83314969c7b53b19ed50c",
+      "assessment": "context"
+    },
+    "graph:finance-mechanisms": {
+      "hash": "c7c8807139f3c82e00db2fa3164ff4fc52f42b73ae915c5ea03e1fb22d8e3683",
+      "assessment": "finance"
+    },
+    "graph:income-conditions": {
+      "hash": "6a44c1e2294e0ee196a10e9ab007ea9acdd57019a8dc02a81b093a8d90c3381d",
+      "assessment": "income"
+    },
+    "graph:currency-conditions": {
+      "hash": "664ebdfc8d09e7bce727296ee1a3a42ed24a71251071682e0c7f548b98d247cb",
+      "assessment": "income"
+    },
+    "graph:finance-conditions": {
+      "hash": "81c17dafafdb4fd9e7e028f99f26042a3f0f2de19301183598753a5b9f89631e",
+      "assessment": "finance"
+    },
+    "graph:development-paths": {
+      "hash": "b7ae9fb2202002cd84a305f13ad5919658cf34c651413cd4aba2b12a9d933643",
+      "assessment": "development"
+    },
+    "graph:research-cycle": {
+      "hash": "a9672ed44fc962f50922192a4db5594028a1676b1fa6aa0aef6685b4bb3cef6c",
+      "assessment": "development"
+    },
+    "route:control": {
+      "hash": "36b4c76fc0dceb275be5e28da32b7bf27f7ab8a1a79812f25eac987fa38f3ec0",
+      "assessment": "control"
+    },
+    "route:misuse": {
+      "hash": "69b2213c64ec5bb3d95db261cfa4b652002192287acf1c3095a993cf3ae85b7c",
+      "assessment": "misuse"
+    },
+    "route:acceleration": {
+      "hash": "76cd620a5063ee37f0068246375b748b530475b22c42664ef6ad3483217a8c29",
+      "assessment": "development"
+    },
+    "route:work": {
+      "hash": "5dc11d9f00a846382e0864a0f32589c13c70a254d1dc5deff33805a0b5db39a8",
+      "assessment": "work"
+    },
+    "route:money": {
+      "hash": "e31eacb04eab943e74791c7f7bece7c5a0fc414db58a6156e2f49ee417eebcf0",
+      "assessment": "context"
+    },
+    "current:control": {
+      "hash": "f5514ba1ac99db576fb102ccffe767a86367782f6c64a05a17a1eb613f3492cf",
+      "assessment": "control"
+    },
+    "current:misuse": {
+      "hash": "4714ddcbdd9dd2c3c0e30285584cf3a7884c73a842a8d034f6264c439f54737f",
+      "assessment": "misuse"
+    },
+    "current:work": {
+      "hash": "16746e49e3e15d906aef6410d8d8722b5a2e19c453ae329a82c3c36cf6ed8296",
+      "assessment": "work"
+    },
+    "current:money": {
+      "hash": "32ed7d737434dbc50cab07e1f0b8196bed17056d89305229f87ed0d54acf9fc5",
+      "assessment": "context"
+    },
+    "evidence:C2": {
+      "hash": "00becd916b82777d432f5d275f1a8c9bee4637974d494084a30cda7df0c1ee8b",
+      "assessment": "control"
+    },
+    "evidence:C3": {
+      "hash": "d27d29f6398294c3d357b74372caff468c9b1d2590f577c5f64cb715564dfebd",
+      "assessment": "control"
+    },
+    "evidence:C3a2": {
+      "hash": "fa785c29da94cdcb72e9479e759cbe4f03dc64fc371a2185eb815826a144498a",
+      "assessment": "control"
+    },
+    "evidence:F1": {
+      "hash": "063b1ea62a2aa387c0477b4a5b8e8477b94998a9dec8436e844dcb100e7b201c",
+      "assessment": "finance"
+    },
+    "evidence:I1": {
+      "hash": "70ef4dfc0e7fb0b05ffbd98376c27246184e3b5b6f9ed735f6e028d36e389f07",
+      "assessment": "income"
+    },
+    "evidence:I1a": {
+      "hash": "0c7f007ac7385ffcb3b2d9d6c5afd8550625031a033e201931793da352cc8c87",
+      "assessment": "income"
+    },
+    "evidence:I1b": {
+      "hash": "c49fb487561df28ec63220e68280a846459945b40dcbe132c588d09923b53edc",
+      "assessment": "income"
+    },
+    "evidence:M2": {
+      "hash": "55f08339bee4570188b4feda16b0696922ddade98bfa9c98d28e2cfbb4bb1187",
+      "assessment": "misuse"
+    },
+    "evidence:M2b": {
+      "hash": "79d723cbe266418e821ca3cd612a9f301e04fc46b3093d6bc1c63193d6826fc0",
+      "assessment": "misuse"
+    },
+    "evidence:M2b1": {
+      "hash": "ba594dfb2845b13cd76f63aba3677efaf764d588c3219225e20a4b2d6b054df7",
+      "assessment": "rosalind"
+    },
+    "evidence:R0": {
+      "hash": "3c9530faa7fdcfe1c4fd2767a612a5022caed95d1fe0eeba6d7012d7314784cf",
+      "assessment": "development"
+    },
+    "evidence:W1": {
+      "hash": "f2f55b67003b1fa9bee6eee8aa428985ff8b460a2a4402244254035cfe21b713",
+      "assessment": "work"
+    },
+    "evidence:W3": {
+      "hash": "36573fa3da264c310c0a88c5479134a61ad0df058c2cb8669a815ed664771cc9",
+      "assessment": "work"
+    },
+    "news:work-survey": {
+      "hash": "68a99d23bcf3f6fe0bbaa5a50917e20f8ffaee79a63710ea4851b1c81498da74",
+      "assessment": "work"
+    },
+    "news:agent-income": {
+      "hash": "cd4d8d9a9ab07d81baec4fd141a4618a5f1fa082959e2b4071e207a5c2f3dddf",
+      "assessment": "income"
+    },
+    "news:aisi-contained": {
+      "hash": "7f53cba14f6e0367cc6405b50292e70911b2c50b4dbcf9342e1eb6ce3621cda7",
+      "assessment": "control"
+    },
+    "news:astra-threshold": {
+      "hash": "81e905f37a4816f89e5464379a4e630efb836848d6aafe6ed5d7cec807f436b4",
+      "assessment": "misuse"
+    },
+    "news:agent-behavior": {
+      "hash": "08ad4e7fa391398cec92c6c24ce5fc0c6408f3025dddf4d836151579aac6768e",
+      "assessment": "control"
+    },
+    "news:time-horizons": {
+      "hash": "838536b33dde58249a09fb158826b29a6f04fca65b3175be6370982c120fa6d7",
+      "assessment": "development"
+    },
+    "story:control": {
+      "hash": "e39456e59d993bdf9ace7ebf74f395b0fd55b89b444d382947dbc789005fa326",
+      "assessment": "control"
+    },
+    "story:misuse": {
+      "hash": "61051e87b52284a38ab3212143d8db85df020ac6cac3cc19b32ea6f480f2405a",
+      "assessment": "misuse"
+    },
+    "story:acceleration": {
+      "hash": "6afd956b346bb14c1437496d4f1f8de1f73a417a6fc5f3a364fea692f5091aca",
+      "assessment": "development"
+    },
+    "story:work": {
+      "hash": "b65129a0787c2ecff8066c32ece4790004b3517aa0b36cf6413f1ccd64589d5e",
+      "assessment": "work"
+    },
+    "story:money": {
+      "hash": "f9dedcb30dca19ef0c81cab83fe73a1fed0ef717e5a2554ef59360b9fa5de906",
+      "assessment": "context"
+    },
+    "metadata:map": {
+      "hash": "a122784b5046c543c02200fddf504f125cd791ac44378c2dbbd3a1f755d57616",
+      "assessment": "context"
+    },
+    "history:changes": {
+      "hash": "6f80d70e26fb07ed62c68b95cbf4d738d944d71f2b7884bfadbe78b419cec616",
+      "assessment": "context"
+    },
+    "inventory:current": {
+      "hash": "d039525b8309dfbb9d4d23b7a9dd36c4d236a4805fd01d96ec0363f6f842c9c5",
+      "assessment": "context"
+    }
+  }
+}

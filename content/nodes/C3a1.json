@@ -8,13 +8,22 @@
     "astra-card",
     "pace-frontier",
     "lie-detectors",
-    "embedded-evaluation-partnership"
+    "embedded-evaluation-partnership",
+    "openai-laser",
+    "anthropic-evaluators-update",
+    "metr-august-risk-review",
+    "frontiercs-carbon-evaluation",
+    "openai-eval-production-gap",
+    "anthropic-flashprove",
+    "openai-safety-underperformance",
+    "openai-stopped-alignment-eval",
+    "gemini-hydrogen-card"
   ],
   "questions": [],
   "related": [],
   "terms": [],
   "review": {
-    "checkedAt": "2026-09-24",
+    "checkedAt": "2026-11-14",
     "intervalDays": 7,
     "reason": "能力・行動・対策の評価は短期間で変わり得るため。"
   },
@@ -28,7 +37,16 @@
     "astra-cyber",
     "embedded-evaluators",
     "lie-detector-transfer",
-    "embedded-evaluator-partnership"
+    "embedded-evaluator-partnership",
+    "laser-evaluation-sampling",
+    "embedded-evaluator-access",
+    "external-risk-report-critique",
+    "carbon-research-evaluation-limits",
+    "evaluation-production-warning-gap",
+    "committed-model-inference-proof",
+    "safety-task-underperformance",
+    "stopped-alignment-evaluation",
+    "hydrogen-safety-scope"
   ],
   "shortTitle": "試験が実際の失敗を捉えない"
 }
