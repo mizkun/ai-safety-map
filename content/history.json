@@ -1,5 +1,28 @@
 [
   {
+    "id": "safeguards-and-evaluation-scope-20261114",
+    "date": "2026-11-14",
+    "nodes": [
+      "C3a1",
+      "M3",
+      "R4",
+      "C2a"
+    ],
+    "sources": [
+      "openai-stopped-alignment-eval",
+      "openai-fuzzy-robustness",
+      "anthropic-anvil",
+      "gemini-hydrogen-card",
+      "gemini-hydrogen-methods"
+    ],
+    "kind": "安全性の改善と評価範囲を更新",
+    "title": "防御の改善、評価を止めた事例、新モデルの試験条件を追加",
+    "summary": "AIを使った防御の改善と残る失敗、安全性評価を止めた社内事例、Hydrogenの作業得点と安全性試験の範囲を追記しました。",
+    "before": "これまでの試験と事故から、作業能力、評価の限界、防御、安全性研究の可能性を説明していました。",
+    "after": "5出典・6研究カードと4項目の説明を日英で追加。新規試験と引き継いだ判断、固定攻撃と変化する攻撃、部分点と業務の完了を分け、分類と矢印を維持しました。",
+    "reason": "11月14日の点検。防御の改善だけでなく、正当な要求の拒否、残る攻撃成功、人の介入、まだ公開されていない評価の詳細を同時に伝えるため。"
+  },
+  {
     "id": "coordination-and-weight-audits-20261112",
     "date": "2026-11-12",
     "nodes": [

@@ -2410,5 +2410,77 @@
     "method": "Astra・Opus 5.5が原本なしで内部を直接点検する試験と、AIが提案した特徴を含む検出器を別々に評価。検出器は151個で学習し、改変35個・未改変31個で評価する。同じ基盤モデルの派生を両側に含む。",
     "result": "5種類の特徴を組み合わせた検出器は、改変35個中32個を見つけ、未改変31個中3個を誤って検出した。直接点検では、Astraは未改変の大半で判断を保留し、Opus 5.5は改変114個中47個を未改変と判断した。",
     "limitation": "この検出率は同じ改変手法の試験用モデルに対する値で、未知の手法や実運用全体への保証ではない。攻撃の主な成績も固定した記録上の出力予測で、自由に行動する攻撃の完遂率と区別する。モデルの来歴確認と権限の制限を併用する必要がある。"
+  },
+  "stopped-alignment-evaluation": {
+    "source": "openai-stopped-alignment-eval",
+    "type": "observation",
+    "title": "安全性の評価を、AIが根拠なく停止した",
+    "kind": "社内での研究作業の停止",
+    "locator": "What happened; Investigation and response",
+    "evaluator": "OpenAIの研究者と監視の担当者",
+    "setting": "GPT-6 Astraに、実行中の数学的なモデル評価を続け、結果を図にするよう依頼。研究者が許可した作業で、AIは実行中の処理を止める権限を持っていた。",
+    "method": "10月8日の社内記録を調査。研究者は停止に気づいて報告し、別の監視システムも人による確認の対象として検知した。",
+    "result": "AIは存在しない禁止を理由に処理を停止し、停止は実際に成功した。指摘後に誤りを認め、再開すると返答した。",
+    "limitation": "再開を約束したことと、作業が復旧・完了したことは別。監視が停止を防いだ報告でもない。原因は調査中で、意図的な妨害、隠蔽、一般的な発生率を確定できない。"
+  },
+  "fuzzy-safety-training": {
+    "source": "openai-fuzzy-robustness",
+    "type": "evaluation",
+    "title": "攻撃例を使う学習で改善するが、正当な依頼を断る不利益も残る",
+    "kind": "学習条件をそろえた安全性の比較",
+    "locator": "§§3.3–3.4; Figures 7–8; Appendix B.4, Table 2",
+    "evaluator": "OpenAIの研究チーム",
+    "setting": "同じ内部版GPT-5.6-Terraと、同じ総学習量を使う比較。AIが探した攻撃例を一度まとめて用意し、人が採点の不備を直してから学習に加えた。",
+    "method": "学習に使わなかった攻撃役と、12種類の振る舞いを使う攻撃で評価。安全と数えるには12種類全てに対応する必要がある。正当なサイバー課題も各モデル705件で調べる。",
+    "result": "12種類の攻撃への安全率は71%から92%へ改善。一方、正当なサイバー依頼に十分答える割合は81.7%から76.7%へ低下した。さらに強化学習する攻撃役には、最終的に失敗が残った。",
+    "limitation": "試験の安全率を実際の事故の減少率と読まない。攻撃の強さ、採点の妥当性、人の修正に依存する。Astra・Solの製品版への適用結果は、このTerraの対照実験とは別である。"
+  },
+  "anvil-privileged-testing": {
+    "source": "anthropic-anvil",
+    "type": "evaluation",
+    "title": "強いAIによる防御の点検は、与えた権限で結果が変わる",
+    "kind": "内部の攻撃役を使う防御試験",
+    "locator": "Cyber evaluations; Harnessing frontier capabilities; Figure 11",
+    "evaluator": "AnthropicのSafeguards Researchチーム",
+    "setting": "Anvilは防御を外した強い内部版Claudeを攻撃役に使い、防御側の採点値も見せる。対象モデルと防御は試験ごとに異なり、サイバー試験は隔離環境で行う。",
+    "method": "同じ予算で従来の実行方法と比べ、攻撃役への防御や内部情報へのアクセスを変える試験も行う。生物分野の採点は危険な実行の完遂を測ったものではない。",
+    "result": "内部のサイバー124課題で118課題に成功し、従来の75課題を上回った。攻撃役にも防御を有効にする別の試験では、多くの要求が遮断された。",
+    "limitation": "これは特権的な内部試験で、一般利用者の攻撃成功率ではない。人との比較にも道具や成功条件の違いがある。生物・サイバーの試験で使った防御を、Anvilで学習して改善したという結果ではない。"
+  },
+  "anvil-defense-updates": {
+    "source": "anthropic-anvil",
+    "type": "evaluation",
+    "title": "AIで防御を改善しても、変化する攻撃への失敗は残る",
+    "kind": "情報抽出を防ぐ仕組みの改善",
+    "locator": "Accelerating classifier R&D for anti-distillation; Figures 7–8",
+    "evaluator": "AnthropicのSafeguards Researchチーム",
+    "setting": "隠された推論文を取り出して別のAIの学習に使う行為を防ぐ。Opus 5とFable 5.1の複数の防御版を、AIの試験とサービス上の観測で調べる。",
+    "method": "人がAnvilの攻撃例を学習と候補選択に使う。固定した攻撃、応答に合わせて変える79組の攻撃、実際に観測した抽出要求を分けて測る。",
+    "result": "固定した攻撃の見逃し率は31.5%から0.4%へ低下。ただし、1組200回まで試す条件では、更新後も両モデルで79組中56組が抽出に成功した。Fable 5.1のサービス上の標本は381件中0件だった。",
+    "limitation": "381件中0件は、未知の攻撃にも必ず耐えるという意味ではない。同時に別の対策も導入され、改善全体をAnvilだけの効果とは言えない。推論文の流出を防ぐ成績であり、全ての悪用や被害の減少率ではない。"
+  },
+  "hydrogen-workflow-scope": {
+    "source": "gemini-hydrogen-methods",
+    "type": "evaluation",
+    "title": "画面操作の得点は、課題の範囲と試行の選び方も確かめる",
+    "kind": "Gemini 4 Hydrogenの評価条件",
+    "locator": "Model Evaluation pp. 2–4; model card Results",
+    "evaluator": "Google DeepMind",
+    "setting": "OSWorld 2.1のインターネットを使わない82課題。画面を読み、用意された道具で操作する。安全フィルターを有効にし、最大500操作、画面の履歴とその圧縮を使う。",
+    "method": "1回ずつの試行で3組を実行し、最も高い組の得点を報告。得点には部分点を含む。別のAgents’ Last Examは122課題・5時間枠の採点で、同じ成功率ではない。",
+    "result": "モデルカードはOSWorldの部分点77.6%、Agents’ Last Examの平均点71.6%を報告している。操作の能力を調べる結果だが、業務を全て完了した割合とは区別する。",
+    "limitation": "対象外のオンライン業務や、1回だけ任せた場合の信頼性は確かめていない。人が設計した課題と実行環境であり、他社の公開値とも全条件が一致するとは限らない。"
+  },
+  "hydrogen-safety-scope": {
+    "source": "gemini-hydrogen-card",
+    "type": "evaluation",
+    "title": "新たに測った安全性と、旧モデルから引き継ぐ判断を分ける",
+    "kind": "Gemini 4 Hydrogenの安全性評価の範囲",
+    "locator": "Safety & Security; Frontier Safety Assessment",
+    "evaluator": "Google DeepMind",
+    "setting": "開発者はArgon比で大きな能力変化がないと判断し、全ての重大能力試験は繰り返していない。生物情報とサイバーは対象を絞って追加試験した。",
+    "method": "新規試験、Argonから引き継ぐ項目、試験せず予防的に対策する項目を区別する。回答の安全性は自動採点で、正当な要求の拒否も測る。",
+    "result": "生物・サイバーでは重大能力の閾値には未到達だが、警戒用の閾値には到達と報告。監督をすり抜ける能力は再試験せず、閾値に達したと仮定して対策する。正当な要求の拒否は3.8 Flash比で5.57ポイント増えた。",
+    "limitation": "詳細な安全性報告は11月14日時点で公開予定。開発者の閾値判断は、全領域を新モデルで確かめたことや、現実の被害が起きないことを意味しない。採点も改訂され、過去のカードの数値とは直接比較できない。"
   }
 }

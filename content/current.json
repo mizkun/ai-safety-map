@@ -212,10 +212,11 @@
         "local-error-recovery",
         "scanned-record-workflow",
         "fable52-workflow",
-        "electronics-human-build"
+        "electronics-human-build",
+        "hydrogen-workflow-scope"
       ],
       "review": {
-        "checkedAt": "2026-11-10",
+        "checkedAt": "2026-11-14",
         "intervalDays": 7,
         "reason": "既存の根拠がカードの条件をどこまで直接確かめているかを分類しています。根拠の更新時に見直します。"
       }
@@ -290,10 +291,12 @@
         "carbon-research-evaluation-limits",
         "evaluation-production-warning-gap",
         "committed-model-inference-proof",
-        "safety-task-underperformance"
+        "safety-task-underperformance",
+        "stopped-alignment-evaluation",
+        "hydrogen-safety-scope"
       ],
       "review": {
-        "checkedAt": "2026-11-08",
+        "checkedAt": "2026-11-14",
         "intervalDays": 7,
         "reason": "既存の根拠がカードの条件をどこまで直接確かめているかを分類しています。根拠の更新時に見直します。"
       }
@@ -522,10 +525,14 @@
         "trained-alignment-auditors",
         "training-data-monitor-blindspots",
         "safety-task-underperformance",
-        "weight-audit-defenses"
+        "weight-audit-defenses",
+        "stopped-alignment-evaluation",
+        "fuzzy-safety-training",
+        "anvil-privileged-testing",
+        "anvil-defense-updates"
       ],
       "review": {
-        "checkedAt": "2026-11-12",
+        "checkedAt": "2026-11-14",
         "intervalDays": 7,
         "reason": "既存の根拠がカードの条件をどこまで直接確かめているかを分類しています。根拠の更新時に見直します。"
       }

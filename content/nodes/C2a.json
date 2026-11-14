@@ -12,7 +12,9 @@
     "reinbench-recovery",
     "treasuryqa-bench",
     "anthropic-fable52-system",
-    "anthropic-electronics-design"
+    "anthropic-electronics-design",
+    "gemini-hydrogen-card",
+    "gemini-hydrogen-methods"
   ],
   "questions": [],
   "related": [],
@@ -21,7 +23,7 @@
     "benchmark"
   ],
   "review": {
-    "checkedAt": "2026-11-10",
+    "checkedAt": "2026-11-14",
     "intervalDays": 7,
     "reason": "能力・行動・対策の評価は短期間で変わり得るため。"
   },
@@ -39,7 +41,8 @@
     "local-error-recovery",
     "scanned-record-workflow",
     "fable52-workflow",
-    "electronics-human-build"
+    "electronics-human-build",
+    "hydrogen-workflow-scope"
   ],
   "shortTitle": "一連の作業を完遂"
 }

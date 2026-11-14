@@ -1717,5 +1717,50 @@
     "checked": "2026-11-12",
     "period": "11月10日のMicrosoft Researchブログが参照する原論文。3種類の基盤モデルの人工的な改変と、その検出実験。個別試験の実施日は未記載。",
     "primary": "Microsoft ResearchとAI Red Teamの原報告。自ら作った改変を使う評価であり、実際の悪用の観測や別チームの追試ではない。"
+  },
+  "openai-stopped-alignment-eval": {
+    "title": "OpenAI — Stopping a running alignment evaluation",
+    "url": "https://alignment.openai.com/misalignment-reports/stopping-a-running-alignment-evaluation/",
+    "published": "2026-11-12",
+    "date": "2026-11-12",
+    "checked": "2026-11-14",
+    "period": "公表は11月12日。事象の発生・発見は10月8日。社内の研究者が動かしていた評価を対象にした1件の報告。",
+    "primary": "開発者による事象と対応の報告。原因と対策は調査中で、独立した事故調査や発生頻度の推計ではない。"
+  },
+  "openai-fuzzy-robustness": {
+    "title": "OpenAI — Improving Fuzzy Robustness in LLM Safety with Automated Red Teaming",
+    "url": "https://cdn.openai.com/pdf/OAI_Improving_Fuzzy_Robustness_in_LLM_Safety_with_Automated_Red_Teaming.pdf",
+    "published": "2026-11-12",
+    "date": "2026-11-12",
+    "checked": "2026-11-14",
+    "period": "11月12日公表。個別の実験日は未記載。GPT-5.6-Terraの対照実験と、GPT-6 Astra・Solへの適用結果を区別する。",
+    "primary": "開発者による原論文。学習条件をそろえた比較を含むが、開発者から独立した追試ではない。"
+  },
+  "anthropic-anvil": {
+    "title": "Anthropic — Strengthening our safeguards with frontier automated red-teaming",
+    "url": "https://safeguards.anthropic.com/2026/automated-red-teaming/",
+    "published": "2026-11-12",
+    "date": "2026-11-12",
+    "checked": "2026-11-14",
+    "period": "11月12日公表。生物分野の比較は4月20日〜9月11日の募集と対応し、情報抽出の観測には8月の例を含む。個々の防御更新・試験日は全ては示されていない。",
+    "primary": "開発者による内部試験とサービス上の観測。AI採点、特権的な試験条件、同時に行った複数の対策を含む。"
+  },
+  "gemini-hydrogen-card": {
+    "title": "Google DeepMind — Gemini 4 Hydrogen Model Card",
+    "url": "https://deepmind.google/models/model-cards/gemini-4-hydrogen/",
+    "published": "2026-11-12",
+    "date": "2026-11-12",
+    "checked": "2026-11-14",
+    "period": "11月12日のモデルカード。11月時点の成績、新規の対象を絞った試験、Argonから引き継いだ判断を含む。詳細な安全性報告は点検時点では公開予定と記載。",
+    "primary": "開発者による能力・安全性の報告。全項目をHydrogenで再試験した報告や、独立した追試ではない。"
+  },
+  "gemini-hydrogen-methods": {
+    "title": "Google DeepMind — Gemini 4 Hydrogen Model Evaluation",
+    "url": "https://deepmind.google/models/evals-methodology/gemini-4-hydrogen",
+    "published": "2026-11-12",
+    "date": "2026-11-12",
+    "checked": "2026-11-14",
+    "period": "11月12日の公開に付属する評価方法。成績は11月時点。Agents’ Last Examは10月17日版で、10月26日の更新は適用していない。個々の試験日は未記載。",
+    "primary": "開発者の方法説明。課題ごとに試行回数、集計方法、道具が異なり、他社の成績には公開値の引用を含む。"
   }
 }
