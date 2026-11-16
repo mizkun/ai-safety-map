@@ -1762,5 +1762,23 @@
     "checked": "2026-11-14",
     "period": "11月12日の公開に付属する評価方法。成績は11月時点。Agents’ Last Examは10月17日版で、10月26日の更新は適用していない。個々の試験日は未記載。",
     "primary": "開発者の方法説明。課題ごとに試行回数、集計方法、道具が異なり、他社の成績には公開値の引用を含む。"
+  },
+  "stanford-labor-demand-41": {
+    "title": "Chandar & Klein Teeselink — How Does AI Change Labor Demand? Evidence from 41 Countries",
+    "url": "https://digitaleconomy.stanford.edu/app/uploads/2026/11/Does-AI-Change-Labor-Demand.pdf",
+    "published": "2026-11-05",
+    "date": "2026-11-05 (revised)",
+    "checked": "2026-11-16",
+    "period": "2026年11月5日改訂。企業拠点のパネルは2021年1月〜2026年3月。",
+    "primary": "著者による観測研究のワーキングペーパー。無作為化実験ではない。"
+  },
+  "nber-graduate-unemployment": {
+    "title": "Fairlie & Wu — The Early Impacts of AI on Employment among Recent College Graduates",
+    "url": "https://www.nber.org/system/files/working_papers/w35796/w35796.pdf",
+    "published": null,
+    "date": "2026-09 (day unspecified)",
+    "checked": "2026-11-16",
+    "period": "2026年9月公表（日付未記載）。CPSの2022年1月〜2026年8月を使い、2026年6〜8月を比較。",
+    "primary": "著者による未査読のNBERワーキングペーパー35796。AIの因果効果を切り分けた実験ではない。"
   }
 }
