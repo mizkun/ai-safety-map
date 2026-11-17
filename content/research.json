@@ -2506,5 +2506,41 @@
     "method": "季節性を考慮し、過去の夏と30〜49歳の大卒者・若い非大卒者を比較。表1は通常の失業で45,816観測、就労希望の非労働力人口も含める場合は46,734観測。人数とは区別する。",
     "result": "2026年夏の失業率に、比較対象に対する統計的に明確な上昇は見られなかった。就労希望の非労働力人口を含めても同様だった。",
     "limitation": "AI導入時期も比較群も、因果効果を明確に切り分けられない。職歴のない人の職業別分析や、リモートワークとの区別にも限界がある。無影響や将来の安全を証明しない。"
+  },
+  "alignment-eval-discrimination": {
+    "source": "metr-alignment-eval-tells",
+    "type": "evaluation",
+    "title": "評価を見分ける力と、問題を隠す行動を分ける",
+    "kind": "評価目的の識別実験",
+    "locator": "Setup; Limitations of interrogations; Results, Figure 1; Discussion",
+    "evaluator": "METRのUzay Girit、Kaivu Hariharan、Leni Shor",
+    "setting": "安全性の評価19環境と能力の評価36環境。6モデルを最高の推論設定で比較。通常の課題と同じ道具を使うが、課題を解かず、評価の目的を調べるよう指示。",
+    "method": "評価の種類を直接尋ねる方法と、自由回答をAIが採点する方法を比較。各環境・方法・モデルの3回の結果を平均して順位を比べる。",
+    "result": "Opus 5.5では両方法で、安全性の評価19環境全ての平均点が能力の評価36環境全てより高かった（AUC 1.0）。各試行が全て正解したという意味ではない。",
+    "limitation": "質問による誘導、選んだ環境、AIによる採点の影響がある。通常の作業中に自ら気づく割合や、気づくことで行動を隠すかを測った実験ではない。"
+  },
+  "cvd-timeline-transition": {
+    "source": "anthropic-cvd-timelines",
+    "type": "argument",
+    "title": "脆弱性の公開期限の短縮は、修正の効果とは別",
+    "kind": "2027年からの方針変更",
+    "locator": "Announcement; Responding to AI-enabled vulnerability discovery",
+    "evaluator": "Anthropic Frontier Red Team",
+    "setting": "人の確認を経て2027年1月1日以降に保守者へ報告する脆弱性。人が確認していないOSS Scannerなどの候補には適用しない。特定モデルの比較実験ではない。",
+    "method": "通常の公開期限を90日から、高・重大は30日、それ以外は45日へ短縮する方針。進行中の報告は既存期限を維持し、修正が難しい案件は個別に調整。",
+    "result": "攻撃者による再発見が速まるという判断から、修正案や緩和策の提供と公開期限の短縮を組み合わせると発表。保守者の負担と報告のペースにも配慮するとしている。",
+    "limitation": "発表時点で新期限の適用は始まっていない。再発見の増加率、修正の導入率、被害の減少率は示されておらず、防御の実証とは扱わない。"
+  },
+  "scientist-use-and-reported-time": {
+    "source": "openai-science-frontier-use",
+    "type": "observation",
+    "title": "科学者のAI利用と、自己申告の時間短縮",
+    "kind": "利用記録と参加者調査",
+    "locator": "Linked paper §§2.1–2.2, 3.3, 4.2–4.3; Figure 15; page About the research",
+    "evaluator": "Chris Liao、Carl Shan、Aaron Chatterji（OpenAIの研究チームら）",
+    "setting": "研究者向けプログラムの1,819人による科学関連の580,186メッセージ。別途、調査への有効回答270件のうち掲載に同意した251人を分析。単一モデルや固定権限での能力試験ではない。",
+    "method": "利用内容をAIで分類し、研究者を等しく重み付け。調査では、同じ量・質の作業をAIなしで行う場合の所要時間を尋ねた。研究者は問いの設定や出力の確認に関与する。",
+    "result": "読解・文章作成・解析・コード作業への利用が多い。調査の8工程を等しく平均すると、AIなしでは約1.9倍の時間が必要と自己申告。人手・資金などの制約も残る。",
+    "limitation": "利用と自己申告の観測であり、実際の発見やAI開発全体の因果的な加速率ではない。参加希望者・回答者の偏りとAI分類の誤りがあり得る。参加枠の抽選は、この分析を無作為比較試験にはしない。"
   }
 }

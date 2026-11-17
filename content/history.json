@@ -1,5 +1,25 @@
 [
   {
+    "id": "evaluation-science-disclosure-20261117",
+    "date": "2026-11-17",
+    "nodes": [
+      "C3a2",
+      "R1",
+      "M3"
+    ],
+    "sources": [
+      "metr-alignment-eval-tells",
+      "anthropic-cvd-timelines",
+      "openai-science-frontier-use"
+    ],
+    "kind": "評価・研究支援・防御の根拠を追記",
+    "title": "評価を見分ける力、研究での利用、修正を届ける期限を分ける",
+    "summary": "METRの評価識別実験、OpenAIの科学者調査、Anthropicの公開期限変更を追加しました。",
+    "before": "評価中の行動、研究の部分的な支援、防御と修正の取り組みを、条件と限界に分けて説明していました。",
+    "after": "C3a2・R1・M3の説明と研究カードを日英で追加。評価の識別を隠蔽に、自己申告を研究全体の実測に、将来の公開方針を防御の効果に置き換えず読めるようにしました。",
+    "reason": "11月17日の点検。実験で確認されたことと、人の関与、未測定の効果、将来の適用時期を区別するため。"
+  },
+  {
     "id": "weekly-employment-review-20261116",
     "date": "2026-11-16",
     "nodes": [

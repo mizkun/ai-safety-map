@@ -1780,5 +1780,32 @@
     "checked": "2026-11-16",
     "period": "2026年9月公表（日付未記載）。CPSの2022年1月〜2026年8月を使い、2026年6〜8月を比較。",
     "primary": "著者による未査読のNBERワーキングペーパー35796。AIの因果効果を切り分けた実験ではない。"
+  },
+  "metr-alignment-eval-tells": {
+    "title": "METR — Measuring alignment eval tells",
+    "url": "https://metr.org/notes/2026-11-16-measuring-alignment-eval-tells/",
+    "published": "2026-11-16",
+    "date": "2026-11-16",
+    "period": "55の評価環境で、Opus 4.6・4.8・5.5とGPT-5.4・5.6 Sol・6 Astraを比較。実験の実施日は明記されていない。",
+    "primary": "実験したMETR研究者の研究ノート。通常の研究記事より内部点検が少なく、METR全体の見解とは限らない。独立した追試は今回未確認。",
+    "checked": "2026-11-17"
+  },
+  "anthropic-cvd-timelines": {
+    "title": "Anthropic — Updating our coordinated vulnerability disclosure policy timelines",
+    "url": "https://www.anthropic.com/research/coordinated-vulnerability-disclosure-timelines",
+    "published": "2026-11-16",
+    "date": "2026-11-16",
+    "period": "11月16日の方針発表。人の確認を経て2027年1月1日以降に報告する脆弱性に新期限を適用。進行中の報告は既存の期限を維持。",
+    "primary": "方針を定めるAnthropic Frontier Red Teamの発表。対策の実施結果や被害減少を測った研究ではない。",
+    "checked": "2026-11-17"
+  },
+  "openai-science-frontier-use": {
+    "title": "OpenAI — Science at the Frontier: How Scientists Use ChatGPT",
+    "url": "https://openai.com/index/science-at-the-frontier/",
+    "published": "2026-11-16",
+    "date": "2026-11-16",
+    "period": "11月16日公表のページと、表紙に11月6日と記された論文。利用記録は8月20日〜9月22日、調査は9月30日〜10月7日。",
+    "primary": "OpenAIの研究チームらによる利用記録と参加者調査の原報告。自己申告や将来への期待を、実測の因果効果と区別する。",
+    "checked": "2026-11-17"
   }
 }

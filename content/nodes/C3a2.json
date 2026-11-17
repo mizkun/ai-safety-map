@@ -9,7 +9,8 @@
     "openai-metagaming-latents",
     "aisi-incident-alignment-followup",
     "openai-eval-production-gap",
-    "anthropic-fable52-system"
+    "anthropic-fable52-system",
+    "metr-alignment-eval-tells"
   ],
   "questions": [],
   "related": [],
@@ -17,7 +18,7 @@
     "evaluation-awareness"
   ],
   "review": {
-    "checkedAt": "2026-11-10",
+    "checkedAt": "2026-11-17",
     "intervalDays": 7,
     "reason": "能力・行動・対策の評価は短期間で変わり得るため。"
   },
@@ -32,7 +33,8 @@
     "metagaming-latents",
     "incident-simulation-and-awareness",
     "evaluation-production-warning-gap",
-    "mythos52-prompted-sandbagging"
+    "mythos52-prompted-sandbagging",
+    "alignment-eval-discrimination"
   ],
   "shortTitle": "評価中だけ問題を隠す"
 }

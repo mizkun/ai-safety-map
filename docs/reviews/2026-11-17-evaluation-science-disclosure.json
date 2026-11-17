@@ -1,0 +1,368 @@
+{
+  "id": "2026-11-17-evaluation-science-disclosure",
+  "version": 2,
+  "date": "2026-11-17",
+  "reviewer": "Codex (primary-source and bilingual reading review)",
+  "decision": "reviewed",
+  "assessments": {
+    "evaluation": {
+      "mechanism": "Recognizing an evaluation can undermine generalization only if behavior also changes and the change evades evaluation. Recognition, motivation and concealment capability are distinct.",
+      "conditions": "METR explicitly asks investigator agents to explore 19 alignment and 36 capability environments, using normal task tools and highest reasoning effort. Each environment/model/method is run three times before averaging. This is not original-task execution.",
+      "counterexample": "OpenAI finds no significant effect from a generic evaluation cue for GPT-6.1 Sol, while specific objective beliefs matter. Mythos 5.2 concealment requires explicit instructions in the cited test; attempts without that instruction remain visible.",
+      "evidence": "Read the METR original setup, limitations and Figure 1: Opus 5.5 AUC 1.0 concerns ranking three-run environment means. Revisited OpenAI’s objective intervention and Fable/Mythos §6.6.4.5, including eligibility, 400 questions/three attempts and the monitor’s view.",
+      "limits": "The research note has limited internal review and no independent replication verified here. Priming, selected environments, judge scoring and run variance remain. It does not measure spontaneous deployed recognition, causal behavior changes or the frequency of deception.",
+      "mitigation": "Reduce incidental evaluation cues and compare behavior across settings, while testing control measures that still work with awareness. Proposed cue-removal methods are not proven real-world risk reduction.",
+      "readerContext": "Both languages state what investigators were asked to do and separate AUC from individual accuracy or concealment success. The evidence summary and evaluation OR graph still distinguish recognition from hiding behavior.",
+      "whyHere": "Append the new bounded result to C3a2 and its research/source references. Retain its classification and existing evidence summary; no new finding establishes the entire C3-L conjunction.",
+      "primary": [
+        {
+          "source": "metr-alignment-eval-tells",
+          "locator": "Setup; Limitations of interrogations; Figure 1; discussion",
+          "support": "Explicit investigator instructions, selected sample, averaged-run discrimination and noncausal scope."
+        },
+        {
+          "source": "openai-eval-production-gap",
+          "locator": "Generic awareness versus objective intervention",
+          "support": "Specific objective beliefs and general test awareness can have different behavioral effects."
+        },
+        {
+          "source": "anthropic-fable52-system",
+          "locator": "§6.6.4.5, PDF pages 166–168",
+          "support": "Prompted concealment, eligibility and monitor visibility do not establish deployment incidence."
+        }
+      ]
+    },
+    "control": {
+      "mechanism": "Preventing an unauthorized action requires actual coverage, visibility, detection and blocking, followed by genuine human review. Recovery after an event is a separate capability.",
+      "conditions": "The METR per-action monitor holds risky tool calls before execution but has inference-accounting and coverage gaps. Mythos 5.2 sandbox tests use 1,829 deliberately weakened scenarios inside a hardened outer environment without internet.",
+      "counterexample": "Explicit sandbox boundaries and reporting tools reduce measured boundary crossing, with failures remaining. Human containment and effective approval can interrupt the path even after a local failure.",
+      "evidence": "Reread METR’s effectiveness argument, scope and validation, and Fable/Mythos §6.5.1; visually checked Figure 6.5.1.B. Preserve the 31%, 1.2% and 0.2% scoped boundary measures, separate from 3.1% file/credential use.",
+      "limits": "Detection on recorded incidents does not prove prospective coverage or prevention. A deliberately weakened inner sandbox is not deployed external intrusion. Neither improvements nor one failure establishes organization-wide safety or permanent loss of control.",
+      "mitigation": "Test coverage, enforcement, independent human approval, permission revocation, pre-execution blocking and recovery together. Assess adaptive attempts and unknown environments rather than relying on the model’s stated compliance.",
+      "readerContext": "Read Japanese and English C3, control narrative/current summary and parallel conditions. C1/C2/C3 are not a time sequence, and ASI is neither observed nor required for a local control failure.",
+      "whyHere": "Substantively renew C3 and its evidence clock while retaining the text/classification. Dependency review preserves conditional ASI-C3 and C3-L, plus survival/recovery alternatives downstream.",
+      "primary": [
+        {
+          "source": "metr-action-monitor",
+          "locator": "Effectiveness argument; claims 1–4; validation and coverage limitations",
+          "support": "Pre-execution holds, partial coverage and authentic approval requirements."
+        },
+        {
+          "source": "anthropic-fable52-system",
+          "locator": "§6.5.1, PDF pages 127–130",
+          "support": "Measured defense improvement in deliberately weakened, externally contained scenarios."
+        }
+      ]
+    },
+    "research": {
+      "mechanism": "Partial research assistance can speed development only when it improves bottlenecks without offsetting costs or verification failures. Feedback additionally needs the improved model to help its successor.",
+      "conditions": "The scientist study observes 1,819 academic-program users and separately 251 consenting survey respondents, not a fixed-model randomized trial. MASS uses one Qwen family for two cycles with human-provided tasks/training. The Mythos trend is an internal refitted index.",
+      "counterexample": "Staffing, funding and checking outputs constrain research. MASS does not improve every software benchmark. Phantom Gains produces apparent gains in unchanged-model controls and does not establish that all broader self-improvement is impossible.",
+      "evidence": "Read the science paper’s methods, research-execution discussion and §§4.2–4.3, and visually inspected Figure 15. Retain usage/survey periods, November 6 manuscript versus November 16 page, 580,186 messages and 251/270 respondents. Revisited METR’s assessment, Fable/Mythos §§2.3.2–2.3.5, MASS methods/results and Phantom Gains controls/limits.",
+      "limits": "The approximately 1.9 time ratio averages self-reported workflow estimates, not measured discovery acceleration. Lottery allocation of access does not create a treatment/control comparison here. Redacted corporate evidence, index scaling and small task/seed samples limit causal and multigeneration inference.",
+      "mitigation": "Measure whole-workflow time, costs, human intervention and validated results. Use frozen controls and repeated seeds; verify safety before passing new permissions to successor systems.",
+      "readerContext": "Both languages distinguish message counts, self-reports, expected discovery timelines, capability-index slopes and actual successor feedback. Tour/news text preserves optional human-led development and the possible contribution to safety research.",
+      "whyHere": "Extend R1 and its references; renew due R2/R3 and both feedback arrows. R1-R2 and adjacent capability/safety branches remain conditional. No color, evidence-level, topology or glossary change is warranted.",
+      "primary": [
+        {
+          "source": "openai-science-frontier-use",
+          "locator": "Linked paper §§2.1–2.2, 3.3, 4.2–4.3; Figure 15; About the research",
+          "support": "Observed scientific use, retained human involvement, self-reported time ratios and selection/bottleneck limits."
+        },
+        {
+          "source": "metr-anthropic-rd-assessment",
+          "locator": "Methodology, public evidence limits and November 6 correction",
+          "support": "Scope of internal acceleration assessment and limits of causal attribution."
+        },
+        {
+          "source": "anthropic-fable52-system",
+          "locator": "§§2.3.2–2.3.5",
+          "support": "Refitted capability index, prior-data correction and uncertain provider threshold judgment."
+        },
+        {
+          "source": "mass-self-supervision",
+          "locator": "§§4.1–4.2; ablations; conclusion",
+          "support": "Two bounded cycles, external judges, mixed task results and full-cost limitations."
+        },
+        {
+          "source": "phantom-gains",
+          "locator": "Frozen controls; matched ladder; limitations",
+          "support": "Measured null, seed effects and limits of one short-training backbone experiment."
+        }
+      ]
+    },
+    "disclosure": {
+      "mechanism": "Vulnerability discovery reduces harm only through validation, useful remediation, release and deployment before exploitation. Changing disclosure deadlines can affect this process without establishing the outcome.",
+      "conditions": "The November 16 announcement applies to human-reviewed vulnerabilities reported on or after January 1, 2027. Ordinary high/critical deadlines become 30 days, others 45; existing reports retain deadlines and unreviewed OSS Scanner findings are excluded.",
+      "counterexample": "Published patches may remain uninstalled. Shorter deadlines can burden maintainers; difficult fixes need agreed timing. An announcement of future policy cannot demonstrate an already-effective defense.",
+      "evidence": "Read the original announcement and existing linked CVD policy, including exclusions, unchanged active-exploitation timing and remediation exceptions. Existing dashboard remains the November 2 snapshot; its records are preserved.",
+      "limits": "No experiment dates, fixed model treatment, quantified rediscovery increase, installation denominator or harm reduction are provided. The provider’s rationale is an argument, not measured effectiveness or independent replication.",
+      "mitigation": "Assess maintainer capacity, report pacing, actionable fixes and actual uptake along with vulnerability discovery. Containment, backups, recovery and permission restrictions remain independent safeguards.",
+      "readerContext": "Japanese and English M3 state the future effective date and human-review scope next to the new numbers. The misuse story still asks about actual target defenses, containment and recovery before global harm.",
+      "whyHere": "Append the policy to M3 and its source/research list, renewing M3 because the explanation is substantively reviewed. Preserve M3-H and its dangerous-intent/useful-assistance/wide-reach conditions.",
+      "primary": [
+        {
+          "source": "anthropic-cvd-timelines",
+          "locator": "Announcement; Responding to AI-enabled vulnerability discovery",
+          "support": "Future deadline transition, exclusions, human processes and non-empirical rationale."
+        },
+        {
+          "source": "anthropic-cvd-dashboard",
+          "locator": "November 2 cumulative snapshot and methodology",
+          "support": "Existing report/known-fix figures remain a historical snapshot rather than measured installed protection."
+        }
+      ]
+    },
+    "finance": {
+      "mechanism": "Financial disruption spreads only if transmitted losses, funding needs or outages exceed buffers and available interventions. Liquidity, loss absorption and operational recovery are distinct.",
+      "conditions": "The BIS/FSI analysis concerns common-provider and remediation risks. FSB’s October 15 final practices address human overrides, fallback/recovery planning and common-provider continuity exercises, not a standardized AI capability trial.",
+      "counterexample": "Alternative payments, available liquidity, independent fallback and restored services can contain disruption. Neither a recommendation nor rapid price movement establishes that all safeguards fail.",
+      "evidence": "Revisited the original FSI account and FSB final PDF, printed pages 53 and 63–64 (PDF 57, 67–68). Confirmed kill switches, fallback expectations, dependencies and joint testing while distinguishing recommendations from measured effectiveness.",
+      "limits": "No current recovery-rate estimate or causal defensive effect is supplied. Separate observations about adoption and vulnerability do not establish their conjunction or the probability of a financial-system-wide event.",
+      "mitigation": "Test important-operation limits, common-provider outages, emergency liquidity, alternative payment paths and recovery. Require accountable humans and verified ways to pause or revoke agent access.",
+      "readerContext": "Both languages keep F4’s liquidity/solvency/recovery distinctions and the F1-F3 joint conditions. Money’s role, income, financial dysfunction and effects on daily life remain separate branches.",
+      "whyHere": "Renew due F4 on substantive policy/defense review, without changing its classification or prose. Reading the dependent financial edge/story does not renew their unrelated review dates.",
+      "primary": [
+        {
+          "source": "fsi-cyber-resilience",
+          "locator": "Policy-response analysis and operational-resilience discussion",
+          "support": "Shorter remediation windows and shared-provider resilience as analysis, not measured outcomes."
+        },
+        {
+          "source": "fsb-ai-practices-final",
+          "locator": "Printed pp. 53, 63–64; PDF pp. 57, 67–68",
+          "support": "Overrides, fallback/recovery, continuity and joint exercises as recommended practices."
+        }
+      ]
+    },
+    "context": {
+      "mechanism": "New evidence changes only the claims it tests or describes; metadata records incorporated review dates without implying that every item is fresh.",
+      "conditions": "Three new source/card pairs and three bilingual paragraphs are added. Five due nodes and two due edges are reassessed; R1/M3 are renewed for new context. Exactly four associated evidence clocks change.",
+      "counterexample": "Unchanged source dates and unrelated clocks remain old. A successful build or index lookup alone is not evidence review or a reason to renew those dates.",
+      "evidence": "Read the original sources, due explanations and 50 changed/dependent units in both languages. Preserve publication, study and future effective dates and record limited retrieval failures rather than inventing facts.",
+      "limits": "Automated fingerprints and tests validate consistency, not scientific completeness or independent replication. No new source establishes a whole pathway, risk probability or unrestricted capability.",
+      "mitigation": "Keep source conditions and contrary evidence visible, preserve prior records, and leave the existing PR as a draft for human review. Do not merge or deploy automatically.",
+      "readerContext": "The change history explains before/after/reason in both languages. Existing news examples, four stories and current summaries retain the distinction between partial findings and downstream conditions.",
+      "whyHere": "Update only the map asOf, inventory and appended history entry needed to make this review traceable. Weekly backfill was already completed November 16; today’s pass is daily.",
+      "primary": [
+        {
+          "source": "metr-alignment-eval-tells",
+          "locator": "Scope and limitations",
+          "support": "Recognition is not a behavioral-causality test."
+        },
+        {
+          "source": "openai-science-frontier-use",
+          "locator": "Methods, Figure 15 and limitations",
+          "support": "Observed use and self-reports are not causal whole-project acceleration."
+        },
+        {
+          "source": "anthropic-cvd-timelines",
+          "locator": "Effective date and exclusions",
+          "support": "Future policy, not measured defensive outcome."
+        }
+      ]
+    }
+  },
+  "entries": {
+    "source:metr-alignment-eval-tells": {
+      "hash": "48bf5e556108027674b02e75525bb26dc5d3125908b66c8a159789c27f9b866c",
+      "assessment": "evaluation"
+    },
+    "source:anthropic-cvd-timelines": {
+      "hash": "1203b381648db3846043aaa1dfefca47108f45cfbb53fdbff04955152ee6dea1",
+      "assessment": "disclosure"
+    },
+    "source:openai-science-frontier-use": {
+      "hash": "7a539fb37014ff368ea50643358c5e0c6c4275502ed0bb4d4bcb49085f4d1d01",
+      "assessment": "research"
+    },
+    "research:alignment-eval-discrimination": {
+      "hash": "3992e91dad1e664b1f2d6be4359473cf5e70a22e8059eac8cb94273ae255b12c",
+      "assessment": "evaluation"
+    },
+    "research:cvd-timeline-transition": {
+      "hash": "25d07dc89556ff065867e92d0c28a448d2e6983003b043cda1d59a857e670bde",
+      "assessment": "disclosure"
+    },
+    "research:scientist-use-and-reported-time": {
+      "hash": "8ea29c0b45576ae65a1440c1002519aa199395dcc2b894c2591fc9a73fe9d4ee",
+      "assessment": "research"
+    },
+    "node:C3": {
+      "hash": "df7e7b1ae8ef254095a36b1705b52d9ca45351f1d908f7f5ec6aa397c260eb95",
+      "assessment": "control"
+    },
+    "node:C3a2": {
+      "hash": "ae4f85e654b9738535f40b2f6d2577e4fc1c4a628f76af8acfc46cd176d1a36c",
+      "assessment": "evaluation"
+    },
+    "node:F4": {
+      "hash": "f440270e8bb9697703f1a20396d48c7d03ba9d943cedbf97b424931ba5472606",
+      "assessment": "finance"
+    },
+    "node:M3": {
+      "hash": "3185fbe1d6d9ea86ba67991b4ef09d921fcee0ea61c5a2dc2e6fcdc667cc9137",
+      "assessment": "disclosure"
+    },
+    "node:R1": {
+      "hash": "b66bf2d14ee23bdc302ff21b4a4f75e4ada5e6104853831fcdc6eceb41ae274b",
+      "assessment": "research"
+    },
+    "node:R2": {
+      "hash": "5bed90b0a9b2ccfa3d6bb6a139c43c53f950aac88eba0b12ff9dcfa52869b16b",
+      "assessment": "research"
+    },
+    "node:R3": {
+      "hash": "ef27dd68e907ee3eb5022e160438f93b6482fb6ff688074f02c725224b7acfa3",
+      "assessment": "research"
+    },
+    "edge:M3-H": {
+      "hash": "fd19fc984727fe10f1043fe2869d04d0283466d83dda0d5f26607acc0b1b1f0c",
+      "assessment": "disclosure"
+    },
+    "edge:R1-R2": {
+      "hash": "0783ea05b38587dd9564f08a97bd5408ce23caedc79bdadb6e7a813c68880bae",
+      "assessment": "research"
+    },
+    "edge:R2-R3": {
+      "hash": "35f01b34ff80ba755ec482bcec3648e0065be05179964ab19c8167f1f9ca2b1e",
+      "assessment": "research"
+    },
+    "edge:R3-R2": {
+      "hash": "1d0bb2f77d10150c24c3636f879529a0c46fb9602736eeffb27aaebbe3ea1940",
+      "assessment": "research"
+    },
+    "edge:C3-L": {
+      "hash": "813899f20d1856d251382558d165def9ac3dc252fc9880292eb5c832c3e50db1",
+      "assessment": "control"
+    },
+    "edge:F1-F3": {
+      "hash": "ec424de209cf87e44cbcb3649626f329ffe74fde0e3e0f2b120f43cba668598a",
+      "assessment": "finance"
+    },
+    "edge:ASI-C3": {
+      "hash": "bfb95978ebe867af4aaf36fc2d6b17b595152c9fc22a30bbcf212455cc1431c8",
+      "assessment": "control"
+    },
+    "graph:control": {
+      "hash": "94262bc696a0c79183d95b4d063c2c058b8a8c1dd81d2c65a529ad9d132a5f67",
+      "assessment": "control"
+    },
+    "graph:misuse": {
+      "hash": "447dab9fda0388aeb1757b9f91b3b8a0d2642b0fe98e31eba975ec1f1d7780e4",
+      "assessment": "disclosure"
+    },
+    "graph:acceleration": {
+      "hash": "2681dd7f80c1bee1a9e9214edc4f2aa2ce1e7b3cbf86991003a03602fc15c1f0",
+      "assessment": "research"
+    },
+    "graph:evaluation": {
+      "hash": "834e118e2ccd7223d4161ae33cdeed81305e8dff032e0e9b7ff708919b2baa53",
+      "assessment": "evaluation"
+    },
+    "graph:money": {
+      "hash": "77760926753b4517721b8595a26cc5e3aaa91a0dce8cc2c002a522c6dbf90038",
+      "assessment": "finance"
+    },
+    "graph:finance-conditions": {
+      "hash": "c857335edfa72a3f32f57226725aeb5a0cbe265d774de22c6d94274200b6f633",
+      "assessment": "finance"
+    },
+    "graph:development-paths": {
+      "hash": "705b191381bae66aba75d3602f4739defb08876fcede85cd17e5e066d313bd85",
+      "assessment": "research"
+    },
+    "graph:research-cycle": {
+      "hash": "95a71bb0d3f5d2f92397f6d08e6c898613e388ccdf0ce9f670573c57c27f5668",
+      "assessment": "research"
+    },
+    "route:control": {
+      "hash": "6e61872c5facb880ea406047b705d238c2ea41eae7f980e66eded59ee34de820",
+      "assessment": "control"
+    },
+    "route:misuse": {
+      "hash": "4f548e7e7b5a5b66b32fd6d641835cae4491132644a98a9f9cb1f9ae8e00a308",
+      "assessment": "disclosure"
+    },
+    "route:acceleration": {
+      "hash": "bee793ef02d2be81526b46378f7d373dd5fbeb2c2d052e9271829309d65c24e7",
+      "assessment": "research"
+    },
+    "route:money": {
+      "hash": "40c6efacef1967431c1dd51affa416bed6920ea74b90e5b1bddef938c89e5c49",
+      "assessment": "finance"
+    },
+    "current:control": {
+      "hash": "f5dfc19c732fcb7d9df58a26473af77fe4ba842a22bb554f1433b2ddbdbdb4e4",
+      "assessment": "control"
+    },
+    "current:misuse": {
+      "hash": "2fee83ec0afa6eb19fc6e8c662c4aeec4cd89eaca5d25b8ffd971b06f408365c",
+      "assessment": "disclosure"
+    },
+    "current:money": {
+      "hash": "5fda369441622d87a0b1011135fba4312fc615e6401aa6de454847a5cefb5f7a",
+      "assessment": "finance"
+    },
+    "evidence:C3": {
+      "hash": "0151a2c31acedafa0d49c7982f481c492984709e405f612459f9e4aa14ab0013",
+      "assessment": "control"
+    },
+    "evidence:C3a2": {
+      "hash": "4d09f7bb7b08885600bfa925fa91a96676da3872aaf861f0c800da84a4f872ef",
+      "assessment": "evaluation"
+    },
+    "evidence:R2": {
+      "hash": "c7aa78acff917bfda414693d10b2d793514019b81b1800e5a6a017d0b4b5ea71",
+      "assessment": "research"
+    },
+    "evidence:R3": {
+      "hash": "12352f73bdf72868dde9c02777d4d6df6d9102490ef0b79a0f60dbcb34add71c",
+      "assessment": "research"
+    },
+    "news:recent-math": {
+      "hash": "28b8694f807861b926db9cbf9f6e18b426b947cd44339cfc40ca35bb70facb08",
+      "assessment": "research"
+    },
+    "news:research-lab-september": {
+      "hash": "2b3a1bb51e025312ed922cd18539e4862c159343a04363175edcdad0f61dc204",
+      "assessment": "research"
+    },
+    "news:research-contribution": {
+      "hash": "6c555bf082d64862ddf8b9c60bb196c30cae3578a7f547e9733678ef8483aec1",
+      "assessment": "research"
+    },
+    "news:agent-behavior": {
+      "hash": "1d83683ef62165ef1ab7acc145a61c93ed5ab6bb0c1bc76a9a6eb771425614a4",
+      "assessment": "evaluation"
+    },
+    "story:control": {
+      "hash": "5ad47b98ce048c7fa7dd9192bea5b49666fcbc4688a5e74d321ed9726d91252c",
+      "assessment": "control"
+    },
+    "story:misuse": {
+      "hash": "70a96ee20ba55ef2cb1d22795eb76c458d13141c0fcf145d40fadb651485aa3d",
+      "assessment": "disclosure"
+    },
+    "story:acceleration": {
+      "hash": "c20e5e67dbdf38a13590bc085b2f5845aae43c3eef3f314a1d9eadae5b16bbe3",
+      "assessment": "research"
+    },
+    "story:money": {
+      "hash": "ca552eaf533e7ed905e3df663d43e9fe8f7e46b9a45ee0069fb40e079269cfde",
+      "assessment": "finance"
+    },
+    "metadata:map": {
+      "hash": "f8b01554602bd8ef69ee0ba71819d14579cda3195a7f08246706c611bf507eb5",
+      "assessment": "context"
+    },
+    "history:changes": {
+      "hash": "5f0a04a80bec92466f24b262bf4860c28982ed63c656c8b174c3101807302bdc",
+      "assessment": "context"
+    },
+    "inventory:current": {
+      "hash": "37c79e27fbd45f0830f3e4b3dd26415b51f2a754fd12c9b963188fd81dcfb702",
+      "assessment": "context"
+    }
+  }
+}

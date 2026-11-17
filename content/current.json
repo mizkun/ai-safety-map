@@ -239,7 +239,7 @@
         "mythos52-sandbox-boundaries"
       ],
       "review": {
-        "checkedAt": "2026-11-10",
+        "checkedAt": "2026-11-17",
         "intervalDays": 7,
         "reason": "既存の根拠がカードの条件をどこまで直接確かめているかを分類しています。根拠の更新時に見直します。"
       }
@@ -313,7 +313,7 @@
         "mythos52-prompted-sandbagging"
       ],
       "review": {
-        "checkedAt": "2026-11-10",
+        "checkedAt": "2026-11-17",
         "intervalDays": 7,
         "reason": "既存の根拠がカードの条件をどこまで直接確かめているかを分類しています。根拠の更新時に見直します。"
       }
@@ -510,7 +510,7 @@
         "mythos52-rd-assessment"
       ],
       "review": {
-        "checkedAt": "2026-11-10",
+        "checkedAt": "2026-11-17",
         "intervalDays": 7,
         "reason": "既存の根拠がカードの条件をどこまで直接確かめているかを分類しています。根拠の更新時に見直します。"
       }
@@ -616,7 +616,7 @@
         "mythos52-rd-assessment"
       ],
       "review": {
-        "checkedAt": "2026-11-10",
+        "checkedAt": "2026-11-17",
         "intervalDays": 7,
         "reason": "限定した反復実験と、開発全体の持続的な加速を区別して点検するため。"
       }
