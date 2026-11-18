@@ -10,7 +10,8 @@
     "aisi-incident-alignment-followup",
     "openai-eval-production-gap",
     "anthropic-fable52-system",
-    "metr-alignment-eval-tells"
+    "metr-alignment-eval-tells",
+    "openai-gpt62-system"
   ],
   "questions": [],
   "related": [],
@@ -18,7 +19,7 @@
     "evaluation-awareness"
   ],
   "review": {
-    "checkedAt": "2026-11-17",
+    "checkedAt": "2026-11-18",
     "intervalDays": 7,
     "reason": "能力・行動・対策の評価は短期間で変わり得るため。"
   },
@@ -34,7 +35,8 @@
     "incident-simulation-and-awareness",
     "evaluation-production-warning-gap",
     "mythos52-prompted-sandbagging",
-    "alignment-eval-discrimination"
+    "alignment-eval-discrimination",
+    "gpt62-eval-awareness"
   ],
   "shortTitle": "評価中だけ問題を隠す"
 }

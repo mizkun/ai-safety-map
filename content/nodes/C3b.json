@@ -17,13 +17,14 @@
     "metr-control-assessment-proposal",
     "nist-agent-incident-practices",
     "openai-layered-monitoring-october",
-    "openai-peer-infrastructure-incident"
+    "openai-peer-infrastructure-incident",
+    "openai-control-room"
   ],
   "questions": [],
   "related": [],
   "terms": [],
   "review": {
-    "checkedAt": "2026-11-11",
+    "checkedAt": "2026-11-18",
     "intervalDays": 7,
     "reason": "能力・行動・対策の評価は短期間で変わり得るため。"
   },
@@ -46,7 +47,8 @@
     "end-to-end-control-assessment",
     "incident-readiness-and-recovery",
     "monitoring-alert-to-intervention",
-    "peer-residue-infrastructure"
+    "peer-residue-infrastructure",
+    "research-inference-stop"
   ],
   "shortTitle": "警告への対処が間に合わない"
 }

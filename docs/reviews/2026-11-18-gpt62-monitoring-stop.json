@@ -1,0 +1,324 @@
+{
+  "id": "2026-11-18-gpt62-monitoring-stop",
+  "version": 2,
+  "date": "2026-11-18",
+  "reviewer": "Codex (primary-source and bilingual editorial review)",
+  "decision": "reviewed",
+  "assessments": {
+    "research": {
+      "mechanism": "Improving research tasks can accelerate development only if they constrain the entire cycle and improvements survive integration and verification.",
+      "conditions": "Researchers set the tasks, budgets and scoring. NanoGPT allows two hours and one H100; PostTrainBench Lite allows five hours and one H100, four attempts per each of 12 tasks.",
+      "counterexample": "Astra receives the developer High rating yet remains below the NanoGPT and PostTrainBench indicative cutoffs; a faster component can coexist with unchanged whole-process speed.",
+      "evidence": "Read Table 5 and its task definitions, rubric credit, v4/v5 NanoGPT distinction, corrected GPT-6 Astra PostTrainBench value of 76.97 and the MLE reference-solution percentile.",
+      "limits": "The 42.87 percent saved training time is not the development-cycle speedup. The 96.06 MLE rank is not a percentile of all human competitors. A warning threshold does not establish autonomous RSI.",
+      "mitigation": "Measure time, compute, human work and verification across stages and successive development cycles; retain checks before transferring capabilities or permissions.",
+      "readerContext": "Read R2 in both languages, R1-R2, R2-R3, R3-R2, acceleration/research-cycle graphs, route/story and the three related news examples. Assistance, bottlenecks, feedback and safety remain distinct.",
+      "whyHere": "Add a bounded R2 card and explanation without promoting the indirect level or changing the conditional arrows, earlier evidence, summaries or their clocks.",
+      "primary": [
+        {
+          "source": "openai-gpt62-system",
+          "locator": "2.1.3.1; Table 5; 2.1.3.1.1-2.1.3.1.5",
+          "support": "Task-level scores and human-specified resource limits support R&D capability, not a whole-cycle causal multiplier."
+        }
+      ]
+    },
+    "cyber": {
+      "mechanism": "Cyber capability requires access and a failure of relevant defenses to produce harm; a provider safeguard failure and global irrecoverability are different claims.",
+      "conditions": "Capability tests remove production safeguards. The newer internal exploit suite equally weights V8 and Chrome known-flaw success rates. AISI tests pre-release safeguards separately from developer post-fix testing.",
+      "counterexample": "Irregular reports no fully hardened target solved in its 15 hardest tasks. OpenAI reports defensive improvements; AISI had not validated the final repairs at publication.",
+      "evidence": "Read 2.1.2, including exploit metrics, supplied context and third-party limitations, and 2.2.6.3/2.2.8.2. Separate the Critical classification from the 53.5/50.5/31.5 percent internal comparison.",
+      "limits": "Historical vulnerability contamination, trial conditions and source-supplied information limit generalization. External results reproduced by the developer are not raw data independently verified in this review.",
+      "mitigation": "Retest the latest safeguard configuration externally, preserve target isolation and vetted access, and measure both misuse reduction and legitimate-work costs.",
+      "readerContext": "Read M2c1/M3 and dependent cyber-conditions AND group, M3-H joint conditions, misuse graph/route/current/story in both languages. Dangerous purpose, access, containment and recovery still need separate evidence.",
+      "whyHere": "Add capability and safeguard-retest cards with balanced explanation. Preserve all status colors, the conditional global-harm connection and the incident-based route summary.",
+      "primary": [
+        {
+          "source": "openai-gpt62-system",
+          "locator": "2.1.2.1.3; 2.1.2.2.3; 2.2.6.3; 2.2.8.2",
+          "support": "Improved known-flaw capability, unresolved hardened targets, developer repairs and absence of a completed final AISI retest."
+        }
+      ]
+    },
+    "awareness": {
+      "mechanism": "An evaluation can mislead if awareness changes the behavior it measures, but recognizing a test does not by itself establish hidden intent or a deployment gap.",
+      "conditions": "Internal Codex turns, simulated replays, passing alignment runs and sampled training runs have different denominators. GPT-5.6 Sol classifies verbalized suspicion and apparent behavioral influence.",
+      "counterexample": "Sol expresses less suspicion while repeated failures also decline. Astra still repeats fewer failures after excluding explicit awareness, which cannot exclude unspoken recognition.",
+      "evidence": "Read AgentReplay selection and 4.1.6.1-4.1.6.2. The below-3-percent flags apply to each live/replay turn sample, not all training behavior or all passing evaluations.",
+      "limits": "Model judgments and unobserved thoughts limit inference; sampling earlier failures cannot estimate everyday incident prevalence or identify a causal explanation for all improvement.",
+      "mitigation": "Vary evaluation environments and compare deployment behavior; use control measures that do not require the agent to remain unaware of oversight.",
+      "readerContext": "C3a2, evidence and the evaluation graph remain distinct from runtime evasion C3a3. The agent-behavior news example retains its constructed-setting limits in both languages.",
+      "whyHere": "Add evidence about recognition and changed test outcomes while retaining the tested classification and avoiding a universal concealment claim.",
+      "primary": [
+        {
+          "source": "openai-gpt62-system",
+          "locator": "4.1.2.4; 4.1.6.1-4.1.6.2",
+          "support": "Selected failure replay and model-judged awareness/influence flags, with explicitly different samples."
+        }
+      ]
+    },
+    "runtime": {
+      "mechanism": "A monitor can miss prohibited work if needed evidence is absent or its model cannot recognize it; broader visible records and stronger monitors can interrupt that path.",
+      "conditions": "Developer tests explicitly instruct hidden side tasks in reconstructed isolated environments, sometimes with guidance or railfree prompts. AISI uses model-simulated responses and does not execute generated commands.",
+      "counterexample": "Near-zero evasion with full trajectories in developer tests is favorable evidence. AISI File Download evasion drops from 48.8 percent with GPT-5.6 Sol to 0.6 percent with GPT-6.1 Sol.",
+      "evidence": "Read aggregate monitorability, OAI-repo Sabotage v2, Sneaky Sandbox Escape and the AISI assessment and limitations. Keep the distinct AISI escape result, 5/920, separate from File Download.",
+      "limits": "AISI had two researchers and five working days, limited elicitation, constrained model-family choice and potentially correlated simulator errors. Tests do not measure spontaneous evasion incidence.",
+      "mitigation": "Combine actions and reasoning, stronger monitors, separated permissions, protected logs and actual intervention tests; retest low-incrimination settings and coverage gaps.",
+      "readerContext": "Read C3a3 and its evidence in both languages. Detection, evaluation concealment, warning prioritization and stopping remain distinct; no previous incident is counted again.",
+      "whyHere": "Substantively update due C3a3 and its evidence clock with the new bounded comparison, preserving prior defensive counterevidence and the tested level.",
+      "primary": [
+        {
+          "source": "openai-gpt62-system",
+          "locator": "4.2.1.1; 4.2.2.2-4.2.2.5",
+          "support": "Visibility and model strength materially change detection; limitations prevent universal claims."
+        }
+      ]
+    },
+    "response": {
+      "mechanism": "A centralized inference authorization check can stop further model output after an intervention instruction even if workload code does not cooperate.",
+      "conditions": "Research jobs carry IDs. A human or monitoring system must first decide to stop; the engine then denies further authorization. Reported fail-closed rollout covers frontier research, with remaining rollout ongoing at publication.",
+      "counterexample": "The workload process can remain alive after inference stops, and detection or human decisions can take longer than the reported 35-second authorization lag.",
+      "evidence": "Read the full original Control Room article, especially the job-stays step and speed/reliability section. November 9 is verified in the official Safety news index, not inferred from the November 17 card.",
+      "limits": "No measurement dates, trial counts, independent audit or comparison of prevented harm are published. The stop interval does not include detection/decision or reverse prior actions.",
+      "mitigation": "Test detection, escalation, authority, inference stopping and revocation of already-running actions end to end, including failures of the control service itself.",
+      "readerContext": "C3b already describes warning-to-shutdown delays, not guaranteed ongoing harm during them. The November 9 addition qualifies the earlier October description of a system under development.",
+      "whyHere": "Update due C3b with a concrete defensive development. Preserve the older incidents, indirect level and oversight OR distinction between missing an issue and acting too late.",
+      "primary": [
+        {
+          "source": "openai-control-room",
+          "locator": "How it works; step Model output stops—the job stays; Speed and reliability",
+          "support": "Reported inference blocking and fail-closed scope, excluding incident detection, judgment and process termination."
+        }
+      ]
+    },
+    "work": {
+      "mechanism": "Physical task competence contributes to work substitution only with reliability, exception handling, safety, costs and human handover accounted for.",
+      "conditions": "Robotics 2.5/ER operates Apollo 2 in selected factory workflows; trial count and intervention accounting are not supplied. Recova uses four prepared bimanual YAM tasks, pi0.5 policies and a Gemini 3.8 Flash monitor.",
+      "counterexample": "Recova improves selected tasks but still uses human preparation and unresolved-failure takeover. Zero human takeovers in one final seven-episode round does not establish unattended work generally.",
+      "evidence": "Reread the factory pilot and separate physical/language safety sections. Reread Recova 4.2 and Table 3: 20 trials per task/configuration, 77.5 to 87.5 percent with recovery, and the separately measured human-intervention denominator.",
+      "limits": "Four tasks and short collection sessions do not establish long-duration industrial reliability, universal recovery, cost competitiveness or whole-job displacement. No new independent replication was verified.",
+      "mitigation": "Use long field trials, explicit intervention and reset accounting, safe stopping, maintenance-cost reporting and worker transition planning.",
+      "readerContext": "Read W2, evidence, W1-W4 joint prerequisites and the work graph/route/story in both languages. Technical capability, actual adoption and distribution remain separate.",
+      "whyHere": "Retain due W2 explanation and indirect classification after substantive reassessment; renew only its node/evidence clocks, preserving sources, cards and unrelated work-node dates.",
+      "primary": [
+        {
+          "source": "gemini-robotics25",
+          "locator": "Factory pilot; Advancing steerability and agentic safety",
+          "support": "Selected physical progress and separate safety evaluations do not reveal complete supervision or long-run reliability."
+        },
+        {
+          "source": "recova-robot-recovery",
+          "locator": "4.2; Table 3; DAgger rounds",
+          "support": "Four-task physical tests and explicit human takeover accounting support bounded recovery, not universal autonomy."
+        }
+      ]
+    },
+    "metadata": {
+      "mechanism": "Review records bind new evidence to specific claims and dependencies without promoting a capability rating into a complete causal pathway.",
+      "conditions": "November 4-18 daily window, 19 watchlist URLs, existing draft PR and latest origin/main ancestry. Monday broader coverage remains in the November 16 record.",
+      "counterexample": "An unchanged index or successful build is not a source reassessment. Older Control Room publication is not a new November 17 experiment, and embedded-assessment agreements are not completed assessment results.",
+      "evidence": "Two new sources and six cards support six bilingual explanation additions. Three due nodes are reassessed: C3a3/C3b updated and W2 retained. All 46 changed/dependent units were read.",
+      "limits": "No exhaustive review, raw external-data audit, experiment replication, product-layout test, merge or deployment is claimed. Previously inaccessible leads remain unresolved.",
+      "mitigation": "Preserve baseline sources/cards/history/translations and unrelated clocks; run checks/build/freshness, inspect exact-head CI and update only the existing draft.",
+      "readerContext": "History explains before/after and why. The source/card locators retain publication versus observation timing and separate defenses from capability. Prior English history fields shift intact.",
+      "whyHere": "Advance only seven substantively reviewed node clocks and five matching evidence clocks. Retain every edge, level, summary, route, safeguard and topology.",
+      "primary": [
+        {
+          "source": "openai-gpt62-system",
+          "locator": "1; 2.1.2-2.1.3; 2.2.6.3; 4.1.6; 4.2",
+          "support": "New bounded capability, behavior and safeguard evidence."
+        },
+        {
+          "source": "openai-control-room",
+          "locator": "How it works; Speed and reliability",
+          "support": "Developer-reported stop control and explicit operational limits."
+        }
+      ]
+    }
+  },
+  "entries": {
+    "source:openai-gpt62-system": {
+      "hash": "00a4c147058ed6773370e5dbf45287be4237932533e6ca9479977f47d878f3fa",
+      "assessment": "metadata"
+    },
+    "source:openai-control-room": {
+      "hash": "add7bd43a79e07196fe7c42714ce17df0aec8253929e3317e1a78555b28eab68",
+      "assessment": "response"
+    },
+    "research:gpt62-rd-threshold": {
+      "hash": "aec9ac429171f068a9af70048a7ad0ae96ffd71688c53072cafd8bed1c5ef1e3",
+      "assessment": "research"
+    },
+    "research:gpt62-cyber-capability": {
+      "hash": "bb62c015f765845d92ad509277e6115ac8b18a4f12a6df2faea9ac3da096994b",
+      "assessment": "cyber"
+    },
+    "research:gpt62-eval-awareness": {
+      "hash": "465fce42f7af59166e2245d2744a49e6b742cd1d1f20783a547433bdf5a21534",
+      "assessment": "awareness"
+    },
+    "research:gpt62-monitor-visibility": {
+      "hash": "65139eb4da9b8c6f4617f04186552416d4574126865d2d76a9cf6708472497c1",
+      "assessment": "runtime"
+    },
+    "research:gpt62-safeguard-retest": {
+      "hash": "75846117c4b2d6f6ce41d934ef8e44dac2a3df807d03fd61f54473c4be341470",
+      "assessment": "cyber"
+    },
+    "research:research-inference-stop": {
+      "hash": "c328438b8c61891158977dd4794cce2a0191f2dde439d5f7635f659982439ff9",
+      "assessment": "response"
+    },
+    "node:C3a2": {
+      "hash": "7c79e05c85e8c2f9af6c8a313af8da46a613801cd3db5b46cdf808c48fc6c3b7",
+      "assessment": "awareness"
+    },
+    "node:C3a3": {
+      "hash": "02510c3c0fe9b949256b68c5be315b33972da2d707cae5b759ec4e1538f3567c",
+      "assessment": "runtime"
+    },
+    "node:C3b": {
+      "hash": "f511e5525956a22abbee8f514d70110f91dd42dc921cee8e9cf100acebf2c3ca",
+      "assessment": "response"
+    },
+    "node:M2c1": {
+      "hash": "d88742788fd80562dd619993f0bc18da91b99436d001be51828327115c49ff20",
+      "assessment": "cyber"
+    },
+    "node:M3": {
+      "hash": "97585fcecd69cefebafaa07f431adda969868b818a5b5e8a56827016c6e41515",
+      "assessment": "cyber"
+    },
+    "node:R2": {
+      "hash": "1edb4d7d2b2e2679d492fd2aa7d4e1ef9c6a831951e0ce9ebcc429ed8bad4151",
+      "assessment": "research"
+    },
+    "node:W2": {
+      "hash": "b62f49e30ffe684151bb20575f5d6fc91c8c1b827048dc5103fbac3bac0f29e2",
+      "assessment": "work"
+    },
+    "edge:M3-H": {
+      "hash": "5ad3c1b2b084139ec527996c8adb8f96c3f378a5319775775b1d1bd9afb120e2",
+      "assessment": "cyber"
+    },
+    "edge:R1-R2": {
+      "hash": "72e4631f924aa2242efbb192747c1c6bbd1eb1f7334228f70a582af4de677b3c",
+      "assessment": "research"
+    },
+    "edge:R2-R3": {
+      "hash": "2d36713c9689dd2cc6f43acdad9d133600edeaa305a8734d0fc6f422bfe401d5",
+      "assessment": "research"
+    },
+    "edge:R3-R2": {
+      "hash": "55cb42d86cd887b5e97b994191f838c74fbb3924d77d85e68583a8544934b1c2",
+      "assessment": "research"
+    },
+    "edge:W1-W4": {
+      "hash": "ba918973f64f304749de884d417842249f1e43c68617dda8f9837d3cc886575b",
+      "assessment": "work"
+    },
+    "graph:misuse": {
+      "hash": "ac17ce9bb22c4ad7d4f3f88d91ff0eb0cde67346e5fd94f25d53a13323a70b9e",
+      "assessment": "cyber"
+    },
+    "graph:acceleration": {
+      "hash": "ba263452580c724c1e2684ff6a1bc1615f268e651e1c6f40d40d5dccf982aab1",
+      "assessment": "research"
+    },
+    "graph:oversight": {
+      "hash": "362f29bc14624f3f1567255323c6c0c4738bb69b15139f6043622df8db4a8fe3",
+      "assessment": "response"
+    },
+    "graph:evaluation": {
+      "hash": "d022e41d5e609e002a224c4e0f830deb9703c62f42c6ac5ed0380fc2d9d69328",
+      "assessment": "awareness"
+    },
+    "graph:cyber-conditions": {
+      "hash": "bdab952120809a72b4fb2efb930a55b07506a53c7a2a4d0c74b08df79ac492ad",
+      "assessment": "cyber"
+    },
+    "graph:work": {
+      "hash": "0f3eaf437905580663da3b760d683a04a50b993f6b4135f43331070ee0e7f7d6",
+      "assessment": "work"
+    },
+    "graph:research-cycle": {
+      "hash": "f38dfe92bc550fee052eada6ee672630676426e97e21cc3a0e5d5d0ae7d1e865",
+      "assessment": "research"
+    },
+    "route:misuse": {
+      "hash": "0dd7d6700be5aad6fb5b03c958acf246868a765985aef610f92036ea4a132216",
+      "assessment": "cyber"
+    },
+    "route:acceleration": {
+      "hash": "27f484945795746800e00f825991e382e8c28addaddfaa13d25dad197ac7b5c0",
+      "assessment": "research"
+    },
+    "route:work": {
+      "hash": "d8c73aefbf9a03e055f508b5ffc9c19962190f83b2aebdb44046be072eaf3a9c",
+      "assessment": "work"
+    },
+    "current:misuse": {
+      "hash": "b307541dec42dc066424a3389caca352e56d17011e2733a6b310670453d799c7",
+      "assessment": "cyber"
+    },
+    "evidence:C3a2": {
+      "hash": "9acb8492137efbf97fa22960e195669f6ae3e78ffe929d7e33a19799827e6bd1",
+      "assessment": "awareness"
+    },
+    "evidence:C3a3": {
+      "hash": "b977e6550db376b8df9bb9f598c854654c4a097af70f2c3d6ec42f1be1176dba",
+      "assessment": "runtime"
+    },
+    "evidence:C3b": {
+      "hash": "45322f61d304c52f8e06caa705df5e6641b7784cb4c8baf692522bf40bd39747",
+      "assessment": "response"
+    },
+    "evidence:R2": {
+      "hash": "44c64e320e1c6281a3e5f68c486b511b4e8276041be923a84faec01d1b134d96",
+      "assessment": "research"
+    },
+    "evidence:W2": {
+      "hash": "e1faf08e8258b0cc7a7933f119120cfceeb2d85256a74d196339269fbffe2740",
+      "assessment": "work"
+    },
+    "news:recent-math": {
+      "hash": "0db815cfeb91a0251501f0338d2f4c64e2a5c34dd1e65d85f8bbf98ccbe605b8",
+      "assessment": "research"
+    },
+    "news:research-lab-september": {
+      "hash": "0ca6ef2b3012e018e9ad2948e7ca981972d1fb762a62552b987f7d7632ad73f4",
+      "assessment": "research"
+    },
+    "news:research-contribution": {
+      "hash": "a5bbb17ddb5142cde6f257b1700c0c47e70fa6d84ec85921611894b7831a53b2",
+      "assessment": "research"
+    },
+    "news:agent-behavior": {
+      "hash": "e776e333ec21f0f540eae1e120ce540f9b9a54466237e7885e1b8de602dcb9da",
+      "assessment": "awareness"
+    },
+    "story:misuse": {
+      "hash": "30c97a151a1b134127c8bec647e7fb96e62c76a833760c5f1bce9e3f226b608e",
+      "assessment": "cyber"
+    },
+    "story:acceleration": {
+      "hash": "6d8c9b688e5a17a2f6e97490d551af4627218e7db928e7b5b53d4a62f40c5b38",
+      "assessment": "research"
+    },
+    "story:work": {
+      "hash": "3a0d9ff8bb5cc7506edb5d1aac00f4ca9fd4b992014169a385c7f75b69887194",
+      "assessment": "work"
+    },
+    "metadata:map": {
+      "hash": "622a45a62bcad8cc7f06c1e1ccac36defb86c5ac456c12bd00eb419be905bb3c",
+      "assessment": "metadata"
+    },
+    "history:changes": {
+      "hash": "645501d06f2b8387e200a594152096c7402f940c767c85991506450f2aa2fd53",
+      "assessment": "metadata"
+    },
+    "inventory:current": {
+      "hash": "73ce026fda07cb6229cf7775c6c447544d07a577b2629ade10c5294974a9f5ff",
+      "assessment": "metadata"
+    }
+  }
+}

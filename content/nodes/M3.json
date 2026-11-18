@@ -24,7 +24,8 @@
     "alphaproof-code-signal",
     "openai-fuzzy-robustness",
     "anthropic-anvil",
-    "anthropic-cvd-timelines"
+    "anthropic-cvd-timelines",
+    "openai-gpt62-system"
   ],
   "questions": [],
   "related": [],
@@ -33,7 +34,7 @@
     "実害だけでなく、防御と封じ込めが働いた例も報告されたか。"
   ],
   "review": {
-    "checkedAt": "2026-11-17",
+    "checkedAt": "2026-11-18",
     "intervalDays": 30,
     "reason": "経路を支える前提、反論、防壁の有効性に変化がないか確認するため。"
   },
@@ -59,7 +60,8 @@
     "fuzzy-safety-training",
     "anvil-privileged-testing",
     "anvil-defense-updates",
-    "cvd-timeline-transition"
+    "cvd-timeline-transition",
+    "gpt62-safeguard-retest"
   ],
   "shortTitle": "防止・封じ込めが追いつかない"
 }

@@ -310,10 +310,11 @@
         "metagaming-latents",
         "incident-simulation-and-awareness",
         "evaluation-production-warning-gap",
-        "mythos52-prompted-sandbagging"
+        "mythos52-prompted-sandbagging",
+        "gpt62-eval-awareness"
       ],
       "review": {
-        "checkedAt": "2026-11-17",
+        "checkedAt": "2026-11-18",
         "intervalDays": 7,
         "reason": "既存の根拠がカードの条件をどこまで直接確かめているかを分類しています。根拠の更新時に見直します。"
       }
@@ -340,10 +341,11 @@
         "eve-team-oversight",
         "mythos52-prompted-sandbagging",
         "peer-residue-infrastructure",
-        "carbon-monitorability-scope"
+        "carbon-monitorability-scope",
+        "gpt62-monitor-visibility"
       ],
       "review": {
-        "checkedAt": "2026-11-11",
+        "checkedAt": "2026-11-18",
         "intervalDays": 7,
         "reason": "既存の根拠がカードの条件をどこまで直接確かめているかを分類しています。根拠の更新時に見直します。"
       }
@@ -363,10 +365,11 @@
         "financial-ai-stop-and-recover",
         "incident-readiness-and-recovery",
         "monitoring-alert-to-intervention",
-        "peer-residue-infrastructure"
+        "peer-residue-infrastructure",
+        "research-inference-stop"
       ],
       "review": {
-        "checkedAt": "2026-11-11",
+        "checkedAt": "2026-11-18",
         "intervalDays": 7,
         "reason": "既存の根拠がカードの条件をどこまで直接確かめているかを分類しています。根拠の更新時に見直します。"
       }
@@ -507,10 +510,11 @@
         "metr-rd-acceleration-october",
         "metr-rd-warning-threshold",
         "science-use-and-scenarios",
-        "mythos52-rd-assessment"
+        "mythos52-rd-assessment",
+        "gpt62-rd-threshold"
       ],
       "review": {
-        "checkedAt": "2026-11-17",
+        "checkedAt": "2026-11-18",
         "intervalDays": 7,
         "reason": "既存の根拠がカードの条件をどこまで直接確かめているかを分類しています。根拠の更新時に見直します。"
       }
@@ -575,7 +579,7 @@
         "robotics25-factory-pilot"
       ],
       "review": {
-        "checkedAt": "2026-11-11",
+        "checkedAt": "2026-11-18",
         "intervalDays": 7,
         "reason": "既存の根拠がカードの条件をどこまで直接確かめているかを分類しています。根拠の更新時に見直します。"
       }

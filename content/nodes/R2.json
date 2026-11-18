@@ -13,7 +13,8 @@
     "metr-anthropic-rd-assessment",
     "metr-anthropic-rd-risk-review",
     "anthropic-science-use",
-    "anthropic-fable52-system"
+    "anthropic-fable52-system",
+    "openai-gpt62-system"
   ],
   "questions": [],
   "related": [],
@@ -22,7 +23,7 @@
     "検証や統合も含めた開発全体の時間が短縮したか。"
   ],
   "review": {
-    "checkedAt": "2026-11-17",
+    "checkedAt": "2026-11-18",
     "intervalDays": 7,
     "reason": "能力・行動・対策の評価は短期間で変わり得るため。"
   },
@@ -41,7 +42,8 @@
     "metr-rd-acceleration-october",
     "metr-rd-warning-threshold",
     "science-use-and-scenarios",
-    "mythos52-rd-assessment"
+    "mythos52-rd-assessment",
+    "gpt62-rd-threshold"
   ],
   "shortTitle": "AI開発の工程全体が加速"
 }

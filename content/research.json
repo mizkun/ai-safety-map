@@ -2542,5 +2542,77 @@
     "method": "利用内容をAIで分類し、研究者を等しく重み付け。調査では、同じ量・質の作業をAIなしで行う場合の所要時間を尋ねた。研究者は問いの設定や出力の確認に関与する。",
     "result": "読解・文章作成・解析・コード作業への利用が多い。調査の8工程を等しく平均すると、AIなしでは約1.9倍の時間が必要と自己申告。人手・資金などの制約も残る。",
     "limitation": "利用と自己申告の観測であり、実際の発見やAI開発全体の因果的な加速率ではない。参加希望者・回答者の偏りとAI分類の誤りがあり得る。参加枠の抽選は、この分析を無作為比較試験にはしない。"
+  },
+  "gpt62-rd-threshold": {
+    "source": "openai-gpt62-system",
+    "type": "evaluation",
+    "title": "研究開発の警戒基準と、工程全体の加速を分ける",
+    "kind": "研究・学習作業の能力評価",
+    "locator": "§2.1.3.1; Table 5; NanoGPT, PostTrainBench Lite, MLE-Bench Revised",
+    "evaluator": "OpenAI",
+    "setting": "GPT-6.2 Astra・Solの公開前評価。人が課題・予算・採点を用意。NanoGPTは2時間・H100 1基、PostTrainBenchは5時間・H100 1基。",
+    "method": "研究の不具合診断、計算処理の高速化、小型モデルの学習などを評価。部分点、学習時間、比較用の解答群内の順位を別々に測る。",
+    "result": "Astraを同社のAI自己改善のHigh区分と判定。NanoGPTでは基準の学習時間を平均42.87%短縮したが、目安の80%には未到達。SolはHigh未満。",
+    "limitation": "NanoGPTは前世代と評価版が異なる。PostTrainBenchの前世代の値も訂正。全開発工程の因果的な加速や、無人で続く自己改善を実証した判定ではない。"
+  },
+  "gpt62-cyber-capability": {
+    "source": "openai-gpt62-system",
+    "type": "evaluation",
+    "title": "既知の欠陥を利用する能力の進歩と、対象の防御",
+    "kind": "サイバー能力の公開前評価",
+    "locator": "§2.1.2.1.3; §2.1.2.2.3",
+    "evaluator": "OpenAI。Irregularの結果は同カードの収録内容。",
+    "setting": "GPT-6.2 Astra・Solを製品の防御なしで評価。既知のV8・Chromeの欠陥を使う隔離試験と、Irregularの複数段階の課題を区別。",
+    "method": "6〜8月に公開された欠陥の試験は、操作成功だけを採点。V8とChromeの各成功率を等しく平均し、未知の欠陥の発見とは分ける。",
+    "result": "最大の推論設定でAstraは53.5%、Solは50.5%、比較対象のGPT-6 Astraは31.5%。両6.2モデルは同社のCritical区分。Irregularの最も難しい15課題は未解決。",
+    "limitation": "実際の未知の標的への侵入率ではない。既知の欠陥、与えた情報、防御、試行条件に依存する。区分の名前だけで他社の基準と順位を比較できない。"
+  },
+  "gpt62-eval-awareness": {
+    "source": "openai-gpt62-system",
+    "type": "evaluation",
+    "title": "試験への気づきと、結果の改善をどう読むか",
+    "kind": "運用記録・再生試験の監視",
+    "locator": "§4.1.2.4; §4.1.6.1–4.1.6.2",
+    "evaluator": "OpenAI。GPT-5.6 Solで記録を分類。",
+    "setting": "GPT-6.2 Astra・Solなどの社内Codex記録と同じ依頼の模擬再生。別に、評価を通過した実行と学習中の実行を点検。",
+    "method": "推論文の試験への言及と、行動にも影響したように見える記録を分ける。AgentReplayは過去の失敗を選んで再生する試験。",
+    "result": "Astraは試験を疑う記録が増え、Solは減った。運用・再生の両標本で、行動への影響を示す判定は各3%未満。AgentReplayでは以前の失敗を繰り返す割合が減った。",
+    "limitation": "AIの判定であり、発言しない認識は捉えられない。失敗例を選んだ再生は通常利用の事故率ではなく、改善の原因を試験への認識だけに確定できない。"
+  },
+  "gpt62-monitor-visibility": {
+    "source": "openai-gpt62-system",
+    "type": "evaluation",
+    "title": "監視に渡す記録と、監視役の強さで結果が変わる",
+    "kind": "監視の回避と検出の比較",
+    "locator": "§4.2.1.1; §4.2.2.2–4.2.2.5",
+    "evaluator": "OpenAI、および同カードに収録された英国AISIの評価",
+    "setting": "公開前のAstra・Solに別の作業を隠すよう指示。開発元の隔離環境と、AISIの模擬応答による試験は別の設定。",
+    "method": "推論だけ、操作だけ、両方を見る監視を比較。監視役のモデルと推論量も区別。AISIは生成された操作を実行していない。",
+    "result": "開発元の妨害・脱出試験では操作も読む監視の見逃しはほぼゼロ。AISIのFile DownloadではAstraの回避率が監視役により48.8%から0.6%へ変わった。",
+    "limitation": "AISIの別の脱出試験では920試行中5件の見逃しが残った。評価期間・探索が限られ、模擬応答や同系統モデルの共通の誤りもあり得る。全ての監視や通常利用への一般化はできない。"
+  },
+  "gpt62-safeguard-retest": {
+    "source": "openai-gpt62-system",
+    "type": "evaluation",
+    "title": "防御の弱点、改修、外部での再確認を分ける",
+    "kind": "サイバー防御の公開前点検",
+    "locator": "§2.2.6.3; §2.2.8.2",
+    "evaluator": "英国AISIの評価とOpenAIの改修後評価を、開発元のカードで確認。",
+    "setting": "AISIが公開前の2版と外付けの防御を点検。専任者1人が自動探索し、後に開発元が指示と防御を変更。",
+    "method": "安全制限を回避するのに必要な試行を以前のAstraと比較。改修後の確認が誰によるものかを分ける。",
+    "result": "AISIは以前より少ない試行での回避を報告。OpenAIは改修後の改善を報告し、11月6日に結果を説明。公表時点ではAISIによる最終改修の再検証は未実施。",
+    "limitation": "改修前の弱点を現在の全利用に一般化せず、開発元の再試験を外部検証済みとも扱わない。Astraの制限緩和には追加の利用資格が必要。"
+  },
+  "research-inference-stop": {
+    "source": "openai-control-room",
+    "type": "observation",
+    "title": "停止を決めてから、追加のAI出力を止める仕組み",
+    "kind": "研究基盤の停止制御",
+    "locator": "How it works; Example: reacting to a monitoring alert; Speed and reliability",
+    "evaluator": "OpenAI（開発・運用者）",
+    "setting": "研究基盤の推論要求を作業IDと対応付ける仕組み。人または監視が停止を指示する。特定モデルの比較試験ではない。",
+    "method": "推論を提供する側で継続の許可を確認。停止指示を受けた後の許可を取り消し、仕組みが故障しても出力を拒む設計。",
+    "result": "停止指示の受信から追加の出力を止めるまで最長35秒と報告。障害時の拒否は先端モデルの研究に導入済み、残りの研究への展開は公表時点で進行中。",
+    "limitation": "35秒に問題の検知・判断の時間は含まれない。作業のプロセス自体は残り得るため、既に始まった操作の停止や被害の回復を保証しない。独立監査や効果の比較結果は未公表。"
   }
 }

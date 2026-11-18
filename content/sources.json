@@ -1807,5 +1807,23 @@
     "period": "11月16日公表のページと、表紙に11月6日と記された論文。利用記録は8月20日〜9月22日、調査は9月30日〜10月7日。",
     "primary": "OpenAIの研究チームらによる利用記録と参加者調査の原報告。自己申告や将来への期待を、実測の因果効果と区別する。",
     "checked": "2026-11-17"
+  },
+  "openai-gpt62-system": {
+    "title": "OpenAI — GPT-6.2 Astra and Sol System Card",
+    "url": "https://deploymentsafety.openai.com/gpt-6-2-astra-sol",
+    "published": "2026-11-17",
+    "date": "2026-11-17",
+    "checked": "2026-11-18",
+    "period": "公開前のGPT-6.2 Astra・Solの評価。個別の実験日は多くが未記載。防御改修については11月6日にAISIへ説明。",
+    "primary": "開発元の原評価と、カードに収録された外部機関の評価を区別。外部評価の原データを独立に再検証したものではない。"
+  },
+  "openai-control-room": {
+    "title": "OpenAI — Control Room",
+    "url": "https://openai.com/index/control-room/",
+    "published": "2026-11-09",
+    "date": "2026-11-09",
+    "checked": "2026-11-18",
+    "period": "公式のSafetyニュース一覧では11月9日公表。研究基盤への導入状況を説明。測定日・試行数・独立監査の結果は未記載。",
+    "primary": "仕組みを開発・運用するOpenAIの原説明。停止時間と導入範囲は開発元の報告で、被害防止の比較試験ではない。"
   }
 }
