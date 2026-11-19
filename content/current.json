@@ -157,7 +157,7 @@
         "multi-user-coordination"
       ],
       "review": {
-        "checkedAt": "2026-11-12",
+        "checkedAt": "2026-11-19",
         "intervalDays": 7,
         "reason": "既存の根拠がカードの条件をどこまで直接確かめているかを分類しています。根拠の更新時に見直します。"
       }
@@ -213,10 +213,11 @@
         "scanned-record-workflow",
         "fable52-workflow",
         "electronics-human-build",
-        "hydrogen-workflow-scope"
+        "hydrogen-workflow-scope",
+        "neon-workflow-scoring"
       ],
       "review": {
-        "checkedAt": "2026-11-14",
+        "checkedAt": "2026-11-19",
         "intervalDays": 7,
         "reason": "既存の根拠がカードの条件をどこまで直接確かめているかを分類しています。根拠の更新時に見直します。"
       }
@@ -270,10 +271,11 @@
         "training-data-monitor-blindspots",
         "monitorability-lifecycle-proxies",
         "training-mixture-backdoors",
-        "weight-audit-defenses"
+        "weight-audit-defenses",
+        "neon-assessment-coverage"
       ],
       "review": {
-        "checkedAt": "2026-11-12",
+        "checkedAt": "2026-11-19",
         "intervalDays": 7,
         "reason": "既存の根拠がカードの条件をどこまで直接確かめているかを分類しています。根拠の更新時に見直します。"
       }
@@ -511,10 +513,11 @@
         "metr-rd-warning-threshold",
         "science-use-and-scenarios",
         "mythos52-rd-assessment",
-        "gpt62-rd-threshold"
+        "gpt62-rd-threshold",
+        "rd-task-jaggedness"
       ],
       "review": {
-        "checkedAt": "2026-11-18",
+        "checkedAt": "2026-11-19",
         "intervalDays": 7,
         "reason": "既存の根拠がカードの条件をどこまで直接確かめているかを分類しています。根拠の更新時に見直します。"
       }

@@ -1,5 +1,28 @@
 [
   {
+    "id": "research-assessment-scope-20261119",
+    "date": "2026-11-19",
+    "nodes": [
+      "R1",
+      "R2",
+      "C2a",
+      "C3a"
+    ],
+    "sources": [
+      "openai-rd-jagged-frontier",
+      "openai-chip-design",
+      "anthropic-black-hole-physics",
+      "gemini4-neon",
+      "gemini4-neon-methods"
+    ],
+    "kind": "研究支援と評価範囲の根拠を追記",
+    "title": "研究の支援、作業の得点、安全判断の継承を分ける",
+    "summary": "研究・回路設計の支援、物理学の研究事例、Gemini 4 Neonの評価条件を追加しました。",
+    "before": "作業ごとの進歩と開発全体の加速、条件によって起こる評価・監督の見落としを区別していました。",
+    "after": "R1・R2・C2a・C3aを日英で更新。根拠の分類と因果関係の条件は維持し、期限を迎えたC1の説明も再点検して維持しました。",
+    "reason": "11月19日の点検。人の役割、得点の母数、新しく測った安全性と継承した判定を区別するため。"
+  },
+  {
     "id": "gpt62-monitoring-stop-20261118",
     "date": "2026-11-18",
     "nodes": [

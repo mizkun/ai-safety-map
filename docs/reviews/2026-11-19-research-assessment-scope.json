@@ -1,0 +1,319 @@
+{
+  "id": "2026-11-19-research-assessment-scope",
+  "version": 2,
+  "date": "2026-11-19",
+  "reviewer": "Codex (primary-source and bilingual editorial review)",
+  "decision": "reviewed",
+  "assessments": {
+    "parts": {
+      "mechanism": "Assistance with a research component can improve an output without removing human problem selection, checking, fabrication or other stages.",
+      "conditions": "The chip example includes human engineering and silicon checking. Physics provenance identifies an internal research model and human verification, not a controlled experiment with the public release.",
+      "counterexample": "A useful circuit improvement or theoretical result can coexist with unchanged time spent validating, manufacturing or developing the next AI.",
+      "evidence": "Read the design report and physics workflow, then both linked November 7 manuscript provenance records. Preserve the distinction between reported cross-checks and independent replication.",
+      "limits": "No complete human-time denominator, matched research-wide counterfactual or independently repeated mathematical proof is established here. Benchmark synthesis is not measured physical-chip performance.",
+      "mitigation": "Preserve records, independent checks, human intervention accounting and quality standards when evaluating research gains.",
+      "readerContext": "Read R1 in Japanese and English, within the acceleration story and on its own. Explain who chooses questions and checks outputs before discussing broader implications.",
+      "whyHere": "Add bounded examples to R1 and the existing reading guidance; retain its distinction from whole-development acceleration and all previous research qualifications.",
+      "primary": [
+        {
+          "source": "openai-chip-design",
+          "locator": "Jalapeño; RISC-V benchmark methodology",
+          "support": "Component design assistance with physical checks; separate simulated evaluation."
+        },
+        {
+          "source": "anthropic-black-hole-physics",
+          "locator": "Research workflow; linked 2611.00175v1 and 2611.00174v1 provenance",
+          "support": "Human-directed research and checking; no public-model reproduction or full self-improvement inference."
+        }
+      ]
+    },
+    "acceleration": {
+      "mechanism": "Task assistance contributes to whole-process acceleration only if it improves the limiting stages and its gains survive verification and other costs.",
+      "conditions": "Internal model and task mixtures change over the reporting periods. Distinguish logged activity, estimated completion and participant perceptions.",
+      "counterexample": "More code, usage or perceived speed need not shorten the overall critical path when experiments, resources and validation remain limiting.",
+      "evidence": "Read the November 18 report body across task completion, interviews and conclusions. Its qualitative evidence supports uneven assistance; no inaccessible methods detail is assumed.",
+      "limits": "Expandable methods were not exposed by the available retrieval. A direct request returned HTTP 403; no connected browser was available. Do not promote the estimates to controlled causal measurements.",
+      "mitigation": "Request comparable task cohorts, intervention accounting and complete methods; measure quality and full-cycle time before generalizing.",
+      "readerContext": "Read R2, three conditional/feedback edges, acceleration and research-cycle graphs, route, evidence, news and story in both languages. Preserve human-assisted loops versus sustained autonomous improvement.",
+      "whyHere": "Extend the internal-use evidence while retaining R2 indirect and existing conditions on R1-R2, R2-R3 and R3-R2. No claim that new evidence completes those transitions.",
+      "primary": [
+        {
+          "source": "openai-rd-jagged-frontier",
+          "locator": "Task completion; interviews; conclusions",
+          "support": "Task-dependent assistance and continuing checking do not isolate a whole-development multiplier."
+        }
+      ]
+    },
+    "workflow": {
+      "mechanism": "Tools and execution scaffolds affect the ability to complete a sequence of work; scoring intermediate achievements differs from completing every requirement.",
+      "conditions": "Read the linked Neon methods, especially harness versions, the five-hour budget, task count and safety-filter conditions. Keep the two SWE-sweep configurations separate.",
+      "counterexample": "An agent can gain substantial partial credit while still failing a required final state or needing human recovery.",
+      "evidence": "Cross-checked model-card table values against the stated scoring conventions. Preserve the reported values as partial-credit metrics, without turning them into one-shot whole-work success.",
+      "limits": "Mixed evaluator reports are not matched model-only comparisons. Trial dates and complete real-work intervention accounting are not supplied.",
+      "mitigation": "Test intended work end to end under fixed tools, budgets and permissions, including failure recovery and human handover.",
+      "readerContext": "Read C2a, R0-C2a, ability-access, evidence and time-horizon guidance in both languages. Access remains a distinct C2b prerequisite.",
+      "whyHere": "Add the scoring distinction without changing the tested classification or requiring RSI/ASI for task execution.",
+      "primary": [
+        {
+          "source": "gemini4-neon-methods",
+          "locator": "Agentic coding; Knowledge work",
+          "support": "Harness, budget and partial-credit definitions."
+        },
+        {
+          "source": "gemini4-neon",
+          "locator": "Evaluation: Results",
+          "support": "Reported scores under the specified configurations."
+        }
+      ]
+    },
+    "alignment": {
+      "mechanism": "Misalignment requires departure from legitimate agreed purposes or constraints; disagreement among users alone is insufficient.",
+      "conditions": "Reread GRAFT 4.1 and 7 and Worse Together setup, mitigations and limitations. These are designed environments, not normal-use incident-rate estimates.",
+      "counterexample": "GRAFT reduces some reward hacking but can lose useful performance or miss behaviors that do not transfer to its removable component. Environment-specific coordination guards can also improve outcomes.",
+      "evidence": "GRAFT tests heuristic blind spots, single-turn RL up to 8B and one larger SFT setting. Worse Together distinguishes 77 studied scenarios from the 74-scenario release and reports unvalidated model judgments for consent/fabrication.",
+      "limits": "Neither study establishes universal alignment, ordinary deployment incidence or complete prevention. No verified independent replication or correction requiring a prose change was found.",
+      "mitigation": "Check deployment transfer and human-validated outcomes; combine behavior improvements with permissions and operational barriers.",
+      "readerContext": "Read C1, R4-C1, its evidence and linked news guidance in both languages. Preserve actual violations versus synthetic tests and capability versus propensity.",
+      "whyHere": "Substantively retain the due C1 explanation and tested level; renew only its node and evidence clocks without re-counting existing sources or cards.",
+      "primary": [
+        {
+          "source": "graft-gradient-routing",
+          "locator": "4.1; 7 Discussion and Limitations",
+          "support": "Bounded defensive gains and failures, with explicit scale and monitor limitations."
+        },
+        {
+          "source": "multi-user-teams",
+          "locator": "Experimental setup; mitigations; 8 Limitations",
+          "support": "Condition-specific coordination failures and improvements, not generic misalignment incidence."
+        }
+      ]
+    },
+    "oversight": {
+      "mechanism": "Oversight can miss a problem through gaps in coverage, detection or generalization. Evidence inherited from another model must be distinguished from new measurements.",
+      "conditions": "Neon assessment comparisons use different baselines for capability change and content safety. Read the carried-forward determinations and pending-report notice directly.",
+      "counterexample": "Inheritance does not itself prove that a hazard was missed. Improved content behavior also does not establish prevention of severe-risk actions.",
+      "evidence": "Also substantively reread Beyond g-mean squared and the eval-production warning comparison: retry conditions, matched instances and objective-specific cues alter interpretation.",
+      "limits": "The new full safety report remains outstanding. Historical rollout filtering is not an operational harm rate; warning evaluations can look worse than production, not only better.",
+      "mitigation": "Follow up the full safety report, report which judgments are fresh, and validate detection and intervention on representative deployments with independent evidence.",
+      "readerContext": "Read C3a, oversight graph, evidence and agent-behavior guidance in both languages. Missing danger and failure to intervene after detection remain separate branches.",
+      "whyHere": "Update due C3a and retain its tested level. The new assessment-scope example adds a limitation rather than a new observed incident or a change to map colors.",
+      "primary": [
+        {
+          "source": "gemini4-neon",
+          "locator": "Safety & Security; Frontier Safety Assessment",
+          "support": "Inherited judgments, fresh automated tests and pending full report."
+        },
+        {
+          "source": "openai-monitorability-metrics",
+          "locator": "Post-control integration; offline estimation; metric recommendations",
+          "support": "Gating and retries have distinct conditional denominators."
+        },
+        {
+          "source": "openai-eval-production-gap",
+          "locator": "Correlation; intervention study; discussion",
+          "support": "Evaluation direction and inferred objective affect the interpretation of safety scores."
+        }
+      ]
+    },
+    "context": {
+      "mechanism": "Separate evidence about capabilities, chosen behavior, access and safeguards before considering their coexistence in one causal pathway.",
+      "conditions": "Current main is an ancestor of the isolated existing PR branch; preserve the original checkout. Screen the daily November 5-19 window and deduplicate against the draft.",
+      "counterexample": "A high score or useful discovery does not imply that intent, means and prevention failure coincide in the same real setting.",
+      "evidence": "Five sources and five research cards support four bilingual explanation updates. C1 is retained after substantive reassessment. Read all 44 changed/dependent units and actual tour chapter context in both languages.",
+      "limits": "This is an editorial primary-source review, not exhaustive discovery, independent experiment replication, layout QA or approval to deploy. Access failures and unresolved report leads remain explicit.",
+      "mitigation": "Verify preservation, content/logic/locales and build, then check CI for the pushed revision. Update Draft PR 11 without merging or deploying.",
+      "readerContext": "Read control route, graph, story and C3-L in order. The AND conjunction is not a temporal chain or proof that all conditions occur together.",
+      "whyHere": "Keep classifications, current summaries, topology and unrelated clocks unchanged. Record before/after and verification boundaries in the new history and review.",
+      "primary": [
+        {
+          "source": "openai-rd-jagged-frontier",
+          "locator": "Conclusions",
+          "support": "Bounded task assistance remains distinct from global acceleration."
+        },
+        {
+          "source": "gemini4-neon",
+          "locator": "Evaluation; Frontier Safety Assessment",
+          "support": "Task scoring and scope of fresh safety judgments remain distinct."
+        }
+      ]
+    }
+  },
+  "entries": {
+    "source:openai-rd-jagged-frontier": {
+      "hash": "7961aeb2f973dae2d91543454389c5dfce7b6a0cd8e1736b2a38a49a8e2369f5",
+      "assessment": "acceleration"
+    },
+    "source:openai-chip-design": {
+      "hash": "0232f3d2ad70b8b6288da2f477fdbbdaec79fb8e04fe20bed7e77af6b8d1fdb6",
+      "assessment": "parts"
+    },
+    "source:anthropic-black-hole-physics": {
+      "hash": "ebc42d9c230d7f852d4fb16cb191b164c1fa880dbc7b9fc2051753dc5b78074f",
+      "assessment": "parts"
+    },
+    "source:gemini4-neon": {
+      "hash": "ec56028b88ec293aaef268a845c90ea1140e708f39373c22867e2ef5cab511f5",
+      "assessment": "oversight"
+    },
+    "source:gemini4-neon-methods": {
+      "hash": "62c851dc65df2e6694775a33b6613d5624f68e0bb0b1175385b33962b44ee772",
+      "assessment": "workflow"
+    },
+    "research:rd-task-jaggedness": {
+      "hash": "60c6b705e193ecf530f8f2fd58b07b9a421c675fd62da282d3011e482840f0bb",
+      "assessment": "acceleration"
+    },
+    "research:chip-design-assistance": {
+      "hash": "0861a967526144773957bfcb447b48860d9a2b3fa49310f6efc604a6b8d82478",
+      "assessment": "parts"
+    },
+    "research:claude-physics-assistance": {
+      "hash": "4cbab89b3ab729abe258be4a7fec1b78d9210c4eb9da84cf6c040af8efc19008",
+      "assessment": "parts"
+    },
+    "research:neon-workflow-scoring": {
+      "hash": "8764d037e6136152b1a147b5099fa320ec744a3a60b08f50a284081cf6ef8f70",
+      "assessment": "workflow"
+    },
+    "research:neon-assessment-coverage": {
+      "hash": "4591633bbecc7b5984605d45d319f0f3a60beb958a2b7e5ad5a5a4ed65bc6a6f",
+      "assessment": "oversight"
+    },
+    "node:C1": {
+      "hash": "583f93a89d094b7f7005d0fd0836f6f23c584d7870f5994ef53299da88a29b45",
+      "assessment": "alignment"
+    },
+    "node:C2a": {
+      "hash": "44f515e82d5389449340738ab96c118fd7b8e7d8bab190773e7a89cd9e1d82cc",
+      "assessment": "workflow"
+    },
+    "node:C3a": {
+      "hash": "8465a845a84eefe346b722b53f23f68b880837728f02bb349a873f70ea0a42ab",
+      "assessment": "oversight"
+    },
+    "node:R1": {
+      "hash": "64e9c13acca5e74ee822ae441d129a994556659a5e6feebc908936476d2d5a57",
+      "assessment": "parts"
+    },
+    "node:R2": {
+      "hash": "9907e304631fb03f86e7a1b4a90f0587f9c6cec1d1e0bee2efb4608efdaed6c3",
+      "assessment": "acceleration"
+    },
+    "edge:R1-R2": {
+      "hash": "bfc194f055003c3178aacfb9ceb5413cb24d644f4996ef6a3f513b5ce5f61005",
+      "assessment": "acceleration"
+    },
+    "edge:R2-R3": {
+      "hash": "84a063ce14fd06af35e7e76f1a0cdc5b5a319b2b8c3addb9471cd56c81e3cf6f",
+      "assessment": "acceleration"
+    },
+    "edge:R3-R2": {
+      "hash": "1d8aecf27e23d1f2fe74a8f774d65b418f6386c4f4503d5c8f3e7b8ce4c2aa03",
+      "assessment": "acceleration"
+    },
+    "edge:C3-L": {
+      "hash": "caa114943451692c1bcbb1e88bbbf28e614c0a88712746f630e43f1c018da15e",
+      "assessment": "context"
+    },
+    "edge:R4-C1": {
+      "hash": "17697a2972c13d0bb1092c35af33176838e417ba1bc6791719d66efeada7c6ec",
+      "assessment": "alignment"
+    },
+    "edge:R0-C2a": {
+      "hash": "fb12361e355400dd0e22db740c44585ad13614af43390922be2f47bf94983af7",
+      "assessment": "workflow"
+    },
+    "graph:control": {
+      "hash": "d6a964c6228aa51de330e15a0c8d96311282e4f42a37edaf5506e331ed4950ec",
+      "assessment": "context"
+    },
+    "graph:acceleration": {
+      "hash": "5d6025012c0bf06a5175dfcd344854deee4468293ca12bc55de7da5083be7ae9",
+      "assessment": "acceleration"
+    },
+    "graph:ability-access": {
+      "hash": "09749695762b90cdd724b7cb54fe8d40e073c8546fd799f65d07ea11d2cfbbdb",
+      "assessment": "workflow"
+    },
+    "graph:oversight": {
+      "hash": "49c7e2d84f7676958d870ff3ffcaca391bc1c37d60e2537690e3bea8668baacf",
+      "assessment": "oversight"
+    },
+    "graph:research-cycle": {
+      "hash": "e8c30e4a51e4376544e1c0fe77be09aff77c8b6bc76d6b49ff3a3b7245506f54",
+      "assessment": "acceleration"
+    },
+    "route:control": {
+      "hash": "ffffdb9c2f667c9aad9a94959e1a172d3c3c69bf1a8f4870fb9d76f621460457",
+      "assessment": "context"
+    },
+    "route:acceleration": {
+      "hash": "d54058efaed70c88b35277de186970a4028ea42c1f69472b4f4b2207c01670fd",
+      "assessment": "acceleration"
+    },
+    "evidence:C1": {
+      "hash": "12666f18ec0d867cbccb503416d53e75e397304cbe5f23816e7720d661e165a6",
+      "assessment": "alignment"
+    },
+    "evidence:C2a": {
+      "hash": "193571044bb6d74f078f6a490484f6e8c6381156a9dc5c5f0d636d5efa45998f",
+      "assessment": "workflow"
+    },
+    "evidence:C3a": {
+      "hash": "be7312f58ab7a14a071eb72db8ed4568218fff66b4ad77ca18d27b9240cb3d69",
+      "assessment": "oversight"
+    },
+    "evidence:R2": {
+      "hash": "65056955be56aa61fe801a1a8efaf911ffaef2d5f78394b5535739939e55ffcd",
+      "assessment": "acceleration"
+    },
+    "news:recent-math": {
+      "hash": "3ea285a1819a8760fccfca751654020003eefd05f53a9909e8c5048d59623933",
+      "assessment": "parts"
+    },
+    "news:research-lab-september": {
+      "hash": "72e85abeab0a96b2c0381b4c83523f955d6a462aff14292f3e094ae80d156751",
+      "assessment": "acceleration"
+    },
+    "news:automated-safety": {
+      "hash": "c134046c3fec0c40a777b47457f8bddb938cc63b95059d7e447274ed1cba8ba3",
+      "assessment": "alignment"
+    },
+    "news:astra-threshold": {
+      "hash": "9096682112db7c94f01775abd0778da1dbed77969805d3dabba9185dd132efaa",
+      "assessment": "alignment"
+    },
+    "news:research-contribution": {
+      "hash": "5607d3fe30120507896eb5f702424e11849e9d452fdd1ea74f5c6110c1843e70",
+      "assessment": "acceleration"
+    },
+    "news:agent-behavior": {
+      "hash": "2ec381bc3389c0f0908c082f32bf2db9beeb0fe886b4ace345a8386d94f21d59",
+      "assessment": "oversight"
+    },
+    "news:time-horizons": {
+      "hash": "479fc778ca384ba37fffaea689dba4f3522cf5a3389f6523ffd67359eb3f9efc",
+      "assessment": "workflow"
+    },
+    "story:control": {
+      "hash": "b0e74508f406ad915152dc99d04de1c4a897544ee611b27409dadf079a803f97",
+      "assessment": "context"
+    },
+    "story:acceleration": {
+      "hash": "de0b747c1ad7af73a70cf0d7770b51f7750468acbb82e163da84a0fe95f38e5b",
+      "assessment": "acceleration"
+    },
+    "metadata:map": {
+      "hash": "c44bb550adb5d517b5138ab066d76f4bb46c888d8425c2d12d04abb8d51ad01d",
+      "assessment": "context"
+    },
+    "history:changes": {
+      "hash": "cded9ab0cfba116d183f26bd2d89188f6dfc14f9eba555cef13594c7418936d0",
+      "assessment": "context"
+    },
+    "inventory:current": {
+      "hash": "5d9223c9f8dfadd601e272558fcbd80e964e0ae0f993cb7b6e9f0525ddd1bea3",
+      "assessment": "context"
+    }
+  }
+}

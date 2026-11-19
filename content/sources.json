@@ -1825,5 +1825,50 @@
     "checked": "2026-11-18",
     "period": "公式のSafetyニュース一覧では11月9日公表。研究基盤への導入状況を説明。測定日・試行数・独立監査の結果は未記載。",
     "primary": "仕組みを開発・運用するOpenAIの原説明。停止時間と導入範囲は開発元の報告で、被害防止の比較試験ではない。"
+  },
+  "openai-rd-jagged-frontier": {
+    "title": "OpenAI — Research acceleration: The jagged frontier",
+    "url": "https://openai.com/index/research-acceleration-jagged-frontier/",
+    "published": "2026-11-18",
+    "date": "2026-11-18",
+    "checked": "2026-11-19",
+    "period": "2026年の社内作業・利用記録と聞き取り。指標ごとに期間が異なり、同じ仕事を同じ条件で比較した実験ではない。",
+    "primary": "OpenAIによる社内利用の原報告。実測、推定、自己申告を区別する。"
+  },
+  "openai-chip-design": {
+    "title": "OpenAI — Advancing chip design with OpenAI models",
+    "url": "https://openai.com/index/advancing-chip-design-with-our-models/",
+    "published": "2026-11-18",
+    "date": "2026-11-18",
+    "checked": "2026-11-19",
+    "period": "2025年初めからの設計支援と、公開時点のモデル比較。全ての実験日は記載されていない。",
+    "primary": "OpenAIと協力企業による原報告。製造した回路の確認と、模擬の設計評価を区別する。"
+  },
+  "anthropic-black-hole-physics": {
+    "title": "Anthropic — Claude and black-hole physics",
+    "url": "https://www.anthropic.com/research/claude-black-hole-physics",
+    "published": "2026-11-17",
+    "date": "2026-11-17",
+    "checked": "2026-11-19",
+    "period": "8月から約6週間の探索と、その後の確認。関連する二つの原稿の第1版は11月7日。",
+    "primary": "開発元の研究報告。関連原稿の来歴も確認したが、数学的な結果や証明を独立に再検証したものではない。"
+  },
+  "gemini4-neon": {
+    "title": "Google DeepMind — Gemini 4 Neon Model Card",
+    "url": "https://deepmind.google/models/model-cards/gemini-4-neon/",
+    "published": "2026-11-18",
+    "date": "2026-11-18",
+    "checked": "2026-11-19",
+    "period": "11月公開時点のNeonの評価。個別の実験日は未記載。重大な能力の判定にはArgonから引き継いだものを含む。",
+    "primary": "開発元の評価と判定。全面的な再評価の範囲と、詳細な安全報告の公開状況を分ける。"
+  },
+  "gemini4-neon-methods": {
+    "title": "Google DeepMind — Gemini 4 Neon Model Evaluation",
+    "url": "https://deepmind.com/models/evals-methodology/gemini-4-neon",
+    "published": "2026-11-18",
+    "date": "2026-11-18",
+    "checked": "2026-11-19",
+    "period": "11月18日のモデルカードからリンクされた評価方法。実験日が記載されていない試験を含む。",
+    "primary": "開発元による評価方法の原資料。課題・実行基盤・採点方法の違いを確認する。"
   }
 }

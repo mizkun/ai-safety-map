@@ -2614,5 +2614,65 @@
     "method": "推論を提供する側で継続の許可を確認。停止指示を受けた後の許可を取り消し、仕組みが故障しても出力を拒む設計。",
     "result": "停止指示の受信から追加の出力を止めるまで最長35秒と報告。障害時の拒否は先端モデルの研究に導入済み、残りの研究への展開は公表時点で進行中。",
     "limitation": "35秒に問題の検知・判断の時間は含まれない。作業のプロセス自体は残り得るため、既に始まった操作の停止や被害の回復を保証しない。独立監査や効果の比較結果は未公表。"
+  },
+  "rd-task-jaggedness": {
+    "source": "openai-rd-jagged-frontier",
+    "type": "observation",
+    "title": "社内での研究支援は、仕事の種類で進み方が違う",
+    "kind": "研究作業の利用記録",
+    "locator": "Task completion; Interviews; Conclusions",
+    "evaluator": "OpenAI",
+    "setting": "2026年の社内研究者とコードを書くAI。モデルや仕事の構成が期間中に変化。",
+    "method": "作業分類別の完了の推定と、研究者への聞き取りを照合。",
+    "result": "AIだけで終えられると推定する割合は作業の種類で大きく異なり、人による確認や修正も残ると報告。",
+    "limitation": "作業の構成やモデルが変わるため、利用量や自己申告から工程全体の因果的な加速率は求められない。"
+  },
+  "chip-design-assistance": {
+    "source": "openai-chip-design",
+    "type": "evaluation",
+    "title": "回路設計の支援と、製造までの確認を分ける",
+    "kind": "半導体設計の支援",
+    "locator": "Jalapeño; RISC-V benchmark and methodology",
+    "evaluator": "OpenAIと協力企業",
+    "setting": "JalapeñoではGPT-o3 miniから設計を支援。人が要件を定め、検証・製造・実機確認を担当。別の比較はRISC-Vの二つのコア。",
+    "method": "製造した回路の確認と、模擬実行・合成による設計評価を分ける。",
+    "result": "Jalapeñoの標準セル（論理回路）の面積を、ベクトル部分で約13%、行列部分で約10%減らしたと報告。実機でも確認したとしている。",
+    "limitation": "部分的な設計改善であり、AI開発全体の加速率ではない。別のベンチマークの推定性能も、製造した回路の実測値とは異なる。"
+  },
+  "claude-physics-assistance": {
+    "source": "anthropic-black-hole-physics",
+    "type": "observation",
+    "title": "物理学の研究を進めても、人の検算は残る",
+    "kind": "研究支援の事例",
+    "locator": "Research workflow; linked manuscript provenance, versions 2611.00175v1 and 2611.00174v1",
+    "evaluator": "Anthropicと参加した物理学者",
+    "setting": "物理学者が選んだ22の問題を、社内のClaude研究モデルが約6週間探索。人が主な結果を確認。",
+    "method": "研究の報告と、二つの関連原稿が記すAI・人の役割を照合。",
+    "result": "理論物理の二つの結果を報告。別手法による確認や、別のClaudeによる再導出も記載。",
+    "limitation": "二つの事例は22問中の統一的な成功率ではない。計算予算や人の作業時間の全体は不明で、独立した追試やAIの自己改善の証拠ではない。"
+  },
+  "neon-workflow-scoring": {
+    "source": "gemini4-neon-methods",
+    "type": "evaluation",
+    "title": "仕事を進めるAIの得点は、道具と採点方法にも依存する",
+    "kind": "エージェントの作業評価",
+    "locator": "Agentic coding; Knowledge work; model-card Results table",
+    "evaluator": "Google DeepMind",
+    "setting": "Gemini 4 Neon。SWE-sweepでは二つの実行基盤。Agents’ Last Exam v1.1は122課題、5時間、Antigravity-CLI 1.4.8、安全フィルター有効。",
+    "method": "SWE-sweepは小課題の重み付き得点。Agents’ Last Examは採点基準ごとの得点の平均。",
+    "result": "SWE-sweepは提供元の基盤で39.0%、mini-sweで12.8%。Agents’ Last Examは75.8%。",
+    "limitation": "部分点を含む得点は、全工程を完遂した割合ではない。他社の報告を混ぜた比較や、異なる道具の条件をそろえた結果とも扱わない。"
+  },
+  "neon-assessment-coverage": {
+    "source": "gemini4-neon",
+    "type": "evaluation",
+    "title": "新しく測った安全性と、前モデルから引き継ぐ判定",
+    "kind": "安全評価の範囲",
+    "locator": "Training and Development Evaluation Results; Frontier Safety Assessment",
+    "evaluator": "Google DeepMind",
+    "setting": "Neonの能力変化はArgonと比較。内容の安全性の自動試験はHydrogenと比較。",
+    "method": "能力変化が同社の基準を越えるかを確認し、重大な能力の全面的な再評価が必要か判断。",
+    "result": "全面的な再評価は必要ないとし、Argonの判定を引き継ぐ。別の自動試験では、不必要な拒否が3.00ポイント減少。",
+    "limitation": "11月19日の点検時点で詳細な安全報告は予告段階。拒否の改善は重大な危険を防ぐ効果の実証ではなく、判定の継承だけで見落としがあったとも言えない。"
   }
 }
