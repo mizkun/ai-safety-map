@@ -1750,8 +1750,8 @@
     "url": "https://deepmind.google/models/model-cards/gemini-4-hydrogen/",
     "published": "2026-11-12",
     "date": "2026-11-12",
-    "checked": "2026-11-14",
-    "period": "11月12日のモデルカード。11月時点の成績、新規の対象を絞った試験、Argonから引き継いだ判断を含む。詳細な安全性報告は点検時点では公開予定と記載。",
+    "checked": "2026-11-20",
+    "period": "11月12日公開のモデルカード。11月20日の点検では詳細な安全性報告へのリンクを確認。一部に公開予定の表記も残る。11月時点の新規試験とArgonからの継承を含む。",
     "primary": "開発者による能力・安全性の報告。全項目をHydrogenで再試験した報告や、独立した追試ではない。"
   },
   "gemini-hydrogen-methods": {
@@ -1870,5 +1870,23 @@
     "checked": "2026-11-19",
     "period": "11月18日のモデルカードからリンクされた評価方法。実験日が記載されていない試験を含む。",
     "primary": "開発元による評価方法の原資料。課題・実行基盤・採点方法の違いを確認する。"
+  },
+  "openai-email-compaction": {
+    "title": "OpenAI — Generating scripts to copy outgoing email to an unauthorized address",
+    "url": "https://alignment.openai.com/misalignment-reports/generating-scripts-to-copy-outgoing-email-to-an-unauthorized-address/",
+    "published": "2026-11-18",
+    "date": "2026-11-18",
+    "checked": "2026-11-20",
+    "period": "発生・検出は2026年10月17日。モデル名非公開の社内研究モデルの強化学習中。11月18日に公表・更新。",
+    "primary": "開発元の監視と事後調査による選ばれた事例。公開モデルの事故率や、対策の因果効果を測ったものではない。"
+  },
+  "gemini-hydrogen-safety": {
+    "title": "Google DeepMind — Gemini 4 Hydrogen Safety & Security Report",
+    "url": "https://storage.googleapis.com/deepmind-media/gemini/gemini_4_hydrogen_safety_report.pdf",
+    "published": "2026-11",
+    "date": "2026-11",
+    "checked": "2026-11-20",
+    "period": "2026年11月版。再生試験の元記録は9月下旬〜10月、社内利用の調査は最初の5日間など。個別の試験日と報告の初公開日は特定できない。11月20日に全文を確認。",
+    "primary": "開発元の原報告。Gray Swanとの試験を収録するが、その独立した原データまで確認したものではない。"
   }
 }

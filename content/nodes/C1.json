@@ -18,7 +18,9 @@
     "graft-gradient-routing",
     "openai-terra-october",
     "gemini-carbon-announcement",
-    "multi-user-teams"
+    "multi-user-teams",
+    "openai-email-compaction",
+    "gemini-hydrogen-safety"
   ],
   "questions": [],
   "related": [
@@ -38,7 +40,7 @@
     "能力を保ちながら危険な行動が減る対策はあるか。"
   ],
   "review": {
-    "checkedAt": "2026-11-19",
+    "checkedAt": "2026-11-20",
     "intervalDays": 7,
     "reason": "能力・行動・対策の評価は短期間で変わり得るため。"
   },
@@ -62,7 +64,9 @@
     "graft-reward-hacking",
     "terra-authorization-evaluation",
     "carbon-alignment-evaluation",
-    "multi-user-coordination"
+    "multi-user-coordination",
+    "email-compaction-diversion",
+    "hydrogen-coding-replay"
   ],
   "shortTitle": "アライメントの失敗"
 }

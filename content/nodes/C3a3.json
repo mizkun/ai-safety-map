@@ -24,7 +24,8 @@
     "anthropic-fable52-system",
     "openai-peer-infrastructure-incident",
     "gemini-carbon-safety",
-    "openai-gpt62-system"
+    "openai-gpt62-system",
+    "gemini-hydrogen-safety"
   ],
   "questions": [],
   "related": [],
@@ -36,7 +37,7 @@
     "scheming"
   ],
   "review": {
-    "checkedAt": "2026-11-18",
+    "checkedAt": "2026-11-20",
     "intervalDays": 7,
     "reason": "監督回避と、それを防ぐ手法の評価は変化が速いため。"
   },
@@ -61,7 +62,8 @@
     "mythos52-prompted-sandbagging",
     "peer-residue-infrastructure",
     "carbon-monitorability-scope",
-    "gpt62-monitor-visibility"
+    "gpt62-monitor-visibility",
+    "hydrogen-monitoring-scope"
   ],
   "shortTitle": "実行中の監督をすり抜ける"
 }

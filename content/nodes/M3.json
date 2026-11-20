@@ -25,7 +25,8 @@
     "openai-fuzzy-robustness",
     "anthropic-anvil",
     "anthropic-cvd-timelines",
-    "openai-gpt62-system"
+    "openai-gpt62-system",
+    "gemini-hydrogen-safety"
   ],
   "questions": [],
   "related": [],
@@ -34,7 +35,7 @@
     "実害だけでなく、防御と封じ込めが働いた例も報告されたか。"
   ],
   "review": {
-    "checkedAt": "2026-11-18",
+    "checkedAt": "2026-11-20",
     "intervalDays": 30,
     "reason": "経路を支える前提、反論、防壁の有効性に変化がないか確認するため。"
   },
@@ -61,7 +62,8 @@
     "anvil-privileged-testing",
     "anvil-defense-updates",
     "cvd-timeline-transition",
-    "gpt62-safeguard-retest"
+    "gpt62-safeguard-retest",
+    "hydrogen-repeated-attack-defense"
   ],
   "shortTitle": "防止・封じ込めが追いつかない"
 }

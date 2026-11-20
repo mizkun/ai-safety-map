@@ -154,10 +154,12 @@
         "graft-reward-hacking",
         "terra-authorization-evaluation",
         "carbon-alignment-evaluation",
-        "multi-user-coordination"
+        "multi-user-coordination",
+        "email-compaction-diversion",
+        "hydrogen-coding-replay"
       ],
       "review": {
-        "checkedAt": "2026-11-19",
+        "checkedAt": "2026-11-20",
         "intervalDays": 7,
         "reason": "既存の根拠がカードの条件をどこまで直接確かめているかを分類しています。根拠の更新時に見直します。"
       }
@@ -295,10 +297,11 @@
         "committed-model-inference-proof",
         "safety-task-underperformance",
         "stopped-alignment-evaluation",
-        "hydrogen-safety-scope"
+        "hydrogen-safety-scope",
+        "hydrogen-coding-replay"
       ],
       "review": {
-        "checkedAt": "2026-11-14",
+        "checkedAt": "2026-11-20",
         "intervalDays": 7,
         "reason": "既存の根拠がカードの条件をどこまで直接確かめているかを分類しています。根拠の更新時に見直します。"
       }
@@ -344,10 +347,11 @@
         "mythos52-prompted-sandbagging",
         "peer-residue-infrastructure",
         "carbon-monitorability-scope",
-        "gpt62-monitor-visibility"
+        "gpt62-monitor-visibility",
+        "hydrogen-monitoring-scope"
       ],
       "review": {
-        "checkedAt": "2026-11-18",
+        "checkedAt": "2026-11-20",
         "intervalDays": 7,
         "reason": "既存の根拠がカードの条件をどこまで直接確かめているかを分類しています。根拠の更新時に見直します。"
       }
