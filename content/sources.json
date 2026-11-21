@@ -1888,5 +1888,32 @@
     "checked": "2026-11-20",
     "period": "2026年11月版。再生試験の元記録は9月下旬〜10月、社内利用の調査は最初の5日間など。個別の試験日と報告の初公開日は特定できない。11月20日に全文を確認。",
     "primary": "開発元の原報告。Gray Swanとの試験を収録するが、その独立した原データまで確認したものではない。"
+  },
+  "metr-q4-capabilities": {
+    "title": "METR — AI R&D-relevant model capabilities are improving rapidly and are getting harder to measure",
+    "url": "https://metr.org/blog/2026-11-20-q4-2026-capability-update/",
+    "published": "2026-11-20",
+    "date": "2026-11-20",
+    "checked": "2026-11-21",
+    "period": "11月20日公表。GPT-6 Astra・Opus 5.5までの公開モデルを含む評価。個々の試験日は一括して示されず、人間の比較資料には8月までの記録も含む。",
+    "primary": "開発元とは別の評価団体METRによる原評価。人間の所要時間の多くは推定で、開発全体の加速を直接測ったものではない。"
+  },
+  "openai-distillation-defense": {
+    "title": "OpenAI — Combatting adversarial distillation",
+    "url": "https://openai.com/index/combatting-adversarial-distillation/",
+    "published": "2026-11-20",
+    "date": "2026-11-20",
+    "checked": "2026-11-21",
+    "period": "11月20日公表。GPT-6 Astraの旧防御とGPT-6.2 Astraの新防御の比較。個別の試験日は未記載。年間の不正利用への対応も説明する。",
+    "primary": "開発元による防御試験と対応方針の報告。モデルと防御が同時に変わる比較で、独立した追試や被害減少の測定ではない。"
+  },
+  "medchembench-paper": {
+    "title": "Liほか（OpenAI）— MedChemBench: Evaluating complex multimodal reasoning in medicinal chemistry",
+    "url": "https://cdn.openai.com/pdf/09c4ec60-a32e-4652-837b-1811368a3bb0/medchembench-paper.pdf",
+    "published": "2026-11-09",
+    "date": "2026-11-09",
+    "checked": "2026-11-21",
+    "period": "論文記載日は11月9日、開発元の記事は11月20日。既存の論文・特許に基づく課題。試験日は一括して示されず、GPT-6 Sol・Lunaは9月の画像処理修正前に評価。",
+    "primary": "OpenAIの原論文。過去の研究を使う机上評価で、独立した研究者による新たな実験や創薬成果の検証ではない。"
   }
 }

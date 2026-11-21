@@ -20,7 +20,9 @@
     "lazarus-weight-audit",
     "openai-stopped-alignment-eval",
     "openai-fuzzy-robustness",
-    "anthropic-anvil"
+    "anthropic-anvil",
+    "metr-q4-capabilities",
+    "openai-distillation-defense"
   ],
   "questions": [],
   "related": [],
@@ -28,7 +30,7 @@
     "未提示の評価、実運用、追加学習後でも効果が続くか。"
   ],
   "review": {
-    "checkedAt": "2026-11-14",
+    "checkedAt": "2026-11-21",
     "intervalDays": 7,
     "reason": "能力、実運用、経済制度、反証を分けて継続確認するため。"
   },
@@ -45,7 +47,9 @@
     "stopped-alignment-evaluation",
     "fuzzy-safety-training",
     "anvil-privileged-testing",
-    "anvil-defense-updates"
+    "anvil-defense-updates",
+    "metr-research-judgment",
+    "openai-reasoning-extraction-defense"
   ],
   "shortTitle": "安全性の研究・対策も加速"
 }

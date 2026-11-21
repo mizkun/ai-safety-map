@@ -1,5 +1,29 @@
 [
   {
+    "id": "capabilities-judgment-defenses-20261121",
+    "date": "2026-11-21",
+    "nodes": [
+      "R0",
+      "R1",
+      "R3",
+      "R4",
+      "C2a",
+      "C3a1",
+      "M3"
+    ],
+    "sources": [
+      "metr-q4-capabilities",
+      "openai-distillation-defense",
+      "medchembench-paper"
+    ],
+    "kind": "能力評価と防御の進歩を追記",
+    "title": "作業の進歩、研究の判断、防御の効果を分ける",
+    "summary": "METRの11月の能力評価、OpenAIの推論文の保護の比較、MedChemBenchの原論文を追加しました。",
+    "before": "関連する説明には、新しい課題集と判断・傾向の限界、11月20日の防御の比較と創薬評価の測定方法をまだ含めていませんでした。",
+    "after": "7項目を日英で更新し、測られた進歩と限界を併記。根拠の分類、因果関係の条件、過去の結果は維持しました。",
+    "reason": "11月21日の点検。人間の推定所要時間とAIの無人稼働時間、課題の得点と研究の価値、推論文の保護の改善と実際の被害の減少を区別するため。"
+  },
+  {
     "id": "task-diversion-safeguards-20261120",
     "date": "2026-11-20",
     "nodes": [

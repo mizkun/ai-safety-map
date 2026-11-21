@@ -216,10 +216,11 @@
         "fable52-workflow",
         "electronics-human-build",
         "hydrogen-workflow-scope",
-        "neon-workflow-scoring"
+        "neon-workflow-scoring",
+        "metr-th2-horizons"
       ],
       "review": {
-        "checkedAt": "2026-11-19",
+        "checkedAt": "2026-11-21",
         "intervalDays": 7,
         "reason": "既存の根拠がカードの条件をどこまで直接確かめているかを分類しています。根拠の更新時に見直します。"
       }
@@ -298,10 +299,11 @@
         "safety-task-underperformance",
         "stopped-alignment-evaluation",
         "hydrogen-safety-scope",
-        "hydrogen-coding-replay"
+        "hydrogen-coding-replay",
+        "metr-research-judgment"
       ],
       "review": {
-        "checkedAt": "2026-11-20",
+        "checkedAt": "2026-11-21",
         "intervalDays": 7,
         "reason": "既存の根拠がカードの条件をどこまで直接確かめているかを分類しています。根拠の更新時に見直します。"
       }
@@ -496,10 +498,11 @@
       "summary": "条件をそろえた課題で、以前より難しい作業をこなす能力の伸びが測られています。あらゆる仕事での能力向上を示すものではありません。",
       "research": [
         "horizon",
-        "ordinary-progress"
+        "ordinary-progress",
+        "metr-th2-horizons"
       ],
       "review": {
-        "checkedAt": "2026-11-16",
+        "checkedAt": "2026-11-21",
         "intervalDays": 7,
         "reason": "既存の根拠がカードの条件をどこまで直接確かめているかを分類しています。根拠の更新時に見直します。"
       }
@@ -540,10 +543,12 @@
         "stopped-alignment-evaluation",
         "fuzzy-safety-training",
         "anvil-privileged-testing",
-        "anvil-defense-updates"
+        "anvil-defense-updates",
+        "metr-research-judgment",
+        "openai-reasoning-extraction-defense"
       ],
       "review": {
-        "checkedAt": "2026-11-14",
+        "checkedAt": "2026-11-21",
         "intervalDays": 7,
         "reason": "既存の根拠がカードの条件をどこまで直接確かめているかを分類しています。根拠の更新時に見直します。"
       }
@@ -624,10 +629,11 @@
       "research": [
         "mass-two-rounds",
         "self-training-null-audit",
-        "mythos52-rd-assessment"
+        "mythos52-rd-assessment",
+        "metr-mci-growth"
       ],
       "review": {
-        "checkedAt": "2026-11-17",
+        "checkedAt": "2026-11-21",
         "intervalDays": 7,
         "reason": "限定した反復実験と、開発全体の持続的な加速を区別して点検するため。"
       }
