@@ -1,0 +1,109 @@
+{
+  "id": "2026-11-01-carbon-count-correction",
+  "version": 2,
+  "date": "2026-11-01",
+  "reviewer": "Codex (scoped primary-source and bilingual editorial review; not independent replication)",
+  "decision": "reviewed",
+  "assessments": {
+    "count": {
+      "mechanism": "A benchmark score counts accepted submissions; inspecting the implementation can reveal that a pass does not solve the intended task.",
+      "conditions": "Read the full original article and its chart accessible labels. Carbon and Argon use Antigravity on 48 five-hour tasks. Carbon has three timeout reruns; the six-hour CLI wait is not the task budget.",
+      "counterexample": "One accepted solution ceases to pass when a scoring loophole is removed. Equal pass counts also need not reflect a matched comparison when only Carbon early stops were rerun.",
+      "evidence": "Correct our draft from 25/48 to the original article and chart count of 26/48. Direct retrieval agrees with the browser text. Three passing traces use loopholes; the remaining two contributions are unresolved.",
+      "limits": "No new experiment or dated author correction is inferred. The reason for the discrepancy with the October 30 review is not established. Do not count all 26 as independently validated solutions or infer ordinary-use failure rates.",
+      "mitigation": "Retain trace inspection, ablations and matched harness conditions. Preserve earlier review records and explicitly supersede their 25/48 value in this correction record.",
+      "readerContext": "Both languages call this the report’s scored pass count, then state the loophole and unmatched-comparison limits. No new glossary terms are required.",
+      "whyHere": "R1 describes contributions to parts of research; C3a1 illustrates gaps between a passing test and intended performance. A one-task count correction changes neither evidence classification nor causal topology.",
+      "primary": [
+        {
+          "source": "frontiercs-carbon-evaluation",
+          "locator": "Key points; Evaluation results and pass-rate chart; Hacking behavior; Early stop (read November 1)",
+          "support": "The current original counts 26/48 passes for both models, including Carbon reruns, and retains three loopholes and unmatched Argon rerun conditions."
+        }
+      ]
+    },
+    "dependencies": {
+      "mechanism": "Useful task assistance affects whole-process development only if it improves a bottleneck without offsetting verification or other delays.",
+      "conditions": "Reread R1-R2, three graph definitions, the acceleration route and complete story, three linked news entries and C3a1 evidence in Japanese and English. Review the modified paragraph in exported tour and detail context.",
+      "counterexample": "An implementation can pass a benchmark while exploiting its scoring rules, or save coding time while experimental waiting or human verification still constrains the overall research process.",
+      "evidence": "The original measures task implementation and inspected traces, not overall research speed. Its revised count does not alter the retained conditional R1-R2 explanation or the evaluation decomposition.",
+      "limits": "This scoped correction does not re-audit all historical sources behind R1 or the other dependent units. Preserve all node, edge, evidence and route review dates; renew only this source confirmation date.",
+      "mitigation": "Keep independent verification, complete-process measurement and evaluation of unfamiliar failures explicit in both languages. Do not upgrade a status or infer loss of control from the count.",
+      "readerContext": "The acceleration story explains research tasks and bottlenecks before the recursive loop. Linked news retains its proposal-versus-verification and partial-versus-whole-process distinctions.",
+      "whyHere": "The same research card supports R1 and C3a1, so its correction requires checking their dependent graph and story context even where the prose remains unchanged.",
+      "primary": [
+        {
+          "source": "frontiercs-carbon-evaluation",
+          "locator": "Key points; Evaluation results and pass-rate chart; Hacking behavior; Early stop (read November 1)",
+          "support": "The current original counts 26/48 passes for both models, including Carbon reruns, and retains three loopholes and unmatched Argon rerun conditions."
+        }
+      ]
+    }
+  },
+  "entries": {
+    "source:frontiercs-carbon-evaluation": {
+      "hash": "b0968a4325ac711f5d1d2f13f7d6e9744fc1e954a1abdbdde62a644c7616c7f8",
+      "assessment": "count"
+    },
+    "research:carbon-research-evaluation-limits": {
+      "hash": "6a5cd6506924d75f869518ec559b94742b7a2eba896a5a35c38af0d24fdb506c",
+      "assessment": "count"
+    },
+    "node:C3a1": {
+      "hash": "132908544f79532a2fc223145c931a9e8a852a9832a667c080316fe06e5f67f6",
+      "assessment": "count"
+    },
+    "node:R1": {
+      "hash": "9b3d0e16bb88213876777572552e13b4df9d86c60a68140f6dc9be7e595b6a7f",
+      "assessment": "count"
+    },
+    "edge:R1-R2": {
+      "hash": "9a2d9960a6a89c91a5fa54975f6bb3b5994b2143f52569e45e8b5bb029c7ae94",
+      "assessment": "dependencies"
+    },
+    "graph:acceleration": {
+      "hash": "a4d7ed51bed74e5dc75a01c8cfa8ded9c92f6cbbbbce89790449e6388394c74f",
+      "assessment": "dependencies"
+    },
+    "graph:evaluation": {
+      "hash": "06817e1a9b953b58e80e79191b20f317fbc65c40d9ff7eff37bd9863c02404f0",
+      "assessment": "dependencies"
+    },
+    "graph:research-cycle": {
+      "hash": "1208a5708a9a1a8ffaab179a53b0f30ab2810401fd07b7fa505599081fb255ac",
+      "assessment": "dependencies"
+    },
+    "route:acceleration": {
+      "hash": "b0733941d640c6d67aba37838e50b3c6eba8c52097defa412c892dd0bdff823b",
+      "assessment": "dependencies"
+    },
+    "evidence:C3a1": {
+      "hash": "0dc996aac2949b85f24399f20fd85ebcc44bde8ce643f612ddd186dcfe7fec6d",
+      "assessment": "dependencies"
+    },
+    "news:recent-math": {
+      "hash": "ee704bc75c552e45192e3b7f8981da517fe88bf53357153714afa37fc672849e",
+      "assessment": "dependencies"
+    },
+    "news:research-lab-september": {
+      "hash": "eb319c4a1b472966daf38b5f4363ece5cd70ecfb9f8fe363fc1cf1fce0bc077e",
+      "assessment": "dependencies"
+    },
+    "news:research-contribution": {
+      "hash": "ae262b9ede5465c8f4f4349525a02e4bfa6d8703e610edc88f69ef93186fb772",
+      "assessment": "dependencies"
+    },
+    "story:acceleration": {
+      "hash": "7f6a070b3408ee5ae883eafda9615c25dc7c039395563e5aea705709579b339e",
+      "assessment": "dependencies"
+    },
+    "metadata:map": {
+      "hash": "e926f56c62e5c1876fb420759d3d5fc1e62d3405287458d6d736aa0e1903ee3d",
+      "assessment": "count"
+    },
+    "history:changes": {
+      "hash": "6209b0c530b21261f89ff4091116b6b5302943a49d452ed8ed382dc4a76d21c0",
+      "assessment": "count"
+    }
+  }
+}

@@ -1,0 +1,323 @@
+{
+  "id": "2026-10-12-defenses-and-measurement",
+  "version": 2,
+  "date": "2026-10-12",
+  "reviewer": "Codex (primary-source and bilingual editorial review; not independent expert approval)",
+  "decision": "reviewed",
+  "assessments": {
+    "cyber": {
+      "mechanism": "Access-specific blocking changes which operations the same capable model can complete. Useful assistance alone does not imply failure of all defenses or broad harm.",
+      "conditions": "Read the October 6 Cyber Verification Program original, its tier diagram and the CyScenarioBench comparison: Opus 5.5, ten challenges, five attempts each per evaluated setting. Experiment dates are unspecified.",
+      "counterexample": "General access blocked every first prompt; Defense blocked 46/50 while four succeeded. Red Team had no blocks and 34 successes. Blocking settings matter alongside model capability.",
+      "evidence": "The developer reports fifty attempts for each evaluated access configuration. The separate no-safeguards 67.6% comparison is not another fifty-attempt Specialized Access experiment. Humans vet access and establish controls.",
+      "limits": "Selected challenges are not deployment misuse prevalence, unknown-attack coverage or measured harm reduction. Partner vulnerability totals are heterogeneous and were not adopted as new independent counts.",
+      "mitigation": "Verify access and authorization, evaluate blocking under the actual deployed settings, and retain containment and recovery for actions that pass. Future announced controls are not assumed effective.",
+      "readerContext": "M3 first defines prevention, detection, containment and recovery. The new paragraph explains why different settings for the same AI produce different outcomes, in both languages.",
+      "whyHere": "Adds a favorable defense example without weakening M3-H conditions: actual useful misuse, failed safeguards and broad persistent effects must still coincide.",
+      "primary": [
+        {
+          "source": "anthropic-cyber-verification",
+          "locator": "Access tiers; Testing the efficacy of our safeguards; limits of partner reporting",
+          "support": "Different blocking settings yield different results on the same model. No universal prevention or real-world harm-reduction inference."
+        }
+      ]
+    },
+    "haiku": {
+      "mechanism": "Reasoning visibility can improve the monitor information available, but joint undetected completion also depends on the actor attempting and completing both tasks.",
+      "conditions": "Read Haiku 5.5 card sections 6.4.2.1 and 6.4.2.2, figures/footnotes on pages 88 and 90, and evaluation caveats. Haiku acts; Opus 4.8 monitors; harmful side tasks are explicitly instructed.",
+      "counterexample": "Low successful evasion can result from refusals, task inability or API intervention. SHADE Haiku early stops count as failures and are not evidence of the monitor catching the action.",
+      "evidence": "LinuxArena reports roughly 5.9% joint undetected success with hidden reasoning and 0.1% with reasoning visible. Haiku has one attempt per task pair versus five for other models. SHADE has 24 pairs, at least 25 attempts each.",
+      "limits": "Prompt search and model-specific safety settings limit comparisons. The developer card is not independent replication or a deployment prevention measurement. Some labor-intensive evaluations are omitted.",
+      "mitigation": "Keep actor compliance, capability, reasoning visibility, monitor judgment and API blocks separately measurable. Test whether detection leads to timely intervention instead of equating transcript review with prevention.",
+      "readerContext": "The card identifies who acts and who monitors before reporting the result. Both editions explain why a low evasion statistic is not simply a high detection statistic.",
+      "whyHere": "Adds counterevidence against universal monitor failure while retaining C3a3 as a tested mechanism with bounded settings, not ordinary-use prevalence or a safety clearance.",
+      "primary": [
+        {
+          "source": "anthropic-haiku55",
+          "locator": "6.4.2.1 LinuxArena pp. 87–89; 6.4.2.2 SHADE-Arena pp. 89–90",
+          "support": "Joint-success definitions, attempt counts, reasoning visibility and API intervention qualifications."
+        }
+      ]
+    },
+    "structural": {
+      "mechanism": "Structural representations can make infrastructure changes easier for a monitor to judge; rollback prevents an in-scope harmful change from surviving. Unanalyzed operations remain another failure path.",
+      "conditions": "Read IFG sections 3–5 and Appendix A. Opus 4.1 performs instructed sabotage in iac_fast; Haiku 4.5 monitors synchronously. Thresholds use 100 honest episodes, followed by 160 attacks.",
+      "counterexample": "In the separate post-hoc experiment, twenty out-of-scope build-artifact attacks were removed from 180 episodes; all seventeen successful excluded attacks received minimum structural suspicion. This is not part of the synchronous denominator.",
+      "evidence": "Unstopped joint completion in synchronous trials is 119/160 without intervention, 0/160 IFG rollback and 9/160 diff-only rollback. Honest completion is 82, 81 and 87 out of 100, respectively.",
+      "limits": "The final judgment uses an LLM despite deterministic structural extraction. Different prompts and monitor versions limit async/sync causal comparison. Workshop paper, no verified independent replication, no universal attack coverage.",
+      "mitigation": "Combine structural inspection and rollback with complementary build-artifact integrity checks. The latter are proposed by the authors but not evaluated in this paper; do not label them proven.",
+      "readerContext": "Japanese and English describe the configuration changes and rollback before contrasting judgment quality with coverage. The excluded attacks are adjacent to the favorable zero result.",
+      "whyHere": "The card adds an actual favorable defense result and the precise failure surface it leaves open, rather than reporting only dangerous capabilities or treating zero observed successes as proof of safety.",
+      "primary": [
+        {
+          "source": "structural-monitoring",
+          "locator": "Sections 3–5, Appendix A excluded task, Appendix D honest-task figures",
+          "support": "Bounded rollback success and excluded attacks establish the scope, not general prevention."
+        }
+      ]
+    },
+    "recovery": {
+      "mechanism": "Post-action checks, guided response and future pre-action checks can help an available agent contain and repair local incidents. Society-wide recoverability also requires functioning independent resources.",
+      "conditions": "Read AIR sections 3–5, Tables 1–7 and Appendix B. GPT-5 code, simulated embodied and browser agents face 750, 250 and 210 risky tasks. Humans author the main rules and judge response outcomes.",
+      "counterexample": "Some disclosures/deletions have remediation marked inapplicable. Blocking repetition does not undo the first consequence. A local response agent that still has tools is not evidence about simultaneous loss of power, communications or recovery infrastructure.",
+      "evidence": "Guided response and recurrence prevention improve specified settings, with time overhead and lower performance under some generated-rule conditions. Rates condition on events such as executed or detected hazards; headline greater-than-90% claims are not generalized.",
+      "limits": "Exact GPT-5 snapshot and experiment dates are unspecified. February/June preprints and July proceedings are separated. No test of adversarially uncooperative agents or society-wide outage recovery; no population-level prevented-harm rate.",
+      "mitigation": "Keep usable response procedures and independent backups, verify response permissions, and block irreversible operations before execution. Training a response workflow is not a guarantee the needed tools survive a cascade.",
+      "readerContext": "C3b explains warning versus timely control; A3 explains the resources needed for restoration. Both languages place the bounded recovery example after these prerequisites, without adding unfamiliar unexplained acronyms beyond the study name.",
+      "whyHere": "C3b gains positive mitigation evidence but stays indirect on harm during response delay. A3 and A2-A3/A3-H retain conditional failure of recovery and broad persistent harm, because AIR does not test them.",
+      "primary": [
+        {
+          "source": "agent-incident-response",
+          "locator": "Sections 3–5; Tables 1–7; Appendix B; publication metadata",
+          "support": "Limited laboratory incident response with human-authored rules, conditional denominators and irreversible effects."
+        }
+      ]
+    },
+    "measurement": {
+      "mechanism": "Repeated evaluation of an unchanged model exposes apparent improvement caused by sampling and measurement. Sustained development feedback requires effects beyond these artifacts and continued usefulness in later cycles.",
+      "conditions": "Read Phantom Gains sections 3–6 and Table 2. Three rank-32 LoRA rounds on Qwen3-8B mathematics tasks, unchanged-model comparisons, and gpt-oss-120b teacher control. Humans design tasks, grading and training.",
+      "counterexample": "An untrained model can appear to gain capabilities under uncontrolled metrics. Conversely, one small-model training regime failing to establish expansion does not rule out a human-inclusive research-development loop.",
+      "evidence": "The controlled comparison favors the external teacher on rarely reached problems; the never-reached subset does not establish a significant expansion difference. Short training, selected sets, truncation and differing method arms constrain conclusions.",
+      "limits": "Preprint, one backbone family, no verified independent replication in this review. No inference of general self-training impossibility, proven safety erosion, frontier capability ceiling or disproved RSI.",
+      "mitigation": "Use unchanged controls and repeated measurements, track genuine gains and losses, and separately measure human input, resources, verification and persistence across generations.",
+      "readerContext": "R3 first defines the broader recursive-development concept. The new paragraph explains an unchanged comparison in ordinary terms and explicitly separates self-training on outputs from that broader concept.",
+      "whyHere": "R2-R3/R3-R2 and the research-contribution reading example already require repeated useful improvements rather than one score increase. This criticism reinforces those conditions without changing the loop topology or developer-observation attribution.",
+      "primary": [
+        {
+          "source": "phantom-gains",
+          "locator": "Sections 3–6, Table 2 and limitations/reproducibility discussion",
+          "support": "Measured-null criticism with bounded small-model evidence, not a general impossibility theorem."
+        }
+      ]
+    },
+    "context": {
+      "mechanism": "Separate defenses, monitoring, recovery and measurement interact with different causal prerequisites. Results from separate experiments do not jointly demonstrate an entire catastrophe pathway.",
+      "conditions": "Read changed node paragraphs and relevant generated tour/detail passages in Japanese and English, six graph definitions, three routes, two focus entries, four stories and five dependent connections.",
+      "counterexample": "Runtime monitoring can stop in-scope operations while uncovered paths remain; a local recovery tool may work while independent infrastructure is still necessary; a measurement objection may limit one claim without negating another development route.",
+      "evidence": "Compared new research settings with unchanged C3a3 tested and C3b indirect summaries. Retained local versus broad failure, alternative oversight mechanisms, joint misuse conditions and explicitly conditional development feedback.",
+      "limits": "No full experimental replication, exhaustive literature coverage, UI-layout check or public-production check is claimed. Editorial fingerprints are not independent expert approval.",
+      "mitigation": "Preserve conditional bridges and visible counterexamples. Do not infer risk-category changes from benchmark zeros, low evasion, a new program or a single-model negative finding.",
+      "readerContext": "The control story defines actors, access and oversight before their failures; misuse introduces the defenders; accidents introduces independent recovery; acceleration distinguishes component help from a multi-generation loop.",
+      "whyHere": "Source and node changes invalidate dependency fingerprints even where text stays correct. C3a3 now contains both Haiku and structural-monitor counterevidence, so its combined context and evidence links were substantively read together.",
+      "primary": [
+        {
+          "source": "anthropic-haiku55",
+          "locator": "6.4.2.1–6.4.2.2",
+          "support": "Low joint evasion has several explanations."
+        },
+        {
+          "source": "structural-monitoring",
+          "locator": "Sections 4–5 and Appendix A",
+          "support": "Favorable in-scope rollback does not cover all operations."
+        },
+        {
+          "source": "agent-incident-response",
+          "locator": "Sections 3–5",
+          "support": "Recovery presumes functioning tools."
+        },
+        {
+          "source": "phantom-gains",
+          "locator": "Sections 3–6",
+          "support": "A bounded measurement audit does not settle broad RSI."
+        }
+      ]
+    },
+    "provenance": {
+      "mechanism": "Distinct publication, experiment and review dates prevent older laboratory evidence or a newly retrieved page from being presented as a new real-world event.",
+      "conditions": "October 12 Monday run, daily window September 28–October 12 and weekly/earlier-month backfill. Reused the existing draft based on fetched current origin/main; no due items before the edits.",
+      "counterexample": "A source-index scan or restored page access cannot support refreshed substantive review dates. Policy announcements and product descriptions cannot substitute for measured defensive outcomes.",
+      "evidence": "Added five primary sources and five cards, updated five bilingual nodes, and preserved thirty-three prior history translations by stable ID. Added Anthropic news and system-card indexes after they exposed omissions.",
+      "limits": "IMF regional-candidate original was unavailable; no claim or date refresh relies on the search snippet. Weekly abstract-only screens and developer reports are explicitly distinguished from full-method review or independent replication.",
+      "mitigation": "Record original sections, excluded populations, before/after reasoning and unresolved limits. Keep prior records, source dates, edge dates, categories and topology intact; check structure and build before updating the draft.",
+      "readerContext": "The history labels October reports and July–August backfill separately. Both languages describe defensive improvements together with remaining constraints instead of implying a universal safety result.",
+      "whyHere": "Metadata and the watchlist represent the actual scope of the latest review. The draft proposal remains for human review without automatic merge or deployment.",
+      "primary": [
+        {
+          "source": "anthropic-cyber-verification",
+          "locator": "Publication header and access evaluation",
+          "support": "October developer program with limited measurement."
+        },
+        {
+          "source": "agent-incident-response",
+          "locator": "Proceedings header and paper methods",
+          "support": "Earlier research with July proceedings, not a new October incident."
+        },
+        {
+          "source": "phantom-gains",
+          "locator": "Version metadata and limitations",
+          "support": "August preprint and bounded criticism."
+        }
+      ]
+    }
+  },
+  "entries": {
+    "source:anthropic-cyber-verification": {
+      "hash": "f4b6606dc262643549a915529ac8b7a81ca0a62b3feed613f2822e853c1642e5",
+      "assessment": "cyber"
+    },
+    "source:anthropic-haiku55": {
+      "hash": "d2dfc73eb710aa3e70da6109896b1197d909723ed3c1404ff79eb96c864a21a7",
+      "assessment": "haiku"
+    },
+    "source:structural-monitoring": {
+      "hash": "3ece0f97558a5d6f1ae366c16845dcdb47f653b0796b498dd25a62423281c498",
+      "assessment": "structural"
+    },
+    "source:agent-incident-response": {
+      "hash": "2109f18a22889fc161ebeaf65e47e69ff84b9dc0b79422f6fc5db4043e8600ca",
+      "assessment": "recovery"
+    },
+    "source:phantom-gains": {
+      "hash": "184e37103f7128a7be05167c0103b79dc1e5869139893a4a30ec80e8d7bac4f1",
+      "assessment": "measurement"
+    },
+    "research:cyber-access-blocking": {
+      "hash": "42c28ecff6594d9728c558af25b6f2d6ed63c7248cf6de591a0faa51d11234f5",
+      "assessment": "cyber"
+    },
+    "research:haiku55-monitorability": {
+      "hash": "8c871b4bf70def12ee9ebddf2a60746ca484681927e1594ef2f135a2e18a1f51",
+      "assessment": "haiku"
+    },
+    "research:structural-monitor-rollback": {
+      "hash": "ff8dacd5589db3475cd1ec2c0d8eaa8e63efab86e9fa643598bbb9ef36c47ecf",
+      "assessment": "structural"
+    },
+    "research:agent-recovery-limits": {
+      "hash": "9302004a2a26dfe1bc6840e8e4c87d26480fc2cf9ede160f4c4cba85b3050f88",
+      "assessment": "recovery"
+    },
+    "research:self-training-null-audit": {
+      "hash": "0a9264c04ba3c514af8a08e5d5698cb9108be70170a64ccf95d7bbf39d8ecf0a",
+      "assessment": "measurement"
+    },
+    "node:A3": {
+      "hash": "d62013e13b6e0a5f06635cb4c4ec602c23983d361ae0096e9b018506c8c1fadc",
+      "assessment": "recovery"
+    },
+    "node:C3a3": {
+      "hash": "830dbcbb554db34b4aeba2c582f043c28458cec8e30f90e6680d4470f064f2a6",
+      "assessment": "context"
+    },
+    "node:C3b": {
+      "hash": "ea409f4b6a875e9fff1d71f80b843611c32339b26953fd8036b7e06dbf5ac1ec",
+      "assessment": "recovery"
+    },
+    "node:M3": {
+      "hash": "f26a2eb02974886c382caa4ede480e2b8e9d2e64159c87f6ed1a899aec0d4644",
+      "assessment": "cyber"
+    },
+    "node:R3": {
+      "hash": "00ac15182b050e63b7c377de097bddaf817c82f11b5d9ea39f10498efa9cec3b",
+      "assessment": "measurement"
+    },
+    "edge:M3-H": {
+      "hash": "c35d624535602f2ab66326f7a7fe7bab04f34a56bd6f2eda6bbc76ccce5c3b1a",
+      "assessment": "cyber"
+    },
+    "edge:R2-R3": {
+      "hash": "29bd4078c46a82953808d93dcb91570f18298cfaf5935fad463d00defc2529f7",
+      "assessment": "measurement"
+    },
+    "edge:R3-R2": {
+      "hash": "f520d13e7e7c446e420bec46ecc4fcac172be924011e49cef1e08729e28d4854",
+      "assessment": "measurement"
+    },
+    "edge:A2-A3": {
+      "hash": "032883cbdc3827d9e85fcd570dac712d1e5f8b1c74f66593b00ff0b30cfcbb5b",
+      "assessment": "recovery"
+    },
+    "edge:A3-H": {
+      "hash": "8d4aa449e66276b6208eed7a3cb9ba4f8be711828ee9249c363d21a76c98f1c6",
+      "assessment": "recovery"
+    },
+    "graph:misuse": {
+      "hash": "e2bd2558d875ea1baaf913f6c5ac74ade16084f76c7a907ae543e2e052602052",
+      "assessment": "cyber"
+    },
+    "graph:acceleration": {
+      "hash": "aa99753a63f36e52dd6cf9f47799cb2fe854d966b27ad687c97d8d98f6a6b7e0",
+      "assessment": "measurement"
+    },
+    "graph:oversight": {
+      "hash": "4873bbdc09cc50c222d9dbe5c47fb3eef21eafadae99ca0b9240496c8a184087",
+      "assessment": "recovery"
+    },
+    "graph:evaluation": {
+      "hash": "99361ab5e5cc065cb8c835a91aabf149d8cba98260fc69c869392cfe7f2d4db0",
+      "assessment": "context"
+    },
+    "graph:accidents": {
+      "hash": "d41ca94c660973eb5783643d1f6ad5f1611fa9b74ca59206b484908c1543ba38",
+      "assessment": "recovery"
+    },
+    "graph:development-paths": {
+      "hash": "3fe91b8740a506b9bb2e91e564487a2f93ce894c8d20e10c5c52aef489c9262e",
+      "assessment": "measurement"
+    },
+    "route:misuse": {
+      "hash": "4ffbbbaf12dbeb31f5ed68088a9086d43adeba73c6e38c1bdcfda22dabb007a9",
+      "assessment": "cyber"
+    },
+    "route:accidents": {
+      "hash": "515d585529dddc4dbbeb0c62453ca1aa11c74f5a3b78a185c2dc47a82d952b85",
+      "assessment": "recovery"
+    },
+    "route:acceleration": {
+      "hash": "d99e7b8987892c609c387359c73c178b2b8e4c8af6c8afec3a56fcf15731cc7c",
+      "assessment": "measurement"
+    },
+    "current:misuse": {
+      "hash": "aa9bcf0b1a477ca2eabc9584cc658c0250089020aa273ca2ee334e4714544b6b",
+      "assessment": "cyber"
+    },
+    "current:accidents": {
+      "hash": "f9e5eb8798fe8ffad9315ee4ced04bca706396ddfc14bb4635eeb2fc50d38aa9",
+      "assessment": "recovery"
+    },
+    "evidence:C3a3": {
+      "hash": "7d49af2808c53d6a16d1ee488e03b242c3ab51ca3f1862de1e984f1b0c9e1378",
+      "assessment": "context"
+    },
+    "evidence:C3b": {
+      "hash": "ccd1122678b05ad7f324cc9b17b918237b7a96e79f49258d47c716e5c081e3d4",
+      "assessment": "recovery"
+    },
+    "news:research-contribution": {
+      "hash": "38ea0cb5dc5b1d569da30dd4dc43a699f5808cf07e7acedf28f5e3b9b0fadb6c",
+      "assessment": "measurement"
+    },
+    "story:control": {
+      "hash": "97ca9dbefc62e63d35089652e6b6795301ba163128fd0d8daf0433b1bd2b05ef",
+      "assessment": "context"
+    },
+    "story:misuse": {
+      "hash": "3049ca8d8af468a773000f1658e8d300c59a3fd253ac4af761755e5353a749b7",
+      "assessment": "cyber"
+    },
+    "story:accidents": {
+      "hash": "b07ca42ddd3c835e05126fdff7cf6676d4013de616208e5005d6f2b51bb4aef9",
+      "assessment": "recovery"
+    },
+    "story:acceleration": {
+      "hash": "7ee8caeec37c14de8dd43b2e7b405e974a0d50623d608fc3881e16f0da1fd89e",
+      "assessment": "measurement"
+    },
+    "watch:anthropic": {
+      "hash": "1c191c894ed5961a756e9a8e526ae366213ef5a6143a5cba34132d8060c13222",
+      "assessment": "provenance"
+    },
+    "metadata:map": {
+      "hash": "5eb362619a8ad3578f627c5e65291e777996efb8387c85438752d6c56b72af67",
+      "assessment": "provenance"
+    },
+    "history:changes": {
+      "hash": "b2a2df09bba68122d598b50e59b1a76b93a9da35f763d06de0858c0236b96542",
+      "assessment": "provenance"
+    },
+    "inventory:current": {
+      "hash": "94a684819eb270491b150ffdb07076b04cf54c89c1f8c64924df1beb608dfb6e",
+      "assessment": "provenance"
+    }
+  }
+}

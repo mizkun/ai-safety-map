@@ -1,0 +1,385 @@
+{
+  "id": "2026-10-23-monitoring-and-proof-boundaries",
+  "version": 2,
+  "date": "2026-10-23",
+  "reviewer": "Codex (primary-source and bilingual editorial review; not independent expert approval)",
+  "decision": "reviewed",
+  "assessments": {
+    "monitoring": {
+      "mechanism": "Oversight can miss actions because they never reach the monitor, because context is misrepresented, or because a later response fails. Eligibility, processing and detection are separate quantities.",
+      "conditions": "Read METR’s original October 22 summary and footnotes. July 21–August 11 pilot with code/configuration access and staff interviews; primarily the system on or before July 21. Public information is redacted and partial.",
+      "counterexample": "Eligible traffic may fail to reach monitoring, while a weak monitor can coexist with another effective permission boundary. A historical coverage gap does not show that the current deployment remains vulnerable.",
+      "evidence": "The report identifies compaction-related coverage gaps and possible interference routes. It does not estimate spontaneous exploit frequency. OpenAI’s later fix claims were not reassessed by METR.",
+      "limits": "Only selected internal traffic was quantified, not company-wide inference. Some exploit possibilities were not validated. A high-access pilot with publication restrictions is not a complete current independent audit.",
+      "mitigation": "Retain coverage accounting, context integrity, separation of agent and monitor, and timely response. The paired blocking experiment supplies bounded measured improvements, not proof that all oversight is now safe.",
+      "readerContext": "C3a3 first defines oversight and separates ability from propensity. The new paragraph identifies the historical period and unverified post-fix state; its summary also recognizes improvements in selected tests.",
+      "whyHere": "Add the audit and monitor experiment at C3a3, retaining limited/tested status. Do not infer persistent loss C4, global harm H, or general alignment C1 from coverage weaknesses.",
+      "primary": [
+        {
+          "source": "metr-openai-monitoring-audit",
+          "locator": "Findings and footnotes 3–6; post-exercise statement",
+          "support": "Historical coverage, independence restrictions and absence of verified post-fix results."
+        },
+        {
+          "source": "auto-mode-red-team",
+          "locator": "Sections 3–5",
+          "support": "Instructed attacks and scoped defensive improvements."
+        }
+      ]
+    },
+    "blocking": {
+      "mechanism": "A blocking monitor can prevent operations before execution, but its coverage and interpretation of records affect what it can stop. Considering context across sessions can improve detection while increasing cost.",
+      "conditions": "Read paper v2 sections 3–5 and evaluation appendices. Main attacker Opus 5 is instructed and usually given monitor internals. Compare Sonnet 5 Auto Mode, approximated GPT-5.6 Luna Guardian and Opus 4.8 variants; distinguish arenas from LLM simulations.",
+      "counterexample": "An agent may fail a side task because it cannot execute it, while the monitor can also miss attacks. Some improved variants retain substantial cross-context failures. A trusted monitor assumption excludes collusion.",
+      "evidence": "Figure 3 aggregates four attack categories with at least 60 rollouts per cell. The enhanced variant reduces aggregate attack success by over 50 percentage points. Benign replay uses 4,000 actions with under 1% blocked by each monitor.",
+      "limits": "Comparisons can change both models and multiple settings. They do not isolate every intervention. Latency is token-derived, not measured end-to-end deployment latency. Sandboxing was not red-teamed and synthetic harm is not actual exfiltration.",
+      "mitigation": "Add the result as a measured defensive improvement under C3a3 countermeasures, retaining cost, remaining failures and deployment-validation requirements. Do not publish exploit recipes.",
+      "readerContext": "The explanation describes protecting records and checking edits and cross-session context before describing test results. The card names the attacker, monitoring variants, simulation distinction and denominators.",
+      "whyHere": "The September 17/27 paper surfaced through an October 22 blog. Preserve those dates separately; this is new map coverage of a prior experiment, not evidence that a new incident occurred on October 22.",
+      "primary": [
+        {
+          "source": "auto-mode-red-team",
+          "locator": "Sections 3–5; Figures 3 and 8; Appendices E–F",
+          "support": "Evaluation conditions, aggregate improvement, benign replay and remaining limitations."
+        }
+      ]
+    },
+    "proofs": {
+      "mechanism": "Machine-checked proofs can rule out specified failures for a particular program under explicit assumptions. Their guarantee is about the theorem and model, not unrestricted real-world security.",
+      "conditions": "Read the original report, six-page appendix and pinned OSS Verify README at 8f5f46768858af236a4270f9628e6beed9aa0e72. RISC-V/Linux binaries, selected entry points, memory/input constraints and trusted Rocq checking; patches are human-audited.",
+      "counterexample": "A proved entry point can coexist with an uncovered library path, an inaccurate machine model or nonterminating execution. Correctness of a narrow property does not make model objectives aligned.",
+      "evidence": "Separate the report’s 239 entry points/123 libraries from the public 60/25 subset. The published agreement statements exclude neither all logical bugs nor nontermination. Proofs were not rerun in this editorial check.",
+      "limits": "Trust remains in specifications, machine semantics and the checker. A separate small-task comparison does not establish the full campaign model mix. No actual harm-reduction rate or full library correctness is measured.",
+      "mitigation": "Use scoped verification alongside patch review, deployment checks and other defenses. Read the actual theorem before claiming protection; do not substitute successful proof checking for specification validation.",
+      "readerContext": "M3 explains what the dedicated checker verifies and why the environment and property matter. The card distinguishes reported results from publicly inspectable artifacts, without promising eventual completion.",
+      "whyHere": "Add a prevention technique at M3 while retaining the broad defensive-failure hypothesis and M3-H conditions. Do not use this software result to update R4-C1 or declare alignment solved.",
+      "primary": [
+        {
+          "source": "anthropic-formal-verification",
+          "locator": "Turning tests into proofs; Limitations; appendix pp. 1–2",
+          "support": "Scoped software-proof campaign and trusted assumptions."
+        },
+        {
+          "source": "oss-verify-proof-release",
+          "locator": "README: What is proved; The theorem, in words; What a proof does not say",
+          "support": "Public subset, binary/model scope and explicit absence of termination proofs."
+        }
+      ]
+    },
+    "capability_due": {
+      "mechanism": "Information assistance and tested cyber task performance can enable action only with user skills, target access and other execution conditions. Defenses and physical prerequisites remain independent constraints.",
+      "conditions": "Reread October GPT-6 bio/cyber sections, Argon sections 3.2.1 and 3.2.2.3–4, and NIST GLM-5.3 methodological notes. Check model versions, safeguard removal, expert/web comparisons, prepared tasks and unintended solves.",
+      "counterexample": "Information quality can improve without physical execution. Success in a prepared cyber range need not transfer to an unknown defended target. Newer GPT-6 versions do not uniformly improve cyber scores.",
+      "evidence": "Retain M2b1 limited/tested and M2c1 observed. Sol Critical results do not stand for separate Luna Critical testing. Argon’s twelve solves include two unintended solutions; expert information comparisons are not ordinary-user harm rates.",
+      "limits": "Developer threshold names are not a common cross-company scale. These results do not establish generalized destructive capacity, target access, failed defenses or global harm. No material correction was verified in the bounded search.",
+      "mitigation": "Keep M2b2 physical prerequisites, M2c2 access and M3 defensive outcomes distinct. New code-verification evidence complements cyber capability evidence without changing its denominator.",
+      "readerContext": "Read both languages’ definitions, parallel conditions, current evidence and limitations. The existing text already explains why information, prepared success and realized harm differ.",
+      "whyHere": "These nodes reached their seven-day review date. Renew only their node dates and M2b1 evidence date after substantive original-source rechecking; preserve wording and classifications.",
+      "primary": [
+        {
+          "source": "openai-gpt6-october",
+          "locator": "Sections 8.1.1–8.1.2 and introduction",
+          "support": "Model/version distinctions and threshold/evaluation limits."
+        },
+        {
+          "source": "gemini-argon-report",
+          "locator": "Sections 3.2.1 and 3.2.2.3–3.2.2.4",
+          "support": "Information comparisons, physical constraints, prepared cyber tasks and unintended solutions."
+        },
+        {
+          "source": "nist-glm53",
+          "locator": "Methodological Notes",
+          "support": "Benchmark design and comparison limits."
+        }
+      ]
+    },
+    "rd_due": {
+      "mechanism": "Improving a task accelerates the full process only when it relieves a real bottleneck without offsetting verification or resource costs. Feedback also needs the new model to help the next development cycle.",
+      "conditions": "Reread METR’s Opus 5.5 evaluation and Argon sections 3.4.2.1–3.4.2.3. METR has bounded task access and a separate private estimate. Google uses its GCI series, an April breakpoint, internal workflow measurements and staff input.",
+      "counterexample": "More AI-written code can coexist with an unchanged capability trend. Failure to find a significant slope change does not prove AI has no benefit, and a local proof or research result does not measure all-inclusive AI-development speed.",
+      "evidence": "Retain R2 limited/indirect. METR’s separate overall estimate lacks a stated period and public supporting details. Google reports no statistically significant slope change for the selected series while components are increasingly automated.",
+      "limits": "Do not generalize one company’s series to all labs or all periods, treat self-reported output as causal acceleration, or turn the already-reviewed two-round MASS result into unlimited improvement.",
+      "mitigation": "Keep full-process time, cost, verification and human intervention as requirements. Read R1-R2, R2-R3 and R3-R2 in both languages; retain their original dates and additional conditions.",
+      "readerContext": "R2 starts with the entire development process before discussing component metrics. Both languages preserve the distinction between assistance, measured trend and feedback.",
+      "whyHere": "R2 is due today. Renew its node and evidence dates after rechecking originals, without changing classification or claiming every older source was re-audited.",
+      "primary": [
+        {
+          "source": "metr-opus55",
+          "locator": "Summary of evidence and conclusions A/B",
+          "support": "Task assessment, judgment limitations and uncertainty in the separate private acceleration estimate."
+        },
+        {
+          "source": "gemini-argon-report",
+          "locator": "Sections 3.4.2.1–3.4.2.3, pp. 74–77",
+          "support": "Selected capability trends, confidence intervals and continued human involvement."
+        }
+      ]
+    },
+    "safety_due": {
+      "mechanism": "AI can help find and mitigate specific safety failures, but the evaluation target and grader determine what improvement means. Better scores need independent checks and persistence in use.",
+      "conditions": "Reread the automated-alignment original’s held-out tests and limitations, and auditor-training v1 sections 2–4 and limitations. Prepared behaviors, selected target/scaffold transfer and AI judges bound the findings.",
+      "counterexample": "Rewarding concerning findings can induce unsupported accusations. Performance on a composite need not improve every component, and transfer to selected planted targets does not cover every unknown natural failure.",
+      "evidence": "Retain R4 limited/tested and its existing explanatory text. The arXiv version page still lists v1. The direct alignment experiment and trained-auditor study support bounded improvement, not a solved general alignment problem.",
+      "limits": "No general accident reduction or persistence through arbitrary later training is established. The historic 2023–24 control-protocol safeguard box retains its own scope and date; it was not newly replicated here.",
+      "mitigation": "Preserve independent validation, researcher/evaluator separation and operational testing. Software proofs at M3 and monitor hardening at C3a3 do not alone validate R4-C1.",
+      "readerContext": "Both language editions introduce what safety research does and explain the difference between label consistency, valid findings and preventing harm. Current and historical claims remain dated separately.",
+      "whyHere": "R4 reached its review date. Renew only its node/evidence dates; keep the R0-R4 and R4-C1 conditions, historical source dates and safeguard date unchanged.",
+      "primary": [
+        {
+          "source": "automated-alignment",
+          "locator": "Held-out evaluations; Are we measuring the right things?",
+          "support": "Bounded safety improvement and unmeasured capabilities/persistence limits."
+        },
+        {
+          "source": "auditor-training",
+          "locator": "Sections 2–4 and Limitations",
+          "support": "Prepared targets, transfer and AI-grader limitations."
+        }
+      ]
+    },
+    "dependencies": {
+      "mechanism": "Local evidence enters a conditional network; capability, access, missed oversight, persistent loss, defensive failure and widespread harm remain distinct. Graph decomposition is not a compulsory temporal sequence.",
+      "conditions": "Read six affected edges, eight graphs, four routes, three stories, four news contexts, misuse focus and R4 safeguard in both languages. Check adjacent node conditions and new source/card provenance against each summary.",
+      "counterexample": "A monitor can improve while another gap persists; a valid software proof can leave other paths unprotected; a useful research task can leave overall development speed unchanged.",
+      "evidence": "The additions support their local C3a3/M3 statements. Due-node rechecks retain scoped classifications. No new evidence establishes the joint M3-H connection, recursive unlimited acceleration or a general alignment solution.",
+      "limits": "Dependency review is not a fresh scientific audit of every older citation. Keep unrelated node/source/edge dates, summaries, classifications, UI and topology unchanged.",
+      "mitigation": "Keep explicit parallel prerequisites, alternate safeguards, verification costs and recovery options. Retain the distinct dated evidence in old news examples and safeguard summaries.",
+      "readerContext": "Tours first explain the scenario, then conditions and consequences. Japanese and English preserve what each metric measures and why each topic appears, including routes that reuse R4 in the work map.",
+      "whyHere": "Reference fingerprints change when a node is reviewed or gains sources. Read their meaning before renewing the structured review coverage; do not rewrite unaffected content just to match the new date.",
+      "primary": [
+        {
+          "source": "auto-mode-red-team",
+          "locator": "Sections 3–5",
+          "support": "Defense improvements are scoped to tested monitors and adversarial conditions."
+        },
+        {
+          "source": "oss-verify-proof-release",
+          "locator": "README: What a proof does not say",
+          "support": "A scoped proof does not establish general correctness."
+        },
+        {
+          "source": "gemini-argon-report",
+          "locator": "Sections 3.2 and 3.4.2",
+          "support": "Capability and component automation are distinct from downstream consequences."
+        }
+      ]
+    },
+    "publication": {
+      "mechanism": "A dated review and explicit version record distinguish publication, experiment period and editorial checking. Preserving prior entries prevents a new review from overwriting earlier evidence history.",
+      "conditions": "Inspect nineteen daily starting URLs for October 9–23 and deduplicate against draft head 138210bd. Follow new leads to originals and compare version/disclosure details; retain prior documented retrieval gaps.",
+      "counterexample": "A new index date, governance announcement or forthcoming research invitation is not a new measured capability or defensive effect. Public proof artifacts do not mean this reviewer reran them.",
+      "evidence": "Add four primary-source entries and three research cards, update two bilingual explanations and one evidence summary, and substantively recheck four due nodes. Preserve all forty-two previous history entries by stable ID.",
+      "limits": "No independent replication changing the conclusions was verified in the bounded search. Apollo’s qualitative pilot is corroboration, not a replication or a post-fix detection rate. No complete literature coverage is claimed.",
+      "mitigation": "Record rejected leads, historical periods and public evidence limits. Run required checks and build, maintain the existing draft and require human review before merging.",
+      "readerContext": "The bilingual history explains what was absent, what changed and why. The new card/source fields separate scope, methods, results, uncertainty and human involvement.",
+      "whyHere": "Cover the new inventory, history and map asOf without blanket date updates. The automation authorizes a proposal, not deployment or another task.",
+      "primary": [
+        {
+          "source": "metr-openai-monitoring-audit",
+          "locator": "Dated original and disclosure footnotes",
+          "support": "Publication date versus historical study and current-state uncertainty."
+        },
+        {
+          "source": "auto-mode-red-team",
+          "locator": "Version metadata and sections 3–5",
+          "support": "September publication/revision versus October author explanation."
+        },
+        {
+          "source": "oss-verify-proof-release",
+          "locator": "Pinned release README",
+          "support": "Public artifact scope distinct from the reported full campaign."
+        }
+      ]
+    }
+  },
+  "entries": {
+    "source:metr-openai-monitoring-audit": {
+      "hash": "a635be5e4cee3a8d129681e848f0e715565ecc13c34aa58d0bac8b4cc2b17b45",
+      "assessment": "monitoring"
+    },
+    "source:auto-mode-red-team": {
+      "hash": "9753c9c0a6f87d6528dc49184e2e96c317169905239690161dd07333c4032a29",
+      "assessment": "blocking"
+    },
+    "source:anthropic-formal-verification": {
+      "hash": "1578b8139eb9940770823f123aea581005bc4cd4e1e3005e87c713569181f83c",
+      "assessment": "proofs"
+    },
+    "source:oss-verify-proof-release": {
+      "hash": "e5a0cb37ea5a281ec2ef4e33eb666d8ef57753e6292dd7e2bc051dd96bc1b587",
+      "assessment": "proofs"
+    },
+    "research:internal-monitoring-coverage-audit": {
+      "hash": "8c91e48f46a42d8aeabaa52f9e4acbad02fe421c6a35cb9875d2465accaf7262",
+      "assessment": "monitoring"
+    },
+    "research:blocking-monitor-hardening": {
+      "hash": "3085000e9878b497ef4692c181aec820a57a81ff5d7dbe8be8db6de6fe566534",
+      "assessment": "blocking"
+    },
+    "research:checked-software-proofs": {
+      "hash": "a00bc6936e4ee3f03cbe98f5de9ec0dda0582e0a3f75722f02b6b779ae17fd45",
+      "assessment": "proofs"
+    },
+    "node:C3a3": {
+      "hash": "18699b57575d4e12c8cb1fdc0539aada665b7dbf11dd01587896535cbd33585a",
+      "assessment": "monitoring"
+    },
+    "node:M2b1": {
+      "hash": "81616d646eb9f3206e7debb9c7c781ec1db43c692d69faf71993a4cd9bba74be",
+      "assessment": "capability_due"
+    },
+    "node:M2c1": {
+      "hash": "f8c18f113fd2c5960c4f27ddd7877d88aa9ce969ba6fb32c1e456a2cce3ab103",
+      "assessment": "capability_due"
+    },
+    "node:M3": {
+      "hash": "23f961cf1c7ac9993e7ddf4a22085dde370bf763996b4eeeac0f410685e37444",
+      "assessment": "proofs"
+    },
+    "node:R2": {
+      "hash": "736fb3871f3641af42633caf90b1e76de3e379eeaa62413060fac5f2727bf32b",
+      "assessment": "rd_due"
+    },
+    "node:R4": {
+      "hash": "428c976a7795a68c140ecab72fea564fdbf71804a805b366fab57382f220fe44",
+      "assessment": "safety_due"
+    },
+    "edge:M3-H": {
+      "hash": "08b32714907960d0f48bb0083d044e84586987c7a5ce4ac3f3a3617c1b461b9b",
+      "assessment": "dependencies"
+    },
+    "edge:R1-R2": {
+      "hash": "7f65f649cdd4c566a0ef4b516d2a4156a3f434f6d70f6cfd89551f33f5c479f0",
+      "assessment": "dependencies"
+    },
+    "edge:R2-R3": {
+      "hash": "970a93806fd500c5bda970b7d3405cfcb562e49b88204246a4a9837353b04c41",
+      "assessment": "dependencies"
+    },
+    "edge:R3-R2": {
+      "hash": "51a22ee380c34806f4167bf7d21b2d36500e39669422bb3e72c48995df8984df",
+      "assessment": "dependencies"
+    },
+    "edge:R4-C1": {
+      "hash": "d7818f64f9924de630a6f4f1aed4493fc68b381561f8e1e5005bde6e68f0521e",
+      "assessment": "dependencies"
+    },
+    "edge:R0-R4": {
+      "hash": "348a38602007f24c9f730f5087aa9b9e66535ed64a18189158b99e29fa7f2701",
+      "assessment": "dependencies"
+    },
+    "graph:control": {
+      "hash": "39f82a4e08d06084e357744cdc99549559b531faa990cf1d93db0a3928b38ae8",
+      "assessment": "dependencies"
+    },
+    "graph:misuse": {
+      "hash": "b061454aea413bd619f5ad2c2d0b4fdc9e769b2bbe7a2aaf7f8cf02b2a60f2e2",
+      "assessment": "dependencies"
+    },
+    "graph:acceleration": {
+      "hash": "f3888409dd096a1a38b1ed19954c01ab1b9bc258060bee611439db94aeda2c4e",
+      "assessment": "dependencies"
+    },
+    "graph:evaluation": {
+      "hash": "cb72cc795251d35f82d89de76bf7536cd5a2435e0a6af83a46b6f783e55c8df3",
+      "assessment": "dependencies"
+    },
+    "graph:cyber-conditions": {
+      "hash": "937f4e1a296f7e06180a176fd6cc215a0784b37e42b1c7341728b482aa44b5d2",
+      "assessment": "dependencies"
+    },
+    "graph:bio-conditions": {
+      "hash": "781491b5e02ace1445806eaaed6acac1590f96e6b385d49bde5451b080a34fb6",
+      "assessment": "dependencies"
+    },
+    "graph:work": {
+      "hash": "96ab27af6245ed823bceac8b56fa8fb2fabda86f4f5114315a7009cee70a3b68",
+      "assessment": "dependencies"
+    },
+    "graph:research-cycle": {
+      "hash": "05bf47d7f90c7923528f5b15bd86fb31845954690e4a91c624d850808dc24543",
+      "assessment": "dependencies"
+    },
+    "route:control": {
+      "hash": "efa3183a30eb594e3fad132c76214e0f3add27ff672812fb07fbdc1415120cc2",
+      "assessment": "dependencies"
+    },
+    "route:misuse": {
+      "hash": "65cae025413ef9f60ee0a46caebb488d663d38d11125fe436cd0abda64059b11",
+      "assessment": "dependencies"
+    },
+    "route:acceleration": {
+      "hash": "8bcb6c02f8f06b0cb3962c00f93f4e0d27d9c36671833c7f3dc408f1906af713",
+      "assessment": "dependencies"
+    },
+    "route:work": {
+      "hash": "60bd1e79e6de5d036cc31eb5ed9259e60d9d910a0207fce0f88c9dd9b9215114",
+      "assessment": "dependencies"
+    },
+    "current:misuse": {
+      "hash": "89d4d0494fecd6a7d5d483aab5f79eb7a1912989bebd0304947ffd18ced17738",
+      "assessment": "dependencies"
+    },
+    "safeguard:R4": {
+      "hash": "831bb5b147abec36a7168b2186fd64b5f39607c487f3ba9d1d5b6794bdf6753f",
+      "assessment": "dependencies"
+    },
+    "evidence:C3a3": {
+      "hash": "1ee14ed6a79df110d7e04c37f7a9480c6d3cd415211476a73eac575b50ee284e",
+      "assessment": "monitoring"
+    },
+    "evidence:M2b1": {
+      "hash": "30e6b76636b9d9e5313fcc499ca80f8b27b580c6f2f09b15eb994f7a2296b93d",
+      "assessment": "capability_due"
+    },
+    "evidence:R2": {
+      "hash": "bb5776c46f51a82257d377b2e31f5b0593d8af5c23687fbb4c7b092bf8ba1002",
+      "assessment": "rd_due"
+    },
+    "evidence:R4": {
+      "hash": "29593412f71ea4ec7727f272fec916a4aef314afd2d94e11c8a81e6e77c06794",
+      "assessment": "safety_due"
+    },
+    "news:recent-math": {
+      "hash": "af9f5bc08dbeb255ee97ce8441743fb4ec17698e1484e6e97667ad11ddaf4272",
+      "assessment": "dependencies"
+    },
+    "news:research-lab-september": {
+      "hash": "df3554c3395e4b2733cb93d5c2516feaac6f1a08bdb6186bae10a252c49ffccb",
+      "assessment": "dependencies"
+    },
+    "news:automated-safety": {
+      "hash": "7ccb6d55c741f36aa9384c89216a0a6c903360f96da879ba8fad064a97372677",
+      "assessment": "dependencies"
+    },
+    "news:research-contribution": {
+      "hash": "c6c514aed452f83c1da0f0441269497e4ea9119d3e13c338b69a613adba26dfa",
+      "assessment": "dependencies"
+    },
+    "story:control": {
+      "hash": "5992db70e73cf28e9d152cee9e02449929bb37a85a8fe604426921b047d5b7ca",
+      "assessment": "dependencies"
+    },
+    "story:misuse": {
+      "hash": "03c304d3cf5a7e01394693ab8470d7c499d79501d6b3e7489d31b8c7b075d733",
+      "assessment": "dependencies"
+    },
+    "story:acceleration": {
+      "hash": "37efd8b4f020b152224f051ebb4a1d6eb5c8d5e2d06e6d06edd3611c1aafcbec",
+      "assessment": "dependencies"
+    },
+    "metadata:map": {
+      "hash": "84dd231e424d6093554451a40bc6327e1c890154b331f1d40daff8e9e9077f0b",
+      "assessment": "publication"
+    },
+    "history:changes": {
+      "hash": "7aa0e2b37f695b90bbb83fcba2e12029a31149c357e9b2f204bcdb5bed50fd91",
+      "assessment": "publication"
+    },
+    "inventory:current": {
+      "hash": "b2475e15164ece4afa9993d0d6d88b0624f719b9c8fc547436fff1dfdc3aade1",
+      "assessment": "publication"
+    }
+  }
+}

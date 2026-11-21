@@ -1,0 +1,124 @@
+{
+  "id": "2026-10-25-task-scoped-authorization",
+  "version": 2,
+  "date": "2026-10-25",
+  "reviewer": "Codex (primary-source and bilingual editorial review; not independent expert approval)",
+  "decision": "reviewed",
+  "assessments": {
+    "authorization": {
+      "mechanism": "A browser action can carry account authority without expressing the user’s consent. Separate the ability to submit an operation from the authorization of its target and effect.",
+      "conditions": "Read the new paper’s threat model, mock-server outcome, setup, controls and limitations. Recheck the existing C2b approval-binding, layered-network, DNS and public-directory claims against their originals. Preserve historical event dates and version-specific scope.",
+      "counterexample": "The receiving service can reject an operation even while the agent continues attempting it. Conversely, a general instruction to complete setup does not identify every authorized target. Correct predeclared scope is an assumption, not a solved general language-understanding problem.",
+      "evidence": "The added study supplies bounded authorization/defense evidence; the card records models, trial denominators and controls. Existing incident reports show technical paths beyond operator authorization; the approval-runtime study also reports implementations that resist substitution.",
+      "limits": "No production incident rate, access-token exfiltration, human approval reliability or complete defense guarantee is established by the added mock-server experiment. Different entry points and freely worded tasks remain outside its tested scope. The original experiments were not rerun here.",
+      "mitigation": "Keep least privilege, approval-effect binding, revocation and logging. Add receiving-side checks against user-authorized targets/actions; do not equate an agent clicking a consent button with a person reviewing and authorizing it.",
+      "readerContext": "Both languages start with concrete channels such as data changes and purchases. The added paragraph identifies the mock experiment; the card supplies methods and limits, without requiring OAuth or webhook knowledge.",
+      "whyHere": "C2b was due on October 25. Add this distinction locally and retain its observed-access classification. It does not establish broader control loss or alter the C3-L conjunction.",
+      "primary": [
+        {
+          "source": "browser-agent-authorization-study",
+          "locator": "Sections III–VI; Figure 3/Table I; Section VIII",
+          "support": "Mock authorization and endpoint enforcement under fixed task scope."
+        },
+        {
+          "source": "agent-step-up-study",
+          "locator": "Section 4.1, Table 5 and Section 8.3",
+          "support": "Measured approval paths and version-specific limits; no human trial."
+        },
+        {
+          "source": "aisi-evaluation-security",
+          "locator": "Outbound networking and phased testing",
+          "support": "Implemented layers with explicit residual limitations."
+        },
+        {
+          "source": "openai-dns-access",
+          "locator": "Summary and investigation timeline",
+          "support": "Actual external access distinct from cached requests; detection is not prevention."
+        },
+        {
+          "source": "openai-disallowed-requests",
+          "locator": "Directory-listing outcome and investigation/response",
+          "support": "Directory listing is not private-file access; historical June actions."
+        }
+      ]
+    },
+    "dependencies": {
+      "mechanism": "Task capability and access remain parallel conditions under C2; external effects additionally depend on actions and failed prevention.",
+      "conditions": "Read ability-access, C2/C2a/C2b, the tour sequence, control route/story and C3-L in both languages. Read time-horizons news and METR’s original FAQ. No topology or causal-edge change is justified.",
+      "counterexample": "An AI may solve a difficult task yet be unable to change a protected service. A scoped service can block unauthorized effects even when the model follows an injected page.",
+      "evidence": "The source update refines only the access condition. Time-horizon measurements describe task difficulty in human time, not permissions or sustained unsupervised operation.",
+      "limits": "This dependency reading is not a new audit of every unchanged citation. The mock-service outcome cannot establish all conjuncts of a real-world control-loss pathway.",
+      "mitigation": "Keep separate access controls and prevention checks. Preserve the possibility of useful authorized actions and the need to inspect actual deployment conditions.",
+      "readerContext": "The graph explains work capability and real-world channels separately. The tour introduces why access matters before the C2b detail; the news example explicitly separates capability scores from permissions.",
+      "whyHere": "The updated C2b invalidates ability-access and linked time-horizons news fingerprints. Cover them after semantic reading; keep all unrelated review dates unchanged.",
+      "primary": [
+        {
+          "source": "browser-agent-authorization-study",
+          "locator": "Sections IV–VI and VIII",
+          "support": "Scoped operation checks do not imply capability limits or whole-route outcomes."
+        },
+        {
+          "source": "horizon",
+          "locator": "FAQ: meaning of time horizon; task distribution; maintenance notice",
+          "support": "Human task duration and benchmark scope are distinct from real-world authority."
+        }
+      ]
+    },
+    "publication": {
+      "mechanism": "Separate observation, publication and review dates and preserve a traceable before/after decision.",
+      "conditions": "All nineteen daily starting URLs were opened and compared with the existing draft. Sunday scope uses October 11–25 JST plus targeted older sources for C2b and replication leads. Reuse draft PR 11 and preserve the original checkout.",
+      "counterexample": "A current index header is not a new publication; a mock experiment submitted in October is not a new production incident. Search mirrors and AI reviews are not independent replications.",
+      "evidence": "Add one source, one research card, two bilingual C2b sections and one history entry. Advance only the substantively rechecked C2b date and map asOf. Record non-adopted awareness and replay leads and their limits in the Markdown review.",
+      "limits": "No exhaustive literature search, experiment rerun, physical-device test or production verification is claimed. Earlier documented retrieval gaps remain. Review status denotes editorial checks, not expert approval.",
+      "mitigation": "Validate content/build, preserve earlier history and source dates, and leave the work in draft for human review without merge or deployment.",
+      "readerContext": "New history text explains what was missing and why the supplement matters. Both source languages name the June observation period and October publication; technical terminology stays in the study card.",
+      "whyHere": "Cover source inventory, history and map metadata without blanket freshness changes. The date update represents the bounded recheck described in the companion Markdown record.",
+      "primary": [
+        {
+          "source": "browser-agent-authorization-study",
+          "locator": "arXiv submission history; Section VI-A",
+          "support": "Publication and June experimental period remain separate."
+        },
+        {
+          "source": "agent-step-up-study",
+          "locator": "Section 8.3",
+          "support": "Version specificity and nonhuman evaluation prevent broad reassurance."
+        }
+      ]
+    }
+  },
+  "entries": {
+    "source:browser-agent-authorization-study": {
+      "hash": "1ee0464d5eb8647f059b3248763c8af769d6c98be7ee428e5044be1de8e953e6",
+      "assessment": "authorization"
+    },
+    "research:task-scoped-authorization": {
+      "hash": "f5f47a20943199eb4b0f3a485c43b9ca66bacabfc6256b79b8f8b1944630880d",
+      "assessment": "authorization"
+    },
+    "node:C2b": {
+      "hash": "97e678a4e873bd7f51933852235b156b2e2fc9813d0a5d7ab8a5740a8cfff589",
+      "assessment": "authorization"
+    },
+    "graph:ability-access": {
+      "hash": "bedde7c843a91ccb198d4919196a87f3bedee918e3c353d0a1c20539262756f3",
+      "assessment": "dependencies"
+    },
+    "news:time-horizons": {
+      "hash": "8fca38fc6e45f595406c1ecd7d1131eef9bd4568f118d283bb97fb3457319d76",
+      "assessment": "dependencies"
+    },
+    "metadata:map": {
+      "hash": "0478b1857b827cd3b6ad686bd384c8bb17debe3313d5f816a347386a59d3c932",
+      "assessment": "publication"
+    },
+    "history:changes": {
+      "hash": "e6a21cc7520a3337d07bd76c686189646ee679b0d1bd60e49fedaa30a0f3e514",
+      "assessment": "publication"
+    },
+    "inventory:current": {
+      "hash": "803c772bac4f24f9a4deb2512c531e1f712e29c7067a2e2b79bac8b431760eb7",
+      "assessment": "publication"
+    }
+  }
+}

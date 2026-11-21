@@ -4,7 +4,8 @@
   "explanation": "D2.md",
   "sources": [
     "gradual",
-    "census-adoption"
+    "census-adoption",
+    "metacognitive-feedback"
   ],
   "questions": [],
   "related": [],
@@ -15,7 +16,7 @@
     "重要業務をAIなし、または別の仕組みで復旧できるか。"
   ],
   "review": {
-    "checkedAt": "2026-09-10",
+    "checkedAt": "2026-11-09",
     "intervalDays": 30,
     "reason": "経路を支える前提、反論、防壁の有効性に変化がないか確認するため。"
   },
@@ -25,7 +26,8 @@
   "status": "hypothesis",
   "research": [
     "gradual",
-    "adoption"
+    "adoption",
+    "metacognitive-feedback"
   ],
   "shortTitle": "人間の代替能力を失う"
 }

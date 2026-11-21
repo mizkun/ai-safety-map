@@ -5,7 +5,19 @@
   "sources": [
     "horizon",
     "formalization",
-    "openai-rd"
+    "openai-rd",
+    "openai-ironclad",
+    "openai-low-resource-code",
+    "reterm-recovery-training",
+    "reinbench-recovery",
+    "treasuryqa-bench",
+    "anthropic-fable52-system",
+    "anthropic-electronics-design",
+    "gemini-hydrogen-card",
+    "gemini-hydrogen-methods",
+    "gemini4-neon",
+    "gemini4-neon-methods",
+    "metr-q4-capabilities"
   ],
   "questions": [],
   "related": [],
@@ -14,7 +26,7 @@
     "benchmark"
   ],
   "review": {
-    "checkedAt": "2026-09-24",
+    "checkedAt": "2026-11-21",
     "intervalDays": 7,
     "reason": "能力・行動・対策の評価は短期間で変わり得るため。"
   },
@@ -25,7 +37,17 @@
   "research": [
     "horizon",
     "formalization",
-    "rd-use"
+    "rd-use",
+    "ironclad-workflow-evaluation",
+    "multilang-code-completion",
+    "terminal-error-recovery",
+    "local-error-recovery",
+    "scanned-record-workflow",
+    "fable52-workflow",
+    "electronics-human-build",
+    "hydrogen-workflow-scope",
+    "neon-workflow-scoring",
+    "metr-th2-horizons"
   ],
   "shortTitle": "一連の作業を完遂"
 }
