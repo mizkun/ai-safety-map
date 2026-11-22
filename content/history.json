@@ -1,5 +1,29 @@
 [
   {
+    "id": "evaluation-incidents-misuse-boundaries-20261122",
+    "date": "2026-11-22",
+    "nodes": [
+      "C2b",
+      "C3a3",
+      "L",
+      "C3b",
+      "M2b1",
+      "M3"
+    ],
+    "sources": [
+      "epoch-evaluation-contact",
+      "trajectory-argon-stress",
+      "trajectory-incident-response",
+      "gao-ai-planning-audit"
+    ],
+    "kind": "評価中の事故と悪用試験の限界を追記",
+    "title": "不正な行動、情報支援、働いた防壁を分ける",
+    "summary": "Epoch AIとTrajectory Labsの10月の事例、11月に一般公開されたGAOの春の試験を追加しました。",
+    "before": "公開モデルへの特殊な試験、実サイトへの接触、旧モデルの情報支援に関する今回の報告は未収録でした。",
+    "after": "6項目を日英で更新し、企業の反論、維持された通信遮断、人の介入と根拠の限界を併記。根拠の分類と因果関係の条件は維持しました。",
+    "reason": "11月22日の点検。不正アクセスの試みと機密情報の取得、おとり設定の変更と本当の隔離の失敗、情報提供と上乗せ効果や実害を区別するため。"
+  },
+  {
     "id": "capabilities-judgment-defenses-20261121",
     "date": "2026-11-21",
     "nodes": [

@@ -25,7 +25,8 @@
     "openai-peer-infrastructure-incident",
     "gemini-carbon-safety",
     "openai-gpt62-system",
-    "gemini-hydrogen-safety"
+    "gemini-hydrogen-safety",
+    "trajectory-argon-stress"
   ],
   "questions": [],
   "related": [],
@@ -37,7 +38,7 @@
     "scheming"
   ],
   "review": {
-    "checkedAt": "2026-11-20",
+    "checkedAt": "2026-11-22",
     "intervalDays": 7,
     "reason": "監督回避と、それを防ぐ手法の評価は変化が速いため。"
   },
@@ -63,7 +64,8 @@
     "peer-residue-infrastructure",
     "carbon-monitorability-scope",
     "gpt62-monitor-visibility",
-    "hydrogen-monitoring-scope"
+    "hydrogen-monitoring-scope",
+    "argon-safeguards-and-isolation"
   ],
   "shortTitle": "実行中の監督をすり抜ける"
 }

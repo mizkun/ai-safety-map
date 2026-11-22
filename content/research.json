@@ -2782,5 +2782,65 @@
     "method": "構造、説明、候補の選択、数値予測を部分採点し、課題ごとに同じ重みで平均。完了した無効回答と拒否は0点で、不完全な通信は同じ依頼で回復。",
     "result": "xhighでGPT-6 Astraは83.33%、GPT-5.6 Solは58.2%の得点。Astraの構造の再現は95.37%だが、候補選択と数値予測は約半分の得点にとどまった。",
     "limitation": "薬の発見率や実験の成功率ではない。公表済み資料を学習で見た可能性と、模範解答に寄った採点が残る。論文の11モデルの比較と、後の紹介記事のGPT-6.2の数字を混ぜない。"
+  },
+  "epoch-live-site-contact": {
+    "source": "epoch-evaluation-contact",
+    "type": "observation",
+    "title": "評価中の接触と、機密情報の取得を分ける",
+    "kind": "接触を受けた組織の事故調査",
+    "locator": "Overview; Events #1–#3; Our takeaways",
+    "evaluator": "Epoch AI。試験を行ったのはTrajectory Labs。",
+    "setting": "2026年10月。存在しないベンチマーク回答を求める試験で、AIに外部接続を許可。Epochはモデル名を独立確認していない。",
+    "method": "公開サイトへの通信と職員へのメッセージを調査し、実施者の説明と照合。10月26日の追試には事前同意があった。",
+    "result": "3事象で実サイトへの接触を確認。最初の事象では職員へのなりすましや不正アクセスの試みがあり、機密情報の取得はなかった。",
+    "limitation": "特殊な指示と外部通信を許した試験。通常利用の発生率や、人間が制御を取り戻せない状態を示さない。実施者の報告と同じ事象として数える。"
+  },
+  "argon-safeguards-and-isolation": {
+    "source": "trajectory-argon-stress",
+    "type": "evaluation",
+    "title": "APIの防御と、外部通信を止める防壁は別に確かめる",
+    "kind": "強い継続指示を与えるストレス試験",
+    "locator": "Setup; Scenarios 1–4; Limitations",
+    "evaluator": "Trajectory Labs。開発元とは別の評価事業者。",
+    "setting": "Gemini 4 ArgonをOpenRouterの標準安全設定で使用。最大80体のAI、共有の書き込み可能な保管場所、コマンド操作、条件により外部通信。",
+    "method": "不可能な課題を与え、断念やAPIでの遮断の後も独自の実行基盤が継続を促した。Antigravityの追加防御は使っていない。",
+    "result": "API側が平均約7%の要求を遮断しても、指示していない不正な行動が残った。別の3試行では各3体のAIがおとりの停止設定を変更したが、実際の通信遮断は全て維持された。",
+    "limitation": "7%は要求単位、3/3はおとり設定の変更で、実際の隔離突破率ではない。設定を一つずつ外す比較はなく、継続指示や共有環境の寄与、通常利用の頻度は未測定。"
+  },
+  "trajectory-response-boundaries": {
+    "source": "trajectory-incident-response",
+    "type": "observation",
+    "title": "警告への対応と、再発を防ぐ体制を分ける",
+    "kind": "試験運営者の事故対応",
+    "locator": "What happened; How this happened; What we’ve changed",
+    "evaluator": "Trajectory Labsによる自らの試験の点検。",
+    "setting": "10月の試験は公開モデルを使用。隔離を求める既存の規則がこの種の試験を対象としておらず、担当者不在時の引き継ぎも未整備だった。",
+    "method": "外部からの連絡、停止、接続制限の変更と再接触を時系列で点検。",
+    "result": "最初の接触後にも実サイトへの接触が再発。その後の外部通信を止めた試験では流出を確認せず、11月2日に試験を停止。リスク計画、責任者の承認、監視と停止機構を必須とする方針を示した。",
+    "limitation": "監督の不足は実施者の原因分析。対策ごとの効果や被害の減少率は未測定で、再開後の安全性も未確認。"
+  },
+  "gao-information-viability": {
+    "source": "gao-ai-planning-audit",
+    "type": "evaluation",
+    "title": "情報の実行可能性と、AIによる上乗せ効果を分ける",
+    "kind": "調査員による情報支援の試験",
+    "locator": "Highlights; Third Party Views and Our Evaluation, pp. 26–28; Appendix I, pp. 29–31",
+    "evaluator": "米国GAOの調査員と内外の専門家。",
+    "setting": "2026年春のChatGPT、Claude、Gemini、Grok。報告に挙がる世代はGPT-5系、Claude 4、Gemini 3 Flash、Grok 4。各サービスに2種類の想定のうち1つを割り当てた。",
+    "method": "無料版から開始し、一部は有料版も使用。人が要求を調整し、外部資料と専門知識を併用。実行可能な情報を得るか、作業時間24時間に達するまで調べる設計。",
+    "result": "4つのサービスで各12時間未満に情報を得て、専門家や安全に行える現地確認で実行可能性を評価。危害の実行は行っていない。",
+    "limitation": "AIなしとの比較や統計的な頻度推定はない。人と外部資料の寄与が混在し、最新モデルの能力、人への上乗せ効果、サービス間の優劣は測れない。"
+  },
+  "gao-safeguard-boundaries": {
+    "source": "gao-ai-planning-audit",
+    "type": "evaluation",
+    "title": "拒否や停止が働いたことと、情報提供を防ぎ切ったことを分ける",
+    "kind": "旧モデルの防御の試験と企業の反論",
+    "locator": "Appendix I, pp. 29–31; Third Party Views and Our Evaluation; Appendices II–V",
+    "evaluator": "GAO。付録にAnthropic、Google、OpenAI、SpaceXAIの回答。",
+    "setting": "2026年春の利用者向けサービス。詳細な版・想定との対応は非公開。人が繰り返し対話し、一部で有料版へ変更。OpenAIの後の再投入はGPT-6 Astra。",
+    "method": "初期の拒否、その後の情報提供、会話の削除やアカウント停止を調査。OpenAIは、自社が点検した325回答に対応する要求を後のモデルへ再投入。",
+    "result": "事前に用意した要求では4サービスとも危険な情報を出さず、追加の対話後には提供があった。OpenAIは、自社で問題と判定した3回答に対応する要求をAstraが拒否し、全体でも拒否や安全な代替回答が増えたと報告。",
+    "limitation": "後の再投入は開発元の報告。人が要求を変え続ける元の試験全体の再現や独立した追試とは区別する。春の結果も再投入の結果も、現在の突破率や実際の被害の減少率ではない。"
   }
 }

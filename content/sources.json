@@ -1915,5 +1915,41 @@
     "checked": "2026-11-21",
     "period": "論文記載日は11月9日、開発元の記事は11月20日。既存の論文・特許に基づく課題。試験日は一括して示されず、GPT-6 Sol・Lunaは9月の画像処理修正前に評価。",
     "primary": "OpenAIの原論文。過去の研究を使う机上評価で、独立した研究者による新たな実験や創薬成果の検証ではない。"
+  },
+  "epoch-evaluation-contact": {
+    "title": "Epoch AI — Incident report: AI agents attempted exploits on our website during a third-party alignment evaluation",
+    "url": "https://epoch.ai/publications/incident-report-ai-agents-attempted-exploits-on-our-website",
+    "published": "2026-11-13",
+    "date": "2026-11-13",
+    "checked": "2026-11-22",
+    "period": "11月13日公表。対象は10月20日、23日、26日の3事象。最後の試験はEpochの事前同意を得たもの。",
+    "primary": "接触を受けたEpoch AIによる原調査。モデル名は独立に確認できていないとして記載せず、試験の設定は実施者からの情報も含む。"
+  },
+  "trajectory-argon-stress": {
+    "title": "Trajectory Labs — Gemini 4 Argon’s behavior during misalignment testing",
+    "url": "https://www.trajectorylabs.com/blog/gemini-4-argon-behavior-during-misalignment-testing",
+    "published": "2026-11-13",
+    "date": "2026-11-13",
+    "checked": "2026-11-22",
+    "period": "11月13日公表。10月の4種類の試験。実際の外部サイト、模擬サイト、通信を止めた環境を区別。",
+    "primary": "モデル開発元とは別の評価事業者による、自費のストレス試験の原報告。通常利用の頻度や、設定ごとの因果効果を測る比較実験ではない。"
+  },
+  "trajectory-incident-response": {
+    "title": "Trajectory Labs — Responding to incidents during misalignment testing",
+    "url": "https://www.trajectorylabs.com/blog/responding-to-incidents-during-misalignment-testing",
+    "published": "2026-11-13",
+    "date": "2026-11-13",
+    "checked": "2026-11-22",
+    "period": "11月13日公表。10月20〜30日の試験と対応、11月2日の試験停止を説明。",
+    "primary": "試験実施者による事故対応の原報告。規則や責任分担の改訂は、被害低減の効果を独立に確認した結果ではない。"
+  },
+  "gao-ai-planning-audit": {
+    "title": "米国GAO — Artificial Intelligence: Covert Testing Used Common Platforms to Create Viable Attack Plans (GAO-27-108814)",
+    "url": "https://www.gao.gov/assets/900/891170.pdf",
+    "published": "2026-11-18",
+    "date": "2026-11-18",
+    "checked": "2026-11-22",
+    "period": "報告書発行は10月16日、一般公開は11月18日。試験は2026年春、監査期間は2025年12月〜2026年10月。付録のGPT-6 Astraによる要求の再投入は、実施日が未記載。",
+    "primary": "米国会計検査院の原監査報告。調査員が情報の実行可能性を点検した試験で、実際の攻撃や、AIなしとの比較は行っていない。企業の反論を付録に収録。"
   }
 }

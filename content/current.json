@@ -350,10 +350,11 @@
         "peer-residue-infrastructure",
         "carbon-monitorability-scope",
         "gpt62-monitor-visibility",
-        "hydrogen-monitoring-scope"
+        "hydrogen-monitoring-scope",
+        "argon-safeguards-and-isolation"
       ],
       "review": {
-        "checkedAt": "2026-11-20",
+        "checkedAt": "2026-11-22",
         "intervalDays": 7,
         "reason": "既存の根拠がカードの条件をどこまで直接確かめているかを分類しています。根拠の更新時に見直します。"
       }
@@ -374,10 +375,11 @@
         "incident-readiness-and-recovery",
         "monitoring-alert-to-intervention",
         "peer-residue-infrastructure",
-        "research-inference-stop"
+        "research-inference-stop",
+        "trajectory-response-boundaries"
       ],
       "review": {
-        "checkedAt": "2026-11-18",
+        "checkedAt": "2026-11-22",
         "intervalDays": 7,
         "reason": "既存の根拠がカードの条件をどこまで直接確かめているかを分類しています。根拠の更新時に見直します。"
       }
@@ -485,10 +487,11 @@
         "argon-bio-uplift",
         "reprobait-access-limits",
         "rosalind6-capability-boundaries",
-        "biobasics-evidence-interpretation"
+        "biobasics-evidence-interpretation",
+        "gao-information-viability"
       ],
       "review": {
-        "checkedAt": "2026-11-16",
+        "checkedAt": "2026-11-22",
         "intervalDays": 7,
         "reason": "既存の根拠がカードの条件をどこまで直接確かめているかを分類しています。根拠の更新時に見直します。"
       }

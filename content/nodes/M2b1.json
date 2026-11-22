@@ -12,7 +12,8 @@
     "reprobait-tool-reconstruction",
     "protein-filtering-durability",
     "openai-rosalind6",
-    "openai-biobasicsbench"
+    "openai-biobasicsbench",
+    "gao-ai-planning-audit"
   ],
   "questions": [],
   "related": [],
@@ -21,7 +22,7 @@
   ],
   "watch": [],
   "review": {
-    "checkedAt": "2026-11-16",
+    "checkedAt": "2026-11-22",
     "intervalDays": 7,
     "reason": "能力・行動・対策の評価は短期間で変わり得るため。"
   },
@@ -37,7 +38,8 @@
     "reprobait-access-limits",
     "protein-filtering-controls",
     "rosalind6-capability-boundaries",
-    "biobasics-evidence-interpretation"
+    "biobasics-evidence-interpretation",
+    "gao-information-viability"
   ],
   "shortTitle": "情報支援で実行の難所が減る"
 }
