@@ -198,7 +198,7 @@
         "external-service-boundary"
       ],
       "review": {
-        "checkedAt": "2026-11-16",
+        "checkedAt": "2026-11-23",
         "intervalDays": 7,
         "reason": "既存の根拠がカードの条件をどこまで直接確かめているかを分類しています。根拠の更新時に見直します。"
       }
@@ -300,10 +300,11 @@
         "stopped-alignment-evaluation",
         "hydrogen-safety-scope",
         "hydrogen-coding-replay",
-        "metr-research-judgment"
+        "metr-research-judgment",
+        "research-sabotage-audit"
       ],
       "review": {
-        "checkedAt": "2026-11-21",
+        "checkedAt": "2026-11-23",
         "intervalDays": 7,
         "reason": "既存の根拠がカードの条件をどこまで直接確かめているかを分類しています。根拠の更新時に見直します。"
       }
@@ -351,10 +352,12 @@
         "carbon-monitorability-scope",
         "gpt62-monitor-visibility",
         "hydrogen-monitoring-scope",
-        "argon-safeguards-and-isolation"
+        "argon-safeguards-and-isolation",
+        "covert-assistance-boundaries",
+        "covert-assistance-defenses"
       ],
       "review": {
-        "checkedAt": "2026-11-22",
+        "checkedAt": "2026-11-23",
         "intervalDays": 7,
         "reason": "既存の根拠がカードの条件をどこまで直接確かめているかを分類しています。根拠の更新時に見直します。"
       }
@@ -405,7 +408,7 @@
         "finance-monitor"
       ],
       "review": {
-        "checkedAt": "2026-11-16",
+        "checkedAt": "2026-11-23",
         "intervalDays": 7,
         "reason": "既存の根拠がカードの条件をどこまで直接確かめているかを分類しています。根拠の更新時に見直します。"
       }
@@ -418,7 +421,7 @@
         "eve-market-replay"
       ],
       "review": {
-        "checkedAt": "2026-11-16",
+        "checkedAt": "2026-11-23",
         "intervalDays": 7,
         "reason": "既存の根拠がカードの条件をどこまで直接確かめているかを分類しています。根拠の更新時に見直します。"
       }
@@ -430,7 +433,7 @@
         "vend"
       ],
       "review": {
-        "checkedAt": "2026-11-16",
+        "checkedAt": "2026-11-23",
         "intervalDays": 7,
         "reason": "既存の根拠がカードの条件をどこまで直接確かめているかを分類しています。根拠の更新時に見直します。"
       }
@@ -444,7 +447,7 @@
         "agent-book-exchange"
       ],
       "review": {
-        "checkedAt": "2026-11-16",
+        "checkedAt": "2026-11-23",
         "intervalDays": 7,
         "reason": "既存の根拠がカードの条件をどこまで直接確かめているかを分類しています。根拠の更新時に見直します。"
       }
@@ -458,7 +461,7 @@
         "threat-bio-sep26"
       ],
       "review": {
-        "checkedAt": "2026-11-16",
+        "checkedAt": "2026-11-23",
         "intervalDays": 7,
         "reason": "報告された利用・試験と、カードの条件全体の成立を分けて見直すため。"
       }
@@ -472,7 +475,7 @@
         "physical-software-eval-sep26"
       ],
       "review": {
-        "checkedAt": "2026-11-16",
+        "checkedAt": "2026-11-23",
         "intervalDays": 7,
         "reason": "報告された利用・試験と、カードの条件全体の成立を分けて見直すため。"
       }
@@ -579,7 +582,7 @@
         "employment-workflow-observation"
       ],
       "review": {
-        "checkedAt": "2026-11-16",
+        "checkedAt": "2026-11-23",
         "intervalDays": 7,
         "reason": "既存の根拠がカードの条件をどこまで直接確かめているかを分類しています。根拠の更新時に見直します。"
       }
@@ -605,10 +608,11 @@
       "research": [
         "adoption",
         "robotics",
-        "expectations-not-outcomes"
+        "expectations-not-outcomes",
+        "women-entrepreneurs-adoption"
       ],
       "review": {
-        "checkedAt": "2026-11-16",
+        "checkedAt": "2026-11-23",
         "intervalDays": 7,
         "reason": "既存の根拠がカードの条件をどこまで直接確かめているかを分類しています。根拠の更新時に見直します。"
       }

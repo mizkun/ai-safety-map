@@ -13,7 +13,8 @@
     "robotics-2",
     "imf-distribution",
     "econ-scenarios",
-    "anthropic-expectations-october"
+    "anthropic-expectations-october",
+    "ilo-women-genai-adoption"
   ],
   "questions": [],
   "related": [],
@@ -21,7 +22,7 @@
     "補助金や人の隠れた作業を含めた総費用と、導入の範囲を見る。"
   ],
   "review": {
-    "checkedAt": "2026-11-16",
+    "checkedAt": "2026-11-23",
     "intervalDays": 7,
     "reason": "能力、実運用、経済制度、反証を分けて継続確認するため。"
   },
@@ -31,7 +32,8 @@
     "robotics",
     "distribution",
     "econ-scenarios",
-    "expectations-not-outcomes"
+    "expectations-not-outcomes",
+    "women-entrepreneurs-adoption"
   ],
   "shortTitle": "生活を支える生産に広く導入"
 }

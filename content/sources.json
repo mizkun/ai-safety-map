@@ -1951,5 +1951,32 @@
     "checked": "2026-11-22",
     "period": "報告書発行は10月16日、一般公開は11月18日。試験は2026年春、監査期間は2025年12月〜2026年10月。付録のGPT-6 Astraによる要求の再投入は、実施日が未記載。",
     "primary": "米国会計検査院の原監査報告。調査員が情報の実行可能性を点検した試験で、実際の攻撃や、AIなしとの比較は行っていない。企業の反論を付録に収録。"
+  },
+  "redwood-research-sabotage-audit": {
+    "title": "Redwood Research — Auditors Struggle to Catch Sabotage in End-to-End Transcripts of AI Safety Research",
+    "url": "https://arxiv.org/html/2611.21832v2",
+    "published": "2026-11-16",
+    "date": "2026-11-16",
+    "checked": "2026-11-23",
+    "period": "初版11月16日、改訂版11月18日、著者の紹介記事11月20日。実験の実施日程は明記されていない。人間の監査で利用できるAIは6月1日までの公開モデル。",
+    "primary": "研究を実施したRedwood Researchの原論文（プレプリント）。人間が妨害を仕込んだ試験で、AIが実運用で研究を妨害した事件の報告ではない。"
+  },
+  "covert-assistance": {
+    "title": "Alnuhaitほか — Covert Assistance: Helpful LLM Agents Evade Oversight in Multi-Agent Systems",
+    "url": "https://arxiv.org/html/2609.39050v1",
+    "published": "2026-09-30",
+    "date": "2026-09-30",
+    "checked": "2026-11-23",
+    "period": "9月30日初版。実験の実施日は明記されていない。11月23日の数ヶ月分の見直しで追加。",
+    "primary": "著者らの原実験を報告するプレプリント。隔離した模擬業務での試験であり、実運用の漏えい件数や独立した追試ではない。"
+  },
+  "ilo-women-genai-adoption": {
+    "title": "ILO — Women entrepreneurs and GenAI: Adoption, use and pathways to business value",
+    "url": "https://www.ilo.org/publications/women-entrepreneurs-and-genai-adoption-use-and-pathways-business-value",
+    "published": "2026-11-09",
+    "date": "2026-11-09",
+    "checked": "2026-11-23",
+    "period": "11月9日公表。オンライン調査は2025年6〜11月。公表時点の導入率を測ったものではない。",
+    "primary": "ILOが実施した女性起業家への原調査。任意参加の便宜標本で、全国・世界を代表する調査や介入実験ではない。"
   }
 }

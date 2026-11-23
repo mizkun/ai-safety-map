@@ -19,13 +19,14 @@
     "openai-stopped-alignment-eval",
     "gemini-hydrogen-card",
     "gemini-hydrogen-safety",
-    "metr-q4-capabilities"
+    "metr-q4-capabilities",
+    "redwood-research-sabotage-audit"
   ],
   "questions": [],
   "related": [],
   "terms": [],
   "review": {
-    "checkedAt": "2026-11-21",
+    "checkedAt": "2026-11-23",
     "intervalDays": 7,
     "reason": "能力・行動・対策の評価は短期間で変わり得るため。"
   },
@@ -50,7 +51,8 @@
     "stopped-alignment-evaluation",
     "hydrogen-safety-scope",
     "hydrogen-coding-replay",
-    "metr-research-judgment"
+    "metr-research-judgment",
+    "research-sabotage-audit"
   ],
   "shortTitle": "試験が実際の失敗を捉えない"
 }

@@ -26,7 +26,8 @@
     "gemini-carbon-safety",
     "openai-gpt62-system",
     "gemini-hydrogen-safety",
-    "trajectory-argon-stress"
+    "trajectory-argon-stress",
+    "covert-assistance"
   ],
   "questions": [],
   "related": [],
@@ -38,7 +39,7 @@
     "scheming"
   ],
   "review": {
-    "checkedAt": "2026-11-22",
+    "checkedAt": "2026-11-23",
     "intervalDays": 7,
     "reason": "監督回避と、それを防ぐ手法の評価は変化が速いため。"
   },
@@ -65,7 +66,9 @@
     "carbon-monitorability-scope",
     "gpt62-monitor-visibility",
     "hydrogen-monitoring-scope",
-    "argon-safeguards-and-isolation"
+    "argon-safeguards-and-isolation",
+    "covert-assistance-boundaries",
+    "covert-assistance-defenses"
   ],
   "shortTitle": "実行中の監督をすり抜ける"
 }
