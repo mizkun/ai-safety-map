@@ -1,5 +1,27 @@
 [
   {
+    "id": "monitor-auditing-workplace-20261124",
+    "date": "2026-11-24",
+    "nodes": [
+      "C3",
+      "F4",
+      "C3a1",
+      "C3a",
+      "W3"
+    ],
+    "sources": [
+      "aisi-attack-policy-selection",
+      "anthropic-neuron-auditing",
+      "anthropic-working-with-ai"
+    ],
+    "kind": "根拠追加と期限項目の再点検",
+    "title": "監視の試験、内部の監査、企業の導入を点検",
+    "summary": "11月23日公表の一次資料3件と研究カード3件を追加しました。",
+    "before": "攻撃の作り方による監視評価の違い、内部を使う監査、企業の新しい聞き取りは未収録で、2ノードと2矢印が再点検の目安に達していました。",
+    "after": "C3a・C3a1・W3を日英で追記。C3・F4・R2-R3・R3-R2を実質的に再点検し、説明と根拠の分類を維持しました。",
+    "reason": "模擬試験と実運用の割合、内部監査の改善と事故防止の保証、企業の報告と雇用への因果効果を区別するため。自己改善の条件と金融の防壁に関する限界も維持しました。"
+  },
+  {
     "id": "weekly-auditing-adoption-20261123",
     "date": "2026-11-23",
     "nodes": [

@@ -27,7 +27,8 @@
     "openai-monitorability-lifecycle",
     "homeopathic-learning",
     "lazarus-weight-audit",
-    "gemini4-neon"
+    "gemini4-neon",
+    "anthropic-neuron-auditing"
   ],
   "questions": [],
   "related": [],
@@ -37,7 +38,7 @@
     "scheming"
   ],
   "review": {
-    "checkedAt": "2026-11-19",
+    "checkedAt": "2026-11-24",
     "intervalDays": 7,
     "reason": "能力・行動・対策の評価は短期間で変わり得るため。"
   },
@@ -70,7 +71,8 @@
     "monitorability-lifecycle-proxies",
     "training-mixture-backdoors",
     "weight-audit-defenses",
-    "neon-assessment-coverage"
+    "neon-assessment-coverage",
+    "neuron-readout-auditing"
   ],
   "shortTitle": "評価・監督が危険を見落とす"
 }

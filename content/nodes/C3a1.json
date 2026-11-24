@@ -20,13 +20,14 @@
     "gemini-hydrogen-card",
     "gemini-hydrogen-safety",
     "metr-q4-capabilities",
-    "redwood-research-sabotage-audit"
+    "redwood-research-sabotage-audit",
+    "aisi-attack-policy-selection"
   ],
   "questions": [],
   "related": [],
   "terms": [],
   "review": {
-    "checkedAt": "2026-11-23",
+    "checkedAt": "2026-11-24",
     "intervalDays": 7,
     "reason": "能力・行動・対策の評価は短期間で変わり得るため。"
   },
@@ -52,7 +53,8 @@
     "hydrogen-safety-scope",
     "hydrogen-coding-replay",
     "metr-research-judgment",
-    "research-sabotage-audit"
+    "research-sabotage-audit",
+    "monitor-attack-policy-sensitivity"
   ],
   "shortTitle": "試験が実際の失敗を捉えない"
 }

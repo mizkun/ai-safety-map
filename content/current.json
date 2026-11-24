@@ -243,7 +243,7 @@
         "mythos52-sandbox-boundaries"
       ],
       "review": {
-        "checkedAt": "2026-11-17",
+        "checkedAt": "2026-11-24",
         "intervalDays": 7,
         "reason": "既存の根拠がカードの条件をどこまで直接確かめているかを分類しています。根拠の更新時に見直します。"
       }
@@ -275,10 +275,11 @@
         "monitorability-lifecycle-proxies",
         "training-mixture-backdoors",
         "weight-audit-defenses",
-        "neon-assessment-coverage"
+        "neon-assessment-coverage",
+        "neuron-readout-auditing"
       ],
       "review": {
-        "checkedAt": "2026-11-19",
+        "checkedAt": "2026-11-24",
         "intervalDays": 7,
         "reason": "既存の根拠がカードの条件をどこまで直接確かめているかを分類しています。根拠の更新時に見直します。"
       }
@@ -301,10 +302,11 @@
         "hydrogen-safety-scope",
         "hydrogen-coding-replay",
         "metr-research-judgment",
-        "research-sabotage-audit"
+        "research-sabotage-audit",
+        "monitor-attack-policy-sensitivity"
       ],
       "review": {
-        "checkedAt": "2026-11-23",
+        "checkedAt": "2026-11-24",
         "intervalDays": 7,
         "reason": "既存の根拠がカードの条件をどこまで直接確かめているかを分類しています。根拠の更新時に見直します。"
       }
@@ -609,10 +611,11 @@
         "adoption",
         "robotics",
         "expectations-not-outcomes",
-        "women-entrepreneurs-adoption"
+        "women-entrepreneurs-adoption",
+        "business-adoption-reorganization"
       ],
       "review": {
-        "checkedAt": "2026-11-23",
+        "checkedAt": "2026-11-24",
         "intervalDays": 7,
         "reason": "既存の根拠がカードの条件をどこまで直接確かめているかを分類しています。根拠の更新時に見直します。"
       }

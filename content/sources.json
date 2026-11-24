@@ -1978,5 +1978,32 @@
     "checked": "2026-11-23",
     "period": "11月9日公表。オンライン調査は2025年6〜11月。公表時点の導入率を測ったものではない。",
     "primary": "ILOが実施した女性起業家への原調査。任意参加の便宜標本で、全国・世界を代表する調査や介入実験ではない。"
+  },
+  "aisi-attack-policy-selection": {
+    "title": "AISI Control Red Team — Attack Policy Selection can Mislead Monitor Evaluators",
+    "url": "https://cdn.prod.website-files.com/663bd486c5e4c81588db7a1d/6b0467dd6cee6fe4658fd661_attack_policy_selection_paper.pdf",
+    "published": "2026-11-23",
+    "date": "2026-11-23",
+    "checked": "2026-11-24",
+    "period": "11月23日のAISI記事から公開された原論文。試験の実施日は未記載。現役ではないOpenAIの監視設定とQwen 3.8 27Bを使用。",
+    "primary": "AISIが行った第三者評価の原報告。開発元から提供された旧監視設定を使う模擬試験で、現在の全ての監視や実運用の事故率を測ったものではない。"
+  },
+  "anthropic-neuron-auditing": {
+    "title": "Anthropic — Returning to the Neuron Basis for Interpretability, Part 2: Using Neurons For Safety Applications",
+    "url": "https://alignment.anthropic.com/2026/neuron-basis-applications/",
+    "published": "2026-11-23",
+    "date": "2026-11-23",
+    "checked": "2026-11-24",
+    "period": "11月23日公表。公開モデルへの追加学習と内部の点検を扱う。個別の実験日程は未記載。",
+    "primary": "Anthropicの著者による原実験。人工的に追加した振る舞いを含むモデルの点検で、通常利用での事故防止を実証したものではない。独立した追試は今回未確認。"
+  },
+  "anthropic-working-with-ai": {
+    "title": "Anthropic Institute — Working with AI",
+    "url": "https://www.anthropic.com/research/working-with-ai",
+    "published": "2026-11-23",
+    "date": "2026-11-23",
+    "checked": "2026-11-24",
+    "period": "11月23日公表。米国の顧客企業58社で66回の聞き取り。実施日程は未記載。各人への25〜40分のビデオ通話を1回ずつ行った。",
+    "primary": "Anthropicの顧客企業への原調査。採用・価値の記述は回答者の報告で、無作為抽出や因果効果の実験ではない。"
   }
 }

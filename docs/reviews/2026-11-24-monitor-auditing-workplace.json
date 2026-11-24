@@ -1,0 +1,344 @@
+{
+  "id": "2026-11-24-monitor-auditing-workplace",
+  "version": 2,
+  "date": "2026-11-24",
+  "reviewer": "Codex (primary-source and bilingual editorial review)",
+  "decision": "reviewed",
+  "assessments": {
+    "monitor": {
+      "mechanism": "Attack generation changes what a monitor is asked to recognize; a low conditional miss rate on one proxy can conceal weaknesses on another.",
+      "conditions": "AISI fixes 25 IaC tasks and a retired GPT-5.4 xhigh monitor, with Qwen 3.8 27B xhigh. The monitor reads whole traces after completion; humans assign harmful side tasks. Optimization uses proxy monitors only.",
+      "counterexample": "Basic attacks are usually detected and prompting/RL evasion transfers weakly to GPT-5.4 on LinuxArena. A failed proxy test is not a uniform failure across environments or monitors.",
+      "evidence": "Read the original PDF §§1–4, Figure 1, Appendix B/Table 1 and Appendix F after the web PDF failed. Preserve conditional successful-side-task denominators, 95% bootstrap intervals and the distinction between maximum editing result and final budget.",
+      "limits": "One agent and a stronger retired monitor, bounded task distributions and edited traces. Not present production behavior, pre-action blocking, overall attack success or benign false-positive rates; representative future attacks remain unknown.",
+      "mitigation": "Justify and diversify test distributions, examine real failures and preserve independent permission controls, containment and human response. A low proxy miss rate alone is insufficient assurance.",
+      "readerContext": "Read C3a1 in both languages alongside evaluation alternatives and the control tour. Define the population behind 0.2–23% and keep constructed task success separate from deployed failures.",
+      "whyHere": "Add a controlled comparison of evaluation construction to C3a1, without changing its evidence level or claiming current monitors miss 23% of normal activity.",
+      "primary": [
+        {
+          "source": "aisi-attack-policy-selection",
+          "locator": "§§1–4; Figure 1; Appendix B/Table 1; Appendix F",
+          "support": "Model pairing, held-out target monitor, conditional metric, uncertainty and limited cross-setting transfer."
+        }
+      ]
+    },
+    "audit": {
+      "mechanism": "Reading internal weight changes can reveal installed behavior that fixed output prompts fail to elicit, complementing output-based inspection.",
+      "conditions": "Sixty-eight LoRA adapters, including 58 with hidden behavior and ten benign controls; base weights available. Claude Opus 5.5 auditors and judges; 216 prompts, three runs per adapter and three evidence conditions.",
+      "counterexample": "The readout condition still misses behaviors and produces a majority-grade false positive on one of ten benign controls. Hidden-behavior success improves from 70/174 to 131/174, not perfect safety.",
+      "evidence": "Read Case study 1, Appendix C.2 and Table C2, plus discussion and unlearning comparison. Separate hidden-only denominators from all-adapter accuracy and benign majority grades; note reruns after cross-auditor file exposure.",
+      "limits": "Constructed finetunes, fixed questions, same-family AI grading and access to original/changed internals. Not an independently replicated deployment defense or measurement of pre-harm blocking.",
+      "mitigation": "Combine behavioral tests and internal audits with independently enforced permissions. Test unknown behaviors and false alarms before treating better identification as operational prevention.",
+      "readerContext": "Read C3a standalone in both languages and its alternatives. Introduce internal inspection in ordinary language before the card describes LoRA and the exact denominators.",
+      "whyHere": "Add measured defensive improvement to oversight while preserving existing misses, false positives and limited classification. Unlearning observations are review context, not a new sweeping safety claim.",
+      "primary": [
+        {
+          "source": "anthropic-neuron-auditing",
+          "locator": "Case study 1; Appendix C.2/Table C2; Discussion",
+          "support": "Audit conditions, access assumptions, 174 hidden-behavior audits per arm and benign controls."
+        }
+      ]
+    },
+    "work": {
+      "mechanism": "Technical capability translates into adoption through costs, workflows and organizational roles; hiring, substitution and complementary work can coexist.",
+      "conditions": "Sixty-six interviews at 58 purposively selected US Anthropic customers, 25–40 minutes each, voluntary participation. No fixed assigned model or permissions; automated transcript coding and mainly qualitative self-assessed value.",
+      "counterexample": "Reports of reduced hiring and contracting coexist with hiring more and redeploying staff. Useful AI does not require replacing every job, and unchanged employment does not mean no labor-market effects.",
+      "evidence": "Read original report sections on sample, top-down automation and role reorganization, plus PDF Appendix. Publication is November 23; fieldwork dates are unspecified. Preserve respondents’ attribution rather than treating it as identified causality.",
+      "limits": "Not representative of customers or the US economy; no causal net employment, productivity or household-welfare estimate. Proposed redeployment practices do not guarantee job security.",
+      "mitigation": "Measure realized total costs, quality and worker outcomes; examine access to new jobs, skills and support. Treat role redesign as an observed/proposed response requiring evaluation.",
+      "readerContext": "Read W3 and work-tour chapters in both languages, W4-W3 and all W3 outcome branches. Explain adoption first, then organizational conditions and divergent consequences.",
+      "whyHere": "Add business-level adoption evidence to W3. Keep links to continued work, insufficient income and optional paid work conditional; no universal replacement or prosperity claim.",
+      "primary": [
+        {
+          "source": "anthropic-working-with-ai",
+          "locator": "Summary; Introduction; Top-down automation; Reorganizing around AI; PDF Appendix",
+          "support": "Purposive sample, interview/coding method, self-reported hiring and work changes, limits."
+        }
+      ]
+    },
+    "control": {
+      "mechanism": "Preventing harm requires coverage, visibility, correct detection and timely authorized intervention. Detection after completion does not establish prevention before damage.",
+      "conditions": "METR’s per-action monitor pauses flagged actions for human review but identifies coverage and authentic-approval gaps. New AISI tests inspect completed synthetic traces; internal auditing examines installed behaviors with weight access.",
+      "counterexample": "Some dangerous cases are detected, independent containment can hold, and better internal inspection improves bounded identification. One monitoring miss does not imply irreversible or society-wide control loss.",
+      "evidence": "Reread METR original monitoring argument and implementation gaps, complete C3 explanation and current evidence, and compare the new AISI and neuron results. Check C3-L joint conditions and ASI-C3 as conditional influence.",
+      "limits": "No aggregate deployment safety rate, guaranteed prevention or permanent loss of control follows. Separate synthetic attacks, known incident replays, actual intervention and future hypotheses.",
+      "mitigation": "Enforce permissions independently, verify coverage and genuine human authorization, and measure time to detection/blocking/recovery. Do not substitute retrospective detection for safe execution.",
+      "readerContext": "Read control tour and oversight/evaluation graphs in both languages. C1, C2 and C3 remain joint conditions rather than sequential milestones; escalation beyond local harm requires more conditions.",
+      "whyHere": "Substantively renew only due C3 and its matching evidence clock. Dependent control units are reviewed for consistency without refreshing their unrelated clocks or changing risk/evidence levels.",
+      "primary": [
+        {
+          "source": "metr-action-monitor",
+          "locator": "Structured monitoring argument; discovered issues; four conjunctive claims",
+          "support": "Coverage, visibility, detection and human review requirements."
+        },
+        {
+          "source": "aisi-attack-policy-selection",
+          "locator": "§§1 and 4",
+          "support": "Post-task proxy tests do not certify deployed prevention."
+        },
+        {
+          "source": "anthropic-neuron-auditing",
+          "locator": "Case study 1 and Appendix C.2",
+          "support": "Bounded complementary defensive improvement."
+        }
+      ]
+    },
+    "finance": {
+      "mechanism": "Financial disruption propagates only when important operations, buffers and containment/recovery fail together. Price changes alone do not establish functional collapse.",
+      "conditions": "FSB final practices distinguish controls on agents from fallback and common-provider continuity. The November 18 BCBS statement discusses correlated dependencies alongside broadly strong capital/liquidity.",
+      "counterexample": "Strong buffers, limits and recoverable critical services can contain shocks. A supervisory warning and an intended consultation do not demonstrate that systemic AI defenses have failed.",
+      "evidence": "Read FSB final report printed p. 53 and pp. 63–64, and the original November 18 BCBS statement linked in the companion record. Compare F4 with the F1/F2/F4 joint conditions for F3.",
+      "limits": "Practices and supervisory assessments are not measured AI-specific intervention effects or recovery rates. An announced future consultation is not an implemented or tested defense.",
+      "mitigation": "Test risk-based shutdown/override, independent fallback, recovery times, concentration scenarios and human authority. Track capital, liquidity and continuity separately.",
+      "readerContext": "Read F4 in both languages with finance-conditions, money tour and F1-F3. Keep operational/capital channels separate from claims about money disappearing or human extinction.",
+      "whyHere": "Retain the due F4 hypothesis and renew its clock after substantive review. No additional F4 current-evidence object is invented; dependent dates remain unchanged.",
+      "primary": [
+        {
+          "source": "fsb-ai-practices-final",
+          "locator": "Printed p. 53 and pp. 63–64",
+          "support": "Agent override/fallback and common-provider continuity recommendations, not measured effectiveness."
+        }
+      ]
+    },
+    "feedback": {
+      "mechanism": "An improved model must help the next development cycle, with validation and total costs compatible with continued progress, for a feedback loop to persist.",
+      "conditions": "MASS uses two cycles in one model family with human-prepared tasks and training, with mixed benchmark results. METR Q4 examines public models and uncertain task/capability metrics; Phantom Gains supplies matched frozen controls in a different protocol.",
+      "counterexample": "Some benchmarks do not improve; apparent gains can arise from repeat measurement. Conversely, lack of aggregate acceleration or a null in another protocol does not refute every possible recursive process.",
+      "evidence": "Reread MASS v1 workflow transfer, training comparisons and discussion, METR Q4 overview/§3.C.2, and Phantom Gains measured-null comparisons. Compare both feedback-edge conditions with existing two-cycle and whole-process cost caveats.",
+      "limits": "Output-token efficiency is not total search/training/human-cost efficiency or sustained whole-lab acceleration. New GPT-6.2 ChatGPT screening-based High designation does not demonstrate recursive acceleration.",
+      "mitigation": "Use frozen controls, independent verification and whole-process costs across generations; preserve safety evaluations and restrict permissions before extending a development loop.",
+      "readerContext": "Read both feedback connections and acceleration-tour context in Japanese and English. Separate observed local gains, a feedback relation and unbounded acceleration; no ASI date or probability is inferred.",
+      "whyHere": "Retain R2-R3 and R3-R2 text, conditions and classifications after rechecking their evidence; renew only these due edge clocks.",
+      "primary": [
+        {
+          "source": "mass-self-supervision",
+          "locator": "v1 §§3–5; benchmark and transfer comparisons",
+          "support": "Two bounded cycles with gains and non-gains; output-token and whole-process distinctions."
+        },
+        {
+          "source": "metr-q4-capabilities",
+          "locator": "Overview; §3.C.2; measurement discussion",
+          "support": "Rapid measured capability growth without strong aggregate MCI acceleration in the sampled public frontier."
+        },
+        {
+          "source": "phantom-gains",
+          "locator": "Measured-null comparisons and frozen controls",
+          "support": "Limits of attributing repeated-test gains to actual self-improvement."
+        }
+      ]
+    },
+    "record": {
+      "mechanism": "An evidence update needs dated primary provenance, coherent dependent views and preserved prior records to remain reviewable.",
+      "conditions": "Daily November 10–24 window; existing draft PR on a branch containing freshly fetched origin/main; root checkout untouched. Three sources/cards and three bilingual paragraphs, plus four due-item rechecks.",
+      "counterexample": "An unchanged index, completed build or newer publication date alone cannot renew content clocks. New reports with overlapping claims can be screened without duplicate cards.",
+      "evidence": "Read the full three new primary reports and relevant methods/limitations; compare new GPT-6.2 ChatGPT card and daily indices with existing sources. Companion Markdown lists decisions, IDs, URLs, limits and validation.",
+      "limits": "Neither automated schema checks nor this editorial review establishes exhaustive coverage, independent replication or scientific certainty. Unknown experiment dates remain explicit.",
+      "mitigation": "Preserve earlier sources/cards/history/translations and unrelated dates; validate both languages, review coverage, freshness, build and exact-head CI. Keep the PR draft for human review.",
+      "readerContext": "Review new prose in standalone details and actual exported tours. Technical settings stay in evidence cards; no UI or glossary change is required for these additions.",
+      "whyHere": "Record a bounded update and its dependencies without changing risk levels or causal topology. Update the existing PR, not duplicate it, merge it or deploy it.",
+      "primary": [
+        {
+          "source": "aisi-attack-policy-selection",
+          "locator": "§§1–4 and Appendix B",
+          "support": "New evaluation evidence and bounds."
+        },
+        {
+          "source": "anthropic-neuron-auditing",
+          "locator": "Case study 1 and Appendix C.2",
+          "support": "Defensive improvement with exact denominators."
+        },
+        {
+          "source": "anthropic-working-with-ai",
+          "locator": "Introduction and PDF Appendix",
+          "support": "Qualitative adoption evidence and selection limits."
+        }
+      ]
+    }
+  },
+  "entries": {
+    "source:aisi-attack-policy-selection": {
+      "hash": "633749eabaa7e766a573425d1663a1683312d8e3c200f5748cca4d798f2bb7c9",
+      "assessment": "monitor"
+    },
+    "source:anthropic-neuron-auditing": {
+      "hash": "36ef26fd1fbc002774ecc15792af4013130c78b6cecd864ea480ec7d9de0a323",
+      "assessment": "audit"
+    },
+    "source:anthropic-working-with-ai": {
+      "hash": "7af9c74af3a06b3fd5a49af023367d77a7e1068aa8a7f6a95aef44cab95988c8",
+      "assessment": "work"
+    },
+    "research:monitor-attack-policy-sensitivity": {
+      "hash": "7f0b9ab21577435cdcc6ba6d0e0554c1726d119f1f1e7fdbaaeae06ef476dc1c",
+      "assessment": "monitor"
+    },
+    "research:neuron-readout-auditing": {
+      "hash": "daf01ea14b754eda04ff30ac34fa5d4956150796a510204714ff36d35aea6793",
+      "assessment": "audit"
+    },
+    "research:business-adoption-reorganization": {
+      "hash": "6ec33d05be89ad1e24802ce05636050b444d3a74de59c089c57569bd70756a24",
+      "assessment": "work"
+    },
+    "node:C3": {
+      "hash": "6d978d36c00a85087af3e7bf657633468c89a84661686a1ed705ceb0520b097e",
+      "assessment": "control"
+    },
+    "node:C3a": {
+      "hash": "23cadb83482f312c503d0630ca72e532e08f94d7c981ed20e1b0684e7a674e10",
+      "assessment": "audit"
+    },
+    "node:C3a1": {
+      "hash": "1b48c6b38c5dc434c9fc8beee13b6d62e0937943f678c6a0bcb4a39ece13876a",
+      "assessment": "monitor"
+    },
+    "node:F4": {
+      "hash": "4abfd972816d812bdc89c5b98eb52ef02b9890bc8c2962add7be94801e0b1341",
+      "assessment": "finance"
+    },
+    "node:W3": {
+      "hash": "e778f78884a489444a9c2c39fb1d9b48ca3f02fa402c6caf79307ad32b8ff5db",
+      "assessment": "work"
+    },
+    "edge:R2-R3": {
+      "hash": "8114b35430e4af990b668f802ef195bb5990f563323669f303010a756c3904a3",
+      "assessment": "feedback"
+    },
+    "edge:R3-R2": {
+      "hash": "98caf793413c77732c0787a7f8f77a29ec9bd0c491fc09af6a6ccc73d18ece2d",
+      "assessment": "feedback"
+    },
+    "edge:C3-L": {
+      "hash": "f3900fbf1738f381c08dcfa93fc26877434f75ecfe9cedbdff73e3f3bb3fc2a5",
+      "assessment": "control"
+    },
+    "edge:F1-F3": {
+      "hash": "7a9220000821e7d43d38c973b8e43fbfe9401cdbdbed02e3ea85e4d7f0f9eaa6",
+      "assessment": "finance"
+    },
+    "edge:W3-W5": {
+      "hash": "22518619060bba13fe4aaa25bca96e120dfb6ad9196e0ae4a783a4f33839d688",
+      "assessment": "work"
+    },
+    "edge:W4-W3": {
+      "hash": "5d4ba8b237f9fdf68ecb1f0ae8a876cd9f452790bf8aaee14181a46ef875dc11",
+      "assessment": "work"
+    },
+    "edge:W3-W7": {
+      "hash": "f523baa74e15d40cf41b3cebfa91087f92258ba03cb117599480a3335b280c51",
+      "assessment": "work"
+    },
+    "edge:W3-W9": {
+      "hash": "97b1023881d62a0d1cb422343519dc4c18500dc92830b63c366e75a9d5cf20d3",
+      "assessment": "work"
+    },
+    "edge:ASI-C3": {
+      "hash": "550d19a74bea1b6c60fb192e6609891d1bd4b7210ff47c057ccee94edc35e115",
+      "assessment": "control"
+    },
+    "graph:control": {
+      "hash": "54284721bdb9588a1adb26ce0a66efffbe0783f7a0691e4107da160d64aa6166",
+      "assessment": "control"
+    },
+    "graph:acceleration": {
+      "hash": "2af6f34c6c744e7448349f87e9b19049723a66de46740fa25f388d0b32c26f45",
+      "assessment": "feedback"
+    },
+    "graph:oversight": {
+      "hash": "940c8dfbbebdac08e4b82eaf7bcce4342cd7fb8ef4b11f332c9008dd4ee52178",
+      "assessment": "control"
+    },
+    "graph:evaluation": {
+      "hash": "9d9de8f5ca96ca7517bffdfd4b87af964fb628019238a7b66c4da576aa2e5422",
+      "assessment": "monitor"
+    },
+    "graph:work": {
+      "hash": "90841276938ac5d24eee0f7f3fd3305a3a6fb576b690adaf5f4dc05a6eccfe48",
+      "assessment": "work"
+    },
+    "graph:money": {
+      "hash": "423b6e3edbbd5e7421367ee51795449fba18ad6eeb3b5d74aec65594dd859e43",
+      "assessment": "finance"
+    },
+    "graph:finance-conditions": {
+      "hash": "f27c096dc96280176339263946f73017cc543a099add0529752e61e76e8d9cc4",
+      "assessment": "finance"
+    },
+    "route:control": {
+      "hash": "f99e372ca1ef65522ff1b3bc4180fb426c2515b7cf0ed1187bbd4235f739b9e0",
+      "assessment": "control"
+    },
+    "route:acceleration": {
+      "hash": "7cf96a3a8737c1b4a445a230910d003ebc7822209eafbf28494f3dd9ccb05c45",
+      "assessment": "feedback"
+    },
+    "route:work": {
+      "hash": "436fdd909168e7836c73213d7d0f73501934b56aa76b3ddcc8626b6113688451",
+      "assessment": "work"
+    },
+    "route:money": {
+      "hash": "be8eca219116fe3eea0333113bb7bb0b1662fc5004ad896f830655b145e92354",
+      "assessment": "finance"
+    },
+    "current:control": {
+      "hash": "242e0ec16c1411f680fbff3da3a392d584dee10f89e09ac9cfe24541543dc721",
+      "assessment": "control"
+    },
+    "current:money": {
+      "hash": "54e5ac49d4cd382fc97396d683e492eb9824cf265bf4aa09c633ec4d2caed360",
+      "assessment": "finance"
+    },
+    "evidence:C3": {
+      "hash": "17175c8806d5f6e988e715013790fd394ee83e04d0afe1cc99ac8527fa356c47",
+      "assessment": "control"
+    },
+    "evidence:C3a": {
+      "hash": "3e3cb442e48a8b566f106d826417926c27bf1cec567fee5dd75d0565f23068f3",
+      "assessment": "audit"
+    },
+    "evidence:C3a1": {
+      "hash": "b6568b26ea2489bf7118959b5ce7a239a279df62b827f17ffc0e71318035105c",
+      "assessment": "monitor"
+    },
+    "evidence:W3": {
+      "hash": "16ff562456f4ddec6a7ad9aaab38961fe0b5082be960384498dad2dce6022eff",
+      "assessment": "work"
+    },
+    "news:work-survey": {
+      "hash": "6a0c207d3e2bda691847b31a117f910b1d7ba25e10a2b0e923abb4e76c294c45",
+      "assessment": "work"
+    },
+    "news:agent-behavior": {
+      "hash": "e01bb2d31a98ab13b38e2406f0af6629c38d335a5f8a49249df02ee71129a1ff",
+      "assessment": "control"
+    },
+    "story:control": {
+      "hash": "f5c811cd095cd04eeaf1f2bf80ffd9ac0859cddb9e9ccef686ead75b73717ede",
+      "assessment": "control"
+    },
+    "story:acceleration": {
+      "hash": "1f5b61ddadfbdc5a9df3239e32a2b3f316993dcf256f5426b8875826ce520aa1",
+      "assessment": "feedback"
+    },
+    "story:work": {
+      "hash": "b4a137167f28f82e289e1558c29590c17031b055d160951e0c35814bcb63c67c",
+      "assessment": "work"
+    },
+    "story:money": {
+      "hash": "78ad60b12d2032d9c33591e4e1d28477d4a1e7270007a524da18283a0c54fbe8",
+      "assessment": "finance"
+    },
+    "metadata:map": {
+      "hash": "fe8e5adf5bfc02162445ad61147d38ae74e80d912b3ba10ebf33f38b817e2292",
+      "assessment": "record"
+    },
+    "history:changes": {
+      "hash": "5c861198a31b9e1f4b7d28f3fe41e2a27508a2a74f1fc19d5a9e35ef0b963a2c",
+      "assessment": "record"
+    },
+    "inventory:current": {
+      "hash": "6c16202539770b60e107a83f53446e444f45fbf6dcbae1969deb6377c50fe79c",
+      "assessment": "record"
+    }
+  }
+}
