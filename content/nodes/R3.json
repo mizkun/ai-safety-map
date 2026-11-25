@@ -14,7 +14,9 @@
     "phantom-gains",
     "mass-self-supervision",
     "anthropic-fable52-system",
-    "metr-q4-capabilities"
+    "metr-q4-capabilities",
+    "openai-pretraining-loss",
+    "metr-pretraining-interpretation"
   ],
   "questions": [],
   "related": [
@@ -32,7 +34,7 @@
     "計算資源や検証を含めても循環が持続するか。"
   ],
   "review": {
-    "checkedAt": "2026-11-21",
+    "checkedAt": "2026-11-25",
     "intervalDays": 7,
     "reason": "能力・行動・対策の評価は短期間で変わり得るため。"
   },
@@ -52,7 +54,9 @@
     "self-training-null-audit",
     "mass-two-rounds",
     "mythos52-rd-assessment",
-    "metr-mci-growth"
+    "metr-mci-growth",
+    "pretraining-loss-trend",
+    "pretraining-acceleration-interpretations"
   ],
   "shortTitle": "RSI（再帰的自己改善）が始まる",
   "subgraph": "research-cycle"

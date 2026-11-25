@@ -2005,5 +2005,41 @@
     "checked": "2026-11-24",
     "period": "11月23日公表。米国の顧客企業58社で66回の聞き取り。実施日程は未記載。各人への25〜40分のビデオ通話を1回ずつ行った。",
     "primary": "Anthropicの顧客企業への原調査。採用・価値の記述は回答者の報告で、無作為抽出や因果効果の実験ではない。"
+  },
+  "openai-pretraining-loss": {
+    "title": "OpenAI — Perplexity and Intelligence",
+    "url": "https://openai.com/index/perplexity-and-intelligence/",
+    "published": "2026-11-22",
+    "date": "2026-11-22",
+    "checked": "2026-11-25",
+    "period": "GPT-3.5以降のモデルを、固定した社内コードの保留データで比較。事前学習の完了日や各世代の投入資源は未公表。",
+    "primary": "Jakub Pachockiによる開発元の測定公表と提案。指標の変化、原因についての開発元の解釈、将来予測を区別する。"
+  },
+  "metr-pretraining-interpretation": {
+    "title": "METR — Interpreting a recent acceleration in pretraining loss",
+    "url": "https://metr.org/blog/2026-11-24-interpreting-a-recent-acceleration-in-pretraining-loss/",
+    "published": "2026-11-24",
+    "date": "2026-11-24",
+    "checked": "2026-11-25",
+    "period": "11月24日公表。OpenAIが公開した13モデルの系列について、2022〜2025年と2026年初頭以降を比較。新たな学習実験ではない。",
+    "primary": "METRによる原分析と複数の解釈。OpenAIの測定を独立に再現した報告ではなく、将来の能力予測について組織内の合意もない。"
+  },
+  "openai-protein-design": {
+    "title": "Uehara et al. — GPT-6 as a Universal Foundation Model for Protein Biology: Beyond Specialized Models",
+    "url": "https://cdn.openai.com/pdf/gpt-6-a-universal-foundation-model-for-protein-biology.pdf",
+    "published": "2026-11-24",
+    "date": "2026-11-24",
+    "checked": "2026-11-25",
+    "period": "11月24日の原論文。実験日は未記載。実験室での検証は公開前のGPT-6.2を使用し、計算上の比較には他世代と非公開モデルも含む。",
+    "primary": "OpenAIと実験協力先Onavaの原研究。プレプリントとして扱い、協力先の実験を独立した追試とは数えない。"
+  },
+  "gemini-neon-safety": {
+    "title": "Google DeepMind — Gemini 4 Neon Safety & Security Report",
+    "url": "https://storage.googleapis.com/deepmind-media/gemini/gemini_4_neon_safety_report.pdf",
+    "published": "2026-11",
+    "date": "2026-11",
+    "checked": "2026-11-25",
+    "period": "表紙は2026年11月。公開日と個別の実験日は特定できない。11月25日の点検で全文を取得し、能力判定、監視への認識、誘導への耐性、サイバー評価の該当節を確認。",
+    "primary": "開発元の原評価報告。外部機関の結果を含むが、この点検では同報告に収録された条件と結果を確認しており、全てを独立に再現したわけではない。"
   }
 }

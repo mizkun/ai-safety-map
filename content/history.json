@@ -1,5 +1,31 @@
 [
   {
+    "id": "pretraining-validation-safeguards-20261125",
+    "date": "2026-11-25",
+    "nodes": [
+      "C3a2",
+      "M2c1",
+      "W2",
+      "R1",
+      "R2",
+      "R3",
+      "M3",
+      "C3a"
+    ],
+    "sources": [
+      "openai-pretraining-loss",
+      "metr-pretraining-interpretation",
+      "openai-protein-design",
+      "gemini-neon-safety"
+    ],
+    "kind": "根拠追加と期限項目の再点検",
+    "title": "事前学習の加速、実験室での検証、防御の進歩を点検",
+    "summary": "一次資料4件と研究カード7件を追加し、Neonの詳細報告の公開状況に関する注記を更新しました。",
+    "before": "事前学習の指標、タンパク質設計の実測、Neonの詳細な安全報告は未収録で、C3a2・M2c1・W2が再点検の目安に達していました。",
+    "after": "7項目の本文を日英で更新。期限の3項目と自己改善の2矢印を実質的に再点検し、根拠の分類と成立条件を維持しました。",
+    "reason": "指標の加速と自己改善への因果的な寄与、選んだ候補の結合と研究全体の自律化、試験の防御と現実の被害防止を区別するため。評価への認識と身体作業の自動化の限界も維持しました。"
+  },
+  {
     "id": "monitor-auditing-workplace-20261124",
     "date": "2026-11-24",
     "nodes": [

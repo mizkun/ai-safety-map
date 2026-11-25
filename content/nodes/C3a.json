@@ -28,7 +28,8 @@
     "homeopathic-learning",
     "lazarus-weight-audit",
     "gemini4-neon",
-    "anthropic-neuron-auditing"
+    "anthropic-neuron-auditing",
+    "gemini-neon-safety"
   ],
   "questions": [],
   "related": [],
@@ -38,7 +39,7 @@
     "scheming"
   ],
   "review": {
-    "checkedAt": "2026-11-24",
+    "checkedAt": "2026-11-25",
     "intervalDays": 7,
     "reason": "能力・行動・対策の評価は短期間で変わり得るため。"
   },

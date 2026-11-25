@@ -15,7 +15,9 @@
     "anthropic-science-use",
     "anthropic-fable52-system",
     "openai-gpt62-system",
-    "openai-rd-jagged-frontier"
+    "openai-rd-jagged-frontier",
+    "openai-pretraining-loss",
+    "metr-pretraining-interpretation"
   ],
   "questions": [],
   "related": [],
@@ -24,7 +26,7 @@
     "検証や統合も含めた開発全体の時間が短縮したか。"
   ],
   "review": {
-    "checkedAt": "2026-11-19",
+    "checkedAt": "2026-11-25",
     "intervalDays": 7,
     "reason": "能力・行動・対策の評価は短期間で変わり得るため。"
   },
@@ -45,7 +47,9 @@
     "science-use-and-scenarios",
     "mythos52-rd-assessment",
     "gpt62-rd-threshold",
-    "rd-task-jaggedness"
+    "rd-task-jaggedness",
+    "pretraining-loss-trend",
+    "pretraining-acceleration-interpretations"
   ],
   "shortTitle": "AI開発の工程全体が加速"
 }

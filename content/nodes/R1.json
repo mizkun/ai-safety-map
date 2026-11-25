@@ -33,7 +33,8 @@
     "openai-chip-design",
     "anthropic-black-hole-physics",
     "metr-q4-capabilities",
-    "medchembench-paper"
+    "medchembench-paper",
+    "openai-protein-design"
   ],
   "questions": [],
   "related": [],
@@ -44,7 +45,7 @@
     "仕事の量、質、人間の介入を分けて測れているか。"
   ],
   "review": {
-    "checkedAt": "2026-11-21",
+    "checkedAt": "2026-11-25",
     "intervalDays": 7,
     "reason": "能力・行動・対策の評価は短期間で変わり得るため。"
   },
@@ -78,7 +79,8 @@
     "chip-design-assistance",
     "claude-physics-assistance",
     "metr-research-judgment",
-    "medchembench-retrospective"
+    "medchembench-retrospective",
+    "protein-design-lab-validation"
   ],
   "shortTitle": "AIが研究の一部を進める"
 }

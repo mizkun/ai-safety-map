@@ -279,7 +279,7 @@
         "neuron-readout-auditing"
       ],
       "review": {
-        "checkedAt": "2026-11-24",
+        "checkedAt": "2026-11-25",
         "intervalDays": 7,
         "reason": "既存の根拠がカードの条件をどこまで直接確かめているかを分類しています。根拠の更新時に見直します。"
       }
@@ -321,10 +321,11 @@
         "incident-simulation-and-awareness",
         "evaluation-production-warning-gap",
         "mythos52-prompted-sandbagging",
-        "gpt62-eval-awareness"
+        "gpt62-eval-awareness",
+        "neon-monitoring-awareness"
       ],
       "review": {
-        "checkedAt": "2026-11-18",
+        "checkedAt": "2026-11-25",
         "intervalDays": 7,
         "reason": "既存の根拠がカードの条件をどこまで直接確かめているかを分類しています。根拠の更新時に見直します。"
       }
@@ -529,10 +530,12 @@
         "science-use-and-scenarios",
         "mythos52-rd-assessment",
         "gpt62-rd-threshold",
-        "rd-task-jaggedness"
+        "rd-task-jaggedness",
+        "pretraining-loss-trend",
+        "pretraining-acceleration-interpretations"
       ],
       "review": {
-        "checkedAt": "2026-11-19",
+        "checkedAt": "2026-11-25",
         "intervalDays": 7,
         "reason": "既存の根拠がカードの条件をどこまで直接確かめているかを分類しています。根拠の更新時に見直します。"
       }
@@ -599,7 +602,7 @@
         "robotics25-factory-pilot"
       ],
       "review": {
-        "checkedAt": "2026-11-18",
+        "checkedAt": "2026-11-25",
         "intervalDays": 7,
         "reason": "既存の根拠がカードの条件をどこまで直接確かめているかを分類しています。根拠の更新時に見直します。"
       }
@@ -640,10 +643,12 @@
         "mass-two-rounds",
         "self-training-null-audit",
         "mythos52-rd-assessment",
-        "metr-mci-growth"
+        "metr-mci-growth",
+        "pretraining-loss-trend",
+        "pretraining-acceleration-interpretations"
       ],
       "review": {
-        "checkedAt": "2026-11-21",
+        "checkedAt": "2026-11-25",
         "intervalDays": 7,
         "reason": "限定した反復実験と、開発全体の持続的な加速を区別して点検するため。"
       }
