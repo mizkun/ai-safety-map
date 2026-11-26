@@ -1,5 +1,28 @@
 [
   {
+    "id": "sandbox-verification-research-20261126",
+    "date": "2026-11-26",
+    "nodes": [
+      "C2b",
+      "C3",
+      "C3a1",
+      "C3a2",
+      "R1"
+    ],
+    "sources": [
+      "anthropic-siren",
+      "anthropic-rust-migration",
+      "gemini-mass-spec-skills",
+      "formal-quantum-programs"
+    ],
+    "kind": "根拠の追加",
+    "title": "境界を守る防御と、研究・実装の検証を点検",
+    "summary": "一次資料4件と研究カード7件を追加し、5項目の本文を日英で更新しました。",
+    "before": "Sirenの詳細な防御比較、実サービス移行の検証、分子の照合と量子計算の新しい研究成果が未収録でした。",
+    "after": "境界への試行と無許可の使用、テスト合格と本番との一致、既知資料の照合と新規発見を区別しました。根拠の分類と矢印の成立条件は維持しています。",
+    "reason": "改善した防御も取り入れ、調整に使った場面への依存、人の仕様設計・点検、実機で未検証の範囲を残すため。Sirenを既存システムカードから独立した追試とは数えていません。"
+  },
+  {
     "id": "pretraining-validation-safeguards-20261125",
     "date": "2026-11-25",
     "nodes": [

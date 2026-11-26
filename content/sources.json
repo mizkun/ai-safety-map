@@ -2041,5 +2041,41 @@
     "checked": "2026-11-25",
     "period": "表紙は2026年11月。公開日と個別の実験日は特定できない。11月25日の点検で全文を取得し、能力判定、監視への認識、誘導への耐性、サイバー評価の該当節を確認。",
     "primary": "開発元の原評価報告。外部機関の結果を含むが、この点検では同報告に収録された条件と結果を確認しており、全てを独立に再現したわけではない。"
+  },
+  "anthropic-siren": {
+    "title": "Anthropic — Measuring and mitigating agent sandbox escape with Siren",
+    "url": "https://safeguards.anthropic.com/2026/siren/",
+    "published": "2026-11-24",
+    "date": "2026-11-24",
+    "period": "11月24日公表。実験日は未記載。6モデルと、弱点を用意した固定の模擬場面が対象。通常提供時の防御を外した基礎比較と、防御を加えた試験を区別する。",
+    "primary": "Anthropicによる開発者評価。既存のシステムカードにも使われたSirenの詳細・拡張で、独立した追試ではない。",
+    "checked": "2026-11-26"
+  },
+  "anthropic-rust-migration": {
+    "title": "Anthropic — Migrating our Messages API to Rust",
+    "url": "https://www.anthropic.com/research/migrating-api-to-rust",
+    "published": "2026-11-25",
+    "date": "2026-11-25",
+    "period": "11月25日公表。3月の部分的な移行、4〜8月の入力比較、9月の全面移行を報告。使ったClaudeのモデル名・版は特定されていない。",
+    "primary": "Anthropicが自社の実サービス移行を振り返った一次報告。独立した再現試験や、AIを使わない開発との比較実験ではない。",
+    "checked": "2026-11-26"
+  },
+  "gemini-mass-spec-skills": {
+    "title": "Google DeepMind — From spectrum to structure: Identifying molecules with Mass Spec Skills for Google Antigravity",
+    "url": "https://deepmind.google/blog/interpreting-mass-spectra-with-google-antigravity/",
+    "published": "2026-11-25",
+    "date": "2026-11-25",
+    "period": "11月25日公表。実験日は未記載。Gemini 3.8 Flash、4 Argon、4 Carbonを、既に公開資料に収録された100分子で比較。",
+    "primary": "Google DeepMindの研究開発チームによる評価と利用報告。研究者の体験談と、条件を固定した100分子の試験を区別する。",
+    "checked": "2026-11-26"
+  },
+  "formal-quantum-programs": {
+    "title": "Shirobokov et al. — Discovering formally verified quantum programs with AI",
+    "url": "https://arxiv.org/html/2611.09822v3",
+    "published": "2026-11-06",
+    "date": "2026-11-16",
+    "period": "初版は11月6日。11月16日改訂の第3版と11月23日の著者解説を確認。実験日は未記載。大規模な探索実験はGemini 4 Carbonを使用。",
+    "primary": "Google DeepMind・Google Quantum AIらの原論文。機械検査可能な証明を伴うが、著者解説を独立した追試とは数えない。",
+    "checked": "2026-11-26"
   }
 }

@@ -17,13 +17,14 @@
     "openai-luna-oct29",
     "openai-gpt6-october",
     "epoch-evaluation-contact",
-    "trajectory-argon-stress"
+    "trajectory-argon-stress",
+    "anthropic-siren"
   ],
   "questions": [],
   "related": [],
   "terms": [],
   "review": {
-    "checkedAt": "2026-11-22",
+    "checkedAt": "2026-11-26",
     "intervalDays": 7,
     "reason": "能力・行動・対策の評価は短期間で変わり得るため。"
   },
@@ -45,7 +46,8 @@
     "task-scoped-authorization",
     "luna-oct29-restriction-tests",
     "epoch-live-site-contact",
-    "argon-safeguards-and-isolation"
+    "argon-safeguards-and-isolation",
+    "siren-boundary-propensity"
   ],
   "shortTitle": "現実への接点・権限"
 }

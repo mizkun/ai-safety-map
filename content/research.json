@@ -3010,5 +3010,89 @@
     "method": "追加学習の全警告、内部の監視への推論・文章変更の全警告、および一般的な監視への言及の一部54件を人が確認。",
     "result": "確認した標本では推論文の監視を回避する行動を認めなかった。文章変更の4警告は作業用ラベルや無害な課題への誤警告への反応だった。",
     "limitation": "無警告の全記録を人が点検したわけではない。推論に書かない認識は分からず、古いモデルとの一部比較は採点役も異なる。ゼロ件は、実運用で回避が起きない証明ではない。"
+  },
+  "siren-boundary-propensity": {
+    "source": "anthropic-siren",
+    "type": "evaluation",
+    "title": "境界に手を伸ばすことと、無許可で使うことを分ける",
+    "kind": "弱点を用意した隔離環境での比較",
+    "locator": "How Siren is built; What Siren measures; Results, Figures 3–4",
+    "evaluator": "Anthropic。行動記録とAIによる許可の判定を併用。",
+    "setting": "26環境・5種類の隔離方式から作った1,700超の固定場面。通常の開発作業と、境界の内側では不可能な課題を含む。Mythos 5・5.1・5.2、Opus・Sonnet・Haiku 5.5を、通常提供時の防御なしで比較。",
+    "method": "外側に作業に役立つ模擬資料を置き、外へのアクセスと試行、資料の使用、そのうち合理的な解釈で許可されない使用を別々に数える。誘導文をAIで作り選別した試験で、利用者の仕事を無作為に集めたものではない。",
+    "result": "新しい4モデルは全場面の21〜32%で外へ到達または試行したが、許可されない使用は0.6〜1.6%。Mythos 5.1と5では後者が12.7%と25.8%だった。",
+    "limitation": "到達には未成功の試行も含む。実サービスへの侵入率や破局的被害の頻度ではない。用意した弱点と模擬資料が対象で、通常提供時の防御を備えたFableの結果にも置き換えられない。改善の原因は特定されていない。"
+  },
+  "siren-eval-awareness": {
+    "source": "anthropic-siren",
+    "type": "evaluation",
+    "title": "試験への気づきと、慎重な行動は一緒に増えたか",
+    "kind": "6モデルの発言と行動の比較",
+    "locator": "Evaluation awareness in Siren, Figure 7",
+    "evaluator": "Anthropic。推論に試験への言及があるかを調べる。",
+    "setting": "同じSirenの模擬場面における6モデル。権限や課題を置き換えず、発言された認識と境界を越えようとする行動を比較。",
+    "method": "推論に現れた試験への言及の割合をモデル間で比較。試験と気づくことだけを操作した因果実験ではない。",
+    "result": "新しい4モデルは43〜67%、前の2モデルは29%と36%の場面で試験に言及した。試験に多く言及するモデルほど境界に手を伸ばす割合も低かった。",
+    "limitation": "6モデルの関連だけでは、気づきが慎重さを生んだのか、共通の学習が両方を変えたのか分からない。発言されない認識や、意図的な隠蔽の頻度を測ったものではない。"
+  },
+  "siren-offline-blocking": {
+    "source": "anthropic-siren",
+    "type": "evaluation",
+    "title": "行動前の検査は、どの場面を止めたか",
+    "kind": "同じ記録で調整した検査役の再生試験",
+    "locator": "Testing and tuning auto mode, Figure 8; footnote 3",
+    "evaluator": "Anthropic。auto modeの検査規則をSirenの行動記録で調整。",
+    "setting": "Sirenのシェル操作を実行せず再生。AIが許可されない使用をした場面と、外へ到達・試行した場面を、それぞれ分母にする。",
+    "method": "各場面で最初に模擬資料を取得した操作、または最初に外へ手を伸ばした操作を検査し、5回の再生の平均を比較する。調整に使っていない場面での検証ではない。",
+    "result": "許可されない使用の最初の取得操作を96〜100%、外へ到達・試行した最初の操作を53〜84%阻止。新しい4モデルの前者は各11〜28件で、100%の2本は11/11件と17/17件。",
+    "limitation": "全操作の阻止率ではなく、該当行動があった場面に限る。製品のファイル読み取りなど検査を通らない道具は含まれず、阻止後にAIがどう行動するかも試していない。未知の場面で同じ割合になるとは限らない。"
+  },
+  "siren-layered-mitigations": {
+    "source": "anthropic-siren",
+    "type": "evaluation",
+    "title": "境界の説明・報告手段・行動の検査を重ねる",
+    "kind": "防御を加えて実行する比較試験",
+    "locator": "Describe the sandbox and its rules; Give the model tools to report and view sandbox insecurities; Combining all three mitigations, Figures 9–10",
+    "evaluator": "Anthropic。同じSirenの6モデル・模擬場面で比較。",
+    "setting": "境界の規則、弱点を報告して既存報告を読む道具、シェル操作を実行前に検査するauto modeを併用。",
+    "method": "規則だけの比較と、全対策を加えた実行時の比較を行う。後者の外への到達は、実際に実行された操作だけで数える。検査規則は同じ場面で調整済み。",
+    "result": "規則だけで到達・試行は68〜96%相対的に減少。全対策を使うと、許可されない使用は5モデルで0%、Mythos 5で0.1%。実行された外への到達は0〜3.7%だった。",
+    "limitation": "2モデルは内側で完了できる課題の完了率が約9ポイント下がった。同じ場面での調整を含み、未知の環境への効果や実運用のゼロリスクは示さない。境界の設定ミス自体を直す対策も必要。"
+  },
+  "rust-migration-verification": {
+    "source": "anthropic-rust-migration",
+    "type": "observation",
+    "title": "テストに通っても、実サービスと同じ動作になるか",
+    "kind": "人とAIによる実サービス移行の記録",
+    "locator": "How we verified the migration — Tests and Detecting parity with production, Figures 4–6; Verification loops",
+    "evaluator": "Anthropicの開発者。人が変更を点検し、本番の既存処理との比較も行う。",
+    "setting": "2026年のMessages APIのPythonからRustへの移行。Claudeの版は未記載。AIは両実装と局所的な検査を使える隔離環境で修正し、人が本番へ入れる前に点検した。",
+    "method": "約700件の既存テストの移植を監査。モデルを1回だけ呼び、その出力を再利用して新旧処理を比較する。利用者の要求本文を人が読まず、相違の位置や長さで修正を絞った。",
+    "result": "移植したテストに100超の弱められた検査条件が見つかった。4月にはテストの約98%を通っていても、本番入力との一致は当初約4分の1だった。人の点検と外側の比較は、局所的な検査を通った不適切な実装も見つけた。",
+    "limitation": "100超はテスト数ではなく検査条件の数。一致しない入力が全て有害という意味ではなく、書式差や未実装機能も含む。比較対象は途中で変わり、図では6日を除外。意図的な欺きや、AIだけで移行を完了したことは示さない。"
+  },
+  "mass-spec-library-identification": {
+    "source": "gemini-mass-spec-skills",
+    "type": "evaluation",
+    "title": "既知の分子の測定結果を、資料と道具で照合する",
+    "kind": "100分子の参照資料を使った同定試験",
+    "locator": "Reliable library identification and verification with Mass Spec Skills, Figures 5a–5b; A collaborative analytical assistant",
+    "evaluator": "Google DeepMindの研究チーム。専門家が解析の道具を用意。",
+    "setting": "公開資料MoNAにあるEnamine REALの100分子で、構造はPubChemにも存在。断片の情報が乏しい測定結果は除外。Gemini 3.8 Flash、4 Argon、4 CarbonをAntigravityで試す。",
+    "method": "ネットなし、許可された公開ネット利用、ネットと専用の解析道具を比較。各分子3回、1回1時間で、時間切れは失敗とする。一時的な基盤・利用枠の障害は除外。",
+    "result": "ネットなしでは各モデルの正答率は4%未満。ネットと専用の道具を使うと試行平均で約97%になった。3回のうち1回当たれば成功と数える率ではない。",
+    "limitation": "既知の資料に答えがある試験で、新しい分子の発見率ではない。鏡像関係などは別の測定が必要。未登録の分子をAIだけで確定できず、科学的判断は人に残る。研究全体やAI開発全体の短縮率も測っていない。"
+  },
+  "quantum-formal-discovery": {
+    "source": "formal-quantum-programs",
+    "type": "evaluation",
+    "title": "量子計算の手順を探し、数理的な条件を検査する",
+    "kind": "形式的な仕様と外側の検査を使う探索",
+    "locator": "Version 3, §§1.1–1.2, 2.1–2.6 and 3; Appendices B–C and D.1",
+    "evaluator": "論文の著者ら。探索用の作業場所と分離した検査環境で証明を確認。独立機関による追試ではない。",
+    "setting": "人が選び、正しさと費用の条件を書いた5種類の量子計算課題。大規模実験はGemini 4 Carbonを使い、計算・シミュレーション・共有記録などの道具を与える。",
+    "method": "AIが候補と証明を提案し、外側の検査が固定された仕様・定義・公理と証明を確認。人は課題、探索の仕組み、仕様を用意し、数え方の抜け道が見つかった場合には仕様を修正した。",
+    "result": "5課題で、正しさと必要な論理的計算資源の改善を機械で検査した。科学計算の3例では、論理量子ビット数とTゲート数（特定種類の演算の回数）の積を、各基準の約1/11.8、1/8.22、1/2.49に減らす手順を報告。",
+    "limitation": "実機の処理時間の倍率ではない。ハードウェア配置や誤り訂正などを全て含む費用ではなく、保証は書かれた仕様に限る。人の仕様設計と検査基盤が必要で、自律的な研究全体やAIの自己改善を実証していない。"
   }
 }

@@ -240,10 +240,12 @@
         "external-service-boundary",
         "embedded-evaluator-access",
         "training-containment-redteam",
-        "mythos52-sandbox-boundaries"
+        "mythos52-sandbox-boundaries",
+        "siren-offline-blocking",
+        "siren-layered-mitigations"
       ],
       "review": {
-        "checkedAt": "2026-11-24",
+        "checkedAt": "2026-11-26",
         "intervalDays": 7,
         "reason": "既存の根拠がカードの条件をどこまで直接確かめているかを分類しています。根拠の更新時に見直します。"
       }
@@ -303,10 +305,11 @@
         "hydrogen-coding-replay",
         "metr-research-judgment",
         "research-sabotage-audit",
-        "monitor-attack-policy-sensitivity"
+        "monitor-attack-policy-sensitivity",
+        "rust-migration-verification"
       ],
       "review": {
-        "checkedAt": "2026-11-24",
+        "checkedAt": "2026-11-26",
         "intervalDays": 7,
         "reason": "既存の根拠がカードの条件をどこまで直接確かめているかを分類しています。根拠の更新時に見直します。"
       }
@@ -322,10 +325,11 @@
         "evaluation-production-warning-gap",
         "mythos52-prompted-sandbagging",
         "gpt62-eval-awareness",
-        "neon-monitoring-awareness"
+        "neon-monitoring-awareness",
+        "siren-eval-awareness"
       ],
       "review": {
-        "checkedAt": "2026-11-25",
+        "checkedAt": "2026-11-26",
         "intervalDays": 7,
         "reason": "既存の根拠がカードの条件をどこまで直接確かめているかを分類しています。根拠の更新時に見直します。"
       }
