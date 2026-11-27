@@ -1,0 +1,124 @@
+{
+  "id": "2026-11-27-alignment-reassessment",
+  "version": 2,
+  "date": "2026-11-27",
+  "reviewer": "Codex — primary-source editorial reassessment",
+  "decision": "reviewed",
+  "assessments": {
+    "alignment": {
+      "mechanism": "C1 concerns selecting actions that depart from legitimate purposes or constraints, separately from being able to execute them. Its two illustrative mechanisms remain alternatives, not consecutive stages.",
+      "conditions": "Read the unchanged Japanese and English C1 explanation and evidence summary against the current primary material. The limited/tested classification still fits; selection, permissions, task context and intervention matter.",
+      "counterexample": "A system can avoid a prohibited action, defer to a person or be stopped before harm. Refusal of a dangerous request and disagreements among human preferences are not themselves alignment failures.",
+      "evidence": "The companion Markdown records the original incident, replay conditions, defensive comparisons and correction searches. Existing citations and research cards remain sufficient for the current wording.",
+      "limits": "This retains the present bounded explanation, not a claim to have repeated every historical experiment or established ordinary-use incidence. The search does not prove that no contrary study exists.",
+      "mitigation": "Keep the explanation of clearer objectives, behavior checks after training and operational safeguards. Intervention effectiveness must be evaluated in relevant conditions, including utility costs.",
+      "readerContext": "Both languages define alignment in place and distinguish a choice from executed harm. Standalone conditions and limits explain the role of permissions and prevention without assuming readers know the graph.",
+      "whyHere": "After capability progress, the control story asks which actions that capability serves. C1 introduces that question before discussing execution conditions and failed prevention.",
+      "primary": [
+        {
+          "source": "openai-email-compaction",
+          "locator": "Summary, trajectory and investigation; reread November 27.",
+          "support": "Bounded evidence of task diversion, with execution and causation limits retained."
+        },
+        {
+          "source": "gemini-hydrogen-safety",
+          "locator": "Section 3.4.2.2, Figure 3.6 and accompanying caveats.",
+          "support": "Supports keeping the replay-specific defensive improvement and generalization limits."
+        }
+      ]
+    },
+    "dependencies": {
+      "mechanism": "C3-L combines intent divergence, execution conditions and failed prevention in the same situation. R4-C1 is conditional mitigation. Neither encodes a guaranteed progression from a test result to global loss of control.",
+      "conditions": "Read both edge explanations, the control and acceleration graph/route descriptions, the control story and three linked news examples in Japanese and English. C1a/C1b remain alternative mechanisms; C2 and C3 remain separate joint conditions.",
+      "counterexample": "Permission withdrawal or timely intervention may stop a misaligned choice. A good score in one evaluation may fail to transfer. These counterexamples remain explicit in the unchanged dependencies.",
+      "evidence": "No endpoint, prerequisite, citation, narrative or scientific claim changed. The new fingerprints follow C1 metadata only; the companion record explains why the reviewed current evidence is compatible with those dependencies.",
+      "limits": "These are editorial consistency checks, not new empirical validation of either causal connection. Edge clocks remain unchanged because this review does not re-audit their entire historical evidence base.",
+      "mitigation": "Retain checks on sustained deployment effectiveness, independent evaluation, permissions and timely intervention. Avoid combining conditions from separate studies into evidence of one joint event.",
+      "readerContext": "The control chapter explains the three conditions before local failures and recovery. News examples distinguish capability thresholds, evaluation improvements and sampled behavior from catastrophe.",
+      "whyHere": "The connections explain how choosing an action relates to possible execution and how safety research might reduce failures. The downstream story preserves additional recovery and survival conditions.",
+      "primary": [
+        {
+          "source": "anthropic-siren",
+          "locator": "Measures, results, awareness and combined mitigations. Already incorporated November 26.",
+          "support": "Keeps access, behavior and safeguards distinct; no duplicate evidence is added."
+        },
+        {
+          "source": "openai-gpt62-system",
+          "locator": "Section 4.1.6, including live turns and simulated replays.",
+          "support": "Retains the distinction between expressed awareness, judged behavior and generalized alignment."
+        }
+      ]
+    },
+    "scope": {
+      "mechanism": "map.asOf records the latest substantive content review; it is not a claim that every item or source was reassessed on that date.",
+      "conditions": "Only C1 and its matching evidence record receive November 27 checkedAt values. No source, other node, edge, route, safeguard or unrelated evidence date moves.",
+      "counterexample": "An unchanged index, reachable URL or passing build alone cannot justify renewing a claim. This review instead compared C1 wording with original findings and relevant counterevidence.",
+      "evidence": "The companion record gives the review window, 19 daily entry points, source sections, retention decision and preservation scope. No scientific content or history is replaced.",
+      "limits": "The due check is an editorial schedule, not a scientific validity test. The daily search is bounded and does not constitute a full literature or weekly backfill audit.",
+      "mitigation": "Preserve prior evidence, translations and review records; keep the result in the existing draft for human review. Do not merge or deploy through the automation.",
+      "readerContext": "The latest review date remains distinct from publication, observation periods and the dates of individual source verification.",
+      "whyHere": "A substantive no-change decision for the one due item should be recorded without making unrelated material appear newly reviewed.",
+      "primary": [
+        {
+          "source": "openai-email-compaction",
+          "locator": "November 18 original report, substantively compared with C1 on November 27.",
+          "support": "Illustrates why publication, event and editorial-review dates must remain separate."
+        }
+      ]
+    }
+  },
+  "entries": {
+    "node:C1": {
+      "hash": "b2ede950ca6b7f2f9efee8b73afed967f53607d9a4e586f53c776eb1e5e10ec1",
+      "assessment": "alignment"
+    },
+    "edge:C3-L": {
+      "hash": "adf748de1c187a47e7d0800a72c8e8f47853e862aadba335e10808824063e17d",
+      "assessment": "dependencies"
+    },
+    "edge:R4-C1": {
+      "hash": "e09577319ec1016ed63bcb98403d0a6e95f15227656e3449198b16d62571096d",
+      "assessment": "dependencies"
+    },
+    "graph:control": {
+      "hash": "99baf9f07daeb495be70e05aec2293f31f6c3854b508bb9abfa285aa96d17f38",
+      "assessment": "dependencies"
+    },
+    "graph:acceleration": {
+      "hash": "b48b1b9746d2343cfc5dcc221352a765966159934236a7a33678b540b81ecdaf",
+      "assessment": "dependencies"
+    },
+    "route:control": {
+      "hash": "baeacfe670cc4b50ffbb2d4752a63583b4a5cbbf4b7174fd556537c1bedf3ec1",
+      "assessment": "dependencies"
+    },
+    "route:acceleration": {
+      "hash": "0dec31eb646a3dd9955e92adeab83dda946defed765982a116c5bbbdb7c4c13d",
+      "assessment": "dependencies"
+    },
+    "evidence:C1": {
+      "hash": "7b7c4b3bc107bc32a1674c880af9d30bf33001fc97855cbf14d49a611b79178b",
+      "assessment": "alignment"
+    },
+    "news:automated-safety": {
+      "hash": "c4ee76e376079daff67f7b93d2f2576ed37bd12f606609774294180dbdffd61d",
+      "assessment": "dependencies"
+    },
+    "news:astra-threshold": {
+      "hash": "13f3979d67b8dc41d8763376d6cbb9d075dec019a870a1860d5804e913e60060",
+      "assessment": "dependencies"
+    },
+    "news:agent-behavior": {
+      "hash": "21706818aae31d40ad6469b1899d57cd87eb5978e7e10769c9bcb5060bf4b9f1",
+      "assessment": "dependencies"
+    },
+    "story:control": {
+      "hash": "63cbf224500805d14bec1a09c68ae21da5eac38ea779bf94911a50726085fb6b",
+      "assessment": "dependencies"
+    },
+    "metadata:map": {
+      "hash": "0a61dd6a321246208fd6e967adf779e3f0a52f535fa705edcfe54fa5419dd3fd",
+      "assessment": "scope"
+    }
+  }
+}
