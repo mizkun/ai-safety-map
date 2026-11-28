@@ -1,0 +1,183 @@
+{
+  "id": "2026-11-02-oversight-composition",
+  "version": 2,
+  "date": "2026-11-02",
+  "reviewer": "Codex (primary-source and bilingual editorial review; not independent replication)",
+  "decision": "reviewed",
+  "assessments": {
+    "distributed": {
+      "mechanism": "Splitting an instructed attack across sequential agents can leave each individual diff insufficiently suspicious to a per-instance monitor.",
+      "conditions": "FakeLab is a synthetic 10,000-line Python repository with 86 benign tasks and four attack goals. Main runs use Gemini 3 Flash, 1/3/9 executors, GPT-5 mini/nano diff-only monitors and an optional unmonitored planner broadcast. Success requires all tasks and no flagged commit.",
+      "counterexample": "Stronger monitors and additional context can detect changes missed by weaker settings. Combining the complete attack diff also helps, but assumes knowledge of which commits belong to the attack.",
+      "evidence": "Read the original version-2 methods, results and limitations. A second-family DeepSeek V4 Flash comparison uses 1/3 executors and adaptive stopping; it is the authors’ robustness test, not independent replication.",
+      "limits": "Injected attack goals, sequential execution, limited diff visibility and idealized planner communication do not establish spontaneous collusion, parallel production failures or ordinary-use incidence. Write restrictions help in some settings but not uniformly with a planner.",
+      "mitigation": "Identify related changes across agents, strengthen monitors and inspect boundary permissions. Treat the oracle combined-diff comparison as evidence about information loss rather than an already available deployment solution.",
+      "readerContext": "Explain a monitor as a checker of the acting AI and explain distributed work in ordinary words. Both languages state the instructed-attack and synthetic-environment conditions next to the finding.",
+      "whyHere": "C3a3 concerns evasion during execution. This is a mechanism-level addition, not evidence of unrecoverable control loss or a new causal arrow.",
+      "primary": [
+        {
+          "source": "distributed-agent-monitoring",
+          "locator": "Version 2, sections 1.1, 2, 3.1–3.4 and 4; executor/planner/monitor setup, combined-diff and permissions ablations",
+          "support": "Conditional fragmentation effect with instructed sequential attacks; stronger monitoring can help, while combining all attack changes assumes prior knowledge."
+        }
+      ]
+    },
+    "guard": {
+      "mechanism": "Trusted orchestration can inspect an agent operation or inter-agent transfer before it occurs and hold or block a violation of developer-owned rules.",
+      "conditions": "The authors evaluate GPT-5.6-Terra, Muse-Glimmer-30B and Grok-4.3 with Gemma-4-26B-A4B-IT semantic checks on four multi-agent and two single-agent benchmarks. Configuration uses development inputs distinct from test outcomes. Opaque internal paths are not fully observable.",
+      "counterexample": "Successful attacks remain and other methods outperform this defense on some benchmarks. A path outside the trusted interception boundary can evade this protection.",
+      "evidence": "The pooled metric falls 71.5–86.3% relative across models, not percentage points. It aggregates heterogeneous definitions. Benign retention means the defended point estimate reaches the unguarded confidence interval’s lower bound, not proven non-inferiority.",
+      "limits": "Preprint evaluating its authors’ own defense, including a reconstructed benchmark and reproduced baselines. Confirmation requests are held without interactive human approval; no human accuracy or operational incident reduction is measured. This is not a replication of the separate FakeLab experiment.",
+      "mitigation": "Record measured defense improvements alongside residual failures. Require correct policies and a trusted ability to intercept and stop the relevant operation; assess utility, overhead and unseen attacks separately.",
+      "readerContext": "Describe operations and information transfers rather than requiring familiarity with the framework’s internal names. Explain that holding for approval does not test whether people decide correctly.",
+      "whyHere": "C3a3 needs evidence of defenses as well as bypass mechanisms. The same tested evidence classification remains appropriate; no claim of a solved safety barrier is made.",
+      "primary": [
+        {
+          "source": "mas-guard",
+          "locator": "Sections 3–5; benchmark tables; Appendices H.5 and benchmark configurations",
+          "support": "Developer evaluation of pre-action boundary checks, relative pooled metric reduction, benign-retention criterion and simulated confirmation hold."
+        }
+      ]
+    },
+    "approval": {
+      "mechanism": "Monitors with different model weights can fail together when their approval decisions share corrupted evidence. Separating evidence sources changes the error pattern.",
+      "conditions": "Twelve monitors combine four small quantized model families with three independently constructed record views. The synthetic payment environment limits attacker influence, including a one-source corruption budget. The confirmation set has 6,560 items and 111,752 verdicts, not that many independent payments.",
+      "counterexample": "The twelve-LLM pool fails the stated worst-case condition. A deterministic field checker restores that condition on measured attacks only. Larger closed models resist transferred attacks more often; stronger attacks optimized for them were not comprehensively tested.",
+      "evidence": "Read the preregistration/deviation description, held-out approval-rule table and limitations. At the same 0.1% unsafe approval, source-aware approval lowers false rejection from 7.4% to 0.9% in that evaluation.",
+      "limits": "No actual payments. Records are independent by construction; deployed records may share an upstream failure. Confirmation results and later non-preregistered frontier-model transfer checks are separate. No guarantee beyond the assumed failure family or independently verified replication is claimed.",
+      "mitigation": "Combine independent evidence and suitable deterministic checks instead of only multiplying model votes. Test both unsafe approval and false rejection, and examine the integrity of underlying records.",
+      "readerContext": "Define the objects being checked as invoices and other payment records. The prose states the one-source scope so a beginner does not interpret model diversity or a rule engine as a universal solution.",
+      "whyHere": "C3a covers missed danger, including shared blind spots. Synthetic payment approval does not establish F4 financial-system crisis or cross-organization harm.",
+      "primary": [
+        {
+          "source": "correlated-approval-monitors",
+          "locator": "Sections 4–6 and 8; confirmation experiment, held-out approval-rule comparison, failed worst-case condition and deterministic-check extension",
+          "support": "Source-based error correlation across model families; 7.4% to 0.9% false rejection at the same 0.1% unsafe approval within the constructed attack family."
+        }
+      ]
+    },
+    "human": {
+      "mechanism": "People can perform additional checks that do not discriminate a correct result from a plausible defect. Checking activity and confidence therefore need outcome measures.",
+      "conditions": "Original controlled human-participant study: 12 formative participants, then 44 recruited minus six pilots and two incomplete sessions leaves 36 analyzed. Short Python tasks include seeded correct, blatant-error and silent-error outputs; participants can read, edit, test and ask the agent.",
+      "counterexample": "People did resolve 28 of 71 silent-error instances; oversight is not universally ineffective. Later rounds perform better but feedback, practice and task order are not isolated interventions.",
+      "evidence": "Read participant exclusions, task setup, outcome counts and study limitations. Sixty-five of 71 silent-error instances receive further checks; 28 resolve. The denominator counts task instances, not participants.",
+      "limits": "The base model and experiment dates are not specified. Seeded controlled outputs do not measure deceptive model behavior, real workplace miss rates, permanent human skill loss or the reliability of the latest agents. A template receipt date is not treated as publication metadata.",
+      "mitigation": "Evaluate whether review actually detects important defects and supports corrective action. Feedback and better verification support are candidates; this study does not isolate their causal effectiveness.",
+      "readerContext": "Both languages state that researchers planted the defects. Human approval is discussed as a process whose effectiveness needs testing, not as proof that people cannot supervise.",
+      "whyHere": "C3a includes human as well as model oversight. This complements the MAS-Guard confirmation-hold limitation without converting two separate experiments into one combined result.",
+      "primary": [
+        {
+          "source": "human-agent-oversight",
+          "locator": "Sections 3–6; participants and study design, seeded-error outcomes and limitations",
+          "support": "36 analyzed participants; 65 of 71 silent-error task instances receive further checks, only 28 resolve; feedback and practice effects are not isolated."
+        }
+      ]
+    },
+    "dependencies": {
+      "mechanism": "Detection, stopping an operation and recovering control are distinct. Added evidence concerns missed detection and conditional improvements, not the complete path to persistent or global harm.",
+      "conditions": "Reread C3a/C3a3 and their parent C3, sibling C3b, oversight/evaluation OR graphs, current evidence summaries and linked agent-behavior news. Inspect the control story and its actual Japanese/English tour stops around C3a/C3a3.",
+      "counterexample": "A missed diff can still be stopped by another permission check; human review can find a planted defect; a monitor can detect danger but lack timely stopping authority. These examples preserve the existing branches.",
+      "evidence": "Four source and research records are added, with two refs per changed node and current-evidence record. The eighteen changed/dependent units retain the tested classification, OR logic and all 41 fixed edge IDs. C3a and C3a3 have no changed incident causal edge.",
+      "limits": "The review is a scoped evidence update and dependent-context check, not a fresh audit of every historical reference. Preserve all old source, node, edge and current review dates. No full-map currentness or comprehensive search coverage is claimed.",
+      "mitigation": "Keep the measured defensive results and failed guarantees alongside vulnerability findings. Do not combine separate experiments into evidence that all conditions occur together; do not upgrade a color or imply extinction probability.",
+      "readerContext": "The tour first introduces goal mismatch, access and safeguards, then explains different failure mechanisms. Added paragraphs describe who acts, who checks and what the study could not establish; no new glossary prerequisite is introduced.",
+      "whyHere": "The source inventory, history, map as-of date and bilingual text must agree with the scoped November 2 additions. Current summaries remain valid while their research lists now expose the new support. Existing news still distinguishes constructed observations from ordinary-use frequency.",
+      "primary": [
+        {
+          "source": "distributed-agent-monitoring",
+          "locator": "Version 2, sections 1.1, 2, 3.1–3.4 and 4; executor/planner/monitor setup, combined-diff and permissions ablations",
+          "support": "Conditional fragmentation effect with instructed sequential attacks; stronger monitoring can help, while combining all attack changes assumes prior knowledge."
+        },
+        {
+          "source": "mas-guard",
+          "locator": "Sections 3–5; benchmark tables; Appendices H.5 and benchmark configurations",
+          "support": "Developer evaluation of pre-action boundary checks, relative pooled metric reduction, benign-retention criterion and simulated confirmation hold."
+        },
+        {
+          "source": "correlated-approval-monitors",
+          "locator": "Sections 4–6 and 8; confirmation experiment, held-out approval-rule comparison, failed worst-case condition and deterministic-check extension",
+          "support": "Source-based error correlation across model families; 7.4% to 0.9% false rejection at the same 0.1% unsafe approval within the constructed attack family."
+        },
+        {
+          "source": "human-agent-oversight",
+          "locator": "Sections 3–6; participants and study design, seeded-error outcomes and limitations",
+          "support": "36 analyzed participants; 65 of 71 silent-error task instances receive further checks, only 28 resolve; feedback and practice effects are not isolated."
+        }
+      ]
+    }
+  },
+  "entries": {
+    "source:distributed-agent-monitoring": {
+      "hash": "3d7bb8b5c33accc481305b41cd7e2af8dca8c09cccc30064913c43d50fa98e63",
+      "assessment": "distributed"
+    },
+    "source:mas-guard": {
+      "hash": "9b462bd58288b2998e7404b6e7998e6aace6bfba428b68f42df289200d7d03ad",
+      "assessment": "guard"
+    },
+    "source:correlated-approval-monitors": {
+      "hash": "b5bae9a3d7686243c19a1c90b94839759a931e19728a2abeb8b7b4e36411a195",
+      "assessment": "approval"
+    },
+    "source:human-agent-oversight": {
+      "hash": "ce3d909ea378ef966369846b9a234ddd4a563b2c705882cef223a114021649f7",
+      "assessment": "human"
+    },
+    "research:distributed-agent-monitoring": {
+      "hash": "5cb85e50c06f27aba803d2f8536b18eb71afecad50da82eaf9ab703966683d4b",
+      "assessment": "distributed"
+    },
+    "research:mas-guard": {
+      "hash": "5c8b73dc6394d5ad4560efca160d3ee6710cc7e5f7065191f949249bb380be36",
+      "assessment": "guard"
+    },
+    "research:correlated-approval-monitors": {
+      "hash": "d77703bb814c1b65f8884828ad016d3164d4e0c1c08a0c52724bdc50eb11be2b",
+      "assessment": "approval"
+    },
+    "research:human-agent-oversight": {
+      "hash": "e3c16a40d7b8c4e8e5443d52363e152e1137b99e5fd70d7d3eefdb93cfb33827",
+      "assessment": "human"
+    },
+    "node:C3a": {
+      "hash": "7fd22faf036eb2592b16613de32f251c84f3c0cf8b7b417b04f8952b96082d1a",
+      "assessment": "dependencies"
+    },
+    "node:C3a3": {
+      "hash": "d7d0e82080a64f314fbdae01cd8489798560a229c1deb321a5b71d1a964ee5f8",
+      "assessment": "dependencies"
+    },
+    "graph:oversight": {
+      "hash": "93a13892591715e431e1cc68aa1b53503ef126c72487b13589c2ec6ded61d85b",
+      "assessment": "dependencies"
+    },
+    "graph:evaluation": {
+      "hash": "2c228d283e9ff10e6d8e2c7ae902ff6d536f607daf07a69fe7228b014876c66e",
+      "assessment": "dependencies"
+    },
+    "evidence:C3a": {
+      "hash": "33dd9e3d231b7cffef814a914cab23e42b2d83cb0ca448265b26294ea3f389d8",
+      "assessment": "dependencies"
+    },
+    "evidence:C3a3": {
+      "hash": "0c1f952a049b756cbc4b1e7510d9cfe68db3a2d9f01f7ec65967b328f211d56c",
+      "assessment": "dependencies"
+    },
+    "news:agent-behavior": {
+      "hash": "6ddfac7c3c6c835bc6fb66bffe27c644c2e57852c4c08b26fc9aedd8af27fde0",
+      "assessment": "dependencies"
+    },
+    "metadata:map": {
+      "hash": "5c521abae2027793bde681a01eee12765f49c16fd8e1b036378895db51130c77",
+      "assessment": "dependencies"
+    },
+    "history:changes": {
+      "hash": "9939b7b43e0666ab9b2c40a361f59464578793a8b3d8f4ea55c32540f7e407ab",
+      "assessment": "dependencies"
+    },
+    "inventory:current": {
+      "hash": "f45398fe80a2611b1afaf79c2778f740cdacbd9ee4957091d0b823dec576aa99",
+      "assessment": "dependencies"
+    }
+  }
+}

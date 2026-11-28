@@ -1,0 +1,360 @@
+{
+  "id": "2026-10-20-training-detection-and-code",
+  "version": 2,
+  "date": "2026-10-20",
+  "reviewer": "Codex (primary-source and bilingual editorial review; not independent expert approval)",
+  "decision": "reviewed",
+  "assessments": {
+    "training": {
+      "mechanism": "Learning which detected behavior is punished can create an incentive to use a monitor blind spot. Localizing updates in a removable component offers a different intervention on that incentive.",
+      "conditions": "Read GRAFT v1 Sections 3–5 and 7, Figure 2 and Appendix D.1–D.3, plus the October 19 author account. Distinguish the deliberately constructed arithmetic environment from toy RL and the separate 32B supervised-learning experiment.",
+      "counterexample": "The half-hackable variant gives another intervention comparable performance. Other settings lose useful capability, and undetected behaviors need not generalize into the removable component.",
+      "evidence": "The bounded reduction belongs at C1. The result does not establish the frequency of reward hacking in production or a general solution to misalignment.",
+      "limits": "Heuristic monitors, selected environments, limited seeds and the difficulty of finding suitable anchor tasks constrain generalization. Multi-turn RL at frontier scale and persistence after later training remain unverified. No independent replication was verified.",
+      "mitigation": "Measure both legitimate task performance and undetected failure types on separate tasks, with appropriate training controls. Pair behavioral improvements with access restrictions and operational safeguards.",
+      "readerContext": "The Japanese explanation introduces the removable component without requiring knowledge of gradient routing. Both languages qualify the publication date and distinguish limited experiments from deployment.",
+      "whyHere": "Add graft-gradient-routing and graft-reward-hacking to C1 and its tested evidence summary. Preserve the category; do not attribute this human-authored method to automated safety research at R4.",
+      "primary": [
+        {
+          "source": "graft-gradient-routing",
+          "locator": "v1 Sections 3–5, 7; Figure 2; Appendix D.1–D.3",
+          "support": "Human-designed intervention, comparison conditions, bounded gains and counterexamples."
+        }
+      ]
+    },
+    "detection": {
+      "mechanism": "Post-response flags can direct human investigation without preventing the flagged response. A monitor that shares its training teacher can share unmeasured blind spots.",
+      "conditions": "Read the original self-assessment report from Method through Limitations and data-handling footnotes. Keep production monitoring, teacher-labeled evaluation and adaptive blocking trials separate.",
+      "counterexample": "The separate blocking trial leaves successful attacks, and the prompted classifier performs differently. Shared-context judgment and possible dishonest self-reporting limit use against the agent itself.",
+      "evidence": "A developer-reported monitoring improvement and a controlled blocking comparison qualify M3. Teacher-relative detection is not independently established harm recall, and the experimental denominator is not production traffic.",
+      "limits": "Production sample size, evaluation dates and attack-orchestrator model identities are unspecified. Zero-data-retention traffic is outside coverage. No independently measured harm reduction or reliable self-monitoring of misalignment is demonstrated.",
+      "mitigation": "Use flags alongside immediate blockers, authorized human review, containment and recovery. Check detection latency and harm outcomes, not just agreement with a teacher.",
+      "readerContext": "Both languages state that detection and blocking differ before reporting the experimental limitation. The card identifies the teacher and human review; neither labels all flags as actual misconduct.",
+      "whyHere": "Add anthropic-self-assessment and self-assessment-misuse-detection at M3; keep hypothesis status. Add the Safeguards blog to the Anthropic daily watchlist so defensive research is not missed.",
+      "primary": [
+        {
+          "source": "anthropic-self-assessment",
+          "locator": "Method; Results; Discussion; Data Handling; Limitations; footnotes",
+          "support": "Operational detection, separate blocking conditions, shared-label limitations and excluded traffic."
+        }
+      ]
+    },
+    "coding": {
+      "mechanism": "Building a working implementation can require planning, debugging and preserving earlier functionality. Feature-level passing scores and all-tests migration success answer different questions.",
+      "conditions": "Read the October 19 OpenAI article and linked MultiLangBench README. Preserve model and reasoning settings, reference-output grading, network restrictions, public-test subset and separate migration criterion.",
+      "counterexample": "Incomplete functionality remains, including difficulty in COBOL. Production review and business dependencies can still prevent a test-passing implementation from completing a real job.",
+      "evidence": "The benchmark supports bounded sequential coding capability at C2a. It does not measure real occupational replacement, broad task transfer, trustworthy conduct or access permissions.",
+      "limits": "Developer report without verified independent replication. Migration sample and intervention counts and run budgets are not disclosed in the article. The published instructions are not evidence that this review reproduced the reported scores.",
+      "mitigation": "Use representative hidden tests, validate the full workflow and business rules, record interventions, and restrict real-world permissions independently of code scores.",
+      "readerContext": "Read C2a in both languages from overview through safeguards. Explain partial functionality before contrasting it with the all-tests condition; no assumption that a benchmark score means a whole job is automated.",
+      "whyHere": "Add openai-low-resource-code and multilang-code-completion at C2a, and update its current-information summary. Keep limited/tested categories and do not upgrade W1 or R1 from this coding result.",
+      "primary": [
+        {
+          "source": "openai-low-resource-code",
+          "locator": "Sections 1–2 and linked openai/MultiLangBench README",
+          "support": "Two distinct evaluation criteria, model settings and developer-stated need for production review."
+        }
+      ]
+    },
+    "provenance": {
+      "mechanism": "A reconstructable pipeline, a repository results table and a versioned paper can describe different protocols. Results cannot be pooled merely because they share a project name.",
+      "conditions": "Reread MASS v1 Appendix C.5/Table 7 and its submission history; compare the authors’ repository README, experiment_coverage.md and reproduction.md. The repository reports a broader MLR evaluation and explicitly describes protocol/ledger gaps.",
+      "counterexample": "Public code differs in workflow selection and does not include every reported evaluation configuration or original run ledger. Availability of code and passing repository tests are not replication.",
+      "evidence": "Keep mass-two-rounds tied to v1, adding an explicit scope limitation. The comparison neither overturns the two-round report nor independently validates it.",
+      "limits": "The causal source of gains and continued improvement are still limited by experimental design and accounting. No code was run, and no complete artifact/ledger audit or independent replication was performed.",
+      "mitigation": "Pin reported results to versions, keep denominators separate, retain provenance and seek reproduction with original logs before upgrading claims.",
+      "readerContext": "Read R3 and its evidence summary in both languages. The new card warning is consistent with limited evidence, uneven task gains and the absence of a general sustained-acceleration claim.",
+      "whyHere": "Update only the existing MASS source checked date and card locator/limitation. Preserve R3 explanation, classification and node/edge/evidence dates; they were substantively reviewed yesterday.",
+      "primary": [
+        {
+          "source": "mass-self-supervision",
+          "locator": "v1 Appendix C.5 and Table 7; author repository README and implementation/coverage notes",
+          "support": "Versioned result scope and different public-repository evaluation coverage."
+        }
+      ]
+    },
+    "connections": {
+      "mechanism": "Misaligned choice, execution ability and failed intervention are parallel conditions, not a single demonstrated sequence. Misuse additionally requires reach, persistence and failed recovery before global harm.",
+      "conditions": "Read M3-H, C3-L, R4-C1, R0-C2a, R2-R3 and R3-R2 in Japanese and English with their conditions, limits and safeguards.",
+      "counterexample": "Training changes can reduce failures, offline monitoring may identify misuse, and partial coding success need not transfer to a full real-world workflow. Two research iterations do not settle future feedback strength.",
+      "evidence": "The additions qualify individual components; none establishes the whole arrow. Existing conditional, joint, mitigation and feedback relations remain appropriate.",
+      "limits": "Separate evaluation settings cannot be assembled as one observed catastrophe or guaranteed defense. Human-led GRAFT is not evidence that automated R4 research produced it. Older edge sources were not all reread today.",
+      "mitigation": "Retain permissions, stopping, validation and recovery conditions and the distinction between intended goals and useful capability. Continue measuring defensive effectiveness under matched conditions.",
+      "readerContext": "The retained arrows introduce the required extra conditions in both languages. The new card details do not make the arrows inevitable or imply that their dates were renewed.",
+      "whyHere": "Record dependency review for six arrows without changing wording, topology or review dates.",
+      "primary": [
+        {
+          "source": "graft-gradient-routing",
+          "locator": "Sections 4 and 7",
+          "support": "Bounded behavioral mitigation does not establish every condition of R4-C1."
+        },
+        {
+          "source": "anthropic-self-assessment",
+          "locator": "Blocking trial and Limitations",
+          "support": "Detection and independent protection differ."
+        },
+        {
+          "source": "openai-low-resource-code",
+          "locator": "Sections 1–2",
+          "support": "Task gains require separate transfer checks."
+        },
+        {
+          "source": "mass-self-supervision",
+          "locator": "Appendix C.5",
+          "support": "Versioned feedback evidence remains bounded."
+        }
+      ]
+    },
+    "navigation": {
+      "mechanism": "The tour separates capability, actions, permissions, defenses, persistent control loss and widespread harm; the research branch also allows defensive progress.",
+      "conditions": "Read five changed/dependent graph definitions, three route previews and all chapters of control, misuse and acceleration in both languages. Verify the exported reading order includes the node explanations.",
+      "counterexample": "Human review, immediate blockers and recovery can interrupt misuse; task improvements need not imply unrestricted agency or permanent loss of control.",
+      "evidence": "The additions fit the existing branches and remain accessible through their stable node IDs. No new node or scenario is needed.",
+      "limits": "Narratives organize non-exhaustive hypotheses rather than probabilities or predictions. The new experiments do not observe extinction or establish the whole pathway.",
+      "mitigation": "Keep defenses visible alongside capability gains and introduce real-world access and validation before stronger outcomes.",
+      "readerContext": "The existing chapters explain why each condition follows and do not require the reader to infer a threat from a benchmark number alone.",
+      "whyHere": "Retain control/misuse/acceleration/ability-access/development-paths graphs, three routes and three stories after checking their changed dependencies.",
+      "primary": [
+        {
+          "source": "anthropic-self-assessment",
+          "locator": "Results and Limitations",
+          "support": "Defensive monitoring and its limits fit the misuse path."
+        },
+        {
+          "source": "openai-low-resource-code",
+          "locator": "Evaluation criteria",
+          "support": "Code progress remains separate from broader agency."
+        },
+        {
+          "source": "mass-self-supervision",
+          "locator": "Sections 3–5",
+          "support": "Bounded feedback does not make the narrative inevitable."
+        }
+      ]
+    },
+    "summaries": {
+      "mechanism": "Short summaries direct attention to evidence and unresolved questions; a new linked experiment does not replace the source of an older summary.",
+      "conditions": "Read current:misuse and news automated-safety, astra-threshold, research-contribution, agent-behavior and time-horizons in Japanese and English.",
+      "counterexample": "The new monitoring report is not a new global-harm observation, and reward-hacking improvement is not universal safety. Coding scores do not supply a new time-horizon measurement.",
+      "evidence": "Existing summaries retain their attribution and qualified interpretation. The linked cards supply the new details without changing those earlier source accounts.",
+      "limits": "Older original sources were not all reverified today; retain their dates. The METR horizon page remains a September maintenance notice, not a new measurement.",
+      "mitigation": "Keep questions about access, evaluation conditions, independent verification and defensive progress alongside the linked explanations.",
+      "readerContext": "Each retained summary remains intelligible without identifying detection with prevention or a feature score with full-job success.",
+      "whyHere": "Record six summary dependency checks; do not refresh their dates or rewrite their source attribution merely because a linked node changed.",
+      "primary": [
+        {
+          "source": "anthropic-self-assessment",
+          "locator": "Results and Limitations",
+          "support": "New detection evidence does not establish global harm."
+        },
+        {
+          "source": "openai-low-resource-code",
+          "locator": "Sections 1–2",
+          "support": "Keep distinct success metrics."
+        },
+        {
+          "source": "graft-gradient-routing",
+          "locator": "Section 7",
+          "support": "Generalization remains conditional."
+        }
+      ]
+    },
+    "editorial": {
+      "mechanism": "Publication, experiment period and editorial verification are separate dates. Stable history IDs preserve the record while new evidence is appended.",
+      "conditions": "Read policies, watchlist, previous review and sole open draft. Check all eighteen existing daily starting URLs plus the newly identified Safeguards blog, primary candidates and targeted correction/replication searches.",
+      "counterexample": "Unchanged indices, secondary digests and AI-generated referee reports do not establish a new finding or warrant renewed evidence dates.",
+      "evidence": "Three new sources/cards, one clarified existing card, three updated explanations and one history entry. No due node or edge as of October 20; no date-only renewal.",
+      "limits": "A bounded search cannot prove the absence of other corrections. Editorial reading is not expert approval, code replication or live production verification. Monday coverage and unresolved IMF retrieval gaps remain in the prior record.",
+      "mitigation": "Reuse PR #11, preserve the primary checkout and earlier records, and require content/logic/build checks. Do not merge or deploy automatically.",
+      "readerContext": "Both language versions explain the scope before numbers and distinguish limited evidence from prediction. The history states exactly what changes and why.",
+      "whyHere": "Advance map asOf and the documented changed-item dates, add the defensive research feed, and preserve every prior history entry and translation by stable ID.",
+      "primary": [
+        {
+          "source": "graft-gradient-routing",
+          "locator": "Submission history",
+          "support": "October 12 publication differs from the October 19 explainer and unspecified experiment dates."
+        },
+        {
+          "source": "anthropic-self-assessment",
+          "locator": "Publication and Method/Discussion",
+          "support": "Operational monitoring and controlled trial periods differ."
+        },
+        {
+          "source": "openai-low-resource-code",
+          "locator": "Publication and Sections 1–2",
+          "support": "Developer-reported evaluation and limits."
+        }
+      ]
+    }
+  },
+  "entries": {
+    "source:mass-self-supervision": {
+      "hash": "49dd5f32b98ea1116c8f49fa0274ba28fc2ccb5d675b5d4a2aab43850e74c4e5",
+      "assessment": "provenance"
+    },
+    "source:graft-gradient-routing": {
+      "hash": "080afa7a3764105f9ac0991052a31b348efaf85e75f54edb6206c8589d2180e0",
+      "assessment": "training"
+    },
+    "source:anthropic-self-assessment": {
+      "hash": "c281e111b93a9fe4d6da54bb6115b28a04d4a5aea6da0791dfb94508f499669f",
+      "assessment": "detection"
+    },
+    "source:openai-low-resource-code": {
+      "hash": "8ca730aacac7d117598913ae3211a33288678ae8ae2dc26c376fa15e401c7e0c",
+      "assessment": "coding"
+    },
+    "research:mass-two-rounds": {
+      "hash": "83e4bfc7fe4f2ac8d6636553de97daf3e6b88a36cf6442710cd03c73765fa59b",
+      "assessment": "provenance"
+    },
+    "research:graft-reward-hacking": {
+      "hash": "0e4e9084d9e090360a4d372793424766138be35943d9c5e4b386f4fe771d696b",
+      "assessment": "training"
+    },
+    "research:self-assessment-misuse-detection": {
+      "hash": "300e9993d0d86e1634e502d7c49c6b125e93d148184fa47ec569a061d72b7bea",
+      "assessment": "detection"
+    },
+    "research:multilang-code-completion": {
+      "hash": "8b51e433f35b1326b79e77a821c33a56e63903685c4e484c7c65b3f09c9461b9",
+      "assessment": "coding"
+    },
+    "node:C1": {
+      "hash": "82fb3a9636db96dc678f4ffe9528fb51188a8a26026d95e5d57fdca8efcfd791",
+      "assessment": "training"
+    },
+    "node:C2a": {
+      "hash": "35e3a6d61b7a87b246e41c7cb51b47e1e5753fa12962fa3d1a4acd6f6b60702d",
+      "assessment": "coding"
+    },
+    "node:M3": {
+      "hash": "0a15be6e09364123b25eec1409cd9b3ba11e2576a1ba986e64a72d15c14efd7a",
+      "assessment": "detection"
+    },
+    "node:R3": {
+      "hash": "31de72ba3f6130ee3d764d2a80a6fde1184bcf1cae5af173810c1f2d4be16f78",
+      "assessment": "provenance"
+    },
+    "edge:M3-H": {
+      "hash": "b69c4fcf8c12733db8febe827e6ff3c93bafb1a676cdbcc2452770e0862a7859",
+      "assessment": "connections"
+    },
+    "edge:R2-R3": {
+      "hash": "3d0c5d6f44b8da32ffe5c924345c026f25ba251cc5c54449c94ed2c08db6a55b",
+      "assessment": "connections"
+    },
+    "edge:R3-R2": {
+      "hash": "ed4263db9a4b510dd8bdb0218030bf7e87e283c2d29354cc5d3e0ad4c66f87cc",
+      "assessment": "connections"
+    },
+    "edge:C3-L": {
+      "hash": "d64ff9799e6877034588a5736990e4991b79ab9d8fe237d68aa11af42bdc760e",
+      "assessment": "connections"
+    },
+    "edge:R4-C1": {
+      "hash": "20f0babbffbc753eaa7749433e53fe082768dd0e4b1297d7502a047eba435924",
+      "assessment": "connections"
+    },
+    "edge:R0-C2a": {
+      "hash": "bbc3774bcf055e654285b00ccf9b28615125d05d08329e62c52745c12aa67c79",
+      "assessment": "connections"
+    },
+    "graph:control": {
+      "hash": "dfc1d2be17a9cab8468bc2043254eb038ceb185270db464489384d0c10ae2172",
+      "assessment": "navigation"
+    },
+    "graph:misuse": {
+      "hash": "640be65b03b5e674fdda83f5efc8187870b1ec74a23edb8cacb062407cb8956f",
+      "assessment": "navigation"
+    },
+    "graph:acceleration": {
+      "hash": "6579c6ea437eaa7bcc50552f7170723ce0dc8f717a2b173461d6ca48b06493a8",
+      "assessment": "navigation"
+    },
+    "graph:ability-access": {
+      "hash": "f6cf634228cf3e56023717a851b654a444a3a0cffeeea1a6bf0e882df87b0405",
+      "assessment": "navigation"
+    },
+    "graph:development-paths": {
+      "hash": "036a64d3a6d47905b0569b0b74325d42d6db42b90743e5727e4359486471b9e0",
+      "assessment": "navigation"
+    },
+    "route:control": {
+      "hash": "93002cde818dac22b712c4975d29d5af90307119dee5922804c0f36ae5a4d13d",
+      "assessment": "navigation"
+    },
+    "route:misuse": {
+      "hash": "50e192f45050cbdb02a43d9e8d8039d714b4784e97dc09f8ca234e3e6cd5fd15",
+      "assessment": "navigation"
+    },
+    "route:acceleration": {
+      "hash": "8df0fd6c2c3e1ca6e04bea2a0445f43ae51e4ea7d78ea5d71cbe16dae31640a4",
+      "assessment": "navigation"
+    },
+    "current:misuse": {
+      "hash": "a60fb6f65c4de9c8cffef964536000deff79530c16f35939dc4f653201a46f4f",
+      "assessment": "summaries"
+    },
+    "evidence:C1": {
+      "hash": "bc8a02ae660784ca134a696d9c8de923a2830440679899c7ddeab868e929c70d",
+      "assessment": "training"
+    },
+    "evidence:C2a": {
+      "hash": "c84722c8133801b81bb980ea6d107c48ec3c810e8d401317a3c006b41fce242a",
+      "assessment": "coding"
+    },
+    "evidence:R3": {
+      "hash": "6a602d9ee94e655170a7a42f85abf24395987d34210fc30ef26add7feb874e4e",
+      "assessment": "provenance"
+    },
+    "news:automated-safety": {
+      "hash": "fa7fb2cf410e70526eb0a35a1b25434b38ab4b73dab7fc4ee49a5cdb2cee5fc5",
+      "assessment": "summaries"
+    },
+    "news:astra-threshold": {
+      "hash": "8dcd68151d258f668c8b484495277a88a0e3f285efa84b87eeceaae34a215e96",
+      "assessment": "summaries"
+    },
+    "news:research-contribution": {
+      "hash": "788c078f4a24cef612c545fb752613592d9675d2aabffb0eb9da9c6e570f35b6",
+      "assessment": "summaries"
+    },
+    "news:agent-behavior": {
+      "hash": "77a164358c20288ebc871077389e366330467a508d83773600eca0a6d27df2b5",
+      "assessment": "summaries"
+    },
+    "news:time-horizons": {
+      "hash": "f1352434513c675c26e19727e4af80af573af7389493702cb8685172a0e75e04",
+      "assessment": "summaries"
+    },
+    "story:control": {
+      "hash": "f7ac2bd647cfe0f6d9019618ddb54f25daf6c95061c914dc2e410b435aada711",
+      "assessment": "navigation"
+    },
+    "story:misuse": {
+      "hash": "6ef290823ca7d5ac8d86bdfc9e69767e1f419cb3efb775b04d13616fb140f7e2",
+      "assessment": "navigation"
+    },
+    "story:acceleration": {
+      "hash": "cc135b58739dd0df6c193ae8977809f649310790027d045fd14124362534df34",
+      "assessment": "navigation"
+    },
+    "watch:anthropic": {
+      "hash": "a673628ad31a9d49508e82c2f23b4497a6e78a8004fa981cfaef7b4d420f06dd",
+      "assessment": "detection"
+    },
+    "metadata:map": {
+      "hash": "0c0716fbb33ce7fd992de3321a06ddda1778e44cf86a02c50d6eea924c8acf76",
+      "assessment": "editorial"
+    },
+    "history:changes": {
+      "hash": "ca4e80da4243d0d6f844bace000b1fd690615e5c812e3c522e484883c0397899",
+      "assessment": "editorial"
+    },
+    "inventory:current": {
+      "hash": "47721beae7e81ee0e28ed0d78fffb1d13d75c8e9aff7d3ffb46f397502168dc5",
+      "assessment": "editorial"
+    }
+  }
+}

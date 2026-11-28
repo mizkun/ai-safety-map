@@ -1,0 +1,109 @@
+{
+  "id": "2026-10-05-weekly-monitor-review",
+  "version": 2,
+  "date": "2026-10-05",
+  "reviewer": "Codex (editorial primary-source and bilingual review; not independent expert approval)",
+  "decision": "reviewed",
+  "assessments": {
+    "monitor-evidence": {
+      "mechanism": "A monitor can miss a dangerous operation because its judgment fails or because routing and filtering exclude the operation from review. Red-team findings can inform fixes without establishing their effectiveness in ordinary deployment.",
+      "conditions": "The AISI report separates post-action reasoning monitoring at Google DeepMind, pre-action coding monitoring at Anthropic and a separate automated search example using Claude 4.6 Sonnet. Some search experiments expose monitor scores or reasoning that a deployed agent would not have.",
+      "counterexample": "A candidate that scores well under privileged red-team feedback may fail with the information and resources of a deployed agent. Permission limits or another human response may stop an operation even if one monitor misses it.",
+      "evidence": "Read the original AISI report, its evaluation, automated search and next-steps sections, and the official safeguards index dating it July 23, 2026. AISI reports weaknesses in both developers’ monitors and feedback into successive Anthropic revisions and testing. Individual experiment dates and internal monitor versions are unspecified.",
+      "limits": "This is an external evaluator working with developers, not certification of an entire product or an independent replication of deployment outcomes. Search scores are not evasion rates; no general post-fix protection rate or harm reduction is measured. Human-designed testing is not spontaneous malicious propensity.",
+      "mitigation": "Check the scope of operations sent for review, retest identified weaknesses after fixes and match attacker information and permissions to the intended deployment. Verify that detection can cause a timely stop. These are review priorities, not claims of demonstrated universal protection.",
+      "readerContext": "The Japanese and English explanations define oversight as people or another AI checking work. They distinguish a monitor’s judgment from whether an operation reaches it, and explain why extra scoring information limits inference. Research cards separate the three test settings.",
+      "whyHere": "C3a3 concerns evasion during work. The July backfill adds external testing and a defense-improvement feedback loop to existing controlled and recent monitor comparisons. Its tested evidence level remains unchanged; the report does not establish persistent or global loss of control.",
+      "primary": [
+        {
+          "source": "aisi-monitor-stress-tests",
+          "locator": "Our evaluations of frontier control monitors; Automated red teaming; Next steps; official safeguards index",
+          "support": "Different internal monitor settings, vulnerabilities, feedback into revisions, privileged search information and unresolved realistic success rates. Publication is July 23; individual experiment dates are not supplied."
+        },
+        {
+          "source": "metr-action-monitor",
+          "locator": "Monitor evaluation and adversarial transcript discussion",
+          "support": "Existing hand-constructed transcript evidence remains separate from spontaneous deployed evasion. No explicit correction was identified in the inspected report."
+        },
+        {
+          "source": "openai-sol61",
+          "locator": "Monitoring and monitor-evasion evaluation sections",
+          "support": "Existing action-aware monitoring improvements remain a counterweight to observed weaknesses; they do not certify all monitoring systems."
+        }
+      ]
+    },
+    "causal-context": {
+      "mechanism": "The evaluation subgraph separates failures of test coverage, behavior concealed during evaluation and evasion while executing work. Its OR decomposition describes overlapping alternative mechanisms, not a time sequence.",
+      "conditions": "C3a1, C3a2 and C3a3 remain alternatives below C3a. The wider C3–L connection still jointly requires selection of a misaligned action, capability and access, and failed prevention in the same setting.",
+      "counterexample": "An AI may recognize evaluation without hiding behavior, or evade one monitor while a technical permission boundary blocks the operation. Weaknesses found in separate tests cannot be combined into an observed complete loss-of-control event.",
+      "evidence": "Read the changed C3a3 detail and its C3a1/C3a2/C3b neighbors in the generated Japanese and English tour order, the evaluation subgraph, C3–L conditions and the control story. The new source supports a bounded monitoring mechanism only.",
+      "limits": "The map is an editorial decomposition, not an exhaustive necessary-and-sufficient theorem or probability model. No causal edge, graph membership, required condition or evidence category changes in this update.",
+      "mitigation": "Routing checks, realistic red-team access and retesting after a fix target monitoring weaknesses. Other permission and response safeguards can independently interrupt the path and remain explicit in the explanation.",
+      "readerContext": "The tour first explains why capability, intentions, access and prevention are separate questions. The new paragraph then explains which oversight gap the AISI tests address; it does not require prior knowledge of red teaming or score-based search.",
+      "whyHere": "Dependency review prevents a newly added monitoring report from silently strengthening neighboring claims about evaluation concealment, delayed human response, ASI or broad control loss.",
+      "primary": [
+        {
+          "source": "aisi-monitor-stress-tests",
+          "locator": "Our evaluations of frontier control monitors; Next steps",
+          "support": "Specific monitor weaknesses and the need to test realistic conditions, not a complete harmful causal chain."
+        },
+        {
+          "source": "control-paper",
+          "locator": "Control protocols and trusted monitoring evaluations",
+          "support": "Evaluation of safeguards under specified adversarial conditions; motivates retaining explicit conditions and alternative defenses."
+        }
+      ]
+    },
+    "provenance": {
+      "mechanism": "The source, research card, C3a3 explanation and evidence references are updated together. The history records a July backfill reviewed on October 5 rather than presenting it as an October experiment.",
+      "conditions": "Publication, unknown experiment dates and this editorial check date remain distinct. Only the substantively changed node and evidence item advance their review dates; map asOf denotes the latest incorporated content review.",
+      "counterexample": "Browsing an unchanged index or running a build is not a substantive review of every node. Weekly candidates that restate existing distinctions do not justify a bulk date refresh or stronger evidence color.",
+      "evidence": "Compared the new source URL and claims with existing sources, review records and Draft PR 11; the July monitor report was absent. The history identifies the old omission, new qualification and rationale. All 29 previous English history translations retain their prior content after the new entry shifts their indices.",
+      "limits": "The daily and weekly search cannot establish exhaustive coverage. No newly verified independent replication was found for this monitor study, and inspection for corrections does not prove that every source is byte-for-byte unchanged.",
+      "mitigation": "Retain the existing draft PR for human review, preserve unchanged dates and statuses, document screened but unused candidates, and validate references, translations and review dependencies before publishing the proposal.",
+      "readerContext": "Both languages distinguish an external cooperative evaluation from product certification and distinguish reported improvements from measured protection. The history explains why this bounded addition matters to the existing map.",
+      "whyHere": "The metadata and inventory changes make the evidence discoverable without implying all map entries were refreshed today. Keeping the proposal in the existing draft avoids duplicate editorial work and preserves the no-auto-merge boundary.",
+      "primary": [
+        {
+          "source": "aisi-monitor-stress-tests",
+          "locator": "Original report and official safeguards index dated July 23, 2026",
+          "support": "Publication and claim scope for the new source, research card and history entry; no experiment-date inference from publication."
+        }
+      ]
+    }
+  },
+  "entries": {
+    "source:aisi-monitor-stress-tests": {
+      "hash": "2ccdaa4a8b0a3e1c2a7fbec7b89eb88cc8466d8b6806297142acd50f76c07200",
+      "assessment": "monitor-evidence"
+    },
+    "research:external-monitor-stress-tests": {
+      "hash": "ca38ec59536a4f25d48787f284de2707c0646705c43cc3fae2fbdacae9ee82c9",
+      "assessment": "monitor-evidence"
+    },
+    "node:C3a3": {
+      "hash": "9527d9c2ec17d2815b108a1f68c143c6b70da04ef65482601b4ff9f52a36f873",
+      "assessment": "monitor-evidence"
+    },
+    "graph:evaluation": {
+      "hash": "a2e6e65724e4c0caa1f130ffb76906ad57c28a325ed60a4da13e1355ff1051d5",
+      "assessment": "causal-context"
+    },
+    "evidence:C3a3": {
+      "hash": "73f3ee665418844b043b04143aff5acea181845fa72198b9ccbf77ea41646ff1",
+      "assessment": "monitor-evidence"
+    },
+    "metadata:map": {
+      "hash": "60f1f86e81249b8d076115bd5ed57e29f48b330ed287cd7fa646f7c7f939a952",
+      "assessment": "provenance"
+    },
+    "history:changes": {
+      "hash": "48fe4e699a4723e48414da8781a3717b608c7d7542b2645bc29c03e7ae8ee367",
+      "assessment": "provenance"
+    },
+    "inventory:current": {
+      "hash": "4b6815c65a8b3264d37fbdd5a7125d802fa49ba3f8ae82bb417b92de67c2f11e",
+      "assessment": "provenance"
+    }
+  }
+}

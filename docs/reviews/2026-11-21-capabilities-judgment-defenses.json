@@ -1,0 +1,369 @@
+{
+  "id": "2026-11-21-capabilities-judgment-defenses",
+  "version": 2,
+  "date": "2026-11-21",
+  "reviewer": "Codex (primary-source and bilingual editorial review)",
+  "decision": "reviewed",
+  "assessments": {
+    "capabilities": {
+      "mechanism": "Progress on selected longer tasks can expand useful execution, but human-duration horizons depend on task mix, reference quality and transfer to the actual job.",
+      "conditions": "222 TH1.1 and 36 TH2 tasks, typically 15 public models through Astra and Opus 5.5, tools and task-specific budgets. Of 34 TH2 time points, 31 are estimates; human baselines allow Sonnet 5 implementation help.",
+      "counterexample": "A longer estimated 50%-success horizon does not establish longer autonomous runtime, complete occupational substitution or broad superiority over skilled humans.",
+      "evidence": "Read METR methods, 3.A, 3.C.1, robustness and Appendix A. Preserve combined doubling 3.61 months with 2.08–4.94 interval and the different verifiable-task trend.",
+      "limits": "Estimated baselines, changed human assistance, nonexhaustive model coverage, refused/blocked observations excluded and detected hacks zeroed. No uniform whole-workflow or real-deployment rate.",
+      "mitigation": "Test task transfer, exception recovery and intervention costs; keep permissions separate. Comparisons need compatible human assistance and task sets.",
+      "readerContext": "Read R0/C2a new passages and standalone conditions in Japanese/English, relevant control/acceleration tour chapters, work graph/route and time-horizon guidance. Define the human-duration interpretation before inference.",
+      "whyHere": "Add bounded evidence to R0/C2a, preserve limited/tested. R0-C2a, R0-W1 and R0-ASI remain conditional; no edge date is renewed for dependency consistency alone.",
+      "primary": [
+        {
+          "source": "metr-q4-capabilities",
+          "locator": "Sections 1–2, 3.A, 3.C.1, 4; Appendix A",
+          "support": "Task progress, estimated human-time basis, filtering and transfer limits."
+        }
+      ]
+    },
+    "judgment": {
+      "mechanism": "An evaluation can be hard to solve yet unhelpful for deciding which research capabilities matter; model grading can overstate its quality.",
+      "conditions": "Agents build METR tasks with 48 hours, 100M tokens, three concurrent environments and internet. Humans supply goals/examples/rubric and judge submissions; separate tested-model budgets apply.",
+      "counterexample": "None entered this report’s suite, but underelicitation and strong verifiable ML results prevent treating that result as a general impossibility of AI research.",
+      "evidence": "Read 3.B.2 and Appendix M, including added guidance and judge runs. Judges overrate creations by equally strong or stronger creators relative to human ratings; preserve that comparison direction.",
+      "limits": "Selected task-creation settings, partly unused budgets and subjective human judgment. Not a measured deployment failure rate or evidence of strategic concealment.",
+      "mitigation": "Separate task creation from independent validation of what it measures, using humans and other checks rather than only the creator’s own grading.",
+      "readerContext": "Read C3a1 in both languages, its limits and the evaluation graph distinguishing coverage gaps from evaluation-aware concealment and runtime evasion.",
+      "whyHere": "Add a concrete evaluation-design limitation to C3a1 while retaining limited/indirect. No new claim about the frequency of dangerous operational failures.",
+      "primary": [
+        {
+          "source": "metr-q4-capabilities",
+          "locator": "Section 3.B.2; Appendix M",
+          "support": "Generated-task usefulness, comparative judge bias and underelicitation caveat."
+        }
+      ]
+    },
+    "research": {
+      "mechanism": "Prepared-evidence interpretation and narrowly useful task assistance may contribute to research; whole-process acceleration also needs useful decisions and reduced bottlenecks.",
+      "conditions": "MedChemBench has 99 tasks from 117 sources, eleven models and ten retained single-turn responses per task/effort. No tools, new experiments or iterative feedback; rationale grading uses a separate Astra.",
+      "counterexample": "High molecular-structure credit coexists with roughly half-credit selection/prediction. Historical-case agreement is not a newly discovered or experimentally effective medicine.",
+      "evidence": "Read paper construction, grading, results, discussion and methods. Paper dated November 9, announcement November 20. Preserve partial-credit averaging, completed invalid outputs zero and recovery of incomplete calls.",
+      "limits": "Reference-dependent grading, possible training exposure, no independently established human grader validation, and earlier image-encoding issue. The announcement’s GPT-6.2 score is not part of the paper’s cohort.",
+      "mitigation": "Validate research choices and results independently, including experiments and full-process costs; separate interpretation from prospective success.",
+      "readerContext": "Read R1 and related news examples in Japanese/English, research-cycle graph and R1-R2. Explain retrospective evidence in place; do not infer biological misuse from therapeutic task scores.",
+      "whyHere": "Add MedChemBench and METR task-creation evidence to R1 without downgrading existing observed assistance or claiming whole-development gains. R1-R2 already requires useful bottleneck relief.",
+      "primary": [
+        {
+          "source": "medchembench-paper",
+          "locator": "Construction; Grading; Results; Discussion; Methods, PDF pp. 3, 7–9, 15–20",
+          "support": "Retrospective partial-credit comparison and methodological limits."
+        },
+        {
+          "source": "metr-q4-capabilities",
+          "locator": "Section 3.B.2; Appendix M",
+          "support": "Difficulty producing useful research evaluations is distinct from verifiable task strength."
+        }
+      ]
+    },
+    "cycle": {
+      "mechanism": "A fitted capability-growth slope does not by itself identify an AI-driven improvement loop or its causal contribution to development speed.",
+      "conditions": "MCI uses tested public models through Astra and Opus 5.5. Developer-specific calibration and breakpoints differ from the combined frontier; private-data assessments are separate.",
+      "counterexample": "No clear combined-frontier acceleration can coexist with AI accelerating development relative to an unobserved slower AI-free counterfactual.",
+      "evidence": "Read 3.C.2, discussion and Appendix H. Positive developer-specific slope changes depend on calibration, breakpoint and benchmark; intervals are wide.",
+      "limits": "Public release lags, absent private models and absent AI-free counterfactual. This is not a direct replication or refutation of the October private Anthropic assessment, nor proof of absent RSI.",
+      "mitigation": "Track useful successive improvements, whole-process costs and independent validation across generations rather than interpreting one fitted trend as causal attribution.",
+      "readerContext": "Read R3 in both languages and development-paths/research-cycle context. Distinguish human-assisted RSI from fully autonomous successor development and sustained acceleration.",
+      "whyHere": "Preserve the existing bounded two-round experiment and limited/tested classification. R2-R3 and R3-R2 still require repeated useful gains and remaining constraints.",
+      "primary": [
+        {
+          "source": "metr-q4-capabilities",
+          "locator": "Section 3.C.2; Section 5; Appendix H",
+          "support": "Public-frontier trend uncertainty, developer calibration and unavailable counterfactual."
+        }
+      ]
+    },
+    "safety": {
+      "mechanism": "Automated attacks can help improve defenses, but creating and evaluating safeguards still requires independent judgment, human investigation and operational controls.",
+      "conditions": "OpenAI compares adaptive black-box extraction tests over six attacker models, with old Astra and new 6.2 Astra safeguard stacks. Existing Anvil tests have privileged access; fuzzy experiments use a controlled Terra checkpoint.",
+      "counterexample": "A lower reasoning-extraction rate does not prove an equally lower harmful-capability transfer rate, resolved alignment or prevention of global harm. Stronger adaptive attacks remain a counterexample to blanket safety.",
+      "evidence": "Read the full November 20 defense account and substantively reread R4’s bounded alignment-research, Anvil, fuzzy robustness and stopped-evaluation evidence. R4 was due November 21.",
+      "limits": "Extraction table omits counts, budgets and false blocks; model/stack changes are confounded. Fuzzy safety has a benign-cyber cost; a stopped real evaluation was detected without confirmed completed recovery.",
+      "mitigation": "Combine independent evaluation, human oversight, access controls and recovery; report budgets and benign-task costs. Separate researcher and evaluator roles and test durability after further training.",
+      "readerContext": "Read R4/M3 in Japanese/English, their full existing body and new paragraphs, related tours, misuse summary, R4 safeguard and news guidance. Preserve historical dates and original scopes of unchanged summaries.",
+      "whyHere": "Retain R4 limited/tested and M3 hypothesis. Renew seven substantively updated node clocks and five matching evidence clocks only. R4-C1, R0-R4 and M3-H keep conditional wording and dates.",
+      "primary": [
+        {
+          "source": "openai-distillation-defense",
+          "locator": "Resistance to reasoning extraction; Defenses that reinforce one another; Campaign detection and enforcement",
+          "support": "Bounded safeguard comparison and human involvement."
+        },
+        {
+          "source": "metr-q4-capabilities",
+          "locator": "Section 3.B.2; Appendix M",
+          "support": "Research/evaluator judgment remains a separate reliability question."
+        },
+        {
+          "source": "automated-alignment",
+          "locator": "Main results and limitations",
+          "support": "Bounded improvements, human comparisons and cheating risk."
+        },
+        {
+          "source": "anthropic-anvil",
+          "locator": "Static/adaptive/traffic comparison; Figures 7–8; privileged-access discussion",
+          "support": "Defense gains and residual failures without single-component attribution."
+        },
+        {
+          "source": "openai-fuzzy-robustness",
+          "locator": "Sections 2.3, 3.3–3.4; Appendix B.4/Table 2",
+          "support": "Controlled gains, stronger adaptive failures and benign-cyber costs."
+        },
+        {
+          "source": "openai-stopped-alignment-eval",
+          "locator": "Summary; What happened; Investigation and response",
+          "support": "Detection and promise to resume are not demonstrated completed recovery."
+        }
+      ]
+    },
+    "context": {
+      "mechanism": "The map connects capability, choices, permissions, safeguards and harm through explicit conditions; new task scores cannot establish an entire pathway.",
+      "conditions": "Use the isolated matching draft with freshly verified main ancestry; review November 7–21 daily sources, deduplicate prior material and preserve publication versus observation dates.",
+      "counterexample": "Capability gains plus improved reasoning protection can occur together, without either confirming a catastrophe pathway or proving general safety.",
+      "evidence": "Read all 54 changed/dependent units, relevant Japanese/English tour chapters, standalone conditions and new source/card text. Three sources and five cards extend seven explanations.",
+      "limits": "Editorial review is not independent scientific replication, exhaustive search, browser-layout testing or human approval. The promised full Neon safety report is still a follow-up.",
+      "mitigation": "Preserve old records/translations, classify only measured evidence, run required checks/build/freshness and verify final PR head and hosted CI independently. No merge or deployment.",
+      "readerContext": "Read control/acceleration narratives and associated graph/route descriptions in both languages. Keep future possibilities distinct from measured findings and AND conditions distinct from chronology.",
+      "whyHere": "Record reasoned before/after and scoped review dates in the existing draft. Add one history item; leave unrelated text, evidence levels, topology and source clocks intact.",
+      "primary": [
+        {
+          "source": "metr-q4-capabilities",
+          "locator": "Main methods/results/discussion; Appendices A, H, M",
+          "support": "Measurement and attribution limits across the development path."
+        },
+        {
+          "source": "openai-distillation-defense",
+          "locator": "Defense comparison and limitations",
+          "support": "Measured defensive improvement is narrower than end-to-end harm reduction."
+        },
+        {
+          "source": "medchembench-paper",
+          "locator": "Discussion; Methods",
+          "support": "Prepared historical evidence does not establish prospective outcomes."
+        }
+      ]
+    }
+  },
+  "entries": {
+    "source:metr-q4-capabilities": {
+      "hash": "f740ef65843e14efe6ee4138f60e6bd5800eccc06988b5eea3940ef8e319e3be",
+      "assessment": "capabilities"
+    },
+    "source:openai-distillation-defense": {
+      "hash": "7f65ae7a1b7ded9334273a952fe56a7c76100dcce5df7914d0e31f073d791fc8",
+      "assessment": "safety"
+    },
+    "source:medchembench-paper": {
+      "hash": "047e85eae8d27cfa21ed0c4f829eff941a7df935f7102df0633f4b63587f108a",
+      "assessment": "research"
+    },
+    "research:metr-th2-horizons": {
+      "hash": "84966d5964151e7e5d53f479e2019abb92e70b7c9370b6b9dd8238364eb71982",
+      "assessment": "capabilities"
+    },
+    "research:metr-research-judgment": {
+      "hash": "b07a8d33d64b2c9693babef28b7041bf39ea4311d13fc55036ae7322d77da12e",
+      "assessment": "judgment"
+    },
+    "research:metr-mci-growth": {
+      "hash": "52d6f8b8b38b562d501b6832d6b9f3659077121f5de905cd426fd893714ed2c4",
+      "assessment": "cycle"
+    },
+    "research:openai-reasoning-extraction-defense": {
+      "hash": "c41d5cbb033111b71029a6152ddf5944f089f1eba0b14696b1ab828c39cb251e",
+      "assessment": "safety"
+    },
+    "research:medchembench-retrospective": {
+      "hash": "cb14413743839733a8582b15c29d17340977bef402de5420d446bd24846050cf",
+      "assessment": "research"
+    },
+    "node:C2a": {
+      "hash": "93d2e19f2b65ced19dc7aa2b3ab83fea35c84176765d260dabc7411f996e260e",
+      "assessment": "capabilities"
+    },
+    "node:C3a1": {
+      "hash": "c2fd0ffd6fca8c54e462f2b23b0bbf5bc64350a10758f6825690f8a990e36fca",
+      "assessment": "judgment"
+    },
+    "node:M3": {
+      "hash": "ea0af8c970d375970ad94032636559e02854161e485980685ca5c9e5a01c320b",
+      "assessment": "safety"
+    },
+    "node:R0": {
+      "hash": "05b27b5f675931092c29e1bf33869600a9aff400937faae9cd1ea104461c912d",
+      "assessment": "capabilities"
+    },
+    "node:R1": {
+      "hash": "bdd38bf46072ca3c5aec37d5d0a2ce55396ccf52d9bec6ce72ac806b220c5a25",
+      "assessment": "research"
+    },
+    "node:R3": {
+      "hash": "8f2eb9cf9d43cf04f6147ae88484854b925deda70a53f7f295f856284e1b00a6",
+      "assessment": "cycle"
+    },
+    "node:R4": {
+      "hash": "608752c6d842b3b582455eff597ff69bd54e7b096efcf5f75e1c67ad54eff14d",
+      "assessment": "safety"
+    },
+    "edge:M3-H": {
+      "hash": "3c6d117a923b4c2c7e90ac06126854ba5113b8917dcc0334283aa70c21c8ff02",
+      "assessment": "safety"
+    },
+    "edge:R1-R2": {
+      "hash": "ada2de7b675b49da8a7cfee57a9825e65e13577a51a9b104a7883c2a007c0bd5",
+      "assessment": "research"
+    },
+    "edge:R2-R3": {
+      "hash": "4c98935640dcb37bc1c48f5b4f0317342dff809ea467bff868ba02eb89e6575b",
+      "assessment": "cycle"
+    },
+    "edge:R3-R2": {
+      "hash": "839695e78dadb1345134e7ff2533b3259233540dacbffdfb34bfafd19aa3e4a5",
+      "assessment": "cycle"
+    },
+    "edge:R4-C1": {
+      "hash": "11808da3da7304f36455034a6ce6c1699989ee127c666291cc55e5c36d8bb941",
+      "assessment": "safety"
+    },
+    "edge:R0-C2a": {
+      "hash": "5129188438dcf888c99fd3f5dc049497eec81453c09dc398ab4c2512981a9def",
+      "assessment": "capabilities"
+    },
+    "edge:R0-W1": {
+      "hash": "c516ba973e40ce1f4012a221cab3394604ee6580137b2257f8685bc1f36dbe06",
+      "assessment": "capabilities"
+    },
+    "edge:R0-ASI": {
+      "hash": "b2d24e6ab6b19834c46a4435be27690431e096861222f3e9f7361f6443a852b7",
+      "assessment": "capabilities"
+    },
+    "edge:R0-R4": {
+      "hash": "636b66d95b3c7d241ec99184e2cafe311a96936a9710371b0c03e51aea5ea8d2",
+      "assessment": "safety"
+    },
+    "graph:control": {
+      "hash": "ddec320da18b25a8775e032a5e8cbcd7238b92ca61b3faf8352fe1c6c3da6788",
+      "assessment": "context"
+    },
+    "graph:misuse": {
+      "hash": "81675c8c570bbd6fbc09e5b2f27cd095c48011d5142539edfdd4db930d7e76ce",
+      "assessment": "safety"
+    },
+    "graph:acceleration": {
+      "hash": "708704c13ef57fd1eef3130e0bca388a74076db4cdb0362e975252861d981685",
+      "assessment": "context"
+    },
+    "graph:ability-access": {
+      "hash": "6b968c2bb1ab8a5fe87b2b7114a3940162bc7c1980c1147648564660cd2cc9e1",
+      "assessment": "capabilities"
+    },
+    "graph:evaluation": {
+      "hash": "23d575694f04642059526a66dc8a77d37f743104d693a2b4a82dc1aae8853685",
+      "assessment": "judgment"
+    },
+    "graph:work": {
+      "hash": "e67523d65f37d88c2f0809990a2cca981ddc42d4d1163e6bc4a5dc9ba6d1c208",
+      "assessment": "capabilities"
+    },
+    "graph:development-paths": {
+      "hash": "50df70c8c7cb869767c162bd067c44e76c0fee346a61382b185cc705b3db427e",
+      "assessment": "cycle"
+    },
+    "graph:research-cycle": {
+      "hash": "cbe2dc31ad37206a835c156e9bbf98b23582b700433e668b0cfcb9e83d9bbbb0",
+      "assessment": "research"
+    },
+    "route:control": {
+      "hash": "065b31ef12f9591476535f29de0747df6b6ba6fff3f573adecfe69b6fd1a6087",
+      "assessment": "context"
+    },
+    "route:misuse": {
+      "hash": "5e79f1d87274961a80ad78187031ddf78321574252cc4b8740cec2a9fd23e2df",
+      "assessment": "safety"
+    },
+    "route:acceleration": {
+      "hash": "e940dc9d2c7e8b66329ec1311f69f1bbb09253d805f831e71daf67fcf200abb4",
+      "assessment": "context"
+    },
+    "route:work": {
+      "hash": "2268bf84f6b41896b855b4ad1208ba619b58646527a9450ae0d71d4ec386e613",
+      "assessment": "capabilities"
+    },
+    "current:misuse": {
+      "hash": "d5253683c76f9f703c26be86e4b96b3238b5bb27f69863e9adb7ad755bf67fc7",
+      "assessment": "safety"
+    },
+    "safeguard:R4": {
+      "hash": "6b205f2f2d9604f69c1c149fe38eaf0c62a1cbd57288bbc6189b9b49cb744636",
+      "assessment": "safety"
+    },
+    "evidence:C2a": {
+      "hash": "b6aba754580e20e316582a0f00ef964c2a4505f415a712a94f7c9bdf364d6e59",
+      "assessment": "capabilities"
+    },
+    "evidence:C3a1": {
+      "hash": "e96afe175c543ffa0fad86ebc8199201c36973a49d666dd9e6b73e035556fe9a",
+      "assessment": "judgment"
+    },
+    "evidence:R0": {
+      "hash": "3dd4aa98c8ef2a8dd3052e6d269e15f7bdd18383d15a99068494fa46db2f4f94",
+      "assessment": "capabilities"
+    },
+    "evidence:R4": {
+      "hash": "0b0136904979d0b9106cc0e9dc92700f1d23b57e4ec4f0f902b93e39f833646b",
+      "assessment": "safety"
+    },
+    "evidence:R3": {
+      "hash": "dd46906bd742d37db6315fa9f9d17f5c4a9b6adce975e7e8d77fd60e8a759227",
+      "assessment": "cycle"
+    },
+    "news:recent-math": {
+      "hash": "bcc98bb10f092b3fc9b3ebe9635b7e9ae782b2915390bd999269d9a0c48f0f44",
+      "assessment": "research"
+    },
+    "news:research-lab-september": {
+      "hash": "4144ca41f43e1639fc7a6268cd6cbeafc9a9d5ebb6942a4847110f178eec1b7d",
+      "assessment": "research"
+    },
+    "news:automated-safety": {
+      "hash": "25167d0224649ac4d2956f5a9de3c6fdbe9f8fabb9bb17a757b74552f850cf8e",
+      "assessment": "safety"
+    },
+    "news:research-contribution": {
+      "hash": "f8f2eccbb8ba32aeeb199f9b7cfe4d278ab1a3046a19a458db0f252582b807ba",
+      "assessment": "research"
+    },
+    "news:time-horizons": {
+      "hash": "c91aed1b20122c3f92c8e11c71673c900bc050094dc01809a4f8bb69f56b6884",
+      "assessment": "capabilities"
+    },
+    "story:control": {
+      "hash": "f6c2abc6949ce16b9312183c11f5cc9dc80b8b2ea2cc1079f23f0928f922f08d",
+      "assessment": "context"
+    },
+    "story:misuse": {
+      "hash": "2f1cf544f98107868084ee32421e74ad4e5a535af9889b79a117a4ebc6a9baf8",
+      "assessment": "safety"
+    },
+    "story:acceleration": {
+      "hash": "cc26a9efe3fd0d12249d2b86aaa0dc1df18496bdf562358af77ae5b268ce7ade",
+      "assessment": "context"
+    },
+    "metadata:map": {
+      "hash": "650189cff7dba1773a83ace9144fef7201f52f6143a82016b14ba66d27e70901",
+      "assessment": "context"
+    },
+    "history:changes": {
+      "hash": "305af901b1c03f4e8ab8cf664017211e59caa34a6dbd15b48da77f6bb5dc7d33",
+      "assessment": "context"
+    },
+    "inventory:current": {
+      "hash": "225590207b722617e7a706d0c724a615e501710d3c534fcf4e1599b8eed1af00",
+      "assessment": "context"
+    }
+  }
+}

@@ -1,0 +1,307 @@
+{
+  "id": "2026-10-07-observability-and-evaluation",
+  "version": 2,
+  "date": "2026-10-07",
+  "reviewer": "Codex (editorial primary-source and bilingual review; not independent expert approval)",
+  "decision": "reviewed",
+  "assessments": {
+    "viewer-integrity": {
+      "mechanism": "A review interface can misrepresent an agent transcript even when the original record remains intact. This creates an oversight gap distinct from a monitor making an incorrect judgment about an accurately displayed operation.",
+      "conditions": "METR describes a researcher using AI assistance in isolated staging in 2026. Exact dates and the assisting model are unspecified. The public report is October 6, while the issue was filed June 22. This is a proof of concept, not observed exploitation in ordinary evaluations.",
+      "counterexample": "The original METR records remained in the database and could be independently checked. Maintainers fixed the reported viewer weakness in June. A transcript can also be displayed literally rather than interpreted as rich content; neither mitigation proves all oversight is secure.",
+      "evidence": "Read the METR report and footnotes, issue 4318 including the June 23 maintainer confirmation, related PR 4323 metadata, and PR 5566 metadata and merged documentation/configuration diff. PR 4323 merged June 22 UTC; PR 5566 merged October 1. The latter is a separate optional defense, not evidence that the June weakness remained unfixed until October.",
+      "limits": "No exhaustive search specifically for this exploitation technique was performed. Actual incidence, installation rates and harm reduction are unmeasured. The October mode requires supported viewers and configuration: per-log settings apply to static/embedded viewers, while the viewer-wide override is for the live server. Older viewers ignore it and Scout did not yet honor that new mode; that is distinct from the June Scout fix.",
+      "mitigation": "Keep original records separate from their rendered presentation, apply viewer fixes and consider supported literal-text viewing. Retest the actual review path and preserve an independent audit channel. No operational exploit payload is included in the map.",
+      "readerContext": "Both languages first identify people or another AI as the overseer, then distinguish stored records from the screen used to inspect them. The card identifies human direction, isolated staging, retained originals, the earlier fix and missing deployment measurements.",
+      "whyHere": "C3a3 is the relevant oversight-during-work mechanism. A vulnerability deliberately demonstrated during an evaluation does not by itself establish evaluation-aware concealment at C3a2, malicious propensity, persistent control loss or global harm. Its tested evidence level is retained.",
+      "primary": [
+        {
+          "source": "metr-observability",
+          "locator": "Inspect proof of concept; Appendix; footnotes 3–5",
+          "support": "Isolated human-directed demonstration, retained underlying data, limits on searching for exploitation and proposed observability defenses."
+        },
+        {
+          "source": "inspect-viewer-injection",
+          "locator": "Issue 4318, June 22 report and June 23 maintainer comment linking PR 4323",
+          "support": "Maintainer confirmation of fixes in Inspect and Scout; related merge 67b700a645a86285910bea9287000a7a521e4d03 on June 22 UTC."
+        },
+        {
+          "source": "inspect-untrusted-viewer",
+          "locator": "PR 5566 merged documentation and configuration diff at 6bea9cd4f6981bf50703284e1595710e8dec6ad4",
+          "support": "October 1 optional plain-text mode, per-log and live-viewer configuration boundaries, compatibility limits. Used the merged diff rather than superseded proposal text."
+        }
+      ]
+    },
+    "evaluation-sampling": {
+      "mechanism": "Active sampling selects rare or ambiguous conversations for a more expensive reasoning grader. This can make collection of examples for a safety evaluation cheaper without establishing that the evaluation finds every important failure.",
+      "conditions": "Humans specify policies and categories; a cheap classifier proposes boundary cases, a reasoning model grades them, and subsequent rounds refine sampling. The report uses synthetic and deidentified conversations rather than raw user conversations. Experiment dates and grader model versions are unspecified.",
+      "counterexample": "A sample enriched for one policy violation may miss another failure mode or inherit a grader error. More efficiently collecting examples cannot substitute for checking their labels against human judgment or testing unseen situations.",
+      "evidence": "Read LASER privacy considerations, design, reasoning-grader and impact sections. OpenAI reports approximately one ten-thousandth of the grading compute to obtain a comparable number of disallowed examples in its setting. Selection ratios depend on the policy and its prevalence.",
+      "limits": "The comparison is developer-reported sampling efficiency, not a measured reduction in unsafe behavior or incident probability. The inspected report does not establish human-grounded grading accuracy, coverage of unknown failures, or independent replication. The selected sample is not representative of all usage.",
+      "mitigation": "Use the method to broaden test material, check labels and omissions separately, and test whether resulting changes prevent failures in the intended deployment. Human policy choices and monitoring of grader error remain relevant.",
+      "readerContext": "The Japanese and English explanations state that the method gathers difficult conversations for evaluation. They explicitly separate easier data collection from more accurate judgments and from actual prevention of harm.",
+      "whyHere": "The new card belongs at C3a1 because it addresses the material used to evaluate real-work failures. It is evidence of a potential evaluation improvement, not direct proof of universal test coverage, so the indirect evidence level remains unchanged.",
+      "primary": [
+        {
+          "source": "openai-laser",
+          "locator": "Privacy Considerations; Design; Reasoning grader; Impact",
+          "support": "Data handling, human-defined policies, iterative selection, grader compute comparison and its sampling rather than risk denominator."
+        }
+      ]
+    },
+    "workflow-evaluation": {
+      "mechanism": "Completing a practical workflow requires coordinated actions that satisfy its requirements. Rubric points on individual requirements can describe progress without being the proportion of tasks completed end to end.",
+      "conditions": "OpenAI and Ironclad staff selected 11 legal, commercial and procurement configuration tasks in a hosted software environment. Related synthetic training tasks use public SEC EDGAR contracts rather than private customer data. Astra at Max and GPT-5.6 Sol at High reasoning settings are compared. Exact test dates, repetitions and in-attempt human intervention are unspecified.",
+      "counterexample": "An agent can earn many partial points while missing a required setting that makes the workflow unusable. Performance on selected tasks with related training need not transfer to other software, longer tasks or deployment permissions.",
+      "evidence": "Read task construction, Astra performance and footnotes 1–3 of the original report. The mean rubric score is 55.0% versus 41.6%, with 8–50 criteria per task. The 19.2 versus 37.0 minute estimates simulate assumed processing speeds; they are not observed customer time savings.",
+      "limits": "This is a developer and partner evaluation, not independent replication or a representative labor study. Different selected reasoning settings also preclude a simple equal-compute comparison. No inference to whole-occupation automation, unconstrained autonomy or full reliability is justified.",
+      "mitigation": "Check complete task requirements, human intervention, recovery from errors and permissions in the actual workflow. Distinguish measured output quality from simulated time and from labor displacement.",
+      "readerContext": "Both languages define partial scores before reporting the figures and explicitly state that estimated time is not customer work time. Human task selection and missing intervention information remain visible in the expanded research card.",
+      "whyHere": "C2a concerns execution capability. The report provides a bounded new workflow result, leaving its tested category intact. C2b access remains a separate required condition; the R0-C2a connection still requires transfer and reliability rather than capability improvement alone.",
+      "primary": [
+        {
+          "source": "openai-ironclad",
+          "locator": "Turning contracting workflows into training tasks; How Astra performed; footnotes 1–3",
+          "support": "Selected 11-task evaluation, training inputs, reasoning settings, partial-credit scores, simulated time assumptions and missing deployment evidence."
+        }
+      ]
+    },
+    "math-verification": {
+      "mechanism": "Producing a mathematical manuscript, checking a formal proof and establishing a useful new result are different stages of research. A publication can make evaluation possible without completing that evaluation.",
+      "conditions": "An unreleased internal OpenAI model was evaluated on roughly 4,000 problems. The initial repository describes 722 manuscripts in 372 related families, not equally independent results; only some have Lean formalizations. Exact model identity and experiment dates are unspecified. Most results share a procedure, with named exceptions and a human readability edit.",
+      "counterexample": "A proposed result may require correction or may not be novel or useful. A formally checked statement can still need interpretation and assessment of assumptions. Human verification or other research bottlenecks can absorb gains in producing candidates.",
+      "evidence": "Read the release statement, pinned initial README adc7f1241b42e322a6451854ab7e4b4c146bf78a and Lean guidance. Read AGMAI’s October 6 response from the group itself: consultation is not a judgment of impact or endorsement of the process, and public release begins rather than completes community assessment.",
+      "limits": "No individual proof was rerun or independently verified in this review. Manuscripts divided by problem count are not a valid completion rate. The mean three-hour ChatGPT Pro compute equivalent excludes total human research time. Ten reasoning summaries and version retention do not establish full reproducibility or broad autonomous AI development.",
+      "mitigation": "Retain versioned artifacts, distinguish formalized and unformalized work, arrange independent expert checks and account for human verification time. Treat the advisory statement as clarification of role, not a failed replication or a claim that all results are false.",
+      "readerContext": "The explanation defines formal checking in ordinary language and introduces AGMAI as the consulted group of mathematicians. Japanese and English keep publication, independent verification, novelty and whole-process acceleration distinct.",
+      "whyHere": "R1 concerns assistance with part of research. These artifacts and the adviser’s qualification strengthen provenance and verification context without proving R2 whole-development acceleration, R3 recursive self-improvement or ASI. R1’s observed status is unchanged.",
+      "primary": [
+        {
+          "source": "openai-math-release",
+          "locator": "Release description and discussion of manuscripts, formalizations, compute and consultation",
+          "support": "Developer publication of internal-model outputs, not completed independent verification."
+        },
+        {
+          "source": "openai-math-repository",
+          "locator": "Pinned README: Navigating the collection; How the results were produced; Versions and citations; lean/README.md",
+          "support": "Counts, related families, varied checking stages, exceptions, compute units, selected reasoning summaries and retained versions."
+        },
+        {
+          "source": "agmai-math-release-response",
+          "locator": "October 6 statement, paragraphs on advisory role and public release",
+          "support": "The advising group itself distinguishes advice from endorsement and identifies community assessment as continuing work."
+        }
+      ]
+    },
+    "causal-context": {
+      "mechanism": "Oversight, task capability and research assistance interact with other necessary conditions; new evidence about one component must not silently strengthen an entire causal chain.",
+      "conditions": "R0-C2a requires transfer to actual tasks and recovery from mistakes. C2a and C2b remain jointly required under C2. The evaluation subgraph retains C3a1/C3a2/C3a3 as overlapping alternatives. R1-R2 requires gains in a bottleneck and usable output not absorbed by verification or other stages.",
+      "counterexample": "A viewer flaw may coexist with reliable original logs and a blocking permission boundary. A benchmark can improve while full-task completion remains unreliable. More mathematical drafts may increase rather than eliminate the need for expert review.",
+      "evidence": "Read the two affected edges, five dependent subgraphs, control and acceleration route summaries, acceleration story and four dependent news examples. Read changed node details and neighboring tour context in both languages from the generated reading exports, and compared retained conditions with the four new evidence families.",
+      "limits": "The map remains an editorial decomposition rather than an exhaustive theorem or a calibrated probability model. Separate tests do not establish a single observed complete loss-of-control event. Mathematical research results do not directly establish transfer to AI development.",
+      "mitigation": "Preserve explicit permissions, task requirements, verification and responsive oversight as distinct places to interrupt a pathway. Retest claims in their own setting rather than combining isolated examples into proof of global failure.",
+      "readerContext": "The tour introduces capability, real-world access and prevention before the new examples. The acceleration story distinguishes parts of research from the whole process and human-assisted improvement from sustained improvement without human help. Existing news examples already explain those boundaries in both languages.",
+      "whyHere": "Changes to four node explanations invalidate the review of their contextual dependents. This assessment rechecks those contexts while leaving edge text, topology, graph membership and the evidence categories unchanged.",
+      "primary": [
+        {
+          "source": "metr-observability",
+          "locator": "Proof of concept and retained original records",
+          "support": "A bounded oversight weakness with alternate inspection paths, not a complete control-loss sequence."
+        },
+        {
+          "source": "openai-laser",
+          "locator": "Design and Impact",
+          "support": "Evaluation-example collection as an improvement distinct from demonstrated prevention."
+        },
+        {
+          "source": "openai-ironclad",
+          "locator": "Task construction, scoring and timing footnotes",
+          "support": "Specified workflow performance with remaining task-transfer and reliability conditions."
+        },
+        {
+          "source": "openai-math-repository",
+          "locator": "How the results were produced; Versions and citations",
+          "support": "Output production and verification conditions, not a direct measurement of an AI-development feedback loop."
+        }
+      ]
+    },
+    "provenance": {
+      "mechanism": "Sources, research cards, node explanations, evidence summaries and history are synchronized so a reader can trace each new statement to a dated original and understand its scope.",
+      "conditions": "The daily window is September 23–October 7. June maintainer records are contextual verification of the October METR report, not newly occurring October incidents. Only the four substantively updated nodes, their three explicit evidence entries and the eight added sources receive new check dates.",
+      "counterexample": "An unchanged index, automated build or future review deadline is not evidence of substantive rechecking. A new source on an existing topic does not justify a duplicate PR or a blanket date refresh.",
+      "evidence": "Read daily watchlist surfaces, source inventories, review records and the existing draft before selecting additions. Eight primary source records and four research cards address four nodes. AGMAI’s response adds a primary qualification. Other candidates and correction checks are recorded in the Markdown companion; previously covered material is deduplicated.",
+      "limits": "The scan is not exhaustive and is not a byte comparison of every existing page. No new independent replication of the adopted experiments was verified in the inspected material. The adviser response is not a replication. Automated validation does not constitute expert scientific approval.",
+      "mitigation": "Keep unchanged source dates and evidence levels, preserve earlier review records, check all 30 shifted English history entries by stable ID, and update the existing draft for human review. Do not merge or deploy automatically.",
+      "readerContext": "Both languages distinguish publication, experiment and check dates. The history states the before/after explanation and the reason for the change without presenting new metrics as risk probabilities or complete automation.",
+      "whyHere": "map.asOf identifies the latest incorporated content review, not the age of every claim. The history and inventory make the additions discoverable while preserving the user’s checkout and review boundary.",
+      "primary": [
+        {
+          "source": "metr-observability",
+          "locator": "October 6 report and linked maintainer record",
+          "support": "Different dates for the public report and earlier demonstration/fix."
+        },
+        {
+          "source": "openai-laser",
+          "locator": "Privacy Considerations; Impact",
+          "support": "Scope and denominator of a defense-related methodological update."
+        },
+        {
+          "source": "openai-ironclad",
+          "locator": "October 6 report and footnotes",
+          "support": "Developer evaluation provenance and score/time distinctions."
+        },
+        {
+          "source": "agmai-math-release-response",
+          "locator": "October 6 advisory-role statement",
+          "support": "Primary-source qualification to claims of mathematical progress."
+        }
+      ]
+    }
+  },
+  "entries": {
+    "source:metr-observability": {
+      "hash": "6a6210d3ae9530028c264bc63768045664f371ffc2b45544b27f9fd04a2ff165",
+      "assessment": "viewer-integrity"
+    },
+    "source:inspect-viewer-injection": {
+      "hash": "c7c722a089064d9626703f80689bf27d002ebf2b8e22510ac5ca9a707dfe6e12",
+      "assessment": "viewer-integrity"
+    },
+    "source:inspect-untrusted-viewer": {
+      "hash": "ac82ae9090c0a294fda44ba97a5c6d8c316ef54fa1e46dd57be45ae8365bf8da",
+      "assessment": "viewer-integrity"
+    },
+    "source:openai-laser": {
+      "hash": "e4058d5c99b51647f4b64277ba2f9841aed3bff68eec7105dda7f523506a0568",
+      "assessment": "evaluation-sampling"
+    },
+    "source:openai-ironclad": {
+      "hash": "dad20ba70348b569cea336ed9bf58f9e53ec8e27914df4bb8b1f07da643e38e2",
+      "assessment": "workflow-evaluation"
+    },
+    "source:openai-math-release": {
+      "hash": "8ffdad024cffcd1ad24f2f6cdfb88593684e53cc41003a410056219c44bc91e4",
+      "assessment": "math-verification"
+    },
+    "source:openai-math-repository": {
+      "hash": "677396a12670612762df54b38a324097893e8d6e9bb5bc2e9e6c14a30351a789",
+      "assessment": "math-verification"
+    },
+    "source:agmai-math-release-response": {
+      "hash": "d17cd1768b7cadd5c313c4b73b799b23ff2540f404c95c942d3d03203d00a601",
+      "assessment": "math-verification"
+    },
+    "research:viewer-integrity-test": {
+      "hash": "8406c137dd16a0160584c9435a2fd67a28f9ffeb087c18818573e04081ea2cd5",
+      "assessment": "viewer-integrity"
+    },
+    "research:laser-evaluation-sampling": {
+      "hash": "ea15e816e618746c4b25ac665e3a609d04eee1f8436a46ac1ec3c4fb4f23a1d6",
+      "assessment": "evaluation-sampling"
+    },
+    "research:ironclad-workflow-evaluation": {
+      "hash": "6ab981c10ff76cfdb3e92cd2e739e1bef9e87280b7e1785b1828230cc2a868cc",
+      "assessment": "workflow-evaluation"
+    },
+    "research:mathematics-release-verification": {
+      "hash": "70856eaa157f9ab40bb51374a00d2246a2fb55fe894ca96aed60a2f0cf1eac8d",
+      "assessment": "math-verification"
+    },
+    "node:C2a": {
+      "hash": "b9cc0306a33b12182a60d1f46ccb99916534064315bd9cd952de970181824f09",
+      "assessment": "workflow-evaluation"
+    },
+    "node:C3a1": {
+      "hash": "89f06b550f821b7a299dc0f6272bf4f2ed46531a6c1176072218c26bed989b0f",
+      "assessment": "evaluation-sampling"
+    },
+    "node:C3a3": {
+      "hash": "3ebf8d0d8100df2179e9ea9006f79f8e9743ce7f4eacfd3bbfef10e5bdd9fc26",
+      "assessment": "viewer-integrity"
+    },
+    "node:R1": {
+      "hash": "8cfd4fb87ed1fb832c66a797a5541be7dc52b5a0f5a8ff64d6efdde0c63ba239",
+      "assessment": "math-verification"
+    },
+    "edge:R1-R2": {
+      "hash": "0e40fb7c5322fa997c27b5ae95429bfe086279f6db389d7cabfba7fea1c08c8f",
+      "assessment": "causal-context"
+    },
+    "edge:R0-C2a": {
+      "hash": "a4efede37e85fdd646cd1b95aed8d15135ed03408f2dfb79b06a93a5c8f51484",
+      "assessment": "causal-context"
+    },
+    "graph:control": {
+      "hash": "2e4997fdc9a6e313a57ed52cf66f82ffc4663ae3c3ff765a20b0db5e57c516d5",
+      "assessment": "causal-context"
+    },
+    "graph:acceleration": {
+      "hash": "449ab6b472d9904f39c38f3c790266a44e822f7307dacca2a3d20d82432ca247",
+      "assessment": "causal-context"
+    },
+    "graph:ability-access": {
+      "hash": "a232c008b3b1357ce87888b17ed9784422b2a09b6be4ee9d3893639045eec87d",
+      "assessment": "causal-context"
+    },
+    "graph:evaluation": {
+      "hash": "4d8c30e15d0f5c1e055456ff891a546bed9a1887a92845480840baa9bae54315",
+      "assessment": "causal-context"
+    },
+    "graph:research-cycle": {
+      "hash": "e9717344dec1ebbf532f5107d6d4b2e798d1a878cc262608ba8985b5b54c6501",
+      "assessment": "causal-context"
+    },
+    "route:control": {
+      "hash": "9688d6b83b4d5f16397c27c8c7e55f3cedd3f5c770a9b78be499e108a3e0c74b",
+      "assessment": "causal-context"
+    },
+    "route:acceleration": {
+      "hash": "e114167f001d593c652427aa7e6220935f15f9006f7c64760fc092b56a33e8e9",
+      "assessment": "causal-context"
+    },
+    "evidence:C2a": {
+      "hash": "05fcf8680bf2e25dce1dbf5ccc3f5dd19d52a883f2981e8528670991264aedc0",
+      "assessment": "workflow-evaluation"
+    },
+    "evidence:C3a1": {
+      "hash": "1c9cafb8c710e41d95ea74f12f4e4a9368cd814652f7a5743a3af6c4490cbc62",
+      "assessment": "evaluation-sampling"
+    },
+    "evidence:C3a3": {
+      "hash": "2e711c5b801d1cf67e5f3902054a2676d45711bb6bd97bb909b837d957ce2f58",
+      "assessment": "viewer-integrity"
+    },
+    "news:recent-math": {
+      "hash": "9c687f3d481832e4ce414594ebd9a6552bcdeee9b36b3ff24048c29b8cb6cd2d",
+      "assessment": "causal-context"
+    },
+    "news:research-lab-september": {
+      "hash": "549dc9e392054b56c8091b221cea7b6da8f34064c93d3ea10eca37782e51cc40",
+      "assessment": "causal-context"
+    },
+    "news:research-contribution": {
+      "hash": "5ed6913b99734d204596acd3c27953caf5019717356e4fbb7ac76083fbb7fb4c",
+      "assessment": "causal-context"
+    },
+    "news:time-horizons": {
+      "hash": "03d3d8513a860a6e3ec28d9990bdb19a29b9b470b89180494b7c36ed04bec7c5",
+      "assessment": "causal-context"
+    },
+    "story:acceleration": {
+      "hash": "876dd31f6bfeaab0593427dbccbd6f0c79b51beab6fa619c0b4b42f27a86a39e",
+      "assessment": "causal-context"
+    },
+    "metadata:map": {
+      "hash": "c52a102b25379b5f117b61c11001c9ed68e4011cc879a02952f4547c60774efc",
+      "assessment": "provenance"
+    },
+    "history:changes": {
+      "hash": "15aa424d1ed6f087e3c2c81851329dcb1c8d9f1a76689f2ff1e1b13e1ce04860",
+      "assessment": "provenance"
+    },
+    "inventory:current": {
+      "hash": "5004818c18c40ebd1fa5ff24b9867ce027b29a2065bee6af1ba747395328bfc0",
+      "assessment": "provenance"
+    }
+  }
+}

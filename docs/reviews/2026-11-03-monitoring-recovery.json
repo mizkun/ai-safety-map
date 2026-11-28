@@ -1,0 +1,379 @@
+{
+  "id": "2026-11-03-monitoring-recovery",
+  "version": 2,
+  "date": "2026-11-03",
+  "reviewer": "Codex (primary-source and bilingual editorial review; not independent replication)",
+  "decision": "reviewed",
+  "assessments": {
+    "probes": {
+      "mechanism": "Internal model signals can trigger an interruption and hold tool calls until another reasoning model reviews the action.",
+      "conditions": "OpenAI describes deployment from GPT-5.6 onward, supervised labels and held-out tests. Internal activations must be accessible and the system must be able to intercept the relevant action before execution.",
+      "counterexample": "Unknown or untrainable behaviors remain outside the demonstrated scope. A classifier can trigger review without that review being correct, timely or able to stop every path.",
+      "evidence": "The developer reports greater resistance than text classifiers on tested attacks and transfer across many post-training stages. This is a November 2 methods report; experiment dates and individual model versions are unspecified.",
+      "limits": "Figures need not represent deployed classifiers; escalation is not the false-positive rate. New pretrained bases and drifting weights can require retraining. No operational harm-reduction rate or independent replication is established.",
+      "mitigation": "Record the measured defensive improvement while separately assessing coverage, adaptive attacks, reviewer judgment and blocking authority. Do not convert a reported deployment into validated protection against all failures.",
+      "readerContext": "Both languages explain internal signals as information calculated inside the AI, and state that another AI reviews the held operation. No assumption that a person provides the approval is introduced.",
+      "whyHere": "C3a concerns missed danger. This scoped addition complements the October monitoring evidence and leaves limited/tested classification and its October 28 full-review date unchanged.",
+      "primary": [
+        {
+          "source": "openai-activation-classifiers",
+          "locator": "Introduction; Training, model selection, and evaluation; Deployment; Some empirical properties of probes",
+          "support": "Developer evaluation of internal-signal monitoring, tested attack resistance and pre-action holds; figures need not represent deployed classifiers."
+        }
+      ]
+    },
+    "recovery": {
+      "mechanism": "An agent can correct an intermediate mistake without completing the overall task; predicting recovery is a further, separate measurement.",
+      "conditions": "1,259 existing OSWorld/Web traces contain 1,403 annotated errors. Three researchers verify AI annotations. Desktop models are Claude 3.7 Sonnet, Sonnet 4.5 and Kimi K2.5; Web uses SeeAct with GPT-5-2025-08-07 on August 13, 2025.",
+      "counterexample": "725 errors recover, yet only 60% of 280 traces recovering all annotated errors finish their task. Remaining unannotated or later problems can still prevent completion.",
+      "evidence": "Read the original version-1 methods, counts and task-disjoint prediction evaluation. ReCoF combines GLM-5.3-Flash assessments with frozen encoders and fusion; reported prediction improvement does not execute interventions.",
+      "limits": "Observational associations do not isolate a causal effect of recovery. Older traces are not today’s capability ceiling or an ordinary-use incident sample. Researcher verification follows AI labels, and task-disjoint prediction is not evidence of beneficial human intervention.",
+      "mitigation": "Use task completion, recovery and intervention outcomes as separate evaluations. Predictions can motivate a future intervention experiment but do not justify a proven policy of waiting or intervening.",
+      "readerContext": "Japanese and English explain the difference between fixing a mistake and finishing work. Publication on October 27 is separated from the 2025 Web execution date.",
+      "whyHere": "C2a is the relevant execution-capability condition. The study adds a limitation and an evaluation improvement without changing permissions, harmful intent or control-loss conditions.",
+      "primary": [
+        {
+          "source": "reinbench-recovery",
+          "locator": "Version 1, sections 3.1–3.3 and 4.1–4.4; Tables 1–2; Figure 7",
+          "support": "Annotated local recovery, task completion and task-disjoint recovery prediction are different outcomes; predicted interventions are not executed."
+        }
+      ]
+    },
+    "treasury": {
+      "mechanism": "Finding a source, reading the correct digits and returning a reliable final answer are distinct parts of a document workflow.",
+      "conditions": "70 human-reviewed numeric questions over 1,435 scanned Treasury documents, ten model–harness pairs, three attempts per task and a 30-minute limit. Web search is disabled but a network-capable shell and Reducto reader are available.",
+      "counterexample": "Opus 5.5/Claude Code succeeds on 64.8% of attempts but all three times on only 45.7% of tasks. Adjacent rankings are not significant after multiple-comparison correction; retrieval often succeeds where digit reading fails.",
+      "evidence": "Read original sections 3–7, Table 2 and Appendix D. External-figure successes are reclassified as failures. Reader calls run October 3–21; October 28 is publication, while the underlying documents date from 1793–2024.",
+      "limits": "Developer benchmark with mostly private tasks, pilot-driven wording/image adjustments, no human baseline and an unpinned reader. Model and harness effects are confounded. It does not test financial transactions, systemic finance or whole-job autonomy.",
+      "mitigation": "Check figures against source images and measure repeatability and provenance. These are sensible verification requirements, not independently measured effects of a new defense in this paper.",
+      "readerContext": "Both editions distinguish correct answers on individual attempts from stable success across repeated attempts and explain why financial source documents are not financial operations.",
+      "whyHere": "Add to C2a, not to F4 or the systemic-finance branch. Preserve the distinction between a bounded workflow result and a complete causal path.",
+      "primary": [
+        {
+          "source": "treasuryqa-bench",
+          "locator": "Version 1, sections 3–7; Table 2; Appendix D; Reproducibility Statement",
+          "support": "Ten model–harness pairs, 70 tasks and three attempts each; misreading and repeatability limits in scanned-document work."
+        }
+      ]
+    },
+    "completion": {
+      "mechanism": "Completing a sequence requires the relevant skills, verification and recovery to transfer to the actual task; more general capability alone does not guarantee completion.",
+      "conditions": "Reread C2a and R0-C2a with METR’s human-time definition, Ironclad’s prepared contract tasks, low-resource-code evaluation, formalization and ReTerm. Parent C2 still requires C2a plus real-world access C2b.",
+      "counterexample": "Human-directed formalization, partial contract rubrics and language-specific tests can succeed while broader work still needs people. ReInBench and TreasuryQA provide additional failures of local success to imply reliable completion.",
+      "evidence": "Ironclad has 11 tasks and estimated rather than observed customer-time savings. ReTerm uses teacher-assisted, human-prepared recovery training; its non-tool error categories still recover at most 32%. Horizon measures human task time, not unattended model runtime.",
+      "limits": "Different metrics, models, harnesses and human roles cannot be pooled into a whole-job success rate. This review does not rerun experiments or infer the current ceiling from historical records.",
+      "mitigation": "Preserve bounded permissions, verification, exception handling and human escalation. Record recovery improvements alongside residual failures rather than treating every failed task as an absence of progress.",
+      "readerContext": "Read the actual Japanese and English C2a tour and detail text, parent C2, graph, current evidence and linked news. Explain task completion before connecting it to potential harm.",
+      "whyHere": "C2a was due November 3 and was substantively reread. Renew this node and its evidence clock only; R0-C2a retains its previous date. Keep limited/tested classifications and existing AND structure.",
+      "primary": [
+        {
+          "source": "horizon",
+          "locator": "Time Horizons page and FAQ: what the time horizon measures and limitations",
+          "support": "Human-expert completion time indexes task difficulty; it is not the time an agent can run unattended."
+        },
+        {
+          "source": "reterm-recovery-training",
+          "locator": "Version 2, sections 3–4, especially error-type analysis in section 4.5",
+          "support": "Human-prepared training and teacher-assisted recovery improve bounded tasks; held-out task failures and weak non-tool recovery remain."
+        },
+        {
+          "source": "reinbench-recovery",
+          "locator": "Version 1, sections 3.1–3.3 and 4.1–4.4; Tables 1–2; Figure 7",
+          "support": "Annotated local recovery, task completion and task-disjoint recovery prediction are different outcomes; predicted interventions are not executed."
+        },
+        {
+          "source": "treasuryqa-bench",
+          "locator": "Version 1, sections 3–7; Table 2; Appendix D; Reproducibility Statement",
+          "support": "Ten model–harness pairs, 70 tasks and three attempts each; misreading and repeatability limits in scanned-document work."
+        }
+      ]
+    },
+    "rsi": {
+      "mechanism": "Improved AI may help produce a subsequent useful improvement, creating feedback; a gain in one task or one cycle does not establish sustained whole-development acceleration.",
+      "conditions": "Read MASS v1 methods and external evaluations, its public README, Phantom Gains v1, Anthropic’s RSI distinction, Amodei’s interpretation and the October GPT-6 card. Costs, human preparation, verification and transfer remain necessary conditions.",
+      "counterexample": "MASS’s external Terminal-Bench and SWE-bench results decline. Phantom Gains obtains apparent improvements with unchanged-model controls. Neither result rules out all other feedback mechanisms.",
+      "evidence": "MASS has two bounded cycles. Table 7 increases delivered outputs from 31/60 to 50/60 while the mean among delivered outputs falls from 3.07 to 2.88; unmatched subsets prevent a simple quality-decline inference. Public README still differs on task/trial counts.",
+      "limits": "Paper 12 tasks times five trials differs from README 107 times three; held-out tasks can still enter workflow search. Per-output-token efficiency is not total compute, calendar time or human effort. No independently replicated unbounded RSI is inferred.",
+      "mitigation": "Keep unchanged-model controls, external tasks and separate measures of output quality, delivery rate, total cost and human contribution. Do not treat developer risk thresholds as proof of no future RSI.",
+      "readerContext": "The R3 tour and development-paths OR preserve progress without RSI and explain human-assisted versus fully autonomous feedback. R2 remains whole-process acceleration rather than code-volume growth.",
+      "whyHere": "R3, R2-R3 and R3-R2 were due and are substantively renewed along with R3 evidence. Retain conditional forward connection, feedback return, limited/tested status and no automatic jump to ASI.",
+      "primary": [
+        {
+          "source": "mass-self-supervision",
+          "locator": "Version 1, training workflow, held-out/external evaluations and Table 7; public README separately compared",
+          "support": "Two bounded update cycles with human-prepared tasks; mixed external transfer, delivered-output denominator and paper/repository reconstruction differences."
+        },
+        {
+          "source": "phantom-gains",
+          "locator": "Version 1, unchanged-model controls, repeated short adaptation and limitations",
+          "support": "Evaluation changes can produce apparent gains without model improvement; small models and short loops do not rule out other RSI mechanisms."
+        }
+      ]
+    },
+    "physical": {
+      "mechanism": "Physical task automation also needs reliable handling of exceptions, recovery and appropriate cost; selected robot-task success is not replacement of all physical work.",
+      "conditions": "Read Recova v1 physical tests and human roles, Anthropic’s job/evidence estimates and Gemini Robotics 2 selected-task demonstrations. Recova uses dual YAM arms, pi-0.5 task/recovery policies, a Gemini 3.8 Flash monitor and human-built digital twins/demos.",
+      "counterexample": "Human-corrected training raises the four-task average from 23.8% to 77.5%; adding recovery reaches 87.5%. The entire increase cannot be attributed to recovery. A separate 14-minute sequence still uses human control for 11% of the time.",
+      "evidence": "Four physical tasks have 20 trials per configuration. The final 0/7 human-intervention count is for one task/round. The robot-work estimate separates 34% technical feasibility in limited settings from 0.3% cost competitiveness.",
+      "limits": "Prepared tasks, demonstrations and unresolved human takeovers remain. A modeled work-exposure estimate is not observed job replacement. Selected whole-body demonstrations do not establish all-work coverage, affordability or adoption.",
+      "mitigation": "Evaluate exceptions, intervention burden and costs in the intended workplace. Preserve the technical-capability, deployment and distribution distinctions in the work route.",
+      "readerContext": "Read W2 in both tours and the W1-W4 joint connection. Both intellectual and physical work must cover the intended range, including exceptions, before the strong all-labor hypothesis can follow.",
+      "whyHere": "W2 was due and its limited/indirect classification is retained after substantive review. Renew W2 and its evidence date; W1-W4 keeps its existing date and joint conditions.",
+      "primary": [
+        {
+          "source": "recova-robot-recovery",
+          "locator": "Version 1, physical setup, four-task comparison and long-horizon/human-intervention experiments",
+          "support": "Recovery improves selected robot tasks with demos, human corrections and unresolved takeovers; not autonomous all-work substitution."
+        },
+        {
+          "source": "anthropic-robot-work",
+          "locator": "Methods, feasible versus cost-competitive work estimates and limitations",
+          "support": "Job/evidence classification estimates task feasibility under assumptions, not observed deployment or replacement."
+        }
+      ]
+    },
+    "finance": {
+      "mechanism": "Financial disruption becomes systemic only if relevant AI use and propagation combine with inadequate buffers, timely stopping and recovery; the separate channels need not occur together.",
+      "conditions": "Reread F4 and joint F1-F3, the finance-conditions AND graph, current money summary and money story. Read the FSB final report sections 3.7/3.9 and BIS FSI analysis of response, recovery and dependencies.",
+      "counterexample": "Fallbacks, liquidity, loss absorption and recovery can limit a local problem. The Bank of Canada equity-tail analysis explicitly does not identify causal AI-adoption effects or operational transmission, so it is not evidence that F4 occurred.",
+      "evidence": "FSB recommends stopping, fallback, continuity and third-party planning; FSI discusses cyber resilience. These are original policy/analytical sources, not measured proof that defenses work or that all systemic conditions have been met.",
+      "limits": "Equity co-movement and frontier-AI cyber capability are not systemic financial failure. Historical/market proxies cannot supply missing permissions, exposure, propagation or failed-buffer conditions.",
+      "mitigation": "Keep fallback, independent recovery, provider diversification and stress-testing as conditional interventions. Do not convert recommended implementation into demonstrated reduction in crisis probability.",
+      "readerContext": "The money route separates earnings/profit, abundance and financial dysfunction. The TreasuryQA archive benchmark is deliberately not inserted as evidence of autonomous trading or system-wide harm.",
+      "whyHere": "F4 was due and remains a hypothesis after substantive rereading. Renew only the F4 node date; current money, F1-F3 and other clocks are preserved.",
+      "primary": [
+        {
+          "source": "fsb-ai-practices-final",
+          "locator": "Final report, sections 3.7 and 3.9: timely stopping, fallback, continuity and third-party dependencies",
+          "support": "Recommended safeguards and recovery planning support conditional financial channels; not measured system-wide failure or proven defense effectiveness."
+        },
+        {
+          "source": "fsi-cyber-resilience",
+          "locator": "Sections on response/recovery, third parties and frontier-AI cyber defenses",
+          "support": "Financial-sector analysis identifies dependency and resilience requirements without measuring the probability of a complete systemic crisis."
+        }
+      ]
+    },
+    "dependencies": {
+      "mechanism": "Capability, access, intent, missed danger, timely stopping, persistent loss of control and wider harm remain distinct conditions. Three additions do not establish that a complete pathway has occurred.",
+      "conditions": "Read changed bilingual passages and actual C2a/C3a/R3/W2/F4 tour stops, parents C2/C3/R2, four routes/stories, relevant graphs, current evidence and three linked news examples. Review the unchanged neighboring edge conditions.",
+      "counterexample": "A successful task can be benign or blocked by permissions; detecting danger may not stop it in time. Progress without RSI, physical exceptions and successful financial recovery preserve the alternative branches.",
+      "evidence": "Three primary-source/research pairs are added. Four due nodes and two due RSI edges are renewed; three matching evidence dates follow. C3a’s old date and all other clocks are preserved. All 41 edge IDs, topology and evidence classifications remain unchanged.",
+      "limits": "This is the November 3 daily and due-item review, not another complete Monday survey or independent replication. No date is advanced solely because an index was checked or a build passed. The current inventory is not a fresh audit of every historical source.",
+      "mitigation": "Include the tested defensive improvement, recovery gains and counterevidence. Keep intervention efficacy, deployment incidence and catastrophic outcomes separate; do not assign a new risk color or numerical extinction probability.",
+      "readerContext": "Both languages retain the same chronology, human roles, permissions and uncertainty. Local error recovery, scanned-document reading and internal monitoring are explained without requiring new glossary entries.",
+      "whyHere": "Map as-of, history, source inventory and translations must reflect the scoped addition. Dependency review validates the retained context without silently resetting its review dates.",
+      "primary": [
+        {
+          "source": "openai-activation-classifiers",
+          "locator": "Introduction; Training, model selection, and evaluation; Deployment; Some empirical properties of probes",
+          "support": "Developer evaluation of internal-signal monitoring, tested attack resistance and pre-action holds; figures need not represent deployed classifiers."
+        },
+        {
+          "source": "reinbench-recovery",
+          "locator": "Version 1, sections 3.1–3.3 and 4.1–4.4; Tables 1–2; Figure 7",
+          "support": "Annotated local recovery, task completion and task-disjoint recovery prediction are different outcomes; predicted interventions are not executed."
+        },
+        {
+          "source": "treasuryqa-bench",
+          "locator": "Version 1, sections 3–7; Table 2; Appendix D; Reproducibility Statement",
+          "support": "Ten model–harness pairs, 70 tasks and three attempts each; misreading and repeatability limits in scanned-document work."
+        },
+        {
+          "source": "mass-self-supervision",
+          "locator": "Version 1, training workflow, held-out/external evaluations and Table 7; public README separately compared",
+          "support": "Two bounded update cycles with human-prepared tasks; mixed external transfer, delivered-output denominator and paper/repository reconstruction differences."
+        },
+        {
+          "source": "phantom-gains",
+          "locator": "Version 1, unchanged-model controls, repeated short adaptation and limitations",
+          "support": "Evaluation changes can produce apparent gains without model improvement; small models and short loops do not rule out other RSI mechanisms."
+        },
+        {
+          "source": "recova-robot-recovery",
+          "locator": "Version 1, physical setup, four-task comparison and long-horizon/human-intervention experiments",
+          "support": "Recovery improves selected robot tasks with demos, human corrections and unresolved takeovers; not autonomous all-work substitution."
+        },
+        {
+          "source": "fsb-ai-practices-final",
+          "locator": "Final report, sections 3.7 and 3.9: timely stopping, fallback, continuity and third-party dependencies",
+          "support": "Recommended safeguards and recovery planning support conditional financial channels; not measured system-wide failure or proven defense effectiveness."
+        }
+      ]
+    }
+  },
+  "entries": {
+    "source:openai-activation-classifiers": {
+      "hash": "26fa45c65a67bc31c17ed61b7483285b220a97d6a362ffaf1f36755674ad0764",
+      "assessment": "probes"
+    },
+    "source:reinbench-recovery": {
+      "hash": "107158e52bec6f52e7df555318ec23982203b8370eeeaf86de284fd65f9dc994",
+      "assessment": "recovery"
+    },
+    "source:treasuryqa-bench": {
+      "hash": "206e549a01dfa6dfc16867554625304f88961f6188b7b7a640f7dc4e665fc1a0",
+      "assessment": "treasury"
+    },
+    "research:activation-probe-monitoring": {
+      "hash": "08eecc5ea038f924e2366b326ee49a63848637bcfb9c4e13e9dd786f5794efb7",
+      "assessment": "probes"
+    },
+    "research:local-error-recovery": {
+      "hash": "24201cab916e7b2db2b76c04f999956cdc76f59707b7bedf2960d29cbd02582e",
+      "assessment": "recovery"
+    },
+    "research:scanned-record-workflow": {
+      "hash": "e95108f6b6d8f2e08a189a838c97c1f5f2a694a618be4bd24d7b20b00ee22929",
+      "assessment": "treasury"
+    },
+    "node:C2a": {
+      "hash": "da64444c19aae35c1360313e1f48644ed37657ead8815cd4fad454a68e36e6a5",
+      "assessment": "completion"
+    },
+    "node:C3a": {
+      "hash": "d09a1132ba72bd53eaea1244c4a4875abac679b20b604d040a3a4cd698349203",
+      "assessment": "probes"
+    },
+    "node:F4": {
+      "hash": "df48abb6f4a7802aedea2c48e8b815a61cfd1632ada820bd45a2d5930265c96a",
+      "assessment": "finance"
+    },
+    "node:R3": {
+      "hash": "59a2c55514e1e7efb24d1cb707757375419bec11058a05bf56104ef2e0f4c024",
+      "assessment": "rsi"
+    },
+    "node:W2": {
+      "hash": "847b80d99528188d3f25c98dc6fc41e9cbbdcbd080f42e594f42866a6519d3b5",
+      "assessment": "physical"
+    },
+    "edge:R2-R3": {
+      "hash": "b20f04b98a1bbe636c88b25b68fcbdcde0b7914924b49a10e729d4da9434dbba",
+      "assessment": "rsi"
+    },
+    "edge:R3-R2": {
+      "hash": "9ba85c2352005828a04d27938b55fb3c88268e31fc9bb1a1eeecb0e624b46b15",
+      "assessment": "rsi"
+    },
+    "edge:W1-W4": {
+      "hash": "75596c61a5dd354fa760c3e82c0e11a7331fb68d8920de5b5e321a5fe03fb366",
+      "assessment": "physical"
+    },
+    "edge:F1-F3": {
+      "hash": "bedac9a4c4261f6c6c3490ae3c8b268ddeb2d5296fbcacc4225bbe5259a4b014",
+      "assessment": "finance"
+    },
+    "edge:R0-C2a": {
+      "hash": "35be5eae08f3ba533d6a72f9a0336c433fad51b3d1663342387845e264e6db67",
+      "assessment": "completion"
+    },
+    "graph:control": {
+      "hash": "0dc5ee6882f101aee610a9b95e7908b31a80e0dc4e2ffbe1933954f46bf1a44e",
+      "assessment": "dependencies"
+    },
+    "graph:acceleration": {
+      "hash": "079b7f1719f571776d5a6d150fc40ba063ca8bdc61e5ae279828beb0e94ff8fe",
+      "assessment": "dependencies"
+    },
+    "graph:ability-access": {
+      "hash": "850d83d4b0df8746bb7a91f569ff3608936f35f0b2e0e369316e1262defe0f5a",
+      "assessment": "completion"
+    },
+    "graph:oversight": {
+      "hash": "f5acb03e1d492dd0fcde4b8b19cc6c159eae0c500a2c69f549492573c872f1a0",
+      "assessment": "dependencies"
+    },
+    "graph:work": {
+      "hash": "f91f036d745ac3ce748b84b114bf61253fd755f25535f9a0cbd6f0a7b3231e48",
+      "assessment": "dependencies"
+    },
+    "graph:money": {
+      "hash": "fb2525621ed20b45c6b6b968246b83c65c9d1c659113f43b69d526bf55332bcb",
+      "assessment": "dependencies"
+    },
+    "graph:finance-conditions": {
+      "hash": "b8632f5fb5a0146952176c7170e3269f410d393387d7d82a17328a899800b909",
+      "assessment": "finance"
+    },
+    "graph:development-paths": {
+      "hash": "42c4a79e2b4a87e93f88c68622d262825ab432f9517f8e4208817c492a4762df",
+      "assessment": "rsi"
+    },
+    "route:control": {
+      "hash": "110e91f30926bc21a8480dcf7af48cbd58680fb4a8af0958670f588679328044",
+      "assessment": "dependencies"
+    },
+    "route:acceleration": {
+      "hash": "ee3302090917edc4c14b041533dc9d853a7452770185772ebafc18d80c148751",
+      "assessment": "dependencies"
+    },
+    "route:work": {
+      "hash": "caf18754b2dc7f62e017a9d6090780ef3f4d72f234d02075242929dd169e2be0",
+      "assessment": "dependencies"
+    },
+    "route:money": {
+      "hash": "400f4b9e9b8b85152532056a8d38520ee7410e52cb35c8e400a2da809305db21",
+      "assessment": "dependencies"
+    },
+    "current:money": {
+      "hash": "3302b6e07fcf49850dba877b409093dde768cf7c6d731757174dcfe97367c0fe",
+      "assessment": "finance"
+    },
+    "evidence:C2a": {
+      "hash": "9163a4517883390982b620e741cf2200eced3288be98263a91734d19581b0cff",
+      "assessment": "completion"
+    },
+    "evidence:C3a": {
+      "hash": "4bf47032bd7a502b60515a45d1811a29d93f44d2ed3e0f46898b6166f7b98c38",
+      "assessment": "probes"
+    },
+    "evidence:W2": {
+      "hash": "974011836ba560f6739de578697fc6b246a3de811faa5097480655bf35e43b5f",
+      "assessment": "physical"
+    },
+    "evidence:R3": {
+      "hash": "8c6cea0198ee933534c3396fc18b0cf89780a17f4f0560b59610e7aa44e679ec",
+      "assessment": "rsi"
+    },
+    "news:research-contribution": {
+      "hash": "e91546d506df432ce00d3f20acb4b01d84bdad5fdbdb1c56bb9238c52ae11d4d",
+      "assessment": "dependencies"
+    },
+    "news:agent-behavior": {
+      "hash": "0da149754d922fbad08e42607560f4ef3856e5665863905fc3c32c3d368859f5",
+      "assessment": "dependencies"
+    },
+    "news:time-horizons": {
+      "hash": "70351fc1a297ed4007c0e277596a56ae074fe3fad300db61d29bac8a85f4761d",
+      "assessment": "dependencies"
+    },
+    "story:control": {
+      "hash": "47b0abb643164ce310e1738c7e102de2f00b5f635c9faab8bddb15122b5c4a4d",
+      "assessment": "dependencies"
+    },
+    "story:acceleration": {
+      "hash": "17ecca938f031c00492f58138348483b8496466de0e92d935e40f39d8d6ff9a6",
+      "assessment": "dependencies"
+    },
+    "story:work": {
+      "hash": "2b4d8678381601c4e081aa3ae0ecdeb4495373010d931e5c42bdebfd3314b9f0",
+      "assessment": "dependencies"
+    },
+    "story:money": {
+      "hash": "69d5ec8321109375beb4cf3cf5fdd892e7d376369008a7f8efc9e83e4999649c",
+      "assessment": "dependencies"
+    },
+    "metadata:map": {
+      "hash": "1d6f7141a68dcc0a3c812cc8e4d9bfd22c3cf34179a09312eb27f139690bb92c",
+      "assessment": "dependencies"
+    },
+    "history:changes": {
+      "hash": "87e2b911ebca0261f80234c52b15c91b95a741eaa4fa3e61e0a03abd8f4506ba",
+      "assessment": "dependencies"
+    },
+    "inventory:current": {
+      "hash": "6eba2de9da4aec65cdc967613ea4c81c4c802a347bbea191472f7ec3e49c4be2",
+      "assessment": "dependencies"
+    }
+  }
+}

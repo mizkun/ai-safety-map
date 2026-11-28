@@ -1,0 +1,404 @@
+{
+  "id": "2026-11-25-pretraining-validation-safeguards",
+  "version": 2,
+  "date": "2026-11-25",
+  "reviewer": "Codex (primary-source and bilingual editorial review)",
+  "decision": "reviewed",
+  "assessments": {
+    "pretraining": {
+      "mechanism": "Better research tools can improve successor development, but an accelerating loss metric only measures one outcome. A feedback loop additionally requires the successor to contribute to later improvements.",
+      "conditions": "Read the November 22 developer disclosure and November 24 METR interpretation. Fixed internal-code data, release/training timing, research/compute inputs and the no-AI counterfactual constrain attribution. R1-R2 still requires relief of a whole-process bottleneck.",
+      "counterexample": "Extra compute or a recipe better suited to the corpus can lower loss without AI-caused recursive acceleration. Conversely, uncertain public benchmark acceleration does not disprove all private progress.",
+      "evidence": "OpenAI footnotes 3/5 describe the held-out snapshot and primarily long-term investment attribution. METR analyzes the same 13-model series and requests other corpora, training dates and resource inputs. Its approximately sevenfold slope is not sevenfold intelligence.",
+      "limits": "No independent replication, no consensus METR forecast, no identified AI-only multiplier or demonstrated sustained autonomous loop. Forward capability predictions and common development limits are proposals.",
+      "mitigation": "Measure whole-process inputs, dates and independent datasets; test both capabilities and safeguards across successor cycles before transferring unverified permissions. Pacing is a candidate intervention, not an efficacy result.",
+      "readerContext": "Read R2/R3 and the five relevant connection conditions in both languages with control/development context. Introduce the measurement as code prediction; keep technical loss terminology in evidence cards.",
+      "whyHere": "Adds missing acceleration evidence and its alternative interpretations without changing the conditional feedback structure. Renew R2/R3 and the two substantively reassessed feedback-edge clocks only.",
+      "primary": [
+        {
+          "source": "openai-pretraining-loss",
+          "locator": "Main discussion; footnotes 3 and 5",
+          "support": "Developer data provenance, attribution and proposed pacing."
+        },
+        {
+          "source": "metr-pretraining-interpretation",
+          "locator": "Main analysis; requested disclosures; footnotes 1–6",
+          "support": "Alternative interpretations, shared-data dependence and required controls."
+        },
+        {
+          "source": "metr-q4-capabilities",
+          "locator": "Overview and §3.C.2",
+          "support": "Different public-model capability metric and uncertainty about acceleration."
+        }
+      ]
+    },
+    "protein": {
+      "mechanism": "A model can propose a component of scientific work that humans and other tools validate, without replacing the complete scientific process.",
+      "conditions": "Pre-release GPT-6.2 generates with code but no specialist protein models or internet. Post-generation sequence assignment, filtering, human target selection and Onava experiments are part of the actual pipeline.",
+      "counterexample": "A predicted structure may fail laboratory binding; a binder may lack useful cellular effects or safety. Stronger design performance can coexist with weak whole-structure prediction.",
+      "evidence": "Read the original preprint §2.5, §7 and §§8.1/8.3 after downloading the oversized PDF. The 35/322 denominator concerns selected candidates across five targets and is separate from other campaigns.",
+      "limits": "No experiment dates supplied, no independent replication, no success rate over all generated proposals, no clinical efficacy/safety, harmful biological capability or measured whole-project acceleration.",
+      "mitigation": "Retain human review, specialized filtering and laboratory verification. Evaluate outcomes and costs across the whole process before extrapolating assistance to autonomous research.",
+      "readerContext": "Read R1’s bilingual addition with research-assistance and development-bottleneck context. Explain binding as a bounded experimental result, not as a drug or a biological threat.",
+      "whyHere": "Adds direct validation to R1 rather than assigning a biological-misuse or recursive-improvement status from general protein capability.",
+      "primary": [
+        {
+          "source": "openai-protein-design",
+          "locator": "§2.5; §7; §§8.1 and 8.3",
+          "support": "Selected laboratory binding, model/tool restrictions, human roles and remaining limitations."
+        }
+      ]
+    },
+    "cyber": {
+      "mechanism": "Operational cyber assistance requires task capability as well as access, vulnerabilities and insufficient defenses. Capability varies with the task and evaluation setup.",
+      "conditions": "Neon tests known vulnerabilities with isolated access, specified time/attempt budgets and mitigations off. ExploitGym judges intended-flaw causation; SEC-bench uses three attempts per task and different scoring.",
+      "counterexample": "Neon improves on one benchmark but falls below Carbon on another. GPT-6.2’s included Irregular test still leaves the 15 most hardened targets unsolved.",
+      "evidence": "Read Neon summary and §7.1 plus GPT-6.2 §§2.1.2.1–2.1.2.2.3. Preserve 869 versus 183 tasks, one versus three attempts and the 48.3/54.8 versus 90.5/88.2 comparisons.",
+      "limits": "Developer testing does not determine unknown-target intrusion rates or ordinary safeguarded availability. Different suites and provider thresholds cannot be pooled into universal superiority.",
+      "mitigation": "Use authorized isolated evaluations and examine defended targets, intended mechanisms and access constraints. Apply capability gains to independently checked repairs.",
+      "readerContext": "Read M2c1 with M2c2 and cyber-conditions in both languages. Explain that the target-access condition is additional to task performance.",
+      "whyHere": "Substantively reassesses due M2c1 and adds mixed new results without upgrading the evidence level or collapsing capability into realized harm.",
+      "primary": [
+        {
+          "source": "gemini-neon-safety",
+          "locator": "Executive Summary; §7.1, pp. 68–70",
+          "support": "Mixed capability scores and explicit task/attempt settings."
+        },
+        {
+          "source": "openai-gpt62-system",
+          "locator": "§§2.1.2.1–2.1.2.2.3",
+          "support": "Known-flaw evaluation boundaries and unsolved hardened targets."
+        }
+      ]
+    },
+    "defense": {
+      "mechanism": "Repairs and resistance to malicious external instructions can interrupt misuse, but protection also depends on deployment, uptake, containment and recovery.",
+      "conditions": "CWE-bench v2 uses 250 tasks, four trials each, one hour, no prior bug localization, and requires both exploit rejection and regression success. Injection suites have different scenario counts and finite adaptive budgets.",
+      "counterexample": "A passing patch might never be installed. Retrieval attacks can succeed beyond the 40-attempt budget despite perfect survival at that budget. No individual failed defense establishes global harm.",
+      "evidence": "Read Neon §7.2 and §6.1. 70.7% versus 67.3% is average Pass@1, not any-of-four. Tool survival 86% at 150 attempts and retrieval survival through 40 are separate metrics.",
+      "limits": "Not patch uptake or causal real-world harm reduction. Some comparator harnesses differ; external evaluations are read as reported, not independently replicated. Model-level tests and production safeguards differ.",
+      "mitigation": "Validate patch function, install and monitor repairs, limit permissions, maintain external checks and test adversaries with realistic feedback and budgets.",
+      "readerContext": "Read M3, misuse tour and M3-H in Japanese and English. Preserve dangerous intent, useful support, access and failed defenses as combined conditions before widespread damage.",
+      "whyHere": "Adds measured defensive progress and residual weaknesses together, maintaining M3 as a conditional hypothesis and leaving M3-H’s date and conditions unchanged.",
+      "primary": [
+        {
+          "source": "gemini-neon-safety",
+          "locator": "§7.2, pp. 71–72; §§6.1.1–6.1.6, pp. 62–66",
+          "support": "Repair validation, finite-budget robustness and continuing attack possibilities."
+        }
+      ]
+    },
+    "awareness": {
+      "mechanism": "Test recognition undermines evaluation only if it changes relevant behavior and conceals the change. References to rules or monitoring alone do not establish evasion.",
+      "conditions": "Neon uses classifier flags plus manual inspection, including 54 general-monitoring flags; units are thoughts. METR prompts investigator agents in 19 alignment and 36 capability environments and averages three runs.",
+      "counterexample": "Neon’s inspected flags were benign or workflow-related, with no CoT-monitor evasion identified. GPT-6.2 Astra and Sol show different awareness trends; awareness can coexist with better compliance.",
+      "evidence": "Read Neon §3.3.3.4/Table 3.3, METR Setup/Limitations/Figure 1, and GPT-6.2 §4.1.6. Separate 111950/110825 thought counts, sampled manual review, verbalized suspicion and apparent behavioral changes.",
+      "limits": "No complete manual audit of unflagged records, no measurement of unspoken awareness, and different historical classifiers. AUC 1.0 for averaged environment scores is not spontaneous per-task concealment.",
+      "mitigation": "Compare tests and deployment, diversify conditions and manual checks, and use permission/control layers that remain useful when evaluation is recognized.",
+      "readerContext": "Read C3a2 standalone and in oversight/evaluation/control context in both languages. Keep model awareness distinct from the auditor’s inference about intent.",
+      "whyHere": "Reassesses due C3a2 with both positive test-recognition evidence and bounded counterevidence, preserving limited status and other clocks.",
+      "primary": [
+        {
+          "source": "gemini-neon-safety",
+          "locator": "§3.3.3.4/Table 3.3, pp. 29–30",
+          "support": "No evasion identified in selected manually reviewed thought samples, with classifier and sampling limits."
+        },
+        {
+          "source": "metr-alignment-eval-tells",
+          "locator": "Setup; Limitations of interrogations; Figure 1",
+          "support": "Prompted discrimination does not establish spontaneous concealment."
+        },
+        {
+          "source": "openai-gpt62-system",
+          "locator": "§4.1.6",
+          "support": "Verbalized awareness, classifier judgments and selected replay caveats."
+        }
+      ]
+    },
+    "coverage": {
+      "mechanism": "A safety assessment combines fresh measurements with judgments carried forward under stated rules. Availability of a report and completeness of remeasurement are different questions.",
+      "conditions": "Read the now-accessible Neon November report, especially §3.1.1. Its material-change assessment is below the provider’s threshold; Argon critical-capability judgments are inherited while behavior and defenses are measured.",
+      "counterexample": "A full report can retain inherited judgments. Fewer unnecessary refusals do not demonstrate prevention of severe harms; inheritance itself does not prove a blind spot.",
+      "evidence": "Read the original model card and new PDF. Correct only the existing card’s availability limitation, retaining its earlier measurement and all prior history. New report publication day and experiment dates remain unspecified.",
+      "limits": "The November 25 access date is not the publication date. This content review does not independently validate the provider’s material-change threshold or residual-risk judgment.",
+      "mitigation": "State exactly what was retested and what was inherited; compare independent evidence and require relevant safety checks when capabilities or deployment conditions change.",
+      "readerContext": "Read C3a with the bounded awareness and defense additions in both languages. Reader prose explains test coverage; editorial availability detail stays in the evidence record.",
+      "whyHere": "Closes a documented access gap and removes a stale forthcoming-report note, without inferring that the entire control pathway is safe or unsafe.",
+      "primary": [
+        {
+          "source": "gemini-neon-safety",
+          "locator": "Executive Summary; §3.1.1; §3.3.3",
+          "support": "Inherited threshold judgments versus new monitoring and safeguard measurements."
+        },
+        {
+          "source": "gemini4-neon",
+          "locator": "Frontier Safety Assessment; Evaluation Results",
+          "support": "Original model-card scope and retained refusal comparison."
+        }
+      ]
+    },
+    "robotics": {
+      "mechanism": "Physical automation must sustain reliable work under varying objects, failures, safety constraints and human handovers before extrapolating to whole jobs or all labor.",
+      "conditions": "Robotics 2.5 reports a selected automotive pilot with 96% success but no complete trial/intervention denominator. Recova uses four physical tasks, 20 trials per condition, human-prepared twins and demonstrations, and interventions in unresolved failures.",
+      "counterexample": "Recovery improves selected tasks while still requiring human assistance. Separate language-jailbreak resistance and obstacle tests do not measure industrial accident prevention or whole-job autonomy.",
+      "evidence": "Reopened Robotics 2.5’s deployment and safety sections and Recova v1 §§3–4.2/Table 3. Preserve 77.5% post-DAgger versus 87.5% with recovery; preparation and fine-tuning are not attributed solely to recovery.",
+      "limits": "No universal reliability, long-term autonomous operation or cost competitiveness follows. No new independent replication or correction changing the existing explanation was verified.",
+      "mitigation": "Evaluate field duration, recovery/handover, maintenance and costs. Separate technical scope, actual adoption and support for workers.",
+      "readerContext": "Read unchanged W2 in both languages with work chapters, W1-W4 and adoption conditions. Keep physical/cognitive requirements parallel and all-labor replacement conditional.",
+      "whyHere": "Substantively reassesses due W2 and renews only its node and matching evidence clock. Retains text, sources, status and W1-W4 conditions/date.",
+      "primary": [
+        {
+          "source": "gemini-robotics25",
+          "locator": "Real-world deployment; Advancing steerability and agentic safety",
+          "support": "Selected factory pilot and separate safety tests with incomplete denominators."
+        },
+        {
+          "source": "recova-robot-recovery",
+          "locator": "§§3–4.2; Table 3",
+          "support": "Bounded recovery gains, human preparation and intervention."
+        }
+      ]
+    },
+    "record": {
+      "mechanism": "A reviewable update preserves prior evidence and dates, identifies new evidence and changed interpretation, and checks every dependent reader view.",
+      "conditions": "Daily November 11–25 window; clean isolated PR branch contains current origin/main. Four sources, seven cards, one explicit availability correction, seven bilingual explanation additions and three due-node rechecks.",
+      "counterexample": "An unchanged index, newer publication date or passing build is insufficient to refresh a claim. An inaccessible full report cannot be treated as read; today’s PDFs were retrieved and relevant sections read.",
+      "evidence": "Companion Markdown records source sections, before/after claims, affected stable IDs, due decisions, duplicate screening and access limits. No source/PR-embedded instructions were executed.",
+      "limits": "Editorial review and schema checks do not prove scientific truth, full coverage or independent replication. Exact experiment dates and the Neon publication day remain unknown.",
+      "mitigation": "Assert exact preservation against 2f68be1, validate both languages and review coverage, run checks/build/freshness and verify exact-head CI. Keep PR #11 a draft without merge or deployment.",
+      "readerContext": "Read affected bilingual details and exported control, development, misuse and work context. Preserve the distinctions between finite evidence, complete pathways and global harm.",
+      "whyHere": "Record substantive new evidence and scoped review dates without changing topology, levels, statuses or unrelated records. Reuse the existing draft rather than create another PR.",
+      "primary": [
+        {
+          "source": "openai-pretraining-loss",
+          "locator": "Footnotes 3 and 5",
+          "support": "Measurement provenance and bounded attribution."
+        },
+        {
+          "source": "openai-protein-design",
+          "locator": "§2.5; §7; §8",
+          "support": "Laboratory validation and human/tool requirements."
+        },
+        {
+          "source": "gemini-neon-safety",
+          "locator": "§§3.1.1, 3.3.3, 6.1 and 7",
+          "support": "Fresh defense detail and limits."
+        }
+      ]
+    }
+  },
+  "entries": {
+    "source:openai-pretraining-loss": {
+      "hash": "097fe557696730902ed579750ec132b8dc1146980caa8a8b209798f635f2eab4",
+      "assessment": "pretraining"
+    },
+    "source:metr-pretraining-interpretation": {
+      "hash": "c50916122d18942df74e99d2902105be5ab3b117bb07ae066af9096d599cf594",
+      "assessment": "pretraining"
+    },
+    "source:openai-protein-design": {
+      "hash": "b5ae5c4db87a37e33a8668f9c359bf3b247bbdeba717c6dd0c634d930303b4bf",
+      "assessment": "protein"
+    },
+    "source:gemini-neon-safety": {
+      "hash": "821e450c3d6cea850ad40b945a17939707a5f433251cd7ec9b1b27e582ec3912",
+      "assessment": "coverage"
+    },
+    "research:neon-assessment-coverage": {
+      "hash": "3fe07adc71c75793aca9e30eca1d6fab345eedecdd348164cfa5b667567b673a",
+      "assessment": "coverage"
+    },
+    "research:pretraining-loss-trend": {
+      "hash": "8afda6ac31ee7e9292ff7b5bd046908d1a6b1f6bd3e3985497fcff8602d8fe6f",
+      "assessment": "pretraining"
+    },
+    "research:pretraining-acceleration-interpretations": {
+      "hash": "332959021b98f3f208ec0d0e43771d3e8cb26f8c2e7aadbcf7846290dd7f808a",
+      "assessment": "pretraining"
+    },
+    "research:protein-design-lab-validation": {
+      "hash": "15f9feab2382b1352e5e0f7b6f0ed9de0c6a77ec9320ce976029227e13283547",
+      "assessment": "protein"
+    },
+    "research:neon-cyber-evaluation": {
+      "hash": "750cd286a9a4426e374b16bad25a09d72e1f5c3dad1f895d63509710451bd492",
+      "assessment": "cyber"
+    },
+    "research:neon-patch-validation": {
+      "hash": "34cb60aedba44a2fb434937af5cf9c91c28f6eeea4953231e27cb44974c4c396",
+      "assessment": "defense"
+    },
+    "research:neon-adaptive-injection": {
+      "hash": "f3b522767329fe61bf1eecd9c6f3411c0b7ccbec6239861c7bcb18759349fd98",
+      "assessment": "defense"
+    },
+    "research:neon-monitoring-awareness": {
+      "hash": "42dbf1ab3ff0a8a69a7277203b9df36f80992259af46610250806f682e353e49",
+      "assessment": "awareness"
+    },
+    "node:C3a": {
+      "hash": "6f4f533391a17763d9fb23290cb91ad83ac4c2ca5a84a5f2a4a164afa7836af1",
+      "assessment": "coverage"
+    },
+    "node:C3a2": {
+      "hash": "4a735445164590128bb266e2a2983eb78fd9cf7bdc3116bd3384a4f42481a771",
+      "assessment": "awareness"
+    },
+    "node:M2c1": {
+      "hash": "aad4a1dd81ead0f6bbdd4855d653881e8c7750b9081570434f724c827a778aba",
+      "assessment": "cyber"
+    },
+    "node:M3": {
+      "hash": "c3f536d0b6fbee4b21abf5443512e4c9dda629592642a600601b1ad4ed72946b",
+      "assessment": "defense"
+    },
+    "node:R1": {
+      "hash": "d1d21434e23175ad6d45737504e8adc3f7c1bff3aec6bc6b52bb9556604123b9",
+      "assessment": "protein"
+    },
+    "node:R2": {
+      "hash": "32547d3a3b0281f8ceba570286564a6106b9f7ec98aadc110a7461c8e327515c",
+      "assessment": "pretraining"
+    },
+    "node:R3": {
+      "hash": "3129fea2b9997bca87f4d4ca47d63cbdb7ac3d9bb7df26d98b38d43b236c527c",
+      "assessment": "pretraining"
+    },
+    "node:W2": {
+      "hash": "9770fa2cf55e2e7fbe9db7b98212df3758612e3e420ec50ca2f490c0edfcbf31",
+      "assessment": "robotics"
+    },
+    "edge:M3-H": {
+      "hash": "fb8631c0305e12143abba99c5f58fb9dcf8e61f64fb075658c0e67d50e1397da",
+      "assessment": "defense"
+    },
+    "edge:R1-R2": {
+      "hash": "26ee1f06d2cf6c3267207ed7dbdd7a4d18c0d0c35d798fb8f2c0c6c481e8e918",
+      "assessment": "pretraining"
+    },
+    "edge:R2-R3": {
+      "hash": "b38b6d05aa356c370abcefd58acc9b383124310e55c95ae1493ae30545e8d1f0",
+      "assessment": "pretraining"
+    },
+    "edge:R3-R2": {
+      "hash": "06f8a0adacbaa083bc712f5a88ce262ed54943ab978aa5a60ec841e8959ba791",
+      "assessment": "pretraining"
+    },
+    "edge:W1-W4": {
+      "hash": "88f24fca24b9d991185fdd7c7df7a42656fed5ec0a47c920025832a584a3df6d",
+      "assessment": "robotics"
+    },
+    "graph:misuse": {
+      "hash": "1bef4a0002a9632b43c8a97de990d36b4bdd4fb84450bebac3b791d6806cca89",
+      "assessment": "defense"
+    },
+    "graph:acceleration": {
+      "hash": "2841c7476818ec45a73820285e498c92686ebb6409a0375c74d9e2d92bce2cdc",
+      "assessment": "pretraining"
+    },
+    "graph:oversight": {
+      "hash": "5923fa9a9f52784221221f0322f740a71824240afe34e77f2a0d2387fcdb613f",
+      "assessment": "awareness"
+    },
+    "graph:evaluation": {
+      "hash": "72dc8f85e6582cf5e453ddcfe5691c6ccc951652105134a6024ddba034b01715",
+      "assessment": "awareness"
+    },
+    "graph:cyber-conditions": {
+      "hash": "356baa637d5a1a303f330551f88750d20926bd5f1824a7b3537c1c1a58d2465a",
+      "assessment": "cyber"
+    },
+    "graph:work": {
+      "hash": "cbd20ec952076165c9d8e6521dffb60e46b31b34241ab8abb7619f08bbe9562d",
+      "assessment": "robotics"
+    },
+    "graph:development-paths": {
+      "hash": "cfabd54f9beac133eec586268704d33abf6db7110e8cda6926d6246b3c40eab1",
+      "assessment": "pretraining"
+    },
+    "graph:research-cycle": {
+      "hash": "b5092d3b6450413c2f460a6027544cfca93d64c430927440b3eeec008460a84b",
+      "assessment": "pretraining"
+    },
+    "route:misuse": {
+      "hash": "1932433c027cc9959099ac3be4ea79baed319e32e1693402d2eb08811c9c58d3",
+      "assessment": "defense"
+    },
+    "route:acceleration": {
+      "hash": "1f52a2044009ab8bb371173ce4395557b032197cab8bec4168c43341d09e3033",
+      "assessment": "pretraining"
+    },
+    "route:work": {
+      "hash": "f1347239bc4ad79833db37ab4ba690a111df0ac9d4cc256664a4185e2bbe359d",
+      "assessment": "robotics"
+    },
+    "current:misuse": {
+      "hash": "0a71a737e997a832442aaa2aa38a53182ba39b2e6c9fe40fba7a79ca19936cd4",
+      "assessment": "defense"
+    },
+    "evidence:C3a": {
+      "hash": "3b49d8bef9ddb30fcdd3700155587f1350deece9cee62ec9908aa8dd7b74715b",
+      "assessment": "coverage"
+    },
+    "evidence:C3a2": {
+      "hash": "cda5d17f1f0e52880359b50603230379dbd0ea3f5e1d6fdf701c3fdc2d9f7b6b",
+      "assessment": "awareness"
+    },
+    "evidence:R2": {
+      "hash": "843e0adea1e7c7ae9127a2998218deda4668b97068b8a1c0904641240bf74a4e",
+      "assessment": "pretraining"
+    },
+    "evidence:W2": {
+      "hash": "b281da2c835621b31262556b63b064d03bcfb96b9f4234f46f3a912ba7f1e2a1",
+      "assessment": "robotics"
+    },
+    "evidence:R3": {
+      "hash": "1365aae3eda8a8308232235f582d28b5ee6d6268031c89c52c6ee65daefab044",
+      "assessment": "pretraining"
+    },
+    "news:recent-math": {
+      "hash": "b62ea9e78558a157e9030eecfb956de4078401faf7523ab32810099a66c452fe",
+      "assessment": "protein"
+    },
+    "news:research-lab-september": {
+      "hash": "124aa8c1daa607bb5f940e85fffb417bcfa280693ca9b5a97bbbcf3d81990740",
+      "assessment": "pretraining"
+    },
+    "news:research-contribution": {
+      "hash": "4cccc910fcf7a13b2477b57ccdd43003d45ce47fa2809a4a0ee3d87cbd366ac9",
+      "assessment": "pretraining"
+    },
+    "news:agent-behavior": {
+      "hash": "c23d71ab7eb689049a17fb78de7c986c651613a3439d6d0c0dc18118871c18d4",
+      "assessment": "coverage"
+    },
+    "story:control": {
+      "hash": "313431caefc1e90c62331619a30d296363c04100df64fcc6f31aebc51617642d",
+      "assessment": "coverage"
+    },
+    "story:misuse": {
+      "hash": "b4e67b3279041dc6524f4a021d965916a58e1c06f03b83945b9abf4a3d62b568",
+      "assessment": "defense"
+    },
+    "story:acceleration": {
+      "hash": "527ddca0b0262dcd64cf2ed7b6d130be49ef5816913cc988b8d88e7ad6c17f77",
+      "assessment": "pretraining"
+    },
+    "story:work": {
+      "hash": "0f2a00f686d60b63bcba892ebdfb0e71c22b590092c438d96650c8899f3c8f73",
+      "assessment": "robotics"
+    },
+    "metadata:map": {
+      "hash": "c07976b81eb3f47cc84b0ed1211da458e1f9704906795ff644aa02d82802efb3",
+      "assessment": "record"
+    },
+    "history:changes": {
+      "hash": "683b2e84f4cf81c639d17dbfd8b8a6f09d38295cc5bca9a25ca338cd56eeb57c",
+      "assessment": "record"
+    },
+    "inventory:current": {
+      "hash": "d4b9ebd09fba997b37c79da52e5e3c50c9b9b3bde35dbd29363d6b5392893516",
+      "assessment": "record"
+    }
+  }
+}

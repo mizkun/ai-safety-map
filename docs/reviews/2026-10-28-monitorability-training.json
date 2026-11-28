@@ -1,0 +1,148 @@
+{
+  "id": "2026-10-28-monitorability-training",
+  "version": 2,
+  "date": "2026-10-28",
+  "reviewer": "Codex (primary-source and bilingual editorial review; not independent replication)",
+  "decision": "reviewed",
+  "assessments": {
+    "monitoring": {
+      "mechanism": "Useful evidence in an acting model’s written reasoning can help a separate monitor identify problematic behavior. Detection is still distinct from timely blocking and a reliable human response.",
+      "conditions": "Read both training preprints, their experimental setups, fixed monitors, task splits, aggregation and limitations. Compare each method with its own base model, and keep changed behavior and reasoning length visible.",
+      "counterexample": "Monitoring scores can improve on a fixed evaluation while unknown behavior remains undetected. Conversely, a monitor can miss an action that a separate permission boundary blocks, preventing harm.",
+      "evidence": "Add two original preprint source/card pairs and one paragraph to C3a. Re-read METR per-action coverage, detection and approval limitations and the historical OpenAI matched-task and rejection-gate analysis.",
+      "limits": "Composite gains do not establish causal recall or faithful reasoning; controlled recovery does not establish robustness in stronger deployed agents. Different budgets, behavioral shifts, single-split safety evaluations and longer reasoning constrain interpretation.",
+      "mitigation": "Consider training the acting model to retain monitoring-relevant information, while checking unfamiliar tasks, direct concealment, false alarms, later-training durability and pre-harm intervention separately.",
+      "readerContext": "The new paragraph explains which AI is trained and what written reasoning means before discussing score changes. Model names and denominators stay in the research cards. Both languages distinguish scores from prevention.",
+      "whyHere": "C3a is due and gains defense evidence. Oversight/evaluation branches, current evidence and linked news retain their conditional meanings. C3-L and R4-C1 still require operational conditions; no topology or classification changes.",
+      "primary": [
+        {
+          "source": "monitorability-causal-training",
+          "locator": "Sections 3–6; Tables 2–3; Appendix D",
+          "support": "Bounded intervention-task improvements and causal interpretation limits."
+        },
+        {
+          "source": "monitorability-post-training",
+          "locator": "Sections 4.1–4.2 and 6; Tables 1–4; Appendices A–E",
+          "support": "Prepared recovery and safety-prediction gains with behavioral and transfer limits."
+        },
+        {
+          "source": "metr-action-monitor",
+          "locator": "Sections 2–4",
+          "support": "Coverage, detection, pre-action blocking and human-review limitations."
+        },
+        {
+          "source": "openai-monitorability-metrics",
+          "locator": "Historical comparisons and rejection-gate analysis",
+          "support": "Task-mix confounding and nonadaptive retry effects, not production risk."
+        }
+      ]
+    },
+    "evaluation": {
+      "mechanism": "A gap between the behavior tested and the behavior possible during use can leave failure types unexamined. The difference must matter for actions; distribution shift alone does not demonstrate danger.",
+      "conditions": "Re-read lie-detector methods, transfer results and labeling limits, LASER sampling and AI grading, and METR’s dated review of evaluation-versus-production monitoring. Compare the existing Japanese and English explanations.",
+      "counterexample": "A detector can perform well on familiar examples but not unfamiliar ones. Better collection of difficult examples need not correct label errors or reveal failure types missing from the source pool.",
+      "evidence": "Retain C3a1’s current text and indirect classification. The external review addresses models and operations through July 15, not present October systems; the new training papers do not remove the generalization concern.",
+      "limits": "No current operational miss rate or independent replication is established. The external review and expanded evaluator access have distinct contracts and dates; published access is not measured effectiveness.",
+      "mitigation": "Compare held-out failure types, independent labels and operational conditions. Feed real failures back into evaluation, and distinguish scrutiny access from successful detection and response.",
+      "readerContext": "C3a1 introduces why tests may overstate reliability before naming studies. Its parent graph keeps coverage gaps, testing-time concealment and runtime evasion as overlapping alternatives.",
+      "whyHere": "C3a1 was due. Update only its review and evidence dates after substantive reading, preserving content and the broader control pathway. Do not treat new positive findings as proof that deployment gaps disappeared.",
+      "primary": [
+        {
+          "source": "lie-detectors",
+          "locator": "Dataset, transfer results and limitations",
+          "support": "Narrow training does not establish broad deception detection."
+        },
+        {
+          "source": "openai-laser",
+          "locator": "Sampling, reasoning grader and impact",
+          "support": "More efficient evaluation-data collection, not guaranteed labels or unknown-risk coverage."
+        },
+        {
+          "source": "metr-august-risk-review",
+          "locator": "Scope; covert-capability and monitoring-setup critique",
+          "support": "Mismatch between evaluation and operational monitoring under the covered period."
+        }
+      ]
+    },
+    "publication": {
+      "mechanism": "The map distinguishes publication dates, experiment dates and the day of substantive editorial review; additions do not renew unrelated evidence.",
+      "conditions": "Complete all 19 daily starting URLs for October 14–28 and targeted primary-paper/correction searches. Compare existing source URLs and open PR 11 before adding material.",
+      "counterexample": "A new product preview or inaccessible article headline is not verified pathway evidence. An AI-generated critique is not independent replication.",
+      "evidence": "The Markdown record names adopted versions, bounded before/after changes, due-item rereading, duplicate exclusions, Genie screening and the drug-development retrieval gap.",
+      "limits": "This is selective editorial work. It does not certify all literature, redo experiments, verify every unchanged source or test the deployed interface.",
+      "mitigation": "Preserve prior records/translations, run check/build/freshness and targeted preservation assertions, and reuse the existing draft for human review without merging or deploying.",
+      "readerContext": "Bilingual history describes the training changes and why measured monitoring gains must remain distinct from real-world harm prevention.",
+      "whyHere": "Cover metadata, history and inventory after two additions. Keep source confirmation dates and all unreviewed node/edge dates intact.",
+      "primary": [
+        {
+          "source": "monitorability-causal-training",
+          "locator": "arXiv version history; Sections 5–6",
+          "support": "Version-specific experimental evidence and unknown execution dates."
+        },
+        {
+          "source": "monitorability-post-training",
+          "locator": "arXiv version history; Section 6",
+          "support": "Preprint status and unresolved transfer to naturally occurring failures."
+        }
+      ]
+    }
+  },
+  "entries": {
+    "source:monitorability-causal-training": {
+      "hash": "1e75c2936c215639dd7098bffd0f8f309db0b636534f0f7147239a135294c521",
+      "assessment": "monitoring"
+    },
+    "source:monitorability-post-training": {
+      "hash": "6ecd9171e5f4883d3d5edc05629f451c5f43834872e0704f928f2732d9cb2b3a",
+      "assessment": "monitoring"
+    },
+    "research:intervention-aware-monitorability": {
+      "hash": "28b2d394e6f55a7fcc2b79415092a3642a77a8a7fb6516bd164c18e71a91195b",
+      "assessment": "monitoring"
+    },
+    "research:monitorability-recovery-training": {
+      "hash": "7a8f48ed8f923b4d5b677527b078b03bfd76f13dabe1b2aa1ca4587fc2b89920",
+      "assessment": "monitoring"
+    },
+    "node:C3a": {
+      "hash": "fb9e7a78e25d48a44580490cf1d92ed52351e4f65203d7f1e1d346adbeb31c2e",
+      "assessment": "monitoring"
+    },
+    "node:C3a1": {
+      "hash": "36c3ce0c41e89983989a1236a8f8440a25682d5a21925db486a604568b086e0c",
+      "assessment": "evaluation"
+    },
+    "graph:oversight": {
+      "hash": "24eeb9fb119e5a4cdc2b37a77a193b2b4511e33d670a5eba1f02ff7a4a625191",
+      "assessment": "monitoring"
+    },
+    "graph:evaluation": {
+      "hash": "806f79b924e0653d291b3562499f9fa5227190692f349afe8cb05b019d7b2f74",
+      "assessment": "evaluation"
+    },
+    "evidence:C3a": {
+      "hash": "ad391346903afef1a5bc375ff801d1468462b2f59669a2ad085223a346f094f2",
+      "assessment": "monitoring"
+    },
+    "evidence:C3a1": {
+      "hash": "ae4534e4eda6c9c8365b58e0e3ce076cdf4ed96874f960797b7651452d4153f8",
+      "assessment": "evaluation"
+    },
+    "news:agent-behavior": {
+      "hash": "9f921a635c710efcb5562381712379246c7047a3f5ff9d737e721a177e9a8d0d",
+      "assessment": "monitoring"
+    },
+    "metadata:map": {
+      "hash": "ef294eb5bc2200f734a8965da99348b5792dc745f757691dd3be5c07531bd8ad",
+      "assessment": "publication"
+    },
+    "history:changes": {
+      "hash": "245d72d38b3a6bd314b17aba8d415131cd7f18fa985c9fd2e476da5fcb0a856f",
+      "assessment": "publication"
+    },
+    "inventory:current": {
+      "hash": "66dfc851b26543100dcfa4e1ece2b957690639459cfd171fefce81c27353a415",
+      "assessment": "publication"
+    }
+  }
+}
