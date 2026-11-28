@@ -220,7 +220,7 @@
         "metr-th2-horizons"
       ],
       "review": {
-        "checkedAt": "2026-11-21",
+        "checkedAt": "2026-11-28",
         "intervalDays": 7,
         "reason": "既存の根拠がカードの条件をどこまで直接確かめているかを分類しています。根拠の更新時に見直します。"
       }
@@ -515,7 +515,7 @@
         "metr-th2-horizons"
       ],
       "review": {
-        "checkedAt": "2026-11-21",
+        "checkedAt": "2026-11-28",
         "intervalDays": 7,
         "reason": "既存の根拠がカードの条件をどこまで直接確かめているかを分類しています。根拠の更新時に見直します。"
       }
@@ -563,7 +563,7 @@
         "openai-reasoning-extraction-defense"
       ],
       "review": {
-        "checkedAt": "2026-11-21",
+        "checkedAt": "2026-11-28",
         "intervalDays": 7,
         "reason": "既存の根拠がカードの条件をどこまで直接確かめているかを分類しています。根拠の更新時に見直します。"
       }

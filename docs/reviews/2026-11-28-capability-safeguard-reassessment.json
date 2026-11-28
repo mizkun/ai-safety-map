@@ -1,0 +1,195 @@
+{
+  "id": "2026-11-28-capability-safeguard-reassessment",
+  "version": 2,
+  "date": "2026-11-28",
+  "reviewer": "Codex — primary-source editorial reassessment",
+  "decision": "reviewed",
+  "assessments": {
+    "capability": {
+      "mechanism": "R0 describes capability improvements; C2a describes completing the relevant sequence, including intermediate checks and recovery. Gains require transfer to the actual work; neither node supplies permissions or harmful intent.",
+      "conditions": "Compared both languages and matching evidence summaries with the original task methods and scope limitations described in the companion record. Retain limited/tested for both nodes. Separate human task duration, AI runtime, rubric scores and whole-job completion.",
+      "counterexample": "A system can score well on a bounded task yet fail on exceptions, coordination or a different workflow. Strong implementation performance can coexist with weak research judgment.",
+      "evidence": "Reread the specified METR Q4 sections, Neon methods and pretraining discussions. Existing records already incorporate their bounded findings; no new citation or numerical claim is added to the map.",
+      "limits": "This is a reassessment of the current wording, not a rerun of the experiments or a complete audit of every historically cited source. Shared measurement series are not independent replications, and search recency is not an experiment date.",
+      "mitigation": "Retain task-specific evaluation, limited delegation, intermediate checking and independent outcome validation. Verify human assistance, cost and access separately before transferring an evaluation result to deployment.",
+      "readerContext": "Japanese and English explanations identify the actor and task, distinguish capability from access and introduce progress before its possible effects. The standalone limitations do not require readers to know the downstream scenario.",
+      "whyHere": "The control and work paths first need to establish which work AI can perform. These nodes provide that starting question without making ASI or recursive improvement a prerequisite for execution.",
+      "primary": [
+        {
+          "source": "metr-q4-capabilities",
+          "locator": "Sections 2, 3.B.2, 3.C.1; appendices A and M. Reread November 28.",
+          "support": "Supports bounded task progress and the retained distinction between execution and research judgment."
+        },
+        {
+          "source": "gemini4-neon-methods",
+          "locator": "Evaluation-methodology PDF, pages 1–3.",
+          "support": "Task scoring and harness conditions limit interpretation as whole-job completion."
+        },
+        {
+          "source": "metr-pretraining-interpretation",
+          "locator": "November 24 analysis, competing explanations and measurement caveats.",
+          "support": "The existing conditional R0 account remains compatible with the limits of the pretraining trend."
+        }
+      ]
+    },
+    "safety": {
+      "mechanism": "R4 concerns using AI to help discover, test and implement safety measures. Assistance can improve a defined defense while human selection, judgment and correction remain necessary.",
+      "conditions": "Compared both language versions and the evidence summary with original defense methods, adaptive tests and research-judgment limitations. Retain limited/tested; no claim of autonomous end-to-end safety research is introduced.",
+      "counterexample": "A static evaluation can improve while adaptive attacks still succeed. A promising research proposal may fail independent checking or fail to transfer to operational conditions.",
+      "evidence": "The companion record locates the OpenAI distillation and Anthropic Anvil comparisons, including human involvement and residual failures. These sources were already incorporated; today adds no duplicate finding.",
+      "limits": "Model, training and defense changes can occur together. Missing trial details and simultaneous interventions limit causal attribution. Neither a sampled zero count nor a reduced extraction rate establishes general safety.",
+      "mitigation": "Keep independent evaluation, utility checks, human correction and follow-up in deployment. Evaluate safeguard outcomes separately from the speed or quantity of generated research.",
+      "readerContext": "Both languages explain the beneficial safety branch before discussing limits. They identify what is being improved and avoid treating all safety or alignment work as a single solved task.",
+      "whyHere": "Capability improvements can support protective work as well as risky operations. R4 supplies this alternative path without assuming that protection automatically keeps pace.",
+      "primary": [
+        {
+          "source": "openai-distillation-defense",
+          "locator": "Defense design, extraction table and experiment discussion; reread November 28.",
+          "support": "Supports specific defensive gains with attribution and measurement limits."
+        },
+        {
+          "source": "anthropic-anvil",
+          "locator": "Static evaluation, adaptive sessions and sampled traffic; original November 12 report.",
+          "support": "Supports useful automated assistance alongside residual failures and human contributions."
+        }
+      ]
+    },
+    "dependencies": {
+      "mechanism": "R0-C2a, R0-W1, R0-ASI and R0-R4 describe conditional transfer or expansion; R4-C1 describes conditional mitigation. The ability/access group requires distinct execution and access conditions.",
+      "conditions": "Read all five edge definitions in Japanese and English, four graph descriptions, three route definitions, both stories, the two linked news examples and the R4 safeguard panel. No endpoints, prerequisites, citations or narratives change.",
+      "counterexample": "Limited task success can fail to generalize to a job or safety research. A discovered intervention can be ineffective after deployment or further training. Capability without access need not produce a real action.",
+      "evidence": "The refreshed node metadata changes dependent fingerprints. The primary readings remain compatible with the existing conditional explanations; this review does not newly establish the entire causal arrows.",
+      "limits": "Dependency approval is an editorial consistency check. The historical safeguard panel remains explicitly limited to its older models and assumptions. Edge, route and safeguard clocks are not renewed by this check.",
+      "mitigation": "Preserve independent validation, deployment follow-up and practical limits on delegated work. Keep beneficial alternatives and possible intervention failure visible together.",
+      "readerContext": "The generated control sequence introduces capability and safety assistance before behavioral choice, execution and failed prevention. The acceleration story separates assistance with research from sustained self-improvement. Both news examples explain what their measurements do and do not mean.",
+      "whyHere": "These dependencies connect task capability to practical use and safety work. Their conditions prevent isolated results from being read as whole-job substitution, general alignment or inevitable loss of control.",
+      "primary": [
+        {
+          "source": "gemini4-neon-methods",
+          "locator": "Methodology PDF, task scoring and harness descriptions on pages 1–3.",
+          "support": "Keeps downstream transfer conditional on the relevant workflow and measurement."
+        },
+        {
+          "source": "openai-distillation-defense",
+          "locator": "Extraction comparison and limitations discussed in the companion record.",
+          "support": "Keeps defense improvements distinct from general deployment safety."
+        }
+      ]
+    },
+    "scope": {
+      "mechanism": "map.asOf identifies the latest substantive content review, not a synchronized refresh of every item or source.",
+      "conditions": "Only C2a, R0 and R4 and their matching evidence records receive November 28 checkedAt values. Other source, node, edge, route, safeguard and evidence dates remain unchanged.",
+      "counterexample": "A reachable source, unchanged listing or passing build alone does not justify renewing a claim. The three due explanations were instead compared with original methods, results and counterevidence.",
+      "evidence": "The companion record identifies the 19 daily entry points, bounded discovery window, primary-source sections, duplicate handling and preservation assertions. No scientific content is replaced.",
+      "limits": "Freshness is a review schedule rather than evidence of scientific validity. This daily check is not a weekly literature audit. An inaccessible peripheral lead is excluded instead of treated as verified.",
+      "mitigation": "Preserve earlier reviews and translations and keep the result in the existing draft PR for human review. Do not merge or deploy through this automation.",
+      "readerContext": "Publication dates, experiment periods and editorial review dates remain separate. The review date does not make an old observation a current capability ceiling.",
+      "whyHere": "A substantive no-change decision for three due items merits a scoped record without making unrelated content appear newly assessed.",
+      "primary": [
+        {
+          "source": "anthropic-anvil",
+          "locator": "November 12 original report reread on November 28 as existing evidence.",
+          "support": "Illustrates the distinction between publication date and current editorial reassessment."
+        }
+      ]
+    }
+  },
+  "entries": {
+    "node:C2a": {
+      "hash": "c3c24e253dcd208ff6d750f567e59399042871ceffd5a996af86d01b467b3921",
+      "assessment": "capability"
+    },
+    "node:R0": {
+      "hash": "e15878bd743aeacbe41aa0c60a78a95c9312a1480751deab9705a2a5e8edd67e",
+      "assessment": "capability"
+    },
+    "node:R4": {
+      "hash": "941e48b5dfaa7941dcb2bdf8ebd54493da1b350b3a9d8a6d23f6f04f1a1a7746",
+      "assessment": "safety"
+    },
+    "edge:R4-C1": {
+      "hash": "0f1be196160353d5e57ffe9f162ecd7b97486f319b208c34b228d6d0220e7718",
+      "assessment": "dependencies"
+    },
+    "edge:R0-C2a": {
+      "hash": "8c6722dcf8a089b33f9d532965f5d73115db523b81013afba212b8017c2e28cf",
+      "assessment": "dependencies"
+    },
+    "edge:R0-W1": {
+      "hash": "90dba7d97cfb7c542250a5584ddcea19e4de77b6aeebbc17fbd0ce65cf1a952f",
+      "assessment": "dependencies"
+    },
+    "edge:R0-ASI": {
+      "hash": "d02e82ec06e1439e24a61c588ebf7ec6fc4a348bc6a8252596d5f9fa8897acfa",
+      "assessment": "dependencies"
+    },
+    "edge:R0-R4": {
+      "hash": "9921bc10e9cf78ba114f6799bdb74ae3ea2305fc0887ee5fb61ba7da9094fc60",
+      "assessment": "dependencies"
+    },
+    "graph:control": {
+      "hash": "28dbb0ebe29282339f5a8c97128ef2b7461c18c0b42af378cd44ff67fc63e335",
+      "assessment": "dependencies"
+    },
+    "graph:acceleration": {
+      "hash": "3f449d4fd64ab3564c5150b6c1d3ab98f9c724ded05b5d73fe6f1aa6c85e4180",
+      "assessment": "dependencies"
+    },
+    "graph:ability-access": {
+      "hash": "0062044499b38917bac2baf25255c0219d6f203ad9d9199ea704f5c2e504112e",
+      "assessment": "dependencies"
+    },
+    "graph:work": {
+      "hash": "102d06653468468627d1e59bace305ef6db962fc443765060d5afe45f72426b5",
+      "assessment": "dependencies"
+    },
+    "route:control": {
+      "hash": "35ee89f06de179ced73043dbab08af26ff41ae9ee570f64bb3c87978633b2ebe",
+      "assessment": "dependencies"
+    },
+    "route:acceleration": {
+      "hash": "520646c5dcf7750630036c79c5ac4cc1a2ba991b705992129d969c6ab60d3b31",
+      "assessment": "dependencies"
+    },
+    "route:work": {
+      "hash": "39e059a37fdfee43ca674742c7a22c892b019453b6282555dc6bed471b639da5",
+      "assessment": "dependencies"
+    },
+    "safeguard:R4": {
+      "hash": "ff5f50a6d4fb3fd21aa8a8d6abd4e4d04fd22dae91e4b4c64c2ae8ba25ea1b2d",
+      "assessment": "dependencies"
+    },
+    "evidence:C2a": {
+      "hash": "df56308576ed3d277bc8c19c0c82a4fe585193a433e21541fdd6d836794b4e2b",
+      "assessment": "capability"
+    },
+    "evidence:R0": {
+      "hash": "971bcfb187e46c36f0cd074f7d4e42302d14bf335899bb038bd9269eeee2af1d",
+      "assessment": "capability"
+    },
+    "evidence:R4": {
+      "hash": "0a59e9de23f1765c9a13edc76ecb81ded063b36fd3a9a74f66c7e1f71647c5e7",
+      "assessment": "safety"
+    },
+    "news:automated-safety": {
+      "hash": "9b77bfd2f3e855d3a248ec2545a60195498a1839e43b80f12a0ed73c5dc28603",
+      "assessment": "dependencies"
+    },
+    "news:time-horizons": {
+      "hash": "770b8d8aadac5bfa7919636145b0756cc6800afd03d47556d5a9fa1b624ce231",
+      "assessment": "dependencies"
+    },
+    "story:control": {
+      "hash": "d6864f3a7a82257fa7152c56781e3acf39858ea31c7f2a72b001c24c9ecb59de",
+      "assessment": "dependencies"
+    },
+    "story:acceleration": {
+      "hash": "5efcd609e74ecf9cd9ad865a179288148d262f792cb235ae5a9155d7d47de19b",
+      "assessment": "dependencies"
+    },
+    "metadata:map": {
+      "hash": "7a9373b1113bc9bc8d95586155f89ee65584ac6cefcea493f0f34a127d772c95",
+      "assessment": "scope"
+    }
+  }
+}
